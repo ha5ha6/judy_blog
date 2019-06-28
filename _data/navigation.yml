@@ -1,0 +1,15 @@
+main:
+  - title: "About"
+    url: /about/
+  - title: "Research"
+    url: /research/
+  - title: "Project"
+    url: /project/
+  - title: "CV"
+    url: /cv/
+  - title: "Gallery"
+    url: /gallery/
+  #- title: "Collections"
+  #  url: /collection-archive/
+  #- title: "External Link"
+  #  url: https://google.com
