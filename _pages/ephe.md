@@ -67,7 +67,7 @@ gallery:
 
 ## Slides
 
-{% include gallery id="gallery" layout="half" %}
+<!---{% include gallery id="gallery" layout="half" %}--->
 
 ## Related Papers:
 
