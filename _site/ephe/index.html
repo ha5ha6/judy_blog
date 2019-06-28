@@ -1,0 +1,474 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Policy Hyper-parameter Search - Jiexin Wang</title>
+<meta name="description" content="an EM-based deterministic approach">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Jiexin Wang">
+<meta property="og:title" content="Policy Hyper-parameter Search">
+<meta property="og:url" content="http://localhost:4000/ephe/">
+
+
+  <meta property="og:description" content="an EM-based deterministic approach">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/hand.png">
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/ephe/">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Jiexin Wang Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">Jiexin Wang</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/research/" >Research</a>
+            </li><li class="masthead__menu-item">
+              <a href="/project/" >Project</a>
+            </li><li class="masthead__menu-item">
+              <a href="/cv/" >CV</a>
+            </li><li class="masthead__menu-item">
+              <a href="/gallery/" >Gallery</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: url('/assets/images/hand.png');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Policy Hyper-parameter Search
+
+        
+      </h1>
+      
+        <p class="page__lead">an EM-based deterministic approach
+</p>
+      
+      
+      
+      
+    </div>
+  
+  
+    <span class="page__hero-caption">Photo credit: Unknown
+</span>
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/head.jpg" alt="Jiexin Wang" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Jiexin Wang</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Reinforcement Learning <br /> Mobile & Joint Robots <br /> Neural Networks <br /> Photography
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="https://www.google.com/maps/place/Kyoto/@35.0978739,135.4386868,10z/data=!3m1!4b1!4m5!3m4!1s0x6001a8d6cd3cc3f1:0xc0961d366bbb1d3d!8m2!3d35.011564!4d135.7681489" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> Kyoto, JP</a></li>
+          
+        
+          
+            <li><a href="https://mail.google.com/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> superheartheart<br />(at)gmail.com</a></li>
+          
+        
+          
+            <li><a href="https://www.researchgate.net/profile/Jiexin_Wang" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> ResearchGate</a></li>
+          
+        
+          
+            <li><a href="https://github.com/ha5ha6" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/jiexin-wang-54b66591/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Policy Hyper-parameter Search">
+    <meta itemprop="description" content="an EM-based deterministic approach">
+    
+    
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="slides">Slides</h2>
+
+<figure class="half ">
+  
+    
+      <a href="/assets/images/Slide09.jpeg" title="slide01">
+        <img src="/assets/images/Slide09.jpeg" alt="placeholder image 1" />
+      </a>
+    
+  
+    
+      <a href="/assets/images/Slide10.jpeg" title="slide02">
+        <img src="/assets/images/Slide10.jpeg" alt="placeholder image 2" />
+      </a>
+    
+  
+    
+      <a href="/assets/images/Slide11.jpeg" title="slide03">
+        <img src="/assets/images/Slide11.jpeg" alt="placeholder image 3" />
+      </a>
+    
+  
+    
+      <a href="/assets/images/Slide12.jpeg" title="slide04">
+        <img src="/assets/images/Slide12.jpeg" alt="placeholder image 4" />
+      </a>
+    
+  
+    
+      <a href="/assets/images/Slide13.jpeg" title="slide05">
+        <img src="/assets/images/Slide13.jpeg" alt="placeholder image 5" />
+      </a>
+    
+  
+    
+      <a href="/assets/images/Slide14.jpeg" title="slide06">
+        <img src="/assets/images/Slide14.jpeg" alt="placeholder image 6" />
+      </a>
+    
+  
+    
+      <a href="/assets/images/Slide15.jpeg" title="slide07">
+        <img src="/assets/images/Slide15.jpeg" alt="placeholder image 7" />
+      </a>
+    
+  
+    
+      <a href="/assets/images/Slide16.jpeg" title="slide08">
+        <img src="/assets/images/Slide16.jpeg" alt="placeholder image 8" />
+      </a>
+    
+  
+    
+      <a href="/assets/images/Slide17.jpeg" title="slide09">
+        <img src="/assets/images/Slide17.jpeg" alt="placeholder image 9" />
+      </a>
+    
+  
+    
+      <a href="/assets/images/Slide18.jpeg" title="slide10">
+        <img src="/assets/images/Slide18.jpeg" alt="placeholder image 10" />
+      </a>
+    
+  
+    
+      <a href="/assets/images/Slide19.jpeg" title="slide11">
+        <img src="/assets/images/Slide19.jpeg" alt="placeholder image 11" />
+      </a>
+    
+  
+    
+      <a href="/assets/images/Slide20.jpeg" title="slide12">
+        <img src="/assets/images/Slide20.jpeg" alt="placeholder image 12" />
+      </a>
+    
+  
+  
+</figure>
+
+<h2 id="related-papers">Related Papers:</h2>
+
+<ul>
+  <li>
+    <p><span style="font-family:Serif; font-size:0.95em;"> J. Wang, E. Uchibe, and K. Doya. Adaptive baseline enhances EM-based policy search: Validation in a view-based positioning task of a smartphone balancer. <br /> <em>Frontiers in Neurorobotics.</em> 11:1. DOI 10.3389/fnbot.2017.00001. 2017 <br /> <a href="https://www.frontiersin.org/articles/10.3389/fnbot.2017.00001/full">[website]</a> <a href="https://www.researchgate.net/publication/312643347_Adaptive_Baseline_Enhances_EM-Based_Policy_Search_Validation_in_a_View-Based_Positioning_Task_of_a_Smartphone_Balancer">[researchgate]</a> <a href="https://www.frontiersin.org/articles/10.3389/fnbot.2017.00001/pdf">[pdf]</a></span></p>
+  </li>
+  <li>
+    <p><span style="font-family:Serif; font-size:0.95em;"> J. Wang, E. Uchibe, and K. Doya. EM-based policy hyper parameter exploration: Application to standing and balancing of a two-wheeled smartphone robot.  <br /> <em>Artificial Life and Robotics.</em> 21: 125. DOI 10.1007/s10015-015-0260-7. 2016 <br /> <a href="https://link.springer.com/article/10.1007/s10015-015-0260-7?wt_mc=internal.event.1.SEM.ArticleAuthorOnlineFirst">[website]</a> <a href="https://www.researchgate.net/publication/291951786_EM-based_policy_hyper_parameter_exploration_application_to_standing_and_balancing_of_a_two-wheeled_smartphone_robot">[researchgate]</a> <a href="https://link.springer.com/content/pdf/10.1007%2Fs10015-015-0260-7.pdf">[pdf]</a></span></p>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Jiexin Wang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
