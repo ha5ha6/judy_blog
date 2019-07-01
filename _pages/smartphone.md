@@ -53,7 +53,7 @@ Under the higher level behavioral domain, it is primed for revealing the insight
 
 ## Construction
 ### Chassis
-![]({{ site.url }}{{ site.baseurl }}/assets/images/stablefront.png){:width="25%"}
+![]({{site.url}}{{site.baseurl}}/assets/images/stablefront.png){:width="25%"}
 ![](/assets/images/stablefront.png){:width="25%"}
 ![](/assets/images/stableback.png){:width="26%"}
 
