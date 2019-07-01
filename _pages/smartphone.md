@@ -28,7 +28,7 @@ By connecting actuators along with micro controller chips such as __Arduino, Ras
 
 ## A balancer with elastic bumper
 
-![](/assets/images/phy.jpg){:height="50%" width="50%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/phy.jpg){:height="50%" width="50%"}
 
 **Figure 1** - Physical model of spring-attached wheeled inverted pendulum
 
@@ -54,12 +54,11 @@ Under the higher level behavioral domain, it is primed for revealing the insight
 ## Construction
 ### Chassis
 ![](https://ha5ha6.github.io/judy_blog/assets/images/stablefront.png){:width="25%"}
-![](/assets/images/stablefront.png){:width="25%"}
-![](/assets/images/stableback.png){:width="26%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/stableback.png){:width="26%"}
 
 **Figure 2** - Chassis design for stable versions
 
-![](/assets/images/balancer.jpg){:width="40%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/balancer.jpg){:width="40%"}
 
 **Figure 3** - Chassis design for elastic balancer version
 
@@ -71,7 +70,7 @@ To customize the chassis, we need
 Our latest design supports both two versions of a stable runner by sliding in two holders under the battery container and a spring-attached balancer.
 
 ### Hardware
-![](/assets/images/connection.jpg){:width="70%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/connection.jpg){:width="70%"}
 
 **Figure 4** - Hardware connection
 
@@ -97,13 +96,13 @@ We use three threads under the Android environment as shown in **Figure 5**:
 - sensor thread (5ms)
 - control/IOIO thread (1ms)
 
-![](/assets/images/thread.jpg){:width="60%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/thread.jpg){:width="60%"}
 
 **Figure 5** - Threading
 
 ## Control Architecture
 
-![](/assets/images/control.jpg){:width="60%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/control.jpg){:width="60%"}
 
 **Figure 6** - Control Architecture
 
