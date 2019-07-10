@@ -120,7 +120,7 @@ We achieved several basic behaviors and high-level behaviors.
 
 Firstly, we handtuned the control parameters and achieved the **standing-up and balancing behaviors** in simulation [[NLP 2013]](https://ci.nii.ac.jp/naid/110009903423) and hardware [[RSJ 2014]]().
 
-Then we used the method proposed in [Policy hyper-parameter search](/ephe) for the robot to learn the optimal parameters instead of handtuning. The **standing-up and balancing behaviors** achieved in simulation [[ArtificialLife 2016]](https://link.springer.com/article/10.1007/s10015-015-0260-7?wt_mc=internal.event.1.SEM.ArticleAuthorOnlineFirst) and hardware [[Frontier 2017]](https://www.frontiersin.org/articles/10.3389/fnbot.2017.00001/full).
+Then we used the method proposed in [Policy hyper-parameter search](https://ha5ha6.github.io/judy_blog/ephe/) for the robot to learn the optimal parameters instead of handtuning. The **standing-up and balancing behaviors** achieved in simulation [[ArtificialLife 2016]](https://link.springer.com/article/10.1007/s10015-015-0260-7?wt_mc=internal.event.1.SEM.ArticleAuthorOnlineFirst) and hardware [[Frontier 2017]](https://www.frontiersin.org/articles/10.3389/fnbot.2017.00001/full).
 
 We further achieved **a vison-based approaching behavior** in hardware [[Frontier 2017]](https://www.frontiersin.org/articles/10.3389/fnbot.2017.00001/full).
 
