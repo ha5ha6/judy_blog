@@ -5,8 +5,6 @@ main:
     url: /research/
   - title: "Project"
     url: /project/
-  - title: "CV"
-    url: /cv/
   - title: "Gallery"
     url: /gallery/
   #- title: "Collections"
