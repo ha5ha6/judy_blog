@@ -19,7 +19,7 @@ feature_row1:
     image_caption: "Image courtesy of J.Wang"
     alt: "placeholder image 3"
     title: "Modular Deep Reinforcement Learning"
-    excerpt: "This session shows slides about deep maxpain algorithim we developed for robot navigation."
+    excerpt: "This session shows slides about deep maxpain algorithm we developed for robot navigation."
     url: "/maxpain/"
     btn_label: "Read More"
     btn_class: "btn--primary"
