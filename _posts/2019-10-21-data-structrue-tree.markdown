@@ -11,7 +11,7 @@ toc_label: "Index"
 author_profile: true
 ---
 
-### Tree
+### Tree Definition
 ```python
 class TreeNode(): 
     def __init__(self,x):
