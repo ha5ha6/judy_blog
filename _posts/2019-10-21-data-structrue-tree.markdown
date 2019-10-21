@@ -25,19 +25,27 @@ root.right.left=TreeNode(4)
 ### Tree Operation
 
 1.insert
+
 2.search
+
 3.find
+
+4.max length
+
+5.min length
 
 ### Tree Traversal
 
 ![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg)
 
 related: 
+
 leetcode 094 - Binary Tree Inorder Traversal [M]
+
 leetcode 102 - Binary Tree Level Order Traversal [M]
 
 ```python      
-class BinaryTree():
+class BinaryTreeTraversal():
     #leetcode 094
     def inorder(self,root):
         res=[]
@@ -53,9 +61,23 @@ class BinaryTree():
         res.append(node.val)
         self.dfs(node.right,res)
         
-    #leetcode 102
+    #leetcode 102 (theoretically should use queue, but here use stack)
     def levelorder(self,root):
         res=[]
-        
+        if not root:
+            return res
+        q=[root]
+        while len(q)!=0:
+            res.append([node.val for node in q])
+            new_q=[]
+            for node in q:
+                if node.left:
+                    new_q.append(node.left)
+                if node.right:
+                    new_q.append(node.right)
+            q=new_q
+            
+        return res      
 ```
+
 ### Tree Generalization
