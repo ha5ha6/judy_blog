@@ -6,19 +6,40 @@ categories: Programming
 author:  "Judy"
 ---
 
-### Tree
-
-![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg)
-
+### Tree Basic
 ```python
 class TreeNode(): 
     def __init__(self,x):
         self.val=x
         self.left=None
         self.right=None
-        
+     
+#create tree
+root=TreeNode(0)
+root.left=TreeNode(1)
+root.right=TreeNode(2)
+root.left.left=TreeNode(3)
+root.right.left=TreeNode(4)
+```   
+
+### Tree Operation
+
+1.insert
+2.search
+3.find
+
+### Tree Traversal
+
+![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg)
+
+related: 
+leetcode 094 - Binary Tree Inorder Traversal [M]
+leetcode 102 - Binary Tree Level Order Traversal [M]
+
+```python      
 class BinaryTree():
-    def inorder_traversal(self,root):
+    #leetcode 094
+    def inorder(self,root):
         res=[]
         if not root:
             return res
@@ -31,4 +52,10 @@ class BinaryTree():
         self.dfs(node.left,res)
         res.append(node.val)
         self.dfs(node.right,res)
+        
+    #leetcode 102
+    def levelorder(self,root):
+        res=[]
+        
 ```
+### Tree Generalization
