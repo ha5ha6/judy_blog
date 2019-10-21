@@ -3,7 +3,7 @@ layout: single
 title:  "Data Structure Index"
 date:   2019-10-21 16:43:25 +0900
 categories: Programming
-author:  "Judy"
+author:  Jiexin Wang
 ---
 
 ### Data Structure
