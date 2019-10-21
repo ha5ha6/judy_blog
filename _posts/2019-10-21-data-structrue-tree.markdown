@@ -6,7 +6,7 @@ categories: Programming
 author:  "Judy"
 ---
 
-### Tree Basic
+### Tree
 ```python
 class TreeNode(): 
     def __init__(self,x):
@@ -22,7 +22,7 @@ root.left.left=TreeNode(3)
 root.right.left=TreeNode(4)
 ```   
 
-### Tree Operation
+### Tree Basic Operation
 
 1.insert
 
@@ -36,11 +36,11 @@ root.right.left=TreeNode(4)
 
 ### Tree Traversal
 
-<br>related:<br /> 
+leetcode 94 - Binary Tree Inorder Traversal [M]
 
-<br>leetcode 94 - Binary Tree Inorder Traversal [M]<br /> 
-<br>leetcode 102 - Binary Tree Level Order Traversal [M]<br /> 
-<br>leetcode 103 - Binary Tree Zigzag Level Order Traversal [M]<br /> 
+leetcode 102 - Binary Tree Level Order Traversal [M]
+
+leetcode 103 - Binary Tree Zigzag Level Order Traversal [M]
 
 ```python      
 class BinaryTreeTraversal():
@@ -88,3 +88,31 @@ class BinaryTreeTraversal():
 ![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg)
 
 ### Tree Generalization
+
+### Binary Search Tree
+
+leetcode 95 - Unique Binary Search Trees II [M]
+
+Input: 3
+Output:
+[
+  [1,null,3,2],
+  [3,2,null,1],
+  [3,1,null,null,2],
+  [2,1,3],
+  [1,null,2,null,3]
+]
+Explanation:
+The above output corresponds to the 5 unique BST's shown below:
+
+   1         3     3      2      1
+    \       /     /      / \      \
+     3     2     1      1   3      2
+    /     /       \                 \
+   2     1         2                 3
+
+```python
+class BinarySearchTree():
+    #leetcode 95
+    def generateUniqueBST(self,n):
+    
