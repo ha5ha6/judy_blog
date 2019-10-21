@@ -36,11 +36,11 @@ root.right.left=TreeNode(4)
 
 ### Tree Traversal
 
-related: 
+<br>related:<br /> 
 
-leetcode 94 - Binary Tree Inorder Traversal [M]
-leetcode 102 - Binary Tree Level Order Traversal [M]
-leetcode 103 - Binary Tree Zigzag Level Order Traversal [M]
+<br>leetcode 94 - Binary Tree Inorder Traversal [M]<br /> 
+<br>leetcode 102 - Binary Tree Level Order Traversal [M]<br /> 
+<br>leetcode 103 - Binary Tree Zigzag Level Order Traversal [M]<br /> 
 
 ```python      
 class BinaryTreeTraversal():
@@ -65,8 +65,14 @@ class BinaryTreeTraversal():
         if not root:
             return res
         q=[root]
+        #cnt=0
         while len(q)!=0:
             res.append([node.val for node in q])
+            #leetcode 103 zigzag
+            #if cnt%2==0:
+            #    res.append([node.val for node in q])
+            #else:
+            #    res.append([node.val for node in reversed(q)])
             new_q=[]
             for node in q:
                 if node.left:
@@ -74,6 +80,7 @@ class BinaryTreeTraversal():
                 if node.right:
                     new_q.append(node.right)
             q=new_q
+            #cnt+=1
             
         return res      
 ```
