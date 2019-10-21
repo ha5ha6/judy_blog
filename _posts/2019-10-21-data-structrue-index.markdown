@@ -6,7 +6,7 @@ categories: Programming
 author:  "Judy"
 ---
 
-# Data Structure
+### Data Structure
 
 1.	list
 2.	linked list
@@ -18,7 +18,7 @@ author:  "Judy"
 8.	hash table
 9.	tree: bst, segment tree
 
-# ALgorithms
+### ALgorithms
 
 1.	sorting
 2.	binary search
@@ -28,7 +28,7 @@ author:  "Judy"
 6.	dynamic programming
 7.	divide and conquer
 
-# OThers
+### OThers
 
 1.	math
 2.	bit manipulation
