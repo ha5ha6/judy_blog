@@ -8,7 +8,7 @@ author:  "Judy"
 
 ### Tree
 
-{% highlight python %} 
+```python
 class TreeNode(): 
     def __init__(self,x):
         self.val=x
@@ -29,4 +29,4 @@ class BinaryTree():
         self.dfs(node.left,res)
         res.append(node.val)
         self.dfs(node.right,res)
-{% endhighlight %}
+```
