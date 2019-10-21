@@ -1,5 +1,6 @@
 ---
 layout: single
+type: posts
 title:  "Data Structure 9 - tree"
 date:   2019-10-21 23:18:25 +0900
 categories: Programming
@@ -7,6 +8,7 @@ author:  "Judy"
 classes:  wide
 toc: true
 toc_label: "Index"
+author_profile: true
 ---
 
 ### Tree
