@@ -36,13 +36,11 @@ root.right.left=TreeNode(4)
 
 ### Tree Traversal
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg)
-
 related: 
 
-leetcode 094 - Binary Tree Inorder Traversal [M]
-
+leetcode 94 - Binary Tree Inorder Traversal [M]
 leetcode 102 - Binary Tree Level Order Traversal [M]
+leetcode 103 - Binary Tree Zigzag Level Order Traversal [M]
 
 ```python      
 class BinaryTreeTraversal():
@@ -79,5 +77,7 @@ class BinaryTreeTraversal():
             
         return res      
 ```
+
+![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg)
 
 ### Tree Generalization
