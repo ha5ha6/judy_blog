@@ -33,7 +33,7 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
 
-teaser: /assets/images/hand.png
+teaser: #/assets/images/hand.png
 #logo: "/assets/images/hand.png"
 
 author: Jiexin Wang
