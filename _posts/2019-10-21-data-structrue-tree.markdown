@@ -8,6 +8,8 @@ author:  "Judy"
 
 ### Tree
 
+![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg){:height="50%" width="50%"}
+
 ```python
 class TreeNode(): 
     def __init__(self,x):
