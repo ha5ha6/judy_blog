@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "DS9-tree"
+title:  "Data Structure 9 - tree"
 date:   2019-10-21 23:18:25 +0900
 categories: Programming
 author:  "Judy"
