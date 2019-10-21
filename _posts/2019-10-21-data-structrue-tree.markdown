@@ -24,15 +24,26 @@ root.right.left=TreeNode(4)
 
 ### Tree Basic Operation
 
-1.insert
+1. insert
 
-2.search
+2. search
 
-3.find
+3. find
 
-4.max length
+4. max depth - Leetcode 104 - Maximum Depth of Binary Tree
 
-5.min length
+```python  
+    #leetcode 104
+    def maxDepth(self, root):
+        if not root:
+            return 0
+        
+        return 1+max(self.maxDepth(root.left),self.maxDepth(root.right)) 
+    
+
+```
+
+5.min length - 
 
 ### Tree Traversal
 
@@ -44,7 +55,7 @@ leetcode 103 - Binary Tree Zigzag Level Order Traversal [M]
 
 ```python      
 class BinaryTreeTraversal():
-    #leetcode 094
+    #leetcode 94
     def inorder(self,root):
         res=[]
         if not root:
@@ -87,32 +98,109 @@ class BinaryTreeTraversal():
 
 ![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg)
 
-### Tree Generalization
+### Tree Construction
+
+### Tree Others
+
+leetcode 100 - Same Tree [E] - [T/F]
+
+leetcode 101 - Symmetric Tree [E] - [T/F]
+
+
+```python  
+class TreeOthers:
+    #leetcode 100
+    def isSameTree(self, p, q):
+        if not p and not q:
+            return True      
+        if not p or not q:
+            return False        
+        if p.val!=q.val:
+            return False
+        
+        return self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)
+    
+    #leetcode 101
+    def isSymmetricTree(self, root):
+        if not root:
+            return True
+        
+        return self.isSym(root.left,root.right)
+    
+    def isSym(self,left,right):        
+        if not left and not right:
+            return True        
+        if not left or not right:
+            return False        
+        if left.val!=right.val:
+            return False
+        
+        return self.isSym(left.left,right.right) and self.isSym(left.right,right.left)
+    
+```
 
 ### Binary Search Tree
 
-leetcode 95 - Unique Binary Search Trees II [M]
+leetcode 95 - Unique Binary Search Trees II [M] - generate
 
-Input: 3
-Output:
-[
-  [1,null,3,2],
-  [3,2,null,1],
-  [3,1,null,null,2],
-  [2,1,3],
-  [1,null,2,null,3]
-]
-Explanation:
-The above output corresponds to the 5 unique BST's shown below:
+leetcode 98 - Validate Binary Search Tree [M] - [T/F]
 
-   1         3     3      2      1
-    \       /     /      / \      \
-     3     2     1      1   3      2
-    /     /       \                 \
-   2     1         2                 3
+leetcode 99 - Recover Binary Search Tree [M] - swap by mistake 
 
 ```python
 class BinarySearchTree():
     #leetcode 95
     def generateUniqueBST(self,n):
+        if n<=0:
+            return []
+        
+        return self.generate(1,n)
+    
+    def generate(self,left,right):
+        if left>right:
+            return [None]      
+        res=[]
+        for i in range(left,right+1):            
+            left_trees=self.generate(left,i-1)
+            right_trees=self.generate(i+1,right)            
+            for l in left_trees:
+                for r in right_trees:                    
+                    root=TreeNode(i)
+                    root.left=l
+                    root.right=r
+                    res.append(root)
+                    
+        return res
+        
+    #leetcode 98    
+    def isValidBST(self, root):
+       
+        return self.isValid(root,float('-inf'),float('inf'))
+
+    def isValid(self,node,left,right):
+        if not node:
+            return True
+        if node.val<=left or node.val>=right:
+            return False
+
+        return self.isValid(node.left,left,node.val) and self.isValid(node.right,node.val,right)
+        
+    #leetcode 99
+    def recoverBST(self, root):       
+        self.pre,self.first,self.second=None,None,None        
+        self.inOrder(root)       
+        self.first.val,self.second.val=self.second.val,self.first.val
+        
+    def inOrder(self,node):       
+        if not node:
+            return        
+        self.inOrder(node.left)       
+        if self.pre and self.pre.val>node.val:
+            if not self.first:
+                self.first=self.pre  
+            self.second=node            
+        self.pre=node
+        self.inOrder(node.right)
+      
+```
     
