@@ -15,7 +15,18 @@ class TreeNode():
         self.left=None
         self.right=None
         
-class Function():
+class BinaryTree():
+    def inorder_traversal(self,root):
+        res=[]
+        if not root:
+            return res
+        self.dfs(root,res)
+        return res
 
-    def 
+    def dfs(self,node,res):
+        if not node:
+            return
+        self.dfs(node.left,res)
+        res.append(node.val)
+        self.dfs(node.right,res)
 {% endhighlight %}
