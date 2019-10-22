@@ -12,6 +12,7 @@ author_profile: true
 ---
 
 ### Tree Definition
+
 ```python
 class TreeNode(): 
     def __init__(self,x):
@@ -35,20 +36,31 @@ root.right.left=TreeNode(4)
 
 3. find
 
-4. max depth - Leetcode 104 - Maximum Depth of Binary Tree
+4. max depth - leetcode 104 - Maximum Depth of Binary Tree [E]
 
 ```python  
-    #leetcode 104
-    def maxDepth(self, root):
-        if not root:
-            return 0
-        
-        return 1+max(self.maxDepth(root.left),self.maxDepth(root.right)) 
-    
+#leetcode 104
+def maxDepth(self, root):
+    if not root:
+        return 0
 
+    return 1+max(self.maxDepth(root.left),self.maxDepth(root.right))
 ```
 
-5.min length - 
+5. min length - leetcode 111 - Minimum Depth of Binary Tree [E]
+
+```python  
+#leetcode 111
+def minDepth(self, root):
+    if not root:
+        return 0
+    if not root.left:
+        return 1+self.minDepth(root.right)
+    if not root.right:
+        return 1+self.minDepth(root.left)
+
+    return 1+min(self.minDepth(root.left),self.minDepth(root.right))
+```
 
 ### Tree Traversal
 
@@ -57,6 +69,8 @@ leetcode 94 - Binary Tree Inorder Traversal [M]
 leetcode 102 - Binary Tree Level Order Traversal [M]
 
 leetcode 103 - Binary Tree Zigzag Level Order Traversal [M]
+
+leetcode 107 - Binary Tree Level Order Traversal II [E]
 
 ```python      
 class BinaryTreeTraversal():
@@ -98,12 +112,58 @@ class BinaryTreeTraversal():
             q=new_q
             #cnt+=1
             
-        return res      
+        return res 
+        #leetcode 107
+        return res[::-1]
 ```
 
 ![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg)
 
 ### Tree Construction
+
+leetcode 108 - Convert Sorted Array to Binary Search Tree [E]
+
+leetcode 105 - Construct Binary Tree from Preorder and Inorder Traversal [M]
+
+leetcode 106 - Construct Binary Tree from Inorder and Postorder Traversal [M]
+
+```python 
+class TreeConstruction()
+    #leetcode 108
+    def sortedArrayToBST(self, nums):
+        if len(nums)<1:
+            return None      
+        mid=len(nums)//2      
+        root=TreeNode(nums[mid])
+        root.left=self.sortedArrayToBST(nums[:mid])
+        root.right=self.sortedArrayToBST(nums[mid+1:])
+        
+        return root
+
+    #leetcode 105
+    def buildTree(self, preorder, inorder):
+        if not preorder or not inorder:
+            return None
+
+        root=TreeNode(preorder[0])
+        idx=inorder.index(preorder[0])
+        root.left=self.buildTree(preorder[1:idx+1],inorder[:idx])
+        root.right=self.buildTree(preorder[idx+1:],inorder[idx+1:])
+
+        return root
+    
+    #leetcode 106
+    def buildTree(self, inorder, postorder):
+        if not inorder or not postorder:
+            return None
+
+        root=TreeNode(postorder[-1])
+        idx=inorder.index(postorder[-1])
+        root.left=self.buildTree(inorder[:idx],postorder[:idx])
+        root.right=self.buildTree(inorder[idx+1:],postorder[idx:-1])
+        
+        return root
+```
 
 ### Tree Others
 
@@ -111,9 +171,10 @@ leetcode 100 - Same Tree [E] - [T/F]
 
 leetcode 101 - Symmetric Tree [E] - [T/F]
 
+leetcode 110 - Balanced Binary Tree [E]
 
 ```python  
-class TreeOthers:
+class TreeOthers():
     #leetcode 100
     def isSameTree(self, p, q):
         if not p and not q:
@@ -141,7 +202,26 @@ class TreeOthers:
             return False
         
         return self.isSym(left.left,right.right) and self.isSym(left.right,right.left)
-    
+        
+    #leetcode 110
+    def isBalanced(self, root):
+        
+        return self.dfs(root)!=-1
+     
+    def dfs(self,node):     
+        if not node:
+            return 0      
+            
+        left_depth=self.dfs(node.left)
+        right_depth=self.dfs(node.right)   
+        
+        if left_depth==-1 or right_depth==-1:
+            return -1
+        
+        if abs(left_depth-right_depth)>1:
+            return -1
+        
+        return 1+max(left_depth,right_depth)
 ```
 
 ### Binary Search Tree
@@ -205,7 +285,6 @@ class BinarySearchTree():
                 self.first=self.pre  
             self.second=node            
         self.pre=node
-        self.inOrder(node.right)
-      
+        self.inOrder(node.right)   
 ```
     
