@@ -128,7 +128,7 @@ leetcode 105 - Construct Binary Tree from Preorder and Inorder Traversal [M]
 leetcode 106 - Construct Binary Tree from Inorder and Postorder Traversal [M]
 
 ```python 
-class TreeConstruction()
+class TreeConstruction():
     #leetcode 108
     def sortedArrayToBST(self, nums):
         if len(nums)<1:
