@@ -173,6 +173,8 @@ leetcode 101 - Symmetric Tree [E] - [T/F]
 
 leetcode 110 - Balanced Binary Tree [E]
 
+leetcode 112 - Path Sum [E]
+
 ```python  
 class TreeOthers():
     #leetcode 100
@@ -222,6 +224,17 @@ class TreeOthers():
             return -1
         
         return 1+max(left_depth,right_depth)
+        
+    #leetcode 112
+    def hasPathSum(self,root,sum):
+        if not root:
+            return False
+            
+        sum-=root.val
+        if sum==0 and not root.left and not root.right:
+            return True
+            
+        return self.hasPathSum(root.left,sum) or self.hasPathSum(root.right,sum)
 ```
 
 ### Binary Search Tree
