@@ -114,7 +114,7 @@ class BinaryTreeTraversal():
             
         return res 
         #leetcode 107
-        return res[::-1]
+        #return res[::-1]
 ```
 
 ![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg)
