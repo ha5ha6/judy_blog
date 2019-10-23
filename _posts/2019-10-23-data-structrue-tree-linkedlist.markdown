@@ -13,7 +13,6 @@ leetcode 109 - Convert Sorted List to Binary Search Tree [M]
 
 ```python      
 class Solution(object):
-    #leetcode 109
     def sortedListToBST(self, head):
         l=[]
         while head:
