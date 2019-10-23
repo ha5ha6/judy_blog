@@ -15,38 +15,11 @@ toc_label: "Index"
 
 leetcode 115 - Distinct Subsequences [H]
 
-Example:
-
-Input: S = "babgbag", T = "bag"
-
-Output: 5
-
-Explanation:
-
-As shown below, there are 5 ways you can generate "bag" from S.
-(The caret symbol ^ means the chosen letters)
-
-babgbag
-
-^^ ^
-
-babgbag
-
-^^    ^
-
-babgbag
-
-^    ^^
-
-babgbag
-
-  ^  ^^
-
-babgbag
-
-    ^^^
+<img src="https://ha5ha6.github.io/judy_blog/assets/images/115q.png" width="600"/>
 
 note: subsequence can jump some char but should be in order
+
+<img src="https://ha5ha6.github.io/judy_blog/assets/images/115s.png" width="600"/>
 
 
 
@@ -56,7 +29,4 @@ note: subsequence can jump some char but should be in order
 
 
 
-        res.append(root)
-        self.preOrder(root.left,res)
-        self.preOrder(root.right,res)
-```
+        
