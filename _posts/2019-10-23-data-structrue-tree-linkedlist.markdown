@@ -11,6 +11,8 @@ author_profile: true
 
 leetcode 109 - Convert Sorted List to Binary Search Tree [M]
 
+solution: list -> array -> tree
+
 ```python      
 class Solution(object):
     def sortedListToBST(self, head):
