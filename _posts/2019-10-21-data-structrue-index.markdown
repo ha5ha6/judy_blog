@@ -17,7 +17,7 @@ author_profile: true
 6.	queue, priority queue
 7.	heap
 8.	hash table
-9.	tree: bst, segment tree
+9.	tree: [tree basic, bst](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-tree.html), [tree + linked list](), segment tree
 
 ### ALgorithms
 
