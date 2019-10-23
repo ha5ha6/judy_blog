@@ -42,3 +42,7 @@ author_profile: true
 9.	topological sort
 10. design
 11. brainteaser
+
+### Resources
+
+https://time.geekbang.org/column/article/39922
