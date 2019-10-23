@@ -15,7 +15,7 @@ toc_label: "Index"
 
 leetcode 115 - Distinct Subsequences [H]
 
-<img src="https://ha5ha6.github.io/judy_blog/assets/images/115q.png" width="600"/>
+<img src="https://ha5ha6.github.io/judy_blog/assets/images/115e.png" width="600"/>
 
 note: subsequence can jump some char but should be in order
 
