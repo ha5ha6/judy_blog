@@ -175,6 +175,8 @@ leetcode 110 - Balanced Binary Tree [E]
 
 leetcode 112 - Path Sum [E]
 
+leetcode 113 - Path Sum II [M]
+
 ```python  
 class TreeOthers():
     #leetcode 100
@@ -235,6 +237,30 @@ class TreeOthers():
             return True
             
         return self.hasPathSum(root.left,sum) or self.hasPathSum(root.right,sum)
+        
+    #leetcode 113
+    def pathSum(self, root, sum):
+        res=[]
+        if not root:
+            return res
+        
+        self.dfs(root,sum,res,[root.val])
+        
+        return res
+    
+    def dfs(self,root,target,res,path):     
+        if not root:
+            return
+            
+        if sum(path)==target and not root.left and not root.right:
+            res.append(path)
+            return
+        
+        if root.left:
+            self.dfs(root.left,target,res,path+[root.left.val])
+        if root.right:
+            self.dfs(root.right,target,res,path+[root.right.val])
+        
 ```
 
 ### Binary Search Tree
