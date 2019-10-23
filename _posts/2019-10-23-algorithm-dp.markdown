@@ -21,10 +21,21 @@ note: subsequence can jump some char but should be in order
 
 <img src="https://ha5ha6.github.io/judy_blog/assets/images/115s.png" width="600"/>
 
+```python    
+class Solution(object):
+    def numDistinct(self, s, t):      
+        dp=[[0 for j in range(len(s)+1)] for i in range(len(t)+1)]        
+        for j in range(len(s)+1):
+            dp[0][j]=1
+            
+        for i in range(1,len(t)+1):
+            for j in range(1,len(s)+1):
+                if t[i-1]==s[j-1]:
+                    dp[i][j]=dp[i][j-1]+dp[i-1][j-1]
+                else:
+                    dp[i][j]=dp[i][j-1]
 
-
-```python      
-
+        return dp[-1][-1]
 ```
 
 
