@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.17.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -13,19 +13,21 @@
 <meta name="description" content="an affordable and sustainable robot colony platform based on Android">
 
 
+  <meta name="author" content="Jiexin Wang">
+
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Jiexin Wang">
 <meta property="og:title" content="Smartphone Robot Project">
-<meta property="og:url" content="/smartphone/">
+<meta property="og:url" content="http://localhost:4000/smartphone/">
 
 
   <meta property="og:description" content="an affordable and sustainable robot colony platform based on Android">
 
 
 
-  <meta property="og:image" content="/assets/images/smartflat.jpg">
+  <meta property="og:image" content="http://localhost:4000/assets/images/smartflat.jpg">
 
 
 
@@ -36,14 +38,21 @@
 
 
 
-<link rel="canonical" href="/smartphone/">
+<link rel="canonical" href="http://localhost:4000/smartphone/">
 
 
 
 
-
-
-
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
 
 
 
@@ -65,7 +74,7 @@
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<!--[if IE ]>
+<!--[if IE]>
   <style>
     /* old IE unsupported flexbox fixes */
     .greedy-nav .site-title {
@@ -91,6 +100,14 @@
   </head>
 
   <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -103,15 +120,16 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/">Jiexin Wang</a>
+        <a class="site-title" href="/">
+          Jiexin Wang
+          
+        </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/about/" >About</a>
             </li><li class="masthead__menu-item">
               <a href="/research/" >Research</a>
             </li><li class="masthead__menu-item">
               <a href="/project/" >Project</a>
-            </li><li class="masthead__menu-item">
-              <a href="/cv/" >CV</a>
             </li><li class="masthead__menu-item">
               <a href="/gallery/" >Gallery</a>
             </li></ul>
@@ -201,9 +219,10 @@
       <h3 class="author__name" itemprop="name">Jiexin Wang</h3>
     
     
-      <p class="author__bio" itemprop="description">
-        Reinforcement Learning <br /> Mobile & Joint Robots <br /> Neural Networks <br /> Photography
-      </p>
+      <div class="author__bio" itemprop="description">
+        <p>Reinforcement Learning <br /> Mobile &amp; Joint Robots</p>
+
+      </div>
     
   </div>
 
@@ -326,7 +345,7 @@
 
 <h2 id="a-balancer-with-elastic-bumper">A balancer with elastic bumper</h2>
 
-<p><img src="/assets/images/phy.jpg" alt="" height="50%" width="50%" /></p>
+<p><img src="https://ha5ha6.github.io/judy_blog/assets/images/phy.jpg" alt="" height="50%" width="50%" /></p>
 
 <p><strong>Figure 1</strong> - Physical model of spring-attached wheeled inverted pendulum</p>
 
@@ -355,12 +374,12 @@ Under the higher level behavioral domain, it is primed for revealing the insight
 
 <h2 id="construction">Construction</h2>
 <h3 id="chassis">Chassis</h3>
-<p><img src="/assets/images/stablefront.png" alt="" width="25%" />
-<img src="/assets/images/stableback.png" alt="" width="26%" /></p>
+<p><img src="https://ha5ha6.github.io/judy_blog/assets/images/stablefront.png" alt="" width="25%" />
+<img src="https://ha5ha6.github.io/judy_blog/assets/images/stableback.png" alt="" width="26%" /></p>
 
 <p><strong>Figure 2</strong> - Chassis design for stable versions</p>
 
-<p><img src="/assets/images/balancer.jpg" alt="" width="40%" /></p>
+<p><img src="https://ha5ha6.github.io/judy_blog/assets/images/balancer.jpg" alt="" width="40%" /></p>
 
 <p><strong>Figure 3</strong> - Chassis design for elastic balancer version</p>
 
@@ -374,7 +393,7 @@ Under the higher level behavioral domain, it is primed for revealing the insight
 <p>Our latest design supports both two versions of a stable runner by sliding in two holders under the battery container and a spring-attached balancer.</p>
 
 <h3 id="hardware">Hardware</h3>
-<p><img src="/assets/images/connection.jpg" alt="" width="70%" /></p>
+<p><img src="https://ha5ha6.github.io/judy_blog/assets/images/connection.jpg" alt="" width="70%" /></p>
 
 <p><strong>Figure 4</strong> - Hardware connection</p>
 
@@ -408,13 +427,13 @@ Under the higher level behavioral domain, it is primed for revealing the insight
   <li>control/IOIO thread (1ms)</li>
 </ul>
 
-<p><img src="/assets/images/thread.jpg" alt="" width="60%" /></p>
+<p><img src="https://ha5ha6.github.io/judy_blog/assets/images/thread.jpg" alt="" width="60%" /></p>
 
 <p><strong>Figure 5</strong> - Threading</p>
 
 <h2 id="control-architecture">Control Architecture</h2>
 
-<p><img src="/assets/images/control.jpg" alt="" width="60%" /></p>
+<p><img src="https://ha5ha6.github.io/judy_blog/assets/images/control.jpg" alt="" width="60%" /></p>
 
 <p><strong>Figure 6</strong> - Control Architecture</p>
 
@@ -432,7 +451,7 @@ Under the higher level behavioral domain, it is primed for revealing the insight
 
 <p>Firstly, we handtuned the control parameters and achieved the <strong>standing-up and balancing behaviors</strong> in simulation <a href="https://ci.nii.ac.jp/naid/110009903423">[NLP 2013]</a> and hardware <a href="">[RSJ 2014]</a>.</p>
 
-<p>Then we used the method proposed in <a href="/ephe">Policy hyper-parameter search</a> for the robot to learn the optimal parameters instead of handtuning. The <strong>standing-up and balancing behaviors</strong> achieved in simulation <a href="https://link.springer.com/article/10.1007/s10015-015-0260-7?wt_mc=internal.event.1.SEM.ArticleAuthorOnlineFirst">[ArtificialLife 2016]</a> and hardware <a href="https://www.frontiersin.org/articles/10.3389/fnbot.2017.00001/full">[Frontier 2017]</a>.</p>
+<p>Then we used the method proposed in <a href="https://ha5ha6.github.io/judy_blog/ephe/">Policy hyper-parameter search</a> for the robot to learn the optimal parameters instead of handtuning. The <strong>standing-up and balancing behaviors</strong> achieved in simulation <a href="https://link.springer.com/article/10.1007/s10015-015-0260-7?wt_mc=internal.event.1.SEM.ArticleAuthorOnlineFirst">[ArtificialLife 2016]</a> and hardware <a href="https://www.frontiersin.org/articles/10.3389/fnbot.2017.00001/full">[Frontier 2017]</a>.</p>
 
 <p>We further achieved <strong>a vison-based approaching behavior</strong> in hardware <a href="https://www.frontiersin.org/articles/10.3389/fnbot.2017.00001/full">[Frontier 2017]</a>.</p>
 
@@ -522,13 +541,18 @@ Under the higher level behavioral domain, it is primed for revealing the insight
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
-    <div id="results" class="results"></div></div>
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
       </div>
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
@@ -550,7 +574,7 @@ Under the higher level behavioral domain, it is primed for revealing the insight
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 

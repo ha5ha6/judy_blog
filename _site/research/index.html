@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.17.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -13,19 +13,21 @@
 <meta name="description" content="publications by years">
 
 
+  <meta name="author" content="Jiexin Wang">
+
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Jiexin Wang">
 <meta property="og:title" content="Research">
-<meta property="og:url" content="/research/">
+<meta property="og:url" content="http://localhost:4000/research/">
 
 
   <meta property="og:description" content="publications by years">
 
 
 
-  <meta property="og:image" content="/assets/images/chiba.JPG">
+  <meta property="og:image" content="http://localhost:4000/assets/images/chiba.JPG">
 
 
 
@@ -36,14 +38,21 @@
 
 
 
-<link rel="canonical" href="/research/">
+<link rel="canonical" href="http://localhost:4000/research/">
 
 
 
 
-
-
-
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
 
 
 
@@ -65,7 +74,7 @@
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<!--[if IE ]>
+<!--[if IE]>
   <style>
     /* old IE unsupported flexbox fixes */
     .greedy-nav .site-title {
@@ -91,6 +100,14 @@
   </head>
 
   <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -103,15 +120,16 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/">Jiexin Wang</a>
+        <a class="site-title" href="/">
+          Jiexin Wang
+          
+        </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/about/" >About</a>
             </li><li class="masthead__menu-item">
               <a href="/research/" >Research</a>
             </li><li class="masthead__menu-item">
               <a href="/project/" >Project</a>
-            </li><li class="masthead__menu-item">
-              <a href="/cv/" >CV</a>
             </li><li class="masthead__menu-item">
               <a href="/gallery/" >Gallery</a>
             </li></ul>
@@ -201,9 +219,10 @@
       <h3 class="author__name" itemprop="name">Jiexin Wang</h3>
     
     
-      <p class="author__bio" itemprop="description">
-        Reinforcement Learning <br /> Mobile & Joint Robots <br /> Neural Networks <br /> Photography
-      </p>
+      <div class="author__bio" itemprop="description">
+        <p>Reinforcement Learning <br /> Mobile &amp; Joint Robots</p>
+
+      </div>
     
   </div>
 
@@ -376,7 +395,7 @@
 
 <h2 id="reviewing-service">Reviewing Service</h2>
 
-<p><span style="font-family:Serif; font-size:0.95em;"> CoRL 2018, IEEE T-RO 2018, ICDL 2019</span></p>
+<p><span style="font-family:Serif; font-size:0.95em;"> CoRL 2018, IEEE T-RO 2018, ICDL 2019, IEEE T-RO 2019</span></p>
 
         
       </section>
@@ -405,13 +424,18 @@
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
-    <div id="results" class="results"></div></div>
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
       </div>
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
@@ -433,7 +457,7 @@
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 
