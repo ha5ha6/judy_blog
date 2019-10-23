@@ -38,18 +38,19 @@ class Solution(object):
 leetcode 114 - Flatten Binary Tree to Linked List [M]
 
 ```python      
-def flatten(self,root):
-    res=[]
-    self.preOrder(root,res)
-    for i in range(len(res)-1):
-        res[i].left=None
-        res[i].right=res[i+1]
+class Solution(object):
+    def flatten(self,root):
+        res=[]
+        self.preOrder(root,res)
+        for i in range(len(res)-1):
+            res[i].left=None
+            res[i].right=res[i+1]
 
-def preOrder(self,root,res):
-    if not root:
-        return
-        
-    res.append(root)
-    self.preOrder(root.left,res)
-    self.preOrder(root.right,res)
+    def preOrder(self,root,res):
+        if not root:
+            return
+
+        res.append(root)
+        self.preOrder(root.left,res)
+        self.preOrder(root.right,res)
 ```
