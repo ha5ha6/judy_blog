@@ -58,7 +58,7 @@ def minDepth(self, root):
 
 ### Tree Traversal
 
-leetcode 94 - Binary Tree Inorder Traversal [M] <br\>
+leetcode 94 - Binary Tree Inorder Traversal [M] <br/>
 leetcode 102 - Binary Tree Level Order Traversal [M] <br/>
 leetcode 103 - Binary Tree Zigzag Level Order Traversal [M] <br/>
 leetcode 107 - Binary Tree Level Order Traversal II [E]
@@ -106,13 +106,12 @@ class BinaryTreeTraversal():
         #leetcode 107
         #return res[::-1]
 ```
-
 ![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg)
 
 ### Tree Construction
 
-leetcode 108 - Convert Sorted Array to Binary Search Tree [E]\
-leetcode 105 - Construct Binary Tree from Preorder and Inorder Traversal [M]\
+leetcode 108 - Convert Sorted Array to Binary Search Tree [E] <br/>
+leetcode 105 - Construct Binary Tree from Preorder and Inorder Traversal [M] <br/>
 leetcode 106 - Construct Binary Tree from Inorder and Postorder Traversal [M]
 ```python 
 class TreeConstruction():
@@ -154,10 +153,10 @@ class TreeConstruction():
 
 ### Tree Others
 
-leetcode 100 - Same Tree [E] - [T/F]\
-leetcode 101 - Symmetric Tree [E] - [T/F]\
-leetcode 110 - Balanced Binary Tree [E]\
-leetcode 112 - Path Sum [E]\
+leetcode 100 - Same Tree [E] - [T/F] <br/>
+leetcode 101 - Symmetric Tree [E] - [T/F] <br/>
+leetcode 110 - Balanced Binary Tree [E] <br/>
+leetcode 112 - Path Sum [E] <br/>
 leetcode 113 - Path Sum II [M]
 ```python  
 class TreeOthers():
@@ -247,10 +246,9 @@ class TreeOthers():
 
 ### Binary Search Tree
 
-leetcode 95 - Unique Binary Search Trees II [M] - generate\
-leetcode 98 - Validate Binary Search Tree [M] - [T/F]\
+leetcode 95 - Unique Binary Search Trees II [M] - generate <br/>
+leetcode 98 - Validate Binary Search Tree [M] - [T/F] <br/>
 leetcode 99 - Recover Binary Search Tree [M] - swap by mistake
-
 ```python
 class BinarySearchTree():
     #leetcode 95
