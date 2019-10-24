@@ -58,9 +58,9 @@ def minDepth(self, root):
 
 ### Tree Traversal
 
-leetcode 94 - Binary Tree Inorder Traversal [M]\
-leetcode 102 - Binary Tree Level Order Traversal [M]\
-leetcode 103 - Binary Tree Zigzag Level Order Traversal [M]\
+leetcode 94 - Binary Tree Inorder Traversal [M] <br\>
+leetcode 102 - Binary Tree Level Order Traversal [M] <br/>
+leetcode 103 - Binary Tree Zigzag Level Order Traversal [M] <br/>
 leetcode 107 - Binary Tree Level Order Traversal II [E]
 ```python      
 class BinaryTreeTraversal():
