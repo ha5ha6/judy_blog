@@ -30,14 +30,10 @@ root.right.left=TreeNode(4)
 
 ### Tree Basic Operation
 
-1. insert
-
-2. search
-
-3. find
-
+1. insert\
+2. search\
+3. find\
 4. max depth - leetcode 104 - Maximum Depth of Binary Tree [E]
-
 ```python  
 #leetcode 104
 def maxDepth(self, root):
@@ -46,9 +42,7 @@ def maxDepth(self, root):
 
     return 1+max(self.maxDepth(root.left),self.maxDepth(root.right))
 ```
-
 5. min length - leetcode 111 - Minimum Depth of Binary Tree [E]
-
 ```python  
 #leetcode 111
 def minDepth(self, root):
@@ -64,14 +58,10 @@ def minDepth(self, root):
 
 ### Tree Traversal
 
-leetcode 94 - Binary Tree Inorder Traversal [M]
-
-leetcode 102 - Binary Tree Level Order Traversal [M]
-
-leetcode 103 - Binary Tree Zigzag Level Order Traversal [M]
-
+leetcode 94 - Binary Tree Inorder Traversal [M]\
+leetcode 102 - Binary Tree Level Order Traversal [M]\
+leetcode 103 - Binary Tree Zigzag Level Order Traversal [M]\
 leetcode 107 - Binary Tree Level Order Traversal II [E]
-
 ```python      
 class BinaryTreeTraversal():
     #leetcode 94
@@ -121,12 +111,9 @@ class BinaryTreeTraversal():
 
 ### Tree Construction
 
-leetcode 108 - Convert Sorted Array to Binary Search Tree [E]
-
-leetcode 105 - Construct Binary Tree from Preorder and Inorder Traversal [M]
-
+leetcode 108 - Convert Sorted Array to Binary Search Tree [E]\
+leetcode 105 - Construct Binary Tree from Preorder and Inorder Traversal [M]\
 leetcode 106 - Construct Binary Tree from Inorder and Postorder Traversal [M]
-
 ```python 
 class TreeConstruction():
     #leetcode 108
@@ -167,16 +154,11 @@ class TreeConstruction():
 
 ### Tree Others
 
-leetcode 100 - Same Tree [E] - [T/F]
-
-leetcode 101 - Symmetric Tree [E] - [T/F]
-
-leetcode 110 - Balanced Binary Tree [E]
-
-leetcode 112 - Path Sum [E]
-
+leetcode 100 - Same Tree [E] - [T/F]\
+leetcode 101 - Symmetric Tree [E] - [T/F]\
+leetcode 110 - Balanced Binary Tree [E]\
+leetcode 112 - Path Sum [E]\
 leetcode 113 - Path Sum II [M]
-
 ```python  
 class TreeOthers():
     #leetcode 100
@@ -265,11 +247,9 @@ class TreeOthers():
 
 ### Binary Search Tree
 
-leetcode 95 - Unique Binary Search Trees II [M] - generate
-
-leetcode 98 - Validate Binary Search Tree [M] - [T/F]
-
-leetcode 99 - Recover Binary Search Tree [M] - swap by mistake 
+leetcode 95 - Unique Binary Search Trees II [M] - generate\
+leetcode 98 - Validate Binary Search Tree [M] - [T/F]\
+leetcode 99 - Recover Binary Search Tree [M] - swap by mistake \
 
 ```python
 class BinarySearchTree():
