@@ -11,6 +11,17 @@ toc: true
 toc_label: "Index"
 ---
 
+### dp basic
+
+leetcode 118 - Pascal's Triangle [E]
+
+hello<br />
+world
+
+hello
+
+world
+
 ### dp string
 
 leetcode 115 - Distinct Subsequences [H]
