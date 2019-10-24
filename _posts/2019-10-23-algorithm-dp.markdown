@@ -15,12 +15,32 @@ toc_label: "Index"
 
 leetcode 118 - Pascal's Triangle [E]
 
-hello<br />
-world
-
-hello
-
-world
+Input: 5 <br/>
+Output: <br/>
+[[1], <br/>
+ [1,1], <br/>
+ [1,2,1], <br/>
+ [1,3,3,1], <br/>
+ [1,4,6,4,1]] <br/>
+ 
+```python 
+class Solution(object):
+    def generate(self, n):
+        if n==0:
+            return []
+        
+        dp=[[1]]       
+        for i in range(1,n):           
+            temp=[]          
+            for j in range(i-1):
+                temp.append(dp[i-1][j]+dp[i-1][j+1])
+                
+            temp.insert(0,1)
+            temp.insert(len(temp),1)            
+            dp.append(temp)
+            
+        return dp
+```
 
 ### dp string
 
