@@ -30,9 +30,9 @@ root.right.left=TreeNode(4)
 
 ### Tree Basic Operation
 
-1. insert\
-2. search\
-3. find\
+1. insert 
+2. search 
+3. find 
 4. max depth - leetcode 104 - Maximum Depth of Binary Tree [E]
 ```python  
 #leetcode 104
@@ -249,7 +249,7 @@ class TreeOthers():
 
 leetcode 95 - Unique Binary Search Trees II [M] - generate\
 leetcode 98 - Validate Binary Search Tree [M] - [T/F]\
-leetcode 99 - Recover Binary Search Tree [M] - swap by mistake \
+leetcode 99 - Recover Binary Search Tree [M] - swap by mistake
 
 ```python
 class BinarySearchTree():
