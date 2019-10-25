@@ -70,7 +70,7 @@ dp[i] = min(dp[i],dp[i+1]) + triangle[upperlayer][i] <br/>
 
 ```python    
 class Solution(object):
-    def numDistinct(self, s, t):      
+    def minSum(self, tri):      
         n=len(tri)
         dp=tri[-1]
         for l in range(n-2,-1,-1): #l=2,1,0
