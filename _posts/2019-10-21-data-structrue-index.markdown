@@ -26,7 +26,7 @@ author_profile: true
 3.	greedy
 4.	graph: dfs, bfs
 5.	back tracking
-6.	dynamic programming
+6.	[dynamic programming](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html)
 7.	divide and conquer
 
 ### OThers
@@ -45,7 +45,7 @@ author_profile: true
 
 ### Topic Series
 
-1. Best Time Buy n Sell [list, minmax, dp]
+1. Best Time Buy n Sell [list, minmax, dp](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/topic-series.html)
 
 ### Resources
 
