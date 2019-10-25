@@ -59,12 +59,13 @@ Input: <br/>
  [3,4], <br/>
  [6,5,7], <br/>
  [4,1,8,3]] <br/>
-Output: The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11) <br/>
+Output: 11 <br/>
+The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11) <br/>
 
-note: dp bottom up <br/>
-initialization: <br/>
+Solution: dp bottom up <br/>
+Initialization: <br/>
 dp = [4,1,8,3] <- last layer <br/>
-transition: <br/>
+Transition: <br/>
 i = 0,1,2 <- len of upperlayer <br/>
 dp[i] = min(dp[i],dp[i+1]) + triangle[upperlayer][i] <br/>
 
