@@ -1,8 +1,8 @@
 ---
 layout: single
 type: posts
-title:  "Topic Series"
-date:   2019-10-23 20:48:25 +0900
+title:  "Topic Series - Composite"
+date:   2019-10-25 15:58:25 +0900
 categories: Programming
 author:  Jiexin Wang
 classes:  wide
@@ -25,7 +25,7 @@ class Solution(object):
     def maxProfit(self,p):
         if not p:
             return 0
-            
+
         minp=p[0]
         maxp=0 #maxprofit
         for i in p:
@@ -33,8 +33,8 @@ class Solution(object):
                 minp=i
             elif i-minp>maxp:
                 maxp=i-minp
-                
-        return maxp 
+
+        return maxp
 ```
 
 leetcode 122 - Best Time to Buy and Sell Stock II (Multiple) [E] <br/>
@@ -50,10 +50,10 @@ class Solution(object):
         res=0
         if not p:
             return res
-            
+
         for i in range(len(p)-1):
             if p[i]<p[i+1]:
                 res+=p[i+1]-p[i]
-                
+
         return res
 ```
