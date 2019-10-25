@@ -13,7 +13,8 @@ toc_label: "Index"
 
 ### dp basic
 
-leetcode 118 - Pascal's Triangle [E]
+leetcode 118 - Pascal's Triangle [E] <br/>
+leetcode 119 - Pascal's Triangle II [E] <br/>
 
 Input: 5 <br/>
 Output: <br/>
@@ -25,6 +26,7 @@ Output: <br/>
  
 ```python 
 class Solution(object):
+    #leetcode 118
     def generate(self, n):
         if n==0:
             return []
@@ -40,6 +42,14 @@ class Solution(object):
             dp.append(temp)
             
         return dp
+        
+    #leetcode 119
+    def getRow(self,r):
+        row=[1]
+        for i in range(r):
+            row=[1]+[row[j]+row[j+1] for j in range(len(row)-1)]+[1]
+            
+        return row
 ```
 
 ### dp string
