@@ -52,6 +52,41 @@ class Solution(object):
         return row
 ```
 
+leetcode 120 - Triangle [M] <br/>
+
+Input: <br/>
+[[2], <br/>
+ [3,4], <br/>
+ [6,5,7], <br/>
+ [4,1,8,3]] <br/>
+Output: The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11) <br/>
+
+note: dp bottom up <br/>
+initialization: <br/>
+dp = [4,1,8,3] <- last layer <br/>
+transition: <br/>
+i = 0,1,2 <- len of uplayer <br/>
+dp[i] = min(dp[i],dp[i+1]) + triangle[uplayer][i] <br/>
+
+```python    
+class Solution(object):
+    def numDistinct(self, s, t):      
+        n=len(tri)
+        dp=tri[-1]
+        for l in range(n-2,-1,-1): #l=2,1,0
+            for j in range(l+1):  #l=2,i=0,1,2 | l=1,i=0,1 | l=0,i=0
+                dp[j]=min(dp[j],dp[j+1])+tri[l][j]
+
+        return dp[0]
+```
+
+
+
+
+
+ 
+
+
 ### dp string
 
 leetcode 115 - Distinct Subsequences [H]
