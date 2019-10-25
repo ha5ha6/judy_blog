@@ -11,7 +11,7 @@ toc_label: "Index"
 author_profile: true
 ---
 
-### Tree Definition
+### Definition
 
 ```python
 class TreeNode(): 
@@ -28,7 +28,7 @@ root.left.left=TreeNode(3)
 root.right.left=TreeNode(4)
 ```   
 
-### Tree Basic Operation
+### Basic Operation
 
 1. insert 
 2. search 
@@ -56,7 +56,7 @@ def minDepth(self, root):
     return 1+min(self.minDepth(root.left),self.minDepth(root.right))
 ```
 
-### Tree Traversal
+### Traversal
 
 leetcode 94 - Binary Tree Inorder Traversal [M] <br/>
 leetcode 102 - Binary Tree Level Order Traversal [M] <br/>
@@ -107,8 +107,7 @@ class BinaryTreeTraversal():
         #return res[::-1]
 ```
 ![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg)
-
-### Tree Construction
+### Construction
 
 leetcode 108 - Convert Sorted Array to Binary Search Tree [E] <br/>
 leetcode 105 - Construct Binary Tree from Preorder and Inorder Traversal [M] <br/>
@@ -151,7 +150,7 @@ class TreeConstruction():
         return root
 ```
 
-### Tree Others
+### Others
 
 leetcode 100 - Same Tree [E] - [T/F] <br/>
 leetcode 101 - Symmetric Tree [E] - [T/F] <br/>
