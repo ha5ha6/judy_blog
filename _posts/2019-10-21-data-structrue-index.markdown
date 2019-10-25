@@ -46,7 +46,7 @@ classes: wide
 
 ### Topic Series
 
-1. [Best Time Buy n Sell](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/topic-series.html#best-time-buy-n-sell) [list, minmax, dp]
+1. [Best Time Buy n Sell](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topic-series.html#best-time-buy-n-sell) [list, minmax, dp]
 
 ### Resources
 
