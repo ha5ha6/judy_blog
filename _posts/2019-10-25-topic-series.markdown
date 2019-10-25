@@ -13,7 +13,7 @@ toc_label: "Index"
 
 ### Best Time Buy n Sell
 
-leetcode 121 - Best Time to Buy and Sell Stock (Once) [E] - record min and max <br/>
+**leetcode 121 - Best Time to Buy and Sell Stock (Once) [E] - record min and max** <br/>
 
 Example: <br/>
 Input: [7,1,5,3,6,4] <br/>
@@ -59,7 +59,7 @@ class Solution2(object):
         return maxp
 ```
 
-leetcode 122 - Best Time to Buy and Sell Stock II (Multiple) [E] <br/>
+**leetcode 122 - Best Time to Buy and Sell Stock II (Multiple) [E]** <br/>
 
 Example: <br/>
 Input: [7,1,5,3,6,4] <br/>
@@ -79,7 +79,7 @@ class Solution(object):
         return res
 ```
 
-leetcode 123 - Best Time to Buy and Sell Stock III (Twice) [H] <br/>
+**leetcode 123 - Best Time to Buy and Sell Stock III (Twice) [H]** <br/>
 
 Input: [3,3,5,0,-1,3,1,4] <br/>
 Output: 7 <br/>
