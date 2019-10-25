@@ -45,7 +45,7 @@ author_profile: true
 
 ### Topic Series
 
-1. Best Time Buy n Sell
+1. Best Time Buy n Sell [list, minmax, dp]
 
 ### Resources
 
