@@ -14,11 +14,11 @@ toc_label: "Index"
 ### Best Time Buy n Sell
 
 **leetcode 121 - Best Time to Buy and Sell Stock (Once) [E] - record min and max** <br/>
-
 Example: <br/>
 Input: [7,1,5,3,6,4] <br/>
 Output: 5 <br/>
 Explanation: Buy on 1 and sell on 6, profit = 6-1 = 5. Not 7-1 = 6, as selling price needs to be larger than buying price. <br/>
+
 Solution 1 - straightforward understandable <br/>
 ```python      
 class Solution1(object):
@@ -36,10 +36,11 @@ class Solution1(object):
 
         return maxp
 ```
+
 Solution 2 - advanced <br/>
-Input: [7,1,5,3,6,4] <br/>
 minp <- find the min price, and remember it <br/>
 maxp <- find the max of p-minp, and remember it <br/>
+Input: [7,1,5,3,6,4] <br/>
 (minp,maxp) = <br/>
 (7, 0) <br/>
 (1, 0) <br/>
@@ -60,8 +61,6 @@ class Solution2(object):
 ```
 
 **leetcode 122 - Best Time to Buy and Sell Stock II (Multiple) [E]** <br/>
-
-Example: <br/>
 Input: [7,1,5,3,6,4] <br/>
 Output: 7 <br/>
 Explanation: Buy on 1 and sell on 5, profit = 5-1 = 4. Then buy on 3 and sell on 6, profit = 6-3 = 3. <br/>
@@ -80,9 +79,10 @@ class Solution(object):
 ```
 
 **leetcode 123 - Best Time to Buy and Sell Stock III (Twice) [H]** <br/>
-
 Input: [3,3,5,0,-1,3,1,4] <br/>
 Output: 7 <br/>
+
+Solution: <br/>
 minp1 <- find the first min price minp1, and remember it <br/>
 maxp1 <- find the max of p-minp1, and remember the difference as maxp1 <br/>
 minp2 <- find the second min price closest to the previous profit: minp2=p-maxp1, and remember it as minp2<br/>
