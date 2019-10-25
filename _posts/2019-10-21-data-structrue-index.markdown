@@ -17,7 +17,7 @@ author_profile: true
 6.	queue, priority queue
 7.	heap
 8.	hash table
-9.	tree: [tree basic, bst](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-tree.html), [tree + linked list](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/data-structrue-tree-linkedlist.html), segment tree
+9.	tree: [tree basic](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-tree.html), [binary search tree]() [tree + linked list](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/data-structrue-tree-linkedlist.html), segment tree
 
 ### ALgorithms
 
@@ -45,7 +45,7 @@ author_profile: true
 
 ### Topic Series
 
-1. Best Time Buy n Sell [list, minmax, dp](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/topic-series.html)
+1. [Best Time Buy n Sell](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/topic-series.html#best-time-buy-n-sell) [list, minmax, dp]
 
 ### Resources
 
