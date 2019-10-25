@@ -81,18 +81,21 @@ class Solution(object):
 
 leetcode 123 - Best Time to Buy and Sell Stock III (Twice) [H] - dp <br/>
 
-Input: [7,1,5,3,6,4] <br/>
+Input: [3,3,5,0,-1,3,1,4] <br/>
+Output: 7 <br/>
 minp1 <- find the first min price minp1, and remember it <br/>
-maxp1 <- find the first max of p-minp1, and remember it <br/>
-minp2 <- find the second min price - the previous profit: minp2=p-maxp1, and remember it <br/>
+maxp1 <- find the max of p-minp1, and remember the difference as maxp1 <br/>
+minp2 <- find the second min price closest to the previous profit: minp2=p-maxp1, and remember it as minp2<br/>
 maxp2 <- find the second max of p-minp2, and remember it<br/>
 (minp1,maxp1,minp2,maxp2) = <br/>
-(7, 0, 7, 0) <br/>
-(1, 0, 1, 0) <br/>
-(1, 4, 1, 4) <br/>
-(1, 4, -1, 4) <br/>
-(1, 5, -1, 7) <br/>
-(1, 5, -1, 7) <br/>
+(3, 0, 3, 0) <br/>
+(3, 0, 3, 0) <br/>
+(3, 2, 3, 2) <br/>
+(0, 2, -2, 2) <br/>
+(-1, 2, -3, 2) <br/>
+(-1, 4, -3, 6) <br/>
+(-1, 4, -3, 6) <br/>
+(-1, 5, -3, 7) <br/>
 ```python      
 class Solution(object):
     def maxProfit(self,prices):
