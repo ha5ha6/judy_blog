@@ -79,7 +79,7 @@ class Solution(object):
         return res
 ```
 
-leetcode 123 - Best Time to Buy and Sell Stock III (Twice) [H] - dp <br/>
+leetcode 123 - Best Time to Buy and Sell Stock III (Twice) [H] <br/>
 
 Input: [3,3,5,0,-1,3,1,4] <br/>
 Output: 7 <br/>
