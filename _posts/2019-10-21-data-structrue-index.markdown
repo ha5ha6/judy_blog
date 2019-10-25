@@ -43,6 +43,10 @@ author_profile: true
 10. design
 11. brainteaser
 
+### Topic Series
+
+1. Best Time Buy n Sell
+
 ### Resources
 
 https://time.geekbang.org/column/article/39922
