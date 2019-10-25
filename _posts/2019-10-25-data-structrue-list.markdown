@@ -14,19 +14,26 @@ toc_label: "Index"
 ### list minmax
 
 leetcode 121 - Best Time to Buy and Sell Stock (Once) [E] <br/>
-note: record min and max <br/>
+leetcode 122 - Best Time to Buy and Sell Stock II (Multiple) [E] <br/>
+point: record min and max <br/>
 
-Example 1: <br/>
+Example 121: <br/>
 Input: [7,1,5,3,6,4] <br/>
 Output: 5 <br/>
-Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5. Not 7-1 = 6, as selling price needs to be larger than buying price. <br/>
-Example 2: <br/>
-Input: [7,6,4,3,1] <br/>
-Output: 0 <br/>
-Explanation: In this case, no transaction is done, i.e. max profit = 0. <br/>
+Explanation: Buy on 1 and sell on 6, profit = 6-1 = 5. Not 7-1 = 6, as selling price needs to be larger than buying price. <br/>
+
+Example 122: <br/>
+Input: [7,1,5,3,6,4] <br/>
+Output: 7 <br/>
+Explanation: Buy on 1 and sell on 5, profit = 5-1 = 4. Then buy on 3 and sell on 6, profit = 6-3 = 3. <br/>
+
 ```python      
 class Solution(object):
+    #leetcode 121
     def maxProfit(self,p):
+        if not p:
+            return 0
+            
         minp=p[0]
         maxp=0 #maxprofit
         for i in p:
@@ -35,4 +42,16 @@ class Solution(object):
             elif i-minp>maxp:
                 maxp=i-minp
         return maxp 
+        
+    #leetcode 122
+    def maxProfit(self,p):
+        res=0
+        if not p:
+            return res
+            
+        for i in range(len(p)-1):
+            if p[i]<p[i+1]:
+                res+=p[i+1]-p[i]
+                
+        return res
 ```
