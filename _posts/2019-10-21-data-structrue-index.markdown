@@ -5,6 +5,7 @@ date:   2019-10-21 16:43:25 +0900
 categories: Programming
 author:  Jiexin Wang
 author_profile: true
+classes: wide
 ---
 
 ### Data Structure
