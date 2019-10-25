@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 1 - list"
+title:  "Complex"
 date:   2019-10-23 20:48:25 +0900
 categories: Programming
 author:  Jiexin Wang
@@ -11,25 +11,17 @@ toc: true
 toc_label: "Index"
 ---
 
-### list minmax
+### Best Time Buy n Sell
 
 leetcode 121 - Best Time to Buy and Sell Stock (Once) [E] <br/>
 point: record min and max <br/>
-leetcode 122 - Best Time to Buy and Sell Stock II (Multiple) [E] <br/>
 
-Example 121: <br/>
+Example: <br/>
 Input: [7,1,5,3,6,4] <br/>
 Output: 5 <br/>
 Explanation: Buy on 1 and sell on 6, profit = 6-1 = 5. Not 7-1 = 6, as selling price needs to be larger than buying price. <br/>
-
-Example 122: <br/>
-Input: [7,1,5,3,6,4] <br/>
-Output: 7 <br/>
-Explanation: Buy on 1 and sell on 5, profit = 5-1 = 4. Then buy on 3 and sell on 6, profit = 6-3 = 3. <br/>
-
 ```python      
 class Solution(object):
-    #leetcode 121
     def maxProfit(self,p):
         if not p:
             return 0
@@ -41,9 +33,19 @@ class Solution(object):
                 minp=i
             elif i-minp>maxp:
                 maxp=i-minp
+                
         return maxp 
-        
-    #leetcode 122
+```
+
+leetcode 122 - Best Time to Buy and Sell Stock II (Multiple) [E] <br/>
+
+Example: <br/>
+Input: [7,1,5,3,6,4] <br/>
+Output: 7 <br/>
+Explanation: Buy on 1 and sell on 5, profit = 5-1 = 4. Then buy on 3 and sell on 6, profit = 6-3 = 3. <br/>
+
+```python      
+class Solution(object):
     def maxProfit(self,p):
         res=0
         if not p:
