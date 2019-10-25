@@ -65,8 +65,8 @@ note: dp bottom up <br/>
 initialization: <br/>
 dp = [4,1,8,3] <- last layer <br/>
 transition: <br/>
-i = 0,1,2 <- len of uplayer <br/>
-dp[i] = min(dp[i],dp[i+1]) + triangle[uplayer][i] <br/>
+i = 0,1,2 <- len of upperlayer <br/>
+dp[i] = min(dp[i],dp[i+1]) + triangle[upperlayer][i] <br/>
 
 ```python    
 class Solution(object):
@@ -79,13 +79,6 @@ class Solution(object):
 
         return dp[0]
 ```
-
-
-
-
-
- 
-
 
 ### dp string
 
