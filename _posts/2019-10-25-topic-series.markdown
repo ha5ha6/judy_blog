@@ -14,7 +14,6 @@ toc_label: "Index"
 ### Best Time Buy n Sell
 
 **leetcode 121 - Best Time to Buy and Sell Stock (Once) [E] - record min and max** <br/>
-Example: <br/>
 Input: [7,1,5,3,6,4] <br/>
 Output: 5 <br/>
 Explanation: Buy on 1 and sell on 6, profit = 6-1 = 5. Not 7-1 = 6, as selling price needs to be larger than buying price. <br/>
