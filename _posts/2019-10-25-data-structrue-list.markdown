@@ -14,8 +14,8 @@ toc_label: "Index"
 ### list minmax
 
 leetcode 121 - Best Time to Buy and Sell Stock (Once) [E] <br/>
-leetcode 122 - Best Time to Buy and Sell Stock II (Multiple) [E] <br/>
 point: record min and max <br/>
+leetcode 122 - Best Time to Buy and Sell Stock II (Multiple) [E] <br/>
 
 Example 121: <br/>
 Input: [7,1,5,3,6,4] <br/>
