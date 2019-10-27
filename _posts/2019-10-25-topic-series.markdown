@@ -138,6 +138,9 @@ Solution: <br/>
 3. transform in every char of the word (popleft) <br/>
 4. if found valid new word remove it from the set and append it to bfs <br/>
 
+Reference: <br/>
+[huahuachan](https://zxi.mytechroad.com/blog/searching/127-word-ladder/)
+
 ```python      
 class Solution(object):
     def ladderLength(self, beginWord, endWord, wordList):
@@ -166,9 +169,13 @@ Example:
 Input:  
 beginWord = "hit",  
 endWord = "cog",  
-wordList = ["hot","dot","dog","lot","log","cog"] . 
-
+wordList = ["hot","dot","dog","lot","log","cog"]  
 Output:  
 [["hit","hot","dot","dog","cog"],  
   ["hit","hot","lot","log","cog"]]  
   
+Solution:  
+
+                  dot -> dog -> cog  
+    hit -> hot ->   
+                  lot -> log -> cog  
