@@ -33,8 +33,8 @@ False
 s='  lajdflak    '  
 s=s.strip()  
 s='lajdflak'
-s.lstrip() #left remove
-s.rstrip() #right remove
+s.lstrip() #left remove  
+s.rstrip() #right remove  
 
 3. swtich to upper case and lower case  
 s='aBcDeFg'  
