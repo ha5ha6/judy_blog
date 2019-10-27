@@ -13,7 +13,9 @@ author_profile: true
 
 ### Python Operation
 
-collections.deque - [geeksforgeeks](https://www.geeksforgeeks.org/deque-in-python/)  
-Deques are a generalization of stacks and queues, which are preferred over list in the cases where we need quicker append and pop operations from both the ends of container, as deque provides an O(1) time complexity for append and pop operations as compared to list which provides O(n) time complexity.
+**collections.deque** - [geeksforgeeks](https://www.geeksforgeeks.org/deque-in-python/)  
+1. a generalization of **stacks and queues**  
+2. preferred over list when **quicker append and pop from both the ends of container** are needed  
+3. O(1) time complexity for **append and pop** as list is O(n)
 
 ```python
