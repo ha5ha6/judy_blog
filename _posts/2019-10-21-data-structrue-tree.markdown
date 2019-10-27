@@ -276,7 +276,8 @@ Solution:
 
 1. use a variable to remember the max sum (cur_max) so far
 2. child node returns its *max(left,right)+node.val* to its parent, because only one leaf connection can be validated
-3. minus values should be all removed  
+3. minus values should be all removed
+
 ```python  
 class Solution():
     cur_max=float('-inf')  #the way to definite class variable
