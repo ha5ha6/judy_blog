@@ -130,8 +130,30 @@ wordList = ["hot","dot","dog","lot","log"]
 Output: 0  
 Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
 
-Solution:  
-1. make a dictionary  
-2. bfs using queue  
+Solution: <br/>
+1. make a set <br/>
+2. bfs using collections.deque  <br/>
+3. transform in every char of the word <br/>
+4. remove existed newword (transforemed) from the set <br/>
+```python      
+class Solution(object):
+    def ladderLength(self, beginWord, endWord, wordList):
+        wset=set(wordList)
+        bfs=collections.deque() 
+        bfs.append((beginWord,1)) #[(word,length),...]
+        while bfs:
+            w,l=bfs.popleft()
+            if w==endWord:
+                return l
+            for i in range(len(w)):
+                for c in 'abcdefghijklmnopqrstuvwxyz':
+                    neww=w[:i]+c+w[i+1:] #transform            
+                    if neww in wset and neww!=w:
+                        wset.remove(neww)
+                        bfs.append((neww,l+1))
+                        
+        return 0
+```
+
 
 
