@@ -150,7 +150,7 @@ class TreeConstruction():
         return root
 ```
 
-### Others
+### Others Simple
 
 leetcode 100 - Same Tree [E] - [T/F] <br/>
 leetcode 101 - Symmetric Tree [E] - [T/F] <br/>
@@ -242,7 +242,9 @@ class TreeOthers():
             self.dfs(root.right,target,res,path+[root.right.val])
         
 ```
-**leetcode 124 - Binary Tree Maximum Path Sum [H]**  
+### Others Hard
+
+**leetcode 124 - Binary Tree Maximum Path Sum [H]**  (similar leetcode 687, leetcode 543)  
 Given a non-empty binary tree, find the maximum path sum.  
 For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.  
 Example 1:  
@@ -274,7 +276,7 @@ Solution:
 
 1. use a variable to remember the max sum (cur_max) so far
 2. child node returns its *max(left,right)+node.val* to its parent, because only one leaf connection can be validated
-3. minus values should be all removed
+3. minus values should be all removed  
 ```python  
 class Solution():
     cur_max=float('-inf')  #the way to definite class variable
