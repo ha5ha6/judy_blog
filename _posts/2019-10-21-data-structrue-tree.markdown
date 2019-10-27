@@ -280,7 +280,7 @@ Solution:
 
 ```python  
 class Solution():
-    cur_max=float('-inf')  #the way to definite class variable
+    cur_max=float('-inf')  #two ways to definite class variable
     def maxPathSum(self,root):
         #self.cur_max=float('-inf')
         self.dfs(root)
