@@ -131,6 +131,7 @@ Output: 0
 Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
 
 Solution:  
-1. make a dictionary
-2. bfs using queue
+1. make a dictionary  
+2. bfs using queue  
+
 
