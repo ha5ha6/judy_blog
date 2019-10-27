@@ -13,7 +13,7 @@ author_profile: true
 
 ### Python Operation
 
-1. check if char is alphabet/alphabet or numeric/numeric
+1. check if char is alphabet/alphabet or numeric/numeric  
 s='abc123'  
 s.isalpha() -> False     
 s.isalnum() -> True  
