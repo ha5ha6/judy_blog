@@ -30,6 +30,11 @@ s='aBcDeFg'
 s.lower() -> s='abcdefg'  
 s.upper() -> s='ABCDEFG'  
 
+4. generate lower/uppercase string  
+import string  
+string.ascii_lowercase  
+string.ascii_uppercase  
+
 ### Palindrome
 
 **leetcode 125 - Valid Palindrome [E]**   
