@@ -111,8 +111,10 @@ class Solution(object):
 
 ### Word Ladder
 
-**leetcode 127 - Word Ladder [M] - bfs**  
-search word transformation from beginWord to endWord through the WordList  
+**leetcode 127 - Word Ladder [M] (return shortest length) - bfs**  
+Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:  
+Only one letter can be changed at a time.  
+Each transformed word must exist in the word list. Note that beginWord is not a transformed word.  
 Example 1:  
 Input:  
 beginWord = "hit",  
@@ -132,9 +134,10 @@ Explanation: The endWord "cog" is not in wordList, therefore no possible transfo
 
 Solution: <br/>
 1. make a set <br/>
-2. bfs using collections.deque  <br/>
-3. transform in every char of the word <br/>
-4. remove existed newword (transforemed) from the set <br/>
+2. put beginWord into bfs (collections.deque)  <br/>
+3. transform in every char of the word (popleft) <br/>
+4. if found valid new word remove it from the set and append it to bfs <br/>
+
 ```python      
 class Solution(object):
     def ladderLength(self, beginWord, endWord, wordList):
@@ -155,5 +158,17 @@ class Solution(object):
         return 0
 ```
 
+**leetcode 126 - Word Ladder II [H] (return all shortest sequences) - bfs**  
+Given two words (beginWord and endWord), and a dictionary's word list, find all shortest transformation sequence(s) from beginWord to endWord, such that:  
+Only one letter can be changed at a time . 
+Each transformed word must exist in the word list. Note that beginWord is not a transformed word.  
+Example:  
+Input:  
+beginWord = "hit",  
+endWord = "cog",  
+wordList = ["hot","dot","dog","lot","log","cog"] . 
 
-
+Output:  
+[["hit","hot","dot","dog","cog"],  
+  ["hit","hot","lot","log","cog"]]  
+  
