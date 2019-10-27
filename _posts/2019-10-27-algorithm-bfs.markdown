@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "ALgorithms 4 - bfs"
+title:  "ALgorithms 4 - breadth first traversal"
 date:   2019-10-27 21:45:25 +0900
 categories: Programming
 author:  Jiexin Wang
@@ -11,9 +11,13 @@ toc: true
 toc_label: "Index"
 ---
 
-### bfs
+### bfs graph
 
-leetcode 118 - Pascal's Triangle [E] <br/>
+normally use queue
+
+### bfs 
+
+leetcode 127 - word ladder [M]
 
 
 ```python
