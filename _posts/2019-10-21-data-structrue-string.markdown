@@ -24,9 +24,9 @@ True
 2. check if char is alphabet or numeric  
 s='abc123'  
 s.isalnum()  
-True
-s=' abc123'
-s.isalnum()
+True  
+s=' abc123'  
+s.isalnum()  
 False
 
 2. remove white spaces before and after  
