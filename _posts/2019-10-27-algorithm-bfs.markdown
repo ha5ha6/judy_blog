@@ -15,9 +15,9 @@ toc_label: "Index"
 
 normally use queue
 
-### bfs 
+### bfs related
 
-leetcode 127 - word ladder [M]
+(string) leetcode 127 - word ladder [M] 
 
 
 ```python
