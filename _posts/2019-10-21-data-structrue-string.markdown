@@ -32,7 +32,7 @@ False
 2. remove white spaces before and after  
 s='  lajdflak    '  
 s=s.strip()  
-s='lajdflak'
+s='lajdflak'  
 s.lstrip() #left remove  
 s.rstrip() #right remove  
 
