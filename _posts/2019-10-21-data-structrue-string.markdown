@@ -41,7 +41,7 @@ s='abcdefg'
 s=s.upper()  
 s='ABCDEFG'
 
-### Problems
+### Palindrome
 
 **leetcode 125 - Valid Palindrome [E]**   
 Example 1:  
