@@ -161,7 +161,7 @@ class Solution(object):
         return 0
 ```
 
-**leetcode 126 - Word Ladder II [H] (return all shortest sequences) - bfs**  
+**leetcode 126 - Word Ladder II [H] (return all shortest sequences) - dfs,bidirectional bfs**  
 Example:  
 Input:  
 beginWord = "hit",  
@@ -176,3 +176,6 @@ Solution:
                   dot -> dog -> cog  
     hit -> hot ->   
                   lot -> log -> cog  
+
+[Reference](https://segmentfault.com/a/1190000015859013)  
+
