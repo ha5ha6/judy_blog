@@ -275,7 +275,7 @@ Solution:
      4   *4
 
 1. use a variable to remember the max sum (cur_max) so far
-2. child node returns its *max(left,right)+node.val* to its parent, because only one leaf connection can be validated
+2. child node returns its **max(left,right)+node.val** to its parent, because only one leaf connection can be validated
 3. minus values should be all removed
 
 ```python  
