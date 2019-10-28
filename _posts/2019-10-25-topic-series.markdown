@@ -174,5 +174,6 @@ Solution:
     hit -> hot ->   
                   lot -> log -> cog  
 
-[Reference](https://segmentfault.com/a/1190000015859013)  
+Reference:
+[segmentfault](https://segmentfault.com/a/1190000015859013), [huahuachan](https://zxi.mytechroad.com/blog/searching/leetcode-126-word-ladder-ii/)   
 
