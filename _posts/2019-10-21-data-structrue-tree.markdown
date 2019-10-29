@@ -302,3 +302,60 @@ class Solution():
 
         return max(left,right)+root.val
 ```
+
+**leetcode 129 - Sum Root to Leaf Numbers [M]**  
+Example1:  
+Input: [1,2,3]  
+
+      1
+     / \
+    2   3
+
+Output: 25  
+Explanation:  
+The root-to-leaf path 1->2 represents the number 12.  
+The root-to-leaf path 1->3 represents the number 13.  
+Therefore, sum = 12 + 13 = 25.  
+
+Example 2:  
+Input: [4,9,0,5,1]  
+
+        4
+       / \
+      9   0
+     / \
+    5   1
+    
+Output: 1026  
+Explanation:  
+The root-to-leaf path 4->9->5 represents the number 495.  
+The root-to-leaf path 4->9->1 represents the number 491.  
+The root-to-leaf path 4->0 represents the number 40.  
+Therefore, sum = 495 + 491 + 40 = 1026.  
+
+Solution: take example 2  
+
+    |dfs(<4>,0)   | 
+    |    sum=0+4=4|
+        |dfs(<9>,4)|    +    |dfs(<0>,4)|  = 986+40 = 1026
+        |    sum=49|         |    sum=40|
+            |dfs(<5>,49)|+|dfs(<1>,49)|= 495+491 = 986
+            |    sum=495| |    sum=491|
+
+```python  
+class Solution():
+    def sumNumbers(self,root):
+       
+        return self.dfs(root,0) # 0 is sum
+
+    def dfs(self,root,sum):
+        if not root:
+            return 0
+            
+        sum=sum*10+root.val
+       
+        if not root.left and not root.right:
+            return sum
+
+        return self.dfs(root.left,sum)+self.dfs(root.right,sum)
+```
