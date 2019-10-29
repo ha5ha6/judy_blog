@@ -11,8 +11,8 @@ classes: wide
 ### Data Structure
 
 1.	list
-2.	linked list
-3.	array, matrix
+2.	2d array, matrix
+3.	linked list
 4.	[string](https://ha5ha6.github.io/judy_blog/programming/2019/10/26/data-structrue-string.html)
 5.	stack
 6.	[queue](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/data-structrue-queue.html), priority queue
