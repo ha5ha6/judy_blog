@@ -15,11 +15,25 @@ author_profile: true
 
 ### Board Game
 
-**leetcode 128 - Longest Consecutive Sequence [H]**   
+**leetcode 130 - Surrounded Regions [M] - dfs**   
+Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.  
+A region is captured by flipping all 'O's into 'X's in that surrounded region.  
 Example:  
-Input: [100, 4, 200, 1, 3, 2]  
-Output: 4  
-Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.  
+
+    X X X X
+    X O O X
+    X X O X
+    X O X X
+
+After running your function, the board should be:  
+
+    X X X X
+    X X X X
+    X X X X
+    X O X X
+    
+Note:  
+border O and adjacent border O cannot be flipped  
 
 Solution:
 1. make a set for removing the repeated  
