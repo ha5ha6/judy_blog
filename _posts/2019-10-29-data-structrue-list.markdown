@@ -22,7 +22,7 @@ Output: 4
 Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.  
 
 Solution:
-1. make a set for removing repeated  
+1. make a set for removing the repeated  
 2. filter out non-head numbers using if-continue  
 3. find the head number (which is 1 from the example) and collect the consecutive
 
