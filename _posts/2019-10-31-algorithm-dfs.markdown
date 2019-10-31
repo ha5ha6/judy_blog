@@ -15,7 +15,8 @@ author_profile: true
 
 ### String
 
-**leetcode 131 - Palindrome Partitioning [M] **  
+**leetcode 131 - Palindrome Partitioning [M]**  
+
 Example:  
 Input: "aab"  
 Output:   
