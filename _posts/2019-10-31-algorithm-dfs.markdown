@@ -16,9 +16,25 @@ author_profile: true
 ### String
 
 **leetcode 131 - Palindrome Partitioning [M]**  
-
-Example:  
 Input: "aab"  
 Output:   
 [["aa","b"],  
 ["a","a","b"]]  
+
+```python
+class Solution():
+    def partition(self,s):
+        res=[]
+        self.dfs(s,res,[])
+
+        return res
+
+    def dfs(self,s,res,path):
+        if not s:
+            res.append(path)
+
+        for i in range(1,len(s)+1):
+            prefix=s[:i]
+            if prefix==prefix[::-1]:
+                self.dfs(s[i:],res,path+[s[:i]])
+```
