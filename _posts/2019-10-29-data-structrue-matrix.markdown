@@ -13,9 +13,22 @@ author_profile: true
 
 ### Python Operation
 
+1. 2 variables in for loop  
+```python
+for dr,dc in [(1,0),(-1,0),(0,-1),(0,1)]:  
+    print(dr,dc)
+```
+0utput:  
+1,0
+-1,0
+0,-1
+0,1
+
+2. 
+
 ### Board Game
 
-**leetcode 130 - Surrounded Regions [M] - dfs**   
+**leetcode 130 - Surrounded Regions [M] - stack or dfs**   
 Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.  
 A region is captured by flipping all 'O's into 'X's in that surrounded region.  
 Example:  
@@ -31,28 +44,41 @@ After running your function, the board should be:
     X X X X
     X X X X
     X O X X
-    
+
 Note:  
 border O and adjacent border O cannot be flipped  
 
-Solution:
-1. make a set for removing the repeated  
-2. filter out non-head numbers using if-continue  
-3. find the head number (which is 1 from the example) and collect the consecutive
+Solution:  
+1. put edge cells into stack  
+2. find 'O' cell by poping every (r,c) pair in the stack  
+3. if 'O' cell found, push its neighbors (up,down,left,right) into stack until stack is empty  
+4. scan the 2d array and switch the letter
 
 ```python
 class Solution():
-    def longestConsecutive(self, nums):
-        nset=set(nums)
-        longest=0
-        for n in nset:
-            if n-1 in nset:
-                continue      #filter out non-head numbers
-            seq=0
-            while n in nset:  #find the head number and collect the consecutive
-                seq+=1
-                n+=1
-            longest=max(longest,seq)
+    def solve(self, board):
+        if not board or not board[0]:
+            return
 
-        return longest               
+        rows,cols=len(board),len(board[0])
+        stack=[]
+
+        for r in range(rows):
+            stack+=[(r,0),(r,cols-1)]
+        for c in range(1,cols-1):
+            stack+=[(0,c),(rows-1,c)]
+
+        while stack:
+            r,c=stack.pop()
+            if 0<=r<rows and 0<=c<cols and board[r][c]=='O':
+                board[r][c]='T'
+                for dr,dc in [(1,0),(-1,0),(0,-1),(0,1)]: #up down left right
+                    stack+=[(r+dr,c+dc)]
+
+        for r in range(rows):
+            for c in range(cols):
+                if board[r][c]=='O':
+                    board[r][c]='X'
+                elif board[r][c]=='T':
+                    board[r][c]='O'                  
 ```   
