@@ -61,16 +61,16 @@ class Solution():
             return
 
         rows,cols=len(board),len(board[0])
-        stack=[]
+        stack=[] #collect the edges 4*4 -> 12 cells of 4 edges
 
         for r in range(rows):
-            stack+=[(r,0),(r,cols-1)]
+            stack+=[(r,0),(r,cols-1)] #first col, and last col
         for c in range(1,cols-1):
-            stack+=[(0,c),(rows-1,c)]
+            stack+=[(0,c),(rows-1,c)] #first row, last rows' middle part
 
         while stack:
             r,c=stack.pop()
-            if 0<=r<rows and 0<=c<cols and board[r][c]=='O':
+            if 0<=r<rows and 0<=c<cols and board[r][c]=='O': #if 'O' found, put its neighbour into stack as well
                 board[r][c]='T'
                 for dr,dc in [(1,0),(-1,0),(0,-1),(0,1)]: #up down left right
                     stack+=[(r+dr,c+dc)]
@@ -80,5 +80,5 @@ class Solution():
                 if board[r][c]=='O':
                     board[r][c]='X'
                 elif board[r][c]=='T':
-                    board[r][c]='O'                  
+                    board[r][c]='O'              
 ```   
