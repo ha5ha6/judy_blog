@@ -51,3 +51,5 @@ class Solution():
 
         return news==news[::-1]
 ```   
+
+**leetcode 131 - Palindrome Partitioning [M] - dfs** see [dfs]() 

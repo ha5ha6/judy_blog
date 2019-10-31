@@ -14,3 +14,10 @@ author_profile: true
 ### Definition
 
 ### String
+
+**leetcode 131 - Palindrome Partitioning [M] **  
+Example:  
+Input: "aab"  
+Output:   
+[["aa","b"],  
+["a","a","b"]]  
