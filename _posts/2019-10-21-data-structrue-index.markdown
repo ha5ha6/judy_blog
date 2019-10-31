@@ -19,17 +19,17 @@ classes: wide
 7.	heap
 8.	hash table
 9.	tree: [tree basic](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-tree.html), [binary search tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html), [tree + linked list](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/data-structrue-tree-linkedlist.html), segment tree
+10. graph
 
 ### ALgorithms
 
 1.	sorting
 2.	binary search
 3.	greedy
-4.	graph
-5.  dfs, [bfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/algorithm-bfs.html)
-6.	back tracking
-7.	[dynamic programming](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html)
-8.	divide and conquer
+4.  dfs, [bfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/algorithm-bfs.html)
+5.	back tracking
+6.	[dynamic programming](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html)
+7.	divide and conquer
 
 ### OThers
 
