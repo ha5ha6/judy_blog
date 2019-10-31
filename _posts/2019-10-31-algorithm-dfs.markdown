@@ -44,8 +44,8 @@ next input: s[i:],res,path+[s[:i]]
             |i=1 dfs('',res,['d','c','ab'])| -> append
         |i=2 dfs('',res,['cd','ab'])| -> append
     |i=3 dfs('d',res,['abc'])|
-        |i=1 dfs('',res,['d','abc'])|
-    |i=4 dfs('',res,['abcd'])|
+        |i=1 dfs('',res,['d','abc'])| -> append
+    |i=4 dfs('',res,['abcd'])| -> append
     
 Tree:
 
