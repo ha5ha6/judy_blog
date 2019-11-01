@@ -27,6 +27,18 @@ Output:
 ['abc', 'd'],  
 ['abcd']]  
 
+Bars:  
+
+    a b c d
+    _ _ _ _
+    _ _ ___
+    _ ___ _
+    _ _____
+    ___ _ _
+    ___ ___
+    _____ _
+    _______
+
 Solution:  
 next input: s[i:],res,path+[s[:i]]
 
@@ -46,14 +58,7 @@ next input: s[i:],res,path+[s[:i]]
     |i=3 dfs('d',res,['abc'])|
         |i=1 dfs('',res,['d','abc'])| -> append
     |i=4 dfs('',res,['abcd'])| -> append
-    
-Tree:
-
-    a
-    
-        
-            
-
+       
 
 ```python
 def scan_string(s):
