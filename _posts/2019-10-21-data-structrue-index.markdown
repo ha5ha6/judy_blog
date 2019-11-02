@@ -34,7 +34,7 @@ classes: wide
 ### OThers
 
 1.	math
-2.	bit manipulation
+2.	[bit manipulation](https://ha5ha6.github.io/judy_blog/programming/2019/11/02/other-bit-manipulation.html)
 3.	regex
 4.	two pointers
 5.	minimax
@@ -45,10 +45,10 @@ classes: wide
 10. design
 11. brainteaser
 
-### Topic Series
+### Topics
 
-1. [Best Time Buy n Sell](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topic-series.html#best-time-buy-n-sell) [list, minmax, dp]  
-2. [Word Ladder](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topic-series.html#word-ladder) [bfs,dfs]
+1. [Best Time Buy n Sell](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#best-time-buy-n-sell) [list, minmax, dp]  
+2. [Word Ladder](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#word-ladder) [bfs,dfs]
 
 ### Resources
 
