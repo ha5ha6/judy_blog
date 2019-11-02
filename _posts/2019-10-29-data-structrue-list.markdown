@@ -42,7 +42,7 @@ class Solution():
         return longest               
 ```   
 
-### Clockwise Circle
+### Real World
 **leetcode 134 - Gas Station [M]**   
 Input:     
 gas  = [1,2,3,4,5]  
@@ -74,4 +74,48 @@ class Solution():
                 tank=0
 
         return -1 if total<0 else start
+```
+
+**leetcode 135 - Candy [H]**  
+Giving at least one candy to every kid, higher score one gets more.  
+Minimum candy should be distributed?  
+
+Example 1:  
+Input: [1,0,2]  
+Output: 5  
+Explanation: You can allocate to the first, second and third child with 2, 1, 2 candies respectively.  
+
+Example 2:  
+Input: [1,2,2]  
+Output: 4  
+Explanation: You can allocate to the first, second and third child with 1, 2, 1 candies respectively. The third child gets 1 candy because it satisfies the above two conditions.  
+
+Solution:  
+1. initialize with [1]xlen(ratings)  
+2. from left to right, if cur>onebefore, cur=onebefore+1, cur start from index:1 to len-1
+3. from right to left, if cur>oneafter, cur=max(oneafter+1,cur), cur start from index:len-2 to 0
+Say   
+
+    input: [1,0,2] 
+    init:  [1,1,1]    
+    l2r:   [1,1,2] (0<2)
+    r2l:   [2,1,2] (1>0)
+
+
+```python
+class Solution(object):
+    def candy(self, ratings):
+        candy=[1 for i in range(len(ratings))]
+
+        #left to right
+        for i in range(1,len(ratings)):
+            if ratings[i]>ratings[i-1]:
+                candy[i]=candy[i-1]+1
+
+        #right to left
+        for i in range(len(ratings)-2,-1,-1):
+            if ratings[i]>ratings[i+1]:
+                candy[i]=max(candy[i+1]+1,candy[i])
+
+        return sum(candy)
 ```
