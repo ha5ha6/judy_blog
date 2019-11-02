@@ -34,16 +34,18 @@ A region is captured by flipping all ‘O’s into ‘X’s in that surrounded r
 
 Example:  
 
-X X X X
-X O O X
-X X O X
-X O X X
+    X X X X
+    X O O X
+    X X O X
+    X O X X
+
 After running your function, the board should be:  
 
-X X X X
-X X X X
-X X X X
-X O X X
+    X X X X
+    X X X X
+    X X X X
+    X O X X
+
 Note:  
 border O and adjacent border O cannot be flipped  
 
