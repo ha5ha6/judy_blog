@@ -2,7 +2,7 @@
 layout: single
 type: posts
 title:  "Data Structure 10 - graph"
-date:   2019-10-29 15:18:25 +0900
+date:   2019-11-1 15:18:25 +0900
 categories: Programming
 author:  Jiexin Wang
 classes:  wide
