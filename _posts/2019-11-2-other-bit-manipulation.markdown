@@ -13,9 +13,7 @@ author_profile: true
 
 ### Python Operation
 
-
-
-### xor
+### XOR
 
 **leetcode 136 - Single Number [E]**   
 Example 1:  
@@ -27,5 +25,11 @@ Input: [4,1,2,1,2]
 Output: 4  
 
 ```python
-           
+class Solution(object):
+    def single2(self,arr):
+        xor=0
+        for i in arr:
+           xor ^= i
+
+        return xor          
 ```   
