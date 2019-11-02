@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Topic Series - Composite"
+title:  "Topics"
 date:   2019-10-25 15:58:25 +0900
 categories: Programming
 author:  Jiexin Wang
