@@ -78,7 +78,7 @@ class Solution():
 
 **leetcode 135 - Candy [H]**  
 Giving at least one candy to every kid, higher score one gets more.  
-Minimum candy should be distributed?  
+What is the number of minimum candies should be distributed?  
 
 Example 1:  
 Input: [1,0,2]  
