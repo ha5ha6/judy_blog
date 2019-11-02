@@ -11,7 +11,7 @@ classes: wide
 ### Data Structure
 
 1.	[list](https://ha5ha6.github.io/judy_blog/programming/2019/10/29/data-structrue-list.html)
-2.	[matrix](https://ha5ha6.github.io/judy_blog/programming/2019/10/29/data-structrue-matrix.html)
+2.	[matrix](https://ha5ha6.github.io/judy_blog/programming/2019/11/1/data-structrue-matrix.html)
 3.	linked list
 4.	[string](https://ha5ha6.github.io/judy_blog/programming/2019/10/26/data-structrue-string.html)
 5.	stack
@@ -19,7 +19,7 @@ classes: wide
 7.	heap
 8.	hash table
 9.	tree: [tree basic](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-tree.html), [binary search tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html), [tree + linked list](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/data-structrue-tree-linkedlist.html), segment tree
-10. graph
+10. [graph](https://ha5ha6.github.io/judy_blog/programming/2019/10/29/data-structrue-matrix.html)
 
 ### ALgorithms
 
