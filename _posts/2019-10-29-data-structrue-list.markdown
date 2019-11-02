@@ -96,12 +96,19 @@ Solution:
 3. from right to left, if cur>oneafter, cur=max(oneafter+1,cur), cur start from index:len-2 to 0
 Say   
 
-    input: [1,0,2] 
-    init:  [1,1,1]    
-    l2r:   [1,1,2] (0<2)
-    r2l:   [2,1,2] (1>0)
+    index:  [0,1,2,3,4,5,6,7,8,9,10]
+    input:  [1,8,7,6,2,3,5,6,2,3,1]     
+    init:   [1,1,1,1,1,1,1,1,1,1,1]      
+    candy->:[1,2,1,1,1,2,3,4,1,2,1] (1<8, 2<3, 3<5, 5<6, 2<3)  
+    cnady<-:[1,4,3,2,1,2,3,4,1,2,1] (6>2, 6>2, 7>6, 8>7)
 
-
+Note:  
+1. in candy<- case 2<3>1 can be omitted because it's the last one, should start from index:8 (len-2)  
+2. in candy<- case 5<6>2, input element <6>=input[idx=7], 4=max(1+1,4), oneafter+1<cur
+3. in candy<- case 7<6>2, input element <6>=input[idx=3], 2=max(1+1,1), oneafter+1>cur
+4. in candy<- case 8>7>6, input element <7>=input[idx=2], 3=max(2+1,1), oneafter+1>cur
+5. in candy<- case 1<8>7, input element <8>=input[idx=1], 4=max(3+1,2), oneafter+1>cur  
+    
 ```python
 class Solution(object):
     def candy(self, ratings):
