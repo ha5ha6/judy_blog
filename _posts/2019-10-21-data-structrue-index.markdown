@@ -11,7 +11,7 @@ classes: wide
 ### Data Structure
 
 1.	[list](https://ha5ha6.github.io/judy_blog/programming/2019/10/29/data-structrue-list.html)
-2.	[matrix](https://ha5ha6.github.io/judy_blog/programming/2019/10/29/data-structrue-matrix.html)
+2.	[matrix](https://ha5ha6.github.io/judy_blog/programming/2019/11/1/data-structrue-matrix.html)
 3.	linked list
 4.	[string](https://ha5ha6.github.io/judy_blog/programming/2019/10/26/data-structrue-string.html)
 5.	stack
