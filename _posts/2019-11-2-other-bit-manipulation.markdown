@@ -11,9 +11,37 @@ toc_label: "Index"
 author_profile: true
 ---
 
-### Python Operation
+### Python Operation  
+1. XOR  
+i=10  
+j=100  
+k=i^j  
+output: k=110  
 
-### XOR
+steps:  
+a. dec -> bin  
+i=10 -> bin(10) -> '0b1010' (type:str)  
+j=100 -> bin(100) -> '0b1100100'  
+b. xor calculation: same -> 0, different -> 1  
+1010^1100100=1101110  
+ 
+           1010
+        1100100
+        -------
+        1101110
+        
+c. bin -> dec  
+int('0b1101110',2) -> 110  
+
+2. bin(2), oct(8), dec(10), hex(16)  
+bin(18) -> '0b11010' (remove '0b')  
+oct(18) -> '022' (remove '0')  
+hex(18) -> '0x12' (remove '0x')  
+int('0b10010',2) -> 18  
+int('022',8) -> 18  
+int('0x12',16) -> 18  
+
+### XOR  
 
 **leetcode 136 - Single Number [E]**   
 Example 1:  
@@ -24,12 +52,27 @@ Example 2:
 Input: [4,1,2,1,2]  
 Output: 4  
 
+Example 2 Solution:  
+1. 0^4 = 4  
+2. 4^1 = 5  
+3. 5^2 = 7  
+4. 7^1 = 6  
+5. 6^2 = 4 <- single num   
+
 ```python
 class Solution(object):
-    def single2(self,arr):
-        xor=0
-        for i in arr:
-           xor ^= i
+    def singleNumber(self, nums):
+        r=0
+        for i in nums:
+           r ^= i
 
-        return xor          
+        return r         
+```   
+
+**leedcode 461 - Hamming Distance []**
+```python
+class Solution(object):
+    def hammingDistance(self,x,y):
+       
+        return bin(x^y).count('1')      
 ```   
