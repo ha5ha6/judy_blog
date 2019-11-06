@@ -12,19 +12,19 @@ author_profile: true
 ---
 
 ### Python Operation  
-1. &, and  
+1. &, and, for carrying（进位） 
 
 2. |, or  
 
 3. ~, opposite  
 ~100  
 ouput: -101  
+ 
+4. <<, one bit left, for power of 2  
 
-4. <<, one bit left  
+5. ->>, one bit right, for power of 2  
 
-5. - >>, one bit right  
-
-6. ^, xor  
+6. ^, xor, for plus without carrying
 i=10  
 j=100  
 k=i^j  
@@ -88,3 +88,7 @@ class Solution(object):
        
         return bin(x^y).count('1')      
 ```   
+
+### REF
+
+https://www.cnblogs.com/JYNNO1/p/10525649.html
