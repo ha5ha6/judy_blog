@@ -66,6 +66,10 @@ Input: [4,1,2,1,2]
 Output: 4  
 
 Example 2 Solution:  
+if a^0 = a  
+if a^a = 0  
+a^b^a=(a^a)^b = 0^b = b  
+
 1. 0^4 = 4  
 2. 4^1 = 5  
 3. 5^2 = 7  
