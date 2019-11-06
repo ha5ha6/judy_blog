@@ -12,38 +12,39 @@ author_profile: true
 ---
 
 ### Python Operation  
-1. &, and, for carrying（进位） 
+1. '&', and, for carrying（进位） 
 
-2. |, or  
+2. '|', or  
 
-3. ~, opposite  
-~100  
-ouput: -101  
+3. '~', opposite  
+    
+    ~100  
+    ouput: -101  
  
-4. <<, one bit left, for power of 2  
+4. '<<', one bit left, for power of 2  
 
-5. ->>, one bit right, for power of 2  
+5. '>>', one bit right, for power of 2  
 
-6. ^, xor, for plus without carrying
+6. '^', xor, for plus without carrying
 i=10  
 j=100  
 k=i^j  
 output: k=110  
 
-steps:  
-a. dec -> bin  
-i=10 -> bin(10) -> '0b1010' (type:str)  
-j=100 -> bin(100) -> '0b1100100'  
-b. xor calculation: same -> 0, different -> 1  
-1010^1100100=1101110  
+    steps:  
+    a. dec -> bin  
+    i=10 -> bin(10) -> '0b1010' (type:str)  
+    j=100 -> bin(100) -> '0b1100100'  
+    b. xor calculation: same -> 0, different -> 1  
+    1010^1100100=1101110  
  
            1010
         1100100
         -------
         1101110
         
-c. bin -> dec  
-int('0b1101110',2) -> 110  
+    c. bin -> dec  
+    int('0b1101110',2) -> 110  
 
 7. bin(2), oct(8), dec(10), hex(16)  
 bin(18) -> '0b11010' (remove '0b')  
