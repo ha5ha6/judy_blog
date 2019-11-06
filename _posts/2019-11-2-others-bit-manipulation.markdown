@@ -12,19 +12,19 @@ author_profile: true
 ---
 
 ### Python Operation  
-1. & - and  
+1. &, and  
 
-2. | - or  
+2. |, or  
 
-3. ~ - opposite  
+3. ~, opposite  
 ~100  
 ouput: -101  
 
-4. << - one bit left  
+4. <<, one bit left  
 
-5. >> - one bit right  
+5. - >>, one bit right  
 
-6. ^ - xor  
+6. ^, xor  
 i=10  
 j=100  
 k=i^j  
