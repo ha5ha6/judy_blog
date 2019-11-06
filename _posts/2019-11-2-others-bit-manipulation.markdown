@@ -12,7 +12,19 @@ author_profile: true
 ---
 
 ### Python Operation  
-1. XOR  
+1. & - and  
+
+2. | - or  
+
+3. ~ - opposite  
+~100  
+ouput: -101  
+
+4. << - one bit left  
+
+5. >> - one bit right  
+
+6. ^ - xor  
 i=10  
 j=100  
 k=i^j  
@@ -33,7 +45,7 @@ b. xor calculation: same -> 0, different -> 1
 c. bin -> dec  
 int('0b1101110',2) -> 110  
 
-2. bin(2), oct(8), dec(10), hex(16)  
+7. bin(2), oct(8), dec(10), hex(16)  
 bin(18) -> '0b11010' (remove '0b')  
 oct(18) -> '022' (remove '0')  
 hex(18) -> '0x12' (remove '0x')  
