@@ -25,7 +25,7 @@ author_profile: true
 
 5. '>>', one bit right, for power of 2  
 
-6. '^', xor, for plus without carrying
+6. '^', xor, for plus without carrying  
 i=10  
 j=100  
 k=i^j  
