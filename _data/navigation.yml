@@ -7,10 +7,10 @@ main:
     url: /project/
   #- title: "Side Project"
   #  url: /sideproject/
-  - title: "Tutorial"
-    url: /tutorial/
-  #- title: "Gallery"
-  #  url: /gallery/
+  #- title: "Tutorial"
+  #  url: /tutorial/
+  - title: "Gallery"
+    url: /gallery/
   #- title: "Collections"
   #  url: /collection-archive/
   #- title: "External Link"
