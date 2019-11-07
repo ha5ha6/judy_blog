@@ -28,7 +28,7 @@ feature_row:
     alt: "placeholder image 2"
     title: "Reinforcement Learning"
     excerpt: "Value based, Policy based, Deep RL, ... "
-    url: ""
+    url: "."
     btn_label: "Read More"
     btn_class: "btn--primary"
   - image_path: assets/images/ml.jpg
@@ -36,7 +36,7 @@ feature_row:
     alt: "placeholder image 1"
     title: "Machine Learning"
     excerpt: "Supervised, Unsupervised, Gaussian Process, ..."
-    url: ""
+    url: "."
     btn_label: "Read More"
     btn_class: "btn--primary"
   #- image_path: /assets/images/unsplash-gallery-image-3-th.jpg
