@@ -1,6 +1,6 @@
 ---
 layout: splash
-title: Tutorial
+title: Tutorials
 permalink: "/tutorial/"
 #author_profile: true
 #breadcrumbs: true
@@ -14,23 +14,23 @@ header:
   #    url: "https://github.com/mmistakes/minimal-mistakes/"
   caption: "Photo credit: Unknown"
 excerpt: ""
-feature_row1:
+feature_row:
   - image_path: /assets/images/datastructure.jpeg
-    image_caption: ""
+    #image_caption: ""
     alt: "placeholder image 3"
     title: "Data Structure"
-    excerpt: ""
+    excerpt: "Data structure, Algorithms, Python, ... "
     url: "/programming/2019/10/21/data-structrue-index.html"
     btn_label: "Read More"
     btn_class: "btn--primary"
-#  - image_path: /assets/images/ephe.jpg
+  - image_path: /assets/images/rl.png
     #image_caption: "Image courtesy of J.Wang"
-#    alt: "placeholder image 2"
-#    title: "Policy Hyper-parameter Search"
-#    excerpt: "This session shows slides about policy-based reinforcement learning, including classic REINFORCE, PGPE, our propsed EPHE with K-elite, EPHE with adaptive baseline, EPHE with CMAES weighting, EPHE with REPS weighting methods, etc."
-#    url: "/ephe/"
-#    btn_label: "Read More"
-#    btn_class: "btn--primary"
+    alt: "placeholder image 2"
+    title: "Reinforcement Learning"
+    excerpt: "Value based, Policy based, Deep RL, ... "
+    url: ""
+    btn_label: "Read More"
+    btn_class: "btn--primary"
 #  - image_path: assets/images/smartphone.jpg
 #    image_caption: "Image courtesy of J.Wang"
 #    alt: "placeholder image 1"
@@ -46,4 +46,4 @@ feature_row1:
 
 ---
 
-{% include feature_row id="feature_row1" type="left" %}
+{% include feature_row id="feature_row" type="left" %}
