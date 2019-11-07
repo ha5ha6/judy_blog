@@ -31,14 +31,14 @@ feature_row:
     url: ""
     btn_label: "Read More"
     btn_class: "btn--primary"
-#  - image_path: assets/images/smartphone.jpg
+  - image_path: assets/images/ml.jpg
 #    image_caption: "Image courtesy of J.Wang"
-#    alt: "placeholder image 1"
-#    title: "Smartphone Robot Project"
-#    excerpt: "This session shows how to construct a smartphone robot and achieve behaviors like standing-up, balancing, approaching, foraging and mating."
-#    url: "/smartphone/"
-#    btn_label: "Read More"
-#    btn_class: "btn--primary"
+    alt: "placeholder image 1"
+    title: "Machine Learning"
+    excerpt: "Supervised, Unsupervised, Gaussian Process, ..."
+    url: ""
+    btn_label: "Read More"
+    btn_class: "btn--primary"
   #- image_path: /assets/images/unsplash-gallery-image-3-th.jpg
   #  title: "Placeholder 3"
   #  excerpt: "This is some sample content that goes here with **Markdown** formatting."
