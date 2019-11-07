@@ -23,7 +23,7 @@ feature_row:
     url: "/programming/2019/10/21/data-structrue-index.html"
     btn_label: "Read More"
     btn_class: "btn--primary"
-  - image_path: /assets/images/rl.png
+  - image_path: /assets/images/rll.png
     #image_caption: "Image courtesy of J.Wang"
     alt: "placeholder image 2"
     title: "Reinforcement Learning"
