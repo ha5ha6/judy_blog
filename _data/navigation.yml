@@ -9,8 +9,8 @@ main:
   #  url: /sideproject/
   - title: "Tutorial"
     url: /tutorial/
-  - title: "Gallery"
-    url: /gallery/
+  #- title: "Gallery"
+  #  url: /gallery/
   #- title: "Collections"
   #  url: /collection-archive/
   #- title: "External Link"
