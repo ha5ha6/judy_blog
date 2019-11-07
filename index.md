@@ -1,7 +1,7 @@
 ---
 layout: single
 header:
-  image: /assets/images/innermongolia.jpeg
+  image: /assets/images/park.jpg
   caption: "Photo credit: Koopagua"
 
 #excerpt: "Foo Bar design system including logo mark, website design, and branding applications."
