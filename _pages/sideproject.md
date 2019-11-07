@@ -6,8 +6,8 @@ permalink: "/sideproject/"
 #breadcrumbs: true
 
 header:
-  overlay_color: "#000"
-  overlay_filter: "0.5"
+  #overlay_color: "#000"
+  #overlay_filter: "0.5"
   overlay_image: /assets/images/programming.png
   #actions:
   #  - label: "Download"
@@ -45,7 +45,3 @@ excerpt: "programming projects I was involved in"
 
 
 ---
-
-#{% include feature_row id="intro" type="center" %}
-
-#{% include feature_row id="feature_row1" type="left" %}
