@@ -34,7 +34,7 @@ classes: wide
 ### OThers
 
 1.	math
-2.	[bit manipulation](https://ha5ha6.github.io/judy_blog/programming/2019/11/02/other-bit-manipulation.html)
+2.	[bit manipulation](https://ha5ha6.github.io/judy_blog/programming/2019/11/02/others-bit-manipulation.html)
 3.	regex
 4.	two pointers
 5.	minimax
