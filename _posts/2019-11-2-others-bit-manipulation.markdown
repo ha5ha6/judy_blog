@@ -14,7 +14,7 @@ author_profile: true
 ### Python Operation  
 1. '&', and, for carrying（进位） 
 
-2. '|', or  
+2. '\\|', or  
 
 3. '~', opposite  
     
