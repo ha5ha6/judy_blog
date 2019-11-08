@@ -75,6 +75,26 @@ class Solution(object):
 
 **leetcode 142 - Linked List Cycle II [E] - return cycle head**  
 Given a linked list, return the node where the cycle begins. If there is no cycle, return null.  
-
 ![](https://ha5ha6.github.io/judy_blog/assets/images/142.png)
+Solution:  
+1. let fast (2 steps) and slow (1 step) meet  
+2. put fast back to the head   
+3. the cycle head will be the same node when fast (1 step) and slow (1 step) meet again  
+
+```python
+class Solution(object):
+    def detectCycle(self,head):
+        fast, slow=head, head
+	while fast and fast.next:
+	    slow=slow.next
+	    fast=fast.next.next
+            if slow==fast:
+	    	fast=head
+		while fast!=slow:
+		    fast=fast.next
+		    slow=slow.next
+		return slow
+		
+        return None
+```
 
