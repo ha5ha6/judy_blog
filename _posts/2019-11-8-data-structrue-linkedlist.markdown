@@ -33,7 +33,8 @@ root.next.next.next.next=ListNode(4)
 
 ### Fast and Slow  
 
-**leetcode 141 - Linked List Cycle [E]**  
+**leetcode 141 - Linked List Cycle [E] - T/F**  
+Given a linked list, determine if it has a cycle in it.  
 Example 1:  
 Input: head = [3,2,0,-4], pos = 1  
 
@@ -64,13 +65,16 @@ class Solution(object):
     def hasCycle(self,head):
         fast, slow=head, head
 	while fast and fast.next:
+	    if fast==slow:
+	    	return True
 	    slow=slow.next
 	    fast=fast.next.next
-            if fast and slow:
-                if fast.val==slow.val:
-		    return True
-
-		return False
+          
+        return False
 ```
 
- 
+**leetcode 142 - Linked List Cycle II [E] - return cycle head**  
+Given a linked list, return the node where the cycle begins. If there is no cycle, return null.  
+
+![](https://ha5ha6.github.io/judy_blog/assets/images/142.png)
+
