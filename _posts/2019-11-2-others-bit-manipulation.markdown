@@ -3,6 +3,7 @@ layout: single
 type: posts
 title:  "OThers 2 - bit manipulation"
 date:   2019-11-2 15:23:25 +0900
+related: true
 categories: Programming
 author:  Jiexin Wang
 classes:  wide
@@ -12,15 +13,15 @@ author_profile: true
 ---
 
 ### Python Operation  
-1. '&', and, for carrying（进位） 
+1. '&', and, for carrying（进位）
 
 2. '&#124;', or  
 
 3. '~', opposite  
-    
+
     ~100  
     ouput: -101  
- 
+
 4. '<<', one bit left, for power of 2  
 
 5. '>>', one bit right, for power of 2  
@@ -37,12 +38,12 @@ output: k=110
     j=100 -> bin(100) -> '0b1100100'  
     b. xor calculation: same -> 0, different -> 1  
     1010^1100100=1101110  
- 
+
            1010
         1100100
         -------
         1101110
-        
+
     c. bin -> dec  
     int('0b1101110',2) -> 110  
 
@@ -104,7 +105,7 @@ goal: a?b?a?a=b
     ?010
     -----
      011
-           
+
 should be: base 3 summing up without carrying  
 
 mask=0 <- mask is the number used for bit operation to get target number  
@@ -113,27 +114,27 @@ mask=0 <- mask is the number used for bit operation to get target number
      000 (0)     000 (0#)
     ^010 (2)    ^010 (2)
     -----       -----
-     010         010 
+     010         010
     &111 ~#     &101 ~*
     -----       -----
      010 *       000 #
-     
-     010         000 
+
+     010         000
     ^010 (2)    ^010 (2)
     -----       -----
      000         010
     &111 ~#     &111 ~*
     -----       -----
      000 *       010 #
-     
-     000         010 
+
+     000         010
     ^011 (3)    ^011 (3)
     -----       -----
      011         001
     &101 ~#     &110 ~*
     -----       -----
      001 *       000 #
-     
+
      001         000
     ^010 (2)    ^010 (2)
     -----       -----
@@ -157,7 +158,7 @@ class Solution(object):
 ```python
 class Solution(object):
     def hammingDistance(self,x,y):
-       
+
         return bin(x^y).count('1')      
 ```   
 

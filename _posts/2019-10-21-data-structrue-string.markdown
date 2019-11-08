@@ -3,6 +3,7 @@ layout: single
 type: posts
 title:  "Data Structure 4 - string"
 date:   2019-10-26 12:23:25 +0900
+related: true
 categories: Programming
 author:  Jiexin Wang
 classes:  wide
@@ -52,4 +53,4 @@ class Solution():
         return news==news[::-1]
 ```   
 
-**leetcode 131 - Palindrome Partitioning [M] - dfs** see [dfs]() 
+**leetcode 131 - Palindrome Partitioning [M] - dfs** see [dfs]()

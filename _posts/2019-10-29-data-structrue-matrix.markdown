@@ -3,6 +3,7 @@ layout: single
 type: posts
 title:  "Data Structure 2 - matrix"
 date:   2019-10-29 15:18:25 +0900
+related: true
 categories: Programming
 author:  Jiexin Wang
 classes:  wide

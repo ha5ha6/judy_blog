@@ -3,6 +3,7 @@ layout: single
 type: posts
 title:  "ALgorithms 6 - dynamic programming"
 date:   2019-10-23 20:48:25 +0900
+related: true
 categories: Programming
 author:  Jiexin Wang
 classes:  wide
@@ -23,32 +24,32 @@ Output: <br/>
  [1,2,1], <br/>
  [1,3,3,1], <br/>
  [1,4,6,4,1]] <br/>
- 
-```python 
+
+```python
 class Solution(object):
     #leetcode 118
     def generate(self, n):
         if n==0:
             return []
-        
+
         dp=[[1]]       
         for i in range(1,n):           
             temp=[]          
             for j in range(i-1):
                 temp.append(dp[i-1][j]+dp[i-1][j+1])
-                
+
             temp.insert(0,1)
             temp.insert(len(temp),1)            
             dp.append(temp)
-            
+
         return dp
-        
+
     #leetcode 119
     def getRow(self,r):
         row=[1]
         for i in range(r):
             row=[1]+[row[j]+row[j+1] for j in range(len(row)-1)]+[1]
-            
+
         return row
 ```
 
@@ -97,7 +98,7 @@ class Solution(object):
         dp=[[0 for j in range(len(s)+1)] for i in range(len(t)+1)]        
         for j in range(len(s)+1):
             dp[0][j]=1
-            
+
         for i in range(1,len(t)+1):
             for j in range(1,len(s)+1):
                 if t[i-1]==s[j-1]:
@@ -107,7 +108,3 @@ class Solution(object):
 
         return dp[-1][-1]
 ```
-
-
-
-        

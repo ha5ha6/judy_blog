@@ -3,6 +3,7 @@ layout: single
 type: posts
 title:  "ALgorithms 4 - depth first traversal"
 date:   2019-10-31 12:56:25 +0900
+related: true
 categories: Programming
 author:  Jiexin Wang
 classes:  wide
@@ -42,7 +43,7 @@ Bars:
 Solution:  
 next input: s[i:],res,path+[s[:i]]
 
-    |dfs('abcd',res,[])| 
+    |dfs('abcd',res,[])|
     |i=1 dfs('bcd',res,['a'])|
         |i=1 dfs('cd',res,['b','a'])|                                  
             |i=1 dfs('d',res,['c','b','a'])|
@@ -58,7 +59,7 @@ next input: s[i:],res,path+[s[:i]]
     |i=3 dfs('d',res,['abc'])|
         |i=1 dfs('',res,['d','abc'])| -> append
     |i=4 dfs('',res,['abcd'])| -> append
-       
+
 
 ```python
 def scan_string(s):
@@ -71,10 +72,10 @@ def dfs(s,res,path):
     if not s:
         res.append(path)
         return
-        
+
     for i in range(1,len(s)+1):
         dfs(s[i:],res,path+[s[:i]])
-        
+
 scan_string("abcd")
 ```
 

@@ -3,6 +3,7 @@ layout: single
 type: posts
 title:  "Data Structure 9 - binary search tree"
 date:   2019-10-21 23:18:25 +0900
+related: true
 categories: Programming
 author:  Jiexin Wang
 classes:  wide
@@ -59,7 +60,7 @@ class Solution():
                     res.append(root)
 
         return res  
-                
+
     #leetcode 99
     def recoverBST(self, root):       
         self.pre,self.first,self.second=None,None,None        

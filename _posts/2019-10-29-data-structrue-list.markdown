@@ -3,6 +3,7 @@ layout: single
 type: posts
 title:  "Data Structure 1 - list"
 date:   2019-10-29 11:46:25 +0900
+related: true
 categories: Programming
 author:  Jiexin Wang
 classes:  wide
@@ -38,7 +39,7 @@ class Solution():
                 seq+=1
                 n+=1
             longest=max(longest,seq)
-            
+
         return longest               
 ```   
 
@@ -108,7 +109,7 @@ Note:
 3. in candy<- case 7<6>2, input element <6>=input[idx=3], 2=max(1+1,1), oneafter+1>cur
 4. in candy<- case 8>7>6, input element <7>=input[idx=2], 3=max(2+1,1), oneafter+1>cur
 5. in candy<- case 1<8>7, input element <8>=input[idx=1], 4=max(3+1,2), oneafter+1>cur  
-    
+
 ```python
 class Solution(object):
     def candy(self, ratings):

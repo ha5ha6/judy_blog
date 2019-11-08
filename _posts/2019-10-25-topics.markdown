@@ -3,6 +3,7 @@ layout: single
 type: posts
 title:  "Topics"
 date:   2019-10-25 15:58:25 +0900
+related: true
 categories: Programming
 author:  Jiexin Wang
 classes:  wide
@@ -142,7 +143,7 @@ Reference: <br/>
 class Solution(object):
     def ladderLength(self, beginWord, endWord, wordList):
         wset=set(wordList)
-        bfs=collections.deque() 
+        bfs=collections.deque()
         bfs.append((beginWord,1)) #[(word,length),...]
         while bfs:
             w,l=bfs.popleft()
@@ -154,7 +155,7 @@ class Solution(object):
                     if neww in wset and neww!=w:
                         wset.remove(neww)
                         bfs.append((neww,l+1))
-                        
+
         return 0
 ```
 
@@ -167,7 +168,7 @@ wordList = ["hot","dot","dog","lot","log","cog"]
 Output:  
 [["hit","hot","dot","dog","cog"],  
   ["hit","hot","lot","log","cog"]]  
-  
+
 Solution:  
 
                   dot -> dog -> cog  
@@ -176,4 +177,3 @@ Solution:
 
 Reference:
 [segmentfault](https://segmentfault.com/a/1190000015859013), [huahuachan](https://zxi.mytechroad.com/blog/searching/leetcode-126-word-ladder-ii/)   
-

@@ -3,6 +3,7 @@ layout: single
 type: posts
 title:  "Data Structure 9 - tree + linked list"
 date:   2019-10-23 20:48:25 +0900
+related: true
 categories: Programming
 author:  Jiexin Wang
 classes:  wide

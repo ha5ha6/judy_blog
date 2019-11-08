@@ -3,6 +3,7 @@ layout: single
 type: posts
 title:  "Data Structure 9 - tree"
 date:   2019-10-21 23:18:25 +0900
+related: true
 categories: Programming
 author:  Jiexin Wang
 classes:  wide
@@ -14,12 +15,12 @@ author_profile: true
 ### Definition
 
 ```python
-class TreeNode(): 
+class TreeNode():
     def __init__(self,x):
         self.val=x
         self.left=None
         self.right=None
-     
+
 #create tree
 root=TreeNode(0)
 root.left=TreeNode(1)
@@ -30,9 +31,9 @@ root.right.left=TreeNode(4)
 
 ### Basic Operation
 
-1. insert 
-2. search 
-3. find 
+1. insert
+2. search
+3. find
 4. max depth - leetcode 104 - Maximum Depth of Binary Tree [E]
 ```python  
 #leetcode 104
@@ -78,7 +79,7 @@ class BinaryTreeTraversal():
         self.dfs(node.left,res)
         res.append(node.val)
         self.dfs(node.right,res)
-        
+
     #leetcode 102 (theoretically should use queue, but here use stack)
     def levelorder(self,root):
         res=[]
@@ -101,8 +102,8 @@ class BinaryTreeTraversal():
                     new_q.append(node.right)
             q=new_q
             #cnt+=1
-            
-        return res 
+
+        return res
         #leetcode 107
         #return res[::-1]
 ```
@@ -112,7 +113,7 @@ class BinaryTreeTraversal():
 leetcode 108 - Convert Sorted Array to Binary Search Tree [E] <br/>
 leetcode 105 - Construct Binary Tree from Preorder and Inorder Traversal [M] <br/>
 leetcode 106 - Construct Binary Tree from Inorder and Postorder Traversal [M]
-```python 
+```python
 class TreeConstruction():
     #leetcode 108
     def sortedArrayToBST(self, nums):
@@ -122,7 +123,7 @@ class TreeConstruction():
         root=TreeNode(nums[mid])
         root.left=self.sortedArrayToBST(nums[:mid])
         root.right=self.sortedArrayToBST(nums[mid+1:])
-        
+
         return root
 
     #leetcode 105
@@ -136,7 +137,7 @@ class TreeConstruction():
         root.right=self.buildTree(preorder[idx+1:],inorder[idx+1:])
 
         return root
-    
+
     #leetcode 106
     def buildTree(self, inorder, postorder):
         if not inorder or not postorder:
@@ -146,7 +147,7 @@ class TreeConstruction():
         idx=inorder.index(postorder[-1])
         root.left=self.buildTree(inorder[:idx],postorder[:idx])
         root.right=self.buildTree(inorder[idx+1:],postorder[idx:-1])
-        
+
         return root
 ```
 
@@ -167,16 +168,16 @@ class TreeOthers():
             return False        
         if p.val!=q.val:
             return False
-        
+
         return self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)
-    
+
     #leetcode 101
     def isSymmetricTree(self, root):
         if not root:
             return True
-        
+
         return self.isSym(root.left,root.right)
-    
+
     def isSym(self,left,right):        
         if not left and not right:
             return True        
@@ -184,63 +185,63 @@ class TreeOthers():
             return False        
         if left.val!=right.val:
             return False
-        
+
         return self.isSym(left.left,right.right) and self.isSym(left.right,right.left)
-        
+
     #leetcode 110
     def isBalanced(self, root):
-        
+
         return self.dfs(root)!=-1
-     
+
     def dfs(self,node):     
         if not node:
             return 0      
-            
+
         left_depth=self.dfs(node.left)
         right_depth=self.dfs(node.right)   
-        
+
         if left_depth==-1 or right_depth==-1:
             return -1
-        
+
         if abs(left_depth-right_depth)>1:
             return -1
-        
+
         return 1+max(left_depth,right_depth)
-        
+
     #leetcode 112
     def hasPathSum(self,root,sum):
         if not root:
             return False
-            
+
         sum-=root.val
         if sum==0 and not root.left and not root.right:
             return True
-            
+
         return self.hasPathSum(root.left,sum) or self.hasPathSum(root.right,sum)
-        
+
     #leetcode 113
     def pathSum(self, root, sum):
         res=[]
         if not root:
             return res
-        
+
         self.dfs(root,sum,res,[root.val])
-        
+
         return res
-    
+
     def dfs(self,root,target,res,path):     
         if not root:
             return
-            
+
         if sum(path)==target and not root.left and not root.right:
             res.append(path)
             return
-        
+
         if root.left:
             self.dfs(root.left,target,res,path+[root.left.val])
         if root.right:
             self.dfs(root.right,target,res,path+[root.right.val])
-        
+
 ```
 ### Others Hard
 
@@ -284,13 +285,13 @@ class Solution():
     def maxPathSum(self,root):
         #self.cur_max=float('-inf')
         self.dfs(root)
-        
+
         return self.cur_max
 
     def dfs(self,root):
         if not root:
             return 0
-       
+
         left=self.dfs(root.left)
         right=self.dfs(root.right)
         if left<0:
@@ -325,7 +326,7 @@ Input: [4,9,0,5,1]
       9   0
      / \
     5   1
-    
+
 Output: 1026  
 Explanation:  
 The root-to-leaf path 4->9->5 represents the number 495.  
@@ -335,7 +336,7 @@ Therefore, sum = 495 + 491 + 40 = 1026.
 
 Solution: take example 2  
 
-    |dfs(<4>,0)   | 
+    |dfs(<4>,0)   |
     |    sum=0+4=4|
         |dfs(<9>,4)|                                   +    |dfs(<0>,4)| = 986+40 = 1026
         |    sum=49|                                        |    sum=40|
@@ -345,15 +346,15 @@ Solution: take example 2
 ```python  
 class Solution():
     def sumNumbers(self,root):
-       
+
         return self.dfs(root,0) # 0 is sum
 
     def dfs(self,root,sum):
         if not root:
             return 0
-            
+
         sum=sum*10+root.val
-       
+
         if not root.left and not root.right:
             return sum
 
