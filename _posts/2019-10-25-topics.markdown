@@ -218,25 +218,25 @@ Example 2 Solution:
 2. 
 
     
-       dfs('pineapplepenapple',dict,'',res)
-           #s[:4]='pine' in dict 
-           dfs('applepenapple',dict,'pine ',res)
-               *s[:5]='apple' in dict
-               dfs('penapple',dict,'pine apple ',res)
-                   s[:3]='pen' in dict
-                   dfs('apple',dict,'pine apple pen ',res)
-                       s[:5]='apple' in dict
-                       dfs('',dict,'pine apple pen apple',res) <- append res
-               *s[:8]='applepen' in dict
-               dfs('apple',dict,'pine applepen ',res)
-                   s[:5]='apple' in dict
-                   dfs('',dict,'pine applepen apple',res) <- append res
-           #s[:9]='pineapple' in dict
-           dfs('penapple',dict,'pineapple ',res)
-               s[:3]='pen' in dict
-               dfs('apple',dict,'pineapple pen ',res)
-                   s[:5]='apple' in dict
-                   dfs('',dict,'pineapple pen apple',res) <- append res
+       |dfs('pineapplepenapple',dict,'',res)
+           |#s[:4]='pine' in dict 
+           |dfs('applepenapple',dict,'pine ',res)
+               |*s[:5]='apple' in dict
+               |dfs('penapple',dict,'pine apple ',res)
+                   |s[:3]='pen' in dict
+                   |dfs('apple',dict,'pine apple pen ',res)
+                       |s[:5]='apple' in dict
+                       |dfs('',dict,'pine apple pen apple',res) <- append res
+               |*s[:8]='applepen' in dict
+               |dfs('apple',dict,'pine applepen ',res)
+                   |s[:5]='apple' in dict
+                   |dfs('',dict,'pine applepen apple',res) <- append res
+           |#s[:9]='pineapple' in dict
+           |dfs('penapple',dict,'pineapple ',res)
+               |s[:3]='pen' in dict
+               |dfs('apple',dict,'pineapple pen ',res)
+                   |s[:5]='apple' in dict
+                   |dfs('',dict,'pineapple pen apple',res) <- append res
                    
                        
 ```python  
