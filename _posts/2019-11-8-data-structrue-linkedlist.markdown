@@ -36,11 +36,21 @@ root.next.next.next.next=ListNode(4)
 **leetcode 141 - Linked List Cycle [E]**  
 Example 1:  
 Input: head = [3,2,0,-4], pos = 1  
+
+	3->2->0->-4
+  	   ^	  |
+ 	   |-------
+	   
 Output: true  
 Explanation: There is a cycle in the linked list, where tail connects to the second node.  
 
 Example 2:  
 Input: head = [1,2], pos = 0  
+
+	1->2
+        ^  |
+ 	|---
+	   
 Output: true  
 Explanation: There is a cycle in the linked list, where tail connects to the first node.  
 
@@ -53,12 +63,12 @@ Explanation: There is no cycle in the linked list.
 class Solution(object):
     def hasCycle(self,head):
         fast, slow=head, head
-		while fast and fast.next:
-			slow=slow.next
-			fast=fast.next.next
+	while fast and fast.next:
+	    slow=slow.next
+	    fast=fast.next.next
             if fast and slow:
                 if fast.val==slow.val:
-				    return True
+		    return True
 
 		return False
 ```
