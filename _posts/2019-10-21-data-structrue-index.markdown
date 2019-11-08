@@ -13,7 +13,7 @@ classes: wide
 
 1.	[list](https://ha5ha6.github.io/judy_blog/programming/2019/10/29/data-structrue-list.html)
 2.	[matrix](https://ha5ha6.github.io/judy_blog/programming/2019/10/29/data-structrue-matrix.html)
-3.	[linked list](https://ha5ha6.github.io/judy_blog/programming/2019/11/8/data-structrue-linkedlist.html)
+3.	[linked list](https://ha5ha6.github.io/judy_blog/programming/2019/11/08/data-structrue-linkedlist.html)
 4.	[string](https://ha5ha6.github.io/judy_blog/programming/2019/10/26/data-structrue-string.html)
 5.	stack
 6.	[queue](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/data-structrue-queue.html), priority queue
