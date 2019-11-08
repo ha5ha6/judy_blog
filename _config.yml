@@ -83,6 +83,13 @@ defaults:
       author_profile: false
       share: true
 
+jekyll-archives:
+  enabled:
+    - categories
+  layouts:
+    category: archive-taxonomy
+  permalinks:
+    category: /answers/topics/:name/
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
