@@ -14,8 +14,8 @@ toc_label: "Index"
 
 ### dp basic
 
-leetcode 118 - Pascal's Triangle [E] <br/>
-leetcode 119 - Pascal's Triangle II [E] <br/>
+**leetcode 118 - Pascal's Triangle [E]** <br/>
+**leetcode 119 - Pascal's Triangle II [E]** <br/>
 
 Input: 5 <br/>
 Output: <br/>
@@ -53,7 +53,7 @@ class Solution(object):
         return row
 ```
 
-leetcode 120 - Triangle [M] <br/>
+**leetcode 120 - Triangle [M]** <br/>
 
 Input: <br/>
 [[2], <br/>
@@ -84,7 +84,7 @@ class Solution(object):
 
 ### dp string
 
-leetcode 115 - Distinct Subsequences [H]
+**leetcode 115 - Distinct Subsequences [H]**  
 
 <img src="https://ha5ha6.github.io/judy_blog/assets/images/115e.png" width="600"/>
 
@@ -108,3 +108,55 @@ class Solution(object):
 
         return dp[-1][-1]
 ```
+
+**leetcode 139 - Word Break [M]**  
+Example 1:  
+Input: s = "leetcode", wordDict = ["leet", "code"] . 
+Output: true . 
+Explanation: Return true because "leetcode" can be segmented as "leet code".  
+
+Example 2:  
+Input: s = "applepenapple", wordDict = ["apple", "pen"]  
+Output: true  
+Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".  
+             Note that you are allowed to reuse a dictionary word.  
+             
+Example 3:  
+Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]  
+Output: false  
+
+Example 1 Solution:  
+Initialization:   
+dp=[T,F,F,F,F,...] (len=len(s)+1)  
+
+            l e e t c o d e
+            0 1 2 3 4 5 6 7 8
+    initial T F F F F F F F F
+    i=4 k=0 T F F F T F F F F
+    i=8 k=4 T F F F T F F F T
+    
+    i=1 k=0 dp[0]=T, s[0:1] not in Dict
+    i=2 k=0 dp[0]=T, s[0:2] not in Dict
+        k=1 dp[1]=F, s[1:2] not in Dict
+    i=3 k=0 dp[0]=T, s[0:3] not in Dict
+        k=1 dp[1]=F, s[1:3] not in Dict
+        k=2 dp[2]=F, s[2:3] not in Dict
+    i=4 k=0 dp[0]=T, s[0:4] 'leet' in Dict -> dp[4]=T
+      ...   
+    i=8 k=4 dp[4]=T, s[4:8] 'code' in Dict -> dp[8]=T
+      ...
+    
+```python  
+class Solution(object):
+    def wordBreak(self, s, wordDict):
+        dp=[False]*(len(s)+1)
+        dp[0]=True
+
+        for i in range(1,len(s)+1):
+            for k in range(i):
+                if dp[k] and s[k:i] in wordDict:
+                    dp[i]=True
+
+        return dp.pop()
+```
+
