@@ -61,7 +61,7 @@ https://time.geekbang.org/column/article/39922
     {% assign categories = page.categories %}
   {% endif %}
   {% for category in categories %}
-  <a href="/categories/#{{category|slugize}}">{{category}}</a>
+  <a href="judy_blog/categories/#{{category|slugize}}">{{category}}</a>
   {% unless forloop.last %}&nbsp;{% endunless %}
   {% endfor %}
 </div>
