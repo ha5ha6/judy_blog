@@ -47,9 +47,9 @@ Explanation: There is a cycle in the linked list, where tail connects to the sec
 Example 2:  
 Input: head = [1,2], pos = 0  
 
-	1->2
-        ^  |
- 	|---
+	  1->2
+      ^  |
+ 	  |---
 	   
 Output: true  
 Explanation: There is a cycle in the linked list, where tail connects to the first node.  
