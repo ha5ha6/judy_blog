@@ -128,6 +128,7 @@ Output: false
 Example 1 Solution:  
 Initialization:   
 dp=[T,F,F,F,F,...] (len=len(s)+1)  
+i is for s[:i]  
 
             l e e t c o d e
             0 1 2 3 4 5 6 7 8
