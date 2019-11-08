@@ -37,20 +37,20 @@ root.next.next.next.next=ListNode(4)
 Example 1:  
 Input: head = [3,2,0,-4], pos = 1  
 
-	    3->2->0->-4
-  	       ^      |
-               |-------
-	   
+    3->2->0->-4
+    ^         |
+    |----------
+  	   
 Output: true  
 Explanation: There is a cycle in the linked list, where tail connects to the second node.  
 
 Example 2:  
 Input: head = [1,2], pos = 0  
 
-	      1->2
-              ^  |
-              |---
-	   
+    1->2
+    ^  |
+    |---
+          
 Output: true  
 Explanation: There is a cycle in the linked list, where tail connects to the first node.  
 
