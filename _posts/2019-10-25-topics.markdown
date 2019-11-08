@@ -216,6 +216,7 @@ Explanation: Note that you are allowed to reuse a dictionary word.
 Example 2 Solution:  
 1. check if s can be broken into dict words  
 2. 
+
     
        dfs('pineapplepenapple',dict,'',res)
            #s[:4]='pine' in dict 
@@ -236,6 +237,7 @@ Example 2 Solution:
                dfs('apple',dict,'pineapple pen ',res)
                    s[:5]='apple' in dict
                    dfs('',dict,'pineapple pen apple',res) <- append res
+                   
                        
 ```python  
 class Solution():
