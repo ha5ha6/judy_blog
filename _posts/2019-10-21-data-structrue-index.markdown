@@ -54,15 +54,14 @@ classes: wide
 
 https://time.geekbang.org/column/article/39922
 
-{% if page.id and page.related and site.related_posts.size > 0 %}
-  <div class="page___related">
-    {% if site.data.ui-text[site.locale].related_label %}
-      <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
-    {% endif %}
-    <div class="grid__wrapper">
-      {% for post in site.related_posts limit:3 %}
-        {% include archive-single.html type="grid" %}
-      {% endfor %}
-    </div>
-  </div>
-{% endif %}
+<div class="post-categories">
+  {% if post %}
+    {% assign categories = post.categories %}
+  {% else %}
+    {% assign categories = page.categories %}
+  {% endif %}
+  {% for category in categories %}
+  <a href="{{site.baseurl}}/categories/#{{category|slugize}}">{{category}}</a>
+  {% unless forloop.last %}&nbsp;{% endunless %}
+  {% endfor %}
+</div>
