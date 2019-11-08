@@ -111,12 +111,12 @@ class Solution(object):
 
 **leetcode 139 - Word Break [M]**  
 Example 1:  
-Input: s = "leetcode", wordDict = ["leet", "code"] . 
-Output: true . 
+Input: s = "leetcode", wordDict = ["leet", "code"]   
+Output: true   
 Explanation: Return true because "leetcode" can be segmented as "leet code".  
 
 Example 2:  
-Input: s = "applepenapple", wordDict = ["apple", "pen"]  
+Input: s = "applepenapple", wordDict = ["apple", "pen"]   
 Output: true  
 Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".  
              Note that you are allowed to reuse a dictionary word.  
