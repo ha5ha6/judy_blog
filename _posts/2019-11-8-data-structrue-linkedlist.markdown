@@ -73,9 +73,9 @@ class Solution(object):
         return False
 ```
 
-**leetcode 142 - Linked List Cycle II [E] - return cycle head**  
+**leetcode 142 - Linked List Cycle II [M] - return cycle head**  
 Given a linked list, return the node where the cycle begins. If there is no cycle, return null.  
-![](https://ha5ha6.github.io/judy_blog/assets/images/142.png)
+![](https://ha5ha6.github.io/judy_blog/assets/images/142.png)  
 Solution:  
 1. let fast (2 steps) and slow (1 step) meet  
 2. put fast back to the head   
