@@ -70,7 +70,12 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/02/others-bit-manipulation.html",
         "teaser":null},{
         "title": "Data Structure 3 - linked list",
-        "excerpt":"Definition class ListNode(): def __init__(self,x): self.val=x self.next=None #create linked list root=ListNode(0) root.next=ListNode(1) root.next.next=ListNode(2) root.next.next.next=ListNode(3) root.next.next.next.next=ListNode(4) Remove n Partition leetcode 19 - Remove Nth Node From End of List [M] leetcode 83 - Remove Duplicates from Sorted List [E] leetcode 82 - Remove Duplicates from Sorted List II [M] leetcode 86...","categories": ["Programming"],
+        "excerpt":"Definition class ListNode(): def __init__(self,x): self.val=x self.next=None #create linked list head=ListNode(0) head.next=ListNode(1) head.next.next=ListNode(2) head.next.next.next=ListNode(3) head.next.next.next.next=ListNode(4) Remove leetcode 19 - Remove Nth Node From End of List [M] Given a linked list, remove the n-th node from the end of list and return its head. Example: Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and...","categories": ["Programming"],
         "tags": [],
         "url": "http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist.html",
+        "teaser":null},{
+        "title": "Paper Reading - CoRL 2019",
+        "excerpt":"MPC   Deep Value Model Predictive Control  ","categories": ["LiteratureReview"],
+        "tags": [],
+        "url": "http://localhost:4000/literaturereview/2019/11/11/paper-reading-corl.html",
         "teaser":null}]
