@@ -62,14 +62,14 @@ def minDepth(self, root):
 leetcode 94 - Binary Tree Inorder Traversal [M] <br/>
 leetcode 102 - Binary Tree Level Order Traversal [M] <br/>
 leetcode 103 - Binary Tree Zigzag Level Order Traversal [M] <br/>
-leetcode 107 - Binary Tree Level Order Traversal II [E]
+leetcode 107 - Binary Tree Level Order Traversal II [E]  
+leetcode 144 - Binary Tree Preorder Traversal [M]  
+leetcode 145 - Binary Tree Postorder Traversal [H]  
 ```python      
 class BinaryTreeTraversal():
     #leetcode 94
     def inorder(self,root):
         res=[]
-        if not root:
-            return res
         self.dfs(root,res)
         return res
 
@@ -106,6 +106,32 @@ class BinaryTreeTraversal():
         return res
         #leetcode 107
         #return res[::-1]
+
+    #leetcode 144
+    def preorder(self,root):
+        res=[]
+        self.dfs(root,res)
+        return res
+
+    def dfs(self,node,res):
+        if not node:
+            return
+        res.append(node.val)
+        self.dfs(node.left,res)
+        self.dfs(node.right,res)
+
+    #leetcode 145
+    def postorder(self,root):
+        res=[]
+        self.dfs(root,res)
+        return res
+
+    def dfs(self,node,res):
+        if not node:
+            return
+        self.dfs(node.left,res)
+        self.dfs(node.right,res)
+        res.append(node.val)
 ```
 ![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg)
 ### Construction
