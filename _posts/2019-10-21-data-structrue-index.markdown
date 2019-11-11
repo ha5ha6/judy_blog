@@ -4,6 +4,9 @@ title:  "Data Structure Index"
 date:   2019-10-21 16:43:25 +0900
 related: true
 categories: Programming
+tags:
+  - index
+  - data structure
 author:  Jiexin Wang
 author_profile: true
 classes: wide
