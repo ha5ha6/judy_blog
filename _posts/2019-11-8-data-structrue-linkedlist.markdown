@@ -371,15 +371,9 @@ Example 1:
 Input: head = [3,2,0,-4], pos = 1  
 
     3->2->0->-4
-<<<<<<< HEAD
        ^      |
        |-------
 
-=======
-    　　^      |
-    　　|-------
-  	   
->>>>>>> 033c71486562d99ff81cc232b1777d1fb439ad5b
 Output: true  
 Explanation: There is a cycle in the linked list, where tail connects to the second node.  
 
