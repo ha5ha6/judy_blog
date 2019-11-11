@@ -5,6 +5,12 @@ title:  "Data Structure 4 - string"
 date:   2019-10-26 12:23:25 +0900
 related: true
 categories: Programming
+tags:
+  #- Index
+  - Data Structure
+  - String
+  - Palindrome
+  - Dfs
 author:  Jiexin Wang
 classes:  wide
 toc: true
