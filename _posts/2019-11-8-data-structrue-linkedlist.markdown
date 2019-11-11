@@ -169,7 +169,69 @@ class Solution():
 
 ### Partition
 
-**leetcode 86 - Partition List II [M]**  
+**leetcode 86 - Partition List [M]**  
+Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x. You should preserve the original relative order of the nodes in each of the two partitions.  
+
+Example:  
+Input: head = 1->4->3->2->5->2, x = 3  
+Output: 1->2->2->4->3->5  
+
+Solution:  
+put all nodes less than x into the front and the rest remains the origin  
+1. create two dummy heads, lesser_head and greater_head, and point l and g to them  
+2. put p to head, if p.val<x, put it to l.next, else put it to g.next  
+3. merge two lists, g->None, l->greater_head.next
+
+
+        lesser_head ->1->4->3->2->5->2
+        greater_head->1->4->3->2->5->2  x=3
+             l,g      p                 if 1<x l->p l=p
+         lesser_head->1
+                      l
+                    ->1->4->3->2->5->2
+                         p              if 4>=x g->p g=p
+        greater_head->4
+                      g
+                    ->1->4->3->2->5->2
+                            p           if 3>=x g->p g=p
+        greater_head->4->3
+                         g
+                    ->1->4->3->2->5->2
+                               p        if 2<x l->p l=p
+         lesser_head->1->2
+                         l
+                    ->1->4->3->2->5->2
+                                  p     if 5>=x g->p g=p
+        greater_head->4->3->5
+                            g
+                    ->1->4->3->2->5->2
+                                     p  if 2<x l->p l=p
+         lesser_head->1->2->2
+                            l           l->greader_head.next g->None                                   
+        lesser_head->1->2->2->4->3->5->N (result)
+        
+```python
+class Solution():
+    def partition(self,head,target):
+        l_head=l=ListNode(0)
+        g_head=g=ListNode(0)
+        p=head
+
+        while p:
+            if p.val<target:
+                l.next=p
+                l=p #or l=l.next
+            else:
+                g.next=p
+                g=p #or g=g.next
+
+            p=node.next
+
+        g.next=None
+        l.next=g_head.next
+
+        return l_head.next
+```
 
 ### Merge  
 
