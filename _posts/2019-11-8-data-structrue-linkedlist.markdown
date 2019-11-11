@@ -79,9 +79,93 @@ class Solution():
         return dummy.next
 ```
 
-**leetcode 83 - Remove Duplicates from Sorted List [E]**  
+**leetcode 83 - Remove Duplicates from Sorted List [E] - remove one dup**  
+Given a sorted linked list, delete all duplicates such that each element appear only once.  
+Example 2:  
+Input: 1->1->2->3->3  
+Output: 1->2->3  
 
-**leetcode 82 - Remove Duplicates from Sorted List II [M]**  
+Solution:  
+1. put p at head  
+2. while p and p.next: p=p.next, p stop at the end  
+
+
+        1->1->2->3->3
+        p              p->p.next if p.val==p.next.val
+        1->2->3->3 
+        p              p=p.next if p.val!=p.next.val
+        1->2->3->3 
+           p           p=p.next if p.val!=p.next.val
+        1->2->3->3 
+              p        p->p.next if p.val==p.next.val
+        1->2->3->N
+              p     
+
+```python
+class Solution():
+    def deleteDuplicates(self, head):
+        p=head
+        while p and p.next:
+            if p.val==p.next.val:
+                p.next=p.next.next
+            else:
+                p=p.next
+                
+        return head
+```
+
+**leetcode 82 - Remove Duplicates from Sorted List II [M] - remove all dups**  
+Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.  
+Example 1:  
+Input: 1->2->3->3->4->4->5  
+Output: 1->2->5  
+
+Example 2:  
+Input: 1->1->1->2->3  
+Output: 2->3  
+
+Solution:  
+1. create dummy cuz might delete head  
+2. create pre (p) start from dummy always ahead of cur (c)  
+3. find c.val==c.next.val, move c to next  
+4. check p.next is still c, if not p->c.next (delete all dups)  
+
+
+        dummy->1->2->3->3->4->4->5
+          p    c                   p=p.next if c==p.next
+        dummy->1->2->3->3->4->4->5  
+               p  c                p=p.next if c==p.next
+        dummy->1->2->3->3->4->4->5  
+                  p  c             c=c.next if c.val==c.next.val
+        dummy->1->2->3->3->4->4->5
+                  p     c          p->c.next if c!=p.next
+       =dummy->1->2->4->4->5          
+                  p  c             c=c.next if c.val==c.next.val
+        dummy->1->2->4->4->5          
+                  p     c          p->c.next if c!=p.next
+       =dummy->1->2->5
+                  p  c             p=p.next if c==p.next
+        dummy->1->2->5
+                     p
+ 
+ 
+```python
+class Solution():
+    def deleteDuplicates(self, head):
+        dummy=ListNode(0)
+        dummy.next=head
+        pre=dummy
+        while pre.next:
+            cur=pre.next
+            while cur.next and cur.val==cur.next.val:
+                cur=cur.next
+            if cur==pre.next:
+                pre=pre.next
+            else:
+                pre.next=cur.next
+                
+        return dummy.next
+```
 
 ### Partition
 
