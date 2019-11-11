@@ -28,7 +28,7 @@ root.next.next.next=ListNode(3)
 root.next.next.next.next=ListNode(4)
 ```   
 
-### Remove n Partition
+### Remove  
 
 **leetcode 19 - Remove Nth Node From End of List [M]**  
 
@@ -36,8 +36,9 @@ root.next.next.next.next=ListNode(4)
 
 **leetcode 82 - Remove Duplicates from Sorted List II [M]**  
 
-**leetcode 86 - Partition List II [M]**  
+### Partition
 
+**leetcode 86 - Partition List II [M]**  
 
 ### Merge  
 
@@ -111,9 +112,11 @@ class Solution(object):
         return dummy.next
 ```
 
-### Swap n Rotate
+### Swap  
 
 **leetcode 24 - Swap Nodes in Pairs [M]**  
+
+### Rotate  
 
 **leetcode 61 - Rotate List [M]**  
 
