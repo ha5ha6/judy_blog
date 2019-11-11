@@ -208,7 +208,7 @@ put all nodes less than x into the front and the rest remains the origin
                                      p  if 2<x l->p l=p
          lesser_head->1->2->2
                             l           l->greader_head.next g->None                                   
-        lesser_head->1->2->2->4->3->5->N (result)
+         lesser_head->1->2->2->4->3->5->N (result)
         
 ```python
 class Solution():
