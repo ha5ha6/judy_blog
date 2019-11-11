@@ -112,11 +112,9 @@ class Solution(object):
         return dummy.next
 ```
 
-### Swap  
+### Swap n Rotate
 
 **leetcode 24 - Swap Nodes in Pairs [M]**  
-
-### Rotate  
 
 **leetcode 61 - Rotate List [M]**  
 
