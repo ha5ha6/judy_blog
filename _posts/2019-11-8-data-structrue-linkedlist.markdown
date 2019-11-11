@@ -21,16 +21,63 @@ class ListNode():
         self.next=None
 
 #create linked list
-root=ListNode(0)
-root.next=ListNode(1)
-root.next.next=ListNode(2)
-root.next.next.next=ListNode(3)
-root.next.next.next.next=ListNode(4)
+head=ListNode(0)
+head.next=ListNode(1)
+head.next.next=ListNode(2)
+head.next.next.next=ListNode(3)
+head.next.next.next.next=ListNode(4)
 ```   
 
 ### Remove  
 
 **leetcode 19 - Remove Nth Node From End of List [M]**  
+Given a linked list, remove the n-th node from the end of list and return its head.  
+Example:  
+Given linked list: 1->2->3->4->5, and n = 2.  
+After removing the second node from the end, the linked list becomes 1->2->3->5.  
+
+Consider:  
+1. whether n is valid node, what if n>len of list?  
+2. **what if deleting the head? -> use dummy**   
+3. how about if it's a cycled linked list? -> not clear  
+
+Solution:  
+1. create dummy head  
+2. find the node needs to be deleted using fast and slow pointers (rabbit turtle race)  
+3. fast goes first, then slow and fast go together  
+Note:  
+while fast.next: fast=fast.next -> fast stop at the last node, cuz fast.next is None   
+4. slow->slow.next.next  
+
+
+        dummy->1->2->3->4->5 n=2
+         s,f
+        dummy->1->2->3->4->5
+                  f
+        dummy->1->2->3->4->5
+                     s     f
+                     s->s.next.next
+       =dummy->1->2->3->5
+            
+            
+```python
+class Solution():
+    def removeNthfromEnd(self,head,n):
+        dummy=ListNode(0)
+        dummy.next=head
+        slow=fast=dummy
+        
+        for i in range(n):
+            fast=fast.next
+        
+        while fast.next:
+            fast=fast.next
+            slow=slow.next
+            
+        slow.next=slow.next.next
+        
+        return dummy.next
+```
 
 **leetcode 83 - Remove Duplicates from Sorted List [E]**  
 
