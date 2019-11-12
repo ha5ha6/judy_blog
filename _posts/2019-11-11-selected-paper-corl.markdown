@@ -48,7 +48,7 @@ critic: a value function learner
 the MPC actor interacts with env and collects samples to update Value critic  
 the Terminal Cost of MPC is determined by the estimated Value critic
 
-![](/assets/images/DMPC.png){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/DMPC.png){:width="80%"}
 
 - Contribution  
 (1) an in-depth analysis of the bilateral effect of DMPC  
