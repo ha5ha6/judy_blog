@@ -70,6 +70,11 @@ the estimation of the robot dynamic model is usually performed offline, therefor
 
 - Goal  
 use a linear MPC, but designed a procedure for learning the inverse dynamic model  
+learn the unmodeled dynamics to improve the feedback linearization process without the use of any joint torque measurements, which __are known to be noisy__  
+
+
+
+
 
 
 
