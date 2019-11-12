@@ -123,9 +123,9 @@ typically adopt an open-loop execution of a planned grasp can cause failures inc
 
 - Closed-loop grasping  
 continuously adjusting the robot's dofs to improve the quality of the current grasp based on sensory feedback  
-(+) enables the robot to correct the initial grasp to achieve ever higher pick-up success rates, given an approximately correct initial grasp post
+(+) enables the robot to correct the initial grasp to achieve ever higher pick-up success rates, given an approximately correct initial grasp post  
 (-) requires a sensor modality that is free of external disturbances and accurate state of the current grasp  
-__therefore, vision info (RGB,RGB-D) is difficult to use due to vision occlusion__
+__therefore, vision info (RGB,RGB-D) is difficult to use due to vision occlusion__  
 -> **Tactile info!!**
 
 - Closed-loop grasping requires
