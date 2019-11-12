@@ -102,7 +102,7 @@ during trajectory optimization the curious iLQR attempts to minimize both the ta
 - Motivation: Model-based promise and challenge    
 (+) sample-efficiency  
 (-) the learned model generalizes beyond the specific tasks used to learn it   
--> the curiosity/exploration can help  
+-> **the curiosity/exploration can help!!**  
 
 - Curiosity definition  
 motivation to resolve uncertainty in the env  
