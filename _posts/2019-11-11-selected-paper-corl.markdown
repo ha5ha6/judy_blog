@@ -34,13 +34,11 @@ MPC truncates the time horizon of the task, continually shifts the shortened hor
 (4) heavily relies on the differentiability of the formulation   
 (5) hard to deal with sparse and non-continuous reward/cost signals  
 
-- DRL advantage  
-(1) good in long-horizon tasks with sparse rewards  
-(2) even in continuous control domain  
-
-- DRL disadvantage  
-(1) requires enormous data  
-(2) suffers from the exploration-exploitation dilemma  
+- DRL advantage and disadvantage
+(+) good in long-horizon tasks with sparse rewards  
+(+) even in continuous control domain   
+(-) requires enormous data  
+(-) suffers from the exploration-exploitation dilemma  
 
 - DMPC - an actor-critic approach <-proposed method  
 actor: an MPC policy  
@@ -113,9 +111,20 @@ motivation to resolve uncertainty in the env
 by seeking out uncertainties, a robot is able to learn a model faster and therefore achieve lower costs more quickly  
 
 
+### MAT: Multi-Fingered Adaptive Tactile Grasping via Deep Reinforcement Learning  
+
+- Vision-based grasping problems  
+typically adopt an open-loop execution of a planned grasp can cause failures including   
+(1) ubiquitous calibration error  
+(2) recovery from a failed grasp is difficult by visual occlusion  
+
+- MAT <- proposed method  
+a tactile closed-loop method capable of realizing grasps provided by a coarse initial positioning of the hand above an object  
+a DRL policy optimized through the clipped surrogate objective within a maximum entropy RL framework to balance exploitation and exploration   
 
 
 
+### Refs
 
 - MPC refs in robotics:  
 [1] K. Alexis, C. Papachristos, G. Nikolakopoulos, and A. Tzes. Model predictive quadrotor in- door position control. In 2011 19th Mediterranean Conference on Control Automation (MED), pages 1247–1252, June 2011. doi:10.1109/MED.2011.5983144.  
