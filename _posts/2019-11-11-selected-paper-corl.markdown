@@ -136,16 +136,19 @@ __therefore, vision info (RGB,RGB-D) is difficult to use due to vision occlusion
 a tactile closed-loop method capable of realizing grasps provided by a coarse initial positioning of the hand above an object  
 (1) allows to learn grasp action primitives in a generative manner via maximum entropy deep RL  
 **action primitives** include  
-  (i) decisions of granular movements of each of the fingers, lifting the end-effector for pick-up  
-  (ii) reopening the fingers and adjusting the end-effector position and orientation  
-(2)
+i) decisions of granular movements of each of the fingers, lifting the end-effector for pick-up  
+ii) reopening the fingers and adjusting the end-effector position and orientation  
+(2) MAT overcomes the transfer from sim2real in a high fidelity way by choosing observation and action modalities that maintain small sim2real gaps to real world, such as joint angles, binary tactile contacts, tactile contact Cartesian locations, etc  
+
+- Maximum entropy DRL difficulty
+requires high sample complexity and training experiences that are diverse in terms of object types, quantities, poses, and clutter levels  
+therefore direct learning/transfer learning in real-world becomes difficult  
 
 - Features of MAT  
 (1) use tactile and proprioceptive info  
 (2) 5 finger motions and larger regrasp movements   
 (3) a novel curriculum of action motion magnitude  
 (4) careful selection of features that exhibit small sim-to-real gaps
-
 
 
 ### Refs
