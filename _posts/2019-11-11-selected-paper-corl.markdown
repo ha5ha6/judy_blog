@@ -56,7 +56,22 @@ the Terminal Cost of MPC is determined by the estimated Value critic
 (3) transform an initially stochastic task into a deterministic optimal control problem  
 (4) empirically validate that defining a running cost instead of the heuristic function accelerates the convergence of the value function, which makes DMPC good at sparse reward function   
 
-### Feedback Linearization Control without Torque Measurements  
+### An Online Learning Procedure for Feedback Linearization Control without Torque Measurements  
+
+- Motivation  
+the estimation of the robot dynamic model is usually performed offline, therefore, changes in the structural parameters will restart the identification procedure from scratch, especially during robot's interaction with other objects (i.e. payloads to the end-effector, collision detection, reaction strategies adopted during motion)
+
+- Related Approaches - using regression  
+(1) direct dynamic model learning - how the system, given its actual state, responds to a certain input, i.e.   
+  - learn the transition probability model [10]  
+  - reconstruct the system nonlinear dynamics with GP [12]  
+  - use a regressor as predictive model for nonlinear MPC [13]    
+(2) inverse dynamic model learning - estimating the input that needs to be given to the system in order to achieve a certain desired new state  
+
+- Goal  
+use a linear MPC, but designed a procedure for learning the inverse dynamic model  
+
+
 
 
 
@@ -64,3 +79,15 @@ the Terminal Cost of MPC is determined by the estimated Value critic
 [1] K. Alexis, C. Papachristos, G. Nikolakopoulos, and A. Tzes. Model predictive quadrotor in- door position control. In 2011 19th Mediterranean Conference on Control Automation (MED), pages 1247–1252, June 2011. doi:10.1109/MED.2011.5983144.  
 [2] F.Farshidian,E.Jelavic,A.Satapathy,M.Giftthaler,andJ.Buchli.Real-timemotionplanning of legged robots: A model predictive control approach. In Humanoids, pages 577–584, 2017. doi:10.1109/HUMANOIDS.2017.8246930.  
 [3] J. Koenemann, A. D. Prete, Y. Tassa, E. Todorov, O. Stasse, M. Bennewitz, and N. Mansard. Whole-body model-predictive control applied to the hrp-2 humanoid. In IROS, pages 3346– 3351, 2015.  
+
+- Learning direct dynamics model by regression refs:  
+[10] M.Deisenroth,D.Fox,andC.EdwardRasmussen.Gaussianprocessesfordata-efficientlearn- ing in robotics and control. IEEE Transactions on Pattern Analysis and Machine Intelligence, 37:408–423, 02 2015. doi:10.1109/TPAMI.2013.218.  
+[11] S. Kamthe and M. Deisenroth. Data-efficient reinforcement learning with probabilistic model predictive control. In Proc. of the International Conference on Artificial Intelligence and Statis- tics (AISTATS), 2018.  
+[12] F. Berkenkamp and A. P. Schoellig. Safe and robust learning control with gaussian processes. In 2015 European Control Conference (ECC), pages 2496–2501, July 2015. doi:10.1109/ECC. 2015.7330913.  
+[13] C. Ostafew, A. Schoellig, and T. D. Barfoot. Robust constrained learning-based NMPC en- abling reliable mobile robot path tracking. The International Journal of Robotics Research, 35, 05 2016. doi:10.1177/0278364916645661.  
+
+- Learning inverse dynamics model by regression refs:  
+[14] Z. Shareef, P. Mohammadi, and J. Steil. Improving the inverse dynamics model of the KUKA LWR IV+ using independent joint learning. IFAC-PapersOnLine, 49(21), 09 2016.  
+[15] T. Waegeman, F. Wyffels, and B. Schrauwen. Feedback control by online learning an inverse model. Neural Networks and Learning Systems, IEEE Transactions on, 23:1637–1648, 10 2012. doi:10.1109/TNNLS.2012.2208655.  
+[16] J. Umlauft, T. Beckers, M. Kimmel, and S. Hirche. Feedback linearization using gaussian processes. In 2017 IEEE 56th Annual Conference on Decision and Control (CDC), pages 5249–5255, Dec 2017. doi:10.1109/CDC.2017.8264435.  
+[17] D. Nguyen-Tuong, M. Seeger, and J. Peters. Computed torque control with nonparametric regression models. In 2008 American Control Conference, pages 212–217, June 2008. doi: 10.1109/ACC.2008.4586493.  
