@@ -56,7 +56,7 @@ the Terminal Cost of MPC is determined by the estimated Value critic
 (3) transform an initially stochastic task into a deterministic optimal control problem  
 (4) empirically validate that defining a running cost instead of the heuristic function accelerates the convergence of the value function, which makes DMPC good at sparse reward function   
 
-### An Online Learning Procedure for Feedback Linearization Control without Torque Measurements  
+### Feedback Linearization Control without Torque Measurements  
 
 
 
