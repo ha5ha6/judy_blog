@@ -134,8 +134,11 @@ __therefore, vision info (RGB,RGB-D) is difficult to use due to vision occlusion
 
 - MAT <- proposed method  
 a tactile closed-loop method capable of realizing grasps provided by a coarse initial positioning of the hand above an object  
-(1) allows to learn grasp primitives in a generative manner via maximum entropy deep RL  
-  
+(1) allows to learn grasp action primitives in a generative manner via maximum entropy deep RL  
+**action primitives** include  
+  (i) decisions of granular movements of each of the fingers, lifting the end-effector for pick-up  
+  (ii) reopening the fingers and adjusting the end-effector position and orientation  
+(2)
 
 - Features of MAT  
 (1) use tactile and proprioceptive info  
