@@ -5,6 +5,12 @@ title:  "Data Structure 9 - binary search tree"
 date:   2019-10-21 23:18:25 +0900
 related: true
 categories: Programming
+tags:
+  #- Index
+  - Data Structure
+  - Tree
+  - Binary Search Tree
+  - Recursion
 author:  Jiexin Wang
 classes:  wide
 toc: true

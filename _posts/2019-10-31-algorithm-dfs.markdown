@@ -5,6 +5,12 @@ title:  "ALgorithms 4 - depth first traversal"
 date:   2019-10-31 12:56:25 +0900
 related: true
 categories: Programming
+tags:
+  #- Index
+  - Algorithms
+  - Dfs
+  - Palindrome
+  - Recursion
 author:  Jiexin Wang
 classes:  wide
 toc: true

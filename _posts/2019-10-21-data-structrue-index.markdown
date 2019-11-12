@@ -7,9 +7,6 @@ categories: Programming
 tags:
   - Index
   - Data Structure
-  - Algorithms
-  - Others
-  - Topics
 author:  Jiexin Wang
 author_profile: true
 classes: wide

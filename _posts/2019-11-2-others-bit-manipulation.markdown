@@ -5,6 +5,9 @@ title:  "OThers 2 - bit manipulation"
 date:   2019-11-2 15:23:25 +0900
 related: true
 categories: Programming
+tags:
+  #- Index
+  - Others
 author:  Jiexin Wang
 classes:  wide
 toc: true

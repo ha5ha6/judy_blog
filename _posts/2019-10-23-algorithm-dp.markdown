@@ -5,6 +5,10 @@ title:  "ALgorithms 6 - dynamic programming"
 date:   2019-10-23 20:48:25 +0900
 related: true
 categories: Programming
+tags:
+  #- Index
+  - Algorithms
+  - DP
 author:  Jiexin Wang
 classes:  wide
 author_profile: true
@@ -120,7 +124,7 @@ Input: s = "applepenapple", wordDict = ["apple", "pen"]
 Output: true  
 Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".  
              Note that you are allowed to reuse a dictionary word.  
-             
+
 Example 3:  
 Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]  
 Output: false  
@@ -135,7 +139,7 @@ i is for s[:i]
     initial T F F F F F F F F
     i=4 k=0 T F F F T F F F F
     i=8 k=4 T F F F T F F F T
-    
+
     i=1 k=0 dp[0]=T, s[0:1] not in Dict
     i=2 k=0 dp[0]=T, s[0:2] not in Dict
         k=1 dp[1]=F, s[1:2] not in Dict
@@ -146,7 +150,7 @@ i is for s[:i]
       ...   
     i=8 k=4 dp[4]=T, s[4:8] 'code' in Dict -> dp[8]=T
       ...
-    
+
 ```python  
 class Solution(object):
     def wordBreak(self, s, wordDict):
@@ -160,4 +164,3 @@ class Solution(object):
 
         return dp.pop()
 ```
-

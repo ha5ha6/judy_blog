@@ -5,6 +5,13 @@ title:  "Topics"
 date:   2019-10-25 15:58:25 +0900
 related: true
 categories: Programming
+tags:
+  #- Index
+  - MinMax
+  - Bfs
+  - Dfs
+  - DP
+  - Recursion
 author:  Jiexin Wang
 classes:  wide
 author_profile: true
@@ -215,11 +222,11 @@ Explanation: Note that you are allowed to reuse a dictionary word.
 
 Example 2 Solution:  
 1. check if s can be broken into dict words  
-2. 
+2.
 
-    
+
          |dfs('pineapplepenapple',dict,'',res)
-             |#s[:4]='pine' in dict 
+             |#s[:4]='pine' in dict
              |dfs('applepenapple',dict,'pine ',res)
                  |*s[:5]='apple' in dict
                  |dfs('penapple',dict,'pine apple ',res)
@@ -237,15 +244,15 @@ Example 2 Solution:
                  |dfs('apple',dict,'pineapple pen ',res)
                      |s[:5]='apple' in dict
                      |dfs('',dict,'pineapple pen apple',res) <- append res
-                   
-                       
+
+
 ```python  
 class Solution():
     def wordBreak(self, s, wordDict):
         res = []
         self.dfs(s, wordDict, '', res)
         return res
-        
+
     def check(self, s, dict):
         dp = [False for i in range(len(s)+1)]
         dp[0] = True
@@ -254,10 +261,10 @@ class Solution():
                 if dp[k] and s[k:i] in dict:
                     dp[i] = True
         return dp.pop()
-        
+
     def dfs(self, s, dict, stringlist, res):
         if self.check(s, dict):
-            if not s: 
+            if not s:
                 res.append(stringlist[1:])
             for i in range(1, len(s)+1):
                 if s[:i] in dict:

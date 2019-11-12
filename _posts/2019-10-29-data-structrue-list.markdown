@@ -5,6 +5,10 @@ title:  "Data Structure 1 - list"
 date:   2019-10-29 11:46:25 +0900
 related: true
 categories: Programming
+tags:
+  #- Index
+  - Data Structure
+  - List
 author:  Jiexin Wang
 classes:  wide
 toc: true

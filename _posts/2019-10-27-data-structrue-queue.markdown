@@ -5,6 +5,10 @@ title:  "Data Structure 6 - queue"
 date:   2019-10-27 22:27:25 +0900
 related: true
 categories: Programming
+tags:
+  #- Index
+  - Data Structure
+  - Queue
 author:  Jiexin Wang
 classes:  wide
 toc: true

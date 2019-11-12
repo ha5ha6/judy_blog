@@ -1,6 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-11T18:16:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Paper Reading - CoRL 2019</title><link href="http://localhost:4000/literaturereview/2019/11/11/paper-reading-corl.html" rel="alternate" type="text/html" title="Paper Reading - CoRL 2019" /><published>2019-11-11T18:01:25+09:00</published><updated>2019-11-11T18:01:25+09:00</updated><id>http://localhost:4000/literaturereview/2019/11/11/paper-reading-corl</id><content type="html" xml:base="http://localhost:4000/literaturereview/2019/11/11/paper-reading-corl.html">&lt;h3 id=&quot;mpc&quot;&gt;MPC&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-11T23:01:15+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Selected Papers - CoRL 2019</title><link href="http://localhost:4000/literaturereview/2019/11/11/selected-paper-corl.html" rel="alternate" type="text/html" title="Selected Papers - CoRL 2019" /><published>2019-11-11T18:01:25+09:00</published><updated>2019-11-11T18:01:25+09:00</updated><id>http://localhost:4000/literaturereview/2019/11/11/selected-paper-corl</id><content type="html" xml:base="http://localhost:4000/literaturereview/2019/11/11/selected-paper-corl.html">&lt;h3 id=&quot;deep-value-model-predictive-control&quot;&gt;Deep Value Model Predictive Control&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;Deep Value Model Predictive Control&lt;/strong&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><summary type="html">MPC</summary></entry><entry><title type="html">Data Structure 3 - linked list</title><link href="http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist.html" rel="alternate" type="text/html" title="Data Structure 3 - linked list" /><published>2019-11-08T17:26:25+09:00</published><updated>2019-11-08T17:26:25+09:00</updated><id>http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Motivation  &lt;br /&gt;
+the sparsity of the reward and potential non-differentiability rule out the possibility of using Trajectory Optimization (TO)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Goal &lt;br /&gt;
+combine model-based and sample-based approaches to exploit the knowledge of the system dynamics while effectively exploring the env&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;MPC - a model-based Trajectory Optimization approach&lt;br /&gt;
+MPC truncates the time horizon of the task, continually shifts the shortened horizon forward, and optimizes the state-input traj based on new state measurements&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;MPC disadvantage&lt;br /&gt;
+(1) relatively high computational cost&lt;br /&gt;
+(2) the optimization time horizon is often kept short  &lt;br /&gt;
+(3) therefore, prevents it from finding temporally global solutions  &lt;br /&gt;
+(4) heavily relies on the differentiability of the formulation &lt;br /&gt;
+(5) hard to deal with sparse and non-continuous reward/cost signals&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;DRL advantage&lt;br /&gt;
+(1) good in long-horizon tasks with sparse rewards&lt;br /&gt;
+(2) even in continuous control domain&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;DRL disadvantage&lt;br /&gt;
+(1) requires enormous data&lt;br /&gt;
+(2) suffers from the exploration-exploitation dilemma&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;DMPC - an actor-critic approach &amp;lt;-proposed method&lt;br /&gt;
+actor: an MPC policy&lt;br /&gt;
+critic: a value function learner&lt;br /&gt;
+the MPC actor interacts with env and collects samples to update Value critic&lt;br /&gt;
+the Terminal Cost of MPC is determined by the estimated Value critic&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/DMPC.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Contribution&lt;br /&gt;
+(1) an in-depth analysis of the bilateral effect of DMPC&lt;br /&gt;
+(2) show that the MPC actor is an importance sampler that minimizes an upper bound of the cross-entropy to the state traj distribution of the optimal sampling policy&lt;br /&gt;
+(3) transform an initially stochastic task into a deterministic optimal control problem&lt;br /&gt;
+(4) empirically validate that defining a running cost instead of the heuristic function accelerates the convergence of the value function, which makes DMPC good at sparse reward function&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;an-online-learning-procedure-for-feedback-linearization-control-without-torque-measurements&quot;&gt;An Online Learning Procedure for Feedback Linearization Control without Torque Measurements&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MPC refs in robotics:&lt;br /&gt;
+[1] K. Alexis, C. Papachristos, G. Nikolakopoulos, and A. Tzes. Model predictive quadrotor in- door position control. In 2011 19th Mediterranean Conference on Control Automation (MED), pages 1247–1252, June 2011. doi:10.1109/MED.2011.5983144.&lt;br /&gt;
+[2] F.Farshidian,E.Jelavic,A.Satapathy,M.Giftthaler,andJ.Buchli.Real-timemotionplanning of legged robots: A model predictive control approach. In Humanoids, pages 577–584, 2017. doi:10.1109/HUMANOIDS.2017.8246930.&lt;br /&gt;
+[3] J. Koenemann, A. D. Prete, Y. Tassa, E. Todorov, O. Stasse, M. Bennewitz, and N. Mansard. Whole-body model-predictive control applied to the hrp-2 humanoid. In IROS, pages 3346– 3351, 2015.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jiexin Wang</name></author><category term="MPC" /><category term="Reinforcement Learning" /><summary type="html">Deep Value Model Predictive Control</summary></entry><entry><title type="html">Data Structure 3 - linked list</title><link href="http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist.html" rel="alternate" type="text/html" title="Data Structure 3 - linked list" /><published>2019-11-08T17:26:25+09:00</published><updated>2019-11-08T17:26:25+09:00</updated><id>http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -57,16 +114,16 @@ while fast.next: fast=fast.next -&amp;gt; fast stop at the last node, cuz fast.n
         &lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;
-        
+
         &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
-        
+
         &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
-            
+
         &lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
-        
+
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -84,11 +141,11 @@ Output: 1-&amp;gt;2-&amp;gt;3&lt;/p&gt;
 
     &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;3
  p              p-&amp;gt;p.next if p.val==p.next.val
- 1-&amp;gt;2-&amp;gt;3-&amp;gt;3 
+ 1-&amp;gt;2-&amp;gt;3-&amp;gt;3
  p              p=p.next if p.val!=p.next.val
- 1-&amp;gt;2-&amp;gt;3-&amp;gt;3 
+ 1-&amp;gt;2-&amp;gt;3-&amp;gt;3
     p           p=p.next if p.val!=p.next.val
- 1-&amp;gt;2-&amp;gt;3-&amp;gt;3 
+ 1-&amp;gt;2-&amp;gt;3-&amp;gt;3
        p        p-&amp;gt;p.next if p.val==p.next.val
  1-&amp;gt;2-&amp;gt;3-&amp;gt;N
        p     
@@ -104,7 +161,7 @@ Output: 1-&amp;gt;2-&amp;gt;3&lt;/p&gt;
                 &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
             &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
-                
+
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -159,7 +216,7 @@ Output: 2-&amp;gt;3&lt;/p&gt;
                 &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
             &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
-                
+
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -713,7 +770,7 @@ Merge sort: split list in half, sort halves and merge&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;find mid using fast and slow&lt;/li&gt;
   &lt;li&gt;merge two sorted lists&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Jiexin Wang</name></author><summary type="html">Definition</summary></entry><entry><title type="html">OThers 2 - bit manipulation</title><link href="http://localhost:4000/programming/2019/11/02/others-bit-manipulation.html" rel="alternate" type="text/html" title="OThers 2 - bit manipulation" /><published>2019-11-02T15:23:25+09:00</published><updated>2019-11-02T15:23:25+09:00</updated><id>http://localhost:4000/programming/2019/11/02/others-bit-manipulation</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/02/others-bit-manipulation.html">&lt;h3 id=&quot;python-operation&quot;&gt;Python Operation&lt;/h3&gt;
+&lt;/ol&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Linked List" /><category term="Pointers" /><summary type="html">Definition</summary></entry><entry><title type="html">OThers 2 - bit manipulation</title><link href="http://localhost:4000/programming/2019/11/02/others-bit-manipulation.html" rel="alternate" type="text/html" title="OThers 2 - bit manipulation" /><published>2019-11-02T15:23:25+09:00</published><updated>2019-11-02T15:23:25+09:00</updated><id>http://localhost:4000/programming/2019/11/02/others-bit-manipulation</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/02/others-bit-manipulation.html">&lt;h3 id=&quot;python-operation&quot;&gt;Python Operation&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;
     &lt;p&gt;‘&amp;amp;’, and, for carrying（进位）&lt;/p&gt;
@@ -877,14 +934,14 @@ goal: a?b?a?a=b&lt;/p&gt;
 
 &lt;h3 id=&quot;ref&quot;&gt;REF&lt;/h3&gt;
 
-&lt;p&gt;https://www.cnblogs.com/JYNNO1/p/10525649.html&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><summary type="html">Python Operation ‘&amp;amp;’, and, for carrying（进位）</summary></entry><entry><title type="html">Data Structure 10 - graph</title><link href="http://localhost:4000/programming/2019/11/01/data-structrue-graph.html" rel="alternate" type="text/html" title="Data Structure 10 - graph" /><published>2019-11-01T15:18:25+09:00</published><updated>2019-11-01T15:18:25+09:00</updated><id>http://localhost:4000/programming/2019/11/01/data-structrue-graph</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/01/data-structrue-graph.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
+&lt;p&gt;https://www.cnblogs.com/JYNNO1/p/10525649.html&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Others" /><summary type="html">Python Operation ‘&amp;amp;’, and, for carrying（进位）</summary></entry><entry><title type="html">Data Structure 10 - graph</title><link href="http://localhost:4000/programming/2019/11/01/data-structrue-graph.html" rel="alternate" type="text/html" title="Data Structure 10 - graph" /><published>2019-11-01T15:18:25+09:00</published><updated>2019-11-01T15:18:25+09:00</updated><id>http://localhost:4000/programming/2019/11/01/data-structrue-graph</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/01/data-structrue-graph.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 
 &lt;h3 id=&quot;graph&quot;&gt;graph&lt;/h3&gt;
 
 &lt;p&gt;**leetcode 133 - Clone Graph [M] **&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><summary type="html">Definition</summary></entry><entry><title type="html">ALgorithms 4 - depth first traversal</title><link href="http://localhost:4000/programming/2019/10/31/algorithm-dfs.html" rel="alternate" type="text/html" title="ALgorithms 4 - depth first traversal" /><published>2019-10-31T12:56:25+09:00</published><updated>2019-10-31T12:56:25+09:00</updated><id>http://localhost:4000/programming/2019/10/31/algorithm-dfs</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/31/algorithm-dfs.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Graph" /><summary type="html">Definition</summary></entry><entry><title type="html">ALgorithms 4 - depth first traversal</title><link href="http://localhost:4000/programming/2019/10/31/algorithm-dfs.html" rel="alternate" type="text/html" title="ALgorithms 4 - depth first traversal" /><published>2019-10-31T12:56:25+09:00</published><updated>2019-10-31T12:56:25+09:00</updated><id>http://localhost:4000/programming/2019/10/31/algorithm-dfs</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/31/algorithm-dfs.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 
 &lt;h3 id=&quot;string&quot;&gt;String&lt;/h3&gt;
 
@@ -970,7 +1027,7 @@ Output: &lt;br /&gt;
             &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
             &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
                 &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><summary type="html">Definition</summary></entry><entry><title type="html">Data Structure 2 - matrix</title><link href="http://localhost:4000/programming/2019/10/29/data-structrue-matrix.html" rel="alternate" type="text/html" title="Data Structure 2 - matrix" /><published>2019-10-29T15:18:25+09:00</published><updated>2019-10-29T15:18:25+09:00</updated><id>http://localhost:4000/programming/2019/10/29/data-structrue-matrix</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/29/data-structrue-matrix.html">&lt;h3 id=&quot;python-operation&quot;&gt;Python Operation&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Algorithms" /><category term="Dfs" /><category term="Palindrome" /><category term="Recursion" /><summary type="html">Definition</summary></entry><entry><title type="html">Data Structure 2 - matrix</title><link href="http://localhost:4000/programming/2019/10/29/data-structrue-matrix.html" rel="alternate" type="text/html" title="Data Structure 2 - matrix" /><published>2019-10-29T15:18:25+09:00</published><updated>2019-10-29T15:18:25+09:00</updated><id>http://localhost:4000/programming/2019/10/29/data-structrue-matrix</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/29/data-structrue-matrix.html">&lt;h3 id=&quot;python-operation&quot;&gt;Python Operation&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;2 variables in for loop&lt;/li&gt;
 &lt;/ol&gt;
@@ -1048,7 +1105,7 @@ border O and adjacent border O cannot be flipped&lt;/p&gt;
                     &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'X'&lt;/span&gt;
                 &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'T'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
                     &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'O'&lt;/span&gt;              
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><summary type="html">Python Operation 2 variables in for loop</summary></entry><entry><title type="html">Data Structure 1 - list</title><link href="http://localhost:4000/programming/2019/10/29/data-structrue-list.html" rel="alternate" type="text/html" title="Data Structure 1 - list" /><published>2019-10-29T11:46:25+09:00</published><updated>2019-10-29T11:46:25+09:00</updated><id>http://localhost:4000/programming/2019/10/29/data-structrue-list</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/29/data-structrue-list.html">&lt;h3 id=&quot;python-operation&quot;&gt;Python Operation&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Matrix" /><category term="Board Game" /><category term="2D Array" /><summary type="html">Python Operation 2 variables in for loop</summary></entry><entry><title type="html">Data Structure 1 - list</title><link href="http://localhost:4000/programming/2019/10/29/data-structrue-list.html" rel="alternate" type="text/html" title="Data Structure 1 - list" /><published>2019-10-29T11:46:25+09:00</published><updated>2019-10-29T11:46:25+09:00</updated><id>http://localhost:4000/programming/2019/10/29/data-structrue-list</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/29/data-structrue-list.html">&lt;h3 id=&quot;python-operation&quot;&gt;Python Operation&lt;/h3&gt;
 
 &lt;h3 id=&quot;find-sequence&quot;&gt;Find Sequence&lt;/h3&gt;
 
@@ -1169,7 +1226,7 @@ Say&lt;/p&gt;
                 &lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><summary type="html">Python Operation</summary></entry><entry><title type="html">Data Structure 6 - queue</title><link href="http://localhost:4000/programming/2019/10/27/data-structrue-queue.html" rel="alternate" type="text/html" title="Data Structure 6 - queue" /><published>2019-10-27T22:27:25+09:00</published><updated>2019-10-27T22:27:25+09:00</updated><id>http://localhost:4000/programming/2019/10/27/data-structrue-queue</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/27/data-structrue-queue.html">&lt;h3 id=&quot;python-operation&quot;&gt;Python Operation&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="List" /><summary type="html">Python Operation</summary></entry><entry><title type="html">Data Structure 6 - queue</title><link href="http://localhost:4000/programming/2019/10/27/data-structrue-queue.html" rel="alternate" type="text/html" title="Data Structure 6 - queue" /><published>2019-10-27T22:27:25+09:00</published><updated>2019-10-27T22:27:25+09:00</updated><id>http://localhost:4000/programming/2019/10/27/data-structrue-queue</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/27/data-structrue-queue.html">&lt;h3 id=&quot;python-operation&quot;&gt;Python Operation&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;collections.deque&lt;/strong&gt; - &lt;a href=&quot;https://www.geeksforgeeks.org/deque-in-python/&quot;&gt;geeksforgeeks&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -1178,7 +1235,7 @@ Say&lt;/p&gt;
   &lt;li&gt;O(1) time complexity for &lt;strong&gt;append and pop&lt;/strong&gt; as list is O(n)&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;```python&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><summary type="html">Python Operation</summary></entry><entry><title type="html">ALgorithms 4 - breadth first traversal</title><link href="http://localhost:4000/programming/2019/10/27/algorithm-bfs.html" rel="alternate" type="text/html" title="ALgorithms 4 - breadth first traversal" /><published>2019-10-27T21:45:25+09:00</published><updated>2019-10-27T21:45:25+09:00</updated><id>http://localhost:4000/programming/2019/10/27/algorithm-bfs</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/27/algorithm-bfs.html">&lt;h3 id=&quot;bfs-graph&quot;&gt;bfs graph&lt;/h3&gt;
+&lt;p&gt;```python&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Queue" /><summary type="html">Python Operation</summary></entry><entry><title type="html">ALgorithms 4 - breadth first traversal</title><link href="http://localhost:4000/programming/2019/10/27/algorithm-bfs.html" rel="alternate" type="text/html" title="ALgorithms 4 - breadth first traversal" /><published>2019-10-27T21:45:25+09:00</published><updated>2019-10-27T21:45:25+09:00</updated><id>http://localhost:4000/programming/2019/10/27/algorithm-bfs</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/27/algorithm-bfs.html">&lt;h3 id=&quot;bfs-graph&quot;&gt;bfs graph&lt;/h3&gt;
 
 &lt;p&gt;normally use queue&lt;/p&gt;
 
@@ -1187,7 +1244,7 @@ Say&lt;/p&gt;
 &lt;p&gt;(string) leetcode 127 - word ladder [M] &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topic-series.html&quot;&gt;see topic series&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><summary type="html">bfs graph</summary></entry><entry><title type="html">Data Structure 4 - string</title><link href="http://localhost:4000/programming/2019/10/26/data-structrue-string.html" rel="alternate" type="text/html" title="Data Structure 4 - string" /><published>2019-10-26T12:23:25+09:00</published><updated>2019-10-26T12:23:25+09:00</updated><id>http://localhost:4000/programming/2019/10/26/data-structrue-string</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/26/data-structrue-string.html">&lt;h3 id=&quot;python-operation&quot;&gt;Python Operation&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Algorithms" /><category term="Bfs" /><summary type="html">bfs graph</summary></entry><entry><title type="html">Data Structure 4 - string</title><link href="http://localhost:4000/programming/2019/10/26/data-structrue-string.html" rel="alternate" type="text/html" title="Data Structure 4 - string" /><published>2019-10-26T12:23:25+09:00</published><updated>2019-10-26T12:23:25+09:00</updated><id>http://localhost:4000/programming/2019/10/26/data-structrue-string</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/26/data-structrue-string.html">&lt;h3 id=&quot;python-operation&quot;&gt;Python Operation&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -1234,4 +1291,4 @@ Output: false&lt;/p&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;news&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;news&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;leetcode 131 - Palindrome Partitioning [M] - dfs&lt;/strong&gt; see &lt;a href=&quot;&quot;&gt;dfs&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><summary type="html">Python Operation</summary></entry></feed>
+&lt;p&gt;&lt;strong&gt;leetcode 131 - Palindrome Partitioning [M] - dfs&lt;/strong&gt; see &lt;a href=&quot;&quot;&gt;dfs&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="String" /><category term="Palindrome" /><category term="Dfs" /><summary type="html">Python Operation</summary></entry></feed>

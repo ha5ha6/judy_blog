@@ -5,6 +5,10 @@ title:  "ALgorithms 4 - breadth first traversal"
 date:   2019-10-27 21:45:25 +0900
 related: true
 categories: Programming
+tags:
+  #- Index
+  - Algorithms
+  - Bfs
 author:  Jiexin Wang
 classes:  wide
 author_profile: true

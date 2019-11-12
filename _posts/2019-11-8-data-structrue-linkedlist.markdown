@@ -5,6 +5,11 @@ title:  "Data Structure 3 - linked list"
 date:   2019-11-8 17:26:25 +0900
 related: true
 categories: Programming
+tags:
+  #- Index
+  - Data Structure
+  - Linked List
+  - Pointers
 author:  Jiexin Wang
 classes:  wide
 toc: true
@@ -58,24 +63,24 @@ while fast.next: fast=fast.next -> fast stop at the last node, cuz fast.next is 
                      s     f
                      s->s.next.next
        =dummy->1->2->3->5
-            
-            
+
+
 ```python
 class Solution():
     def removeNthfromEnd(self,head,n):
         dummy=ListNode(0)
         dummy.next=head
         slow=fast=dummy
-        
+
         for i in range(n):
             fast=fast.next
-        
+
         while fast.next:
             fast=fast.next
             slow=slow.next
-            
+
         slow.next=slow.next.next
-        
+
         return dummy.next
 ```
 
@@ -92,11 +97,11 @@ Solution:
 
         1->1->2->3->3
         p              p->p.next if p.val==p.next.val
-        1->2->3->3 
+        1->2->3->3
         p              p=p.next if p.val!=p.next.val
-        1->2->3->3 
+        1->2->3->3
            p           p=p.next if p.val!=p.next.val
-        1->2->3->3 
+        1->2->3->3
               p        p->p.next if p.val==p.next.val
         1->2->3->N
               p     
@@ -110,7 +115,7 @@ class Solution():
                 p.next=p.next.next
             else:
                 p=p.next
-                
+
         return head
 ```
 
@@ -147,8 +152,8 @@ Solution:
                   p  c             p=p.next if c==p.next
         dummy->1->2->5
                      p
- 
- 
+
+
 ```python
 class Solution():
     def deleteDuplicates(self, head):
@@ -163,7 +168,7 @@ class Solution():
                 pre=pre.next
             else:
                 pre.next=cur.next
-                
+
         return dummy.next
 ```
 
@@ -209,7 +214,7 @@ put all nodes less than x into the front and the rest remains the origin
          lesser_head->1->2->2
                             l           l->greader_head.next g->None                                   
          lesser_head->1->2->2->4->3->5->N (result)
-        
+
 ```python
 class Solution():
     def partition(self,head,target):
