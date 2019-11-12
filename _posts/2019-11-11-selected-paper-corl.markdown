@@ -83,7 +83,10 @@ affected by high level noise, typically higher than the noise added to the measu
 (2) therefore, can obtain a reliable estimate of dynamic uncertainties  
 
 - Problem formulation  
-<a href="https://www.codecogs.com/eqnedit.php?latex=M(q)\ddot{q}&plus;\eta(q,\dot{q})=\tau" target="_blank"><img src="https://latex.codecogs.com/gif.latex?M(q)\ddot{q}&plus;\eta(q,\dot{q})=\tau" title="M(q)\ddot{q}+\eta(q,\dot{q})=\tau" /></a>
+![](https://ha5ha6.github.io/judy_blog/assets/images/onlineFL1.png){:width="80%"}
+
+![](https://ha5ha6.github.io/judy_blog/assets/images/onlineFL2.png){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/onlineFL3.png){:width="80%"}
 
 
 
