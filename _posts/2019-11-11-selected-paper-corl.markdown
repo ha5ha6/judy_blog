@@ -61,7 +61,7 @@ the Terminal Cost of MPC is determined by the estimated Value critic
 - Motivation  
 the estimation of the robot dynamic model is usually performed offline, therefore, changes in the structural parameters will restart the identification procedure from scratch, especially during robot's interaction with other objects (i.e. payloads to the end-effector, collision detection, reaction strategies adopted during motion)
 
-- Related Approaches - using regression  
+- Related approaches - using regression  
 (1) direct dynamic model learning - how the system, given its actual state, responds to a certain input, i.e.   
   [10] learn the transition probability model  
   [12] reconstruct the system nonlinear dynamics with GP   
@@ -71,6 +71,20 @@ the estimation of the robot dynamic model is usually performed offline, therefor
 - Goal  
 use a linear MPC, but designed a procedure for learning the inverse dynamic model  
 learn the unmodeled dynamics to improve the feedback linearization process without the use of any joint torque measurements, which __are known to be noisy__  
+
+- Proposed method  
+a method to reconstruct dynamic model uncertainties and parameters variations by means of an online Gaussian Process Regression
+
+- Torque measurements problem  
+affected by high level noise, typically higher than the noise added to the measures coming from the encoders which return joint positions
+
+- Contribution  
+(1) shows it is possible to improve the model by exploiting only joint position measures without the need of any joint torque data  
+(2) therefore, can obtain a reliable estimate of dynamic uncertainties  
+
+- Problem formulation  
+
+
 
 
 
