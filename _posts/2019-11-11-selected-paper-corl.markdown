@@ -102,12 +102,15 @@ MBRL combines Bayesian modeling of the system dynamics with iLQR, an iterative L
 during trajectory optimization the curious iLQR attempts to minimize both the task-dependent cost and the uncertainty in the dynamics models
 
 - Motivation: Model-based promise and challenge    
-(+) sample-efficiency
-(-) the learned model generalizes beyond the specific tasks used to learn it  
--> the curiosity/exploration can help
+(+) sample-efficiency  
+(-) the learned model generalizes beyond the specific tasks used to learn it   
+-> the curiosity/exploration can help  
 
-- Curiosity definition
-motivation to resolve uncertainty in the env
+- Curiosity definition  
+motivation to resolve uncertainty in the env  
+
+- Hypothesis  
+by seeking out uncertainties, a robot is able to learn a model faster and therefore achieve lower costs more quickly  
 
 
 
