@@ -116,11 +116,29 @@ by seeking out uncertainties, a robot is able to learn a model faster and theref
 - Vision-based grasping problems  
 typically adopt an open-loop execution of a planned grasp can cause failures including   
 (1) ubiquitous calibration error  
-(2) recovery from a failed grasp is difficult by visual occlusion  
+(2) grasp slip  
+(3) low friction  
+(4) adversarial object shapes  
+(5) recovery from a failed grasp is difficult by visual occlusion  
+
+- Closed-loop grasping  
+continuously adjusting the robot's dofs to improve the quality of the current grasp based on sensory feedback  
+(+) enables the robot to correct the initial grasp to achieve ever higher pick-up success rates, given an approximately correct initial grasp post
+(-) requires a sensor modality that is free of external disturbances and accurate state of the current grasp  
+__therefore, vision info (RGB,RGB-D) is difficult to use due to vision occlusion__
+-> **Tactile info!!**
+
+- Closed-loop grasping requires
 
 - MAT <- proposed method  
 a tactile closed-loop method capable of realizing grasps provided by a coarse initial positioning of the hand above an object  
 a DRL policy optimized through the clipped surrogate objective within a maximum entropy RL framework to balance exploitation and exploration   
+
+- Features of MAT  
+(1) use tactile and proprioceptive info  
+(2) 5 finger motions and larger regrasp movements   
+(3) a novel curriculum of action motion magnitude  
+(4) careful selection of features that exhibit small sim-to-real gaps
 
 
 
