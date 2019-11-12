@@ -14,7 +14,7 @@ classes: wide
 
 ### Data Structure
 
-1.	[list](/judy_blog/programming/2019/10/29/data-structrue-list.html)
+1.	[list](/programming/2019/10/29/data-structrue-list.html)
 2.	[matrix](/programming/2019/10/29/data-structrue-matrix.html)
 3.	[linked list](/programming/2019/11/08/data-structrue-linkedlist.html)
 4.	[string](/programming/2019/10/26/data-structrue-string.html)
