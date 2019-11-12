@@ -66,7 +66,7 @@ the estimation of the robot dynamic model is usually performed offline, therefor
   - learn the transition probability model [10]  
   - reconstruct the system nonlinear dynamics with GP [12]  
   - use a regressor as predictive model for nonlinear MPC [13]    
-
+- 
 (2) inverse dynamic model learning - estimating the input that needs to be given to the system in order to achieve a certain desired new state  
 
 - Goal  
