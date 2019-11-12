@@ -128,11 +128,14 @@ continuously adjusting the robot's dofs to improve the quality of the current gr
 __therefore, vision info (RGB,RGB-D) is difficult to use due to vision occlusion__  
 -> **Tactile info!!**
 
-- Closed-loop grasping requires
+- Tactile merits  
+(1) rich in info with many sensor cells on each finger  
+(2) free of external disturbances   
 
 - MAT <- proposed method  
 a tactile closed-loop method capable of realizing grasps provided by a coarse initial positioning of the hand above an object  
-a DRL policy optimized through the clipped surrogate objective within a maximum entropy RL framework to balance exploitation and exploration   
+(1) allows to learn grasp primitives in a generative manner via maximum entropy deep RL  
+  
 
 - Features of MAT  
 (1) use tactile and proprioceptive info  
