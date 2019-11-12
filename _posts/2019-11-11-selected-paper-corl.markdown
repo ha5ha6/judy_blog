@@ -81,7 +81,7 @@ affected by high level noise, typically higher than the noise added to the measu
 - Problem formulation  
 ![](https://ha5ha6.github.io/judy_blog/assets/images/onlineFL1.png){:width="80%"}
 
-- Learning Procedure
+- Learning procedure
 
 ![](https://ha5ha6.github.io/judy_blog/assets/images/onlineFL2.png){:width="80%"}
 ![](https://ha5ha6.github.io/judy_blog/assets/images/onlineFL3.png){:width="80%"}
