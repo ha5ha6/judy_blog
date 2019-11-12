@@ -78,24 +78,22 @@ a method to reconstruct dynamic model uncertainties and parameters variations by
 - Torque measurements problem  
 affected by high level noise, typically higher than the noise added to the measures coming from the encoders which return joint positions
 
-- Contribution  
-(1) shows it is possible to improve the model by exploiting only joint position measures without the need of any joint torque data  
-(2) therefore, can obtain a reliable estimate of dynamic uncertainties  
-
 - Problem formulation  
 ![](https://ha5ha6.github.io/judy_blog/assets/images/onlineFL1.png){:width="80%"}
+
+- Learning Procedure
 
 ![](https://ha5ha6.github.io/judy_blog/assets/images/onlineFL2.png){:width="80%"}
 ![](https://ha5ha6.github.io/judy_blog/assets/images/onlineFL3.png){:width="80%"}
 
-
-
-
-
-
-
-
-
+- Contribution  
+(1) a new approach for online learning the exact FL of a manipulator while executing a predefined task    
+(2) the method is composed by a dataset collection procedure designed to reconstruct the unmodeled dynamics   
+(3) and by a controller that computes the commanding joint torques according to a desired trajectory  
+(4) small dataset -> employ GP regression to learn the unmodeled dynamics  
+(5) the Controllability Gramian is used for computing the joint's accelerations   
+(6) shows it is possible to improve the model by exploiting only joint position measures without the need of any joint torque data  
+(7) therefore, can obtain a reliable estimate of dynamic uncertainties  
 
 - MPC refs in robotics:  
 [1] K. Alexis, C. Papachristos, G. Nikolakopoulos, and A. Tzes. Model predictive quadrotor in- door position control. In 2011 19th Mediterranean Conference on Control Automation (MED), pages 1247–1252, June 2011. doi:10.1109/MED.2011.5983144.  
