@@ -95,6 +95,25 @@ affected by high level noise, typically higher than the noise added to the measu
 (6) shows it is possible to improve the model by exploiting only joint position measures without the need of any joint torque data  
 (7) therefore, can obtain a reliable estimate of dynamic uncertainties  
 
+### Curious iLQR: Resolving Uncertainty in Model-based RL  
+
+- MBRL framework with curious iLQR <- proposed method  
+MBRL combines Bayesian modeling of the system dynamics with iLQR, an iterative LQR approach that considers model uncertainty  
+during trajectory optimization the curious iLQR attempts to minimize both the task-dependent cost and the uncertainty in the dynamics models
+
+- Motivation: Model-based promise and challenge    
+(+) sample-efficiency
+(-) the learned model generalizes beyond the specific tasks used to learn it  
+-> the curiosity/exploration can help
+
+- Curiosity definition
+motivation to resolve uncertainty in the env
+
+
+
+
+
+
 - MPC refs in robotics:  
 [1] K. Alexis, C. Papachristos, G. Nikolakopoulos, and A. Tzes. Model predictive quadrotor in- door position control. In 2011 19th Mediterranean Conference on Control Automation (MED), pages 1247–1252, June 2011. doi:10.1109/MED.2011.5983144.  
 [2] F.Farshidian,E.Jelavic,A.Satapathy,M.Giftthaler,andJ.Buchli.Real-timemotionplanning of legged robots: A model predictive control approach. In Humanoids, pages 577–584, 2017. doi:10.1109/HUMANOIDS.2017.8246930.  
