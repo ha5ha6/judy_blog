@@ -30,7 +30,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/25/topics.html",
         "teaser":null},{
         "title": "Data Structure 4 - string",
-        "excerpt":"Python Operation check if char is alphabet/alphabet or numeric/numeric s=’abc123’ s.isalpha() -&gt; False s.isalnum() -&gt; True s.isnumeric() -&gt; False remove white spaces before and after s=’ lajdflak ‘ s.strip() #remove both s.lstrip() #remove left s.rstrip() #remove right swtich to upper case and lower case s=’aBcDeFg’ s.lower() -&gt; s=’abcdefg’ s.upper() -&gt;...","categories": ["Programming"],
+        "excerpt":"Python Operation check if char is alphabet/alphabet or numeric/numeric s='abc123' s.isalpha() -&gt; False s.isalnum() -&gt; True s.isnumeric() -&gt; False remove white spaces before and after s=' lajdflak ' s.strip() #remove both s.lstrip() #remove left s.rstrip() #remove right swtich to upper case and lower case s='aBcDeFg' s.lower() -&gt; s='abcdefg' s.upper() -&gt;...","categories": ["Programming"],
         "tags": ["Data Structure","String","Palindrome","Dfs"],
         "url": "http://localhost:4000/programming/2019/10/26/data-structrue-string.html",
         "teaser":null},{
@@ -88,4 +88,14 @@ var store = [{
         "excerpt":"collections.defaultdict from collections import defaultdict #int s = 'mississippi' d = defaultdict(int) for k in s: d[k] += 1 sorted(d.items()) &gt;&gt;[('i', 4), ('m', 1), ('p', 2), ('s', 4)] #list s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)] d = defaultdict(list) for k, v in s: d[k].append(v)...","categories": ["Programming"],
         "tags": ["Data Structure","Python Collections","Queue","Hash Table"],
         "url": "http://localhost:4000/programming/2019/11/12/data-structrue-python-collections.html",
+        "teaser":null},{
+        "title": "Data Structure 5 - stack",
+        "excerpt":"Definition Parentheses leetcode 20 - Valid Parentheses [E] - hashtable + stack Example 1: Input: “()” Output: true Example 2: Input: “()[]{}” Output: true Example 3: Input: “(]” Output: false Example 4: Input: “([)]” Output: false Example 5: Input: “{[]}” Output: true Solution: make a dict={‘(‘:’)’,’[’:’]’,’{‘:’}’} if meet left ‘({[’,...","categories": ["Programming"],
+        "tags": ["Data Structure","Stack","Calculator","Hash Table","Parentheses"],
+        "url": "http://localhost:4000/programming/2019/11/13/data-structrue-stack.html",
+        "teaser":null},{
+        "title": "ALgorithms 5 - back tracking",
+        "excerpt":"Definition   Parentheses   leetcode 22 - Generate Parentheses [M]  Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.   For example, given n = 3, a solution set is:  [”((()))”,    “(()())”,    “(())()”,    “()(())”,    “()()()”]  ","categories": ["Programming"],
+        "tags": ["Algorithms","Back Tracking","Parentheses","Recursion"],
+        "url": "http://localhost:4000/programming/2019/11/13/algorithm-backtracking.html",
         "teaser":null}]

@@ -84,4 +84,42 @@ Prepare:
 1. dict count - check [Data Structure 11 - python built-in collections](http://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-collections.html#collectionsdefaultdict)
 2. greatest common divisor - check [Greatest Common Divisor](http://ha5ha6.github.io/judy_blog/programming/2019/11/12/others-math.html##greatest-common-divisor)
 
-Solution:  
+Example 2 Solution:  
+1. skip the same points and dup count+=1  
+2. check the gcd (delta) of dx,dy,    
+first point [1,1] - each leftover [3,2],[5,3],[4,1],[2,3],[1,4]  
+second point [3,2] - each leftover [5,3],[4,1],[2,3],[1,4]   
+...  
+3. put line points (dx/delta,dy/delta) into dict counter  
+4. record max res and return  
+
+```python
+from collections import defaultdict
+class Solution():
+    def maxPoints(self,inputs):
+        res=0
+        for i in range(len(inputs)):
+            lines=defaultdict(int)
+            dups=1
+            for j in range(i+1,len(inputs)):
+                #check and filter dups
+                if inputs[i][0]==inputs[j][0] and inputs[i][1]==inputs[j][1]:
+                    dups+=1
+                    continue
+
+                #calculate dx,dy,delta
+                dx=inputs[j][0]-inputs[i][0]
+                dy=inputs[j][1]-inputs[i][1]
+                delta=self.gcd(dx,dy)
+
+                #dict counter + 1 same line
+                lines[(dx/delta,dy/delta)]+=1
+
+            res=max(res,(max(lines.values()) if lines else 0)+dups)
+
+        return res
+
+    def gcd(self,x,y):
+
+        return x if y==0 else self.gcd(y,x%y)
+```
