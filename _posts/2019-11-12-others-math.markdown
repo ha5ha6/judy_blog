@@ -19,11 +19,33 @@ toc_label: "Index"
 author_profile: true
 ---
 
-### Python built-in
+### Greatest Common Divisor  
 
-**collections.defaultdict()**  
+Example:  
+gcd(2,4) -> 2  
+gcd(3,0) -> 3  
+gcd(-5,-10) -> -5  
 
-shrinkable dict list?
+```python
+#loop
+def gcd(x,y):
+    while y:
+        x,y=y,x%y
+
+    return x
+
+#recursive
+def gcd(x,y):
+    if y==0:
+        return x
+    else:
+        gcd(y,x%y)
+
+#one line
+max([x for x in range(1,a+1) if a%x==0 and b%x==0])
+#or
+[x for x in range(1,a+1) if a % x ==0 and b % x ==0][-1]
+```
 
 ### Cartesian coordinate
 
@@ -56,3 +78,10 @@ Output: 4
         1  |  o        o
            -------------------->
            0  1  2  3  4  5  6
+
+
+Prepare:  
+1. dict count - check [Data Structure 11 - python built-in collections](http://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-collections.html#collectionsdefaultdict)
+2. greatest common divisor - check [Greatest Common Divisor](http://ha5ha6.github.io/judy_blog/programming/2019/11/12/others-math.html##greatest-common-divisor)
+
+Solution:  

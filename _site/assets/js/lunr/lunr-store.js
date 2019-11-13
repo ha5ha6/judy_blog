@@ -80,12 +80,12 @@ var store = [{
         "url": "http://localhost:4000/literaturereview/2019/11/11/selected-paper-corl.html",
         "teaser":null},{
         "title": "OThers 1 - math",
-        "excerpt":"Python built-in collections.defaultdict() shrinkable dict list? Cartesian coordinate leetcode 149 Max Points on a Line [H] - greatest common divisor + dict count Given n points on a 2D plane, find the maximum number of points that lie on the same straight line Example 1: Input:[[1,1],[2,2],[3,3]] Output: 3 ^ 4...","categories": ["Programming"],
+        "excerpt":"Greatest Common Divisor Example: gcd(2,4) -&gt; 2 gcd(3,0) -&gt; 3 gcd(-5,-10) -&gt; -5 #loop def gcd(x,y): while y: x,y=y,x%y return x #recursive def gcd(x,y): if y==0: return x else: gcd(y,x%y) #one line max([x for x in range(1,a+1) if a%x==0 and b%x==0]) #or [x for x in range(1,a+1) if a %...","categories": ["Programming"],
         "tags": ["Others","Point","Greatest Common Divisor","Python Collections","Hash Table"],
         "url": "http://localhost:4000/programming/2019/11/12/others-math.html",
         "teaser":null},{
         "title": "Data Structure 11 - python built-in collections",
-        "excerpt":"collections.defaultdict   collections.deque   collections.deque - geeksforgeeks     a generalization of stacks and queues   preferred over list when quicker append and pop from both the ends of container are needed   O(1) time complexity for append and pop as list is O(n)   ```python  ","categories": ["Programming"],
+        "excerpt":"collections.defaultdict from collections import defaultdict #int s = 'mississippi' d = defaultdict(int) for k in s: d[k] += 1 sorted(d.items()) &gt;&gt;[('i', 4), ('m', 1), ('p', 2), ('s', 4)] #list s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)] d = defaultdict(list) for k, v in s: d[k].append(v)...","categories": ["Programming"],
         "tags": ["Data Structure","Python Collections","Queue","Hash Table"],
         "url": "http://localhost:4000/programming/2019/11/12/data-structrue-python-collections.html",
         "teaser":null}]
