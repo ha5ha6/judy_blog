@@ -18,13 +18,13 @@ classes: wide
 2.	[matrix](https://ha5ha6.github.io/judy_blog/programming/2019/10/29/data-structrue-matrix.html)
 3.	[linked list](https://ha5ha6.github.io/judy_blog/programming/2019/11/08/data-structrue-linkedlist.html)
 4.	[string](https://ha5ha6.github.io/judy_blog/programming/2019/10/26/data-structrue-string.html)
-5.	stack
+5.	[stack](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html)
 6.	[queue](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/data-structrue-queue.html), priority queue
 7.	heap
 8.	hash table
 9.	tree: [tree basic](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-tree.html), [binary search tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html), [tree + linked list](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/data-structrue-tree-linkedlist.html), segment tree
 10. [graph](https://ha5ha6.github.io/judy_blog/programming/2019/11/01/data-structrue-graph.html)
-11. python built-in collections
+11. [python built-in collections](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-collections.html)
 
 ### ALgorithms
 
@@ -32,13 +32,13 @@ classes: wide
 2.	binary search
 3.	greedy
 4.  [dfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/31/algorithm-dfs.html), [bfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/algorithm-bfs.html)
-5.	back tracking
+5.	[back tracking](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html)
 6.	[dynamic programming](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html)
 7.	divide and conquer
 
 ### OThers
 
-1.	math
+1.	[math](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/others-math.html)
 2.	[bit manipulation](https://ha5ha6.github.io/judy_blog/programming/2019/11/02/others-bit-manipulation.html)
 3.	regex
 4.	two pointers
