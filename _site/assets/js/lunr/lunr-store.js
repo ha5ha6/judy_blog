@@ -1,6 +1,6 @@
 var store = [{
         "title": "Data Structure Index",
-        "excerpt":"Data Structure list matrix linked list string stack queue, priority queue heap hash table tree: tree basic, binary search tree, tree + linked list, segment tree graph python built-in collections ALgorithms sorting binary search greedy dfs, bfs back tracking dynamic programming divide and conquer OThers math bit manipulation regex two...","categories": ["Programming"],
+        "excerpt":"Data Structure list matrix linked list string stack queue, priority queue heap hash table tree: tree basic, binary search tree, tree + linked list, segment tree graph python collections ALgorithms sorting binary search greedy dfs, bfs back tracking dynamic programming divide and conquer OThers math bit manipulation regex two pointers...","categories": ["Programming"],
         "tags": ["Index","Data Structure"],
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-index.html",
         "teaser":null},{

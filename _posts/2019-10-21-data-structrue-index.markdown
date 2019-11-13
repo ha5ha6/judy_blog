@@ -24,7 +24,7 @@ classes: wide
 8.	hash table
 9.	tree: [tree basic](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-tree.html), [binary search tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html), [tree + linked list](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/data-structrue-tree-linkedlist.html), segment tree
 10. [graph](https://ha5ha6.github.io/judy_blog/programming/2019/11/01/data-structrue-graph.html)
-11. [python built-in collections](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-collections.html)
+11. [python collections](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-collections.html)
 
 ### ALgorithms
 
