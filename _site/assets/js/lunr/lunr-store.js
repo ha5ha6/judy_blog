@@ -1,6 +1,6 @@
 var store = [{
         "title": "Data Structure Index",
-        "excerpt":"Data Structure list matrix linked list string stack queue, priority queue heap hash table tree: tree basic, binary search tree, tree + linked list, segment tree graph ALgorithms sorting binary search greedy dfs, bfs back tracking dynamic programming divide and conquer OThers math bit manipulation regex two pointers minimax memoization...","categories": ["Programming"],
+        "excerpt":"Data Structure list matrix linked list string stack queue, priority queue heap hash table tree: tree basic, binary search tree, tree + linked list, segment tree graph python built-in collections ALgorithms sorting binary search greedy dfs, bfs back tracking dynamic programming divide and conquer OThers math bit manipulation regex two...","categories": ["Programming"],
         "tags": ["Index","Data Structure"],
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-index.html",
         "teaser":null},{
@@ -41,7 +41,7 @@ var store = [{
         "teaser":null},{
         "title": "Data Structure 6 - queue",
         "excerpt":"Python Operation   collections.deque - geeksforgeeks     a generalization of stacks and queues   preferred over list when quicker append and pop from both the ends of container are needed   O(1) time complexity for append and pop as list is O(n)   ```python  ","categories": ["Programming"],
-        "tags": ["Data Structure","Queue"],
+        "tags": ["Data Structure","Queue","Python Collections"],
         "url": "http://localhost:4000/programming/2019/10/27/data-structrue-queue.html",
         "teaser":null},{
         "title": "Data Structure 1 - list",
@@ -78,4 +78,14 @@ var store = [{
         "excerpt":"Deep Value Model Predictive Control Motivation the sparsity of the reward and potential non-differentiability rule out the possibility of using Trajectory Optimization (TO) Goal combine model-based and sample-based approaches to exploit the knowledge of the system dynamics while effectively exploring the env MPC - a model-based Trajectory Optimization approach MPC...","categories": ["LiteratureReview"],
         "tags": ["MPC","Reinforcement Learning"],
         "url": "http://localhost:4000/literaturereview/2019/11/11/selected-paper-corl.html",
+        "teaser":null},{
+        "title": "OThers 1 - math",
+        "excerpt":"Python built-in collections.defaultdict() shrinkable dict list? Cartesian coordinate leetcode 149 Max Points on a Line [H] - greatest common divisor + dict count Given n points on a 2D plane, find the maximum number of points that lie on the same straight line Example 1: Input:[[1,1],[2,2],[3,3]] Output: 3 ^ 4...","categories": ["Programming"],
+        "tags": ["Others","Point","Greatest Common Divisor","Python Collections","Hash Table"],
+        "url": "http://localhost:4000/programming/2019/11/12/others-math.html",
+        "teaser":null},{
+        "title": "Data Structure 11 - python built-in collections",
+        "excerpt":"collections.defaultdict   collections.deque   collections.deque - geeksforgeeks     a generalization of stacks and queues   preferred over list when quicker append and pop from both the ends of container are needed   O(1) time complexity for append and pop as list is O(n)   ```python  ","categories": ["Programming"],
+        "tags": ["Data Structure","Python Collections","Queue","Hash Table"],
+        "url": "http://localhost:4000/programming/2019/11/12/data-structrue-python-collections.html",
         "teaser":null}]

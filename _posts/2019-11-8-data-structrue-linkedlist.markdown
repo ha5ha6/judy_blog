@@ -49,9 +49,8 @@ Consider:
 Solution:  
 1. create dummy head  
 2. find the node needs to be deleted using fast and slow pointers (rabbit turtle race)  
-3. fast goes first, then slow and fast go together  
-Note:  
-while fast.next: fast=fast.next -> fast stop at the last node, cuz fast.next is None   
+3. fast goes first, then slow and fast go together, slow stops at the one before the nth node  
+Note: while fast.next: fast=fast.next -> fast stop at the last node, cuz fast.next is None   
 4. slow->slow.next.next  
 
 
@@ -287,7 +286,7 @@ Input:
 [1->4->5,  
 1->3->4,  
 2->6]  
-Output: 1->1->2->3->4->4=5->6  
+Output: 1->1->2->3->4->4->5->6  
 
 Solution: heapify  
 
@@ -313,12 +312,103 @@ class Solution(object):
 ### Swap n Rotate
 
 **leetcode 24 - Swap Nodes in Pairs [M]**  
+Given a linked list, swap every two adjacent nodes and return its head.  
+Example:  
+Given 1->2->3->4, you should return the list as 2->1->4->3.  
+
+Solution:  
+1. create dummy and pre  
+2. point first (f) to 1 and second (s) to 2  
+3. first->second.next, pre->second, pre.next->first  
+
+
+         dummy->1->2->3->4
+           p    f  s
+                1->3            f->s.next
+         dummy->2               p->s
+           p    2->1->3         p.next->f
+       = dummy->2->1->3->4->N
+                   p  f  s
+                      3->N      f->s.next
+         dummy->2->1->4         p->s
+                   p  4->3->N   p.next->f
+
+
+```python
+class Solution():
+   def swapPairs(self,head):
+       pre=dummy=ListNode(0)
+       dummy.next=head
+       while pre.next and pre.next.next:
+          first=pre.next
+          second=pre.next.next
+
+          first.next=second.next
+          pre.next=second
+          pre.next.next=first
+
+          pre=pre.next.next
+
+       return dummy.next
+```
 
 **leetcode 61 - Rotate List [M]**  
+Given a linked list, rotate the list to the right by k places, where k is non-negative.  
+
+Example 1:  
+Input: 1->2->3->4->5->NULL, k = 2  
+Output: 4->5->1->2->3->NULL  
+Explanation:  
+rotate 1 steps to the right: 5->1->2->3->4->NULL  
+rotate 2 steps to the right: 4->5->1->2->3->NULL  
+
+Example 2:  
+Input: 0->1->2->NULL, k = 4  
+Output: 2->0->1->NULL  
+Explanation:  
+rotate 1 steps to the right: 2->0->1->NULL  
+rotate 2 steps to the right: 1->2->0->NULL  
+rotate 3 steps to the right: 0->1->2->NULL  
+rotate 4 steps to the right: 2->0->1->NULL  
+
+Solution:  
+1. go through the linked list to get the total len    
+2. use fast and slow pointer to find rotate node  
+
+        1->2->3->4->5
+        h     f
+              s     f
+                 4->5->1->2-> f->h
+                 h=s.next
+                 4->5->1->2->3->N s->N
+
+```python
+class Solution():
+   def rotateList(self,head,k):
+       if not head:
+          return
+
+       l=0
+       while head:
+          l+=1
+          head=head.next
+
+       fast,slow=head,head
+       for i in range(k%l):
+          fast=fast.next   #fast stop at 3 if k=2
+
+       while fast.next:
+          slow=slow.next
+          fast=fast.next  #fast stops at 5 slow stops at 3
+
+       fast.next=head
+       head=slow.next
+       slow.next=None
+
+       return head     
+```
 
 ### Reverse
-
-**leetcode 25 - Reverse Nodes in k-Group [H]**  
 
 **leetcode 206 - Reverse Linked List [E]**  
 Example:  
@@ -561,6 +651,60 @@ class Solution():
             second.next,second=first,second.next
 ```
 
+**leetcode 25 - Reverse Nodes in k-Group [H]**  
+Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.  
+
+Example:  
+Given this linked list: 1->2->3->4->5  
+For k = 2, you should return: 2->1->4->3->5 (group in 2)  
+For k = 3, you should return: 3->2->1->4->5 (group in 3, leftover remains)
+
+Solution: put k group in stack and pop!!
+1. create dummy and cur  
+2. point first (f) to 1
+3. for i in range(k): put first node in stack and move first to next   
+4. check len(stack)?=k, if not return dummy.next  
+5. pop node in stack next to dummy, move cur to next  
+6. point cur->first  
+
+
+        dummy->1->2->3->4->5
+          c    f     f       stack=[1,2] len(stack)==k                 
+        dummy->2->1          c->stack.pop()
+                  c
+                  1->3->4->5 c->f
+                     f     f stack=[3,4] len(stack)==k
+                  1->4->3    c->stack.pop()
+                        3->5 c->f
+                             stack=[5]   len(stack)!=k return dummy.next
+
+ ```python
+ class Solution():
+     def reverseKGroup(self,head,k):
+         if not head:
+             return None
+
+         cur=dummy=ListNode(0)
+         first=dummy.next
+         stack=[]
+         while first:
+             for i in range(k):
+                 if first:
+                     stack.append(first)
+                     first=first.next
+
+             if len(stack)!=k:
+                 return dummy.next
+
+             while stack:
+                 cur.next=stack.pop()
+                 cur=cur.next
+
+             cur.next=first
+
+         return dummy.next
+ ```
+
 
 ### Fast n Slow  
 
@@ -707,5 +851,54 @@ def merge_sort(a):
 
     return merge(left,right)
 ```
-1. find mid using fast and slow  
-2. merge two sorted lists  
+
+1. find mid using fast and slow, slow point to mid if odd len, second mid if even len  
+2. cut the first half with p->N  
+3. run new recursive sortList with head and slow as second head  
+4. merge two sorted lists (**leetcode 21**)
+
+
+          5->3->1->2->4       5->3->1->2->4->0->N
+        f,s,p
+             p  s     f             p  s        f
+
+
+```python
+class Solution():
+    def sortList(self,head):
+        if not head or not head.next
+            return head
+
+        pre,fast,slow=head,head,head
+        while fast and fast.next:
+            pre=slow
+            slow=slow.next
+            fast=fast.next.next
+
+        pre.next=None
+
+        l1=self.sortList(head)
+        l2=self.sortList(slow)
+
+        return self.mergeTwoList(l1,l2)
+
+    #leetcode 21
+    def mergeTwoList(self,l1,l2):
+        pre=dummy=ListNode(0)
+        if not l1:
+            return l2
+        if not l2:
+            return l1
+
+        while l1 and l2:
+            if l1.val<l2.val:
+                pre.next=l1
+                l1=l1.next
+            else:
+                pre.next=l2
+                l2=l2.next
+            pre=pre.next
+        pre.next=l1 or l2
+
+        return dummy.next
+```

@@ -1,15 +1,16 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 6 - queue"
-date:   2019-10-27 22:27:25 +0900
+title:  "Data Structure 11 - python built-in collections"
+date:   2019-11-12 23:45:25 +0900
 related: true
 categories: Programming
 tags:
   #- Index
   - Data Structure
-  - Queue
   - Python Collections
+  - Queue
+  - Hash Table
 author:  Jiexin Wang
 classes:  wide
 toc: true
@@ -17,7 +18,9 @@ toc_label: "Index"
 author_profile: true
 ---
 
-### Python Operation
+### collections.defaultdict
+
+### collections.deque
 
 **collections.deque** - [geeksforgeeks](https://www.geeksforgeeks.org/deque-in-python/)  
 1. a generalization of **stacks and queues**  

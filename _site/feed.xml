@@ -1,4 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-11T23:01:15+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Selected Papers - CoRL 2019</title><link href="http://localhost:4000/literaturereview/2019/11/11/selected-paper-corl.html" rel="alternate" type="text/html" title="Selected Papers - CoRL 2019" /><published>2019-11-11T18:01:25+09:00</published><updated>2019-11-11T18:01:25+09:00</updated><id>http://localhost:4000/literaturereview/2019/11/11/selected-paper-corl</id><content type="html" xml:base="http://localhost:4000/literaturereview/2019/11/11/selected-paper-corl.html">&lt;h3 id=&quot;deep-value-model-predictive-control&quot;&gt;Deep Value Model Predictive Control&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-12T23:51:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Data Structure 11 - python built-in collections</title><link href="http://localhost:4000/programming/2019/11/12/data-structrue-python-collections.html" rel="alternate" type="text/html" title="Data Structure 11 - python built-in collections" /><published>2019-11-12T23:45:25+09:00</published><updated>2019-11-12T23:45:25+09:00</updated><id>http://localhost:4000/programming/2019/11/12/data-structrue-python-collections</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/12/data-structrue-python-collections.html">&lt;h3 id=&quot;collectionsdefaultdict&quot;&gt;collections.defaultdict&lt;/h3&gt;
+
+&lt;h3 id=&quot;collectionsdeque&quot;&gt;collections.deque&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;collections.deque&lt;/strong&gt; - &lt;a href=&quot;https://www.geeksforgeeks.org/deque-in-python/&quot;&gt;geeksforgeeks&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;a generalization of &lt;strong&gt;stacks and queues&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;preferred over list when &lt;strong&gt;quicker append and pop from both the ends of container&lt;/strong&gt; are needed&lt;/li&gt;
+  &lt;li&gt;O(1) time complexity for &lt;strong&gt;append and pop&lt;/strong&gt; as list is O(n)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;```python&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Python Collections" /><category term="Queue" /><category term="Hash Table" /><summary type="html">collections.defaultdict</summary></entry><entry><title type="html">OThers 1 - math</title><link href="http://localhost:4000/programming/2019/11/12/others-math.html" rel="alternate" type="text/html" title="OThers 1 - math" /><published>2019-11-12T23:18:25+09:00</published><updated>2019-11-12T23:18:25+09:00</updated><id>http://localhost:4000/programming/2019/11/12/others-math</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/12/others-math.html">&lt;h3 id=&quot;python-built-in&quot;&gt;Python built-in&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;collections.defaultdict()&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;shrinkable dict list?&lt;/p&gt;
+
+&lt;h3 id=&quot;cartesian-coordinate&quot;&gt;Cartesian coordinate&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;leetcode 149 Max Points on a Line [H] - greatest common divisor + dict count&lt;/strong&gt;&lt;br /&gt;
+Given n points on a 2D plane, find the maximum number of points that lie on the same straight line&lt;/p&gt;
+
+&lt;p&gt;Example 1:&lt;br /&gt;
+Input:[[1,1],[2,2],[3,3]]&lt;br /&gt;
+Output: 3&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;       ^
+    4  |
+    3  |        o
+    2  |     o
+    1  |  o
+       -------------&amp;gt;
+       0  1  2  3  4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Example 2:&lt;br /&gt;
+Input:[[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]&lt;br /&gt;
+Output: 4&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;       ^
+    5  |
+    4  |  o
+    3  |     o        o
+    2  |        o
+    1  |  o        o
+       --------------------&amp;gt;
+       0  1  2  3  4  5  6
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Others" /><category term="Point" /><category term="Greatest Common Divisor" /><category term="Python Collections" /><category term="Hash Table" /><summary type="html">Python built-in</summary></entry><entry><title type="html">Selected Papers - CoRL 2019</title><link href="http://localhost:4000/literaturereview/2019/11/11/selected-paper-corl.html" rel="alternate" type="text/html" title="Selected Papers - CoRL 2019" /><published>2019-11-11T18:01:25+09:00</published><updated>2019-11-11T18:01:25+09:00</updated><id>http://localhost:4000/literaturereview/2019/11/11/selected-paper-corl</id><content type="html" xml:base="http://localhost:4000/literaturereview/2019/11/11/selected-paper-corl.html">&lt;h3 id=&quot;deep-value-model-predictive-control&quot;&gt;Deep Value Model Predictive Control&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -22,14 +69,11 @@ MPC truncates the time horizon of the task, continually shifts the shortened hor
 (5) hard to deal with sparse and non-continuous reward/cost signals&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;DRL advantage&lt;br /&gt;
-(1) good in long-horizon tasks with sparse rewards&lt;br /&gt;
-(2) even in continuous control domain&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;DRL disadvantage&lt;br /&gt;
-(1) requires enormous data&lt;br /&gt;
-(2) suffers from the exploration-exploitation dilemma&lt;/p&gt;
+    &lt;p&gt;DRL advantage and disadvantage
+(+) good in long-horizon tasks with sparse rewards&lt;br /&gt;
+(+) even in continuous control domain &lt;br /&gt;
+(-) requires enormous data&lt;br /&gt;
+(-) suffers from the exploration-exploitation dilemma&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;DMPC - an actor-critic approach &amp;lt;-proposed method&lt;br /&gt;
@@ -40,7 +84,7 @@ the Terminal Cost of MPC is determined by the estimated Value critic&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/DMPC.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/DMPC.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Contribution&lt;br /&gt;
@@ -53,10 +97,149 @@ the Terminal Cost of MPC is determined by the estimated Value critic&lt;/p&gt;
 &lt;h3 id=&quot;an-online-learning-procedure-for-feedback-linearization-control-without-torque-measurements&quot;&gt;An Online Learning Procedure for Feedback Linearization Control without Torque Measurements&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;MPC refs in robotics:&lt;br /&gt;
+  &lt;li&gt;
+    &lt;p&gt;Motivation&lt;br /&gt;
+the estimation of the robot dynamic model is usually performed offline, therefore, changes in the structural parameters will restart the identification procedure from scratch, especially during robot’s interaction with other objects (i.e. payloads to the end-effector, collision detection, reaction strategies adopted during motion)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Related approaches - using regression&lt;br /&gt;
+(1) direct dynamic model learning - how the system, given its actual state, responds to a certain input, i.e. &lt;br /&gt;
+[10] learn the transition probability model&lt;br /&gt;
+[12] reconstruct the system nonlinear dynamics with GP &lt;br /&gt;
+[13] use a regressor as predictive model for nonlinear MPC  &lt;br /&gt;
+(2) inverse dynamic model learning - estimating the input that needs to be given to the system in order to achieve a certain desired new state&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Goal&lt;br /&gt;
+use a linear MPC, but designed a procedure for learning the inverse dynamic model&lt;br /&gt;
+learn the unmodeled dynamics to improve the feedback linearization process without the use of any joint torque measurements, which &lt;strong&gt;are known to be noisy&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Proposed method&lt;br /&gt;
+a method to reconstruct dynamic model uncertainties and parameters variations by means of an online Gaussian Process Regression&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Torque measurements problem&lt;br /&gt;
+affected by high level noise, typically higher than the noise added to the measures coming from the encoders which return joint positions&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Problem formulation&lt;br /&gt;
+&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/onlineFL1.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Learning procedure&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/onlineFL2.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;
+&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/onlineFL3.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Contribution&lt;br /&gt;
+(1) a new approach for online learning the exact FL of a manipulator while executing a predefined task  &lt;br /&gt;
+(2) the method is composed by a dataset collection procedure designed to reconstruct the unmodeled dynamics &lt;br /&gt;
+(3) and by a controller that computes the commanding joint torques according to a desired trajectory&lt;br /&gt;
+(4) small dataset -&amp;gt; employ GP regression to learn the unmodeled dynamics&lt;br /&gt;
+(5) the Controllability Gramian is used for computing the joint’s accelerations &lt;br /&gt;
+(6) shows it is possible to improve the model by exploiting only joint position measures without the need of any joint torque data&lt;br /&gt;
+(7) therefore, can obtain a reliable estimate of dynamic uncertainties&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;curious-ilqr-resolving-uncertainty-in-model-based-rl&quot;&gt;Curious iLQR: Resolving Uncertainty in Model-based RL&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;MBRL framework with curious iLQR &amp;lt;- proposed method&lt;br /&gt;
+MBRL combines Bayesian modeling of the system dynamics with iLQR, an iterative LQR approach that considers model uncertainty&lt;br /&gt;
+during trajectory optimization the curious iLQR attempts to minimize both the task-dependent cost and the uncertainty in the dynamics models&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Motivation: Model-based promise and challenge  &lt;br /&gt;
+(+) sample-efficiency&lt;br /&gt;
+(-) the learned model generalizes beyond the specific tasks used to learn it &lt;br /&gt;
+-&amp;gt; &lt;strong&gt;the curiosity/exploration can help!!&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Curiosity definition&lt;br /&gt;
+motivation to resolve uncertainty in the env&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Hypothesis&lt;br /&gt;
+by seeking out uncertainties, a robot is able to learn a model faster and therefore achieve lower costs more quickly&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;mat-multi-fingered-adaptive-tactile-grasping-via-deep-reinforcement-learning&quot;&gt;MAT: Multi-Fingered Adaptive Tactile Grasping via Deep Reinforcement Learning&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Vision-based grasping problems&lt;br /&gt;
+typically adopt an open-loop execution of a planned grasp can cause failures including &lt;br /&gt;
+(1) ubiquitous calibration error&lt;br /&gt;
+(2) grasp slip&lt;br /&gt;
+(3) low friction&lt;br /&gt;
+(4) adversarial object shapes&lt;br /&gt;
+(5) recovery from a failed grasp is difficult by visual occlusion&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Closed-loop grasping&lt;br /&gt;
+continuously adjusting the robot’s dofs to improve the quality of the current grasp based on sensory feedback&lt;br /&gt;
+(+) enables the robot to correct the initial grasp to achieve ever higher pick-up success rates, given an approximately correct initial grasp post&lt;br /&gt;
+(-) requires a sensor modality that is free of external disturbances and accurate state of the current grasp&lt;br /&gt;
+&lt;strong&gt;therefore, vision info (RGB,RGB-D) is difficult to use due to vision occlusion&lt;/strong&gt;&lt;br /&gt;
+-&amp;gt; &lt;strong&gt;Tactile info!!&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tactile merits&lt;br /&gt;
+(1) rich in info with many sensor cells on each finger&lt;br /&gt;
+(2) free of external disturbances&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;MAT &amp;lt;- proposed method&lt;br /&gt;
+a tactile closed-loop method capable of realizing grasps provided by a coarse initial positioning of the hand above an object&lt;br /&gt;
+(1) allows to learn grasp action primitives in a generative manner via maximum entropy deep RL&lt;br /&gt;
+&lt;strong&gt;action primitives&lt;/strong&gt; include&lt;br /&gt;
+i) decisions of granular movements of each of the fingers, lifting the end-effector for pick-up&lt;br /&gt;
+ii) reopening the fingers and adjusting the end-effector position and orientation&lt;br /&gt;
+(2) MAT overcomes the transfer from sim2real in a high fidelity way by choosing observation and action modalities that maintain small sim2real gaps to real world, such as joint angles, binary tactile contacts, tactile contact Cartesian locations, etc&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Maximum entropy DRL difficulty
+requires high sample complexity and training experiences that are diverse in terms of object types, quantities, poses, and clutter levels&lt;br /&gt;
+therefore direct learning/transfer learning in real-world becomes difficult&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Features of MAT&lt;br /&gt;
+(1) use tactile and proprioceptive info&lt;br /&gt;
+(2) 5 finger motions and larger regrasp movements &lt;br /&gt;
+(3) a novel curriculum of action motion magnitude&lt;br /&gt;
+(4) careful selection of features that exhibit small sim-to-real gaps&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;refs&quot;&gt;Refs&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;MPC refs in robotics:&lt;br /&gt;
 [1] K. Alexis, C. Papachristos, G. Nikolakopoulos, and A. Tzes. Model predictive quadrotor in- door position control. In 2011 19th Mediterranean Conference on Control Automation (MED), pages 1247–1252, June 2011. doi:10.1109/MED.2011.5983144.&lt;br /&gt;
 [2] F.Farshidian,E.Jelavic,A.Satapathy,M.Giftthaler,andJ.Buchli.Real-timemotionplanning of legged robots: A model predictive control approach. In Humanoids, pages 577–584, 2017. doi:10.1109/HUMANOIDS.2017.8246930.&lt;br /&gt;
-[3] J. Koenemann, A. D. Prete, Y. Tassa, E. Todorov, O. Stasse, M. Bennewitz, and N. Mansard. Whole-body model-predictive control applied to the hrp-2 humanoid. In IROS, pages 3346– 3351, 2015.&lt;/li&gt;
+[3] J. Koenemann, A. D. Prete, Y. Tassa, E. Todorov, O. Stasse, M. Bennewitz, and N. Mansard. Whole-body model-predictive control applied to the hrp-2 humanoid. In IROS, pages 3346– 3351, 2015.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Learning direct dynamics model by regression refs:&lt;br /&gt;
+[10] M.Deisenroth,D.Fox,andC.EdwardRasmussen.Gaussianprocessesfordata-efficientlearn- ing in robotics and control. IEEE Transactions on Pattern Analysis and Machine Intelligence, 37:408–423, 02 2015. doi:10.1109/TPAMI.2013.218.&lt;br /&gt;
+[11] S. Kamthe and M. Deisenroth. Data-efficient reinforcement learning with probabilistic model predictive control. In Proc. of the International Conference on Artificial Intelligence and Statis- tics (AISTATS), 2018.&lt;br /&gt;
+[12] F. Berkenkamp and A. P. Schoellig. Safe and robust learning control with gaussian processes. In 2015 European Control Conference (ECC), pages 2496–2501, July 2015. doi:10.1109/ECC. 2015.7330913.&lt;br /&gt;
+[13] C. Ostafew, A. Schoellig, and T. D. Barfoot. Robust constrained learning-based NMPC en- abling reliable mobile robot path tracking. The International Journal of Robotics Research, 35, 05 2016. doi:10.1177/0278364916645661.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Learning inverse dynamics model by regression refs:&lt;br /&gt;
+[14] Z. Shareef, P. Mohammadi, and J. Steil. Improving the inverse dynamics model of the KUKA LWR IV+ using independent joint learning. IFAC-PapersOnLine, 49(21), 09 2016.&lt;br /&gt;
+[15] T. Waegeman, F. Wyffels, and B. Schrauwen. Feedback control by online learning an inverse model. Neural Networks and Learning Systems, IEEE Transactions on, 23:1637–1648, 10 2012. doi:10.1109/TNNLS.2012.2208655.&lt;br /&gt;
+[16] J. Umlauft, T. Beckers, M. Kimmel, and S. Hirche. Feedback linearization using gaussian processes. In 2017 IEEE 56th Annual Conference on Decision and Control (CDC), pages 5249–5255, Dec 2017. doi:10.1109/CDC.2017.8264435.&lt;br /&gt;
+[17] D. Nguyen-Tuong, M. Seeger, and J. Peters. Computed torque control with nonparametric regression models. In 2008 American Control Conference, pages 212–217, June 2008. doi: 10.1109/ACC.2008.4586493.&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Jiexin Wang</name></author><category term="MPC" /><category term="Reinforcement Learning" /><summary type="html">Deep Value Model Predictive Control</summary></entry><entry><title type="html">Data Structure 3 - linked list</title><link href="http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist.html" rel="alternate" type="text/html" title="Data Structure 3 - linked list" /><published>2019-11-08T17:26:25+09:00</published><updated>2019-11-08T17:26:25+09:00</updated><id>http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
@@ -91,9 +274,8 @@ After removing the second node from the end, the linked list becomes 1-&amp;gt;2
 &lt;ol&gt;
   &lt;li&gt;create dummy head&lt;/li&gt;
   &lt;li&gt;find the node needs to be deleted using fast and slow pointers (rabbit turtle race)&lt;/li&gt;
-  &lt;li&gt;fast goes first, then slow and fast go together&lt;br /&gt;
-Note:&lt;br /&gt;
-while fast.next: fast=fast.next -&amp;gt; fast stop at the last node, cuz fast.next is None&lt;/li&gt;
+  &lt;li&gt;fast goes first, then slow and fast go together, slow stops at the one before the nth node&lt;br /&gt;
+Note: while fast.next: fast=fast.next -&amp;gt; fast stop at the last node, cuz fast.next is None&lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;slow-&amp;gt;slow.next.next&lt;/p&gt;
 
@@ -341,7 +523,7 @@ Input:&lt;br /&gt;
 [1-&amp;gt;4-&amp;gt;5,&lt;br /&gt;
 1-&amp;gt;3-&amp;gt;4,&lt;br /&gt;
 2-&amp;gt;6]&lt;br /&gt;
-Output: 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;4=5-&amp;gt;6&lt;/p&gt;
+Output: 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;4-&amp;gt;5-&amp;gt;6&lt;/p&gt;
 
 &lt;p&gt;Solution: heapify&lt;/p&gt;
 
@@ -365,13 +547,110 @@ Output: 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;4=5-&amp;gt;6&lt;/p&gt
 
 &lt;h3 id=&quot;swap-n-rotate&quot;&gt;Swap n Rotate&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;leetcode 24 - Swap Nodes in Pairs [M]&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;leetcode 24 - Swap Nodes in Pairs [M]&lt;/strong&gt;&lt;br /&gt;
+Given a linked list, swap every two adjacent nodes and return its head.&lt;br /&gt;
+Example:&lt;br /&gt;
+Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, you should return the list as 2-&amp;gt;1-&amp;gt;4-&amp;gt;3.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;leetcode 61 - Rotate List [M]&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Solution:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;create dummy and pre&lt;/li&gt;
+  &lt;li&gt;point first (f) to 1 and second (s) to 2&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;first-&amp;gt;second.next, pre-&amp;gt;second, pre.next-&amp;gt;first&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  dummy-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4
+    p    f  s
+         1-&amp;gt;3            f-&amp;gt;s.next
+  dummy-&amp;gt;2               p-&amp;gt;s
+    p    2-&amp;gt;1-&amp;gt;3         p.next-&amp;gt;f
+= dummy-&amp;gt;2-&amp;gt;1-&amp;gt;3-&amp;gt;4-&amp;gt;N
+            p  f  s
+               3-&amp;gt;N      f-&amp;gt;s.next
+  dummy-&amp;gt;2-&amp;gt;1-&amp;gt;4         p-&amp;gt;s
+            p  4-&amp;gt;3-&amp;gt;N   p.next-&amp;gt;f
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;swapPairs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+
+          &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;
+
+          &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;leetcode 61 - Rotate List [M]&lt;/strong&gt;&lt;br /&gt;
+Given a linked list, rotate the list to the right by k places, where k is non-negative.&lt;/p&gt;
+
+&lt;p&gt;Example 1:&lt;br /&gt;
+Input: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL, k = 2&lt;br /&gt;
+Output: 4-&amp;gt;5-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;NULL&lt;br /&gt;
+Explanation:&lt;br /&gt;
+rotate 1 steps to the right: 5-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;NULL&lt;br /&gt;
+rotate 2 steps to the right: 4-&amp;gt;5-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;NULL&lt;/p&gt;
+
+&lt;p&gt;Example 2:&lt;br /&gt;
+Input: 0-&amp;gt;1-&amp;gt;2-&amp;gt;NULL, k = 4&lt;br /&gt;
+Output: 2-&amp;gt;0-&amp;gt;1-&amp;gt;NULL&lt;br /&gt;
+Explanation:&lt;br /&gt;
+rotate 1 steps to the right: 2-&amp;gt;0-&amp;gt;1-&amp;gt;NULL&lt;br /&gt;
+rotate 2 steps to the right: 1-&amp;gt;2-&amp;gt;0-&amp;gt;NULL&lt;br /&gt;
+rotate 3 steps to the right: 0-&amp;gt;1-&amp;gt;2-&amp;gt;NULL&lt;br /&gt;
+rotate 4 steps to the right: 2-&amp;gt;0-&amp;gt;1-&amp;gt;NULL&lt;/p&gt;
+
+&lt;p&gt;Solution:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;go through the linked list to get the total len&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;use fast and slow pointer to find rotate node&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5
+ h     f
+       s     f
+          4-&amp;gt;5-&amp;gt;1-&amp;gt;2-&amp;gt; f-&amp;gt;h
+          h=s.next
+          4-&amp;gt;5-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;N s-&amp;gt;N
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rotateList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
+
+       &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+
+       &lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;#fast stop at 3 if k=2&lt;/span&gt;
+
+       &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#fast stops at 5 slow stops at 3&lt;/span&gt;
+
+       &lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;     
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;reverse&quot;&gt;Reverse&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;leetcode 25 - Reverse Nodes in k-Group [H]&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;leetcode 206 - Reverse Linked List [E]&lt;/strong&gt;&lt;br /&gt;
 Example:&lt;br /&gt;
@@ -620,6 +899,63 @@ second.next,second=first,second.next&lt;/p&gt;
             &lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;&lt;strong&gt;leetcode 25 - Reverse Nodes in k-Group [H]&lt;/strong&gt;&lt;br /&gt;
+Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;br /&gt;
+Given this linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5&lt;br /&gt;
+For k = 2, you should return: 2-&amp;gt;1-&amp;gt;4-&amp;gt;3-&amp;gt;5 (group in 2)&lt;br /&gt;
+For k = 3, you should return: 3-&amp;gt;2-&amp;gt;1-&amp;gt;4-&amp;gt;5 (group in 3, leftover remains)&lt;/p&gt;
+
+&lt;p&gt;Solution: put k group in stack and pop!!&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;create dummy and cur&lt;/li&gt;
+  &lt;li&gt;point first (f) to 1&lt;/li&gt;
+  &lt;li&gt;for i in range(k): put first node in stack and move first to next&lt;/li&gt;
+  &lt;li&gt;check len(stack)?=k, if not return dummy.next&lt;/li&gt;
+  &lt;li&gt;pop node in stack next to dummy, move cur to next&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;point cur-&amp;gt;first&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; dummy-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5
+   c    f     f       stack=[1,2] len(stack)==k                 
+ dummy-&amp;gt;2-&amp;gt;1          c-&amp;gt;stack.pop()
+           c
+           1-&amp;gt;3-&amp;gt;4-&amp;gt;5 c-&amp;gt;f
+              f     f stack=[3,4] len(stack)==k
+           1-&amp;gt;4-&amp;gt;3    c-&amp;gt;stack.pop()
+                 3-&amp;gt;5 c-&amp;gt;f
+                      stack=[5]   len(stack)!=k return dummy.next
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reverseKGroup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+             &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+
+         &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+         &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+         &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+         &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+             &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+                 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                     &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                     &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+
+             &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+
+             &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                 &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                 &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+
+             &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;
+
+         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;h3 id=&quot;fast-n-slow&quot;&gt;Fast n Slow&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;leetcode 141 - Linked List Cycle [E] - T/F&lt;/strong&gt;&lt;br /&gt;
@@ -767,10 +1103,59 @@ Merge sort: split list in half, sort halves and merge&lt;/p&gt;
 
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;ol&gt;
-  &lt;li&gt;find mid using fast and slow&lt;/li&gt;
-  &lt;li&gt;merge two sorted lists&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Linked List" /><category term="Pointers" /><summary type="html">Definition</summary></entry><entry><title type="html">OThers 2 - bit manipulation</title><link href="http://localhost:4000/programming/2019/11/02/others-bit-manipulation.html" rel="alternate" type="text/html" title="OThers 2 - bit manipulation" /><published>2019-11-02T15:23:25+09:00</published><updated>2019-11-02T15:23:25+09:00</updated><id>http://localhost:4000/programming/2019/11/02/others-bit-manipulation</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/02/others-bit-manipulation.html">&lt;h3 id=&quot;python-operation&quot;&gt;Python Operation&lt;/h3&gt;
+  &lt;li&gt;find mid using fast and slow, slow point to mid if odd len, second mid if even len&lt;/li&gt;
+  &lt;li&gt;cut the first half with p-&amp;gt;N&lt;/li&gt;
+  &lt;li&gt;run new recursive sortList with head and slow as second head&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;merge two sorted lists (&lt;strong&gt;leetcode 21&lt;/strong&gt;)&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   5-&amp;gt;3-&amp;gt;1-&amp;gt;2-&amp;gt;4       5-&amp;gt;3-&amp;gt;1-&amp;gt;2-&amp;gt;4-&amp;gt;0-&amp;gt;N
+ f,s,p
+      p  s     f             p  s        f
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sortList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;l1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sortList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;l2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sortList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mergeTwoList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;#leetcode 21&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mergeTwoList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l2&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l1&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l1&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l1&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;l1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l2&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;l2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l1&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l2&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dummy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Linked List" /><category term="Pointers" /><summary type="html">Definition</summary></entry><entry><title type="html">OThers 2 - bit manipulation</title><link href="http://localhost:4000/programming/2019/11/02/others-bit-manipulation.html" rel="alternate" type="text/html" title="OThers 2 - bit manipulation" /><published>2019-11-02T15:23:25+09:00</published><updated>2019-11-02T15:23:25+09:00</updated><id>http://localhost:4000/programming/2019/11/02/others-bit-manipulation</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/02/others-bit-manipulation.html">&lt;h3 id=&quot;python-operation&quot;&gt;Python Operation&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;
     &lt;p&gt;‘&amp;amp;’, and, for carrying（进位）&lt;/p&gt;
@@ -1235,60 +1620,4 @@ Say&lt;/p&gt;
   &lt;li&gt;O(1) time complexity for &lt;strong&gt;append and pop&lt;/strong&gt; as list is O(n)&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;```python&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Queue" /><summary type="html">Python Operation</summary></entry><entry><title type="html">ALgorithms 4 - breadth first traversal</title><link href="http://localhost:4000/programming/2019/10/27/algorithm-bfs.html" rel="alternate" type="text/html" title="ALgorithms 4 - breadth first traversal" /><published>2019-10-27T21:45:25+09:00</published><updated>2019-10-27T21:45:25+09:00</updated><id>http://localhost:4000/programming/2019/10/27/algorithm-bfs</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/27/algorithm-bfs.html">&lt;h3 id=&quot;bfs-graph&quot;&gt;bfs graph&lt;/h3&gt;
-
-&lt;p&gt;normally use queue&lt;/p&gt;
-
-&lt;h3 id=&quot;bfs-related&quot;&gt;bfs related&lt;/h3&gt;
-
-&lt;p&gt;(string) leetcode 127 - word ladder [M] &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topic-series.html&quot;&gt;see topic series&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Algorithms" /><category term="Bfs" /><summary type="html">bfs graph</summary></entry><entry><title type="html">Data Structure 4 - string</title><link href="http://localhost:4000/programming/2019/10/26/data-structrue-string.html" rel="alternate" type="text/html" title="Data Structure 4 - string" /><published>2019-10-26T12:23:25+09:00</published><updated>2019-10-26T12:23:25+09:00</updated><id>http://localhost:4000/programming/2019/10/26/data-structrue-string</id><content type="html" xml:base="http://localhost:4000/programming/2019/10/26/data-structrue-string.html">&lt;h3 id=&quot;python-operation&quot;&gt;Python Operation&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;check if char is alphabet/alphabet or numeric/numeric&lt;br /&gt;
-s=’abc123’&lt;br /&gt;
-s.isalpha() -&amp;gt; False   &lt;br /&gt;
-s.isalnum() -&amp;gt; True&lt;br /&gt;
-s.isnumeric() -&amp;gt; False&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;remove white spaces before and after&lt;br /&gt;
-s=’  lajdflak    ‘&lt;br /&gt;
-s.strip() #remove both&lt;br /&gt;
-s.lstrip() #remove left  &lt;br /&gt;
-s.rstrip() #remove right&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;swtich to upper case and lower case&lt;br /&gt;
-s=’aBcDeFg’&lt;br /&gt;
-s.lower() -&amp;gt; s=’abcdefg’&lt;br /&gt;
-s.upper() -&amp;gt; s=’ABCDEFG’&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;generate lower/uppercase string&lt;br /&gt;
-import string&lt;br /&gt;
-string.ascii_lowercase&lt;br /&gt;
-string.ascii_uppercase&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;palindrome&quot;&gt;Palindrome&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;leetcode 125 - Valid Palindrome [E]&lt;/strong&gt; &lt;br /&gt;
-Example 1:&lt;br /&gt;
-Input: “A man, a plan, a canal: Panama”&lt;br /&gt;
-Output: true&lt;br /&gt;
-Example 2:&lt;br /&gt;
-Input: “race a car”&lt;br /&gt;
-Output: false&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isPalindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;news&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isalnum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;news&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;news&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;leetcode 131 - Palindrome Partitioning [M] - dfs&lt;/strong&gt; see &lt;a href=&quot;&quot;&gt;dfs&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="String" /><category term="Palindrome" /><category term="Dfs" /><summary type="html">Python Operation</summary></entry></feed>
+&lt;p&gt;```python&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Queue" /><category term="Python Collections" /><summary type="html">Python Operation</summary></entry></feed>
