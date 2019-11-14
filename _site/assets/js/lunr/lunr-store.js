@@ -1,6 +1,6 @@
 var store = [{
         "title": "Data Structure Index",
-        "excerpt":"Data Structure list matrix linked list string stack queue, priority queue heap hash table tree: tree basic, binary search tree, tree + linked list, segment tree graph python collections ALgorithms sorting binary search greedy dfs, bfs back tracking dynamic programming divide and conquer OThers math bit manipulation regex two pointers...","categories": ["Programming"],
+        "excerpt":"Data Structure list matrix linked list string stack queue, priority queue heap hash table tree, binary search tree, tree + linked list, segment tree graph python built-in ALgorithms sorting binary search greedy dfs, bfs back tracking dynamic programming divide and conquer OThers math bit manipulation regex two pointers minimax memoization...","categories": ["Programming"],
         "tags": ["Index","Data Structure"],
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-index.html",
         "teaser":null},{
@@ -45,8 +45,8 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/27/data-structrue-queue.html",
         "teaser":null},{
         "title": "Data Structure 1 - list",
-        "excerpt":"Python Operation Find Sequence leetcode 128 - Longest Consecutive Sequence [H] Input: [100, 4, 200, 1, 3, 2] Output: 4 Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4. Solution: make a set for removing the repeated filter out non-head numbers using if-continue...","categories": ["Programming"],
-        "tags": ["Data Structure","List"],
+        "excerpt":"Definition subarray - subsequence - substring - Find Sequence leetcode 128 - Longest Consecutive Sequence [H] Input: [100, 4, 200, 1, 3, 2] Output: 4 Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4. Solution: make a set for removing the repeated filter...","categories": ["Programming"],
+        "tags": ["Data Structure","List","MinMax"],
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-list.html",
         "teaser":null},{
         "title": "Data Structure 2 - matrix",
@@ -84,13 +84,13 @@ var store = [{
         "tags": ["Others","Point","Greatest Common Divisor","Python Collections","Hash Table"],
         "url": "http://localhost:4000/programming/2019/11/12/others-math.html",
         "teaser":null},{
-        "title": "Data Structure 11 - python built-in collections",
-        "excerpt":"collections.defaultdict from collections import defaultdict #int s = 'mississippi' d = defaultdict(int) for k in s: d[k] += 1 sorted(d.items()) &gt;&gt;[('i', 4), ('m', 1), ('p', 2), ('s', 4)] #list s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)] d = defaultdict(list) for k, v in s: d[k].append(v)...","categories": ["Programming"],
-        "tags": ["Data Structure","Python Collections","Queue","Hash Table"],
-        "url": "http://localhost:4000/programming/2019/11/12/data-structrue-python-collections.html",
+        "title": "Data Structure 11 - python built-in",
+        "excerpt":"two variables in for-loop for dr,dc in [(1,0),(-1,0),(0,-1),(0,1)]: print(dr,dc) Output: 1,0 -1,0 0,-1 0,1 zip numbers = [1, 2, 3] letters = ['a', 'b', 'c'] list(zip(numbers, letters)) &gt;&gt;[(1, 'a'), (2, 'b'), (3, 'c')] for n,l in zip(numbers,letters): print(n,l) Output: 1,'a' 2,'b' 3,'c' itertools.zip_longest #python 3 from itertools import zip_longest #python...","categories": ["Programming"],
+        "tags": ["Data Structure","Python collections","Python itertools","Queue","Hash Table"],
+        "url": "http://localhost:4000/programming/2019/11/12/data-structrue-python-builtin.html",
         "teaser":null},{
         "title": "Data Structure 5 - stack",
-        "excerpt":"Definition Parentheses leetcode 20 - Valid Parentheses [E] - hashtable + stack Example 1: Input: “()” Output: true Example 2: Input: “()[]{}” Output: true Example 3: Input: “(]” Output: false Example 4: Input: “([)]” Output: false Example 5: Input: “{[]}” Output: true Solution: make a dict={‘(‘:’)’,’[’:’]’,’{‘:’}’} if meet left ‘({[’,...","categories": ["Programming"],
+        "excerpt":"Design leetcode 155 - Min Stack [E] Design a stack that supports push, pop, top, and retrieving the minimum element in constant time. push(x) – Push element x onto stack. pop() – Removes the element on top of the stack. top() – Get the top element. getMin() – Retrieve the...","categories": ["Programming"],
         "tags": ["Data Structure","Stack","Calculator","Hash Table","Parentheses"],
         "url": "http://localhost:4000/programming/2019/11/13/data-structrue-stack.html",
         "teaser":null},{
@@ -98,4 +98,19 @@ var store = [{
         "excerpt":"Definition   Parentheses   leetcode 22 - Generate Parentheses [M]  Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.   For example, given n = 3, a solution set is:  [”((()))”,    “(()())”,    “(())()”,    “()(())”,    “()()()”]  ","categories": ["Programming"],
         "tags": ["Algorithms","Back Tracking","Parentheses","Recursion"],
         "url": "http://localhost:4000/programming/2019/11/13/algorithm-backtracking.html",
+        "teaser":null},{
+        "title": "Control as Inference",
+        "excerpt":"the Equivalence probabilistic inference under deterministic dynamics - - a generalization of RL | &lt;=&gt; max entropy RL | variational inference - - optimal control problem under stochastic dynamics Probabilistic Graphical Models (PGMs) provide a consistent and flexible framework to devise principled objectives set up models that reflect the causal...","categories": ["LiteratureReview"],
+        "tags": ["Soft-Q Learning","KL Divergence","Reinforcement Learning"],
+        "url": "http://localhost:4000/literaturereview/2019/11/13/control-as-inference.html",
+        "teaser":null},{
+        "title": "ALgorithms 2 - binary search",
+        "excerpt":"Definition Find Peak leetcode 153 - Find Minimum in Rotated Sorted Array [M] Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand, find the minimum element Example 1: Input: [3,4,5,1,2] Output: 1 Example 2: Input: [4,5,6,7,0,1,2] Output: 0 Solution: create left=0 and right=len-1...","categories": ["Programming"],
+        "tags": ["Algorithms","Binary Search"],
+        "url": "http://localhost:4000/programming/2019/11/13/algorithm-binarysearch.html",
+        "teaser":null},{
+        "title": "ALgorithms 1 - sorting",
+        "excerpt":"Big O Table   Bubble Sort   Insertion Sort   leetcode 147 - Insertion Sort List [M] see linked list #sorting   Merge Sort   leetcode 148 - (Merge) Sort List [M] see linked list #sorting   Bucket Sort   leetcode 164 - Maximum Gap [H]   class Solution():     def maximumGap(self,nums):   ","categories": ["Programming"],
+        "tags": ["Algorithms","Bucket Sort"],
+        "url": "http://localhost:4000/programming/2019/11/14/algorithm-sorting.html",
         "teaser":null}]

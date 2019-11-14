@@ -54,6 +54,53 @@ string.ascii_uppercase
 ```python
 s='the sky is blue'
 s.split() -> ['the', 'sky', 'is', 'blue']
+s='1.0.1'
+s.splie('.') -> ['1', '0', '1']
+```
+
+### Compare  
+
+**leetcode 165 - Compare Version Numbers [M]**  
+Compare two version numbers version1 and version2.  
+If version1 > version2 return 1; if version1 < version2 return -1; otherwise return 0.  
+
+Examples:  
+Input: version1 = "0.1", version2 = "1.1"  
+Output: -1  
+Input: version1 = "1.0.1", version2 = "1"  
+Output: 1   
+Input: version1 = "7.5.2.4", version2 = "7.5.3"  
+Output: -1   
+Input: version1 = "1.01", version2 = "1.001"  
+Output: 0  
+Explanation: Ignoring leading zeroes, both “01” and “001" represent the same number “1”  
+Input: version1 = "1.0", version2 = "1.0.0"  
+Output: 0  
+Explanation: The first version number does not have a third level revision number, which means its third level revision number is default to "0"  
+
+Prepare:  
+see [itertools.zip_longest](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#itertoolszip_longest)
+
+Solution:  
+1. extract to each bit to int using split('.')  
+2. fullfil shorter length with 0 in the end  
+3. compare one by one int bit in zip-for-loop   
+
+```python
+from itertools import zip_longest #python3
+from itertools import izip_longest #python2
+
+class Solution():
+    def compareVersion(self, version1, version2):
+        v1=[int(v) for v in version1.split('.')]
+        v2=[int(v) for v in version2.split('.')]
+        for i1,i2 in zip_longest(v1,v2,fillvalue=0):
+            if i1<i2:
+                return -1
+            elif i1>i2:
+                return 1
+
+        return 0
 ```
 
 ### Reverse  

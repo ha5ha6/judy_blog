@@ -9,6 +9,7 @@ tags:
   #- Index
   - Data Structure
   - List
+  - MinMax
 author:  Jiexin Wang
 classes:  wide
 toc: true
@@ -16,7 +17,10 @@ toc_label: "Index"
 author_profile: true
 ---
 
-### Python Operation
+### Definition  
+subarray -   
+subsequence -  
+substring -
 
 ### Find Sequence
 
@@ -46,6 +50,46 @@ class Solution():
 
         return longest               
 ```   
+
+**leetcode 152 - Maximum Product Subarray [M] - minmax**  
+Example 1:  
+Input: [2,3,-2,4]  
+Output: 6  
+Explanation: [2,3] has the largest product 6  
+
+Example 2:  
+Input: [-2,0,-1]  
+Output: 0  
+Explanation: The result cannot be 2, cuz [-2,-1] is not a subarray  
+
+Solution:  
+Calculate the most positive and most negative subarrary products ending at each element  
+Either the element alone or multiplied by previous most positive and most negative
+
+[4,-2,2,3] output:  
+
+         n,   most_pos*n,        most_neg*n  
+         4,     1*4=4,              1*4=4
+        -2,    4*-2=-8,            4*-2=-8
+         2,    -2*2=-4,            -8*2=-16   
+              [-2=max(-2,-8,-8)]  [-8=min(-2,-8,-8)]
+         3,     2*3=6,            -16*3=-48
+               [2=max(2,-4,-16)] [-16=min(2,-4,-16)]
+
+
+```python
+class Solution():
+    def maxProduct(self,nums):
+        largest_product=float('-inf')
+        most_p,most_n=1,1 #most positive and most negative
+        for n in nums:
+            most_p,most_n=max(n,most_p*n,most_n*n),min(n,most_p*n,most_n*n)
+            largest_product=max(largest_product,most_p,most_n)
+
+        return largest_product
+```
+
+
 
 ### Real World Problem
 **leetcode 134 - Gas Station [M]**   

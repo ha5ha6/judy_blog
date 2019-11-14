@@ -1,14 +1,15 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 11 - python built-in collections"
+title:  "Data Structure 11 - python built-in"
 date:   2019-11-12 23:45:25 +0900
 related: true
 categories: Programming
 tags:
   #- Index
   - Data Structure
-  - Python Collections
+  - Python collections
+  - Python itertools
   - Queue
   - Hash Table
 author:  Jiexin Wang
@@ -17,6 +18,52 @@ toc: true
 toc_label: "Index"
 author_profile: true
 ---
+
+### two variables in for-loop
+
+```python
+for dr,dc in [(1,0),(-1,0),(0,-1),(0,1)]:  
+    print(dr,dc)
+
+Output:
+1,0
+-1,0
+0,-1
+0,1
+```
+
+### zip
+
+```python
+numbers = [1, 2, 3]
+letters = ['a', 'b', 'c']
+
+list(zip(numbers, letters))
+>>[(1, 'a'), (2, 'b'), (3, 'c')]
+
+for n,l in zip(numbers,letters):
+    print(n,l)
+
+Output:
+1,'a'
+2,'b'
+3,'c'
+```
+
+### itertools.zip_longest
+
+```python
+#python 3
+from itertools import zip_longest
+#python 2
+from itertools import izip_longest
+
+list(zip_longest([1,2,3],[4,5]))
+>>[(1, 4), (2, 5), (3, None)]
+
+list(zip_longest([1,2,3],[4,5],fillvalue=0))
+>>[(1, 4), (2, 5), (3, 0)]
+```
 
 ### collections.defaultdict
 

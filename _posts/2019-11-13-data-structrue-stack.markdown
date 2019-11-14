@@ -19,10 +19,117 @@ toc_label: "Index"
 author_profile: true
 ---
 
-### Definition
+### Design
+
+**leetcode 155 - Min Stack [E]**  
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.  
+
+push(x) -- Push element x onto stack.  
+pop() -- Removes the element on top of the stack.  
+top() -- Get the top element.  
+getMin() -- Retrieve the minimum element in the stack.  
+
+Example:  
+MinStack minStack = new MinStack();  
+minStack.push(-2);  
+minStack.push(0);  
+minStack.push(-3);  
+minStack.getMin();   --> Returns -3.  
+minStack.pop();  
+minStack.top();      --> Returns 0.  
+minStack.getMin();   --> Returns -2.  
+
+Solution:  
+1. have a list to store all the values  
+2. have another list to store the minimum values  
+3. same operations should be done within main list and min list  
 
 ```python
+class MinStack():
+    def __init__(self):
+        self.main=[]
+        self.mins=[]
 
+    def push(self,x):
+        self.main.append(x)
+        if not self.mins or x<=self.mins[-1]:
+            self.mins.append(x)
+
+    def pop(self):
+        #show the last and remove the last
+        out=self.main.pop()
+        if out==self.mins[-1]:
+            self.mins.pop()
+
+    def top(self):
+        #show the last but not remove the last
+        return self.main[-1]
+
+    def getMin(self):
+        return self.mins[-1]
+
+s=MinStack()
+s.push(-2)
+s.push(0)
+s.push(-3)
+print(s.getMin())
+print(s.pop())
+print(s.top())
+print(s.getMin())
+```   
+
+**leetcode 716 - Max Stack [E]**  
+Design a max stack that supports push, pop, top, peekMax and popMax.  
+
+push(x) -- Push element x onto stack.  
+pop() -- Remove the element on top of the stack and return it.  
+top() -- Get the element on the top.  
+**peekMax()** -- Retrieve the maximum element in the stack.  
+**popMax()** -- Retrieve the maximum element in the stack, and remove it. If you find more than one maximum elements, only remove the top-most one.  
+
+Example 1:  
+MaxStack stack = new MaxStack();  
+stack.push(5);   
+stack.push(1);  
+stack.push(5);  
+stack.top(); -> 5  
+stack.popMax(); -> 5  
+stack.top(); -> 1  
+stack.peekMax(); -> 5  
+stack.pop(); -> 1  
+stack.top(); -> 5  
+
+```python
+class MaxStack():
+    def __init__(self):
+        self.main=[]
+
+    def push(self,x):
+        self.main.append(x)
+
+    def pop(self):
+        #show the last and remove the last
+        self.main.pop()
+
+    def top(self):
+        #show the last but not remove the last
+        return self.main[-1]
+
+    def peekMax(self):
+        return max(self.main)
+
+    def popMax(self):
+        out=max(self.main)
+        self.main.remove(out)
+
+        return out
+
+s=MaxStack()
+s.push(-2)
+s.push(0)
+s.push(-3)
+print(s.peekMax())
+print(s.popMax())
 ```   
 
 ### Parentheses

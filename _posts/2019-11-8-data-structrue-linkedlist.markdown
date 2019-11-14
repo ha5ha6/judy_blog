@@ -902,3 +902,47 @@ class Solution():
 
         return dummy.next
 ```
+
+### Intersection  
+
+**leetcode 160 - Intersection of Two Linked Lists [E]**  
+Write a program to find the node at which the intersection of two singly linked lists begins.  
+
+For example, the following two linked lists:  
+
+
+      A:      a1->a2-
+                     |-> c1->c2->c3
+      B:  b1->b2->b3-
+
+begin to intersect at c1  
+
+Solution:  
+go through the two linked lists to the end and then change head, will meet again  
+
+
+              a1 -> a2 --
+              p1_1  p1_2 |
+              p2_7  p2_8 |
+                         |-> c1 -> c2 -> c3 -> N
+                         |   p1_3  p1_4  p1_5  p1_6 move to b-head
+                         |   p2_4  p2_5  p2_6  p2_7 move to a-head
+                         |  [p2_9]
+                         |  [meets]
+                         |  [p1_9]
+         b1 -> b2 -> b3 -
+         p2_1  p2_2  p2_3
+         p1_6  p1_7  p1_8
+
+
+```python
+class Solution():
+    def getIntersectionNode(self, headA, headB):
+        p1,p2=headA,headB
+
+        while p1!=p2:
+            p1=headB if not p1 else p1.next
+            p2=headA if not p2 else p2.next
+
+        return p1
+```
