@@ -28,7 +28,7 @@ classes: wide
 
 ### ALgorithms
 
-1.	sorting
+1.	[sorting](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/algorithm-sorting.html)
 2.	[binary search](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-binarysearch.html)
 3.	greedy
 4.  [dfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/31/algorithm-dfs.html), [bfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/algorithm-bfs.html)
@@ -47,7 +47,7 @@ classes: wide
 7.	trie
 8.	union find
 9.	topological sort
-10. design
+10. design: minstack,maxstack
 11. brainteaser
 
 ### Topics
