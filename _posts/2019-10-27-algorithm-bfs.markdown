@@ -22,7 +22,7 @@ normally use queue
 
 ### bfs related
 
-(string) leetcode 127 - word ladder [M] [see topic series](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topic-series.html)
+(string) leetcode 127 - word ladder [M] see [topics](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html)
 
 
 ```python

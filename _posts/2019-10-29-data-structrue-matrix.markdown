@@ -18,22 +18,6 @@ toc_label: "Index"
 author_profile: true
 ---
 
-### Python Operation  
-1. 2 variables in for loop  
-
-```python
-for dr,dc in [(1,0),(-1,0),(0,-1),(0,1)]:  
-    print(dr,dc)
-
-```
-0utput:  
-1,0  
--1,0   
-0,-1  
-0,1  
-
-2.  
-
 ### Board Game
 **leetcode 130 - Surrounded Regions [M] - stack or dfs**  
 Given a 2D board containing ‘X’ and ‘O’ (the letter O), capture all regions surrounded by ‘X’.  

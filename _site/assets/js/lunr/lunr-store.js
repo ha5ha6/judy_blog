@@ -35,7 +35,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/26/data-structrue-string.html",
         "teaser":null},{
         "title": "ALgorithms 4 - breadth first traversal",
-        "excerpt":"bfs graph   normally use queue   bfs related   (string) leetcode 127 - word ladder [M] see topic series     ","categories": ["Programming"],
+        "excerpt":"bfs graph   normally use queue   bfs related   (string) leetcode 127 - word ladder [M] see topics     ","categories": ["Programming"],
         "tags": ["Algorithms","Bfs"],
         "url": "http://localhost:4000/programming/2019/10/27/algorithm-bfs.html",
         "teaser":null},{
@@ -50,7 +50,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-list.html",
         "teaser":null},{
         "title": "Data Structure 2 - matrix",
-        "excerpt":"Python Operation 2 variables in for loop for dr,dc in [(1,0),(-1,0),(0,-1),(0,1)]: print(dr,dc) 0utput: 1,0 -1,0 0,-1 0,1 Board Game leetcode 130 - Surrounded Regions [M] - stack or dfs Given a 2D board containing ‘X’ and ‘O’ (the letter O), capture all regions surrounded by ‘X’. A region is captured...","categories": ["Programming"],
+        "excerpt":"Board Game leetcode 130 - Surrounded Regions [M] - stack or dfs Given a 2D board containing ‘X’ and ‘O’ (the letter O), capture all regions surrounded by ‘X’. A region is captured by flipping all ‘O’s into ‘X’s in that surrounded region. Example: X X X X X O...","categories": ["Programming"],
         "tags": ["Data Structure","Matrix","Board Game","2D Array"],
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-matrix.html",
         "teaser":null},{
