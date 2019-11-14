@@ -81,7 +81,7 @@ Output: 4
 
 
 Prepare:  
-1. dict count - see [python built-in #defaultdict](http://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-collections.html#collectionsdefaultdict)
+1. dict count - see [python built-in #defaultdict](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#collectionsdefaultdict)
 2. greatest common divisor - see [Greatest Common Divisor](http://ha5ha6.github.io/judy_blog/programming/2019/11/12/others-math.html#greatest-common-divisor)
 
 Example 2 Solution:  
