@@ -68,7 +68,7 @@ In the control as inference framework
 PGM <=> RL objective + an entropy term  
 
 **RL problem formulation**
-![](/assets/images/rlform.png){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/rlform.png){:width="80%"}
 
 Questions:  
 How can we formulate a PGB such that the most probable trajectory corresponds to the trajectory from the optimal policy?  
@@ -76,7 +76,7 @@ Or How can we formulate a PGM such that inferring the posterior action condition
 
 **Introducing reward**
 
-![](/assets/images/pgmreward.png){:width="80%"}  
+![](https://ha5ha6.github.io/judy_blog/assets/images/pgmreward.png){:width="80%"}  
 
 Explanation:  
 Suppose with a deterministic dynamic system, where the "Dynamic probability" term is a **constant** for all trajectories that are dynamically feasible.  
@@ -87,11 +87,11 @@ Then, the trajectory with **the highest reward has the highest probability**, an
 We can recover <span style="color:red">**the optimal policy**</span> using a standard **sum-product inference algorithm**  
 analogously to **inference in HMM-style dynamic Bayesian networks**  
 
-![](/assets/images/backup.png){:width="85%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/backup.png){:width="85%"}
 
 Now we have the solution but the intuition, the intuition can be recovered by the equations in log space  
 
-![](/assets/images/backuplog.png){:width="85%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/backuplog.png){:width="85%"}
 
 **The key point of being "soft":**  
 <span style="color:red">if among the possible outcomes for the next state, there is one outcome with a very high value, it will dominate the backup,</span> even when there are other possible states that might be likely and have extremely low value    
