@@ -25,8 +25,8 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/23/data-structrue-tree-linkedlist.html",
         "teaser":null},{
         "title": "Topics",
-        "excerpt":"N Sum leetcode 1 - Two Sum [E] - hash see hash table #nsum leetcode 167 - Two Sum II - Input array is sorted [M] - binary search see binary search #twosum Best Time Buy n Sell leetcode 121 - Best Time to Buy and Sell Stock (Once) [E]...","categories": ["Programming"],
-        "tags": ["MinMax","Bfs","Dfs","DP","Recursion","Topics","Hash Table","Binary Search"],
+        "excerpt":"N Sum leetcode 1 - Two Sum [E] - hash see hash table #nsum leetcode 167 - Two Sum II - Input array is sorted [M] - binary search see binary search #twosum leetcode 170 - Two Sum III [E] - Design see design #twosum Best Time Buy n Sell...","categories": ["Programming"],
+        "tags": ["MinMax","Bfs","Dfs","DP","Recursion","Topics","Hash Table","Binary Search","N-Sum"],
         "url": "http://localhost:4000/programming/2019/10/25/topics.html",
         "teaser":null},{
         "title": "Data Structure 4 - string",
@@ -85,7 +85,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/12/others-math.html",
         "teaser":null},{
         "title": "Data Structure 11 - python built-in",
-        "excerpt":"dict {} two variables in for-loop for dr,dc in [(1,0),(-1,0),(0,-1),(0,1)]: print(dr,dc) Output: 1,0 -1,0 0,-1 0,1 zip numbers = [1, 2, 3] letters = ['a', 'b', 'c'] list(zip(numbers, letters)) &gt;&gt;[(1, 'a'), (2, 'b'), (3, 'c')] for n,l in zip(numbers,letters): print(n,l) Output: 1,'a' 2,'b' 3,'c' itertools.zip_longest #python 3 from itertools import...","categories": ["Programming"],
+        "excerpt":"max key max(iterable, *iterables, key) def poweroftwo(x): return x**2 #return the num has max poweroftwo max(-4,-2,0,1,3,key=poweroftwo) &gt;&gt;-4 #or nums=[-4,-2,0,1,3] max(nums,key=poweroftwo) &gt;&gt;-4 num0=[15, 300, 2700, 821] num1=[12, 2] num2=[34, 567, 78] max(num, num1, num2, key=len) &gt;&gt;[15, 300, 2700, 821] #return the key of the max value cnt=collections.Counter([2,2,2,2,1,1,1,2]) &gt;&gt;Counter({2: 5, 1: 3})...","categories": ["Programming"],
         "tags": ["Data Structure","Python collections","Python itertools","Queue","Hash Table"],
         "url": "http://localhost:4000/programming/2019/11/12/data-structrue-python-builtin.html",
         "teaser":null},{
@@ -106,7 +106,7 @@ var store = [{
         "teaser":null},{
         "title": "ALgorithms 2 - binary search",
         "excerpt":"Time Complexity O(log n) Find Peak leetcode 153 - Find Minimum in Rotated Sorted Array [M] Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand, find the minimum element Example 1: Input: [3,4,5,1,2] Output: 1 Example 2: Input: [4,5,6,7,0,1,2] Output: 0 Solution: create...","categories": ["Programming"],
-        "tags": ["Algorithms","Binary Search"],
+        "tags": ["Algorithms","Binary Search","N-Sum"],
         "url": "http://localhost:4000/programming/2019/11/13/algorithm-binarysearch.html",
         "teaser":null},{
         "title": "ALgorithms 1 - sorting",
@@ -116,6 +116,11 @@ var store = [{
         "teaser":null},{
         "title": "Data Structure 8 - hash table",
         "excerpt":"N Sum using python dict see python built-in #dict leetcode 1 - Two Sum [E] Given an array of integers, return indices of the two numbers such that they add up to a specific target Example: Given nums=[2,7,11,15], target=9 Because nums[0]+nums[1]=2+7=9, return [0,1] Solution: record a hash table n2i={} of...","categories": ["Programming"],
-        "tags": ["Data Structure","Hash Table"],
+        "tags": ["Data Structure","Hash Table","N-Sum"],
         "url": "http://localhost:4000/programming/2019/11/14/data-structrue-hash.html",
+        "teaser":null},{
+        "title": "OThers 10 - design",
+        "excerpt":"Stack leetcode 155 - Min Stack [E] leetcode 716 - Max Stack [E] see stack #design Two Sum leetcode 170 - Two Sum III - Data structure design [E] - hash Design and implement a TwoSum Class supports the following operations: add and find Example: add(1) add(3) add(5) find(4) -&gt;...","categories": ["Programming"],
+        "tags": ["Others","Stack","N-Sum"],
+        "url": "http://localhost:4000/programming/2019/11/15/others-design.html",
         "teaser":null}]

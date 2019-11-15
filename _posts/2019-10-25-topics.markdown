@@ -15,6 +15,7 @@ tags:
   - Topics
   - Hash Table
   - Binary Search
+  - N-Sum
 author:  Jiexin Wang
 classes:  wide
 author_profile: true
@@ -25,7 +26,10 @@ toc_label: "Index"
 ### N Sum  
 
 **leetcode 1 - Two Sum [E] - hash** see [hash table #nsum](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/data-structrue-hash.html#n-sum)  
-**leetcode 167 - Two Sum II - Input array is sorted [M] - binary search** see [binary search #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-binarysearch.html#two-sum)
+**leetcode 167 - Two Sum II - Input array is sorted [M] - binary search** see [binary search #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-binarysearch.html#two-sum)  
+**leetcode 170 - Two Sum III [E] - Design**  see [design #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-design.html#two-sum)
+
+
 
 ### Best Time Buy n Sell
 
@@ -267,4 +271,147 @@ class Solution():
 
 ### Majority Elements
 
-[Hash, Set, Counter, Sort, Randomization, Divide n Conquer, Moore Voting, Bit Manipulation]
+**leetcode 169 - Majority Element[E]**  
+[Hash, Set, Counter, Sort, Randomization, Divide n Conquer, Moore Voting, Bit Manipulation]  
+
+Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.  
+Examples:  
+Input: [3,2,3]  
+Output: 3  
+Input: [2,2,1,1,1,2,2]  
+Output: 2  
+
+Solution 1 - Brute - Time O(n^2), Space O(1):  
+
+```python  
+class Solution():
+    def majorityElement(self, nums):
+        for n in nums:
+            cnt=sum(1 for i in nums if i==n)
+            print(n,cnt)
+            if cnt>len(nums)//2:
+                return n
+
+Output (n,cnt):
+2 4
+2 4
+1 3
+1 3
+1 3
+2 4
+2 4
+```
+
+Solution 2.1 - Hash - Time O(n):
+
+```python  
+class Solution():
+    def majorityElement(self, nums):
+        cnt={}
+        for n in nums:
+            if n not in cnt:
+                cnt[n]=1
+            else:
+                cnt[n]+=1
+            #or
+            #cnt[n] = cnt.get(n, 0) + 1
+
+            if cnt[n]>len(nums)//2:
+                return n
+```
+
+Solution 2.2 - Hash,Counter - Time O(n), Space O(n):
+
+```python  
+class Solution():
+    def majorityElement(self, nums):
+        cnt=collections.Counter(nums)
+        return max(cnt.keys(),key=cnt.get)
+```
+
+Solution 3 - Set
+
+```python  
+class Solution():
+    def majorityElement(self, nums):
+        nset=set(nums)
+        for n in nset:
+            if nums.count(n)>len(nums)//2:
+                return n
+```
+
+Solution 4 - Sort - Time O(nlogn), Space O(1) or O(n):
+
+```python  
+class Solution():
+    def majorityElement(self, nums):
+        nums.sort()
+        return nums[len(nums)//2]
+```
+
+Solution 5 - Randomization - Time O(inf):
+
+```python  
+import random
+class Solution():
+    def majorityElement(self, nums):
+        while True:
+            candidate=random.choice(nums)
+            if sum(1 for i in nums if i==candidate)>len(nums)//2:
+                return candidate
+```
+
+Solution 6 - Divide n Conquer - Time O(nlogn), Space O(logn):  
+
+```python  
+class Solution():
+    def majorityElement(self, nums):
+        return self.dnc(nums,0,len(nums)-1)
+
+    def dnc(self,nums,left,right):
+        if left==right:
+            return nums[left]
+
+        mid=(left+right)//2
+        new_left=self.dnc(nums,left,mid)
+        new_right=self.dns(nums,mid+1,right)
+        if new_left==new_right:
+            return new_left
+
+        return new_left if nums[left:right+1].count(new_left)>nums[left:right+1].count(new_right) else new_right
+```
+
+Solution 7 (Best) - Boyer-Moore Voting - Time O(n), Space O(1):
+
+```python
+class Solution():
+    def majorityElement(self, nums):
+        cnt=0
+        candidate=None
+        for n in nums:
+            if cnt==0:
+                candidate=n
+            cnt+=(1 if n==candidate else -1)
+
+        return candidate
+```
+
+Solution 8 - Bit Manipulation: see [ref](https://blog.csdn.net/coder_orz/article/details/51407713)
+
+```python
+class Solution():
+    def majorityElement(self, nums):
+        major=0
+        mask=1
+        for i in range(0,32):
+            cnt=0
+            for j in nums:
+                if j&mask:
+                    cnt+=1
+                    if cnt>len(nums)//2:
+                        major|=mask
+                        break
+            mask<<=1
+
+        return major if major>>31==0 else major-(1<<32)
+```

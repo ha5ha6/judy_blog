@@ -9,6 +9,7 @@ tags:
   #- Index
   - Algorithms
   - Binary Search
+  - N-Sum
 author:  Jiexin Wang
 classes:  wide
 toc: true

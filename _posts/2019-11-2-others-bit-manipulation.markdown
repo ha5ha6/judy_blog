@@ -167,4 +167,7 @@ class Solution(object):
 
 ### REF
 
+[leetcode bit manipulation questions](https://leetcode.com/tag/bit-manipulation/)
+[A summary: how to use bit manipulation to solve problems easily and efficiently](https://leetcode.com/problems/sum-of-two-integers/discuss/84278/a-summary-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently)
+
 https://www.cnblogs.com/JYNNO1/p/10525649.html

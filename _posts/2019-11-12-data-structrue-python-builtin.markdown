@@ -19,7 +19,76 @@ toc_label: "Index"
 author_profile: true
 ---
 
+### max key
+
+max(iterable, \*iterables, key)
+
+```python
+def poweroftwo(x):
+    return x**2
+
+#return the num has max poweroftwo
+max(-4,-2,0,1,3,key=poweroftwo)
+>>-4
+#or
+nums=[-4,-2,0,1,3]
+max(nums,key=poweroftwo)
+>>-4
+
+num0=[15, 300, 2700, 821]
+num1=[12, 2]
+num2=[34, 567, 78]
+max(num, num1, num2, key=len)
+>>[15, 300, 2700, 821]
+
+#return the key of the max value
+cnt=collections.Counter([2,2,2,2,1,1,1,2])
+>>Counter({2: 5, 1: 3})
+max(cnt.keys(),key=cnt.get)
+>>2
+```
+
 ### dict {}
+
+```python
+d = {0: 'a', 1: 'b', 2: 'c', 3: 'd'}
+
+d[0] -> 'a'
+d[2] -> 'c'
+d[4]=['e','f','g'] #new an entry with list
+del d[1] #delete an entry
+d[(1,1)]='ab' #tuple can be key, cuz its immutable
+
+#get value from key
+d.get(0) -> 'a'
+d.get(5) -> None
+d.get(5,-1) -> -1 #return -1 if None
+
+#return key and value list
+list(d.items())
+>>[(0, 'a'), (1, 'b'), (2, 'c'), (3, 'd'), (4, ['e', 'f', 'g']), ((1, 1), 'ab')]
+list(d.items())[0]
+>>(0, 'a')
+list(d.items())[0][0]
+>>0
+
+for k,v in d.items():
+    print(k,v)
+
+Output:
+0 a
+1 b
+2 c
+3 d
+4 ['e', 'f', 'g']
+(1, 1) ab
+
+list(d.keys())
+>>[0, 1, 2, 3, 4, (1, 1)]
+
+list(d.values())
+>>['a', 'b', 'c', 'd', ['e', 'f', 'g'], 'ab']
+```
 
 ### two variables in for-loop
 
