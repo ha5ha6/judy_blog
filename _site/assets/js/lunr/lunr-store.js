@@ -10,7 +10,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-tree.html",
         "teaser":null},{
         "title": "Data Structure 9 - binary search tree",
-        "excerpt":"Definition Basic Operation leetcode 98 - Validate Binary Search Tree [M] - [T/F] class BinarySearchTree(): def isValidBST(self, root): return self.isValid(root,float('-inf'),float('inf')) def isValid(self,node,left,right): if not node: return True if node.val&lt;=left or node.val&gt;=right: return False return self.isValid(node.left,left,node.val) and self.isValid(node.right,node.val,right) Others leetcode 95 - Unique Binary Search Trees II [M] - generate leetcode...","categories": ["Programming"],
+        "excerpt":"Definition A binary search tree (BST), also known as an ordered binary tree, is a node-based data structure in which each node has no more than two child nodes. The left sub-tree contains only nodes with keys less than the parent node; The right sub-tree contains only nodes with keys...","categories": ["Programming"],
         "tags": ["Data Structure","Tree","Binary Search Tree","Recursion"],
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-bst.html",
         "teaser":null},{
@@ -25,7 +25,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/23/data-structrue-tree-linkedlist.html",
         "teaser":null},{
         "title": "Topics",
-        "excerpt":"N Sum leetcode 1 - Two Sum [E] - hash see hash table #nsum leetcode 167 - Two Sum II - Input array is sorted [M] - binary search see binary search #twosum leetcode 170 - Two Sum III [E] - Design see design #twosum Best Time Buy n Sell...","categories": ["Programming"],
+        "excerpt":"N Sum leetcode 1 - Two Sum [E] - hash see hash table #nsum leetcode 167 - Two Sum II - Input array is sorted [M] - binary search see binary search #twosum leetcode 170 - Two Sum III - Data structure design [E] see design #twosum Best Time Buy...","categories": ["Programming"],
         "tags": ["MinMax","Bfs","Dfs","DP","Recursion","Topics","Hash Table","Binary Search","N-Sum"],
         "url": "http://localhost:4000/programming/2019/10/25/topics.html",
         "teaser":null},{
@@ -51,7 +51,7 @@ var store = [{
         "teaser":null},{
         "title": "Data Structure 2 - matrix",
         "excerpt":"Board Game leetcode 130 - Surrounded Regions [M] - stack or dfs Given a 2D board containing ‘X’ and ‘O’ (the letter O), capture all regions surrounded by ‘X’. A region is captured by flipping all ‘O’s into ‘X’s in that surrounded region. Example: X X X X X O...","categories": ["Programming"],
-        "tags": ["Data Structure","Matrix","Board Game","2D Array"],
+        "tags": ["Data Structure","Matrix","Board Game"],
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-matrix.html",
         "teaser":null},{
         "title": "ALgorithms 4 - depth first traversal",
@@ -120,7 +120,12 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/14/data-structrue-hash.html",
         "teaser":null},{
         "title": "OThers 10 - design",
-        "excerpt":"Stack leetcode 155 - Min Stack [E] leetcode 716 - Max Stack [E] see stack #design Two Sum leetcode 170 - Two Sum III - Data structure design [E] - hash Design and implement a TwoSum Class supports the following operations: add and find Example: add(1) add(3) add(5) find(4) -&gt;...","categories": ["Programming"],
+        "excerpt":"Stack leetcode 155 - Min Stack [E] leetcode 716 - Max Stack [E] see stack #design Tree leetcode 173 - Binary Search Tree Iterator [M] see bst #basic Two Sum leetcode 170 - Two Sum III - Data structure design [E] - hash Design and implement a TwoSum Class supports...","categories": ["Programming"],
         "tags": ["Others","Stack","N-Sum"],
         "url": "http://localhost:4000/programming/2019/11/15/others-design.html",
+        "teaser":null},{
+        "title": "OThers 12 - sql",
+        "excerpt":"leetcode 175 - Combine Two Tables [E] leetcode 176 - Second Highest Salary [E] leetcode 177 - Nth Highest Salary [M] lettcode 178 - Rank Scores [M] leetcode 180 - Consecutive Numbers [M] leetcode 181 - Employees Earning More Than Their Managers [E] leetcode 182 - Duplicate Emails [E] leetcode...","categories": ["Programming"],
+        "tags": ["Others","SQL"],
+        "url": "http://localhost:4000/programming/2019/11/15/others-sql.html",
         "teaser":null}]

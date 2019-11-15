@@ -93,13 +93,33 @@ Now we have the solution but the intuition, the intuition can be recovered by th
 
 ![](https://ha5ha6.github.io/judy_blog/assets/images/backuplog.png){:width="85%"}
 
-**The key point of being "soft":**  
+**being "soft" is optimistic:**  
 <span style="color:red">if among the possible outcomes for the next state, there is one outcome with a very high value, it will dominate the backup,</span> even when there are other possible states that might be likely and have extremely low value    
--> creates risk seeking behavior: if an agent behaves according to this Q-function, it might take actions that have extremely high risk, so long as they have some non-zero probability of a high reward  
+-> creates risk seeking behavior: if an agent behaves according to this Q-function (soft backup), it might take actions that have extremely high risk, so long as they have some non-zero probability of a high reward  
 
+### the Objective
 
+![](https://ha5ha6.github.io/judy_blog/assets/images/entropyobj.png){:width="85%"}
 
+### issues with Stochastic dynamics
 
+The nature problem of max entropy framework under stochastic dynamics is the assumption that the agent is allowed to control both **its actions** and **the dynamics of the system** in order to produce optimal trajs, but its authority over the dynamics is **penalized** based on the deviation from the true dynamics.
+
+![](https://ha5ha6.github.io/judy_blog/assets/images/stochas.png){:width="85%"}
+
+The posterior doesn't necessarily match the true dynamics, therefore the agent assumes it can influence the dynamics to a limited extent.
+
+A simple fix:  
+
+![](https://ha5ha6.github.io/judy_blog/assets/images/stoobj.png){:width="85%"}
+
+### Max-Entropy RL with Fixed Dynamics  
+
+To optimize the objective under **stochastic dynamics**, we need to derive **the backward messages** from an optimization perspective as **dynamic programming**
+
+![](https://ha5ha6.github.io/judy_blog/assets/images/stobellman.png){:width="85%"}
+
+if we fix the dynamics and initial state distribution, and only allow the policy to change, we recover a Bellman backup operator that uses the expected value of the next state, rather than the optimistic estimate
 
 
 ### Refs

@@ -22,6 +22,10 @@ author_profile: true
 **leetcode 155 - Min Stack [E]**  
 **leetcode 716 - Max Stack [E]** see [stack #design](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html#design)  
 
+### Tree  
+
+**leetcode 173 - Binary Search Tree Iterator [M]** see [bst #basic](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html#basic)
+
 ### Two Sum
 
 **leetcode 170 - Two Sum III - Data structure design [E] - hash**  

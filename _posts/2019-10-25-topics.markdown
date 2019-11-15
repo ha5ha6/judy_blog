@@ -27,7 +27,7 @@ toc_label: "Index"
 
 **leetcode 1 - Two Sum [E] - hash** see [hash table #nsum](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/data-structrue-hash.html#n-sum)  
 **leetcode 167 - Two Sum II - Input array is sorted [M] - binary search** see [binary search #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-binarysearch.html#two-sum)  
-**leetcode 170 - Two Sum III [E] - Design**  see [design #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-design.html#two-sum)
+**leetcode 170 - Two Sum III - Data structure design [E]**  see [design #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-design.html#two-sum)
 
 
 

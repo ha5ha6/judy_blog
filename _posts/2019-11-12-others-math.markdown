@@ -140,6 +140,104 @@ class Solution():
         return "".join([chr(i+ord('A')) for i in res])
 ```
 
+**leetcode 171 - Excel Sheet Column Number [E]**
+Given a column title as appear in an Excel sheet, return its corresponding column number.  
+
+For example:  
+
+
+    A -> 1
+    B -> 2
+    C -> 3
+    ...
+    Z -> 26
+    AA -> 27
+    AB -> 28
+    ...
+
+
+Examples:  
+Input: "A"  
+Output: 1  
+Input: "AB"  
+Output: 28  
+Input: "ZY"  
+Output: 701  
+
+Solution: the opposite of divmod leetcode 168  
+
+
+    'AB'  
+    'A' -> 1 = ord('A')-ord('A')+1 = 1
+    res=0*26+1=1
+    'B' -> 2 = ord('B')-ord('A')+1 = 2
+    res=1*26+2=28
+
+
+```python
+class Solution():
+    def titleToNumber(self,s):
+        res=0
+        for c in s:
+            res=res*26+ord(c)-ord('A')+1
+
+        return res
+```
+
+### Factorial n!
+
+
+    n!=nx(n-1)...x1
+    4!=4x3x2x1=24  
+    0!=1
+
+```python
+n=5
+fact=1
+for i in range(1,n+1):
+    fact*=i
+
+print(fact)
+>>120
+```
+
+**leetcode 172 - Factorial Trailing Zeroes [E]**  
+Given an integer n, return the number of trailing zeroes in n!  
+
+Examples:    
+Input: 3  
+Output: 0  
+Explanation: 3! = 6, no trailing zero.  
+Input: 5  
+Output: 1  
+Explanation: 5! = 120, one trailing zero.  
+
+Solution: Time O(logn), Space O(1)  
+count the numbers 1..n that are divisible by 5, then those divisible by 25 having a second factor of 5, then 125...   
+
+
+    5!=120
+    16!=20922789888000
+    38!=523022617466601111760007224100074291200000000
+
+    zeroes        n         
+      0           38    
+      7=38//5+0   7=38//5
+      8=7//5+7    1=7//5
+      8=1//5+8    0=1//5
+
+
+```python
+class Solution():
+    def trailingZeroes(self, n):
+        zs=0
+        while n:
+            zs+=n//5
+            n=n//5
+
+        return zs
+```
+
 ### Cartesian coordinate
 
 **leetcode 149 - Max Points on a Line [H] - greatest common divisor + dict count**  

@@ -10,7 +10,6 @@ tags:
   - Data Structure
   - Matrix
   - Board Game
-  - 2D Array
 author:  Jiexin Wang
 classes:  wide
 toc: true

@@ -47,16 +47,18 @@ classes: wide
 7.	trie
 8.	union find
 9.	topological sort
-10. design: minstack,maxstack
+10. [design](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-design.html)
 11. brainteaser
+12. [SQL](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-sql.html)
+13. [file]()
 
 ### Topics
 
 1. [Best Time Buy n Sell](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#best-time-buy-n-sell) [list, minmax, dp]  
-2. [Word Ladder](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#word-ladder) [bfs,dfs]
-3. [Word Break]
-4. [N Sum]
-5. [Majority Element] [Hash, Set, Counter, Sort, Randomization, Divide n Conquer, Moore Voting, Bit Manipulation]
+2. [Word Ladder](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#word-ladder) [bfs, dfs]
+3. [Word Break](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#word-break) [dp, dfs]
+4. [N Sum](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#n-sum) [hash, binary search, design]
+5. [Majority Element](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#majority-elements) [hash, set, Counter, sort, randomization, divide n conquer, Moore Voting, bit manipulation]
 
 ### Resources
 
