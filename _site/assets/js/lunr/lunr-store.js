@@ -25,8 +25,8 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/23/data-structrue-tree-linkedlist.html",
         "teaser":null},{
         "title": "Topics",
-        "excerpt":"Best Time Buy n Sell leetcode 121 - Best Time to Buy and Sell Stock (Once) [E] - record min and max Input: [7,1,5,3,6,4] Output: 5 Explanation: Buy on 1 and sell on 6, profit = 6-1 = 5. Not 7-1 = 6, as selling price needs to be larger...","categories": ["Programming"],
-        "tags": ["MinMax","Bfs","Dfs","DP","Recursion"],
+        "excerpt":"N Sum leetcode 1 - Two Sum [E] - hash see hash table #nsum leetcode 167 - Two Sum II - Input array is sorted [M] - binary search see binary search #twosum Best Time Buy n Sell leetcode 121 - Best Time to Buy and Sell Stock (Once) [E]...","categories": ["Programming"],
+        "tags": ["MinMax","Bfs","Dfs","DP","Recursion","Topics","Hash Table","Binary Search"],
         "url": "http://localhost:4000/programming/2019/10/25/topics.html",
         "teaser":null},{
         "title": "Data Structure 4 - string",
@@ -85,7 +85,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/12/others-math.html",
         "teaser":null},{
         "title": "Data Structure 11 - python built-in",
-        "excerpt":"two variables in for-loop for dr,dc in [(1,0),(-1,0),(0,-1),(0,1)]: print(dr,dc) Output: 1,0 -1,0 0,-1 0,1 zip numbers = [1, 2, 3] letters = ['a', 'b', 'c'] list(zip(numbers, letters)) &gt;&gt;[(1, 'a'), (2, 'b'), (3, 'c')] for n,l in zip(numbers,letters): print(n,l) Output: 1,'a' 2,'b' 3,'c' itertools.zip_longest #python 3 from itertools import zip_longest #python...","categories": ["Programming"],
+        "excerpt":"dict {} two variables in for-loop for dr,dc in [(1,0),(-1,0),(0,-1),(0,1)]: print(dr,dc) Output: 1,0 -1,0 0,-1 0,1 zip numbers = [1, 2, 3] letters = ['a', 'b', 'c'] list(zip(numbers, letters)) &gt;&gt;[(1, 'a'), (2, 'b'), (3, 'c')] for n,l in zip(numbers,letters): print(n,l) Output: 1,'a' 2,'b' 3,'c' itertools.zip_longest #python 3 from itertools import...","categories": ["Programming"],
         "tags": ["Data Structure","Python collections","Python itertools","Queue","Hash Table"],
         "url": "http://localhost:4000/programming/2019/11/12/data-structrue-python-builtin.html",
         "teaser":null},{
@@ -105,7 +105,7 @@ var store = [{
         "url": "http://localhost:4000/literaturereview/2019/11/13/control-as-inference.html",
         "teaser":null},{
         "title": "ALgorithms 2 - binary search",
-        "excerpt":"Definition Find Peak leetcode 153 - Find Minimum in Rotated Sorted Array [M] Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand, find the minimum element Example 1: Input: [3,4,5,1,2] Output: 1 Example 2: Input: [4,5,6,7,0,1,2] Output: 0 Solution: create left=0 and right=len-1...","categories": ["Programming"],
+        "excerpt":"Time Complexity O(log n) Find Peak leetcode 153 - Find Minimum in Rotated Sorted Array [M] Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand, find the minimum element Example 1: Input: [3,4,5,1,2] Output: 1 Example 2: Input: [4,5,6,7,0,1,2] Output: 0 Solution: create...","categories": ["Programming"],
         "tags": ["Algorithms","Binary Search"],
         "url": "http://localhost:4000/programming/2019/11/13/algorithm-binarysearch.html",
         "teaser":null},{
@@ -113,4 +113,9 @@ var store = [{
         "excerpt":"Big O Table   Bubble Sort   Insertion Sort   leetcode 147 - Insertion Sort List [M] see linked list #sorting   Merge Sort   leetcode 148 - (Merge) Sort List [M] see linked list #sorting   Bucket Sort   leetcode 164 - Maximum Gap [H]   class Solution():     def maximumGap(self,nums):   ","categories": ["Programming"],
         "tags": ["Algorithms","Bucket Sort"],
         "url": "http://localhost:4000/programming/2019/11/14/algorithm-sorting.html",
+        "teaser":null},{
+        "title": "Data Structure 8 - hash table",
+        "excerpt":"N Sum using python dict see python built-in #dict leetcode 1 - Two Sum [E] Given an array of integers, return indices of the two numbers such that they add up to a specific target Example: Given nums=[2,7,11,15], target=9 Because nums[0]+nums[1]=2+7=9, return [0,1] Solution: record a hash table n2i={} of...","categories": ["Programming"],
+        "tags": ["Data Structure","Hash Table"],
+        "url": "http://localhost:4000/programming/2019/11/14/data-structrue-hash.html",
         "teaser":null}]

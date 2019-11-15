@@ -84,6 +84,19 @@ Then, the trajectory with **the highest reward has the highest probability**, an
 
 ### Policy search as Probabilistic inference
 
+We can recover <span style="color:red">**the optimal policy**</span> using a standard **sum-product inference algorithm**  
+analogously to **inference in HMM-style dynamic Bayesian networks**  
+
+![](/assets/images/backup.png){:width="85%"}
+
+Now we have the solution but the intuition, the intuition can be recovered by the equations in log space  
+
+![](/assets/images/backuplog.png){:width="85%"}
+
+**The key point of being "soft":**  
+<span style="color:red">if among the possible outcomes for the next state, there is one outcome with a very high value, it will dominate the backup,</span> even when there are other possible states that might be likely and have extremely low value    
+-> creates risk seeking behavior: if an agent behaves according to this Q-function, it might take actions that have extremely high risk, so long as they have some non-zero probability of a high reward  
+
 
 
 

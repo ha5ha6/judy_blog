@@ -21,7 +21,7 @@ classes: wide
 5.	[stack](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html)
 6.	[queue](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/data-structrue-queue.html), priority queue
 7.	heap
-8.	hash table
+8.	[hash table](https://ha5ha6.github.io/judy_blog//programming/2019/11/14/data-structrue-hash.html)
 9.	[tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-tree.html), [binary search tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html), [tree + linked list](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/data-structrue-tree-linkedlist.html), segment tree
 10. [graph](https://ha5ha6.github.io/judy_blog/programming/2019/11/01/data-structrue-graph.html)
 11. [python built-in](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html)
@@ -54,6 +54,9 @@ classes: wide
 
 1. [Best Time Buy n Sell](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#best-time-buy-n-sell) [list, minmax, dp]  
 2. [Word Ladder](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#word-ladder) [bfs,dfs]
+3. [Word Break]
+4. [N Sum]
+5. [Majority Element] [Hash, Set, Counter, Sort, Randomization, Divide n Conquer, Moore Voting, Bit Manipulation]
 
 ### Resources
 

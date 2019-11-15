@@ -19,6 +19,8 @@ toc_label: "Index"
 author_profile: true
 ---
 
+### dict {}
+
 ### two variables in for-loop
 
 ```python
@@ -65,6 +67,24 @@ list(zip_longest([1,2,3],[4,5],fillvalue=0))
 >>[(1, 4), (2, 5), (3, 0)]
 ```
 
+### collections.Counter
+
+```python
+from collections import Counter
+
+a=[1,2,3,2,2,2,2,2,3,3]
+c=Counter(a)
+>>Counter({1: 1, 2: 6, 3: 3})
+
+for i in c:
+    print(i,c[i])
+
+Output:
+1 1
+2 6
+3 3
+```
+
 ### collections.defaultdict
 
 ```python
@@ -89,13 +109,16 @@ sorted(d.items())
 >>[('blue', [2, 4]), ('red', [1]), ('yellow', [1, 3])]
 ```
 
-
-
 ### collections.deque
 
-**collections.deque** - [geeksforgeeks](https://www.geeksforgeeks.org/deque-in-python/)  
+ref see [geeksforgeeks](https://www.geeksforgeeks.org/deque-in-python/)  
+
 1. a generalization of **stacks and queues**  
 2. preferred over list when **quicker append and pop from both the ends of container** are needed  
 3. O(1) time complexity for **append and pop** as list is O(n)
 
 ```python
+from collections import deque
+
+example!!
+```

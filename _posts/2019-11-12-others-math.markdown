@@ -47,9 +47,102 @@ max([x for x in range(1,a+1) if a%x==0 and b%x==0])
 [x for x in range(1,a+1) if a % x ==0 and b % x ==0][-1]
 ```
 
+### Dividing / Fraction  
+
+**leetcode 166 - Fraction to Recurring Decimal [M] - divmod + dict**  
+Examples:  
+Input: numerator=1, denominator=2  
+Output: "0.5"  
+Input: numerator=2, denominator=1  
+Output: "1"  
+Input: numerator=2, denominator=3   
+Output: "0.(6)"  
+
+Solution:  
+1. check sign  
+2. before '.': take integer of integer,remainder=divmod(numerator,denominator)  
+3. after '.': take integer of integer,remainder=divmod(remainder*10,denominator)  
+4. using **dict seen={}** see [hash table](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/data-structrue-hash.html) to check if remainder is repeating (recurring)  
+
+```python
+class Solution():
+    def fractionToDecimal(self,nu,de):
+        if de==0:
+            return None
+
+        res=[]
+        if nu*de<0:
+            res.append('-') #sign
+
+        div,rem=divmod(abs(nu),abs(de))
+        res.append(str(div)) #before .
+        if rem==0:
+            return "".join(res)
+
+        res.append('.')
+        seen={}
+        while rem!=0:
+            if rem in seen:
+                return "".join(res[:seen[rem]]+['(']+res[seen[rem]:]+[')'])
+
+            seen[rem]=len(res)
+            div,rem=divmod(rem*10,abs(de))
+            res.append(str(div)) #after .
+
+        return "".join(res)
+```
+
+**leetcode 168 - Excel Sheet Column Title [E] - divmod + deque** see [python built-in #deque](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#collectionsdeque)
+Given a positive integer, return its corresponding column title as appear in Excel  
+For example:  
+
+
+    1 -> A  
+    2 -> B
+    3 -> C
+    ...
+    26 -> Z
+    27 -> AA
+    28 -> AB
+    ...
+
+Examples:  
+Input: 1  
+Output: "A"  
+Input: 28  
+Output: "AB"  
+Input: 701  
+Output: "ZY"  
+
+Solution:  
+n,remainder=divmod(n-1,26)  
+the output column will be the remainder value from left to right in deque  
+
+
+    28
+    1,1#=divmod(28-1,26)  column= ,1#]
+    0,0#=divmod(1-1,26)   column=[0#,1#] -> 'AB'
+
+    701
+    26,24=divmod(701-1,26)  column= ,24]
+    0,25=divmod(26-1,26)    column=[25,24] -> 'ZY'
+
+```python
+from collections import deque
+
+class Solution():
+    def convertToTitle(self,n):
+        res=deque()
+        while n>0:
+            n,rem=divmod(n-1,26)
+            res.appendleft(rem)
+
+        return "".join([chr(i+ord('A')) for i in res])
+```
+
 ### Cartesian coordinate
 
-**leetcode 149 Max Points on a Line [H] - greatest common divisor + dict count**  
+**leetcode 149 - Max Points on a Line [H] - greatest common divisor + dict count**  
 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line  
 
 Example 1:  
@@ -95,6 +188,7 @@ second point [3,2] - each leftover [5,3],[4,1],[2,3],[1,4]
 
 ```python
 from collections import defaultdict
+
 class Solution():
     def maxPoints(self,inputs):
         res=0

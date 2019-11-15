@@ -16,7 +16,7 @@ toc_label: "Index"
 author_profile: true
 ---
 
-### Definition
+**Time Complexity O(log n)**
 
 ### Find Peak
 
@@ -183,4 +183,37 @@ class Solution():
             return left
 
        return right
+```
+
+### Two Sum
+
+**leetcode 167 - Two Sum II - Input array is sorted [E]**  
+Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number  
+Note: return indices are not zero-based  
+
+Example:  
+Input: nums=[2,7,11,15], target=9  
+Output: [1,2]
+
+
+    0 1  2  3
+    2,7,11,15
+    l       r  2+15>tar
+    l    r     2+11>tar
+    l r        2+7=tar return
+
+
+```python
+class Solution():
+    def twoSum(self,nums,tar):
+        left,right=0,len(nums)-1
+        while True:
+            pair_sum=nums[left]+nums[right]
+            if pair_sum == tar:
+                return [left+1,right+1]
+
+            if pair_sum < tar:
+                left+=1
+            else:
+                right-=1
 ```

@@ -58,6 +58,14 @@ s='1.0.1'
 s.splie('.') -> ['1', '0', '1']
 ```
 
+6. chr and ord
+```python
+ord('a') -> 97
+ord('A') -> 65
+chr(65) -> 'A'
+chr(97) -> 'a'
+```
+
 ### Compare  
 
 **leetcode 165 - Compare Version Numbers [M]**  

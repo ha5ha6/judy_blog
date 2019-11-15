@@ -12,6 +12,9 @@ tags:
   - Dfs
   - DP
   - Recursion
+  - Topics
+  - Hash Table
+  - Binary Search
 author:  Jiexin Wang
 classes:  wide
 author_profile: true
@@ -19,14 +22,20 @@ toc: true
 toc_label: "Index"
 ---
 
+### N Sum  
+
+**leetcode 1 - Two Sum [E] - hash** see [hash table #nsum](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/data-structrue-hash.html#n-sum)  
+**leetcode 167 - Two Sum II - Input array is sorted [M] - binary search** see [binary search #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-binarysearch.html#two-sum)
+
 ### Best Time Buy n Sell
 
-**leetcode 121 - Best Time to Buy and Sell Stock (Once) [E] - record min and max** <br/>
-Input: [7,1,5,3,6,4] <br/>
-Output: 5 <br/>
-Explanation: Buy on 1 and sell on 6, profit = 6-1 = 5. Not 7-1 = 6, as selling price needs to be larger than buying price. <br/>
+**leetcode 121 - Best Time to Buy and Sell Stock (Once) [E] - record min and max**  
+Input: [7,1,5,3,6,4]  
+Output: 5  
+Explanation: Buy on 1 and sell on 6, profit = 6-1 = 5. Not 7-1 = 6, as selling price needs to be larger than buying price.  
 
-Solution 1 - straightforward understandable <br/>
+Solution 1 - straightforward understandable  
+
 ```python      
 class Solution1(object):
     def maxProfit(self,prices):
@@ -44,17 +53,20 @@ class Solution1(object):
         return maxp
 ```
 
-Solution 2 - advanced <br/>
-minp <- find the min price, and remember it <br/>
-maxp <- find the max of p-minp, and remember it <br/>
-Input: [7,1,5,3,6,4] <br/>
-(minp,maxp) = <br/>
-(7, 0) <br/>
-(1, 0) <br/>
-(1, 4) <br/>
-(1, 4) <br/>
-(1, 5) <br/>
-(1, 5) <br/>
+Solution 2 - advanced  
+minp <- find the min price, and remember it  
+maxp <- find the max of p-minp, and remember it  
+Input: [7,1,5,3,6,4]  
+
+
+    (minp,maxp) =  
+      (7, 0)  
+      (1, 0)  
+      (1, 4)  
+      (1, 4)  
+      (1, 5)  
+      (1, 5)  
+
 ```python      
 class Solution2(object):
     def maxProfit(self,prices):
@@ -67,10 +79,11 @@ class Solution2(object):
         return maxp
 ```
 
-**leetcode 122 - Best Time to Buy and Sell Stock II (Multiple) [E]** <br/>
-Input: [7,1,5,3,6,4] <br/>
-Output: 7 <br/>
-Explanation: Buy on 1 and sell on 5, profit = 5-1 = 4. Then buy on 3 and sell on 6, profit = 6-3 = 3. <br/>
+**leetcode 122 - Best Time to Buy and Sell Stock II (Multiple) [E]**  
+Input: [7,1,5,3,6,4]  
+Output: 7  
+Explanation: Buy on 1 and sell on 5, profit = 5-1 = 4. Then buy on 3 and sell on 6, profit = 6-3 = 3.  
+
 ```python      
 class Solution(object):
     def maxProfit(self,prices):
@@ -85,24 +98,27 @@ class Solution(object):
         return res
 ```
 
-**leetcode 123 - Best Time to Buy and Sell Stock III (Twice) [H]** <br/>
-Input: [3,3,5,0,-1,3,1,4] <br/>
-Output: 7 <br/>
+**leetcode 123 - Best Time to Buy and Sell Stock III (Twice) [H]**  
+Input: [3,3,5,0,-1,3,1,4]  
+Output: 7  
 
-Solution: <br/>
-minp1 <- find the first min price minp1, and remember it <br/>
-maxp1 <- find the max of p-minp1, and remember the difference as maxp1 <br/>
-minp2 <- find the second min price closest to the previous profit: minp2=p-maxp1, and remember it as minp2<br/>
-maxp2 <- find the second max of p-minp2, and remember it<br/>
-(minp1,maxp1,minp2,maxp2) = <br/>
-(3, 0, 3, 0) <br/>
-(3, 0, 3, 0) <br/>
-(3, 2, 3, 2) <br/>
-(0, 2, -2, 2) <br/>
-(-1, 2, -3, 2) <br/>
-(-1, 4, -3, 6) <br/>
-(-1, 4, -3, 6) <br/>
-(-1, 5, -3, 7) <br/>
+Solution:  
+minp1 <- find the first min price minp1, and remember it  
+maxp1 <- find the max of p-minp1, and remember the difference as maxp1  
+minp2 <- find the second min price closest to the previous profit: minp2=p-maxp1, and remember it as minp2  
+maxp2 <- find the second max of p-minp2, and remember it  
+
+
+    (minp1,maxp1,minp2,maxp2) =   
+          (3, 0, 3, 0)
+          (3, 0, 3, 0)
+          (3, 2, 3, 2)
+          (0, 2, -2, 2)
+         (-1, 2, -3, 2)
+         (-1, 4, -3, 6)
+         (-1, 4, -3, 6)
+         (-1, 5, -3, 7)
+
 ```python      
 class Solution(object):
     def maxProfit(self,prices):
@@ -137,13 +153,13 @@ wordList = ["hot","dot","dog","lot","log"]
 Output: 0  
 Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
 
-Solution: <br/>
-1. make a set <br/>
-2. put beginWord into bfs (collections.deque)  <br/>
-3. transform in every char of the word (popleft) <br/>
-4. if found valid new word remove it from the set and append it to bfs <br/>
+Solution:  
+1. make a set  
+2. put beginWord into bfs (collections.deque)  
+3. transform in every char of the word (popleft)  
+4. if found valid new word remove it from the set and append it to bfs  
 
-Reference: <br/>
+Reference:  
 [huahuachan](https://zxi.mytechroad.com/blog/searching/127-word-ladder/)
 
 ```python      
@@ -166,7 +182,7 @@ class Solution(object):
         return 0
 ```
 
-**leetcode 126 - Word Ladder II [H] (return all shortest sequences) - dfs,bidirectional bfs**  
+**leetcode 126 - Word Ladder II [H] (return all shortest sequences) - dfs, bidirectional bfs**  
 Example:  
 Input:  
 beginWord = "hit",  
@@ -187,28 +203,7 @@ Reference:
 
 ### Word Break
 
-**leetcode 139 - Word Break [M] - dp**  
-details see [dp section](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html)  
-
-Example 1:  
-Input: s = "leetcode", wordDict = ["leet", "code"]   
-Output: true   
-Explanation: Return true because "leetcode" can be segmented as "leet code".  
-
-```python  
-class Solution(object):
-    def wordBreak(self, s, wordDict):
-        dp=[False]*(len(s)+1)
-        dp[0]=True
-
-        for i in range(1,len(s)+1):
-            for k in range(i):
-                if dp[k] and s[k:i] in wordDict:
-                    dp[i]=True
-
-        return dp.pop()
-```
-
+**leetcode 139 - Word Break [M] - dp** see [dp #string](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html#dp-string)  
 **leetcode 140 - Word Break II [H] - dp + dfs**  
 Example 2:  
 Input:  
@@ -222,19 +217,18 @@ Explanation: Note that you are allowed to reuse a dictionary word.
 
 Example 2 Solution:  
 1. check if s can be broken into dict words  
-2.
 
 
          |dfs('pineapplepenapple',dict,'',res)
              |#s[:4]='pine' in dict
              |dfs('applepenapple',dict,'pine ',res)
-                 |*s[:5]='apple' in dict
+                 |~s[:5]='apple' in dict
                  |dfs('penapple',dict,'pine apple ',res)
                      |s[:3]='pen' in dict
                      |dfs('apple',dict,'pine apple pen ',res)
                          |s[:5]='apple' in dict
                          |dfs('',dict,'pine apple pen apple',res) <- append res
-                 |*s[:8]='applepen' in dict
+                 |~s[:8]='applepen' in dict
                  |dfs('apple',dict,'pine applepen ',res)
                      |s[:5]='apple' in dict
                      |dfs('',dict,'pine applepen apple',res) <- append res
@@ -270,3 +264,7 @@ class Solution():
                 if s[:i] in dict:
                     self.dfs(s[i:], dict, stringlist+' '+s[:i])
 ```
+
+### Majority Elements
+
+[Hash, Set, Counter, Sort, Randomization, Divide n Conquer, Moore Voting, Bit Manipulation]
