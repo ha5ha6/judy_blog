@@ -129,13 +129,13 @@ if we fix **the dynamics** and **initial state distribution**, and only allow th
 
 ### connection to structured Variational inference  
 
-![](/assets/images/vai.png){:width="85%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/vai.png){:width="85%"}
 
 ## Approximate Inference with Function Approximation
 
 ### Max Entropy Policy Gradients
 
-![](/assets/images/grad.png){:width="85%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/grad.png){:width="85%"}
 
 The resulting policy gradient estimator exactly matches a standard policy gradient estimator, with the only addition of the -log q_theta(at'|st') term (the square term) to the reward at each time step t'  
 Intuitively, the reward of each action is modified by subtracting the log-probability of that action under the current policy, which causes the policy to maximize entropy
@@ -144,11 +144,11 @@ Intuitively, the reward of each action is modified by subtracting the log-probab
 
 Instead of directly differentiating the variational lower bound, we can adopt **a message passing approach** which can produce lower-variance gradient estimates
 
-![](/assets/images/ac.png){:width="85%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/ac.png){:width="85%"}
 
 Note, the V and Q correspond to the values of the current policy q(at\|st) rather than the optimal V* and Q*  
 
-![](/assets/images/ac2.png){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/ac2.png){:width="80%"}
 
 We now see the optimal variational distribution for q(at\|st) can be computed by **passing messages backward** through time, and the messages are given by **V(st) and Q(st,at)**
 
