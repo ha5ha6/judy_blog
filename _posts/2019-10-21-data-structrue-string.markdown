@@ -66,6 +66,66 @@ chr(65) -> 'A'
 chr(97) -> 'a'
 ```
 
+7. string/number compare  
+
+```python
+x='109'
+y='54'
+x+y -> '10954'
+y+x -> '54109'
+x+y>y+x -> False
+x+y<y+x -> True
+```
+
+```python
+#python2 compare number
+cmp=lambda x,y:-1 if x<y else 1
+cmp(1,2)
+>>-1
+cmp(3,2)
+>>1
+nums=[5,2,9,7]
+sorted(nums,cmp)
+>>[2,5,7,9]
+```
+
+```python
+#python2 compare string
+str_cmp=lambda x,y:-1 if x+y<y+x else 1
+str_cmp('12','3')
+>>-1  #123<312
+strs=['3','30','12','9']
+sorted(strs,str_cmp)
+>>['12', '30', '3', '9']
+str_cmp=lambda x,y:1 if x+y<y+x else -1
+sorted(strs,str_cmp)
+>>['9', '3', '30', '12']
+```
+
+### Slice  
+
+**leetcode 187 - Repeated DNA Sequences [M] - set**  
+Write a function to find all the 10-letter-long sequences (substrings) that occur more than once in a DNA molecule.  
+Example:  
+Input: s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"  
+Output: ["AAAAACCCCC", "CCCCCAAAAA"]  
+
+```python
+class Solution(object):
+    def findRepeatedDnaSequences(self, s):
+        seen=set()
+        res=set()
+        for i in range(len(s)):
+            slice=s[i:i+10]
+            if slice in seen: #repeated
+                res.add(slice)
+            else: #not repeated
+                seen.add(slice)
+
+        return list(res)
+```
+
+
 ### Compare  
 
 **leetcode 165 - Compare Version Numbers [M]**  
@@ -111,6 +171,26 @@ class Solution():
         return 0
 ```
 
+**leetcode 179 - Largest Number [M]**  
+Given a list of non negative integers, arrange them such that they form the largest number.  
+
+Examples:  
+Input: [10,2]  
+Output: "210"   
+Input: [3,30,34,5,9]  
+Output: "9534330"  
+
+Solution:  
+
+```python
+class Solution():
+    def largestNumber(self,nums):
+        str_cmp=lambda x,y:1 if x+y<y+x else -1
+        b="".join(sorted(map(str,nums),cmp=str_cmp))
+
+        return '0' if b[0]=='0' else b
+```
+
 ### Reverse  
 
 **leetcode 151 - Reverse Words in a String [M]**  
@@ -136,6 +216,31 @@ class Solution():
         return " ".join(words[::-1])
 ```
 
+**leetcode 186 - Reverse Words in a String II (M)**  
+Given an input string, reverse the string word by word  
+Example:   
+Input: ['t','h','e',' ','s','k','y',' ','i','s',' ','b','l','u','e']  
+Output: ['b','l','u','e',' ','i','s',' ','s','k','y',' ','t','h','e']  
+
+Solution:  
+1. reverse the string, append a ' '  
+['e', 'u', 'l', 'b', ' ', 's', 'i', ' ', 'y', 'k', 's', ' ', 'e', 'h', 't',' ']  
+2. reverse the small part in every ' ', remove the final ' '  
+['b','l','u','e',' ','i','s',' ','s','k','y',' ','t','h','e',' ']  
+
+```python
+class Solution():
+    def reverseWords(self, s):
+        s.reverse()
+        s.append(' ')
+        start=0
+        for i in range(len(s)):
+            if s[i]==' ':
+                s[start:i]=reversed(s[start:i])
+                start=i+1
+
+        s.pop()
+```
 
 ### Palindrome
 

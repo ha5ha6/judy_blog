@@ -17,6 +17,8 @@ toc_label: "Index"
 author_profile: true
 ---
 
+## Introduction
+
 ### the Equivalence
 
 
@@ -63,9 +65,11 @@ In the control as inference framework
 **optimal policy** aims to explicitly match a probability distribution defined by the reward and system dynamics  
 -> suggest a way to systematize reward design  
 
-### A Graphical Model for Control as Inference  
+## A Graphical Model for Control as Inference  
 
 PGM <=> RL objective + an entropy term  
+
+### the Decision making problem
 
 **RL problem formulation**
 ![](https://ha5ha6.github.io/judy_blog/assets/images/rlform.png){:width="80%"}
@@ -101,6 +105,8 @@ Now we have the solution but the intuition, the intuition can be recovered by th
 
 ![](https://ha5ha6.github.io/judy_blog/assets/images/entropyobj.png){:width="85%"}
 
+## Variational Inference and Stochastic Dynamics
+
 ### issues with Stochastic dynamics
 
 The nature problem of max entropy framework under stochastic dynamics is the assumption that the agent is allowed to control both **its actions** and **the dynamics of the system** in order to produce optimal trajs, but its authority over the dynamics is **penalized** based on the deviation from the true dynamics.
@@ -113,16 +119,43 @@ A simple fix:
 
 ![](https://ha5ha6.github.io/judy_blog/assets/images/stoobj.png){:width="85%"}
 
-### Max-Entropy RL with Fixed Dynamics  
+### Max Entropy RL with Fixed dynamics  
 
 To optimize the objective under **stochastic dynamics**, we need to derive **the backward messages** from an optimization perspective as **dynamic programming**
 
 ![](https://ha5ha6.github.io/judy_blog/assets/images/stobellman.png){:width="85%"}
 
-if we fix the dynamics and initial state distribution, and only allow the policy to change, we recover a Bellman backup operator that uses the expected value of the next state, rather than the optimistic estimate
+if we fix **the dynamics** and **initial state distribution**, and only allow the policy to change, we recover **a Bellman backup operator** that uses the expected value of the next state, rather than the **optimistic estimate** (the soft one Q(s,a)=r(s,a)+logE[exp(V(s'))])
+
+### connection to structured Variational inference  
+
+![](/assets/images/vai.png){:width="85%"}
+
+## Approximate Inference with Function Approximation
+
+### Max Entropy Policy Gradients
+
+![](/assets/images/grad.png){:width="85%"}
+
+The resulting policy gradient estimator exactly matches a standard policy gradient estimator, with the only addition of the -log q_theta(at'|st') term (the square term) to the reward at each time step t'  
+Intuitively, the reward of each action is modified by subtracting the log-probability of that action under the current policy, which causes the policy to maximize entropy
+
+### Max Entropy Actor Critic  
+
+Instead of directly differentiating the variational lower bound, we can adopt **a message passing approach** which can produce lower-variance gradient estimates
+
+![](/assets/images/ac.png){:width="85%"}
+
+Note, the V and Q correspond to the values of the current policy q(at\|st) rather than the optimal V* and Q*  
+
+![](/assets/images/ac2.png){:width="80%"}
+
+We now see the optimal variational distribution for q(at\|st) can be computed by **passing messages backward** through time, and the messages are given by **V(st) and Q(st,at)**
 
 
-### Refs
+
+
+## References
 
 [1]Levine, Sergey. "Reinforcement learning and control as probabilistic inference: Tutorial and review." arXiv preprint arXiv:1805.00909 (2018).  
 

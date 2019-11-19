@@ -45,7 +45,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/27/data-structrue-queue.html",
         "teaser":null},{
         "title": "Data Structure 1 - list",
-        "excerpt":"Definition subarray - subsequence - substring - Find Sequence leetcode 128 - Longest Consecutive Sequence [H] Input: [100, 4, 200, 1, 3, 2] Output: 4 Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4. Solution: make a set for removing the repeated filter...","categories": ["Programming"],
+        "excerpt":"Definition subarray - subsequence - substring - Rotate leetcode 189 - Rotate Array [E] Given an array, rotate the array to the right by k steps, where k is non-negative. Example: Input: [1,2,3,4,5,6,7] and k = 3 Output: [5,6,7,1,2,3,4] Explanation: rotate 1 steps to the right: [7,1,2,3,4,5,6] rotate 2 steps...","categories": ["Programming"],
         "tags": ["Data Structure","List","MinMax"],
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-list.html",
         "teaser":null},{
@@ -65,7 +65,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/01/data-structrue-graph.html",
         "teaser":null},{
         "title": "OThers 2 - bit manipulation",
-        "excerpt":"Python Operation ‘&amp;’, and, for carrying（进位） ‘|’, or ’~’, opposite ~100 ouput: -101 ’«’, one bit left, for power of 2 ’»’, one bit right, for power of 2 ’^’, xor, for plus without carrying i=10 j=100 k=i^j output: k=110 steps: a. dec -&gt; bin i=10 -&gt; bin(10) -&gt; ‘0b1010’...","categories": ["Programming"],
+        "excerpt":"Python Operation ‘&amp;’, and, for carrying（进位） ‘|’, or ’~’, opposite ~100 &gt;&gt;-101 ’«’, one bit left, for power of 2 m=3 #11 m&lt;&lt;=1 m=6 #110 m&lt;&lt;=1 m=12 #1100 ’»’, one bit right, for power of 2 m=5 #101 m&gt;&gt;=1 m=2 #10 m&gt;&gt;=1 m=1 #1 m&gt;&gt;=1 m=0 #0 m&gt;&gt;=1 m=0 #0...","categories": ["Programming"],
         "tags": ["Others"],
         "url": "http://localhost:4000/programming/2019/11/02/others-bit-manipulation.html",
         "teaser":null},{
@@ -85,7 +85,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/12/others-math.html",
         "teaser":null},{
         "title": "Data Structure 11 - python built-in",
-        "excerpt":"max key max(iterable, *iterables, key) def poweroftwo(x): return x**2 #return the num has max poweroftwo max(-4,-2,0,1,3,key=poweroftwo) &gt;&gt;-4 #or nums=[-4,-2,0,1,3] max(nums,key=poweroftwo) &gt;&gt;-4 num0=[15, 300, 2700, 821] num1=[12, 2] num2=[34, 567, 78] max(num, num1, num2, key=len) &gt;&gt;[15, 300, 2700, 821] #return the key of the max value cnt=collections.Counter([2,2,2,2,1,1,1,2]) &gt;&gt;Counter({2: 5, 1: 3})...","categories": ["Programming"],
+        "excerpt":"lambda def identity(x): lambda x:x &lt;=&gt; return x (lambda x,y:x+y)(2,3) &gt;&gt;5 add_one=lambda x:x+1 add_one(2) &gt;&gt;3 cmp=lambda x,y: 1 if x+y&gt;y+x else -1 cmp('54','109') &gt;&gt;1 #54109&gt;10954 cmp('109','54') &gt;&gt;-1 #10954&lt;54109 higher-order functions high_fun=lambda x,func:x+func(x) high_fun(2,lambda x:x*x) &gt;&gt;6 lambda with args and kwargs (lambda x, y, z: x + y + z)(1, 2,...","categories": ["Programming"],
         "tags": ["Data Structure","Python collections","Python itertools","Queue","Hash Table"],
         "url": "http://localhost:4000/programming/2019/11/12/data-structrue-python-builtin.html",
         "teaser":null},{
@@ -100,7 +100,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/13/algorithm-backtracking.html",
         "teaser":null},{
         "title": "Control as Inference",
-        "excerpt":"the Equivalence probabilistic inference under deterministic dynamics - - a generalization of RL | &lt;=&gt; max entropy RL | variational inference - - optimal control problem under stochastic dynamics Probabilistic Graphical Models (PGMs) provide a consistent and flexible framework to devise principled objectives set up models that reflect the causal...","categories": ["LiteratureReview"],
+        "excerpt":"Introduction the Equivalence probabilistic inference under deterministic dynamics - - a generalization of RL | &lt;=&gt; max entropy RL | variational inference - - optimal control problem under stochastic dynamics Probabilistic Graphical Models (PGMs) provide a consistent and flexible framework to devise principled objectives set up models that reflect the...","categories": ["LiteratureReview"],
         "tags": ["Soft-Q Learning","KL Divergence","Reinforcement Learning"],
         "url": "http://localhost:4000/literaturereview/2019/11/13/control-as-inference.html",
         "teaser":null},{
@@ -128,4 +128,14 @@ var store = [{
         "excerpt":"leetcode 175 - Combine Two Tables [E] leetcode 176 - Second Highest Salary [E] leetcode 177 - Nth Highest Salary [M] lettcode 178 - Rank Scores [M] leetcode 180 - Consecutive Numbers [M] leetcode 181 - Employees Earning More Than Their Managers [E] leetcode 182 - Duplicate Emails [E] leetcode...","categories": ["Programming"],
         "tags": ["Others","SQL"],
         "url": "http://localhost:4000/programming/2019/11/15/others-sql.html",
+        "teaser":null},{
+        "title": "OThers 13 - file",
+        "excerpt":"leetcode 192 - Word Frequency [M]   leetcode 194 - Transpose File [M]   leetcode 195 - Tenth Line [M]   with open('tenthline.txt','r') as f:      for i,l in enumerate(f):         if i==9:             print(l)  ","categories": ["Programming"],
+        "tags": ["Others","file"],
+        "url": "http://localhost:4000/programming/2019/11/18/others-file.html",
+        "teaser":null},{
+        "title": "OThers 3 - regex",
+        "excerpt":"command leetcode 193 - Valid Phone Numbers [E] Given a text file file.txt that contains list of phone numbers (one per line), write a one liner bash script to print all valid phone numbers. You may assume that a valid phone number must appear in one of the following two...","categories": ["Programming"],
+        "tags": ["Others","regex"],
+        "url": "http://localhost:4000/programming/2019/11/18/others-regex.html",
         "teaser":null}]

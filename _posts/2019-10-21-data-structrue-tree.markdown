@@ -65,12 +65,10 @@ def minDepth(self, root):
 
 ### Traversal
 
-leetcode 94 - Binary Tree Inorder Traversal [M] <br/>
-leetcode 102 - Binary Tree Level Order Traversal [M] <br/>
-leetcode 103 - Binary Tree Zigzag Level Order Traversal [M] <br/>
-leetcode 107 - Binary Tree Level Order Traversal II [E]  
+leetcode 94 - Binary Tree Inorder Traversal [M]  
 leetcode 144 - Binary Tree Preorder Traversal [M]  
 leetcode 145 - Binary Tree Postorder Traversal [H]  
+
 ```python      
 class BinaryTreeTraversal():
     #leetcode 94
@@ -85,33 +83,6 @@ class BinaryTreeTraversal():
         self.dfs(node.left,res)
         res.append(node.val)
         self.dfs(node.right,res)
-
-    #leetcode 102 (theoretically should use queue, but here use stack)
-    def levelorder(self,root):
-        res=[]
-        if not root:
-            return res
-        q=[root]
-        #cnt=0
-        while len(q)!=0:
-            res.append([node.val for node in q])
-            #leetcode 103 zigzag
-            #if cnt%2==0:
-            #    res.append([node.val for node in q])
-            #else:
-            #    res.append([node.val for node in reversed(q)])
-            new_q=[]
-            for node in q:
-                if node.left:
-                    new_q.append(node.left)
-                if node.right:
-                    new_q.append(node.right)
-            q=new_q
-            #cnt+=1
-
-        return res
-        #leetcode 107
-        #return res[::-1]
 
     #leetcode 144
     def preorder(self,root):
@@ -139,26 +110,176 @@ class BinaryTreeTraversal():
         self.dfs(node.right,res)
         res.append(node.val)
 ```
+
+**leetcode 102 - Binary Tree Level Order Traversal [M] - stack or queue**  
+Given binary tree [3,9,20,null,null,15,7],  
+
+        3
+       / \
+      9  20
+        /  \
+       15   7
+
+return its level order traversal as:  
+[[3],  
+[9,20],  
+[15,7]]  
+
+**leetcode 103 - Binary Tree Zigzag Level Order Traversal [M]**  
+Given binary tree [3,9,20,null,null,15,7],  
+
+        3
+       / \
+      9  20
+        /  \
+       15   7
+
+return its zigzag level order traversal as:  
+[[3],  
+[20,9],  
+[15,7]]  
+
+**leetcode 107 - Binary Tree Level Order Traversal II (bottom-up) [E]**   
+Given binary tree [3,9,20,null,null,15,7],  
+
+        3
+       / \
+      9  20
+        /  \
+       15   7
+
+return its bottom-up level order traversal as:  
+[[15,7],  
+[9,20],  
+[3]]    
+
+```python
+from collections import deque
+class BinaryTreeTraversal():
+    #use queue
+    def levelorder_queue(self,root):
+        res=[]
+        if not root:
+            return res
+
+        q=deque()
+        q.append(root)
+        while q:
+            level=[]
+            for i in range(len(q)):
+                node=q.popleft()
+                level.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            res.append(level)
+
+        return res
+
+    #use stack
+    def levelorder_stack(self,root):
+        res=[]
+        if not root:
+            return res
+        q=[root]
+        #cnt=0
+        while q:
+            res.append([node.val for node in q])
+            #leetcode 103 zigzag
+            #if cnt%2==0:
+            #    res.append([node.val for node in q])
+            #else:
+            #    res.append([node.val for node in reversed(q)])
+            new_q=[]
+            for node in q:
+                if node.left:
+                    new_q.append(node.left)
+                if node.right:
+                    new_q.append(node.right)
+            q=new_q
+            #cnt+=1
+
+        return res
+        #leetcode 107
+        #return res[::-1]
+```
+
 ![](https://ha5ha6.github.io/judy_blog/assets/images/binarytreetraversal.jpg)
+**leetcode 199 - Binary Tree Right Side View [M] - level order traversal**  
+Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.  
+Example:  
+Input: [1,2,3,null,5,null,4]  
+Output: [1, 3, 4]  
+
+       1            <---
+     /   \
+    2     3         <---
+     \     \
+      5     4       <---
+
+Solution: similar as 102, but record the right most values, here use stack
+
+```python
+class Solution():
+    def rightSideView(self,root):
+        res=[]
+        if not root:
+            return res
+
+        q=[root]
+        while q:
+            res.append(q[-1].val)
+            new_q=[]
+            for node in q:
+                if node.left:
+                    new_q.append(node.left)
+                if node.right:
+                    new_q.append(node.right)
+            q=new_q
+
+        return res
+```
+
 ### Construction
 
-leetcode 108 - Convert Sorted Array to Binary Search Tree [E] <br/>
-leetcode 105 - Construct Binary Tree from Preorder and Inorder Traversal [M] <br/>
-leetcode 106 - Construct Binary Tree from Inorder and Postorder Traversal [M]
+**leetcode 108 - Convert Sorted Array to Binary Search Tree [E]**  
+Given the sorted array: [-10,-3,0,5,9],  
+One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:  
+
+          0
+         / \
+       -3   9
+       /   /
+     -10  5
+
 ```python
 class TreeConstruction():
-    #leetcode 108
-    def sortedArrayToBST(self, nums):
-        if len(nums)<1:
-            return None      
-        mid=len(nums)//2      
-        root=TreeNode(nums[mid])
-        root.left=self.sortedArrayToBST(nums[:mid])
-        root.right=self.sortedArrayToBST(nums[mid+1:])
+   def sortedArrayToBST(self, nums):
+       if len(nums)<1:
+           return None      
+       mid=len(nums)//2      
+       root=TreeNode(nums[mid])
+       root.left=self.sortedArrayToBST(nums[:mid])
+       root.right=self.sortedArrayToBST(nums[mid+1:])
 
-        return root
+       return root
+```
 
-    #leetcode 105
+**leetcode 105 - Construct Binary Tree from Preorder and Inorder Traversal [M]**  
+For example, given  
+preorder = [3,9,20,15,7]  
+inorder = [9,3,15,20,7]  
+Return the following binary tree:  
+
+        3
+       / \
+      9  20
+        /  \
+       15   7
+
+```python
+class TreeConstruction():
     def buildTree(self, preorder, inorder):
         if not preorder or not inorder:
             return None
@@ -169,8 +290,22 @@ class TreeConstruction():
         root.right=self.buildTree(preorder[idx+1:],inorder[idx+1:])
 
         return root
+```
 
-    #leetcode 106
+**leetcode 106 - Construct Binary Tree from Inorder and Postorder Traversal [M]**  
+For example, given  
+inorder = [9,3,15,20,7]  
+postorder = [9,15,7,20,3]  
+Return the following binary tree:  
+
+        3
+       / \
+      9  20
+        /  \
+       15   7
+
+```python
+class TreeConstruction():
     def buildTree(self, inorder, postorder):
         if not inorder or not postorder:
             return None
@@ -185,14 +320,10 @@ class TreeConstruction():
 
 ### Others Simple
 
-leetcode 100 - Same Tree [E] - [T/F] <br/>
-leetcode 101 - Symmetric Tree [E] - [T/F] <br/>
-leetcode 110 - Balanced Binary Tree [E] <br/>
-leetcode 112 - Path Sum [E] <br/>
-leetcode 113 - Path Sum II [M]
+**leetcode 100 - Same Tree [E] - [T/F]**  
+
 ```python  
 class TreeOthers():
-    #leetcode 100
     def isSameTree(self, p, q):
         if not p and not q:
             return True      
@@ -202,8 +333,19 @@ class TreeOthers():
             return False
 
         return self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)
+```
 
-    #leetcode 101
+**leetcode 101 - Symmetric Tree [E] - [T/F]**  
+For example, this binary tree [1,2,2,3,4,4,3] is symmetric:  
+
+        1
+       / \
+      2   2
+     / \ / \
+    3  4 4  3
+
+```python
+class TreeOthers():
     def isSymmetricTree(self, root):
         if not root:
             return True
@@ -219,8 +361,33 @@ class TreeOthers():
             return False
 
         return self.isSym(left.left,right.right) and self.isSym(left.right,right.left)
+```
 
-    #leetcode 110
+**leetcode 110 - Balanced Binary Tree [E]**  
+For this problem, a height-balanced binary tree is defined as:  
+a binary tree in which the left and right subtrees of every node differ in height by no more than 1.  
+Example 1:  
+Given the following tree [3,9,20,null,null,15,7]: return True    
+
+        3
+       / \
+      9  20
+        /  \
+       15   7
+
+Example 2:  
+Given the following tree [1,2,2,3,3,null,null,4,4]: return False  
+
+           1
+          / \
+         2   2
+        / \
+       3   3
+      / \
+     4   4
+
+```python
+class TreeOthers():
     def isBalanced(self, root):
 
         return self.dfs(root)!=-1
@@ -239,8 +406,24 @@ class TreeOthers():
             return -1
 
         return 1+max(left_depth,right_depth)
+```
 
-    #leetcode 112
+**leetcode 112 - Path Sum [E]**  
+Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.  
+Note: A leaf is a node with no children.  
+
+Given the below binary tree and sum = 22,  
+
+          5*
+         / \
+        4*  8
+       /   / \
+      11* 13  4
+     /  \      \
+    7    2*      1   
+
+```python
+class TreeOthers():
     def hasPathSum(self,root,sum):
         if not root:
             return False
@@ -250,8 +433,26 @@ class TreeOthers():
             return True
 
         return self.hasPathSum(root.left,sum) or self.hasPathSum(root.right,sum)
+```
 
-    #leetcode 113
+**leetcode 113 - Path Sum II [M]**  
+Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.  
+Given the below binary tree and sum = 22,  
+
+          5
+         / \
+        4   8
+       /   / \
+      11  13  4
+     /  \    / \
+    7    2  5   1
+
+Return:  
+[[5,4,11,2],  
+[5,8,4,5]]  
+
+```python
+class TreeOthers():
     def pathSum(self, root, sum):
         res=[]
         if not root:
@@ -273,8 +474,8 @@ class TreeOthers():
             self.dfs(root.left,target,res,path+[root.left.val])
         if root.right:
             self.dfs(root.right,target,res,path+[root.right.val])
-
 ```
+
 ### Others Hard
 
 **leetcode 124 - Binary Tree Maximum Path Sum [H]**  (similar leetcode 687, leetcode 543)  

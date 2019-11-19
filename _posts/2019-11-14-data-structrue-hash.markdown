@@ -19,7 +19,7 @@ author_profile: true
 
 ### N Sum
 
-using python dict see [python built-in #dict]()
+using python dict see [python built-in #dict](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#dict-)
 
 **leetcode 1 - Two Sum [E]**  
 Given an array of integers, return **indices** of the two numbers such that they add up to a specific target  

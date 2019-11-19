@@ -16,19 +16,19 @@ toc_label: "Index"
 author_profile: true
 ---
 
+
 ### Big O Table
 
 ### Bubble Sort  
 
 ### Insertion Sort  
 
-leetcode 147 - Insertion Sort List [M] see [linked list #sorting](https://ha5ha6.github.io/judy_blog/programming/2019/11/08/data-structrue-linkedlist.html#sorting)
+**leetcode 147 - Insertion Sort List [M]** see [linked list #sorting](https://ha5ha6.github.io/judy_blog/programming/2019/11/08/data-structrue-linkedlist.html#sorting)
 
 
 ### Merge Sort  
 
-leetcode 148 - (Merge) Sort List [M] see [linked list #sorting](https://ha5ha6.github.io/judy_blog/programming/2019/11/08/data-structrue-linkedlist.html#sorting)
-
+**leetcode 148 - (Merge) Sort List [M]** see [linked list #sorting](https://ha5ha6.github.io/judy_blog/programming/2019/11/08/data-structrue-linkedlist.html#sorting)
 
 
 ### Bucket Sort  

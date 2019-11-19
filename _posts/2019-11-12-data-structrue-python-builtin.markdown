@@ -19,7 +19,53 @@ toc_label: "Index"
 author_profile: true
 ---
 
-### max key
+### lambda  
+
+                    def identity(x):
+    lambda x:x <=>      return x
+
+```python
+(lambda x,y:x+y)(2,3)
+>>5
+
+add_one=lambda x:x+1
+add_one(2)
+>>3
+
+cmp=lambda x,y: 1 if x+y>y+x else -1
+cmp('54','109')
+>>1  #54109>10954
+cmp('109','54')
+>>-1 #10954<54109
+```
+
+higher-order functions  
+
+```python
+high_fun=lambda x,func:x+func(x)
+high_fun(2,lambda x:x*x)
+>>6
+```
+
+lambda with args and kwargs  
+
+```python
+(lambda x, y, z: x + y + z)(1, 2, 3)
+>>6
+(lambda x, y, z=3: x + y + z)(1, 2)
+>>6
+(lambda x, y, z=3: x + y + z)(1, y=2)
+>>6
+(lambda *args: sum(args))(1,2,3)
+>>6
+(lambda **kwargs: sum(kwargs.values()))(one=1, two=2, three=3)
+>>6
+(lambda x, *, y=0, z=0: x + y + z)(1, y=2, z=3)
+>>6
+```
+
+
+### max() key
 
 max(iterable, \*iterables, key)
 
@@ -48,7 +94,105 @@ max(cnt.keys(),key=cnt.get)
 >>2
 ```
 
-### dict {}
+### map() lambda  
+
+map() function returns a list of the results after applying the given function to each item of a given iterable (list, tuple etc.)  
+map(fun,iter)  
+
+```python
+def addition(x):
+    return x+x
+
+nums=(1,2,3,4)
+list(map(addition,nums))
+>>[2, 4, 6, 8]
+```
+
+map()+lambda  
+
+```python
+nums=(1,2,3,4)
+list(map(lambda x:x**x,nums))
+>>[1, 4, 27, 256]
+
+nums1=[1,2,3]
+nums2=[4,5,6]
+list(map(lambda x,y:x+y,nums1,nums2))
+>>[5, 7, 9]
+```
+
+list of strings
+
+```python
+l=['sat', 'bat', 'cat', 'mat']
+list(map(list,l))
+>>[['s', 'a', 't'], ['b', 'a', 't'], ['c', 'a', 't'], ['m', 'a', 't']]
+```
+
+str of ints
+
+```python
+l=[1,2,3,4,5]
+list(map(str,l))
+>>['1', '2', '3', '4', '5']
+```
+
+### two variables in for-loop
+
+```python
+for dr,dc in [(1,0),(-1,0),(0,-1),(0,1)]:  
+    print(dr,dc)
+
+Output:
+1,0
+-1,0
+0,-1
+0,1
+```
+
+### set  
+A set is an unordered collection of items. Every element is unique (no duplicates) and must be immutable (which cannot be changed).  
+However, the set itself is mutable. We can add or remove items from it.  
+Sets can be used to perform mathematical set operations like union, intersection, symmetric difference etc.  
+
+```python
+#create
+s={1,2,3}
+s=set([1,2,3])
+>>{1,2,3}
+#add
+s.add(4)
+>>{1,2,3,4}
+s.update([1,3,5])
+>>{1,2,3,4,5}
+s.update([4,5], {1,6,8})
+>>{1,2,3,4,5,6,8}
+s.discard(4)
+>>{1,2,3,5,6,8}
+s.remove(6)
+>>{1,2,3,5,8}
+s.pop()
+>>{2,3,5,8}
+s.clear()
+>>set()
+#operations
+a={1,2,3,4,5}
+b={4,5,6,7,8}
+a|b, a.union(b), b.union(a) #union, equivalent
+>>{1, 2, 3, 4, 5, 6, 7, 8}
+a&b, a.intersection(b), b.intersection(a) #intersection
+>>{4,5}
+a-b, a.difference(b) #difference
+>>{1,2,3} #keep the values only in a
+b-a, b.difference(a)
+>>{6,7,8}
+a^b, a.symmetric_difference(b), b.symmetric_difference(a) # symmetric difference
+>>{1,2,3,6,7,8}
+```
+
+### dict {}  
+A dictionary is a collection which is unordered, changeable and indexed.  
+In Python dictionaries are written with curly brackets, and they have keys and values.  
 
 ```python
 d = {0: 'a', 1: 'b', 2: 'c', 3: 'd'}
@@ -90,19 +234,6 @@ list(d.values())
 >>['a', 'b', 'c', 'd', ['e', 'f', 'g'], 'ab']
 ```
 
-### two variables in for-loop
-
-```python
-for dr,dc in [(1,0),(-1,0),(0,-1),(0,1)]:  
-    print(dr,dc)
-
-Output:
-1,0
--1,0
-0,-1
-0,1
-```
-
 ### zip
 
 ```python
@@ -121,7 +252,7 @@ Output:
 3,'c'
 ```
 
-### itertools.zip_longest
+### itertools.zip_longest  
 
 ```python
 #python 3
@@ -191,3 +322,6 @@ from collections import deque
 
 example!!
 ```
+
+### functools.cmp_to_key(fun)
+The functools module is for higher-order functions: functions that act on or return other functions. In general, any callable object can be treated as a function for the purposes of this module.  

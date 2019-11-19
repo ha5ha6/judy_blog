@@ -22,6 +22,26 @@ subarray -
 subsequence -  
 substring -
 
+### Rotate  
+
+**leetcode 189 - Rotate Array [E]**  
+Given an array, rotate the array to the right by k steps, where k is non-negative.  
+Example:  
+Input: [1,2,3,4,5,6,7] and k = 3  
+Output: [5,6,7,1,2,3,4]  
+Explanation:  
+rotate 1 steps to the right: [7,1,2,3,4,5,6]  
+rotate 2 steps to the right: [6,7,1,2,3,4,5]  
+rotate 3 steps to the right: [5,6,7,1,2,3,4]  
+
+```python
+class Solution():
+    def rotate(self,k,nums):
+        #in-place
+        n=len(nums)
+        nums[:]=nums[-k%n:]+nums[:n-k%n]
+```
+
 ### Find Sequence
 
 **leetcode 128 - Longest Consecutive Sequence [H]**   
