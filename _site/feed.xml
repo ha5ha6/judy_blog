@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-19T20:16:56+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">OThers 3 - regex</title><link href="http://localhost:4000/programming/2019/11/18/others-regex.html" rel="alternate" type="text/html" title="OThers 3 - regex" /><published>2019-11-18T22:15:25+09:00</published><updated>2019-11-18T22:15:25+09:00</updated><id>http://localhost:4000/programming/2019/11/18/others-regex</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/18/others-regex.html">&lt;h3 id=&quot;command&quot;&gt;command&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-20T18:29:49+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">OThers 3 - regex</title><link href="http://localhost:4000/programming/2019/11/18/others-regex.html" rel="alternate" type="text/html" title="OThers 3 - regex" /><published>2019-11-18T22:15:25+09:00</published><updated>2019-11-18T22:15:25+09:00</updated><id>http://localhost:4000/programming/2019/11/18/others-regex</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/18/others-regex.html">&lt;h3 id=&quot;command&quot;&gt;command&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;leetcode 193 - Valid Phone Numbers [E]&lt;/strong&gt;&lt;br /&gt;
 Given a text file file.txt that contains list of phone numbers (one per line), write a one liner bash script to print all valid phone numbers.&lt;br /&gt;
@@ -112,7 +112,107 @@ find(7) -&amp;gt; False&lt;/p&gt;
                 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
 
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Others" /><category term="Stack" /><category term="N-Sum" /><summary type="html">Stack</summary></entry><entry><title type="html">Data Structure 8 - hash table</title><link href="http://localhost:4000/programming/2019/11/14/data-structrue-hash.html" rel="alternate" type="text/html" title="Data Structure 8 - hash table" /><published>2019-11-14T21:19:25+09:00</published><updated>2019-11-14T21:19:25+09:00</updated><id>http://localhost:4000/programming/2019/11/14/data-structrue-hash</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/14/data-structrue-hash.html">&lt;h3 id=&quot;n-sum&quot;&gt;N Sum&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Others" /><category term="Stack" /><category term="N-Sum" /><summary type="html">Stack</summary></entry><entry><title type="html">Data Structure 8 - hash table</title><link href="http://localhost:4000/programming/2019/11/14/data-structrue-hash.html" rel="alternate" type="text/html" title="Data Structure 8 - hash table" /><published>2019-11-14T21:19:25+09:00</published><updated>2019-11-14T21:19:25+09:00</updated><id>http://localhost:4000/programming/2019/11/14/data-structrue-hash</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/14/data-structrue-hash.html">&lt;h3 id=&quot;isomorphic&quot;&gt;Isomorphic&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;leetcode 205 - Isomorphic Strings [E]&lt;/strong&gt;&lt;br /&gt;
+Given two strings s and t, determine if they are isomorphic.&lt;br /&gt;
+Two strings are isomorphic if the characters in s can be replaced to get t.&lt;br /&gt;
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.&lt;/p&gt;
+
+&lt;p&gt;Examples:&lt;br /&gt;
+Input: s = “egg”, t = “add”&lt;br /&gt;
+Output: true&lt;br /&gt;
+Input: s = “foo”, t = “bar”&lt;br /&gt;
+Output: false&lt;br /&gt;
+Input: s = “paper”, t = “title”&lt;br /&gt;
+Output: true&lt;/p&gt;
+
+&lt;p&gt;Solution:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;compare lens&lt;/li&gt;
+  &lt;li&gt;use a dict to map s-&amp;gt;t, and a set to record seen t&lt;/li&gt;
+  &lt;li&gt;if s in the dict, compare dict[s] with real t: egg,add&lt;/li&gt;
+  &lt;li&gt;if s not in the dict but t in seen: egg,bbr&lt;/li&gt;
+  &lt;li&gt;if s not in dict and t not in seen, create dict and seen entry&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isIsomorphic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;s2t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;seen_t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ct&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cs&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s2t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s2t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ct&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;seen_t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;s2t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ct&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;seen_t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;leetcode 290 - Word Pattern [E]&lt;/strong&gt;&lt;br /&gt;
+Given a pattern and a string str, find if str follows the same pattern.&lt;br /&gt;
+Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in str.&lt;/p&gt;
+
+&lt;p&gt;Examples:&lt;br /&gt;
+Input: pattern = “abba”, str = “dog cat cat dog”&lt;br /&gt;
+Output: true&lt;br /&gt;
+Input: pattern = “abba”, str = “dog cat cat fish”&lt;br /&gt;
+Output: false&lt;br /&gt;
+Input: pattern = “aaaa”, str = “dog cat cat dog”&lt;br /&gt;
+Output: false&lt;br /&gt;
+Input: pattern = “abba”, str = “dog dog dog dog”&lt;br /&gt;
+Output: false&lt;/p&gt;
+
+&lt;p&gt;Solution 1: same as leetcode 205&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wordPattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;p2s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;seen_str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p2s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p2s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;seen_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;p2s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;seen_str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Solution 2: two dicts double mapping check&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wordPattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;p2s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s2p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{},{}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p2s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p2s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;p2s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
+
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s2p&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s2p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s2p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;n-sum&quot;&gt;N Sum&lt;/h3&gt;
 
 &lt;p&gt;using python dict see &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#dict-&quot;&gt;python built-in #dict&lt;/a&gt;&lt;/p&gt;
 
@@ -136,7 +236,7 @@ record a hash table n2i={} of {number:index}&lt;/p&gt;
             &lt;span class=&quot;n&quot;&gt;n2i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
 
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Hash Table" /><category term="N-Sum" /><summary type="html">N Sum</summary></entry><entry><title type="html">ALgorithms 1 - sorting</title><link href="http://localhost:4000/programming/2019/11/14/algorithm-sorting.html" rel="alternate" type="text/html" title="ALgorithms 1 - sorting" /><published>2019-11-14T12:57:25+09:00</published><updated>2019-11-14T12:57:25+09:00</updated><id>http://localhost:4000/programming/2019/11/14/algorithm-sorting</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/14/algorithm-sorting.html">&lt;h3 id=&quot;big-o-table&quot;&gt;Big O Table&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Hash Table" /><category term="N-Sum" /><summary type="html">Isomorphic</summary></entry><entry><title type="html">ALgorithms 1 - sorting</title><link href="http://localhost:4000/programming/2019/11/14/algorithm-sorting.html" rel="alternate" type="text/html" title="ALgorithms 1 - sorting" /><published>2019-11-14T12:57:25+09:00</published><updated>2019-11-14T12:57:25+09:00</updated><id>http://localhost:4000/programming/2019/11/14/algorithm-sorting</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/14/algorithm-sorting.html">&lt;h3 id=&quot;big-o-table&quot;&gt;Big O Table&lt;/h3&gt;
 
 &lt;h3 id=&quot;bubble-sort&quot;&gt;Bubble Sort&lt;/h3&gt;
 
@@ -475,13 +575,13 @@ analogously to &lt;strong&gt;inference in HMM-style dynamic Bayesian networks&lt
 
 &lt;h3 id=&quot;connection-to-structured-variational-inference&quot;&gt;connection to structured Variational inference&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/vai.png&quot; alt=&quot;&quot; width=&quot;85%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/vai.png&quot; alt=&quot;&quot; width=&quot;85%&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;approximate-inference-with-function-approximation&quot;&gt;Approximate Inference with Function Approximation&lt;/h2&gt;
 
 &lt;h3 id=&quot;max-entropy-policy-gradients&quot;&gt;Max Entropy Policy Gradients&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/grad.png&quot; alt=&quot;&quot; width=&quot;85%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/grad.png&quot; alt=&quot;&quot; width=&quot;85%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The resulting policy gradient estimator exactly matches a standard policy gradient estimator, with the only addition of the -log q_theta(at’|st’) term (the square term) to the reward at each time step t’&lt;br /&gt;
 Intuitively, the reward of each action is modified by subtracting the log-probability of that action under the current policy, which causes the policy to maximize entropy&lt;/p&gt;
@@ -490,13 +590,34 @@ Intuitively, the reward of each action is modified by subtracting the log-probab
 
 &lt;p&gt;Instead of directly differentiating the variational lower bound, we can adopt &lt;strong&gt;a message passing approach&lt;/strong&gt; which can produce lower-variance gradient estimates&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/ac.png&quot; alt=&quot;&quot; width=&quot;85%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/ac.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Note, the V and Q correspond to the values of the current policy q(at|st) rather than the optimal V* and Q*&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/ac2.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/ac2.png&quot; alt=&quot;&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We now see the optimal variational distribution for q(at|st) can be computed by &lt;strong&gt;passing messages backward&lt;/strong&gt; through time, and the messages are given by &lt;strong&gt;V(st) and Q(st,at)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/ac3.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;it suggests that it may be beneficial to keep track of both V(st) and Q(st,at) networks. it’s reasonable in a message passing framework and benefit target network for practical usage, where the updates to Q and V can be staggered or damped for stability&lt;/li&gt;
+  &lt;li&gt;it suggests that policy iteration or actor-critic might be preferred (over q learning), since they explicitly handle both approximate messages and approximate factors in the structured variational approximation&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;see soft actor critic [7]&lt;/p&gt;
+
+&lt;h3 id=&quot;soft-q-learning&quot;&gt;Soft Q-learning&lt;/h3&gt;
+
+&lt;p&gt;We can derive an alternative form for a RL algorithm without using an explicit policy parameterization, fitting only the messages Q_parameter(st,at)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/softq.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;connection between soft Q and policy gradient&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;see Reinforcement learning with deep energy-based policies [8]&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/softq2.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
@@ -510,7 +631,13 @@ Intuitively, the reward of each action is modified by subtracting the log-probab
 [4]Ziebart, B. (2010). Modeling purposeful adaptive behavior with the principle of maximum causal entropy. PhD thesis, Carnegie Mellon University.&lt;br /&gt;
 [5]Kappen, H. J., Gómez, V., and Opper, M. (2012). Optimal control as a graphical model inference problem. Machine Learning, 87(2):159–182.&lt;br /&gt;
 Kappen, H. J. (2011). Optimal control theory and the linear bellman equation. Inference and Learning in Dynamic Models, pages 363–387.&lt;br /&gt;
-[6]Toussaint, M. (2009). Robot trajectory optimization using approximate inference. In International Conference on Machine Learning (ICML).&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Soft-Q Learning" /><category term="KL Divergence" /><category term="Reinforcement Learning" /><summary type="html">Introduction</summary></entry><entry><title type="html">ALgorithms 5 - back tracking</title><link href="http://localhost:4000/programming/2019/11/13/algorithm-backtracking.html" rel="alternate" type="text/html" title="ALgorithms 5 - back tracking" /><published>2019-11-13T15:33:25+09:00</published><updated>2019-11-13T15:33:25+09:00</updated><id>http://localhost:4000/programming/2019/11/13/algorithm-backtracking</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/13/algorithm-backtracking.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
+[6]Toussaint, M. (2009). Robot trajectory optimization using approximate inference. In International Conference on Machine Learning (ICML).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Soft Actor Critic&lt;/strong&gt;&lt;br /&gt;
+[7]Haarnoja, T., Zhou, A., Abbeel, P., and Levine, S. (2018b). Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor. In arXiv.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Soft Q learning&lt;/strong&gt;&lt;br /&gt;
+[8]Haarnoja, T., Tang, H., Abbeel, P., and Levine, S. (2017). Reinforcement learning with deep energy-based policies. In International Conference on Machine Learning (ICML).&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Soft-Q Learning" /><category term="KL Divergence" /><category term="Reinforcement Learning" /><summary type="html">Introduction</summary></entry><entry><title type="html">ALgorithms 5 - back tracking</title><link href="http://localhost:4000/programming/2019/11/13/algorithm-backtracking.html" rel="alternate" type="text/html" title="ALgorithms 5 - back tracking" /><published>2019-11-13T15:33:25+09:00</published><updated>2019-11-13T15:33:25+09:00</updated><id>http://localhost:4000/programming/2019/11/13/algorithm-backtracking</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/13/algorithm-backtracking.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 
 &lt;h3 id=&quot;parentheses&quot;&gt;Parentheses&lt;/h3&gt;
 

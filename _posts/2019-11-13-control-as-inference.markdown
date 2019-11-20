@@ -144,16 +144,32 @@ Intuitively, the reward of each action is modified by subtracting the log-probab
 
 Instead of directly differentiating the variational lower bound, we can adopt **a message passing approach** which can produce lower-variance gradient estimates
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/ac.png){:width="85%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/ac.png){:width="80%"}
 
 Note, the V and Q correspond to the values of the current policy q(at\|st) rather than the optimal V* and Q*  
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/ac2.png){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/ac2.png){:width="75%"}
 
 We now see the optimal variational distribution for q(at\|st) can be computed by **passing messages backward** through time, and the messages are given by **V(st) and Q(st,at)**
 
+![](https://ha5ha6.github.io/judy_blog/assets/images/ac3.png){:width="80%"}
 
+1. it suggests that it may be beneficial to keep track of both V(st) and Q(st,at) networks. it's reasonable in a message passing framework and benefit target network for practical usage, where the updates to Q and V can be staggered or damped for stability
+2. it suggests that policy iteration or actor-critic might be preferred (over q learning), since they explicitly handle both approximate messages and approximate factors in the structured variational approximation
 
+see soft actor critic [7]
+
+### Soft Q-learning  
+
+We can derive an alternative form for a RL algorithm without using an explicit policy parameterization, fitting only the messages Q_parameter(st,at)
+
+![](https://ha5ha6.github.io/judy_blog/assets/images/softq.png){:width="80%"}
+
+**connection between soft Q and policy gradient**
+
+see Reinforcement learning with deep energy-based policies [8]
+
+![](https://ha5ha6.github.io/judy_blog/assets/images/softq2.png){:width="80%"}
 
 ## References
 
@@ -168,3 +184,9 @@ We now see the optimal variational distribution for q(at\|st) can be computed by
 [5]Kappen, H. J., Gómez, V., and Opper, M. (2012). Optimal control as a graphical model inference problem. Machine Learning, 87(2):159–182.  
 Kappen, H. J. (2011). Optimal control theory and the linear bellman equation. Inference and Learning in Dynamic Models, pages 363–387.  
 [6]Toussaint, M. (2009). Robot trajectory optimization using approximate inference. In International Conference on Machine Learning (ICML).  
+
+**Soft Actor Critic**  
+[7]Haarnoja, T., Zhou, A., Abbeel, P., and Levine, S. (2018b). Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor. In arXiv.
+
+**Soft Q learning**  
+[8]Haarnoja, T., Tang, H., Abbeel, P., and Levine, S. (2017). Reinforcement learning with deep energy-based policies. In International Conference on Machine Learning (ICML).

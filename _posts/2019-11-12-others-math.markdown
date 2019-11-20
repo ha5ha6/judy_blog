@@ -47,6 +47,56 @@ max([x for x in range(1,a+1) if a%x==0 and b%x==0])
 [x for x in range(1,a+1) if a % x ==0 and b % x ==0][-1]
 ```
 
+### Prime Number  
+If num is divisible by any number between 2 and n / 2, it is not prime  
+Example: [2,3,5,7,11,...]  
+
+```python
+def isPrime(n): #O(n**3/2)
+    if n<=1:
+        return False
+
+    for i in range(2,n//2):
+        if n%i==0:
+            return False
+
+    return True
+```
+
+**leetcode 204 - Count Primes [E] - sieve of eratosthenes**  
+Count the number of prime numbers less than a non-negative number, n.  
+Example:  
+Input: 10  
+Output: 4  
+Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.  
+
+Solution of 15: O(n**3/2) 
+
+            2,3,4,5,6,7,8,9,10,11,12,13,14
+            ^   ^   ^   ^   ^     ^     ^     remove all multiples of 2
+              ^           ^                   remove all multiples of 3
+
+        0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
+        F F T T T T T T T T  T  T  T  T  T  
+            ^   F   F   F    F     F     F
+            sieve[2*2:15:2]=False*len(sieve[2*2:15:2]) <- put idx[4,6,8,10,12,14] to F
+        0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
+        F F T T F T F T F T  F  T  F  T  F
+              ^           F        F
+              sieve[3*3:15:3]=False*len <- idx[9,12]
+        4*4>15 end
+
+```python
+class Solution():
+    def countPrimes(self,n):
+        sieve=[False,False]+[True for i in range(n-1)]
+        for i in range(2,int(n**0.5)+1):
+            if sieve[i]:
+                sieve[i*i:n:i]=[False]*len(sieve[i*i:n:i])
+
+        return sum(sieve)
+```
+
 ### Dividing / Fraction  
 
 **leetcode 166 - Fraction to Recurring Decimal [M] - divmod + dict**  
@@ -236,6 +286,67 @@ class Solution():
             n=n//5
 
         return zs
+```
+
+### Happy Number / XX Number  
+
+**leetcode 202 - Happy Number [E] - two pointers**  
+A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.  
+
+Example:   
+Input: 19  
+Output: true  
+Explanation:   
+1^2 + 9^2 = 82  
+8^2 + 2^2 = 68  
+6^2 + 8^2 = 100  
+1^2 + 0^2 + 0^2 = 1  
+
+Solution 1: by definition  
+use set to record seen  
+
+```python
+class Solution():
+    def isHappy(self, n):
+        seen=set()
+        while n not in seen:
+            seen.add(n)
+            sum=0
+            while n!=0:  #19: 9*9+1*1=82
+                sum+=(n%10)*(n%10)
+                n/=10
+            n=sum
+            if n==1:
+                return True
+
+        return False
+```  
+
+Solution 2: Floyd's cycle-finding algorithm  
+Floyd's cycle-finding algorithm is a pointer algorithm that uses only two pointers, which move through the sequence at different speeds. It is also called the "tortoise and the hare algorithm", alluding to Aesop's fable of The Tortoise and the Hare.  
+
+there is a loop if not a happy number:  
+4 -> 16 -> 37 -> 58 -> 89 -> 145 -> 42 -> 20 -> 4 -> ...   
+
+```python
+class Solution():
+    def isHappy(self, n):
+        slow=fast=n
+        while True:
+            slow=self.squareSum(slow)
+            fast=self.squareSum(self.squareSum(fast))
+            if slow==fast:
+                break
+
+        return slow==1
+
+    def squareSum(self,n):
+        sum=0
+        while n>0:
+            sum+=(n%10)*(n%10)
+            n/=10
+
+        return sum
 ```
 
 ### Cartesian coordinate

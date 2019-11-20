@@ -30,7 +30,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/25/topics.html",
         "teaser":null},{
         "title": "Data Structure 4 - string",
-        "excerpt":"Python Operation check if char is alphabet/alphabet or numeric/numeric s='abc123' s.isalpha() -&gt; False s.isalnum() -&gt; True s.isnumeric() -&gt; False remove white spaces before and after s=' lajdflak ' s.strip() #remove both s.lstrip() #remove left s.rstrip() #remove right swtich to upper case and lower case s='aBcDeFg' s.lower() -&gt; s='abcdefg' s.upper() -&gt;...","categories": ["Programming"],
+        "excerpt":"Python Operation string to list pattern='abba' list(pattern) &gt;&gt;['a','b','b','a'] check if char is alphabet/alphabet or numeric/numeric s='abc123' s.isalpha() -&gt; False s.isalnum() -&gt; True s.isnumeric() -&gt; False remove white spaces before and after s=' lajdflak ' s.strip() #remove both s.lstrip() #remove left s.rstrip() #remove right swtich to upper case and lower case...","categories": ["Programming"],
         "tags": ["Data Structure","String","Palindrome","Dfs"],
         "url": "http://localhost:4000/programming/2019/10/26/data-structrue-string.html",
         "teaser":null},{
@@ -115,7 +115,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/14/algorithm-sorting.html",
         "teaser":null},{
         "title": "Data Structure 8 - hash table",
-        "excerpt":"N Sum using python dict see python built-in #dict leetcode 1 - Two Sum [E] Given an array of integers, return indices of the two numbers such that they add up to a specific target Example: Given nums=[2,7,11,15], target=9 Because nums[0]+nums[1]=2+7=9, return [0,1] Solution: record a hash table n2i={} of...","categories": ["Programming"],
+        "excerpt":"Isomorphic leetcode 205 - Isomorphic Strings [E] Given two strings s and t, determine if they are isomorphic. Two strings are isomorphic if the characters in s can be replaced to get t. All occurrences of a character must be replaced with another character while preserving the order of characters....","categories": ["Programming"],
         "tags": ["Data Structure","Hash Table","N-Sum"],
         "url": "http://localhost:4000/programming/2019/11/14/data-structrue-hash.html",
         "teaser":null},{

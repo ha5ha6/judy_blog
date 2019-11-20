@@ -171,6 +171,41 @@ class Solution():
         return dummy.next
 ```
 
+**leetcode 203 - Remove Linked List Elements [E]**  
+Remove all elements from a linked list of integers that have value val.  
+
+Input:  1->2->6->3->4->5->6, val = 6  
+Output: 1->2->3->4->5  
+
+Solution:  
+1. create dummy in case removing the head  
+2. p ahead of head at each step  
+3. if encounter value, p->h.next, h->N  
+
+      dummy->1->2->6->3->4->5->6
+        p    h
+             p  h
+                p  h             h.val==val
+                2->3             p->h.next
+                      h          h=h.next
+                      
+
+```python
+class Solution():
+    def removeElements(self,head,val):
+        dummy=p=ListNode(0)
+        dummy.next=head
+
+        while head:
+            if head.val==val:
+                p.next=head.next
+            else:
+                p=p.next
+            head=head.next
+
+        return dummy.next
+```
+
 ### Partition
 
 **leetcode 86 - Partition List [M]**  

@@ -20,6 +20,13 @@ author_profile: true
 
 ### Python Operation
 
+0. string to list
+```python
+pattern='abba'
+list(pattern)
+>>['a','b','b','a']
+```
+
 1. check if char is alphabet/alphabet or numeric/numeric  
 ```python
 s='abc123'  
@@ -67,7 +74,6 @@ chr(97) -> 'a'
 ```
 
 7. string/number compare  
-
 ```python
 x='109'
 y='54'
@@ -76,7 +82,6 @@ y+x -> '54109'
 x+y>y+x -> False
 x+y<y+x -> True
 ```
-
 ```python
 #python2 compare number
 cmp=lambda x,y:-1 if x<y else 1
@@ -88,7 +93,6 @@ nums=[5,2,9,7]
 sorted(nums,cmp)
 >>[2,5,7,9]
 ```
-
 ```python
 #python2 compare string
 str_cmp=lambda x,y:-1 if x+y<y+x else 1
