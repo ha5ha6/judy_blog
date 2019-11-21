@@ -195,13 +195,18 @@ A dictionary is a collection which is unordered, changeable and indexed.
 In Python dictionaries are written with curly brackets, and they have keys and values.  
 
 ```python
-d = {0: 'a', 1: 'b', 2: 'c', 3: 'd'}
+d={0: 'a', 1: 'b', 2: 'c', 3: 'd'}
 
 d[0] -> 'a'
 d[2] -> 'c'
 d[4]=['e','f','g'] #new an entry with list
 del d[1] #delete an entry
 d[(1,1)]='ab' #tuple can be key, cuz its immutable
+
+#new a dict from another dict
+d={0: 'a', 1: 'b', 2: 'c', 3: 'd'}
+nd=dict((i,'e') for i in d)
+>>{0: 'e', 1: 'e', 2: 'e', 3: 'e'}
 
 #get value from key
 d.get(0) -> 'a'

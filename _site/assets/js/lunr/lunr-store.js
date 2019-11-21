@@ -1,6 +1,6 @@
 var store = [{
         "title": "Data Structure Index",
-        "excerpt":"Data Structure list matrix linked list string stack queue, priority queue heap hash table tree, binary search tree, tree + linked list, segment tree graph python built-in ALgorithms sorting binary search greedy dfs, bfs back tracking dynamic programming divide and conquer OThers math bit manipulation regex two pointers minimax memoization...","categories": ["Programming"],
+        "excerpt":"Data Structure list matrix linked list string stack queue, priority queue heap hash table tree, binary search tree, tree + linked list, segment tree graph python built-in ALgorithms sorting binary search greedy dfs, bfs back tracking dynamic programming divide and conquer topological sort - graph related OThers math bit manipulation...","categories": ["Programming"],
         "tags": ["Index","Data Structure"],
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-index.html",
         "teaser":null},{
@@ -60,8 +60,8 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/31/algorithm-dfs.html",
         "teaser":null},{
         "title": "Data Structure 10 - graph",
-        "excerpt":"Definition   graph   **leetcode 133 - Clone Graph [M] **     ","categories": ["Programming"],
-        "tags": ["Data Structure","Graph"],
+        "excerpt":"Definition   leetcode 133 - Clone Graph [M]      Related      topological sort  ","categories": ["Programming"],
+        "tags": ["Data Structure","Graph","Topological Sort"],
         "url": "http://localhost:4000/programming/2019/11/01/data-structrue-graph.html",
         "teaser":null},{
         "title": "OThers 2 - bit manipulation",
@@ -138,4 +138,9 @@ var store = [{
         "excerpt":"command leetcode 193 - Valid Phone Numbers [E] Given a text file file.txt that contains list of phone numbers (one per line), write a one liner bash script to print all valid phone numbers. You may assume that a valid phone number must appear in one of the following two...","categories": ["Programming"],
         "tags": ["Others","regex"],
         "url": "http://localhost:4000/programming/2019/11/18/others-regex.html",
+        "teaser":null},{
+        "title": "ALgorithms 8 - topological sort",
+        "excerpt":"Motivation Many real world situation can be modeled as a graph with directed edges where some events must occur before others, say prerequisites problems, i.e. school class prerequisites program dependencies build systems advanced-packaging tool (apt-get) event/task scheduling assembly instructions For example, school class prerequisites ---&gt; class C ---&gt; class J...","categories": ["Programming"],
+        "tags": ["Algorithms","Graph"],
+        "url": "http://localhost:4000/programming/2019/11/20/algorithm-topological.html",
         "teaser":null}]

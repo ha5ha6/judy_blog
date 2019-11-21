@@ -9,6 +9,7 @@ tags:
   #- Index
   - Data Structure
   - Graph
+  - Topological Sort
 author:  Jiexin Wang
 classes:  wide
 toc: true
@@ -18,12 +19,12 @@ author_profile: true
 
 ### Definition
 
-
-
-### graph
-
-**leetcode 133 - Clone Graph [M] **   
+**leetcode 133 - Clone Graph [M]**   
 
 ```python
 
 ```   
+
+### Related
+
+1. [topological sort](/programming/2019/11/20/algorithm-topological.html)
