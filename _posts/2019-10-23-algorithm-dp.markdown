@@ -16,7 +16,7 @@ toc: true
 toc_label: "Index"
 ---
 
-### dp basic
+### Triangle
 
 **leetcode 118 - Pascal's Triangle [E]** <br/>
 **leetcode 119 - Pascal's Triangle II [E]** <br/>
@@ -86,7 +86,7 @@ class Solution(object):
         return dp[0]
 ```
 
-### dp string
+### String Subsequence
 
 **leetcode 115 - Distinct Subsequences [H]**  
 
@@ -112,6 +112,8 @@ class Solution(object):
 
         return dp[-1][-1]
 ```
+
+### Word Break
 
 **leetcode 139 - Word Break [M]**  
 Example 1:  
@@ -164,3 +166,79 @@ class Solution(object):
 
         return dp.pop()
 ```
+
+**leetcode 140 - Word Break II [H] - dp + dfs**  
+Example 2:  
+Input:  
+s = "pineapplepenapple"   
+wordDict = ["apple", "pen", "applepen", "pine", "pineapple"]  
+Output:  
+[ "pine apple pen apple",  
+  "pine applepen apple",  
+  "pineapple pen apple"]  
+Explanation: Note that you are allowed to reuse a dictionary word.  
+
+Example 2 Solution:  
+1. check if s can be broken into dict words  
+
+
+         |dfs('pineapplepenapple',dict,'',res)
+             |#s[:4]='pine' in dict
+             |dfs('applepenapple',dict,'pine ',res)
+                 |~s[:5]='apple' in dict
+                 |dfs('penapple',dict,'pine apple ',res)
+                     |s[:3]='pen' in dict
+                     |dfs('apple',dict,'pine apple pen ',res)
+                         |s[:5]='apple' in dict
+                         |dfs('',dict,'pine apple pen apple',res) <- append res
+                 |~s[:8]='applepen' in dict
+                 |dfs('apple',dict,'pine applepen ',res)
+                     |s[:5]='apple' in dict
+                     |dfs('',dict,'pine applepen apple',res) <- append res
+             |#s[:9]='pineapple' in dict
+             |dfs('penapple',dict,'pineapple ',res)
+                 |s[:3]='pen' in dict
+                 |dfs('apple',dict,'pineapple pen ',res)
+                     |s[:5]='apple' in dict
+                     |dfs('',dict,'pineapple pen apple',res) <- append res
+
+
+```python  
+class Solution():
+    def wordBreak(self, s, wordDict):
+        res = []
+        self.dfs(s, wordDict, '', res)
+        return res
+
+    def check(self, s, dict):
+        dp = [False for i in range(len(s)+1)]
+        dp[0] = True
+        for i in range(1, len(s)+1):
+            for k in range(i):
+                if dp[k] and s[k:i] in dict:
+                    dp[i] = True
+        return dp.pop()
+
+    def dfs(self, s, dict, stringlist, res):
+        if self.check(s, dict):
+            if not s:
+                res.append(stringlist[1:])
+            for i in range(1, len(s)+1):
+                if s[:i] in dict:
+                    self.dfs(s[i:], dict, stringlist+' '+s[:i])
+```
+
+### Matrix Region Search
+
+**leetcode 221 - Maximal Square [M] - dp**
+Given a 2D binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.  
+
+Example:  
+Input:   
+
+    1  0  1  0  0
+    1  0  1* 1* 1
+    1  1  1* 1* 1
+    1  0  0  1  0
+
+Output: 4  

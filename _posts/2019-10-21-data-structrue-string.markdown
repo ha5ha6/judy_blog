@@ -265,7 +265,7 @@ class Solution():
         return news==news[::-1]
 ```   
 
-**leetcode 131 - Palindrome Partitioning [M] - dfs** see [dfs]()
+**leetcode 131 - Palindrome Partitioning [M] - backtracking** see [backtracking #palindrome](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#palindrome) 
 
 **leetcode 214 - Shortest Palindrome [H]**  
 Given a string s, you are allowed to convert it to a palindrome by adding characters in front of it.  

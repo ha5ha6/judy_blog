@@ -19,7 +19,7 @@ author_profile: true
 
 ### Word Search  
 
-**leetcode 79 - Word Search [M] - backtracking** see [backtracking #word search](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#word-search)  
+**leetcode 79 - Word Search [M] - backtracking** see [backtracking #matrix word search](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#matrix-word-search)  
 Given a 2D board and a word, find if the word exists in the grid.  
 
 Example:  
@@ -32,7 +32,20 @@ word="ABCCED" return True
 word="SEE" return True  
 word="ABCB" return False  
 
-### Regions  
+**leetcode 212 - Word Search II [H] - backtracking + trie** see [backtracking #matrix word search](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#matrix-word-search)    
+Given a 2D board and a list of words, find all words in the grid.  
+
+Example:  
+board=  
+[['o','a','a','n'],   
+['e','t','a','e'],   
+['i','h','k','r'],  
+['i','f','l','v']]  
+
+words=['oath','pea','eat','rain']   
+output: ['eat',oath]  
+
+### Region Search
 
 **leetcode 130 - Surrounded Regions [M] - stack or dfs**  
 Given a 2D board containing ‘X’ and ‘O’ (the letter O), capture all regions surrounded by ‘X’.  
@@ -91,7 +104,7 @@ class Solution():
                     board[r][c]='O'              
 ```
 
-**leetcode 200 - Number of Islands [M]**  
+**leetcode 200 - Number of Islands [M] - backtracking** see [backtracking #matrix region search](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#matrix-region-search)
 Given a 2d grid map of '1's (land) and '0's (water), count the number of islands.  
 An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.  
 
@@ -115,38 +128,15 @@ Input:
 
 Output: 3
 
-Solution:  
-1. scan rows and cols and check if '1', island+=1  
-2. dfs check its adjacents are '1'  
-3. if neighbor is '1', replace '1' with '0', check next neighbor (4 in total)  
-4. if neighbor is '0', return      
+**leetcode 221 - Maximal Square [M] - dp** see see [dp #matrix region search](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html#matrix-region-search)  
+Given a 2D binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.  
 
-```python
-class Solution():
-    def numIslands(self,grid):
-        if not grid:
-            return 0
+Example:  
+Input:   
 
-        rows,cols=len(grid),len(grid[0])
-        islands=0
+    1 0 1 0 0
+    1 0 1 1 1
+    1 1 1 1 1
+    1 0 0 1 0
 
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c]=='1':
-                    islands+=1
-                    self.hasNeighbor(r,c,grid)
-
-        return islands
-
-    def hasNeighbor(self,r,c,grid):
-        if r<0 or r>=len(grid) or c<0 or c>=len(grid[0]):
-            return
-        if grid[r][c]=='0':
-            return
-
-        grid[r][c]='0' #can change 1d/2d array grid value as global, but cannot change variable
-        self.hasNeighbor(r+1,c,grid)
-        self.hasNeighbor(r-1,c,grid)
-        self.hasNeighbor(r,c+1,grid)
-        self.hasNeighbor(r,c-1,grid)
-```
+Output: 4  

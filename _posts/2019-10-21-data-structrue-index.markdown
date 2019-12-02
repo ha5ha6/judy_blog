@@ -36,6 +36,7 @@ classes: wide
 6.	[dynamic programming](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html)
 7.	divide and conquer
 8.  [topological sort](https://ha5ha6.github.io/judy_blog/programming/2019/11/20/algorithm-topological.html) - graph related
+9.  [union find](https://ha5ha6.github.io/judy_blog/programming/2019/12/02/algorithm-unionfind.html) - graph related
 
 ### OThers
 
@@ -45,7 +46,6 @@ classes: wide
 4.	two pointers
 5.	minimax
 6.	memoization
-8.	union find
 10. [design](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-design.html)
 11. brainteaser
 12. [SQL](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-sql.html)

@@ -32,16 +32,16 @@ toc_label: "Index"
 
 ### Parentheses - 2 questions
 
-**leetcode 20 - Valid Parentheses [E] - hash + stack**  see [stack #parentheses]()  
-**leetcode 22 - Generate Parentheses [M] - backtracking** see [backtracking #parentheses]()
+**leetcode 20 - Valid Parentheses [E] - hash + stack**  see [stack #parentheses](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html#parentheses)  
+**leetcode 22 - Generate Parentheses [M] - backtracking** see [backtracking #parentheses](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#parentheses)
 
 ### Palindrome - 10 questions
 
 **leetcode 9 - Palindrome Number [E]**  
-**leetcode 125 - Valid Palindrome [E] - string** see [string #palindrome]()  
-**leetcode 131 - Palindrome Partitioning [M] - backtracking** see [backtracking #palindrome]()  
+**leetcode 125 - Valid Palindrome [E] - string** see [string #palindrome](https://ha5ha6.github.io/judy_blog/programming/2019/10/26/data-structrue-string.html#palindrome)  
+**leetcode 131 - Palindrome Partitioning [M] - backtracking** see [backtracking #palindrome](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#palindrome)  
 **leetcode 132 - Palindrome Partitioning II [H] - dp** see [dp #palindrome]()  
-**leetcode 214 - Shortest Palindrome [H] - string** see [string #palindrome]()  
+**leetcode 214 - Shortest Palindrome [H] - string** see [string #palindrome](https://ha5ha6.github.io/judy_blog/programming/2019/10/26/data-structrue-string.html#palindrome)  
 **leetcode 234 - Palindrome Linked List [E] - linked list** see [linked list #palindrome]()  
 **leetcode 266 - Palindrome Permutation [E] - hash** see [hash #palindrome]()  
 **leetcode 267 - Palindrome Permutation II [M] - backtracking** see [backtracking #palindrome]()  
@@ -51,8 +51,8 @@ toc_label: "Index"
 ### Contains Dups - 3 questions
 
 **leetcode 217 - Contains Duplicate [E] - hash**   
-**leetcode 219 - Contains Duplicate [E] - hash** see [hash #find dups]()  
-**leetcode 220 - Contains Duplicate [M] - bst** see[bst #find dups]()  
+**leetcode 219 - Contains Duplicate [E] - hash**  
+**leetcode 220 - Contains Duplicate [M] - hash** see [hash #find dups](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/data-structrue-hash.html#find-dups)   
 
 ### Combination - 7 questions  
 
@@ -61,7 +61,7 @@ toc_label: "Index"
 **leetcode 39 - Combination Sum [M] - backtracking**  
 **leetcode 40 - Combination Sum II [M] - backtracking**  
 **leetcode 216 - Combination Sum III [M] - backtracking**  
-**leetcode 254 - Factor Combinations [M] - backtracking** see [backtracking #combinations]()  
+**leetcode 254 - Factor Combinations [M] - backtracking** see [backtracking #combinations](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#combinations)  
 **leetcode 377 - Combination Sum IV [M] - dp** see [dp]()  
 
 ### Permutation - 6 questions
@@ -73,6 +73,10 @@ toc_label: "Index"
 **leetcode 266 - Palindrome Permutation [E] - hash** see [hash #palindrome]()  
 **leetcode 267 - Palindrome Permutation II [M] - backtracking** see [backtracking #palindrome]()  
 
+### Word Break I,II
+
+**leetcode 139 - Word Break [M] - dp**  
+**leetcode 140 - Word Break II [H] - dp + dfs** see [dp #word break](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html#word-break)  
 
 ### Majority Elements - 8 solutions
 
@@ -675,67 +679,3 @@ Solution:
 
 Reference:
 [segmentfault](https://segmentfault.com/a/1190000015859013), [huahuachan](https://zxi.mytechroad.com/blog/searching/leetcode-126-word-ladder-ii/)   
-
-### Word Break I,II
-
-**leetcode 139 - Word Break [M] - dp** see [dp #string](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html#dp-string)  
-**leetcode 140 - Word Break II [H] - dp + dfs**  
-Example 2:  
-Input:  
-s = "pineapplepenapple"   
-wordDict = ["apple", "pen", "applepen", "pine", "pineapple"]  
-Output:  
-[ "pine apple pen apple",  
-  "pine applepen apple",  
-  "pineapple pen apple"]  
-Explanation: Note that you are allowed to reuse a dictionary word.  
-
-Example 2 Solution:  
-1. check if s can be broken into dict words  
-
-
-         |dfs('pineapplepenapple',dict,'',res)
-             |#s[:4]='pine' in dict
-             |dfs('applepenapple',dict,'pine ',res)
-                 |~s[:5]='apple' in dict
-                 |dfs('penapple',dict,'pine apple ',res)
-                     |s[:3]='pen' in dict
-                     |dfs('apple',dict,'pine apple pen ',res)
-                         |s[:5]='apple' in dict
-                         |dfs('',dict,'pine apple pen apple',res) <- append res
-                 |~s[:8]='applepen' in dict
-                 |dfs('apple',dict,'pine applepen ',res)
-                     |s[:5]='apple' in dict
-                     |dfs('',dict,'pine applepen apple',res) <- append res
-             |#s[:9]='pineapple' in dict
-             |dfs('penapple',dict,'pineapple ',res)
-                 |s[:3]='pen' in dict
-                 |dfs('apple',dict,'pineapple pen ',res)
-                     |s[:5]='apple' in dict
-                     |dfs('',dict,'pineapple pen apple',res) <- append res
-
-
-```python  
-class Solution():
-    def wordBreak(self, s, wordDict):
-        res = []
-        self.dfs(s, wordDict, '', res)
-        return res
-
-    def check(self, s, dict):
-        dp = [False for i in range(len(s)+1)]
-        dp[0] = True
-        for i in range(1, len(s)+1):
-            for k in range(i):
-                if dp[k] and s[k:i] in dict:
-                    dp[i] = True
-        return dp.pop()
-
-    def dfs(self, s, dict, stringlist, res):
-        if self.check(s, dict):
-            if not s:
-                res.append(stringlist[1:])
-            for i in range(1, len(s)+1):
-                if s[:i] in dict:
-                    self.dfs(s[i:], dict, stringlist+' '+s[:i])
-```

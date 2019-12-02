@@ -1,6 +1,6 @@
 var store = [{
         "title": "Data Structure Index",
-        "excerpt":"Data Structure list matrix linked list string stack queue, priority queue heap hash table tree, binary search tree, tree + linked list, trie, segment tree graph python built-in ALgorithms sorting binary search greedy dfs, bfs back tracking dynamic programming divide and conquer topological sort - graph related OThers math bit...","categories": ["Programming"],
+        "excerpt":"Data Structure list matrix linked list string stack queue, priority queue heap hash table tree, binary search tree, tree + linked list, trie, segment tree graph python built-in ALgorithms sorting binary search greedy dfs, bfs back tracking dynamic programming divide and conquer topological sort - graph related union find -...","categories": ["Programming"],
         "tags": ["Index","Data Structure"],
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-index.html",
         "teaser":null},{
@@ -15,7 +15,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-bst.html",
         "teaser":null},{
         "title": "ALgorithms 6 - dynamic programming",
-        "excerpt":"dp basic leetcode 118 - Pascal’s Triangle [E] leetcode 119 - Pascal’s Triangle II [E] Input: 5 Output: [[1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1]] class Solution(object): #leetcode 118 def generate(self, n): if n==0: return [] dp=[[1]] for i in range(1,n): temp=[] for j in range(i-1): temp.append(dp[i-1][j]+dp[i-1][j+1]) temp.insert(0,1) temp.insert(len(temp),1) dp.append(temp) return dp...","categories": ["Programming"],
+        "excerpt":"Triangle leetcode 118 - Pascal’s Triangle [E] leetcode 119 - Pascal’s Triangle II [E] Input: 5 Output: [[1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1]] class Solution(object): #leetcode 118 def generate(self, n): if n==0: return [] dp=[[1]] for i in range(1,n): temp=[] for j in range(i-1): temp.append(dp[i-1][j]+dp[i-1][j+1]) temp.insert(0,1) temp.insert(len(temp),1) dp.append(temp) return dp #leetcode...","categories": ["Programming"],
         "tags": ["Algorithms","DP"],
         "url": "http://localhost:4000/programming/2019/10/23/algorithm-dp.html",
         "teaser":null},{
@@ -50,7 +50,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-list.html",
         "teaser":null},{
         "title": "Data Structure 2 - matrix",
-        "excerpt":"Word Search leetcode 79 - Word Search [M] - backtracking see backtracking #word search Given a 2D board and a word, find if the word exists in the grid. Example: board= [[‘A’,’B’,’C’,’E’], [‘S’,’F’,’C’,’S’], [‘A’,’D’,’E’,’E’],] word=”ABCCED” return True word=”SEE” return True word=”ABCB” return False Regions leetcode 130 - Surrounded Regions [M]...","categories": ["Programming"],
+        "excerpt":"Word Search leetcode 79 - Word Search [M] - backtracking see backtracking #matrix word search Given a 2D board and a word, find if the word exists in the grid. Example: board= [[‘A’,’B’,’C’,’E’], [‘S’,’F’,’C’,’S’], [‘A’,’D’,’E’,’E’],] word=”ABCCED” return True word=”SEE” return True word=”ABCB” return False leetcode 212 - Word Search II...","categories": ["Programming"],
         "tags": ["Data Structure","Matrix","Board Game"],
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-matrix.html",
         "teaser":null},{
@@ -95,7 +95,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/13/data-structrue-stack.html",
         "teaser":null},{
         "title": "ALgorithms 5 - back tracking",
-        "excerpt":"Definition If cannot go forward, go back! Parentheses leetcode 22 - Generate Parentheses [M] Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses. For example, given n = 3, a solution set is: [”((()))”, “(()())”, “(())()”, “()(())”, “()()()”] Combinations A Combination is a selection...","categories": ["Programming"],
+        "excerpt":"Definition If cannot go forward, go back! Parentheses leetcode 22 - Generate Parentheses [M] Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses. For example, given n = 3, a solution set is: [”((()))”, “(()())”, “(())()”, “()(())”, “()()()”] Palindrome leetcode 131 - Palindrome Partitioning...","categories": ["Programming"],
         "tags": ["Algorithms","Back Tracking","Parentheses","Recursion"],
         "url": "http://localhost:4000/programming/2019/11/13/algorithm-backtracking.html",
         "teaser":null},{
@@ -153,4 +153,9 @@ var store = [{
         "excerpt":"Definition   heapq   Leetcode   leetcode 215 - Kth Largest in an Array [M] - max heap see topic #kth largest  ","categories": ["Programming"],
         "tags": ["Data Structure","Heap"],
         "url": "http://localhost:4000/programming/2019/11/30/data-structrue-heap.html",
+        "teaser":null},{
+        "title": "ALgorithms 9 - union find",
+        "excerpt":"Definition A disjoint-set data structure is a data structure that keeps track of a set of elements partitioned into a number of disjoint (non-overlapping) subsets. A union-find algorithm is an algorithm that performs two useful operations on such a data structure: Find: Determine which subset a particular element is in....","categories": ["Programming"],
+        "tags": ["Algorithms","Union Find"],
+        "url": "http://localhost:4000/programming/2019/12/02/algorithm-unionfind.html",
         "teaser":null}]

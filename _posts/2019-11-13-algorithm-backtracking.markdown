@@ -33,6 +33,30 @@ For example, given n = 3, a solution set is:
   "()(())",  
   "()()()"]  
 
+### Palindrome  
+
+**leetcode 131 - Palindrome Partitioning [M]**  
+Input: "aab"  
+Output:   
+[["aa","b"],  
+["a","a","b"]]  
+
+```python
+class Solution():
+    def partition(self,s):
+        res=[]
+        self.helper(s,res,[])
+        return res
+
+    def helper(self,s,res,path):
+        if not s:
+            res.append(path)
+        for i in range(1,len(s)+1):
+            prefix=s[:i]
+            if prefix==prefix[::-1]:
+                self.helper(s[i:],res,path+[s[:i]])
+```
+
 ### Combinations
 
 A Combination is a selection of items from a collection, such that the order of selection does not matter.  
@@ -306,6 +330,68 @@ class Solution():
 
 ### N Queens
 
+### Matrix Region Search  
+
+**leetcode 200 - Number of Islands [M] - backtracking**  
+Given a 2d grid map of '1's (land) and '0's (water), count the number of islands.  
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.  
+
+Example 1:  
+Input:  
+
+    11110
+    11010
+    11000
+    00000
+
+Output: 1  
+
+Example 2:  
+Input:  
+
+    11000
+    11000
+    00100
+    00011
+
+Output: 3
+
+Solution:  
+1. scan rows and cols and check if '1', island+=1  
+2. dfs check its adjacents are '1'  
+3. if neighbor is '1', replace '1' with '0', check next neighbor (4 in total)  
+4. if neighbor is '0', return      
+
+```python
+class Solution():
+    def numIslands(self,grid):
+        if not grid:
+            return 0
+
+        rows,cols=len(grid),len(grid[0])
+        islands=0
+
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c]=='1':
+                    islands+=1
+                    self.hasNeighbor(r,c,grid)
+
+        return islands
+
+    def hasNeighbor(self,r,c,grid):
+        if r<0 or r>=len(grid) or c<0 or c>=len(grid[0]):
+            return
+        if grid[r][c]=='0':
+            return
+
+        grid[r][c]='0' #can change 1d/2d array grid value as global, but cannot change variable
+        self.hasNeighbor(r+1,c,grid)
+        self.hasNeighbor(r-1,c,grid)
+        self.hasNeighbor(r,c+1,grid)
+        self.hasNeighbor(r,c-1,grid)
+```
+
 ### Matrix Word Search
 
 **leetcode 79 - Word Search [M]** see also [matrix #word search](https://ha5ha6.github.io/judy_blog/programming/2019/10/29/data-structrue-matrix.html#word-search)  
@@ -346,32 +432,32 @@ Solution:
 ```python
 class Solution():
     def exist(self,board,word):
-        for x in range(len(board)): #3
-            for y in range(len(board[0])): #4
-                if self.exit(board,word,x,y,0):
+        for r in range(len(board)): #3
+            for c in range(len(board[0])): #4
+                if self.exit(board,word,r,c,0):
                     return True
 
         return False
 
-    def exit(self,b,w,x,y,i):  #board,word,x,y,i
+    def exit(self,b,w,r,c,i):  #board,word,x,y,i
         #i is the ith element of word
         if i==len(w):
             return True
 
         #out of border
-        if x<0 or x>=len(b) or y<0 or y>=len(b[0]):
+        if r<0 or r>=len(b) or c<0 or c>=len(b[0]):
             return False
 
-        if b[x][y]!=w[i]:
+        if b[r][c]!=w[i]:
             return False
 
-        return self.exit(b,w,x+1,y,i+1) or #down
-               self.exit(b,w,x-1,y,i+1) or #up
-               self.exit(b,w,x,y+1,i+1) or #right
-               self.exit(b,w,x,y-1,i+1) #left
+        return self.exit(b,w,r+1,c,i+1) or #down
+               self.exit(b,w,r-1,c,i+1) or #up
+               self.exit(b,w,r,c+1,i+1) or #right
+               self.exit(b,w,r,c-1,i+1) #left
 ```
 
-**leetcode 212 - Word Search II [H]**  
+**leetcode 212 - Word Search II [H] - backtracking + trie**  
 Given a 2D board and a list of words, find all words in the grid.  
 
 Example:  
@@ -381,33 +467,58 @@ board=
 ['i','h','k','r'],  
 ['i','f','l','v']]  
 
-words=['oath','pea','eat','rain']  
-output: ['eat',oath]
+words=['oath','pea','eat','rain']   
+output: ['eat',oath]  
+
+Solution:  
+1. creat trie node, tree end is the word  
+2. insert all words into trie  
+3. grid search each letter from board  
+4. stop condition: r,c out of board, letter not in trie, if reach terminal: node.word exist, res append(word)  
+5. recursion part: first temporarily set board[r][c]='\*', do four direction search, set board[r][c]=letter back   
 
 ```python
+class TrieNode():
+    def __init__(self):
+        self.children={}
+        self.word=None
+
 class Solution():
     def findWords(self,board,words):
-        res=[]
+        root=TrieNode()
         for word in words:
-            for x in range(len(board)): #4
-                for y in range(len(board[0])): #4
-                    if self.exit(board,word,x,y,0):
-                        res.append(word)
+            node=root
+            for c in word:
+                if c not in node.children:
+                    node.children[c]=TrieNode()
+                node=node.children[c]
+            node.word=word  #tree end is the word
+
+        res=[]
+        for r in range(len(board)):
+            for c in range(len(board[0])):
+                self.search(board,root,r,c,res)
 
         return res
 
-    def exit(self,b,w,x,y,i):  #board,word,x,y,i
-        if i==len(w):
-            return True
+    def search(self,board,node,r,c,res):
+        if r<0 or r>=len(board) or c<0 or c>=len(board[0]):
+            return
 
-        if x<0 or x>=len(b) or y<0 or y>=len(b[0]):
-            return False
+        letter=board[r][c]
+        if letter not in node.children:
+            return
 
-        if b[x][y]!=w[i]:
-            return False
+        node=node.children[letter]
+        if node.word:
+            res.append(node.word)
+            node.word=None
 
-        return self.exit(b,w,x+1,y,i+1) or #down
-               self.exit(b,w,x-1,y,i+1) or #up
-               self.exit(b,w,x,y+1,i+1) or #right
-               self.exit(b,w,x,y-1,i+1) #left
+        board[r][c]='*'
+        self.search(board,node,r+1,c,res)
+        self.search(board,node,r-1,c,res)
+        self.search(board,node,r,c+1,res)
+        self.search(board,node,r,c-1,res)
+
+        board[r][c]=letter
 ```

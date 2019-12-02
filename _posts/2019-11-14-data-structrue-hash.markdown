@@ -111,14 +111,14 @@ class Solution():
         if k<1 or t<0:
             return False
 
-        dict=OrderedDict()
-        for i in range(len(nums)):
-            key=nums[i]/max(1,t) # floor(nums[j]/t)
+        seen=OrderedDict()
+        for i,n in enumerate(nums):
+            key=n/max(1,t) # floor(nums[j]/t)
             for m in (key-1,key,key+1):
-                if m in dict and abs(nums[i]-dict[m])<=t:
+                if m in seen and abs(n-seen[m])<=t:
                     return True
 
-            dict[key]=nums[i]
+            seen[key]=n
             if i>=k:
                 dict.popitem(last=False)
 

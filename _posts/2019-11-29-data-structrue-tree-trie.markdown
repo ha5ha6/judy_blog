@@ -42,7 +42,7 @@ class TrieNode(object):
         self.terminal=False
 ```
 
-### Leetcode
+### Basic
 
 **leetcode 208 - Implement Trie (Prefix Tree) [M] - design, linked hash**  
 Implement a trie with insert, search, and startsWith methods.  
@@ -98,6 +98,8 @@ class Trie(object):
 
         return True
 ```
+
+### Word Search  
 
 **leetcode 211 - Add and Search Word [M] - hash**  
 Design a data structure that supports the following two operations:  
@@ -189,3 +191,6 @@ For each test case, up to words.length queries WordFilter.f may be made.
 words[i] has length in range [1, 10].  
 prefix, suffix have lengths in range [0, 10].  
 words[i] and prefix, suffix queries consist of lowercase letters only.  
+
+
+**leetcode 212 - Word Search II [H] - backtracking + trie** see [backtracking #martix word search](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#matrix-word-search)
