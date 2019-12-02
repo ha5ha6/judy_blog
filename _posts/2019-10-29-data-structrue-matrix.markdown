@@ -17,7 +17,23 @@ toc_label: "Index"
 author_profile: true
 ---
 
-### Board Game
+### Word Search  
+
+**leetcode 79 - Word Search [M] - backtracking** see [backtracking #word search](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#word-search)  
+Given a 2D board and a word, find if the word exists in the grid.  
+
+Example:  
+board=  
+[['A','B','C','E'],  
+['S','F','C','S'],  
+['A','D','E','E'],]  
+
+word="ABCCED" return True  
+word="SEE" return True  
+word="ABCB" return False  
+
+### Regions  
+
 **leetcode 130 - Surrounded Regions [M] - stack or dfs**  
 Given a 2D board containing ‘X’ and ‘O’ (the letter O), capture all regions surrounded by ‘X’.  
 A region is captured by flipping all ‘O’s into ‘X’s in that surrounded region.  

@@ -42,7 +42,7 @@ class Solution():
         nums[:]=nums[-k%n:]+nums[:n-k%n]
 ```
 
-### Find Sequence
+### Subsequence/Subarray
 
 **leetcode 128 - Longest Consecutive Sequence [H]**   
 Input: [100, 4, 200, 1, 3, 2]  
@@ -108,6 +108,93 @@ class Solution():
 
         return largest_product
 ```
+
+**leetcode 209 - Minimum Size Subarray Sum [M] - two pointers / binary search**  
+Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s. If there isn't one, return 0 instead.  
+
+Example:   
+Input: s = 7, nums = [2,3,1,2,4,3]  
+Output: 2  
+Explanation: the subarray [4,3] has the minimal length under the problem constraint.  
+Follow up:  
+O(n) - two pointers   
+O(n log n) - binary search  
+
+Solution 1: two pointers  
+1. set left,right pointers at the beginning which is 0 index  
+2. right++ and sum up all before right  
+3. when sum>=target, len=min(len,right-left+1), len_ini=float('inf')  
+4. start moving left, left++ and sum-=nums[left]  
+
+```python
+class Solution():
+    def maxSubArrayLen(self,s,nums):
+        left,right=0,0
+        sum=0
+        res=float('inf')
+        while right<len(nums):
+            sum+=nums[right]
+
+            while sum>=s:
+                res=min(res,right-left+1)
+                sum-=nums[left]
+                left+=1
+
+            right+=1
+
+        return res if res!=float('inf') else 0
+```
+
+Solution 2: binary search
+1. make a sum list from 0 len=len(nums)+1  
+2. l from index 1 of suml, search the suml element > s, return len=ele_index-l+1  
+3. l from index 2 of suml, search the suml element-suml[l] > s, return l
+4. ...
+
+        origin 2, 3, 1, 2, 4, 3         s=7
+        index  0  1  2  3  4  5  6   
+        suml   2  5  6  8  12 15   find target=suml[0]-nums[0]+s=2-2+7=7
+               l        ^          8>7
+                  l        ^       find target=suml[1]-nums[1]+s=5-3+7=9
+                     l     ^       find target=suml[2]-nums[2]+s=6-1+7=12
+                        l     ^    find target=suml[3]-nums[3]+s=8-2+7=13
+                           l  ^    find target=suml[4]-nums[4]+s=12-4+7=15
+
+
+```python
+class Solution():
+    def minSubArrayLen(self,s,nums):
+        suml=[n for n in nums]
+        for i in range(1,len(nums)):
+            suml[i]=suml[i-1]+nums[i]
+
+        res=float('inf')
+        for i in range(len(suml)):
+            #the position of suml > target
+            pos=self.binarysearch(i,len(suml),suml,suml[i]-nums[i]+s)
+            if pos<len(suml):
+                res=min(res,pos-i+1)
+
+        return res if res!=float('inf') else 0
+
+    def binarysearch(self,left,right,suml,target):
+
+        while left<right:
+            mid=(left+right)//2
+            if suml[mid]<target:
+                left=mid+1
+            else:
+                right=mid
+
+        return left      
+```
+
+
+**leetcode 53 - Maximum Subarray**  
+**leetcode - Maximum Size Subarray Sum Equals k**  
+**leetcode 560 - Subarray Sum Equals K**  
+**leetcode 718 - Maximum Length of Repeated Subarray [M]**  
+**leetcode 713 - Subarray Product Less Than K []**  
 
 
 

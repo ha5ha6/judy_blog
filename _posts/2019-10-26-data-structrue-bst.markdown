@@ -23,7 +23,7 @@ A binary search tree (BST), also known as an ordered binary tree, is a node-base
 The left sub-tree contains only nodes with keys less than the parent node;   
 The right sub-tree contains only nodes with keys greater than the parent node.  
 
-### Basic
+### Basic: Validate, Iterator
 
 **leetcode 98 - Validate Binary Search Tree [M] - [T/F]**  
 valid: left<root, right>root  
@@ -127,7 +127,7 @@ class BSTIterator(object):
 ```
 
 
-### Others
+### Generate n Recover
 
 **leetcode 95 - Unique Binary Search Trees II [M] - generate**  
 Given an integer n, generate all structurally unique BST's that store values 1 ... n.  

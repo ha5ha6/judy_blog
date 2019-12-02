@@ -1,6 +1,6 @@
 var store = [{
         "title": "Data Structure Index",
-        "excerpt":"Data Structure list matrix linked list string stack queue, priority queue heap hash table tree, binary search tree, tree + linked list, segment tree graph python built-in ALgorithms sorting binary search greedy dfs, bfs back tracking dynamic programming divide and conquer topological sort - graph related OThers math bit manipulation...","categories": ["Programming"],
+        "excerpt":"Data Structure list matrix linked list string stack queue, priority queue heap hash table tree, binary search tree, tree + linked list, trie, segment tree graph python built-in ALgorithms sorting binary search greedy dfs, bfs back tracking dynamic programming divide and conquer topological sort - graph related OThers math bit...","categories": ["Programming"],
         "tags": ["Index","Data Structure"],
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-index.html",
         "teaser":null},{
@@ -25,8 +25,8 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/23/data-structrue-tree-linkedlist.html",
         "teaser":null},{
         "title": "Topics",
-        "excerpt":"N Sum leetcode 1 - Two Sum [E] - hash see hash table #nsum leetcode 167 - Two Sum II - Input array is sorted [M] - binary search see binary search #twosum leetcode 170 - Two Sum III - Data structure design [E] see design #twosum Best Time Buy...","categories": ["Programming"],
-        "tags": ["MinMax","Bfs","Dfs","DP","Recursion","Topics","Hash Table","Binary Search","N-Sum"],
+        "excerpt":"N Sum - 3 questions leetcode 1 - Two Sum [E] - hash see hash table #nsum leetcode 167 - Two Sum II - Input array is sorted [M] - binary search see binary search #twosum leetcode 170 - Two Sum III - Data structure design [E] see design #twosum...","categories": ["Programming"],
+        "tags": ["MinMax","Bfs","Dfs","DP","Recursion","Topics","Hash Table","Binary Search","N-Sum","Sorting"],
         "url": "http://localhost:4000/programming/2019/10/25/topics.html",
         "teaser":null},{
         "title": "Data Structure 4 - string",
@@ -50,7 +50,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-list.html",
         "teaser":null},{
         "title": "Data Structure 2 - matrix",
-        "excerpt":"Board Game leetcode 130 - Surrounded Regions [M] - stack or dfs Given a 2D board containing ‘X’ and ‘O’ (the letter O), capture all regions surrounded by ‘X’. A region is captured by flipping all ‘O’s into ‘X’s in that surrounded region. Example: X X X X X O...","categories": ["Programming"],
+        "excerpt":"Word Search leetcode 79 - Word Search [M] - backtracking see backtracking #word search Given a 2D board and a word, find if the word exists in the grid. Example: board= [[‘A’,’B’,’C’,’E’], [‘S’,’F’,’C’,’S’], [‘A’,’D’,’E’,’E’],] word=”ABCCED” return True word=”SEE” return True word=”ABCB” return False Regions leetcode 130 - Surrounded Regions [M]...","categories": ["Programming"],
         "tags": ["Data Structure","Matrix","Board Game"],
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-matrix.html",
         "teaser":null},{
@@ -95,7 +95,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/13/data-structrue-stack.html",
         "teaser":null},{
         "title": "ALgorithms 5 - back tracking",
-        "excerpt":"Definition   Parentheses   leetcode 22 - Generate Parentheses [M]  Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.   For example, given n = 3, a solution set is:  [”((()))”,    “(()())”,    “(())()”,    “()(())”,    “()()()”]  ","categories": ["Programming"],
+        "excerpt":"Definition If cannot go forward, go back! Parentheses leetcode 22 - Generate Parentheses [M] Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses. For example, given n = 3, a solution set is: [”((()))”, “(()())”, “(())()”, “()(())”, “()()()”] Combinations A Combination is a selection...","categories": ["Programming"],
         "tags": ["Algorithms","Back Tracking","Parentheses","Recursion"],
         "url": "http://localhost:4000/programming/2019/11/13/algorithm-backtracking.html",
         "teaser":null},{
@@ -115,12 +115,12 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/14/algorithm-sorting.html",
         "teaser":null},{
         "title": "Data Structure 8 - hash table",
-        "excerpt":"Isomorphic leetcode 205 - Isomorphic Strings [E] Given two strings s and t, determine if they are isomorphic. Two strings are isomorphic if the characters in s can be replaced to get t. All occurrences of a character must be replaced with another character while preserving the order of characters....","categories": ["Programming"],
+        "excerpt":"Find Dups leetcode 217 - Contains Duplicate [E] Given an array of ints find if the array contains any duplicates. Examples: Input: [1,2,3,1] Output: True Input:[1,2,3,4] Output: False Input: [1,1,1,3,3,4,3,2,4,2] Output: True Solution 1: hash class Solution(): def containsDuplicate(self,nums): seen={} for n in nums: if n in seen: return True...","categories": ["Programming"],
         "tags": ["Data Structure","Hash Table","N-Sum"],
         "url": "http://localhost:4000/programming/2019/11/14/data-structrue-hash.html",
         "teaser":null},{
         "title": "OThers 10 - design",
-        "excerpt":"Stack leetcode 155 - Min Stack [E] leetcode 716 - Max Stack [E] see stack #design Tree leetcode 173 - Binary Search Tree Iterator [M] see bst #basic Two Sum leetcode 170 - Two Sum III - Data structure design [E] - hash Design and implement a TwoSum Class supports...","categories": ["Programming"],
+        "excerpt":"Stack leetcode 155 - Min Stack [E] leetcode 716 - Max Stack [E] see stack #design Tree leetcode 173 - Binary Search Tree Iterator [M] see bst #basic leetcode 208 - Implement Trie (Prefix Tree) [M] see trie Two Sum leetcode 170 - Two Sum III - Data structure design...","categories": ["Programming"],
         "tags": ["Others","Stack","N-Sum"],
         "url": "http://localhost:4000/programming/2019/11/15/others-design.html",
         "teaser":null},{
@@ -143,4 +143,14 @@ var store = [{
         "excerpt":"Motivation Many real world situation can be modeled as a graph with directed edges where some events must occur before others, say prerequisites problems, i.e. school class prerequisites program dependencies build systems advanced-packaging tool (apt-get) event/task scheduling assembly instructions For example, school class prerequisites ---&gt; class C ---&gt; class J...","categories": ["Programming"],
         "tags": ["Algorithms","Graph"],
         "url": "http://localhost:4000/programming/2019/11/20/algorithm-topological.html",
+        "teaser":null},{
+        "title": "Data Structure 9 - trie",
+        "excerpt":"Definition Trie is an efficient information retrieval data structure. Using Trie, search complexities can be brought to optimal limit (key length). If we store keys in binary search tree, a well balanced BST will need time proportional to M * log N, where M is maximum string length and N...","categories": ["Programming"],
+        "tags": ["Data Structure","Tree"],
+        "url": "http://localhost:4000/programming/2019/11/29/data-structrue-tree-trie.html",
+        "teaser":null},{
+        "title": "Data Structure 7 - heap",
+        "excerpt":"Definition   heapq   Leetcode   leetcode 215 - Kth Largest in an Array [M] - max heap see topic #kth largest  ","categories": ["Programming"],
+        "tags": ["Data Structure","Heap"],
+        "url": "http://localhost:4000/programming/2019/11/30/data-structrue-heap.html",
         "teaser":null}]

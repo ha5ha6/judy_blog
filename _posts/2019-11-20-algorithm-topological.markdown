@@ -234,3 +234,194 @@ def topsort(graph):
 print(topsort(G))
 >>['a', 'e', 'c', 'b', 'd']
 ```
+
+### Leetcode
+
+**leetcode 207 - Course Schedule [M] - if DAG**  
+There are a total of n courses you have to take, labeled from 0 to n-1. Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]  
+Given the total number of courses and a list of prerequisite pairs, is it possible for you to finish all courses?  
+
+Example 1:  
+Input: 2, [[1,0]]   
+Output: true  
+Explanation: There are a total of 2 courses to take.
+             To take course 1 you should have finished course 0. So it is possible.  
+
+Example 2:  
+Input: 2, [[1,0],[0,1]]  
+Output: false  
+Explanation: There are a total of 2 courses to take.
+             To take course 1 you should have finished course 0, and to take course 0 you should
+             also have finished course 1. So it is impossible.  
+
+Solution 1: check if DAG, which has cycle, bfs TO(m+n),SO(m+n)??  
+Note: edge(u,v) means u->v  
+1. creat graph defaultdict(list) and in_degree defaultdict(int)  
+2. find the node say(no head node) with no head, put into stack  
+3. find the children of the no head node, and minus 1 as visited once  
+4. if no head (idg==0) after visiting, put into stack  
+5. count the visiting times and check if cnt==numCourses
+
+        Input:4, [[1,0],[2,0],[3,1],[3,2]]
+
+        0-->1-->3
+          |->2-|
+
+        g={0: [1, 2], 1: [3], 2: [3]}
+        idg={0: 0, 1: 1, 2: 1, 3: 2}
+
+        backward is also fine
+        g={1: [0], 2: [0], 3: [1, 2]})
+        idg={1: 1, 2: 1, 3: 2}
+
+
+```python
+from collections import defaultdict
+class Solution():
+    def canFinish(self,numCourses,prerequisites):
+        graph=defaultdict(list)
+        idg=defaultdict(int) #in degree
+        for v,u in prerequisites: #backward is also fine
+            graph[u].append(v)
+            idg[v]+=1
+
+
+        stack=[]
+        for i in range(numCourses):
+            if idg[i]==0: #find the one with no head
+                stack.append(i)
+
+        cnt=0
+        while stack:
+            c=stack.pop() #c<-course
+            cnt+=1
+            for j in graph[c]:  #c's tail
+                idg[j]-=1
+                if idg[j]==0:
+                    stack.append(j)
+
+        return cnt==numCourses
+```
+
+Solution 2: dfs, from tail to head  
+1. create reverse graph and record visited array of each node  
+2. check if the node's head has been visited
+
+        g_forward={0: [1, 2], 1: [3], 2: [3]}
+        g_inverse={1: [0], 2:[0], 3:[1,2]}
+
+
+```python
+from collections import defaultdict
+class Solution():
+    def canFinish(self,numCourses,prerequisites):
+        graph=defaultdict(list)
+        visited=[0]*numCourses
+
+        for u,v in prerequisites:
+            graph[u].append(v)
+        #-1=visiting,1=visited
+        for i in range(numCourses):
+            if not self.dfs(graph,visited,i):
+                return False
+
+        return True
+
+    def dfs(self,graph,visited,i):
+        if visited[i]==-1:
+            return False
+
+        if visited[i]==1:
+            return True
+
+        visited[i]=-1
+        for j in graph[i]: #find its head
+            if not self.dfs(graph,visited,j):
+                return False
+
+        visited[i]=1
+
+        return True
+```
+
+**leetcode 210 - Course Schedule II [M] - return DAG path**  
+Given the total number of courses and a list of prerequisite pairs, return the ordering of courses you should take to finish all courses. There may be multiple correct orders, you just need to return one of them. If it is impossible to finish all courses, return an empty array.  
+
+Example 1:  
+Input: 2, [[1,0]]   
+Output: [0,1]  
+Explanation: There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1].  
+
+Example 2:  
+Input: 4, [[1,0],[2,0],[3,1],[3,2]]  
+Output: [0,1,2,3] or [0,2,1,3]  
+Explanation: There are a total of 4 courses to take. To take course 3 you should have finished both courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0. So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3].  
+
+Solution 1: bfs  
+
+```python
+from collections import defaultdict
+class Solution():
+    def findOrder(self,numCourses,prerequisites):
+        graph=defaultdict(list)
+        idg=defaultdict(int)
+
+        for v,u in prerequisites:
+            graph[u].append(v)
+            idg[v]+=1
+
+        stack=[]
+        for i in range(numCourses):
+            if idg[i]==0:
+                stack.append(i)
+
+        cnt=0
+        res=[]
+        while stack:
+            c=stack.pop()
+            res.append(c)
+            cnt+=1
+
+            for j in graph[c]:
+                idg[j]-=1
+                if idg[j]==0:
+                    stack.append(j)
+
+        return res if cnt==numCourses else []
+```
+
+Solution 2: dfs
+
+```python
+from collections import defaultdict
+class Solution():
+    def findOrder(self,numCourses,prerequisites):
+        graph=defaultdict(list)
+        visited=[0]*numCourses
+        res=[]
+
+        for u,v in prerequisites:
+            graph[u].append(v)
+
+        for i in range(numCourses):
+            if not self.dfs(graph,visited,i,res):
+                return []
+
+        return res
+
+    def dfs(self,graph,visited,i,res):
+        if visited[i]==-1:
+            return False
+        if visited[i]==1:
+            return True
+
+        visited[i]=-1
+        for j in graph[i]:
+            if not self.dfs(graph,visited,j,res):
+                return False
+
+        visited[i]=1
+        res.append(i)
+
+        return True
+```

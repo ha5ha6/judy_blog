@@ -20,9 +20,9 @@ classes: wide
 4.	[string](https://ha5ha6.github.io/judy_blog/programming/2019/10/26/data-structrue-string.html)
 5.	[stack](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html)
 6.	[queue](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/data-structrue-queue.html), priority queue
-7.	heap
+7.	[heap](https://ha5ha6.github.io/judy_blog/programming/2019/11/30/data-structrue-heap.html)
 8.	[hash table](https://ha5ha6.github.io/judy_blog//programming/2019/11/14/data-structrue-hash.html)
-9.	[tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-tree.html), [binary search tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html), [tree + linked list](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/data-structrue-tree-linkedlist.html), segment tree
+9.	[tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-tree.html), [binary search tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html), [tree + linked list](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/data-structrue-tree-linkedlist.html), [trie](), segment tree
 10. [graph](https://ha5ha6.github.io/judy_blog/programming/2019/11/01/data-structrue-graph.html)
 11. [python built-in](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html)
 
@@ -35,7 +35,7 @@ classes: wide
 5.	[back tracking](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html)
 6.	[dynamic programming](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html)
 7.	divide and conquer
-8.  [topological sort]() - graph related
+8.  [topological sort](https://ha5ha6.github.io/judy_blog/programming/2019/11/20/algorithm-topological.html) - graph related
 
 ### OThers
 
@@ -45,7 +45,6 @@ classes: wide
 4.	two pointers
 5.	minimax
 6.	memoization
-7.	trie
 8.	union find
 10. [design](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-design.html)
 11. brainteaser

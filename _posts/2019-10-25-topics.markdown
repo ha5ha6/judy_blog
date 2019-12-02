@@ -16,6 +16,7 @@ tags:
   - Hash Table
   - Binary Search
   - N-Sum
+  - Sorting
 author:  Jiexin Wang
 classes:  wide
 author_profile: true
@@ -23,15 +24,304 @@ toc: true
 toc_label: "Index"
 ---
 
-### N Sum  
+### N Sum - 3 questions
 
 **leetcode 1 - Two Sum [E] - hash** see [hash table #nsum](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/data-structrue-hash.html#n-sum)  
 **leetcode 167 - Two Sum II - Input array is sorted [M] - binary search** see [binary search #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-binarysearch.html#two-sum)  
 **leetcode 170 - Two Sum III - Data structure design [E]**  see [design #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-design.html#two-sum)
 
+### Parentheses - 2 questions
+
+**leetcode 20 - Valid Parentheses [E] - hash + stack**  see [stack #parentheses]()  
+**leetcode 22 - Generate Parentheses [M] - backtracking** see [backtracking #parentheses]()
+
+### Palindrome - 10 questions
+
+**leetcode 9 - Palindrome Number [E]**  
+**leetcode 125 - Valid Palindrome [E] - string** see [string #palindrome]()  
+**leetcode 131 - Palindrome Partitioning [M] - backtracking** see [backtracking #palindrome]()  
+**leetcode 132 - Palindrome Partitioning II [H] - dp** see [dp #palindrome]()  
+**leetcode 214 - Shortest Palindrome [H] - string** see [string #palindrome]()  
+**leetcode 234 - Palindrome Linked List [E] - linked list** see [linked list #palindrome]()  
+**leetcode 266 - Palindrome Permutation [E] - hash** see [hash #palindrome]()  
+**leetcode 267 - Palindrome Permutation II [M] - backtracking** see [backtracking #palindrome]()  
+**leetcode 336 - Palindrome Pairs [H] - hash, trie** see [trie #palindrome]()  
+**leetcode 409 - Longest Palindrome [E] - hash** see [hash #palindrome]()
+
+### Contains Dups - 3 questions
+
+**leetcode 217 - Contains Duplicate [E] - hash**   
+**leetcode 219 - Contains Duplicate [E] - hash** see [hash #find dups]()  
+**leetcode 220 - Contains Duplicate [M] - bst** see[bst #find dups]()  
+
+### Combination - 7 questions  
+
+**leetcode 17 - Letter Combinations of a Phone Number [M] - backtracking**  
+**leetcode 77 - Combinations [M] - backtracking**  
+**leetcode 39 - Combination Sum [M] - backtracking**  
+**leetcode 40 - Combination Sum II [M] - backtracking**  
+**leetcode 216 - Combination Sum III [M] - backtracking**  
+**leetcode 254 - Factor Combinations [M] - backtracking** see [backtracking #combinations]()  
+**leetcode 377 - Combination Sum IV [M] - dp** see [dp]()  
+
+### Permutation - 6 questions
+
+**leetcode 31 - Next Permutation [M] - list**  
+**leetcode 46 - Permutations [M] - backtracking**  
+**leetcode 47 - Permutations II [M] - backtracking**  
+**leetcode 60 - Permutation Sequence [M] - backtracking**  
+**leetcode 266 - Palindrome Permutation [E] - hash** see [hash #palindrome]()  
+**leetcode 267 - Palindrome Permutation II [M] - backtracking** see [backtracking #palindrome]()  
 
 
-### Best Time Buy n Sell
+### Majority Elements - 8 solutions
+
+**leetcode 169 - Majority Element [E]**  
+[Hash, Set, Counter, Sort, Randomization, Divide n Conquer, Moore Voting, Bit Manipulation]  
+
+Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.  
+Examples:  
+Input: [3,2,3]  
+Output: 3  
+Input: [2,2,1,1,1,2,2]  
+Output: 2  
+
+Solution 1 - Brute - Time O(n^2), Space O(1):  
+
+```python  
+class Solution():
+    def majorityElement(self, nums):
+        for n in nums:
+            cnt=sum(1 for i in nums if i==n)
+            print(n,cnt)
+            if cnt>len(nums)//2:
+                return n
+
+Output (n,cnt):
+2 4
+2 4
+1 3
+1 3
+1 3
+2 4
+2 4
+```
+
+Solution 2.1 - Hash - Time O(n):
+
+```python  
+class Solution():
+    def majorityElement(self, nums):
+        cnt={}
+        for n in nums:
+            if n not in cnt:
+                cnt[n]=1
+            else:
+                cnt[n]+=1
+            #or
+            #cnt[n] = cnt.get(n, 0) + 1
+
+            if cnt[n]>len(nums)//2:
+                return n
+```
+
+Solution 2.2 - Hash,Counter - Time O(n), Space O(n):
+
+```python  
+class Solution():
+    def majorityElement(self, nums):
+        cnt=collections.Counter(nums)
+        return max(cnt.keys(),key=cnt.get)
+```
+
+Solution 3 - Set
+
+```python  
+class Solution():
+    def majorityElement(self, nums):
+        nset=set(nums)
+        for n in nset:
+            if nums.count(n)>len(nums)//2:
+                return n
+```
+
+Solution 4 - Sort - Time O(nlogn), Space O(1) or O(n):
+
+```python  
+class Solution():
+    def majorityElement(self, nums):
+        nums.sort()
+        return nums[len(nums)//2]
+```
+
+Solution 5 - Randomization - Time O(inf):
+
+```python  
+import random
+class Solution():
+    def majorityElement(self, nums):
+        while True:
+            candidate=random.choice(nums)
+            if sum(1 for i in nums if i==candidate)>len(nums)//2:
+                return candidate
+```
+
+Solution 6 - Divide n Conquer - Time O(nlogn), Space O(logn):  
+
+```python  
+class Solution():
+    def majorityElement(self, nums):
+        return self.dnc(nums,0,len(nums)-1)
+
+    def dnc(self,nums,left,right):
+        if left==right:
+            return nums[left]
+
+        mid=(left+right)//2
+        new_left=self.dnc(nums,left,mid)
+        new_right=self.dns(nums,mid+1,right)
+        if new_left==new_right:
+            return new_left
+
+        return new_left if nums[left:right+1].count(new_left)>nums[left:right+1].count(new_right) else new_right
+```
+
+Solution 7 (Best) - Boyer-Moore Voting - Time O(n), Space O(1):
+
+```python
+class Solution():
+    def majorityElement(self, nums):
+        cnt=0
+        candidate=None
+        for n in nums:
+            if cnt==0:
+                candidate=n
+            cnt+=(1 if n==candidate else -1)
+
+        return candidate
+```
+
+Solution 8 - Bit Manipulation: see [ref](https://blog.csdn.net/coder_orz/article/details/51407713)
+
+```python
+class Solution():
+    def majorityElement(self, nums):
+        major=0
+        mask=1
+        for i in range(0,32):
+            cnt=0
+            for j in nums:
+                if j&mask:
+                    cnt+=1
+                    if cnt>len(nums)//2:
+                        major|=mask
+                        break
+            mask<<=1
+
+        return major if major>>31==0 else major-(1<<32)
+```
+
+### Kth Largest Element - 4 solutions
+
+**leetcode 215 - Kth Largest in an Array [M]**  
+Find the kth largest element in an unsorted array, note: not the kth distinct element.  
+
+Examples:  
+Input: [3,2,1,5,6,4] and k=2  
+Output: 5  
+Input: [3,2,3,1,2,4,5,5,6] and k=4  
+Output: 4  
+
+Solution 1: sorting, TO(nlogn), SO(1)
+
+```python
+class Solution():
+    def findKthLargest(self,nums,k):
+
+        return sorted(nums,reverse=True)[k-1]
+```
+
+Solution 2: max heap, TO(nlogk), SO(k)  
+
+```python
+from heapq import *
+class Solution():
+    def findKthLargest(self,nums,k):
+
+        if not nums:
+            return -1
+
+        h=[]
+        for i in range(len(nums)):
+            if len(h)<k:
+                heappush(h,nums[i])
+            else:
+                if h[0]<nums[i]:
+                    heappop(h)
+                    heappush(h,nums[i])
+
+        return h[0]
+```
+
+Solution 3: quick select, T: avg O(n), worst O(n^2), SO(1)  
+
+```python
+import random
+class Solution():
+    def findKthLargest(self,nums,k):
+
+        pivot=random.choice(nums)
+        nums1,nums2=[],[]
+        for n in nums:
+            if n>pivot:
+                nums1.append(n)
+            elif n<pivot:
+                nums2.append(n)
+
+        if k<=len(nums1):
+            return self.findKthLargest(nums1,k)
+        if k>len(nums)-len(nums2):
+            return self.findKthLargest(nums2,k-(len(nums)-len(nums2)))
+
+        return pivot
+```
+
+Solution 4: quick select partition  
+
+```python
+import random
+class Solution():
+    def findKthLargest(self,nums,k):
+
+        k=len(nums)-k
+        left,right=0,len(nums)-1
+        while True:
+            idx=self.partition(nums,left,right)
+            if idx==k:
+                return nums[idx]
+            if idx>k:
+                right=idx-1
+            else:
+                left=idx+1
+
+    def partition(self,nums,left,right):
+
+        ran_idx=random.randint(left,right)
+        ran_entry=nums[ran_idx]
+        nums[ran_idx],nums[right]=nums[right],nums[ran_idx]
+
+        next_lower=left
+        for i in range(left,right):
+            if nums[i]<=ran_entry:
+                nums[next_lower],nums[i]=nums[i],nums[next_lower]
+                next_lower+=1
+
+        nums[next_lower],nums[right]=nums[right],nums[next_lower]
+
+        return next_lower
+```
+
+### Best Time Buy n Sell I,II,III,IV
 
 **leetcode 121 - Best Time to Buy and Sell Stock (Once) [E] - record min and max**  
 Input: [7,1,5,3,6,4]  
@@ -240,7 +530,85 @@ class Solution(object):
         return dp[-1][-1]
 ```
 
-### Word Ladder
+### House Robber I,II
+
+**leetcode 198 - House Robber [E] - light dp**  
+You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.  
+Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.  
+
+Example 1:  
+Input: [1,2,3,1]  
+Output: 4  
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3). Total amount you can rob = 1 + 3 = 4.  
+
+Example 2:  
+Input: [2,7,9,3,1]  
+Output: 12  
+Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1). Total amount you can rob = 2 + 9 + 1 = 12.  
+
+Solution for [2,3,5,2,3,7,3,7,4]:  
+
+
+        loot                   prev
+          0                     0
+      max(2+0,0)=2      \/      0
+      max(3+0,2)=3      /\      2           
+      max(5+2,3)=7              3          
+      max(2+3,5+2)=7            7     
+      max(3+5+2,5+2)=10         7     
+      max(7+5+2,3+5+2)=14       10           
+      max(3+3+5+2,7+5+2)=14     14           
+      max(7+7+5+2,7+5+2)=21     14          
+      max(4+7+5+2,7+7+5+2)=21   21
+
+
+```python
+class Solution():
+    def rob(self,nums):
+        if not nums:
+            return 0
+
+        loot,prev=0,0
+        for n in nums:
+            loot,prev=max(n+prev,loot),loot
+
+        return loot
+```
+
+**leetcode 213 - House Robber II [M]**  
+All houses are arranged in a circle. That means the first house is the neighbor of the last one.  
+
+Example 1:  
+Input: [2,3,2]  
+Output: 3  
+Explanation: You cannot rob house 1 and 3 which are 2 and 2 in total 4 amount, cuz they are neighbors.  
+
+Example 2:  
+Input: [1,2,3,1]  
+Output: 4  
+Explanation: rob house 1 and 3, in total amount 4  
+
+Solution:  
+separate into two cases, do not rob the first house, or do not rob the last house  
+
+```python
+class Solution():
+    def rob(self,nums):
+        if len(nums)<2:
+            return sum(nums)  #rob only one house
+
+        loot,prev=0,0  
+        for n in nums[1:]:  #do not rob the first house
+            loot,prev=max(n+prev,loot),loot
+
+        loot2,prev=0,0
+        for n in nums[:-1]:  #do not rob the last house
+            loot2,prev=max(n+prev,loot2),loot2
+
+        return max(loot,loot2)
+```
+
+### Word Ladder I,II
 
 **leetcode 127 - Word Ladder [M] (return shortest length) - bfs**  
 Example 1:  
@@ -308,7 +676,7 @@ Solution:
 Reference:
 [segmentfault](https://segmentfault.com/a/1190000015859013), [huahuachan](https://zxi.mytechroad.com/blog/searching/leetcode-126-word-ladder-ii/)   
 
-### Word Break
+### Word Break I,II
 
 **leetcode 139 - Word Break [M] - dp** see [dp #string](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html#dp-string)  
 **leetcode 140 - Word Break II [H] - dp + dfs**  
@@ -370,195 +738,4 @@ class Solution():
             for i in range(1, len(s)+1):
                 if s[:i] in dict:
                     self.dfs(s[i:], dict, stringlist+' '+s[:i])
-```
-
-### Majority Elements
-
-**leetcode 169 - Majority Element[E]**  
-[Hash, Set, Counter, Sort, Randomization, Divide n Conquer, Moore Voting, Bit Manipulation]  
-
-Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.  
-Examples:  
-Input: [3,2,3]  
-Output: 3  
-Input: [2,2,1,1,1,2,2]  
-Output: 2  
-
-Solution 1 - Brute - Time O(n^2), Space O(1):  
-
-```python  
-class Solution():
-    def majorityElement(self, nums):
-        for n in nums:
-            cnt=sum(1 for i in nums if i==n)
-            print(n,cnt)
-            if cnt>len(nums)//2:
-                return n
-
-Output (n,cnt):
-2 4
-2 4
-1 3
-1 3
-1 3
-2 4
-2 4
-```
-
-Solution 2.1 - Hash - Time O(n):
-
-```python  
-class Solution():
-    def majorityElement(self, nums):
-        cnt={}
-        for n in nums:
-            if n not in cnt:
-                cnt[n]=1
-            else:
-                cnt[n]+=1
-            #or
-            #cnt[n] = cnt.get(n, 0) + 1
-
-            if cnt[n]>len(nums)//2:
-                return n
-```
-
-Solution 2.2 - Hash,Counter - Time O(n), Space O(n):
-
-```python  
-class Solution():
-    def majorityElement(self, nums):
-        cnt=collections.Counter(nums)
-        return max(cnt.keys(),key=cnt.get)
-```
-
-Solution 3 - Set
-
-```python  
-class Solution():
-    def majorityElement(self, nums):
-        nset=set(nums)
-        for n in nset:
-            if nums.count(n)>len(nums)//2:
-                return n
-```
-
-Solution 4 - Sort - Time O(nlogn), Space O(1) or O(n):
-
-```python  
-class Solution():
-    def majorityElement(self, nums):
-        nums.sort()
-        return nums[len(nums)//2]
-```
-
-Solution 5 - Randomization - Time O(inf):
-
-```python  
-import random
-class Solution():
-    def majorityElement(self, nums):
-        while True:
-            candidate=random.choice(nums)
-            if sum(1 for i in nums if i==candidate)>len(nums)//2:
-                return candidate
-```
-
-Solution 6 - Divide n Conquer - Time O(nlogn), Space O(logn):  
-
-```python  
-class Solution():
-    def majorityElement(self, nums):
-        return self.dnc(nums,0,len(nums)-1)
-
-    def dnc(self,nums,left,right):
-        if left==right:
-            return nums[left]
-
-        mid=(left+right)//2
-        new_left=self.dnc(nums,left,mid)
-        new_right=self.dns(nums,mid+1,right)
-        if new_left==new_right:
-            return new_left
-
-        return new_left if nums[left:right+1].count(new_left)>nums[left:right+1].count(new_right) else new_right
-```
-
-Solution 7 (Best) - Boyer-Moore Voting - Time O(n), Space O(1):
-
-```python
-class Solution():
-    def majorityElement(self, nums):
-        cnt=0
-        candidate=None
-        for n in nums:
-            if cnt==0:
-                candidate=n
-            cnt+=(1 if n==candidate else -1)
-
-        return candidate
-```
-
-Solution 8 - Bit Manipulation: see [ref](https://blog.csdn.net/coder_orz/article/details/51407713)
-
-```python
-class Solution():
-    def majorityElement(self, nums):
-        major=0
-        mask=1
-        for i in range(0,32):
-            cnt=0
-            for j in nums:
-                if j&mask:
-                    cnt+=1
-                    if cnt>len(nums)//2:
-                        major|=mask
-                        break
-            mask<<=1
-
-        return major if major>>31==0 else major-(1<<32)
-```
-
-### House Robber
-
-**leetcode 198 - House Robber [E] - light dp**  
-You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.  
-Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.  
-
-Example 1:  
-Input: [1,2,3,1]  
-Output: 4  
-Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3). Total amount you can rob = 1 + 3 = 4.  
-
-Example 2:  
-Input: [2,7,9,3,1]  
-Output: 12  
-Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1). Total amount you can rob = 2 + 9 + 1 = 12.  
-
-Solution for [2,3,5,2,3,7,3,7,4]:  
-
-
-        loot                   prev
-          2             \/      0
-      max(3+0,2)=3      /\      2           
-      max(5+2,3)=7              3          
-      max(2+3,5+2)=7            7     
-      max(3+5+2,5+2)=10         7     
-      max(7+5+2,3+5+2)=14       10           
-      max(3+3+5+2,7+5+2)=14     14           
-      max(7+7+5+2,7+5+2)=21     14          
-      max(4+7+5+2,7+7+5+2)=21   21
-
-
-```python
-class Solution():
-    def rob(self,nums):
-        if not nums:
-            return 0
-
-        loot,prev=nums[0],0
-        for n in nums[1:]:
-            loot,prev=max(n+prev,loot),loot
-
-        return loot
 ```

@@ -266,3 +266,50 @@ class Solution():
 ```   
 
 **leetcode 131 - Palindrome Partitioning [M] - dfs** see [dfs]()
+
+**leetcode 214 - Shortest Palindrome [H]**  
+Given a string s, you are allowed to convert it to a palindrome by adding characters in front of it.  
+Find and return the shortest palindrome you can find  performing this transformation.  
+
+Example 1:  
+Input: 'aacecaaa'  
+Output: 'aaacecaaa'  
+
+Example 2:  
+Input: 'abcd'  
+Output: 'dcbabcd'  
+
+Solution 1:  
+1. make a reverse string t  
+2. check from tail to see when s==t  
+3. return t leftover + s  
+
+        len=8
+        i: 8,7,...,1
+        len-i: 0,1,..7
+
+        s[:i]?=t[len-i:]
+        s[:8]?=t[0:]  
+        s[:7]?=t[1:]  s='aacecaa|a'
+                      t='a|aacecaa'
+                    res='a' from t + s
+                       ='a' + 'aacecaaa'
+                       ='aaacecaaa'
+
+
+```python
+class Solution():
+    def shortestPalindrome(self, s):
+        if len(s)==0:
+            return ''
+
+        t=s[::-1]
+        for i in range(len(s),0,-1):
+            if s[:i]==t[len(s)-i:]:   #s[:8]==t[0:] s[:7]==t[1:] ...
+                break
+
+        return t[:len(s)-i]+s
+```   
+
+Solution 2:  
+use KMP failure function algorithm to find the longest prefix of s that is also a suffix of s[::-1]   
