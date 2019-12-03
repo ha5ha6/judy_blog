@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 11 - python built-in"
+title:  "Data Structure 14 - python built-in"
 date:   2019-11-12 23:45:25 +0900
 related: true
 categories: Programming
@@ -257,6 +257,60 @@ Output:
 3,'c'
 ```
 
+### heapq
+
+Heap data structure is mainly used to represent a priority queue. In Python, it is available using “heapq” module.  
+The property of this data structure in python is that each time the smallest of heap element is popped(min heap). Whenever elements are pushed or popped, heap structure is maintained.  
+
+```python
+import heapq
+
+a=[5,7,9,1,3]
+
+#convert list to heap
+heapq.heapify(a)
+a
+>>[1, 3, 9, 7, 5] #partially in order!
+
+heapq.heappush(a,4)
+a
+>>[1, 3, 4, 7, 5, 9]
+
+heapq.heappop(a)
+>>1
+a
+>>[3, 5, 4, 7, 9]
+
+a=[5, 7, 9, 4, 3]
+b=[5, 7, 9, 4, 3]
+
+heapq.heapify(a)
+heapq.heapify(b)
+
+#push and pop at the same time to increase efficiency
+#first push then pop
+heapq.heappushpop(a,2)
+>>2
+a
+>>[3, 4, 9, 5, 7]
+
+#first pop then push
+heapq.heapreplace(b,2)
+>>3
+b
+>>[2, 4, 9, 5, 7]
+
+a=[6, 7, 9, 4, 3, 5, 8, 10, 1]
+heapq.heapify(a)
+
+#return kth largest/smallest
+heapq.nlargest(3,a)
+>>[10, 9, 8]
+
+heapq.nsmallest(3,a)
+>>[1, 3, 4]
+```
+
 ### itertools.zip_longest  
 
 ```python
@@ -327,16 +381,57 @@ sorted(d.items())
 
 ### collections.deque
 
-ref see [geeksforgeeks](https://www.geeksforgeeks.org/deque-in-python/)  
+Deque can be implemented in python using the module “collections“. Deque is preferred over list in the cases where we need quicker append and pop operations from both the ends of container, as deque provides an O(1) time complexity for append and pop operations as compared to list which provides O(n) time complexity.  
 
-1. a generalization of **stacks and queues**  
-2. preferred over list when **quicker append and pop from both the ends of container** are needed  
-3. O(1) time complexity for **append and pop** as list is O(n)
+ref see [geeksforgeeks](https://www.geeksforgeeks.org/deque-in-python/)  
 
 ```python
 from collections import deque
 
-example!!
+q=deque([1,2,3])
+q.append(4)
+q.appendleft(6)
+>>deque([6, 1, 2, 3, 4])
+
+q.pop()
+>>4
+>>deque([6, 1, 2, 3])
+
+q.popleft()
+>>6
+>>eque([1, 2, 3])
+
+q=deque([1, 2, 3, 3, 4, 2, 4])
+q.index(4,2,5) #show first occurrence of 4 between idx 2 to 5
+>>4
+
+q.insert(4,6) #insert 3 at idx 4
+>>deque([1, 2, 3, 3, 6, 4, 2, 4])
+                      ^
+q.remove(3) #remove the first occurrence of 3
+>>deque([1, 2, 3, 6, 4, 2, 4])
+
+q.count(2) #count the occurrences of 2
+>>2
+
+q=deque([1,2,3])
+q.extend([4,5,6])
+>>deque([1, 2, 3, 4, 5, 6])
+
+q.extendleft([7,8,9])
+>>deque([9, 8, 7, 1, 2, 3, 4, 5, 6])
+
+q=deque([9, 8, 7, 1, 2, 3, 4, 5, 6])
+q.rotate(3)
+>>deque([4, 5, 6, 9, 8, 7, 1, 2, 3])
+
+q=deque([9, 8, 7, 1, 2, 3, 4, 5, 6])
+q.rotate(-3)
+>>deque([1, 2, 3, 4, 5, 6, 9, 8, 7])
+
+q=deque([9, 8, 7, 1, 2, 3, 4, 5, 6])
+q.reverse()
+>>deque([6, 5, 4, 3, 2, 1, 7, 8, 9])
 ```
 
 ### functools.cmp_to_key(fun)

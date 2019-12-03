@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "ALgorithms 8 - topological sort"
+title:  "ALgorithms 9 - topological sort"
 date:   2019-11-20 21:25:25 +0900
 related: true
 categories: Programming

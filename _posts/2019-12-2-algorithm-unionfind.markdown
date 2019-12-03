@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "ALgorithms 9 - union find"
+title:  "ALgorithms 10 - union find"
 date:   2019-12-2 14:54:25 +0900
 related: true
 categories: Programming

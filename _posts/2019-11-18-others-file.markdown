@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "OThers 13 - file"
+title:  "OThers 10 - file"
 date:   2019-11-18 22:13:25 +0900
 related: true
 categories: Programming

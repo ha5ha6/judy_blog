@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "OThers 12 - sql"
+title:  "OThers 9 - sql"
 date:   2019-11-15 14:31:25 +0900
 related: true
 categories: Programming

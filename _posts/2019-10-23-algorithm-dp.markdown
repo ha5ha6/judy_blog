@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "ALgorithms 6 - dynamic programming"
+title:  "ALgorithms 5 - dynamic programming"
 date:   2019-10-23 20:48:25 +0900
 related: true
 categories: Programming

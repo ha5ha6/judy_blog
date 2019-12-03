@@ -1,4 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-12-02T16:41:01+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">ALgorithms 9 - union find</title><link href="http://localhost:4000/programming/2019/12/02/algorithm-unionfind.html" rel="alternate" type="text/html" title="ALgorithms 9 - union find" /><published>2019-12-02T14:54:25+09:00</published><updated>2019-12-02T14:54:25+09:00</updated><id>http://localhost:4000/programming/2019/12/02/algorithm-unionfind</id><content type="html" xml:base="http://localhost:4000/programming/2019/12/02/algorithm-unionfind.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-12-03T10:48:02+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Data Structure 6 - priority queue</title><link href="http://localhost:4000/programming/2019/12/02/data-structrue-priorityqueue.html" rel="alternate" type="text/html" title="Data Structure 6 - priority queue" /><published>2019-12-02T18:19:25+09:00</published><updated>2019-12-02T18:19:25+09:00</updated><id>http://localhost:4000/programming/2019/12/02/data-structrue-priorityqueue</id><content type="html" xml:base="http://localhost:4000/programming/2019/12/02/data-structrue-priorityqueue.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
+
+&lt;p&gt;A priority queue is an abstract data type which is like a regular queue or stack data structure, but &lt;strong&gt;where additionally each element has a “priority” associated with it&lt;/strong&gt;.&lt;br /&gt;
+In a priority queue, an element with high priority is &lt;strong&gt;served or dequeued&lt;/strong&gt; before an element with low priority.&lt;br /&gt;
+If two elements have &lt;strong&gt;the same priority&lt;/strong&gt;, they are served according to &lt;strong&gt;the order in which they were enqueued&lt;/strong&gt;, while in other implementations, ordering of elements with the same priority is undefined.&lt;/p&gt;
+
+&lt;p&gt;While priority queues &lt;strong&gt;are often implemented with heaps&lt;/strong&gt;, they are conceptually distinct from heaps.&lt;br /&gt;
+&lt;strong&gt;A priority queue is a concept like “a list” or “a map”, just as a list can be implemented with a linked list or an array.&lt;/strong&gt;&lt;br /&gt;
+A &lt;strong&gt;priority queue&lt;/strong&gt; can be implemented with a heap or a variety of other methods such as an unordered array.&lt;/p&gt;
+
+&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Naive&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;TO(n) for popping&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PriorityQueue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isEmpty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;#popping the element based on Priority&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;max_idx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;max_idx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;del&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PriorityQueue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isEmpty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;Output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Binary Heap&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;see &lt;a href=&quot;&quot;&gt;heap #definition&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Python heapq&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;see &lt;a href=&quot;&quot;&gt;python built-in #heapq&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Queue" /><category term="Priority Queue" /><category term="Heap" /><summary type="html">Definition</summary></entry><entry><title type="html">ALgorithms 10 - union find</title><link href="http://localhost:4000/programming/2019/12/02/algorithm-unionfind.html" rel="alternate" type="text/html" title="ALgorithms 10 - union find" /><published>2019-12-02T14:54:25+09:00</published><updated>2019-12-02T14:54:25+09:00</updated><id>http://localhost:4000/programming/2019/12/02/algorithm-unionfind</id><content type="html" xml:base="http://localhost:4000/programming/2019/12/02/algorithm-unionfind.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 
 &lt;p&gt;A &lt;strong&gt;disjoint-set data structure&lt;/strong&gt; is a data structure that keeps track of a set of elements partitioned into a number of disjoint (non-overlapping) subsets.&lt;br /&gt;
 A union-find algorithm is an algorithm that performs two useful operations on such a data structure:&lt;/p&gt;
@@ -167,11 +225,203 @@ with weight 14&lt;/p&gt;
 &lt;a href=&quot;https://www.youtube.com/watch?v=JZBQLXgSGfs&quot;&gt;WilliamFiset fr Youtube&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/&quot;&gt;geeks for geeks&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Algorithms" /><category term="Union Find" /><summary type="html">Definition</summary></entry><entry><title type="html">Data Structure 7 - heap</title><link href="http://localhost:4000/programming/2019/11/30/data-structrue-heap.html" rel="alternate" type="text/html" title="Data Structure 7 - heap" /><published>2019-11-30T16:23:25+09:00</published><updated>2019-11-30T16:23:25+09:00</updated><id>http://localhost:4000/programming/2019/11/30/data-structrue-heap</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/30/data-structrue-heap.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 
-&lt;h3 id=&quot;heapq&quot;&gt;heapq&lt;/h3&gt;
+&lt;p&gt;A heap is a specialized &lt;strong&gt;tree-based data structure&lt;/strong&gt; which is essentially an almost complete tree that satisfies the heap property:&lt;br /&gt;
+In a &lt;strong&gt;max heap&lt;/strong&gt;, for any given node C, if P is a parent node of C, then the key (the value) of P is greater than or equal to the key of C. &lt;br /&gt;
+In a &lt;strong&gt;min heap&lt;/strong&gt;, the key of P is less than or equal to the key of C.&lt;br /&gt;
+The node at the “top” of the heap (with no parents) is called the root node.&lt;/p&gt;
+
+&lt;p&gt;More specifically, &lt;strong&gt;Binary Heap&lt;/strong&gt; is a complete binary tree, in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible.&lt;br /&gt;
+A &lt;strong&gt;Binary Heap&lt;/strong&gt; is a complete binary tree where items are stored in a special order such that value in a parent node is greater (or smaller) than the values in its two children nodes. The former is called &lt;strong&gt;max heap&lt;/strong&gt; and the latter is &lt;strong&gt;min heap&lt;/strong&gt;.&lt;br /&gt;
+The heap can be represented by &lt;strong&gt;binary tree or array&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;However, &lt;strong&gt;a heap is not a sorted structure&lt;/strong&gt;, it can be regarded as being partially ordered.&lt;br /&gt;
+A heap is a useful data structure when it is necessary to repeatedly remove the object with the highest (or lowest) priority.&lt;/p&gt;
+
+&lt;p&gt;When a heap is a complete binary tree, it has a smallest possible height—a heap with N nodes and for each node a branches always has logaN height.&lt;/p&gt;
+
+&lt;p&gt;Min Heap Example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;          2 &amp;lt;- root is always the minimum/maximum value
+        /   \
+       4      8
+      / \    / \
+     9   7  10  9
+    / \   \
+   15 20  13
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Max Heap Example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        100 &amp;lt;- root is always the minimum/maximum value
+       /   \
+      19    36
+     / \    / \
+    17  3  25  1
+   / \   
+  2   7  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Relation with priority queue&lt;/strong&gt;: see &lt;a href=&quot;/programming/2019/12/02/data-structrue-priorityqueue.html&quot;&gt;priority queue&lt;/a&gt;&lt;br /&gt;
+The heap is one maximally efficient implementation of an abstract data type called a &lt;strong&gt;priority queue&lt;/strong&gt;, and in fact, priority queues are often referred to as “heaps”, regardless of how they may be implemented.&lt;/p&gt;
+
+&lt;h3 id=&quot;applications&quot;&gt;Applications&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Priority Queue:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A priority queue is an abstract concept like “a list” or “a map”; just as a list can be implemented with a linked list or an array, a priority queue can be implemented with a heap or a variety of other methods.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Heapsort:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;One of the best sorting methods being in-place and with no quadratic worst-case scenarios.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Selection algorithms:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A heap allows access to the min or max element in constant time, and other selections (such as median or kth-element) can be done in sub-linear time on data that is in a heap.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Graph algorithms:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By using heaps as internal traversal data structures, run time will be reduced by polynomial order. Examples of such problems are &lt;strong&gt;Prim’s minimal-spanning-tree algorithm&lt;/strong&gt; and &lt;strong&gt;Dijkstra’s shortest-path algorithm&lt;/strong&gt;.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;K-way merge:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A heap data structure is useful to merge many already-sorted input streams into a single sorted output stream. Examples of the need for merging include external sorting and streaming results from distributed data such as a log structured merge tree. The inner loop is obtaining the min element, replacing with the next element for the corresponding input stream, then doing a sift-down heap operation. (Alternatively the replace function.) (Using extract-max and insert functions of a priority queue are much less efficient.)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Order statistics:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The Heap data structure can be used to efficiently find the kth smallest (or largest) element in an array.&lt;/p&gt;
+
+&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Python heapq&lt;/strong&gt; see &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#heapq&quot;&gt;python built-in #heapq&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Array based&lt;/strong&gt; - space efficient&lt;br /&gt;
+Assume idx starts at 0:&lt;br /&gt;
+i - where the parent node is stored at&lt;br /&gt;
+2*i+1 - left child&lt;br /&gt;
+2*i+2 - right child&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;i, 2*i+1, 2*i+2
+0    1      2
+1    3      4
+2    5      6
+3    7      8
+
+      1[0]
+    /     \
+  2[1]   3[2]
+  /   \     /
+5[3] 6[4] 4[5]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;heapq&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;heapq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;heapify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;lc&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;heap-sort&quot;&gt;Heap Sort&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Heapify&lt;/strong&gt; procedure can be applied to a node only if its children are heapified. So the heapification must be performed in the bottom up order.&lt;/p&gt;
+
+&lt;p&gt;Input: [4,5,3,1,10]&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    4[0]
+   /   \
+  5[1]  3[2]
+ /   \
+1[3]  10[4]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Applying heapify to index 1&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   4[0]
+  /   \
+ 10[1]  3[2]
+ /   \
+1[3]  5[4]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Applyting heapify to index 0&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   10[0]
+  /   \
+ 5[1]  3[2]
+ /   \
+1[3]  4[4]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;heapify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#n - size of the heap&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#i - the idx of subtree rooted at&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;largest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#initialize the largest as the root&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;#check left exist and if greater than root&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;largest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;largest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;largest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;#swap if l or r larger than root&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;largest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;largest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;largest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;#recursively heapify the affected sub-tree&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;heapify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;largest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;heapSort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#build a maxheap&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#n can be replaced by n//2-1&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;heapify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;#one by one extract element&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;heapify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;heapSort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Heap Sort is an &lt;strong&gt;in-place&lt;/strong&gt; algorithm. Its typical implementation is not stable, but can be made stable.&lt;/p&gt;
+
+&lt;p&gt;TO(logn) for heapify&lt;br /&gt;
+TO(n) for create and build heap&lt;br /&gt;
+TO(nlogn) overall&lt;br /&gt;
+SO(1)&lt;/p&gt;
 
 &lt;h3 id=&quot;leetcode&quot;&gt;Leetcode&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;leetcode 215 - Kth Largest in an Array [M] - max heap&lt;/strong&gt; see &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#kth-largest-element&quot;&gt;topic #kth largest&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Heap" /><summary type="html">Definition</summary></entry><entry><title type="html">Data Structure 9 - trie</title><link href="http://localhost:4000/programming/2019/11/29/data-structrue-tree-trie.html" rel="alternate" type="text/html" title="Data Structure 9 - trie" /><published>2019-11-29T15:14:25+09:00</published><updated>2019-11-29T15:14:25+09:00</updated><id>http://localhost:4000/programming/2019/11/29/data-structrue-tree-trie</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/29/data-structrue-tree-trie.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;leetcode 215 - Kth Largest in an Array [M] - max heap&lt;/strong&gt; see &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#kth-largest-element---4-solutions&quot;&gt;topic #kth largest&lt;/a&gt;&lt;br /&gt;
+Find the kth largest element in an unsorted array, note: not the kth distinct element.&lt;/p&gt;
+
+&lt;p&gt;Examples:&lt;br /&gt;
+Input: [3,2,1,5,6,4] and k=2&lt;br /&gt;
+Output: 5&lt;br /&gt;
+Input: [3,2,3,1,2,4,5,5,6] and k=4&lt;br /&gt;
+Output: 4&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;heapq&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findKthLargest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;heapq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;heapify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;heapq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nlargest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Heap" /><summary type="html">Definition</summary></entry><entry><title type="html">Data Structure 11 - trie</title><link href="http://localhost:4000/programming/2019/11/29/data-structrue-tree-trie.html" rel="alternate" type="text/html" title="Data Structure 11 - trie" /><published>2019-11-29T15:14:25+09:00</published><updated>2019-11-29T15:14:25+09:00</updated><id>http://localhost:4000/programming/2019/11/29/data-structrue-tree-trie</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/29/data-structrue-tree-trie.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 &lt;p&gt;Trie is an efficient information retrieval data structure.&lt;br /&gt;
 Using Trie, search complexities can be brought to optimal limit (key length). If we store keys in binary search tree, a well balanced BST will need time proportional to M * log N, where M is maximum string length and N is number of keys in tree.&lt;br /&gt;
 Using Trie, we can search the key in O(M) time. However the penalty is on Trie storage requirements (Please refer Applications of Trie for more details)&lt;/p&gt;
@@ -195,7 +445,7 @@ Using Trie, we can search the key in O(M) time. However the penalty is on Trie s
         &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;terminal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;basic&quot;&gt;Basic&lt;/h3&gt;
+&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;leetcode 208 - Implement Trie (Prefix Tree) [M] - design, linked hash&lt;/strong&gt;&lt;br /&gt;
 Implement a trie with insert, search, and startsWith methods.&lt;/p&gt;
@@ -344,7 +594,7 @@ words[i] has length in range [1, 10].&lt;br /&gt;
 prefix, suffix have lengths in range [0, 10].&lt;br /&gt;
 words[i] and prefix, suffix queries consist of lowercase letters only.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;leetcode 212 - Word Search II [H] - backtracking + trie&lt;/strong&gt; see &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#matrix-word-search&quot;&gt;backtracking #martix word search&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Tree" /><summary type="html">Definition Trie is an efficient information retrieval data structure. Using Trie, search complexities can be brought to optimal limit (key length). If we store keys in binary search tree, a well balanced BST will need time proportional to M * log N, where M is maximum string length and N is number of keys in tree. Using Trie, we can search the key in O(M) time. However the penalty is on Trie storage requirements (Please refer Applications of Trie for more details)</summary></entry><entry><title type="html">ALgorithms 8 - topological sort</title><link href="http://localhost:4000/programming/2019/11/20/algorithm-topological.html" rel="alternate" type="text/html" title="ALgorithms 8 - topological sort" /><published>2019-11-20T21:25:25+09:00</published><updated>2019-11-20T21:25:25+09:00</updated><id>http://localhost:4000/programming/2019/11/20/algorithm-topological</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/20/algorithm-topological.html">&lt;h3 id=&quot;motivation&quot;&gt;Motivation&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;leetcode 212 - Word Search II [H] - backtracking + trie&lt;/strong&gt; see &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#matrix-word-search&quot;&gt;backtracking #martix word search&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Tree" /><summary type="html">Definition Trie is an efficient information retrieval data structure. Using Trie, search complexities can be brought to optimal limit (key length). If we store keys in binary search tree, a well balanced BST will need time proportional to M * log N, where M is maximum string length and N is number of keys in tree. Using Trie, we can search the key in O(M) time. However the penalty is on Trie storage requirements (Please refer Applications of Trie for more details)</summary></entry><entry><title type="html">ALgorithms 9 - topological sort</title><link href="http://localhost:4000/programming/2019/11/20/algorithm-topological.html" rel="alternate" type="text/html" title="ALgorithms 9 - topological sort" /><published>2019-11-20T21:25:25+09:00</published><updated>2019-11-20T21:25:25+09:00</updated><id>http://localhost:4000/programming/2019/11/20/algorithm-topological</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/20/algorithm-topological.html">&lt;h3 id=&quot;motivation&quot;&gt;Motivation&lt;/h3&gt;
 
 &lt;p&gt;Many real world situation can be modeled as a &lt;strong&gt;graph&lt;/strong&gt; with &lt;strong&gt;directed edges&lt;/strong&gt; where some events must occur before others, say&lt;/p&gt;
 &lt;ul&gt;
@@ -803,7 +1053,7 @@ Your script should output the following valid phone numbers:&lt;br /&gt;
 
     &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matches1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matches2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Others" /><category term="regex" /><summary type="html">command</summary></entry><entry><title type="html">OThers 13 - file</title><link href="http://localhost:4000/programming/2019/11/18/others-file.html" rel="alternate" type="text/html" title="OThers 13 - file" /><published>2019-11-18T22:13:25+09:00</published><updated>2019-11-18T22:13:25+09:00</updated><id>http://localhost:4000/programming/2019/11/18/others-file</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/18/others-file.html">&lt;p&gt;&lt;strong&gt;leetcode 192 - Word Frequency [M]&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Others" /><category term="regex" /><summary type="html">command</summary></entry><entry><title type="html">OThers 10 - file</title><link href="http://localhost:4000/programming/2019/11/18/others-file.html" rel="alternate" type="text/html" title="OThers 10 - file" /><published>2019-11-18T22:13:25+09:00</published><updated>2019-11-18T22:13:25+09:00</updated><id>http://localhost:4000/programming/2019/11/18/others-file</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/18/others-file.html">&lt;p&gt;&lt;strong&gt;leetcode 192 - Word Frequency [M]&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;leetcode 194 - Transpose File [M]&lt;/strong&gt;&lt;/p&gt;
 
@@ -814,7 +1064,7 @@ Your script should output the following valid phone numbers:&lt;br /&gt;
     &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
             &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Others" /><category term="file" /><summary type="html">leetcode 192 - Word Frequency [M]</summary></entry><entry><title type="html">OThers 12 - sql</title><link href="http://localhost:4000/programming/2019/11/15/others-sql.html" rel="alternate" type="text/html" title="OThers 12 - sql" /><published>2019-11-15T14:31:25+09:00</published><updated>2019-11-15T14:31:25+09:00</updated><id>http://localhost:4000/programming/2019/11/15/others-sql</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/15/others-sql.html">&lt;p&gt;&lt;strong&gt;leetcode 175 - Combine Two Tables [E]&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Others" /><category term="file" /><summary type="html">leetcode 192 - Word Frequency [M]</summary></entry><entry><title type="html">OThers 9 - sql</title><link href="http://localhost:4000/programming/2019/11/15/others-sql.html" rel="alternate" type="text/html" title="OThers 9 - sql" /><published>2019-11-15T14:31:25+09:00</published><updated>2019-11-15T14:31:25+09:00</updated><id>http://localhost:4000/programming/2019/11/15/others-sql</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/15/others-sql.html">&lt;p&gt;&lt;strong&gt;leetcode 175 - Combine Two Tables [E]&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;leetcode 176 - Second Highest Salary [E]&lt;/strong&gt;&lt;/p&gt;
 
@@ -836,7 +1086,7 @@ Your script should output the following valid phone numbers:&lt;br /&gt;
 
 &lt;p&gt;&lt;strong&gt;leetcode 196 - Delete Duplicate Emails [E]&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;leetcode 197 - Rising Temperature [E]&lt;/strong&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Others" /><category term="SQL" /><summary type="html">leetcode 175 - Combine Two Tables [E]</summary></entry><entry><title type="html">OThers 10 - design</title><link href="http://localhost:4000/programming/2019/11/15/others-design.html" rel="alternate" type="text/html" title="OThers 10 - design" /><published>2019-11-15T12:52:25+09:00</published><updated>2019-11-15T12:52:25+09:00</updated><id>http://localhost:4000/programming/2019/11/15/others-design</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/15/others-design.html">&lt;h3 id=&quot;stack&quot;&gt;Stack&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;leetcode 197 - Rising Temperature [E]&lt;/strong&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Others" /><category term="SQL" /><summary type="html">leetcode 175 - Combine Two Tables [E]</summary></entry><entry><title type="html">OThers 4 - design</title><link href="http://localhost:4000/programming/2019/11/15/others-design.html" rel="alternate" type="text/html" title="OThers 4 - design" /><published>2019-11-15T12:52:25+09:00</published><updated>2019-11-15T12:52:25+09:00</updated><id>http://localhost:4000/programming/2019/11/15/others-design</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/15/others-design.html">&lt;h3 id=&quot;stack&quot;&gt;Stack&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;leetcode 155 - Min Stack [E]&lt;/strong&gt;&lt;br /&gt;
 &lt;strong&gt;leetcode 716 - Max Stack [E]&lt;/strong&gt; see &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html#design&quot;&gt;stack #design&lt;/a&gt;&lt;/p&gt;
@@ -1166,23 +1416,4 @@ You may assume that all words are consist of lowercase letters a-z.&lt;/p&gt;
                 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
 
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;                
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Hash Table" /><category term="N-Sum" /><summary type="html">Find Dups</summary></entry><entry><title type="html">ALgorithms 1 - sorting</title><link href="http://localhost:4000/programming/2019/11/14/algorithm-sorting.html" rel="alternate" type="text/html" title="ALgorithms 1 - sorting" /><published>2019-11-14T12:57:25+09:00</published><updated>2019-11-14T12:57:25+09:00</updated><id>http://localhost:4000/programming/2019/11/14/algorithm-sorting</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/14/algorithm-sorting.html">&lt;h3 id=&quot;big-o-table&quot;&gt;Big O Table&lt;/h3&gt;
-
-&lt;h3 id=&quot;bubble-sort&quot;&gt;Bubble Sort&lt;/h3&gt;
-
-&lt;h3 id=&quot;insertion-sort&quot;&gt;Insertion Sort&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;leetcode 147 - Insertion Sort List [M]&lt;/strong&gt; see &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/11/08/data-structrue-linkedlist.html#sorting&quot;&gt;linked list #sorting&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;merge-sort&quot;&gt;Merge Sort&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;leetcode 148 - (Merge) Sort List [M]&lt;/strong&gt; see &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/11/08/data-structrue-linkedlist.html#sorting&quot;&gt;linked list #sorting&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;bucket-sort&quot;&gt;Bucket Sort&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;leetcode 164 - Maximum Gap [H]&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;maximumGap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Algorithms" /><category term="Bucket Sort" /><summary type="html">Big O Table</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Hash Table" /><category term="N-Sum" /><summary type="html">Find Dups</summary></entry></feed>

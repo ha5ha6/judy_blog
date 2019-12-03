@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 10 - graph"
+title:  "Data Structure 13 - graph"
 date:   2019-11-1 15:18:25 +0900
 related: true
 categories: Programming

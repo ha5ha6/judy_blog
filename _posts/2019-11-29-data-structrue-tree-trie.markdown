@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 9 - trie"
+title:  "Data Structure 11 - trie"
 date:   2019-11-29 15:14:25 +0900
 related: true
 categories: Programming
@@ -42,7 +42,7 @@ class TrieNode(object):
         self.terminal=False
 ```
 
-### Basic
+### Implementation
 
 **leetcode 208 - Implement Trie (Prefix Tree) [M] - design, linked hash**  
 Implement a trie with insert, search, and startsWith methods.  

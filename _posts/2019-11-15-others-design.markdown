@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "OThers 10 - design"
+title:  "OThers 4 - design"
 date:   2019-11-15 12:52:25 +0900
 related: true
 categories: Programming

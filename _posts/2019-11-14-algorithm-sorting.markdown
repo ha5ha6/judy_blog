@@ -19,7 +19,17 @@ author_profile: true
 
 ### Big O Table
 
+      -------------------------------------
+      |
+      |
+      |
+      |
+      |
+      --------------------------------------
+
 ### Bubble Sort  
+
+### Selection Sort
 
 ### Insertion Sort  
 
@@ -29,6 +39,12 @@ author_profile: true
 ### Merge Sort  
 
 **leetcode 148 - (Merge) Sort List [M]** see [linked list #sorting](https://ha5ha6.github.io/judy_blog/programming/2019/11/08/data-structrue-linkedlist.html#sorting)
+
+### Quick Sort
+
+### Heap Sort  
+
+see [heap #heap sort](https://ha5ha6.github.io/judy_blog/programming/2019/11/30/data-structrue-heap.html#heap-sort)
 
 
 ### Bucket Sort  
@@ -41,3 +57,5 @@ class Solution():
     def maximumGap(self,nums):
 
 ```  
+
+### Radix Sort

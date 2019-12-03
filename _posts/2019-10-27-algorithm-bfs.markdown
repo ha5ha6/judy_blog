@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "ALgorithms 4 - breadth first traversal"
+title:  "ALgorithms 8 - breadth first traversal"
 date:   2019-10-27 21:45:25 +0900
 related: true
 categories: Programming

@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "ALgorithms 4 - depth first traversal"
+title:  "ALgorithms 7 - depth first traversal"
 date:   2019-10-31 12:56:25 +0900
 related: true
 categories: Programming

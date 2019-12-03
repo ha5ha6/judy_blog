@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 3 - linked list"
+title:  "Data Structure 4 - linked list"
 date:   2019-11-8 17:26:25 +0900
 related: true
 categories: Programming
@@ -188,7 +188,7 @@ Solution:
                 p  h             h.val==val
                 2->3             p->h.next
                       h          h=h.next
-                      
+
 
 ```python
 class Solution():
