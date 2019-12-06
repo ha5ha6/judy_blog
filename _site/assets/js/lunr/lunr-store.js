@@ -94,7 +94,7 @@ var store = [{
         "tags": ["Data Structure","Stack","Calculator","Hash Table","Parentheses"],
         "url": "http://localhost:4000/programming/2019/11/13/data-structrue-stack.html",
         "teaser":null},{
-        "title": "ALgorithms 4 - back tracking",
+        "title": "ALgorithms 3 - back tracking",
         "excerpt":"Definition If cannot go forward, go back! Parentheses leetcode 22 - Generate Parentheses [M] Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses. For example, given n = 3, a solution set is: [”((()))”, “(()())”, “(())()”, “()(())”, “()()()”] Palindrome leetcode 131 - Palindrome Partitioning...","categories": ["Programming"],
         "tags": ["Algorithms","Back Tracking","Parentheses","Recursion"],
         "url": "http://localhost:4000/programming/2019/11/13/algorithm-backtracking.html",
@@ -189,8 +189,13 @@ var store = [{
         "tags": ["Others"],
         "url": "http://localhost:4000/programming/2019/12/06/others-pythonclass.html",
         "teaser":null},{
-        "title": "ALgorithms 3 - greedy",
+        "title": "ALgorithms 4 - greedy",
         "excerpt":"Background Definition A greedy algorithm is any algorithm that follows the problem-solving heuristic of making the locally optimal choice at each stage with the intent of finding a global optimum. For example, a greedy strategy for the traveling salesman problem (which is of a high computational complexity) is the following...","categories": ["Programming"],
         "tags": ["Algorithms","Greedy"],
         "url": "http://localhost:4000/programming/2019/12/06/algorithm-greedy.html",
+        "teaser":null},{
+        "title": "Soft Q-Learning",
+        "excerpt":"Background keywords: energy-based policies &lt;- boltzmann distribution max-entropy policies amortized stein variational gradient descent DRL: a promising direction for autonomous acquisition of complex behaviors (+) can process complex sensory input (+) so that can acquire elaborate behavior skills using general-purpose neural network representations However, (-) most DRL methods operate on...","categories": ["LiteratureReview"],
+        "tags": ["Reinforcement Learning","Soft-Q Learning"],
+        "url": "http://localhost:4000/literaturereview/2019/12/06/softq.html",
         "teaser":null}]

@@ -112,8 +112,8 @@ toc_label: "Index"
 
 1.	[sorting](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/algorithm-sorting.html)
 2.	[binary search](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-binarysearch.html)
-3.	[greedy]()
-4.	[back tracking](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html)
+3.	[back tracking](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html)
+4.	[greedy](https://ha5ha6.github.io/judy_blog/programming/2019/12/06/algorithm-greedy.html)
 5.	[dynamic programming](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html)
 6.	[divide and conquer](https://ha5ha6.github.io/judy_blog/programming/2019/12/03/algorithm-dividenconquer.html)  
 7.  [dfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/31/algorithm-dfs.html) - graph related or more general

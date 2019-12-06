@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "ALgorithms 3 - greedy"
+title:  "ALgorithms 4 - greedy"
 date:   2019-12-6 15:43:25 +0900
 related: true
 categories: Programming
@@ -33,7 +33,7 @@ Methods to solve **optimization problem**:
 - Dynamic Programming
 - Branch and Bound
 
-Greedy pros and cons:  
+Greedy **pros and cons**:  
 (+) simplicity: simple, easy to implement  
 (+) efficiency: run fast  
 (-) hard to design and find approach  

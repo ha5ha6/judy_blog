@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "ALgorithms 4 - back tracking"
+title:  "ALgorithms 3 - back tracking"
 date:   2019-11-13 15:33:25 +0900
 related: true
 categories: Programming
