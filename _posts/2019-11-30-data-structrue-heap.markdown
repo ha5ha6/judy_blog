@@ -23,7 +23,7 @@ In a **max heap**, for any given node C, if P is a parent node of C, then the ke
 In a **min heap**, the key of P is less than or equal to the key of C.  
 The node at the "top" of the heap (with no parents) is called the root node.  
 
-More specifically, **Binary Heap** is a complete binary tree, in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible.  
+More specifically, **Binary Heap** is **a complete binary tree**, in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible.  
 A **Binary Heap** is a complete binary tree where items are stored in a special order such that value in a parent node is greater (or smaller) than the values in its two children nodes. The former is called **max heap** and the latter is **min heap**.  
 The heap can be represented by **binary tree or array**.  
 
@@ -56,28 +56,26 @@ Max Heap Example:
 **Relation with priority queue**: see [priority queue](/programming/2019/12/02/data-structrue-priorityqueue.html)  
 The heap is one maximally efficient implementation of an abstract data type called a **priority queue**, and in fact, priority queues are often referred to as "heaps", regardless of how they may be implemented.  
 
-### Applications  
+### Pick Point  
 
-- Priority Queue:
+take min heap
 
-A priority queue is an abstract concept like "a list" or "a map"; just as a list can be implemented with a linked list or an array, a priority queue can be implemented with a heap or a variety of other methods.  
-- Heapsort:
+Insertion
+1. always insert the element at the bottom, at the rightmost spot so as to maintain the complete tree property   
+2. fix the tree by swapping the new ele with its parent until we find an approprioate spot for the ele  
+essentialy bubble up the minimum ele  
 
-One of the best sorting methods being in-place and with no quadratic worst-case scenarios.
-- Selection algorithms:
+Extract min
+1. min always at the root
+2. the deletion is the trick
+remove the min and swap it with the last ele , then bubble down this ele, swapping it with one of its children until the min heap property is restored  
 
-A heap allows access to the min or max element in constant time, and other selections (such as median or kth-element) can be done in sub-linear time on data that is in a heap.
-- Graph algorithms:
-
-By using heaps as internal traversal data structures, run time will be reduced by polynomial order. Examples of such problems are **Prim's minimal-spanning-tree algorithm** and **Dijkstra's shortest-path algorithm**.
-- K-way merge:
-
-A heap data structure is useful to merge many already-sorted input streams into a single sorted output stream. Examples of the need for merging include external sorting and streaming results from distributed data such as a log structured merge tree. The inner loop is obtaining the min element, replacing with the next element for the corresponding input stream, then doing a sift-down heap operation. (Alternatively the replace function.) (Using extract-max and insert functions of a priority queue are much less efficient.)
-- Order statistics:
-
-The Heap data structure can be used to efficiently find the kth smallest (or largest) element in an array.
 
 ### Implementation
+
+**operations**  
+1. insert() - TO(logn)  
+2. extract_min() - TO(logn)  
 
 **Python heapq** see [python built-in #heapq](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#heapq)  
 
@@ -185,7 +183,7 @@ TO(n) for create and build heap
 TO(nlogn) overall  
 SO(1)  
 
-### Leetcode  
+### Problems  
 
 **leetcode 215 - Kth Largest in an Array [M] - max heap** see [topic #kth largest](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#kth-largest-element---4-solutions)  
 Find the kth largest element in an unsorted array, note: not the kth distinct element.  
@@ -204,3 +202,24 @@ class Solution():
 
         return heapq.nlargest(k,nums)[-1]
 ```
+
+### Applications  
+
+- Priority Queue:
+
+A priority queue is an abstract concept like "a list" or "a map"; just as a list can be implemented with a linked list or an array, a priority queue can be implemented with a heap or a variety of other methods.  
+- Heapsort:
+
+One of the best sorting methods being in-place and with no quadratic worst-case scenarios.
+- Selection algorithms:
+
+A heap allows access to the min or max element in constant time, and other selections (such as median or kth-element) can be done in sub-linear time on data that is in a heap.
+- Graph algorithms:
+
+By using heaps as internal traversal data structures, run time will be reduced by polynomial order. Examples of such problems are **Prim's minimal-spanning-tree algorithm** and **Dijkstra's shortest-path algorithm**.
+- K-way merge:
+
+A heap data structure is useful to merge many already-sorted input streams into a single sorted output stream. Examples of the need for merging include external sorting and streaming results from distributed data such as a log structured merge tree. The inner loop is obtaining the min element, replacing with the next element for the corresponding input stream, then doing a sift-down heap operation. (Alternatively the replace function.) (Using extract-max and insert functions of a priority queue are much less efficient.)
+- Order statistics:
+
+The Heap data structure can be used to efficiently find the kth smallest (or largest) element in an array.

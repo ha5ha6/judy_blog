@@ -18,7 +18,36 @@ toc_label: "Index"
 author_profile: true
 ---
 
-### Definition
+### Definition  
+
+A tree is a widely used abstract data type (ADT) that simulates a hierarchical tree structure, with a root value and subtrees of children with a parent node, represented as a set of linked nodes.
+
+A tree data structure can be defined **recursively** as a collection of nodes (starting at a root node), where each node is a data structure consisting of a value, together with a list of references to nodes (the "children"), with the constraints that no reference is duplicated, and none points to the root.
+
+Alternatively, a tree can be defined abstractly as a whole (globally) as an ordered tree, with a value assigned to each node.  
+
+Both these perspectives are useful: while a tree can be analyzed mathematically as a whole, when actually represented as a data structure it is usually represented and worked with separately by node (rather than as a set of nodes and an adjacency list of edges between nodes, as one may represent a digraph, for instance). For example, looking at a tree as a whole, one can talk about "the parent node" of a given node, but in general as a data structure a given node only contains the list of its children, but does not contain a reference to its parent (if any).  
+
+
+### Pick Point
+
+1. tree vs binary tree  
+2. binary tree vs binary search tree, bst equality?, can have dups?
+3. balanced vs unbalanced
+balanced doenst mean eht left and right subtrees are exactly the same tree  
+balanced - not terribly imbalanced, balanced enough to ensure TO(logn) for insert and find  
+4. two common balanced trees are red-blace tree and AVL tree  
+5. complete binary tree  
+every level of the tree is fully filled except for the last node?
+6. full binary tree  
+every node has either zero or two children, that is no nodes have only one child  
+7. perfect binary tree - have 2^k-1 nodes - k number of levels
+
+
+### Implementation  
+
+**Operations**  
+1.
 
 ```python
 class TreeNode():

@@ -25,7 +25,23 @@ Stack is a linear data structure which follows a particular order in which the o
 
 There are many real-life examples of a stack. Consider an example of plates stacked over one another in the canteen. The plate which is at the top is the first one to be removed, i.e. the plate which has been placed at the bottommost position remains in the stack for the longest period of time. So, it can be simply seen to follow LIFO(Last In First Out)/FILO(First In Last Out) order.  
 
+(+) constant time adds and removes, as it doesn't require shifting elements around  
+(+) useful in certain recursive algs.
+
+### Pick Points
+
+1. stack can be also implemented as linked list
+2. useful in recursive algs  
+when you need to push temporary data onto a stack as you recurse, but then remove them as you backtrack (cuz the recursive check failed)
+3. can be used to implement a recursive alg iteratively 
+
 ### Implementation  
+
+**Operations**  
+1. pop()
+2. push()
+3. peek()
+4. isEmpty()
 
 **Use list** - append and pop  
 

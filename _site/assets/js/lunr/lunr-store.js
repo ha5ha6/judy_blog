@@ -1,11 +1,11 @@
 var store = [{
         "title": "Data Structure Index",
-        "excerpt":"Data Structure list matrix string linked list stack queue, priority queue heap hash table tree, tree + linked list binary search tree trie segment tree graph python built-in ALgorithms sorting binary search greedy back tracking dynamic programming divide and conquer dfs - graph related or more general bfs - graph...","categories": ["Programming"],
+        "excerpt":"Complexity CheatSheet Standard Data Structure ------------------------------------------------------------------------------------------------- | Standard | Time Complexity | Space Complexity | ------------------------------------------------------------------------------------------------- | | Average / Worst | Worst | ------------------------------------------------------------------------------------------------- | | Access | Search | Insertion | Deletion | | ------------------------------------------------------------------------------------------------- | Array | O(1) | O(n) | O(n) | O(n) | O(n) |...","categories": ["Programming"],
         "tags": ["Index","Data Structure"],
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-index.html",
         "teaser":null},{
         "title": "Data Structure 9 - tree",
-        "excerpt":"Definition class TreeNode(): def __init__(self,x): self.val=x self.left=None self.right=None #create tree root=TreeNode(0) root.left=TreeNode(1) root.right=TreeNode(2) root.left.left=TreeNode(3) root.right.left=TreeNode(4) Basic Operation insert search find max depth - leetcode 104 - Maximum Depth of Binary Tree [E] #leetcode 104 def maxDepth(self, root): if not root: return 0 return 1+max(self.maxDepth(root.left),self.maxDepth(root.right)) min length - leetcode 111 -...","categories": ["Programming"],
+        "excerpt":"Definition A tree is a widely used abstract data type (ADT) that simulates a hierarchical tree structure, with a root value and subtrees of children with a parent node, represented as a set of linked nodes. A tree data structure can be defined recursively as a collection of nodes (starting...","categories": ["Programming"],
         "tags": ["Data Structure","Tree","Recursion","Dfs"],
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-tree.html",
         "teaser":null},{
@@ -30,7 +30,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/25/topics.html",
         "teaser":null},{
         "title": "Data Structure 3 - string",
-        "excerpt":"Python Operation string to list pattern='abba' list(pattern) &gt;&gt;['a','b','b','a'] check if char is alphabet/alphabet or numeric/numeric s='abc123' s.isalpha() -&gt; False s.isalnum() -&gt; True s.isnumeric() -&gt; False remove white spaces before and after s=' lajdflak ' s.strip() #remove both s.lstrip() #remove left s.rstrip() #remove right swtich to upper case and lower case...","categories": ["Programming"],
+        "excerpt":"Definition A string is traditionally a sequence of characters, either as a literal constant or as some kind of variable. The latter may allow its elements to be mutated and the length changed, or it may be fixed (after creation). A string is generally considered as a data type and...","categories": ["Programming"],
         "tags": ["Data Structure","String","Palindrome","Dfs"],
         "url": "http://localhost:4000/programming/2019/10/26/data-structrue-string.html",
         "teaser":null},{
@@ -45,7 +45,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/27/data-structrue-queue.html",
         "teaser":null},{
         "title": "Data Structure 1 - list",
-        "excerpt":"Definition subarray - subsequence - substring - Rotate leetcode 189 - Rotate Array [E] Given an array, rotate the array to the right by k steps, where k is non-negative. Example: Input: [1,2,3,4,5,6,7] and k = 3 Output: [5,6,7,1,2,3,4] Explanation: rotate 1 steps to the right: [7,1,2,3,4,5,6] rotate 2 steps...","categories": ["Programming"],
+        "excerpt":"Background Definition An array data structure, is a data structure consisting of a collection of elements (values or variables), each identified by at least one array index or key. An array is stored such that the position of each element can be computed from its index tuple by a mathematical...","categories": ["Programming"],
         "tags": ["Data Structure","List","MinMax"],
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-list.html",
         "teaser":null},{
@@ -60,7 +60,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/31/algorithm-dfs.html",
         "teaser":null},{
         "title": "Data Structure 13 - graph",
-        "excerpt":"Definition   leetcode 133 - Clone Graph [M]      Related      topological sort  ","categories": ["Programming"],
+        "excerpt":"Definition A Graph is a non-linear data structure consisting of nodes and edges. The nodes are sometimes also referred to as vertices and the edges are lines or arcs that connect any two nodes in the graph. More formally a Graph can be defined as, 0 - 1 \\ |...","categories": ["Programming"],
         "tags": ["Data Structure","Graph","Topological Sort"],
         "url": "http://localhost:4000/programming/2019/11/01/data-structrue-graph.html",
         "teaser":null},{
@@ -70,7 +70,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/02/others-bit-manipulation.html",
         "teaser":null},{
         "title": "Data Structure 4 - linked list",
-        "excerpt":"Definition class ListNode(): def __init__(self,x): self.val=x self.next=None #create linked list head=ListNode(0) head.next=ListNode(1) head.next.next=ListNode(2) head.next.next.next=ListNode(3) head.next.next.next.next=ListNode(4) Remove leetcode 19 - Remove Nth Node From End of List [M] Given a linked list, remove the n-th node from the end of list and return its head. Example: Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and...","categories": ["Programming"],
+        "excerpt":"Definition A linked list is a linear collection of data elements, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form,...","categories": ["Programming"],
         "tags": ["Data Structure","Linked List","Pointers"],
         "url": "http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist.html",
         "teaser":null},{
@@ -110,12 +110,12 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/13/algorithm-binarysearch.html",
         "teaser":null},{
         "title": "ALgorithms 1 - sorting",
-        "excerpt":"Big O Table ------------------------------------- | | | | | -------------------------------------- Bubble Sort Selection Sort Insertion Sort leetcode 147 - Insertion Sort List [M] see linked list #sorting Merge Sort leetcode 148 - (Merge) Sort List [M] see linked list #sorting Quick Sort Heap Sort see heap #heap sort Bucket Sort...","categories": ["Programming"],
+        "excerpt":"Big O Table ------------------------------------------------------------------ | Sort | Time Complexity | Space Complexity | ------------------------------------------------------------------ | | Average | Best | Worst | Worst | ------------------------------------------------------------------ | Tim | O(n) | O(nlogn) | O(nlogn) | O(n) | | Merge | O(nlogn) | O(nlogn) | O(nlogn) | O(n) | | Quick |...","categories": ["Programming"],
         "tags": ["Algorithms","Bucket Sort"],
         "url": "http://localhost:4000/programming/2019/11/14/algorithm-sorting.html",
         "teaser":null},{
         "title": "Data Structure 8 - hash table",
-        "excerpt":"Find Dups leetcode 217 - Contains Duplicate [E] Given an array of ints find if the array contains any duplicates. Examples: Input: [1,2,3,1] Output: True Input:[1,2,3,4] Output: False Input: [1,1,1,3,3,4,3,2,4,2] Output: True Solution 1: hash class Solution(): def containsDuplicate(self,nums): seen={} for n in nums: if n in seen: return True...","categories": ["Programming"],
+        "excerpt":"Definition A hash table (hash map) is a data structure that implements an associative array abstract data type, a structure that can map keys to values. A hash table uses a hash function to compute an index, also called a hash code, into an array of buckets or slots, from...","categories": ["Programming"],
         "tags": ["Data Structure","Hash Table","N-Sum"],
         "url": "http://localhost:4000/programming/2019/11/14/data-structrue-hash.html",
         "teaser":null},{
@@ -163,4 +163,34 @@ var store = [{
         "excerpt":"Definition A priority queue is an abstract data type which is like a regular queue or stack data structure, but where additionally each element has a “priority” associated with it. In a priority queue, an element with high priority is served or dequeued before an element with low priority. If...","categories": ["Programming"],
         "tags": ["Data Structure","Queue","Priority Queue","Heap"],
         "url": "http://localhost:4000/programming/2019/12/02/data-structrue-priorityqueue.html",
+        "teaser":null},{
+        "title": "OThers 11 - object-oriented programming",
+        "excerpt":"Object Copying In object-oriented programming, object copying is creating a copy of an existing object, a unit of data in object-oriented programming. The resulting object is called an object copy or simply copy of the original object. Copying is basic but has subtleties and can have significant overhead. There are...","categories": ["Programming"],
+        "tags": ["Others"],
+        "url": "http://localhost:4000/programming/2019/12/03/others-oop.html",
+        "teaser":null},{
+        "title": "ALgorithms 6 - divide and conquer",
+        "excerpt":"Definition Divide and Conquer is an algorithmic paradigm. A typical Divide and Conquer algorithm solves a problem using following three steps. Divide: Break the given problem into subproblems of same type. Conquer: Recursively solve these subproblems Combine: Appropriately combine the answers A classic example of Divide and Conquer is Merge...","categories": ["Programming"],
+        "tags": ["Algorithms","Divide and conquer"],
+        "url": "http://localhost:4000/programming/2019/12/03/algorithm-dividenconquer.html",
+        "teaser":null},{
+        "title": "Data Structure 12 - segment tree",
+        "excerpt":"Definition A segment tree also known as a statistic tree is a tree data structure used for storing information about intervals, or segments. It allows querying which of the stored segments contain a given point. It is, in principle, a static structure; that is, it’s a structure that cannot be...","categories": ["Programming"],
+        "tags": ["Data Structure","Segment Tree"],
+        "url": "http://localhost:4000/programming/2019/12/03/data-structrue-segmenttree.html",
+        "teaser":null},{
+        "title": "Multi Agent Reinforcement Learning",
+        "excerpt":"Background In cooperative MARL, one central challenge is coping with the size of the joint action space, which grows exponentially in the number of agents (Game theory suffers this problem) Efficient MARL therefore must be able to generalize over large joint action spaces, in the same way taht CNN allows...","categories": ["LiteratureReview"],
+        "tags": ["Reinforcement Learning"],
+        "url": "http://localhost:4000/literaturereview/2019/12/04/marl.html",
+        "teaser":null},{
+        "title": "OThers 12 - python class",
+        "excerpt":"Public and Private   class M():     def public(self):         print('You can see me!')      def _private(self):         print('You cannot see me!')  m=M() m.public() &gt;&gt;You can see me! m._private() ??? &gt;&gt;'You cannot see me!'  ","categories": ["Programming"],
+        "tags": ["Others"],
+        "url": "http://localhost:4000/programming/2019/12/06/others-pythonclass.html",
+        "teaser":null},{
+        "title": "ALgorithms 3 - greedy",
+        "excerpt":"Background Definition A greedy algorithm is any algorithm that follows the problem-solving heuristic of making the locally optimal choice at each stage with the intent of finding a global optimum. For example, a greedy strategy for the traveling salesman problem (which is of a high computational complexity) is the following...","categories": ["Programming"],
+        "tags": ["Algorithms","Greedy"],
+        "url": "http://localhost:4000/programming/2019/12/06/algorithm-greedy.html",
         "teaser":null}]

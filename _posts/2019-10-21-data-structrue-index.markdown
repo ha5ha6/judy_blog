@@ -10,7 +10,86 @@ tags:
 author:  Jiexin Wang
 author_profile: true
 classes: wide
+toc: true
+toc_label: "Index"
 ---
+
+### Complexity CheatSheet
+
+![](/assets/images/bigo.png){:width="40%"}  
+
+**Standard Data Structure**  
+
+    -------------------------------------------------------------------------------------------------
+    | Standard      | Time Complexity                                           |  Space Complexity |
+    -------------------------------------------------------------------------------------------------
+    |               | Average / Worst                                           |  Worst            |
+    -------------------------------------------------------------------------------------------------
+    |               | Access       | Search       | Insertion    | Deletion     |                   |
+    -------------------------------------------------------------------------------------------------
+    | Array         | O(1)         | O(n)         | O(n)         | O(n)         |  O(n)             |
+    | Stack         | O(n)         | O(n)         | O(1)         | O(1)         |  O(n)             |
+    | Queue         | O(n)         | O(n)         | O(1)         | O(1)         |  O(n)             |
+    | LinkedListS   | O(n)         | O(n)         | O(1)         | O(1)         |  O(n)             |
+    | LinkedListD   | O(n)         | O(n)         | O(1)         | O(1)         |  O(n)             |
+    | SkipList      | O(logn)      | O(logn)      | O(logn)      | O(logn)      |  O(nlogn)         |
+    -------------------------------------------------------------------------------------------------
+    | HashTable     |              | O(1)/O(n)    | O(1)/O(n)    | O(1)/O(n)    |  O(n)             |
+    -------------------------------------------------------------------------------------------------
+    | BST           | O(logn)/O(n) | O(logn)/O(n) | O(logn)/O(n) | O(logn)/O(n) |  O(n)             |
+    | KD Tree       | O(logn)/O(n) | O(logn)/O(n) | O(logn)/O(n) | O(logn)/O(n) |  O(n)             |
+    | CartesianTree |              | O(logn)/O(n) | O(logn)/O(n) | O(logn)/O(n) |  O(n)             |
+    -------------------------------------------------------------------------------------------------
+    | B-Tree        | O(logn)      | O(logn)      | O(logn)      | O(logn)      |  O(n)             |
+    | RedBlackTree  | O(logn)      | O(logn)      | O(logn)      | O(logn)      |  O(n)             |
+    | AVL Tree      | O(logn)      | O(logn)      | O(logn)      | O(logn)      |  O(n)             |
+    | SplayTree     |              | O(logn)      | O(logn)      | O(logn)      |  O(n)             |
+    -------------------------------------------------------------------------------------------------
+
+
+**Heap Data Structure**  
+
+    -----------------------------------------------------------------------------------
+    | Heap      | Time Complexity                                                     |
+    -----------------------------------------------------------------------------------
+    |           | Find Max | Extract Max | Increase Key | Insert  | Delete  | Merge   |
+    -----------------------------------------------------------------------------------
+    | Binary    | O(1)     | O(logn)     | O(logn)      | O(logn) | O(logn) | O(m+n)  |
+    | Pairing   | O(1)     | O(logn)     | O(logn)      | O(1)    | O(logn) | O(1)    |
+    | Binomial  | O(1)     | O(logn)     | O(logn)      | O(1)    | O(logn) | O(logn) |
+    | Fibonacci | O(1)     | O(logn)     | O(1)         | O(1)    | O(logn) | O(1)    |
+    -----------------------------------------------------------------------------------
+
+
+**Graph Data Structure and Algorithms**  
+
+    -------------------------------------------------------------------------------------------------
+    | Graph           | Time Complexity                                                             |
+    -------------------------------------------------------------------------------------------------
+    |                 | Storage    | Add Vertex | Add Edge   | Remove Vertex | Remove Edge | Query  |
+    -------------------------------------------------------------------------------------------------
+    | AdjacencyList   | O(|V|+|E|) | O(1)       | O(1)       | O(|V|+|E|)    | O(|E|)      | O(|V|) |
+    | IncidenceList   | O(|V|+|E|) | O(1)       | O(1)       | O(|E|)        | O(|E|)      | O(|E|) |
+    | AdjacencyMatrix | O(|V|^2)   | O(|V|^2)   | O(1)       | O(|V|^2)      | O(1)        | O(1)   |
+    | IncidenceMatrix | O(|V||E|)  | O(|V||E|)  | O(|V||E|)  | O(|V||E|)     | O(|V||E|)   | O(|E|) |
+    -------------------------------------------------------------------------------------------------
+
+    ------------------------------------------------------------------
+    | Graph Algs      | Time Complexity           | Space Complexity |
+    ------------------------------------------------------------------
+    |                 | Average      / Worst      | Worst            |
+    ------------------------------------------------------------------
+    | DFS             | O(|V|+|E|)                |                  |
+    | BFS             | O(|V|+|E|)                |                  |
+    | TopologicalSort | O(|V|+|E|)                | O(|V|+|E|)       |
+    | Dijkstra's      | O(|E|log|V|) / O(|V|^2)   | O(|V|+|E|)       |
+    | Kruskal's       | O(|E|log|V|)              |                  |
+    | Prim's          | O(|E|log|V|) / O(|V|^2)   | O(|V|+|E|)       |
+    | Bellman-Ford    | O(|E||V|)                 | O(|V|)           |
+    | Floyd-Warshall  | O(|V|^3)                  | O(|V|^2)         |
+    | A* Search       | O(|E|)       / O(b^d)     | O(b^d)           |
+    ------------------------------------------------------------------
+
 
 ### Data Structure
 
@@ -25,7 +104,7 @@ classes: wide
 9.	[tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-tree.html), [tree + linked list](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/data-structrue-tree-linkedlist.html)
 10. [binary search tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html)
 11. [trie](https://ha5ha6.github.io/judy_blog/programming/2019/11/29/data-structrue-tree-trie.html)
-12. segment tree
+12. [segment tree](https://ha5ha6.github.io/judy_blog/programming/2019/12/03/data-structrue-segmenttree.html)
 13. [graph](https://ha5ha6.github.io/judy_blog/programming/2019/11/01/data-structrue-graph.html)
 14. [python built-in](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html)
 
@@ -33,10 +112,10 @@ classes: wide
 
 1.	[sorting](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/algorithm-sorting.html)
 2.	[binary search](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-binarysearch.html)
-3.	greedy
+3.	[greedy]()
 4.	[back tracking](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html)
 5.	[dynamic programming](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html)
-6.	divide and conquer  
+6.	[divide and conquer](https://ha5ha6.github.io/judy_blog/programming/2019/12/03/algorithm-dividenconquer.html)  
 7.  [dfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/31/algorithm-dfs.html) - graph related or more general
 8.  [bfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/algorithm-bfs.html) - graph related or more general
 9.  [topological sort](https://ha5ha6.github.io/judy_blog/programming/2019/11/20/algorithm-topological.html) - graph related
@@ -51,9 +130,11 @@ classes: wide
 5.	two pointers
 6.	minimax
 7.	memoization
-8. brainteaser
-9. [SQL](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-sql.html)
-10. [file](https://ha5ha6.github.io/judy_blog/programming/2019/11/18/others-file.html)
+8.  brainteaser
+9.  [SQL](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-sql.html)
+10. [file](https://ha5ha6.github.io/judy_blog/programming/2019/11/18/others-file.html)  
+11. [object-oriented programming](https://ha5ha6.github.io/judy_blog/programming/2019/12/03/others-oop.html#object-copying)
+12. [python class](https://ha5ha6.github.io/judy_blog/programming/2019/12/06/others-pythonclass.html)
 
 ### Topics
 
@@ -75,4 +156,5 @@ classes: wide
 
 ### Resources
 
-https://time.geekbang.org/column/article/39922
+**Big O CheatSheet** see [Eric](https://www.bigocheatsheet.com/), [bigocheatsheetio](https://bigocheatsheet.io/?dark-mode=false)  
+**GeekTime Patch** see [geektime](https://time.geekbang.org/column/article/39922)

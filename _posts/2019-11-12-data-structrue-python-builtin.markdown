@@ -150,6 +150,108 @@ Output:
 0,1
 ```
 
+### list  
+
+**Basic**
+
+```python
+a=[1,2,3,4]
+a.insert(1,1.5)
+>>[1, 1.5, 2, 3, 4]
+
+b=[5,6,7,8]
+a.extend(b)
+a
+>>[1, 1.5, 2, 3, 4, 5, 6, 7, 8]
+
+a=[1,2,2,3,3,3,4,4,4,4]
+a.count(2)
+>>2
+a.index(3,6)
+>>ValueError: 3 is not in list
+a.index(3,2)
+>>3
+
+a=[2,1,5,0,-3]
+a.sort() <=> sorted(a)
+a
+>>[-3, 0, 1, 2, 5]
+a.sort(reverse=True)
+>>[5, 2, 1, 0, -3]
+
+a=[2,1,5,0,-3]
+a.reverse()
+a
+>>[-3, 0, 5, 1, 2]
+
+a=[2,1,5,0,-3]
+a.pop(1)
+>>5 #a=[2,1,0,-3]
+del a[1]
+a
+>>[2,0,-3]
+a.remove(2)
+a
+>>[0,-3]
+```
+
+**Advanced**  
+reduce(), ord(), cmp(), all(), any(), enumerate(), accumulate(), filter(), map(), lambda()
+
+### tuple  
+A tuple is a sequence of immutable Python objects. Tuples are sequences, just like lists. The differences between tuples and lists are, the tuples cannot be changed unlike lists, tuples use parentheses, whereas lists use square brackets.  
+
+```python
+a=('physics','chemistry',1997,2000)
+b=(1,2,3,4,5)
+c='a','b','c'
+d=() #an empty tuple
+e=(50,)
+
+a[0]
+>>'physics'
+b[1:3]
+>>(2,3)
+
+del a
+a
+>>NameError: name 'a' is not defined
+
+a=(1,2,3)
+len(a)
+>>3
+
+#concatenation
+(1,2,3)+(4,5,6)
+>>(1,2,3,4,5,6)
+
+#repetition
+('hi!')*4
+>>('hi!','hi!','hi!','hi!')
+
+#membership
+3 in (1,2,3)
+>>True
+
+#iteration
+for x in (1,2,3):
+    print(x)
+>>1 2 3
+
+max((1,2,3))
+>>3
+min((1,2,3))
+>>1
+
+#list to tuple
+tuple([1,2,3,2,1])  
+>>(1, 2, 3, 2, 1)
+
+#tuple ele cannot be changed
+a=(1,2,3)
+a[0]=2
+>>TypeError: 'tuple' object does not support item assignment
+```
 ### set  
 A set is an unordered collection of items. Every element is unique (no duplicates) and must be immutable (which cannot be changed).  
 However, the set itself is mutable. We can add or remove items from it.  

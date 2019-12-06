@@ -17,10 +17,133 @@ toc_label: "Index"
 author_profile: true
 ---
 
+## Background
+
 ### Definition  
+
+An array data structure, is a data structure consisting of a collection of elements (values or variables), each identified by at least one array index or key.  
+An array is stored **such that the position of each element can be computed from its index tuple by a mathematical formula**.    
+
+For example, an array of 10 32-bit (4 bytes) integer variables, with indices 0 through 9, may be stored as 10 words at memory addresses 2000, 2004, 2008, ... 2036, so that the element with index i has the address 2000 + (i × 4).  
+
+Array can be **referred and implemented** to:  
+a linear array, 1d array, vector, tuples, tables, lookup tables, ...
+
+Arrays are also used to implement many **other data structures**, such as:   
+lists, strings,
+
+They effectively exploit the addressing logic of computers.
+
+In Python, Array = list - resizable (append and delete)  
+In Java, Array - fixed length, ArrayList - dynamic resizing, TO(1) access (amortized)  
+
 subarray -   
 subsequence -  
 substring -
+
+### Basic Operations
+
+1. find() - TO(n) - find an element, i.e. [arr[i] for i in range(arr) if i...]
+2. find_first() - TO(1) - access first element, i.e. arr[0]
+3. find_last() - TO(1) - access last element, i.e. arr[-1]
+4. find_arbitrary() - TO(1) - access an element at an arbitrary index, i.e. arr[i]
+5. insert_front() - TO(n) - insert to front
+6. insert_back() - TO(logn)?? - insert to back =? append()
+7. insert_arbitrary() - TO(n) - insert at an arbitrary index
+8. delete_front() - TO(n)
+9. delete_back() - TO(logn)
+10. delete_arbitrary() - TO(n)
+11. resize()??? - O(n) - resizing backing array???
+12. len() - TO(logn)
+13. isEmpty() - TO(1)
+14. min()/max() - TO(n)??
+15. kthLargest()/kthSmallest() - TO(n)/TO(n^2) (random pivot selection method), TO(n) (median of medians pivot selection method)
+16. find_median() - TO(n) (kth selection)
+
+**Python List - built-in** see [python built-in #list](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#list)  
+
+1. l.append(ele) - addition elements **at the end of the list**  
+2. l.insert(pos, ele) - addition elements at the desired position
+3. l.extend(l2) - add list 2 to the end of list 1
+4. sum(l) - only for numertic values
+5. len(l)
+6. l.count(ele) - calculates total occurrence of given element
+7. l.index(ele, start, end) - return the index of the first occurrence
+8. min(l) / max(l)
+9. l.sort() / sorted(l) - sort in ascending order, descending order if reverse=True
+10. l.reverse()
+10. l.pop(idx) - take index, default: show and delete the last element
+11. l.remove(ele) - delete the first occurrence
+12. del - del l[idx], i.e. del l[3:5]
+13. l.clear() - erase all
+14. l.copy()
+
+### Implementation
+
+**Dynamic Array in Python**  see [dynamic array in python](https://www.geeksforgeeks.org/implementation-of-dynamic-array-in-python/)  
+
+A dynamic array is similar to an array, but **with the difference that its size can be dynamically modified at runtime**.    
+A dynamic array can, once the array is filled, allocate a bigger chunk of memory, copy the contents from the original array to this new space, and continue to fill the available slots.  
+
+Steps:
+
+1. create array with capacity=1, len start from 0
+2. when appending new element, check if len==capacity  
+if len!=cap, make a new array with cap=2*cap, copy old arr eles to new  
+else arr[len]=new ele, increase len by 1  
+
+          old arr: 1 2 3 4            old arr with refs
+                   | | | |    
+                   r r r r
+
+          new arr: _ _ _ _ _ _ _ _    creating new arr
+
+          new arr: 1 2 3 4 _ _ _ _    store elements from old arr to new arr
+
+          new arr: 1 2 3 4 _ _ _ _    reassign ref from old to new
+                   | | | |
+                   r r r r
+
+```python
+import ctypes #c language types
+class DynamicArray():
+
+    def __init__(self):
+        self.n=0
+        self.capacity=1
+        self.arr=self.make_array(self.capacity)
+
+    def __len__(self):  #later check
+        return self.n
+
+    def __getitem__(self,i):
+        if not 0<=i<self.n:
+            return IndexError('i is out of bounds!')
+
+        return self.arr[i]
+
+    def append(self,ele):
+        if self.n==self.capacity:
+            self._resize(2*self.capacity)
+
+        self.arr[self.n]=ele
+        self.n+=1
+
+    def _resize(self,new_size):
+        new_arr=self.make_array(new_size)
+        for i in range(self.n):
+            new_arr[i]=self.arr[i]
+
+        self.arr=new_arr
+        self.capacity=new_size
+
+    def make_array(self,new_size):
+        return (new_size*ctypes.py_object)()
+```
+
+resizing factor??
+
+## Problems
 
 ### Rotate  
 
@@ -195,90 +318,3 @@ class Solution():
 **leetcode 560 - Subarray Sum Equals K**  
 **leetcode 718 - Maximum Length of Repeated Subarray [M]**  
 **leetcode 713 - Subarray Product Less Than K []**  
-
-
-
-### Real World Problem
-**leetcode 134 - Gas Station [M]**   
-Input:     
-gas  = [1,2,3,4,5]  
-cost = [3,4,5,1,2]  
-Output: 3  
-
-Explanation:  
-Start at station 3 (index 3) and fill up with 4 unit of gas. Your tank = 0 + 4 = 4  
-Travel to station 4. Your tank = 4 - 1 + 5 = 8  
-Travel to station 0. Your tank = 8 - 2 + 1 = 7  
-Travel to station 1. Your tank = 7 - 3 + 2 = 6  
-Travel to station 2. Your tank = 6 - 4 + 3 = 5  
-Travel to station 3. The cost is 5. Your gas is just enough to travel back to station 3.  
-Therefore, return 3 as the starting index.  
-
-Solution:  
-1. if total > 0, can fill the circle  
-
-```python
-class Solution():
-    def canCompleteCirsuit(self,gas,cost):
-        tank,start,total=0,0,0
-        for i in range(len(gas)):
-            balance=gas[i]-cost[i]
-            tank+=balance
-            total+=balance
-            if tank<0:
-                start=i+1
-                tank=0
-
-        return -1 if total<0 else start
-```
-
-**leetcode 135 - Candy [H]**  
-Giving at least one candy to every kid, higher score one gets more.  
-What is the number of minimum candies should be distributed?  
-
-Example 1:  
-Input: [1,0,2]  
-Output: 5  
-Explanation: You can allocate to the first, second and third child with 2, 1, 2 candies respectively.  
-
-Example 2:  
-Input: [1,2,2]  
-Output: 4  
-Explanation: You can allocate to the first, second and third child with 1, 2, 1 candies respectively. The third child gets 1 candy because it satisfies the above two conditions.  
-
-Solution:  
-1. initialize with [1]xlen(ratings)  
-2. from left to right, if cur>onebefore, cur=onebefore+1, cur start from index:1 to len-1
-3. from right to left, if cur>oneafter, cur=max(oneafter+1,cur), cur start from index:len-2 to 0
-Say   
-
-    index:  [0,1,2,3,4,5,6,7,8,9,10]  
-    input:  [1,8,7,6,2,3,5,6,2,3,1]     
-    initial:  [1,1,1,1,1,1,1,1,1,1,1]      
-    l2r->:  [1,2,1,1,1,2,3,4,1,2,1] (1<8, 2<3, 3<5, 5<6, 2<3)  
-    r2l<-:  [1,4,3,2,1,2,3,4,1,2,1] (6>2, 6>2, 7>6, 8>7)  
-
-Note:  
-1. in candy<- case 2<3>1 can be omitted because it's the last one, should start from index:8 (len-2)  
-2. in candy<- case 5<6>2, input element <6>=input[idx=7], 4=max(1+1,4), oneafter+1<cur
-3. in candy<- case 7<6>2, input element <6>=input[idx=3], 2=max(1+1,1), oneafter+1>cur
-4. in candy<- case 8>7>6, input element <7>=input[idx=2], 3=max(2+1,1), oneafter+1>cur
-5. in candy<- case 1<8>7, input element <8>=input[idx=1], 4=max(3+1,2), oneafter+1>cur  
-
-```python
-class Solution(object):
-    def candy(self, ratings):
-        candy=[1 for i in range(len(ratings))]
-
-        #left to right
-        for i in range(1,len(ratings)):
-            if ratings[i]>ratings[i-1]:
-                candy[i]=candy[i-1]+1
-
-        #right to left
-        for i in range(len(ratings)-2,-1,-1):
-            if ratings[i]>ratings[i+1]:
-                candy[i]=max(candy[i+1]+1,candy[i])
-
-        return sum(candy)
-```

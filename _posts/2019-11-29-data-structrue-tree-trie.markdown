@@ -35,14 +35,21 @@ Suppose we store words, 'Car', 'Cat', 'Done', 'Trie', 'Try'
               e*   e*
 
 
+### Pick Point  
+
+1. commonly, used to store the entire language for quick prefix lookups
+
+check valid prefix in TO(k), k - length of the string same as hash table
+
+
+### Implementation
+
 ```python      
 class TrieNode(object):
     def __init__(self):
         self.children={}
         self.terminal=False
 ```
-
-### Implementation
 
 **leetcode 208 - Implement Trie (Prefix Tree) [M] - design, linked hash**  
 Implement a trie with insert, search, and startsWith methods.  

@@ -1,0 +1,75 @@
+---
+layout: single
+type: posts
+title:  "Multi Agent Reinforcement Learning"
+date:   2019-12-4 21:38:25 +0900
+related: true
+categories: LiteratureReview
+tags:
+  #- Index
+
+  - Reinforcement Learning
+author:  Jiexin Wang
+classes:  wide
+toc: true
+toc_label: "Index"
+author_profile: true
+---
+
+### Background
+
+In cooperative MARL, one central **challenge** is  
+coping with the size of the joint action space, which grows exponentially in the number of agents
+
+(Game theory suffers this problem)
+
+Efficient MARL therefore must be able to generalize over large joint action spaces, in the same way taht CNN allows deep RL to generalize over large visual state spaces.
+
+One solution:
+
+- decentralize the decision policy and / or vlaue function
+
+joint value function can be factorized into utility functions that each depend only on the actions of one agent
+
+Q(a1,a2,a3\|s)=f1(a1\|s)+f2(a2\|s)+f3(a3\|s)  
+
+f - payoff function can be approximated
+
+the joint value function can be efficiently maximized if each agent simply selects the action that maximizes its corresponding utility function
+
+Problem - relative overgeneralization:
+
+- During exploration other agents act randomly and punishment caused by uncooperative agents may outweigh rewards that would be achievable with coordinated actions
+
+Solution:
+
+- higher-order factorization, such as coordination graph
+
+Q(a1,a2,a3\|s)=f12(a1,a2\|s)+f23(a2,a3\|s)
+
+Although the value can no longer be maximized by each agent individually, the greedy action can be found using **message passing along the edges** also known as **belief propagation**
+
+State-of-the-art value factorization approaches, i.e. VDN, QMIX condition an agent's utility on its history, that is its past observations and actions, and share the parameters of all utility functions.  
+
+One agent experience is used to train all.
+
+MARL Q-learning algorithms:
+
+
+
+
+### Refs
+
+**Reviews**
+
+[1]OroojlooyJadid, A. and Hajinezhad, D. A review of cooperative multi-agent deep reinforcement learning. CoRR, abs/1908.03963, 2019.
+
+**Coordination Graph**
+
+[2]C. Guestrin, D. Koller, and R. Parr. Multiagent planning with factored MDPs. In Advances in Neural Information Processing Systems 14. The MIT Press, 2002.
+[3]C. Guestrin, M. Lagoudakis, and R. Parr, “Coordinated reinforcement learning,” in Proceedings of The Nineteenth International Conference on Machine Learning, vol. 2, 2002, pp. 227–234.
+
+**CG equipped MARL**
+
+Sparse cooperative Q-learning  
+[4]Kok, J. R. and Vlassis, N. Collaborative multiagent reinforcement learning by payoff propagation. Journal of Machine Learning Research, 7(Sep):1789–1828, 2006.

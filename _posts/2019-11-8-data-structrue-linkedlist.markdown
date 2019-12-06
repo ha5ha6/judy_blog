@@ -19,6 +19,34 @@ author_profile: true
 
 ### Definition
 
+A linked list is **a linear collection of data elements**, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence.  
+In its most basic form, each node contains: **data, and a reference** (in other words, a link) to the next node in the sequence.
+
+(+) **allows for efficient insertion or removal of elements from any position in the sequence during iteration**, and allow doing so with a constant number of operations by keeping the link previous to the link being added or removed in memory during list traversal.     
+(+) can be easily inserted or removed **without reallocation or reorganization** of the entire structure because the data items need not be stored contiguously in memory or on disk, while restructuring an array at run-time is a much more expensive operation.    
+(+) Linked list are dynamic, so the length of list can increase or decrease as necessary.   
+(+) Each node does not necessarily follow the previous one physically in the memory.  
+
+
+(-) **access time is linear** (and difficult to pipeline).  
+(-) no faster access, such as random access. Arrays have better cache locality compared to linked lists.   
+(-) no efficient indexing, (iterate k times to find index k), many basic operations—such as obtaining the last node of the list, finding a node that contains a given datum, or locating the place where a new node should be inserted—may require iterating through most or all of the list elements.   
+
+A linked list whose nodes contain two fields: an integer value and a link to the next node. The last node is linked to a terminator used to signify the end of the list.  
+Linked lists are among the simplest and most common data structures. They can be used to implement several other common abstract data types, including lists, stacks, queues, associative arrays, and S-expressions, though it is not uncommon to implement those data structures directly without using a linked list as the basis.  
+
+### Pick Point
+
+1. single linked list or double, what to be careful of deleting of double linked list
+2. two pointers - the Runner Technique
+3. recursion SO(n), n- the depth of the recursive call
+
+**all recursive algs can be implemented iteratively**
+
+
+
+### Implementation
+
 ```python
 class ListNode():
     def __init__(self,x):

@@ -73,8 +73,8 @@ Output:
 
 **Binary Heap**  
 
-see [heap #definition]()
+see [heap #definition](https://ha5ha6.github.io/judy_blog/programming/2019/11/30/data-structrue-heap.html#definition)
 
 **Python heapq**
 
-see [python built-in #heapq]()
+see [python built-in #heapq](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#heapq)
