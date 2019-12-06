@@ -44,10 +44,10 @@ var store = [{
         "tags": ["Data Structure","Queue","Python Collections"],
         "url": "http://localhost:4000/programming/2019/10/27/data-structrue-queue.html",
         "teaser":null},{
-        "title": "Data Structure 1 - list",
+        "title": "Data Structure 1 - array",
         "excerpt":"Background Definition An array data structure, is a data structure consisting of a collection of elements (values or variables), each identified by at least one array index or key. An array is stored such that the position of each element can be computed from its index tuple by a mathematical...","categories": ["Programming"],
         "tags": ["Data Structure","List","MinMax"],
-        "url": "http://localhost:4000/programming/2019/10/29/data-structrue-list.html",
+        "url": "http://localhost:4000/programming/2019/10/29/data-structrue-array.html",
         "teaser":null},{
         "title": "Data Structure 2 - matrix",
         "excerpt":"Word Search leetcode 79 - Word Search [M] - backtracking see backtracking #matrix word search Given a 2D board and a word, find if the word exists in the grid. Example: board= [[‘A’,’B’,’C’,’E’], [‘S’,’F’,’C’,’S’], [‘A’,’D’,’E’,’E’],] word=”ABCCED” return True word=”SEE” return True word=”ABCB” return False leetcode 212 - Word Search II...","categories": ["Programming"],

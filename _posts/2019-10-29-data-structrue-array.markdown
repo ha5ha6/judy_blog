@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 1 - list"
+title:  "Data Structure 1 - array"
 date:   2019-10-29 11:46:25 +0900
 related: true
 categories: Programming
