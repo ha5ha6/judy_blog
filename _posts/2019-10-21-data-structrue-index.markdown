@@ -16,7 +16,7 @@ toc_label: "Index"
 
 ### Complexity CheatSheet
 
-![](/assets/images/bigo.png){:width="40%"}  
+![](https://ha5ha6.github.io/judy_blog/assets/images/bigo.png){:width="40%"}  
 
 **Standard Data Structure**  
 
