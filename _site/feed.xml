@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-12-06T18:22:20+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Soft Q-Learning</title><link href="http://localhost:4000/literaturereview/2019/12/06/softq.html" rel="alternate" type="text/html" title="Soft Q-Learning" /><published>2019-12-06T17:12:25+09:00</published><updated>2019-12-06T17:12:25+09:00</updated><id>http://localhost:4000/literaturereview/2019/12/06/softq</id><content type="html" xml:base="http://localhost:4000/literaturereview/2019/12/06/softq.html">&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-12-10T23:02:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Soft Q-Learning</title><link href="http://localhost:4000/literaturereview/2019/12/06/softq.html" rel="alternate" type="text/html" title="Soft Q-Learning" /><published>2019-12-06T17:12:25+09:00</published><updated>2019-12-06T17:12:25+09:00</updated><id>http://localhost:4000/literaturereview/2019/12/06/softq</id><content type="html" xml:base="http://localhost:4000/literaturereview/2019/12/06/softq.html">&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
 
 &lt;p&gt;keywords:&lt;/p&gt;
 &lt;ul&gt;
@@ -385,7 +385,7 @@ coping with the size of the joint action space, which grows exponentially in the
 &lt;p&gt;&lt;strong&gt;CG equipped MARL&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Sparse cooperative Q-learning&lt;br /&gt;
-[4]Kok, J. R. and Vlassis, N. Collaborative multiagent reinforcement learning by payoff propagation. Journal of Machine Learning Research, 7(Sep):1789–1828, 2006.&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><summary type="html">Background</summary></entry><entry><title type="html">Data Structure 12 - segment tree</title><link href="http://localhost:4000/programming/2019/12/03/data-structrue-segmenttree.html" rel="alternate" type="text/html" title="Data Structure 12 - segment tree" /><published>2019-12-03T17:35:25+09:00</published><updated>2019-12-03T17:35:25+09:00</updated><id>http://localhost:4000/programming/2019/12/03/data-structrue-segmenttree</id><content type="html" xml:base="http://localhost:4000/programming/2019/12/03/data-structrue-segmenttree.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
+[4]Kok, J. R. and Vlassis, N. Collaborative multiagent reinforcement learning by payoff propagation. Journal of Machine Learning Research, 7(Sep):1789–1828, 2006.&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><summary type="html">Background</summary></entry><entry><title type="html">Data Structure 13 - segment tree</title><link href="http://localhost:4000/programming/2019/12/03/data-structrue-segmenttree.html" rel="alternate" type="text/html" title="Data Structure 13 - segment tree" /><published>2019-12-03T17:35:25+09:00</published><updated>2019-12-03T17:35:25+09:00</updated><id>http://localhost:4000/programming/2019/12/03/data-structrue-segmenttree</id><content type="html" xml:base="http://localhost:4000/programming/2019/12/03/data-structrue-segmenttree.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 
 &lt;p&gt;A &lt;strong&gt;segment tree&lt;/strong&gt; also known as a &lt;strong&gt;statistic tree&lt;/strong&gt; is a tree data structure used for storing information about intervals, or segments.&lt;br /&gt;
 It allows querying which of the stored segments contain a given point.&lt;br /&gt;
@@ -469,7 +469,7 @@ rather than references to objects being copied, new copy objects are created for
 &lt;p&gt;related:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;leetcode 133 - Clone Graph [M]&lt;/strong&gt; see &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/11/01/data-structrue-graph.html#leetcode&quot;&gt;graph #leetcode&lt;/a&gt;&lt;br /&gt;
-&lt;strong&gt;leetcode 138 - Copy List with Random Pointer [M]&lt;/strong&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Others" /><summary type="html">Object Copying</summary></entry><entry><title type="html">Data Structure 6 - priority queue</title><link href="http://localhost:4000/programming/2019/12/02/data-structrue-priorityqueue.html" rel="alternate" type="text/html" title="Data Structure 6 - priority queue" /><published>2019-12-02T18:19:25+09:00</published><updated>2019-12-02T18:19:25+09:00</updated><id>http://localhost:4000/programming/2019/12/02/data-structrue-priorityqueue</id><content type="html" xml:base="http://localhost:4000/programming/2019/12/02/data-structrue-priorityqueue.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
+&lt;strong&gt;leetcode 138 - Copy List with Random Pointer [M]&lt;/strong&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Others" /><summary type="html">Object Copying</summary></entry><entry><title type="html">Data Structure 8 - priority queue</title><link href="http://localhost:4000/programming/2019/12/02/data-structrue-priorityqueue.html" rel="alternate" type="text/html" title="Data Structure 8 - priority queue" /><published>2019-12-02T18:19:25+09:00</published><updated>2019-12-02T18:19:25+09:00</updated><id>http://localhost:4000/programming/2019/12/02/data-structrue-priorityqueue</id><content type="html" xml:base="http://localhost:4000/programming/2019/12/02/data-structrue-priorityqueue.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 
 &lt;p&gt;A priority queue is an abstract data type which is like a regular queue or stack data structure, but &lt;strong&gt;where additionally each element has a “priority” associated with it&lt;/strong&gt;.&lt;br /&gt;
 In a priority queue, an element with high priority is &lt;strong&gt;served or dequeued&lt;/strong&gt; before an element with low priority.&lt;br /&gt;
@@ -527,7 +527,105 @@ A &lt;strong&gt;priority queue&lt;/strong&gt; can be implemented with a heap or 
 
 &lt;p&gt;&lt;strong&gt;Python heapq&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;see &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#heapq&quot;&gt;python built-in #heapq&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Queue" /><category term="Priority Queue" /><category term="Heap" /><summary type="html">Definition</summary></entry><entry><title type="html">ALgorithms 10 - union find</title><link href="http://localhost:4000/programming/2019/12/02/algorithm-unionfind.html" rel="alternate" type="text/html" title="ALgorithms 10 - union find" /><published>2019-12-02T14:54:25+09:00</published><updated>2019-12-02T14:54:25+09:00</updated><id>http://localhost:4000/programming/2019/12/02/algorithm-unionfind</id><content type="html" xml:base="http://localhost:4000/programming/2019/12/02/algorithm-unionfind.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
+&lt;p&gt;see &lt;a href=&quot;https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#heapq&quot;&gt;python built-in #heapq&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;problems&quot;&gt;Problems&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;leetcode 218 - The Skyline Problem [H]&lt;/strong&gt;&lt;br /&gt;
+Given the locations and height of all the buildings, write a program to output the skyline formed by these buildings collectively.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;br /&gt;
+Input: [left,right,height]&lt;br /&gt;
+[[1,3,3],[2,4,4],[5,8,2],[6,7,4],[8,9,4]]&lt;br /&gt;
+Output: [[1,3],[2,4],[4,0],[5,2],[6,4],[7,2],[8,4],[9,0]]&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  5 |
+  4 |     |-----|     |--|  |--|
+  3 |  |--|--|  |     |  |  |  |
+  2 |  |  |  |  |  |--|--|--|  |
+  1 |  |  |  |  |  |  |  |  |  |
+    ------------------------------
+    0  1  2  3  4  5  6  7  8  9  
+
+  5 |
+  4 |     x-----|     x--|  x--|
+  3 |  x--|--|  |     |  |  |  |
+  2 |  |  |  |  |  x--|--x--|  |
+  1 |  |  |  |  |  |  |  |  |  |
+    ------------x--------------x--
+    0  1  2  3  4  5  6  7  8  9  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Solution - use max heap:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;transfer [l,r,h] to [l,-h,r]+[r,h,None]&lt;br /&gt;
+Note 1: -h for discriminating the left and the right edges&lt;br /&gt;
+Note 2: for the left to be sorted ahead of the right&lt;br /&gt;
+Note 3: minus value of height suits for the default minheap setting&lt;/li&gt;
+  &lt;li&gt;sort the new rectangles of [l,-h,r]+[r,h,None]&lt;/li&gt;
+  &lt;li&gt;use a min heap (default) to record height and right (h,r)&lt;/li&gt;
+  &lt;li&gt;when meets left edge (h&amp;lt;0), heap push (h,r)&lt;/li&gt;
+  &lt;li&gt;when not left edge and current left (which was the right edge originally) is larger than the recorded right, which means the previous whole block reaches right end, heap pop all the recorded (h,r)&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;every time when earlier top!=new heap[0][0], which is the latest max height, res append [l,-heap[0][0]]&lt;br /&gt;
+Note 1: always append left edge points&lt;br /&gt;
+Note 2: heap[0][0] is always the highest right edges, cuz of the property of default minheap from heapq&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; l,r,h
+[1,3,3]        
+[2,4,4]
+[5,8,2]
+[6,7,4]
+[8,9,4]
+
+-&amp;gt; sorted([l,-h,r]+[r,h,None])
+[1,-3,3]
+[2,-4,4]
+[3,3,N]
+[4,4,N]
+[5,-2,8]
+[6,-4,7]
+[7,4,N]
+[8,-4,9]
+[8,2,N]
+[9,4,N]
+
+                     heap
+('leftpush', [(-3, 3), (0, inf)])
+('leftpush', [(-4, 4), (0, inf), (-3, 3)])
+('whilepop', [(-3, 3), (0, inf)])
+('whilepop', [(0, inf)])
+('leftpush', [(-2, 8), (0, inf)])
+('leftpush', [(-4, 7), (0, inf), (-2, 8)])
+('whilepop', [(-2, 8), (0, inf)])
+('whilepop', [(0, inf)])
+('leftpush', [(-4, 9), (0, inf)])
+('whilepop', [(0, inf)])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;heapq&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getSkyline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buildings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;rect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buildings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buildings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;rect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;heap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'inf'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))]&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#store (h,r)&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#left &amp;gt;= most right, jump to next new block&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;heapq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;heappop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#pop all&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;heapq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;heappush&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;heap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Queue" /><category term="Priority Queue" /><category term="Heap" /><summary type="html">Definition</summary></entry><entry><title type="html">ALgorithms 10 - union find</title><link href="http://localhost:4000/programming/2019/12/02/algorithm-unionfind.html" rel="alternate" type="text/html" title="ALgorithms 10 - union find" /><published>2019-12-02T14:54:25+09:00</published><updated>2019-12-02T14:54:25+09:00</updated><id>http://localhost:4000/programming/2019/12/02/algorithm-unionfind</id><content type="html" xml:base="http://localhost:4000/programming/2019/12/02/algorithm-unionfind.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 
 &lt;p&gt;A &lt;strong&gt;disjoint-set data structure&lt;/strong&gt; is a data structure that keeps track of a set of elements partitioned into a number of disjoint (non-overlapping) subsets.&lt;br /&gt;
 A union-find algorithm is an algorithm that performs two useful operations on such a data structure:&lt;/p&gt;
@@ -694,7 +792,7 @@ with weight 14&lt;/p&gt;
 
 &lt;p&gt;References:&lt;br /&gt;
 &lt;a href=&quot;https://www.youtube.com/watch?v=JZBQLXgSGfs&quot;&gt;WilliamFiset fr Youtube&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/&quot;&gt;geeks for geeks&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Algorithms" /><category term="Union Find" /><summary type="html">Definition</summary></entry><entry><title type="html">Data Structure 7 - heap</title><link href="http://localhost:4000/programming/2019/11/30/data-structrue-heap.html" rel="alternate" type="text/html" title="Data Structure 7 - heap" /><published>2019-11-30T16:23:25+09:00</published><updated>2019-11-30T16:23:25+09:00</updated><id>http://localhost:4000/programming/2019/11/30/data-structrue-heap</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/30/data-structrue-heap.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
+&lt;a href=&quot;https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/&quot;&gt;geeks for geeks&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Algorithms" /><category term="Union Find" /><summary type="html">Definition</summary></entry><entry><title type="html">Data Structure 8 - heap</title><link href="http://localhost:4000/programming/2019/11/30/data-structrue-heap.html" rel="alternate" type="text/html" title="Data Structure 8 - heap" /><published>2019-11-30T16:23:25+09:00</published><updated>2019-11-30T16:23:25+09:00</updated><id>http://localhost:4000/programming/2019/11/30/data-structrue-heap</id><content type="html" xml:base="http://localhost:4000/programming/2019/11/30/data-structrue-heap.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 
 &lt;p&gt;A heap is a specialized &lt;strong&gt;tree-based data structure&lt;/strong&gt; which is essentially an almost complete tree that satisfies the heap property:&lt;br /&gt;
 In a &lt;strong&gt;max heap&lt;/strong&gt;, for any given node C, if P is a parent node of C, then the key (the value) of P is greater than or equal to the key of C. &lt;br /&gt;
@@ -791,6 +889,39 @@ i - where the parent node is stored at&lt;br /&gt;
    &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;lc&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;h3 id=&quot;applications&quot;&gt;Applications&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Priority Queue:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A priority queue is an abstract concept like “a list” or “a map”; just as a list can be implemented with a linked list or an array, a priority queue can be implemented with a heap or a variety of other methods.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Heapsort:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;One of the best sorting methods being in-place and with no quadratic worst-case scenarios.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Selection algorithms:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A heap allows access to the min or max element in constant time, and other selections (such as median or kth-element) can be done in sub-linear time on data that is in a heap.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Graph algorithms:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By using heaps as internal traversal data structures, run time will be reduced by polynomial order. Examples of such problems are &lt;strong&gt;Prim’s minimal-spanning-tree algorithm&lt;/strong&gt; and &lt;strong&gt;Dijkstra’s shortest-path algorithm&lt;/strong&gt;.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;K-way merge:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A heap data structure is useful to merge many already-sorted input streams into a single sorted output stream. Examples of the need for merging include external sorting and streaming results from distributed data such as a log structured merge tree. The inner loop is obtaining the min element, replacing with the next element for the corresponding input stream, then doing a sift-down heap operation. (Alternatively the replace function.) (Using extract-max and insert functions of a priority queue are much less efficient.)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Order statistics:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The Heap data structure can be used to efficiently find the kth smallest (or largest) element in an array.&lt;/p&gt;
+
 &lt;h3 id=&quot;heap-sort&quot;&gt;Heap Sort&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Heapify&lt;/strong&gt; procedure can be applied to a node only if its children are heapified. So the heapification must be performed in the bottom up order.&lt;/p&gt;
@@ -883,37 +1014,4 @@ Output: 4&lt;/p&gt;
         &lt;span class=&quot;n&quot;&gt;heapq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;heapify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;heapq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nlargest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;applications&quot;&gt;Applications&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Priority Queue:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A priority queue is an abstract concept like “a list” or “a map”; just as a list can be implemented with a linked list or an array, a priority queue can be implemented with a heap or a variety of other methods.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Heapsort:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;One of the best sorting methods being in-place and with no quadratic worst-case scenarios.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Selection algorithms:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A heap allows access to the min or max element in constant time, and other selections (such as median or kth-element) can be done in sub-linear time on data that is in a heap.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Graph algorithms:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;By using heaps as internal traversal data structures, run time will be reduced by polynomial order. Examples of such problems are &lt;strong&gt;Prim’s minimal-spanning-tree algorithm&lt;/strong&gt; and &lt;strong&gt;Dijkstra’s shortest-path algorithm&lt;/strong&gt;.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;K-way merge:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A heap data structure is useful to merge many already-sorted input streams into a single sorted output stream. Examples of the need for merging include external sorting and streaming results from distributed data such as a log structured merge tree. The inner loop is obtaining the min element, replacing with the next element for the corresponding input stream, then doing a sift-down heap operation. (Alternatively the replace function.) (Using extract-max and insert functions of a priority queue are much less efficient.)&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Order statistics:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The Heap data structure can be used to efficiently find the kth smallest (or largest) element in an array.&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Heap" /><summary type="html">Definition</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Data Structure" /><category term="Heap" /><summary type="html">Definition</summary></entry></feed>

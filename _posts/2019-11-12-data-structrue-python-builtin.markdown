@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 14 - python built-in"
+title:  "Data Structure 15 - python built-in"
 date:   2019-11-12 23:45:25 +0900
 related: true
 categories: Programming

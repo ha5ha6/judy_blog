@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 13 - graph"
+title:  "Data Structure 14 - graph"
 date:   2019-11-1 15:18:25 +0900
 related: true
 categories: Programming
@@ -367,7 +367,7 @@ Input:
                   4:[1,3]
 
 
-### Related ALgorithms 
+### Related ALgorithms
 
 1. [dfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/31/algorithm-dfs.html)
 2. [bfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/algorithm-bfs.html)

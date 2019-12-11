@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 6 - queue"
+title:  "Data Structure 7 - queue"
 date:   2019-10-27 22:27:25 +0900
 related: true
 categories: Programming

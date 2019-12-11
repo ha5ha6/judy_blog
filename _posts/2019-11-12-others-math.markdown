@@ -70,7 +70,7 @@ Input: 10
 Output: 4  
 Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.  
 
-Solution of 15: O(n**3/2) 
+Solution of 15: O(n**3/2)
 
             2,3,4,5,6,7,8,9,10,11,12,13,14
             ^   ^   ^   ^   ^     ^     ^     remove all multiples of 2
@@ -142,7 +142,7 @@ class Solution():
         return "".join(res)
 ```
 
-**leetcode 168 - Excel Sheet Column Title [E] - divmod + deque** see [python built-in #deque](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#collectionsdeque)
+**leetcode 168 - Excel Sheet Column Title [E] - divmod + deque** see [python built-in #deque](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#collectionsdeque)  
 Given a positive integer, return its corresponding column title as appear in Excel  
 For example:  
 
@@ -190,7 +190,7 @@ class Solution():
         return "".join([chr(i+ord('A')) for i in res])
 ```
 
-**leetcode 171 - Excel Sheet Column Number [E]**
+**leetcode 171 - Excel Sheet Column Number [E]**  
 Given a column title as appear in an Excel sheet, return its corresponding column number.  
 
 For example:  
@@ -425,4 +425,41 @@ class Solution():
     def gcd(self,x,y):
 
         return x if y==0 else self.gcd(y,x%y)
+```
+
+**leetcode 223 - Rectangle Area [M]**  
+Find the total area covered by two rectilinear rectangles in a 2D plane.  
+Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.  
+
+Input: A=-3,B=0,C=3,D=4,E=0,F=-1,G=9,H=2
+Output: 45
+
+                    0  1  2  3  4  5  6  7  8  9            
+           |--------|--------| (3,4) (C,D)
+           |        |        |
+           |        |--------N------------------| (9,2) (G,H)
+           |        |        |                  |
+    (-3,0) |--------M---------                  |
+    (A,B) -3 -2 -1  |---------------------------|  
+                  (0,-1)
+                  (E,F)
+
+           |-A,B -3,0
+          -|-C,D  3,4
+          ||-E,F  0,-1
+          ---G,H  9,2
+
+Solution:
+overlap area length:    
+lower left point M = max(A,E),max(B,F) = 0,0
+upper right point N = min(C,G),min(D,H) = 3,2
+
+```python
+class Solution():
+    def computeArea(self,A,B,C,D,E,F,G,H):
+        M=[max(A,E),max(B,F)] #overlap leftlower
+        N=[min(C,G),min(D,H)] #overlap rightupper
+        overlap=abs(M[0]-N[0])*abs(M[1]-N[1])
+
+        return (C-A)*(D-B)+(G-E)*(H-F)-overlap
 ```

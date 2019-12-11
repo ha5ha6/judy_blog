@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 5 - stack"
+title:  "Data Structure 6 - stack"
 date:   2019-11-13 13:15:25 +0900
 related: true
 categories: Programming
@@ -19,6 +19,8 @@ toc_label: "Index"
 author_profile: true
 ---
 
+## Background
+
 ### Definition
 
 Stack is a linear data structure which follows a particular order in which the operations are performed. The order may be LIFO(Last In First Out) or FILO(First In Last Out).  
@@ -28,12 +30,12 @@ There are many real-life examples of a stack. Consider an example of plates stac
 (+) constant time adds and removes, as it doesn't require shifting elements around  
 (+) useful in certain recursive algs.
 
-### Pick Points
+### Points to Note
 
 1. stack can be also implemented as linked list
 2. useful in recursive algs  
 when you need to push temporary data onto a stack as you recurse, but then remove them as you backtrack (cuz the recursive check failed)
-3. can be used to implement a recursive alg iteratively 
+3. can be used to implement a recursive alg iteratively
 
 ### Implementation  
 
@@ -166,6 +168,85 @@ print(s.peekMax())
 print(s.popMax())
 ```   
 
+**leetcode 225 - Implement Stack using Queue [E]**  
+Implement the following operations of a stack using queues.
+
+push(x) -- Push element x onto stack  
+pop() -- Remove the element on top of the stack and return it  
+top() -- Get the element on the top  
+empty() --Return whether the stack is empty
+
+Example 1:  
+MyStack stack = new MyStack();  
+stack.push(1);   
+stack.push(2);  
+stack.top(); -> 2  
+stack.pop(); -> 2  
+stack.empty(); -> False  
+
+Queue operations can be used:  
+1. append left  
+2. peek/pop from front  
+3. size  
+4. isempty
+
+Solution:  
+
+                     head
+         --------------------
+    q ->     | 3 | 2 | 1 |   ->
+         --------------------
+                     head
+             -------------
+    stack ->   3 | 2 | 1 |
+          <- -------------
+
+    q.pop() -> 1
+    stack.pop() -> 3
+
+**popping**  
+q.pop() - output the first one append  
+stack.pop() - output the last one append  
+need to use a new_q collect all the q.popped elements until q is empty   
+
+**topping**  
+popping q until it's empty  
+use a new_q to collect all the q.popped elements  
+return the final popped q value  
+
+```python
+from collections import deque
+class MyStack():
+    def __init__(self):
+        self.queue=deque()
+
+    def push(self,x):
+        self.queue.appendleft(x)
+
+    def pop(self):
+        new_q=deque()
+        while True:
+            x=self.queue.pop()
+            if not self.queue:
+                self.queue=new_q        
+                return x
+            new_q.appendleft(x)
+
+    def top(self):
+        new_q=deque()
+        while self.queue:
+            x=self.queue.pop()
+            new_q.appendleft(x)
+        self.queue=new_q
+        return x
+
+    def empty(self):
+        return len(self.queue)==0
+
+```
+
+## Problems
+
 ### Parentheses
 
 **leetcode 20 - Valid Parentheses [E] - hashtable + stack**  
@@ -278,5 +359,107 @@ class Solution():
 
         return stack[-1]
 ```   
+
+**leetcode 224 - Basic Calculator [H]**  
+Implement a basic calculator to evaluate a simple expression string, which contains '()' and '+-'  
+
+Examples:  
+Input: "1+1"
+Output: 2
+Input: "2-1+2"
+Output: 3
+Input: "(1+(4+5+2)-3)+(6+8)"
+Output: 23
+
+Solution 1:  
+op +1: + (default)
+op -1: -
+when meet digit, take num, res+=(op*int(num))
+when meet (, stack append (res,op), reset op and res
+when meet ), stack pop (pre,op), res*=op, res+=pre
+when meet +, op=1
+when meet -, op=-1
+
+```python
+class Solution():
+    def calculate(self,s):
+        stack=[]
+        op=1
+        res=0
+        i=0
+        while i<len(s):
+            if s[i].isdigit():
+                start=i
+                while i<len(s) and s[i].isdigit():
+                    i+=1
+                    num=s[start:i]
+                    res+=op*int(num)
+                    continue
+            elif s[i]=='(':
+                stack.append((res,op))
+                op=1
+                res=0
+            elif s[i]==')':
+                pre,op=stack.pop()
+                res*=op
+                res+=pre
+            elif s[i]=='+':
+                op=1
+            elif s[i]=='-':
+                op=-1
+
+            i+=1
+
+        return res
+```
+
+Solution 2: infix, postfix check later!!
+
+**leetcode 227 - Basic Calculator II [M]**  
+Implement a basic calculator to evaluate a simple expression string, which contains non-negative integers and '+-\*/'  
+
+Examples:  
+Input: "3+2*2"  
+Output: 7  
+Input: "3/2"  
+Output: 1  
+Input: "3+5/2"  
+Output: 5  
+
+Solution:  
+create a stack of partial results to be summed up  
+iterate over s  
+when c is a digit, increase the res=res*10+int(c)  
+when c is an operator or at the end of the string, apply the previous operator to res  
+for '\*/', uses the previous integer on the stack  
+
+```python
+class Solution():
+    def calculate(self,s):
+        stack=[]
+        res=0
+        op='+'
+
+        for i,c in enumerate(s):
+            if c.isdigit():
+                res=res*10+int(c)
+            elif c=='+':
+                stack.append(res)
+            elif c=='-':
+                stack.append(-res)
+            elif c=='*':
+                stack.append(stack.pop()*res)
+            elif c=='/':
+                l=stack.pop(),res
+                if l*r<0 and l%r!=0:
+                    stack.append(l//r+1)
+                else:
+                    stack.append(l//r)
+            res=0
+            op=c
+
+        return sum(stack)
+```
+
 
 ###

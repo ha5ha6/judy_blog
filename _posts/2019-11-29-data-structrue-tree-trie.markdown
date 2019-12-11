@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 11 - trie"
+title:  "Data Structure 12 - trie"
 date:   2019-11-29 15:14:25 +0900
 related: true
 categories: Programming

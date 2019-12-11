@@ -129,6 +129,29 @@ class BSTIterator(object):
 
 ### Generate n Recover
 
+**leetcode 108 - Convert Sorted Array to Binary Search Tree [E]**  
+Given the sorted array: [-10,-3,0,5,9],  
+One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:  
+
+          0
+         / \
+       -3   9
+       /   /
+     -10  5
+
+```python
+class TreeConstruction():
+   def sortedArrayToBST(self, nums):
+       if len(nums)<1:
+           return None      
+       mid=len(nums)//2      
+       root=TreeNode(nums[mid])
+       root.left=self.sortedArrayToBST(nums[:mid])
+       root.right=self.sortedArrayToBST(nums[mid+1:])
+
+       return root
+```
+
 **leetcode 95 - Unique Binary Search Trees II [M] - generate**  
 Given an integer n, generate all structurally unique BST's that store values 1 ... n.  
 

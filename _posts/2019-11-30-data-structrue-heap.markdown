@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 7 - heap"
+title:  "Data Structure 8 - heap"
 date:   2019-11-30 16:23:25 +0900
 related: true
 categories: Programming
@@ -108,6 +108,27 @@ nums
    p  lc rc
 ```
 
+### Applications  
+
+- Priority Queue:
+
+A priority queue is an abstract concept like "a list" or "a map"; just as a list can be implemented with a linked list or an array, a priority queue can be implemented with a heap or a variety of other methods.  
+- Heapsort:
+
+One of the best sorting methods being in-place and with no quadratic worst-case scenarios.
+- Selection algorithms:
+
+A heap allows access to the min or max element in constant time, and other selections (such as median or kth-element) can be done in sub-linear time on data that is in a heap.
+- Graph algorithms:
+
+By using heaps as internal traversal data structures, run time will be reduced by polynomial order. Examples of such problems are **Prim's minimal-spanning-tree algorithm** and **Dijkstra's shortest-path algorithm**.
+- K-way merge:
+
+A heap data structure is useful to merge many already-sorted input streams into a single sorted output stream. Examples of the need for merging include external sorting and streaming results from distributed data such as a log structured merge tree. The inner loop is obtaining the min element, replacing with the next element for the corresponding input stream, then doing a sift-down heap operation. (Alternatively the replace function.) (Using extract-max and insert functions of a priority queue are much less efficient.)
+- Order statistics:
+
+The Heap data structure can be used to efficiently find the kth smallest (or largest) element in an array.
+
 
 ### Heap Sort
 
@@ -202,24 +223,3 @@ class Solution():
 
         return heapq.nlargest(k,nums)[-1]
 ```
-
-### Applications  
-
-- Priority Queue:
-
-A priority queue is an abstract concept like "a list" or "a map"; just as a list can be implemented with a linked list or an array, a priority queue can be implemented with a heap or a variety of other methods.  
-- Heapsort:
-
-One of the best sorting methods being in-place and with no quadratic worst-case scenarios.
-- Selection algorithms:
-
-A heap allows access to the min or max element in constant time, and other selections (such as median or kth-element) can be done in sub-linear time on data that is in a heap.
-- Graph algorithms:
-
-By using heaps as internal traversal data structures, run time will be reduced by polynomial order. Examples of such problems are **Prim's minimal-spanning-tree algorithm** and **Dijkstra's shortest-path algorithm**.
-- K-way merge:
-
-A heap data structure is useful to merge many already-sorted input streams into a single sorted output stream. Examples of the need for merging include external sorting and streaming results from distributed data such as a log structured merge tree. The inner loop is obtaining the min element, replacing with the next element for the corresponding input stream, then doing a sift-down heap operation. (Alternatively the replace function.) (Using extract-max and insert functions of a priority queue are much less efficient.)
-- Order statistics:
-
-The Heap data structure can be used to efficiently find the kth smallest (or largest) element in an array.

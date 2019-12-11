@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 8 - hash table"
+title:  "Data Structure 4 - hash table"
 date:   2019-11-14 21:19:25 +0900
 related: true
 categories: Programming
@@ -46,7 +46,7 @@ In many situations, hash tables turn out to be on average more efficient than se
 
 **Python built-in dict()**  
 
-more reads: hash table collision resolution 
+more reads: hash table collision resolution
 
 ### Find Dups
 

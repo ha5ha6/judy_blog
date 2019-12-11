@@ -36,6 +36,7 @@ toc_label: "Index"
     -------------------------------------------------------------------------------------------------
     | HashTable     |              | O(1)/O(n)    | O(1)/O(n)    | O(1)/O(n)    |  O(n)             |
     -------------------------------------------------------------------------------------------------
+    | Binary Tree   | O(n)         | O(n)         | O(n)         | O(n)         |  O(n)             |
     | BST           | O(logn)/O(n) | O(logn)/O(n) | O(logn)/O(n) | O(logn)/O(n) |  O(n)             |
     | KD Tree       | O(logn)/O(n) | O(logn)/O(n) | O(logn)/O(n) | O(logn)/O(n) |  O(n)             |
     | CartesianTree |              | O(logn)/O(n) | O(logn)/O(n) | O(logn)/O(n) |  O(n)             |
@@ -96,17 +97,18 @@ toc_label: "Index"
 1.	[array](https://ha5ha6.github.io/judy_blog/programming/2019/10/29/data-structrue-array.html)
 2.	[matrix](https://ha5ha6.github.io/judy_blog/programming/2019/10/29/data-structrue-matrix.html)
 3.	[string](https://ha5ha6.github.io/judy_blog/programming/2019/10/26/data-structrue-string.html)
-4.	[linked list](https://ha5ha6.github.io/judy_blog/programming/2019/11/08/data-structrue-linkedlist.html)
-5.	[stack](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html)
-6.	[queue](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/data-structrue-queue.html), [priority queue](https://ha5ha6.github.io/judy_blog/programming/2019/12/02/data-structrue-priorityqueue.html)
-7.	[heap](https://ha5ha6.github.io/judy_blog/programming/2019/11/30/data-structrue-heap.html)
-8.	[hash table](https://ha5ha6.github.io/judy_blog//programming/2019/11/14/data-structrue-hash.html)
+4.	[hash table](https://ha5ha6.github.io/judy_blog//programming/2019/11/14/data-structrue-hash.html)
+5.	[linked list](https://ha5ha6.github.io/judy_blog/programming/2019/11/08/data-structrue-linkedlist.html)
+6.	[stack](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html)
+7.	[queue](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/data-structrue-queue.html)
+8.	[priority queue](https://ha5ha6.github.io/judy_blog/programming/2019/12/02/data-structrue-priorityqueue.html), [heap](https://ha5ha6.github.io/judy_blog/programming/2019/11/30/data-structrue-heap.html)
 9.	[tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-tree.html), [tree + linked list](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/data-structrue-tree-linkedlist.html)
 10. [binary search tree](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html)
-11. [trie](https://ha5ha6.github.io/judy_blog/programming/2019/11/29/data-structrue-tree-trie.html)
-12. [segment tree](https://ha5ha6.github.io/judy_blog/programming/2019/12/03/data-structrue-segmenttree.html)
-13. [graph](https://ha5ha6.github.io/judy_blog/programming/2019/11/01/data-structrue-graph.html)
-14. [python built-in](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html)
+11. AVL tree, red-black tree
+12. [trie](https://ha5ha6.github.io/judy_blog/programming/2019/11/29/data-structrue-tree-trie.html)
+13. [segment tree](https://ha5ha6.github.io/judy_blog/programming/2019/12/03/data-structrue-segmenttree.html)
+14. [graph](https://ha5ha6.github.io/judy_blog/programming/2019/11/01/data-structrue-graph.html)
+15. [python built-in](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html)
 
 ### ALgorithms
 

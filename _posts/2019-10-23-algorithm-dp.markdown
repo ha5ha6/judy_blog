@@ -242,3 +242,37 @@ Input:
     1  0  0  1  0
 
 Output: 4  
+
+Solution:  
+dp[i][j] is the length of constructable rectangle, as the lower right point
+
+      dp initial, start from dp[1][1]
+      1 0 1 0 0
+      1 s
+      1
+      1
+
+      dp transit  
+      dp[i][j]=min(dp[i-1][j-1]+dp[i-1][j]+dp[i][j-1])+1
+
+
+```python  
+class Solution():
+    def maximalSquare(self,matrix):
+        if not matrix:
+            return 0
+
+        row,col=len(matrix),len(matrix[0])
+        dp=[[1 if matrix[i][j]=='1' else 0 for j in range(col)] for i in range(row)]
+
+        for i in range(1,row):
+            for j in range(1,col):
+                if matrix[i][j]=='1':
+                    dp[i][j]=min(dp[i-1][j-1],dp[i-1][j],dp[i][j-1])+1
+                else:
+                    dp[i][j]=0
+
+        res=[i for sub in dp for i in sub]
+
+        return max(res)**2
+```

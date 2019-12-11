@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 4 - linked list"
+title:  "Data Structure 5 - linked list"
 date:   2019-11-8 17:26:25 +0900
 related: true
 categories: Programming

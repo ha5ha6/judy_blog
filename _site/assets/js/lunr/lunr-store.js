@@ -5,7 +5,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-index.html",
         "teaser":null},{
         "title": "Data Structure 9 - tree",
-        "excerpt":"Definition A tree is a widely used abstract data type (ADT) that simulates a hierarchical tree structure, with a root value and subtrees of children with a parent node, represented as a set of linked nodes. A tree data structure can be defined recursively as a collection of nodes (starting...","categories": ["Programming"],
+        "excerpt":"Background Definition A tree is a widely used abstract data type that simulates a hierarchical tree structure, with a root value and subtrees of children with a parent node, represented as a set of linked nodes. A tree data structure can be defined recursively as a collection of nodes (starting...","categories": ["Programming"],
         "tags": ["Data Structure","Tree","Recursion","Dfs"],
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-tree.html",
         "teaser":null},{
@@ -39,7 +39,7 @@ var store = [{
         "tags": ["Algorithms","Bfs"],
         "url": "http://localhost:4000/programming/2019/10/27/algorithm-bfs.html",
         "teaser":null},{
-        "title": "Data Structure 6 - queue",
+        "title": "Data Structure 7 - queue",
         "excerpt":"Definition A Queue is a linear structure which follows a particular order in which the operations are performed. The order is First In First Out (FIFO). A good example of a queue is any queue of consumers for a resource where the consumer that came first is served first. The...","categories": ["Programming"],
         "tags": ["Data Structure","Queue","Python Collections"],
         "url": "http://localhost:4000/programming/2019/10/27/data-structrue-queue.html",
@@ -59,7 +59,7 @@ var store = [{
         "tags": ["Algorithms","Dfs","Palindrome","Recursion"],
         "url": "http://localhost:4000/programming/2019/10/31/algorithm-dfs.html",
         "teaser":null},{
-        "title": "Data Structure 13 - graph",
+        "title": "Data Structure 14 - graph",
         "excerpt":"Definition A Graph is a non-linear data structure consisting of nodes and edges. The nodes are sometimes also referred to as vertices and the edges are lines or arcs that connect any two nodes in the graph. More formally a Graph can be defined as, 0 - 1 \\ |...","categories": ["Programming"],
         "tags": ["Data Structure","Graph","Topological Sort"],
         "url": "http://localhost:4000/programming/2019/11/01/data-structrue-graph.html",
@@ -69,7 +69,7 @@ var store = [{
         "tags": ["Others"],
         "url": "http://localhost:4000/programming/2019/11/02/others-bit-manipulation.html",
         "teaser":null},{
-        "title": "Data Structure 4 - linked list",
+        "title": "Data Structure 5 - linked list",
         "excerpt":"Definition A linked list is a linear collection of data elements, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form,...","categories": ["Programming"],
         "tags": ["Data Structure","Linked List","Pointers"],
         "url": "http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist.html",
@@ -84,13 +84,13 @@ var store = [{
         "tags": ["Others","Point","Greatest Common Divisor","Python Collections","Hash Table"],
         "url": "http://localhost:4000/programming/2019/11/12/others-math.html",
         "teaser":null},{
-        "title": "Data Structure 14 - python built-in",
+        "title": "Data Structure 15 - python built-in",
         "excerpt":"lambda def identity(x): lambda x:x &lt;=&gt; return x (lambda x,y:x+y)(2,3) &gt;&gt;5 add_one=lambda x:x+1 add_one(2) &gt;&gt;3 cmp=lambda x,y: 1 if x+y&gt;y+x else -1 cmp('54','109') &gt;&gt;1 #54109&gt;10954 cmp('109','54') &gt;&gt;-1 #10954&lt;54109 higher-order functions high_fun=lambda x,func:x+func(x) high_fun(2,lambda x:x*x) &gt;&gt;6 lambda with args and kwargs (lambda x, y, z: x + y + z)(1, 2,...","categories": ["Programming"],
         "tags": ["Data Structure","Python collections","Python itertools","Queue","Hash Table"],
         "url": "http://localhost:4000/programming/2019/11/12/data-structrue-python-builtin.html",
         "teaser":null},{
-        "title": "Data Structure 5 - stack",
-        "excerpt":"Definition Stack is a linear data structure which follows a particular order in which the operations are performed. The order may be LIFO(Last In First Out) or FILO(First In Last Out). There are many real-life examples of a stack. Consider an example of plates stacked over one another in the...","categories": ["Programming"],
+        "title": "Data Structure 6 - stack",
+        "excerpt":"Background Definition Stack is a linear data structure which follows a particular order in which the operations are performed. The order may be LIFO(Last In First Out) or FILO(First In Last Out). There are many real-life examples of a stack. Consider an example of plates stacked over one another in...","categories": ["Programming"],
         "tags": ["Data Structure","Stack","Calculator","Hash Table","Parentheses"],
         "url": "http://localhost:4000/programming/2019/11/13/data-structrue-stack.html",
         "teaser":null},{
@@ -114,7 +114,7 @@ var store = [{
         "tags": ["Algorithms","Bucket Sort"],
         "url": "http://localhost:4000/programming/2019/11/14/algorithm-sorting.html",
         "teaser":null},{
-        "title": "Data Structure 8 - hash table",
+        "title": "Data Structure 4 - hash table",
         "excerpt":"Definition A hash table (hash map) is a data structure that implements an associative array abstract data type, a structure that can map keys to values. A hash table uses a hash function to compute an index, also called a hash code, into an array of buckets or slots, from...","categories": ["Programming"],
         "tags": ["Data Structure","Hash Table","N-Sum"],
         "url": "http://localhost:4000/programming/2019/11/14/data-structrue-hash.html",
@@ -144,12 +144,12 @@ var store = [{
         "tags": ["Algorithms","Graph"],
         "url": "http://localhost:4000/programming/2019/11/20/algorithm-topological.html",
         "teaser":null},{
-        "title": "Data Structure 11 - trie",
+        "title": "Data Structure 12 - trie",
         "excerpt":"Definition Trie is an efficient information retrieval data structure. Using Trie, search complexities can be brought to optimal limit (key length). If we store keys in binary search tree, a well balanced BST will need time proportional to M * log N, where M is maximum string length and N...","categories": ["Programming"],
         "tags": ["Data Structure","Tree"],
         "url": "http://localhost:4000/programming/2019/11/29/data-structrue-tree-trie.html",
         "teaser":null},{
-        "title": "Data Structure 7 - heap",
+        "title": "Data Structure 8 - heap",
         "excerpt":"Definition A heap is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the heap property: In a max heap, for any given node C, if P is a parent node of C, then the key (the value) of P is greater than or equal...","categories": ["Programming"],
         "tags": ["Data Structure","Heap"],
         "url": "http://localhost:4000/programming/2019/11/30/data-structrue-heap.html",
@@ -159,7 +159,7 @@ var store = [{
         "tags": ["Algorithms","Union Find"],
         "url": "http://localhost:4000/programming/2019/12/02/algorithm-unionfind.html",
         "teaser":null},{
-        "title": "Data Structure 6 - priority queue",
+        "title": "Data Structure 8 - priority queue",
         "excerpt":"Definition A priority queue is an abstract data type which is like a regular queue or stack data structure, but where additionally each element has a “priority” associated with it. In a priority queue, an element with high priority is served or dequeued before an element with low priority. If...","categories": ["Programming"],
         "tags": ["Data Structure","Queue","Priority Queue","Heap"],
         "url": "http://localhost:4000/programming/2019/12/02/data-structrue-priorityqueue.html",
@@ -174,7 +174,7 @@ var store = [{
         "tags": ["Algorithms","Divide and conquer"],
         "url": "http://localhost:4000/programming/2019/12/03/algorithm-dividenconquer.html",
         "teaser":null},{
-        "title": "Data Structure 12 - segment tree",
+        "title": "Data Structure 13 - segment tree",
         "excerpt":"Definition A segment tree also known as a statistic tree is a tree data structure used for storing information about intervals, or segments. It allows querying which of the stored segments contain a given point. It is, in principle, a static structure; that is, it’s a structure that cannot be...","categories": ["Programming"],
         "tags": ["Data Structure","Segment Tree"],
         "url": "http://localhost:4000/programming/2019/12/03/data-structrue-segmenttree.html",

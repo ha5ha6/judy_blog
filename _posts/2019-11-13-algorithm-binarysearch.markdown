@@ -218,3 +218,63 @@ class Solution():
             else:
                 right-=1
 ```
+
+### Count Tree Nodes  
+
+**leetcode 222 - Count Complete Tree Nodes [M]**  
+
+Given a **complete binary tree**, count the number of nodes.  
+Definition of a complete binary tree from Wikipedia:  
+In a complete binary tree every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible. It can have between 1 and 2^h nodes inclusive at the last level h.  
+
+Input:
+
+        1
+       / \
+      2   3
+     / \  /
+    4  5 6
+
+Solution 2: binary search check later!! 
+
+```python  
+class Solution():
+    def countNodes(self,root):
+        if not root:
+            return 0
+
+        d=self.depth(root)
+        if d==0:
+            return 1
+
+        left,right=1,2**d-1
+        while left<=right:
+            mid=(left+right)//2
+            if self.exists(mid,d,root):
+                left=mid+1
+            else:
+                right=mid-1
+
+        return (2**d-1)+left
+
+    def depth(self,node):
+        depth=0
+        while node.left:
+            node=node.left
+            depth+=1
+
+        return depth
+
+    def exists(self,idx,d,node):
+        left,right=0,2**d-1
+        for i in range(d):
+            mid=(left+right)//2
+            if idx<=mid:
+                node=node.left
+                right=mid
+            else:
+                node=node.right
+                left=mid+1
+
+        return node is not None
+```

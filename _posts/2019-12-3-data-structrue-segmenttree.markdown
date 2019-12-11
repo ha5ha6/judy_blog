@@ -1,7 +1,7 @@
 ---
 layout: single
 type: posts
-title:  "Data Structure 12 - segment tree"
+title:  "Data Structure 13 - segment tree"
 date:   2019-12-3 17:35:25 +0900
 related: true
 categories: Programming
