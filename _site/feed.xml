@@ -1,27 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-12-16T14:02:18+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Reinforcement Learning Index</title><link href="http://localhost:4000/rl-basic/2019/12/16/rlbasic.html" rel="alternate" type="text/html" title="Reinforcement Learning Index" /><published>2019-12-16T13:51:25+09:00</published><updated>2019-12-16T13:51:25+09:00</updated><id>http://localhost:4000/rl-basic/2019/12/16/rlbasic</id><content type="html" xml:base="http://localhost:4000/rl-basic/2019/12/16/rlbasic.html">&lt;h3 id=&quot;rl-basic&quot;&gt;RL Basic&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-12-16T14:04:15+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Reinforcement Learning Index</title><link href="http://localhost:4000/rl-basic/2019/12/16/rlbasic.html" rel="alternate" type="text/html" title="Reinforcement Learning Index" /><published>2019-12-16T13:51:25+09:00</published><updated>2019-12-16T13:51:25+09:00</updated><id>http://localhost:4000/rl-basic/2019/12/16/rlbasic</id><content type="html" xml:base="http://localhost:4000/rl-basic/2019/12/16/rlbasic.html">&lt;h3 id=&quot;rl-basic&quot;&gt;RL Basic&lt;/h3&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;/rl-basic/2019/12/12/bellman.html&quot;&gt;Bellman Equation&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/rl-basic/2019/12/13/rldp.html&quot;&gt;Dynamic Programming in RL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ha5ha6.github.io/judy_blog/rl-basic/2019/12/12/bellman.html&quot;&gt;Bellman Equation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ha5ha6.github.io/judy_blog/rl-basic/2019/12/13/rldp.html&quot;&gt;Dynamic Programming in RL&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;rl-advanced&quot;&gt;RL Advanced&lt;/h3&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;/literature/2019/12/06/softq.html&quot;&gt;Soft Q Learning&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/literature/2019/11/13/control-as-inference.html&quot;&gt;Control as Inference&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ha5ha6.github.io/judy_blog/literature/2019/12/06/softq.html&quot;&gt;Soft Q Learning&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ha5ha6.github.io/judy_blog/literature/2019/11/13/control-as-inference.html&quot;&gt;Control as Inference&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;model-based-rl&quot;&gt;Model-based RL&lt;/h3&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;/literature/2019/11/11/selected-paper-corl.html&quot;&gt;Model Predictive Control in CoRL 2019&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ha5ha6.github.io/judy_blog/literature/2019/11/11/selected-paper-corl.html&quot;&gt;Model Predictive Control in CoRL 2019&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;multi-agent-rl&quot;&gt;Multi-Agent RL&lt;/h3&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;/literature/2019/12/04/marl.html&quot;&gt;MARL partial&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ha5ha6.github.io/judy_blog/literature/2019/12/04/marl.html&quot;&gt;MARL partial&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><summary type="html">RL Basic</summary></entry><entry><title type="html">RL Dynamic Programming</title><link href="http://localhost:4000/rl-basic/2019/12/13/rldp.html" rel="alternate" type="text/html" title="RL Dynamic Programming" /><published>2019-12-13T17:41:25+09:00</published><updated>2019-12-13T17:41:25+09:00</updated><id>http://localhost:4000/rl-basic/2019/12/13/rldp</id><content type="html" xml:base="http://localhost:4000/rl-basic/2019/12/13/rldp.html">&lt;h3 id=&quot;dynamic-programming-in-rl&quot;&gt;Dynamic Programming in RL&lt;/h3&gt;
 
 &lt;p&gt;DP here refers to algorithms that can be used &lt;strong&gt;to compute optimal policies given a perfect model of the env as MDP&lt;/strong&gt;.&lt;br /&gt;
