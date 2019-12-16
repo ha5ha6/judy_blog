@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-12-16T11:50:18+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">RL Dynamic Programming</title><link href="http://localhost:4000/rl-basic/2019/12/13/rldp.html" rel="alternate" type="text/html" title="RL Dynamic Programming" /><published>2019-12-13T17:41:25+09:00</published><updated>2019-12-13T17:41:25+09:00</updated><id>http://localhost:4000/rl-basic/2019/12/13/rldp</id><content type="html" xml:base="http://localhost:4000/rl-basic/2019/12/13/rldp.html">&lt;h3 id=&quot;dynamic-programming-in-rl&quot;&gt;Dynamic Programming in RL&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-12-16T11:52:32+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">RL Dynamic Programming</title><link href="http://localhost:4000/rl-basic/2019/12/13/rldp.html" rel="alternate" type="text/html" title="RL Dynamic Programming" /><published>2019-12-13T17:41:25+09:00</published><updated>2019-12-13T17:41:25+09:00</updated><id>http://localhost:4000/rl-basic/2019/12/13/rldp</id><content type="html" xml:base="http://localhost:4000/rl-basic/2019/12/13/rldp.html">&lt;h3 id=&quot;dynamic-programming-in-rl&quot;&gt;Dynamic Programming in RL&lt;/h3&gt;
 
 &lt;p&gt;DP here refers to algorithms that can be used &lt;strong&gt;to compute optimal policies given a perfect model of the env as MDP&lt;/strong&gt;.&lt;br /&gt;
 &lt;span style=&quot;color:red&quot;&gt;The key idea is the use of value functions to organize and structure the search for good policies&lt;/span&gt;&lt;/p&gt;
@@ -351,7 +351,7 @@ They updates the values of states in any order whatsoever, using whatever values
 
 &lt;p&gt;&lt;strong&gt;Basic Formulation and Return&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/return.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/return.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Episodic and Continuing tasks&lt;/strong&gt;&lt;/p&gt;
 
@@ -369,7 +369,7 @@ They updates the values of states in any order whatsoever, using whatever values
 
 &lt;p&gt;&lt;strong&gt;Value function are defined w.r.t particular policies&lt;/strong&gt;, that is the rewards the agent can expect to receive in the future depend on what actions it will take&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/bellman.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/bellman.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;V and Q can be estimated from experience, such as Monte Carlo methods&lt;/li&gt;
@@ -485,7 +485,7 @@ start over, until convergence
 
 &lt;p&gt;If the dynamics of the environment are known, in principle one can solve this system of equations for V* using any one of a variety of methods for solving systems of nonlinear equations&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/bellmanop.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/bellmanop.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Because it is the optimal value function, however, V*’s consistency condition can be written in a special form without reference to any specific policy&lt;/p&gt;
 
@@ -533,7 +533,7 @@ Every time we compute V(s)=max of all [r+gamma*V(s’)] along actions&lt;/p&gt;
 
 &lt;h3 id=&quot;previous-edition&quot;&gt;Previous Edition&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/bellmanold.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><summary type="html">finite MDP</summary></entry><entry><title type="html">Soft Q-Learning</title><link href="http://localhost:4000/literature/2019/12/06/softq.html" rel="alternate" type="text/html" title="Soft Q-Learning" /><published>2019-12-06T17:12:25+09:00</published><updated>2019-12-06T17:12:25+09:00</updated><id>http://localhost:4000/literature/2019/12/06/softq</id><content type="html" xml:base="http://localhost:4000/literature/2019/12/06/softq.html">&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/bellmanold.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><summary type="html">finite MDP</summary></entry><entry><title type="html">Soft Q-Learning</title><link href="http://localhost:4000/literature/2019/12/06/softq.html" rel="alternate" type="text/html" title="Soft Q-Learning" /><published>2019-12-06T17:12:25+09:00</published><updated>2019-12-06T17:12:25+09:00</updated><id>http://localhost:4000/literature/2019/12/06/softq</id><content type="html" xml:base="http://localhost:4000/literature/2019/12/06/softq.html">&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
 
 &lt;p&gt;keywords:&lt;/p&gt;
 &lt;ul&gt;
@@ -654,7 +654,7 @@ must define an objective that promotes stochasticity&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;MaxEnt RL problem formulation&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/maxentrl.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/maxentrl.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Note that, the MaxEnt objective differs qualitatively from&lt;/p&gt;
 &lt;ul&gt;
@@ -675,13 +675,13 @@ While the MaxEnt objective can maximize the entropy of the entire traj distribut
 
 &lt;p&gt;However, &lt;strong&gt;engergy-based model&lt;/strong&gt; is more general class of distribution that can represent complex, multimodal behaviors&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/softbellman.png&quot; alt=&quot;&quot; width=&quot;70%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/softbellman.png&quot; alt=&quot;&quot; width=&quot;70%&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;soft-q-learning&quot;&gt;Soft Q-Learning&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Soft Q-Iteration&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/softqiter.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/softqiter.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Practical Problems&lt;/strong&gt;&lt;/p&gt;
 

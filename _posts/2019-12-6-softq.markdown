@@ -113,7 +113,7 @@ Experiment results:
 
 **MaxEnt RL problem formulation**
 
-![](/assets/images/maxentrl.png){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/maxentrl.png){:width="80%"}
 
 Note that, the MaxEnt objective differs qualitatively from  
 - Boltzmann Exploration  
@@ -130,13 +130,13 @@ prior work:
 
 However, **engergy-based model** is more general class of distribution that can represent complex, multimodal behaviors  
 
-![](/assets/images/softbellman.png){:width="70%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/softbellman.png){:width="70%"}
 
 ### Soft Q-Learning
 
 **Soft Q-Iteration**  
 
-![](/assets/images/softqiter.png){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/softqiter.png){:width="80%"}
 
 **Practical Problems**  
 
