@@ -70,7 +70,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/02/others-bit-manipulation.html",
         "teaser":null},{
         "title": "Data Structure 5 - linked list",
-        "excerpt":"Definition A linked list is a linear collection of data elements, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form,...","categories": ["Programming"],
+        "excerpt":"Background Definition A linked list is a linear collection of data elements, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic...","categories": ["Programming"],
         "tags": ["Data Structure","Linked List","Pointers"],
         "url": "http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist.html",
         "teaser":null},{
@@ -208,4 +208,9 @@ var store = [{
         "excerpt":"Dynamic Programming in RL DP here refers to algorithms that can be used to compute optimal policies given a perfect model of the env as MDP. The key idea is the use of value functions to organize and structure the search for good policies Assumption: MDP Dynamics is known Goal:...","categories": ["RL-Basic"],
         "tags": ["Reinforcement Learning"],
         "url": "http://localhost:4000/rl-basic/2019/12/13/rldp.html",
+        "teaser":null},{
+        "title": "Reinforcement Learning Index",
+        "excerpt":"RL Basic      Bellman Equation   Dynamic Programming in RL   RL Advanced      Soft Q Learning   Control as Inference   Model-based RL      Model Predictive Control in CoRL 2019   Multi-Agent RL      MARL partial  ","categories": ["RL-Basic"],
+        "tags": ["Reinforcement Learning"],
+        "url": "http://localhost:4000/rl-basic/2019/12/16/rlbasic.html",
         "teaser":null}]
