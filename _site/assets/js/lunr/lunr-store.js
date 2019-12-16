@@ -211,6 +211,6 @@ var store = [{
         "teaser":null},{
         "title": "Reinforcement Learning Index",
         "excerpt":"RL Basic      Bellman Equation   Dynamic Programming in RL   RL Advanced      Soft Q Learning   Control as Inference   Model-based RL      Model Predictive Control in CoRL 2019   Multi-Agent RL      MARL partial  ","categories": ["RL-Basic"],
-        "tags": ["Reinforcement Learning"],
+        "tags": ["Reinforcement Learning","Index"],
         "url": "http://localhost:4000/rl-basic/2019/12/16/rlbasic.html",
         "teaser":null}]

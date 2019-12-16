@@ -8,6 +8,7 @@ categories: RL-Basic
 tags:
   #- Index
   - Reinforcement Learning
+  - Index
 author:  Jiexin Wang
 classes:  wide
 toc: true

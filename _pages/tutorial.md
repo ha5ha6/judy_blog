@@ -28,7 +28,7 @@ feature_row:
     alt: "placeholder image 2"
     title: "Reinforcement Learning"
     excerpt: "Value based, Policy based, Deep RL, ... "
-    url: "."
+    url: "/rl-basic/2019/12/16/rlbasic.html"
     btn_label: "Read More"
     btn_class: "btn--primary"
   - image_path: assets/images/ml.jpg
