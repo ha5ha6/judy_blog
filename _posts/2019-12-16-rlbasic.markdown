@@ -17,19 +17,19 @@ author_profile: true
 
 ### RL Basic
 
-1. [Bellman Equation](/rl-basic/2019/12/12/bellman.html)  
-2. [Dynamic Programming in RL](/rl-basic/2019/12/13/rldp.html)  
+1. [Bellman Equation](https://ha5ha6.github.io/judy_blog/rl-basic/2019/12/12/bellman.html)  
+2. [Dynamic Programming in RL](https://ha5ha6.github.io/judy_blog/rl-basic/2019/12/13/rldp.html)  
 
 ### RL Advanced  
 
-1. [Soft Q Learning](/literature/2019/12/06/softq.html)  
-2. [Control as Inference](/literature/2019/11/13/control-as-inference.html)
+1. [Soft Q Learning](https://ha5ha6.github.io/judy_blog/literature/2019/12/06/softq.html)  
+2. [Control as Inference](https://ha5ha6.github.io/judy_blog/literature/2019/11/13/control-as-inference.html)
 
 
 ### Model-based RL
 
-1. [Model Predictive Control in CoRL 2019](/literature/2019/11/11/selected-paper-corl.html)
+1. [Model Predictive Control in CoRL 2019](https://ha5ha6.github.io/judy_blog/literature/2019/11/11/selected-paper-corl.html)
 
 ### Multi-Agent RL  
 
-1. [MARL partial](/literature/2019/12/04/marl.html)
+1. [MARL partial](https://ha5ha6.github.io/judy_blog/literature/2019/12/04/marl.html)
