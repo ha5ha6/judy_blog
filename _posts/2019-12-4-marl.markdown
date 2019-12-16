@@ -4,10 +4,9 @@ type: posts
 title:  "Multi Agent Reinforcement Learning"
 date:   2019-12-4 21:38:25 +0900
 related: true
-categories: LiteratureReview
+categories: Literature
 tags:
   #- Index
-
   - Reinforcement Learning
 author:  Jiexin Wang
 classes:  wide

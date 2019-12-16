@@ -4,7 +4,7 @@ type: posts
 title:  "Control as Inference"
 date:   2019-11-13 16:03:25 +0900
 related: true
-categories: LiteratureReview
+categories: Literature
 tags:
   #- Index
   - Soft-Q Learning

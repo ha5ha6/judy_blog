@@ -697,7 +697,7 @@ class TreeConstruction():
 
 ## Problems
 
-### Simple - Same, Symmetric, Invert, Path Sum
+### Simple - Same, Symmetric, Invert, Path Sum, Ancestor  
 
 **leetcode 100 - Same Tree [E] - [T/F]**  
 
@@ -848,6 +848,8 @@ class TreeSimple():
         if root.right:
             self.dfs(root.right,target,res,path+[root.right.val])
 ```
+
+**leetcode 236 - Lowest Common Ancestor of a Binary Tree [M]** see [bst #Ancestor](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html#ancestor)
 
 ### Hard - Max Path Sum, Sum Root to Leaf Numbers
 

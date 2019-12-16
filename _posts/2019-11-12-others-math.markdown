@@ -288,7 +288,7 @@ class Solution():
         return zs
 ```
 
-### Happy Number / XX Number  
+### Happy Number    
 
 **leetcode 202 - Happy Number [E] - two pointers**  
 A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.  
@@ -349,7 +349,60 @@ class Solution():
         return sum
 ```
 
-### Cartesian coordinate
+### Count Digit  
+
+**leetcode 233 - Number of Digit One [H]**  
+Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n.  
+
+Example:  
+Input: 13  
+Output: 6   
+Explanation: Digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.  
+
+    [1] x1
+    [10,19] x11
+    [20,29] x1
+    [30,39] x1
+    ...
+    [90,99] x1
+    [100,109] x11
+    [110,119] x21
+    [120,129] x11
+
+    take 524  
+         52
+         5
+
+    n,    b,        a,   res,          (n+8//10)      n%10==1     
+                                      check if >=2   check if last digit is 1
+    524   1         1    53*1+0*1=53       53          0 <- 4              
+    52    1+4*1=5   10   6*10+0*5=60       6           0 <- 2
+    5     5+5*10=55 100  1*100+0*55=100    1           0 <- 5
+                         sum(res)=213
+
+    521   1         1    52+1=53           52          1
+    52    1+1*1=2   10   6*10+0*2=60       6           0
+    5     2+5*10=52 100  1*100+0*52=100    1           0
+                         sum(res)=213
+
+    39    1         1    4*1+0*1=4         4 <- bit '3' of '39'
+    3     1+3*1     10   1*10+0*4=10       1
+
+```python
+class Solution():
+    def countDigitOne(self,n):
+        res,a,b=0,1,1
+        while n>0:
+            res+=(n+8)//10*a+(n%10==1)*b
+            b+=n%10*a
+            a*=10
+            n//=10
+
+        return res
+```
+
+
+### Cartesian Coordinate
 
 **leetcode 149 - Max Points on a Line [H] - greatest common divisor + dict count**  
 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line  
@@ -449,17 +502,21 @@ Output: 45
           ||-E,F  0,-1
           ---G,H  9,2
 
-Solution:
-overlap area length:    
-lower left point M = max(A,E),max(B,F) = 0,0
-upper right point N = min(C,G),min(D,H) = 3,2
+Solution:  
+overlap area condition: M[0],M[1]<N[0],N[1]     
+lower left point M = max(A,E),max(B,F) = 0,0  
+upper right point N = min(C,G),min(D,H) = 3,2  
+else no overlapping  
 
 ```python
 class Solution():
     def computeArea(self,A,B,C,D,E,F,G,H):
         M=[max(A,E),max(B,F)] #overlap leftlower
         N=[min(C,G),min(D,H)] #overlap rightupper
-        overlap=abs(M[0]-N[0])*abs(M[1]-N[1])
+        if M[0]<N[0] and M[1]<N[1]:
+            overlap=abs(M[0]-N[0])*abs(M[1]-N[1])
+        else:
+            overlap=0
 
         return (C-A)*(D-B)+(G-E)*(H-F)-overlap
 ```

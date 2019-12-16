@@ -4,7 +4,7 @@ type: posts
 title:  "Selected Papers - CoRL 2019"
 date:   2019-11-11 18:01:25 +0900
 related: true
-categories: LiteratureReview
+categories: Literature
 tags:
   #- Index
   - MPC

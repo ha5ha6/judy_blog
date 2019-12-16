@@ -44,7 +44,7 @@ toc_label: "Index"
     | B-Tree        | O(logn)      | O(logn)      | O(logn)      | O(logn)      |  O(n)             |
     | RedBlackTree  | O(logn)      | O(logn)      | O(logn)      | O(logn)      |  O(n)             |
     | AVL Tree      | O(logn)      | O(logn)      | O(logn)      | O(logn)      |  O(n)             |
-    | SplayTree     |              | O(logn)      | O(logn)      | O(logn)      |  O(n)             |
+    | Splay Tree    |              | O(logn)      | O(logn)      | O(logn)      |  O(n)             |
     -------------------------------------------------------------------------------------------------
 
 

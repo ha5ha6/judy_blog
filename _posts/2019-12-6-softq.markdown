@@ -4,7 +4,7 @@ type: posts
 title:  "Soft Q-Learning"
 date:   2019-12-6 17:12:25 +0900
 related: true
-categories: LiteratureReview
+categories: Literature
 tags:
   #- Index
   - Reinforcement Learning
@@ -109,10 +109,39 @@ Experiment results:
 - show improved exploration performance in tasks with multi-model reward landscapes  
 - a degree of compositionality in RL, by showing that stochastic energy-based policies can serve as a much better initialization for learning new skills  
 
+### Context
 
+**MaxEnt RL problem formulation**
 
+![](/assets/images/maxentrl.png){:width="80%"}
 
+Note that, the MaxEnt objective differs qualitatively from  
+- Boltzmann Exploration  
+- PGQ  
 
+BE and PGQ greedily maximize entropy at the current time step, but do not explicitly optimize for policies that aim to reach states where they will have high entropy in their future  
+While the MaxEnt objective can maximize the entropy of the entire traj distribution for the policy pi  
+
+**Policy Representation**  
+
+prior work:  
+- discrete multinomial distributions  
+- Gaussian distributions  
+
+However, **engergy-based model** is more general class of distribution that can represent complex, multimodal behaviors  
+
+![](/assets/images/softbellman.png){:width="70%"}
+
+### Soft Q-Learning
+
+**Soft Q-Iteration**  
+
+![](/assets/images/softqiter.png){:width="80%"}
+
+**Practical Problems**  
+
+- the soft Bellman backup cannot be performed exactly in continuous or large state and action spaces  
+- sampling from the energy-based model is intractable in general  
 
 
 
@@ -127,6 +156,15 @@ Experiment results:
 [2]Todorov, E. General duality between optimal control and estimation. In IEEE Conf. on Decision and Control, pp. 4286–4292. IEEE, 2008.  
 [3]Toussaint, M. Robot trajectory optimization using approx- imate inference. In Int. Conf. on Machine Learning, pp. 1049–1056. ACM, 2009.  
 
+**Boltzmann Exploration**  
+
+[4]Sallans, B. and Hinton, G. E. Reinforcement learning with factored states and actions. Journal of Machine Learning Research, 5(Aug):1063–1088, 2004.
+
 **Policy Gradient and Q-learning**  
 
-O’Donoghue, B., Munos, R., Kavukcuoglu, K., and Mnih, V. PGQ: Combining policy gradient and Q-learning. arXiv preprint arXiv:1611.01626, 2016.
+[5]O’Donoghue, B., Munos, R., Kavukcuoglu, K., and Mnih, V. PGQ: Combining policy gradient and Q-learning. arXiv preprint arXiv:1611.01626, 2016.
+
+**Soft V and Q**  
+
+[6]Ziebart, B. D. Modeling purposeful adaptive behavior with the principle of maximum causal entropy. PhD thesis, 2010.  
+[7]Fox, R., Pakman, A., and Tishby, N. Taming the noise in reinforcement learning via soft updates. In Conf. on Uncertainty in Artificial Intelligence, 2016.

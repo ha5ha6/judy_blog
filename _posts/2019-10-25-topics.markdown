@@ -35,6 +35,12 @@ toc_label: "Index"
 **leetcode 20 - Valid Parentheses [E] - hash + stack**  see [stack #parentheses](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html#parentheses)  
 **leetcode 22 - Generate Parentheses [M] - backtracking** see [backtracking #parentheses](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#parentheses)
 
+### Basic Calculator - 3 questions
+
+**leetcode 224 - Basic Calculator [H] - stack**  
+**leetcode 227 - Basic Calculator [M] - stack, record pre**  see [stack #arithmetic calculator](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html#arithmetic-calculator)  
+**leetcode 772 - Basic Calculator III [H]**  
+
 ### Palindrome - 10 questions
 
 **leetcode 9 - Palindrome Number [E]**  
@@ -104,7 +110,7 @@ leetcode 129 - Sum Root to Leaf Numbers [M]
 **leetcode 139 - Word Break [M] - dp**  
 **leetcode 140 - Word Break II [H] - dp + dfs** see [dp #word break](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html#word-break)  
 
-### Majority Elements - 8 solutions
+### Majority Elements - 2 questions, 8 solutions
 
 **leetcode 169 - Majority Element [E]**  
 [Hash, Set, Counter, Sort, Randomization, Divide n Conquer, Moore Voting, Bit Manipulation]  
@@ -216,7 +222,9 @@ class Solution():
         return new_left if nums[left:right+1].count(new_left)>nums[left:right+1].count(new_right) else new_right
 ```
 
-Solution 7 (Best) - Boyer-Moore Voting - Time O(n), Space O(1):
+**olution 7 (Best) - Boyer-Moore Voting** - Time O(n), Space O(1):  
+use a counter, cnt+=1 if encountering same element, else cnt-=1   
+when cnt==0, change candidate
 
 ```python
 class Solution():
@@ -251,7 +259,48 @@ class Solution():
         return major if major>>31==0 else major-(1<<32)
 ```
 
-### Kth Largest Element - 4 solutions
+**leetcode 229 - Majority Element II [M]**   
+Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.  
+Note: The algorithm should run in linear time and in O(1) space.  
+
+Example 1:  
+Input: [3,2,3]  
+Output: [3]  
+Example 2:  
+Input: [1,1,1,3,3,2,2,2]  
+Output: [1,2]  
+
+**Best Solution Boyer-Moore Voting** - Time O(n), Space O(1):  
+find the element cnt first reach 0, switch candidate for the new number    
+
+```python
+class Solution():
+    def majorityElement(self, nums):
+        cand1, cnt1=None,0
+        cand2, cnt2=None,0
+
+        for n in nums:
+            if n==cand1:
+                cnt1+=1
+            elif n==cand2:
+                cnt2+=1
+            elif cnt1==0:
+                cand1=n
+                cnt1=1
+            elif cnt2==0:
+                cand2=n
+                cnt2=1
+            else:
+                cnt1-=1
+                cnt2-=1
+
+        return [n for n in (cand1,cand2) if nums.count(n)>len(nums)//3]
+```
+
+
+
+
+### Kth Largest/Smallest Element - 2 questions, 4 solutions
 
 **leetcode 215 - Kth Largest in an Array [M]**  
 Find the kth largest element in an unsorted array, note: not the kth distinct element.  
@@ -350,6 +399,8 @@ class Solution():
 
         return next_lower
 ```
+
+**leetcode 230 - Kth Smallest in a BST [M]** see [bst #Kth smallest]()
 
 ### Best Time Buy n Sell I,II,III,IV
 

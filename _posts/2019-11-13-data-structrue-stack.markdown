@@ -28,7 +28,7 @@ Stack is a linear data structure which follows a particular order in which the o
 There are many real-life examples of a stack. Consider an example of plates stacked over one another in the canteen. The plate which is at the top is the first one to be removed, i.e. the plate which has been placed at the bottommost position remains in the stack for the longest period of time. So, it can be simply seen to follow LIFO(Last In First Out)/FILO(First In Last Out) order.  
 
 (+) constant time adds and removes, as it doesn't require shifting elements around  
-(+) useful in certain recursive algs.
+(+) useful in certain recursive algs
 
 ### Points to Note
 
@@ -37,15 +37,20 @@ There are many real-life examples of a stack. Consider an example of plates stac
 when you need to push temporary data onto a stack as you recurse, but then remove them as you backtrack (cuz the recursive check failed)
 3. can be used to implement a recursive alg iteratively
 
+### Basic Operations
+
+1. push() - TO(1)
+2. pop() - TO(1)
+3. peek() - TO(1)
+4. isEmpty() - TO(1)
+5. size() - TO(1)
+5. access() - TO(n)
+6. find() - TO(n)
+
+
 ### Implementation  
 
-**Operations**  
-1. pop()
-2. push()
-3. peek()
-4. isEmpty()
-
-**Use list** - append and pop  
+**python list** - append and pop  
 
 ```python
 stack=[]
@@ -53,6 +58,130 @@ stack.append(1)
 stack.append(2)
 stack.pop()
 >>2
+```
+
+**collections.deque**  
+
+```python
+from collections import deque
+stack=deque()
+stack.append(1)
+stack.append(2)
+stack.pop()
+```
+
+**queue.LifoQueue class**  
+functions: maxsize, empty(), full(), get(), get_nowait(), put(item), put_nowait(item), qsize(), etc  
+
+```python
+from queue import LifoQueue
+stack=LifoQueue()
+stack.put(1)
+stack.put(2)
+stack.get()
+```
+
+**single linked list**  
+
+**double linked list**  
+
+
+**leetcode 225 - Implement Stack using Queue [E]**  
+Implement the following operations of a stack using queues.
+
+push(x) -- Push element x onto stack  
+pop() -- Remove the element on top of the stack and return it  
+top() -- Get the element on the top  
+empty() --Return whether the stack is empty
+
+Example 1:  
+MyStack stack = new MyStack();  
+stack.push(1);   
+stack.push(2);  
+stack.top(); -> 2  
+stack.pop(); -> 2  
+stack.empty(); -> False  
+
+Queue operations can be used:  
+1. append left  
+2. peek/pop from front  
+3. size  
+4. isempty
+
+Solution:  
+
+                     head
+         --------------------
+    q ->     | 3 | 2 | 1 |   ->
+         --------------------
+                     head
+             -------------
+    stack ->   3 | 2 | 1 |
+          <- -------------
+
+    q.pop() -> 1
+    stack.pop() -> 3
+
+**popping**  
+q.pop() - output the first one append  
+stack.pop() - output the last one append  
+need to use a new_q collect all the q.popped elements until q is empty   
+
+**topping**  
+popping q until it's empty  
+use a new_q to collect all the q.popped elements  
+return the final popped q value  
+
+```python
+from collections import deque
+class MyStack():
+    def __init__(self):
+        self.queue=deque()
+
+    def push(self,x):
+        self.queue.appendleft(x)
+
+    def pop(self):
+        new_q=deque()
+        while True:
+            x=self.queue.pop()
+            if not self.queue:
+                self.queue=new_q        
+                return x
+            new_q.appendleft(x)
+
+    def top(self):
+        new_q=deque()
+        while self.queue:
+            x=self.queue.pop()
+            new_q.appendleft(x)
+        self.queue=new_q
+        return x
+
+    def empty(self):
+        return len(self.queue)==0
+
+```
+
+simpler Solution:   
+
+```python
+from collections import deque
+class MyStack():
+    def __init__(self):
+        self.queue=deque()
+
+    def push(self,x):
+        self.queue.appendleft(x)
+
+    def pop(self):
+        self.queue.popleft()
+
+    def top(self):
+        return self.queue[0]
+
+    def empty(self):
+        return not len(self.queue)
 ```
 
 ### Design
@@ -168,82 +297,7 @@ print(s.peekMax())
 print(s.popMax())
 ```   
 
-**leetcode 225 - Implement Stack using Queue [E]**  
-Implement the following operations of a stack using queues.
 
-push(x) -- Push element x onto stack  
-pop() -- Remove the element on top of the stack and return it  
-top() -- Get the element on the top  
-empty() --Return whether the stack is empty
-
-Example 1:  
-MyStack stack = new MyStack();  
-stack.push(1);   
-stack.push(2);  
-stack.top(); -> 2  
-stack.pop(); -> 2  
-stack.empty(); -> False  
-
-Queue operations can be used:  
-1. append left  
-2. peek/pop from front  
-3. size  
-4. isempty
-
-Solution:  
-
-                     head
-         --------------------
-    q ->     | 3 | 2 | 1 |   ->
-         --------------------
-                     head
-             -------------
-    stack ->   3 | 2 | 1 |
-          <- -------------
-
-    q.pop() -> 1
-    stack.pop() -> 3
-
-**popping**  
-q.pop() - output the first one append  
-stack.pop() - output the last one append  
-need to use a new_q collect all the q.popped elements until q is empty   
-
-**topping**  
-popping q until it's empty  
-use a new_q to collect all the q.popped elements  
-return the final popped q value  
-
-```python
-from collections import deque
-class MyStack():
-    def __init__(self):
-        self.queue=deque()
-
-    def push(self,x):
-        self.queue.appendleft(x)
-
-    def pop(self):
-        new_q=deque()
-        while True:
-            x=self.queue.pop()
-            if not self.queue:
-                self.queue=new_q        
-                return x
-            new_q.appendleft(x)
-
-    def top(self):
-        new_q=deque()
-        while self.queue:
-            x=self.queue.pop()
-            new_q.appendleft(x)
-        self.queue=new_q
-        return x
-
-    def empty(self):
-        return len(self.queue)==0
-
-```
 
 ## Problems
 
@@ -363,52 +417,61 @@ class Solution():
 **leetcode 224 - Basic Calculator [H]**  
 Implement a basic calculator to evaluate a simple expression string, which contains '()' and '+-'  
 
-Examples:  
-Input: "1+1"
-Output: 2
-Input: "2-1+2"
-Output: 3
-Input: "(1+(4+5+2)-3)+(6+8)"
-Output: 23
+Examples:    
+Input: "1+1"  
+Output: 2  
+Input: "2-1+2"  
+Output: 3  
+Input: "(1+(4+5+2)-3)+(6+8)"  
+Output: 23  
 
 Solution 1:  
-op +1: + (default)
-op -1: -
-when meet digit, take num, res+=(op*int(num))
-when meet (, stack append (res,op), reset op and res
-when meet ), stack pop (pre,op), res*=op, res+=pre
-when meet +, op=1
-when meet -, op=-1
+op +1: + (default)  
+op -1: -  
+when meet digit, take num, num=num\*10+int(c)  
+when meet (, stack append (res,op), reset op and res  
+when meet ), stack pop (pre,op), res\*=op, res+=pre  
+when meet +, op=1  
+when meet -, op=-1  
+
+    2 - ( 4 - 5 ) + 6 f
+    ^                    n=2
+      ^                  res=2,op=-1,n=0
+        ^                stackapp (2,-1),res=0,op=1
+          ^              n=4
+            ^            res=4,op=-1,n=0
+              ^          n=5
+                ^        res=4+(-1*5)=-1 calculate inside (4-5)
+                         pre,op=2,-1=stack.pop()
+                         res=(-1*-1)+2=3 calculate before,n=0
+                  ^      res=3+(-1)*0=3,op=1,n=0
+                    ^    n=6
+                      ^  res=3+6*1=9
+
 
 ```python
 class Solution():
     def calculate(self,s):
         stack=[]
-        op=1
-        res=0
-        i=0
-        while i<len(s):
-            if s[i].isdigit():
-                start=i
-                while i<len(s) and s[i].isdigit():
-                    i+=1
-                    num=s[start:i]
-                    res+=op*int(num)
-                    continue
-            elif s[i]=='(':
+        res,num,op=0,0,1
+        for c in s:
+            if c.isdigit():
+                num=num*10+int(c)
+            elif c=='+' or c =='-':
+                res+=op*num
+                num=0
+                op=1 if c =='+' else -1
+            elif c=='(':
                 stack.append((res,op))
-                op=1
-                res=0
-            elif s[i]==')':
+                res,op=0,1
+            elif c==')':
+                res+=op*num
                 pre,op=stack.pop()
                 res*=op
                 res+=pre
-            elif s[i]=='+':
-                op=1
-            elif s[i]=='-':
-                op=-1
+                num=0
 
-            i+=1
+        res+=op*num
 
         return res
 ```
@@ -438,25 +501,26 @@ class Solution():
     def calculate(self,s):
         stack=[]
         res=0
-        op='+'
+        pre_op='+'
 
         for i,c in enumerate(s):
             if c.isdigit():
                 res=res*10+int(c)
-            elif c=='+':
-                stack.append(res)
-            elif c=='-':
-                stack.append(-res)
-            elif c=='*':
-                stack.append(stack.pop()*res)
-            elif c=='/':
-                l=stack.pop(),res
-                if l*r<0 and l%r!=0:
-                    stack.append(l//r+1)
-                else:
-                    stack.append(l//r)
-            res=0
-            op=c
+            if c in '+-*/' or i==len(s)-1:
+                if pre_op=='+':
+                    stack.append(res)
+                elif pre_op='-':
+                    stack.append(-res)
+                elif pre_op=='*':
+                    stack.append(stack.pop()*res)
+                elif pre_op=='/':
+                    pre=stack.pop()
+                    if pre*res<0 and pre%res!=0:
+                        stack.append(pre//res+1)
+                    else:
+                        stack.append(pre//res)
+                pre_op=c
+                res=0
 
         return sum(stack)
 ```

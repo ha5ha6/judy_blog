@@ -318,3 +318,132 @@ class Solution():
 **leetcode 560 - Subarray Sum Equals K**  
 **leetcode 718 - Maximum Length of Repeated Subarray [M]**  
 **leetcode 713 - Subarray Product Less Than K []**  
+
+### Range
+
+**leetcode 228 - Summary Ranges [M]**  
+Given a sorted integer array without duplicates, return the summary of its ranges.  
+
+Example 1:  
+Input:  [0,1,2,4,5,7]  
+Output: ["0->2","4->5","7"]  
+Explanation: 0,1,2 form a continuous range; 4,5 form a continuous range.  
+
+Example 2:  
+Input:  [0,2,3,4,6,8,9]  
+Output: ["0","2->4","6","8->9"]  
+Explanation: 2,3,4 form a continuous range; 8,9 form a continuous range.  
+
+Solution 1:  
+brute force scanning, but be careful of the final edge case    
+
+```python
+class Solution():
+    def summaryRanges(self,nums):
+        res=[]
+        start,l=0,0
+        while l<len(nums):
+            if l!=len(s)-1 and nums[l+1]-nums[l]==1:
+                l+=1
+            elif l==len(nums)-1: #last element or continuous elements
+                if start==l:
+                    res.append(str(nums[start]))
+                else:
+                    res.append(str(nums[start])+'->'+str(nums[l]))
+                break
+            else:
+                if start==l:
+                    res.append(str(nums[start]))
+                else:
+                    res.append(str(nums[start])+'->'+str(nums[l]))
+
+                start=l+1
+                l+=1
+
+        return res
+```
+
+Solution 2:  
+record [start,end] pairs  
+if emtpy or not continue: append [n,n]  
+if continue: change the last bit to [n,n+1]
+
+    [0,1,2,4,5,7]
+
+    if emtpy or not continue:  if continue:
+        [0,0]                     [0,1]
+                                  [0,2]
+        [4,4]                     [4,5]
+        [7,7]                     [7,7]
+
+
+```python
+class Solution():
+    def summaryRanges(self,nums):
+        summary=[]
+        for n in nums:
+            if not summary or n>summary[-1][1]+1:
+                summary.append([n,n])
+            else:
+                summary[-1][1]=n
+
+        return [str(i) if i==j else str(i)+'->'+str(j) for i,j in summary]
+```
+
+### Dislocation    
+
+**leetcode 238 - Product of Array Except Self [M]**  
+Given an array nums of n integers where n>1, return an array output such that output[i] is equal to the product of all the elements of this array except nums[i]  
+
+Example:  
+Input: [1,2,3,4]  
+Output: [24,12,8,6]  
+
+Do it without division and in TO(n)  
+
+Solution:  
+cross productiong from both left and right side  
+
+    left side product
+    [1]
+      \
+    [1,1,2,6]
+
+    [1x2]
+        \
+    [1,1,2,6]
+
+    [1x2x3]
+          \
+    [1,1,2,6]
+
+    right side product
+
+          [4]
+          /
+    [1,1,2,6]
+    [1,1,8,6]
+
+        [3x4]
+        /
+    [1,12,8,6]
+
+      [2x3x4]
+      /
+    [24,12,8,6]
+
+
+```python
+class Solution():
+    def productExceptSelf(self,nums):
+        prod=[1]
+        for i in range(1,len(nums)):
+            prod[i]=nums[i]*prod[i-1]
+
+        right=1
+        for i in range(len(nums)-1,-1,-1):
+            prod[i]*=right
+            right*=nums[i]
+
+        return prod
+```

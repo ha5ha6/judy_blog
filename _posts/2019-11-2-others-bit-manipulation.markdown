@@ -16,6 +16,7 @@ author_profile: true
 ---
 
 ### Python Operation  
+
 1. '&', and, for carrying（进位）
 
 2. '&#124;', or  
@@ -339,9 +340,42 @@ class Solution(object):
         return bin(x^y).count('1')      
 ```   
 
+### Power of N
+
+**leetcode 231 - Power of Two [E]**  
+Given an integer, write a function to determine if it is a power of two.
+
+Examples:  
+Input: 1  
+Output: true   
+Explanation: 2^0 = 1  
+Input: 16  
+Output: true  
+Explanation: 2^4 = 16  
+Input: 218
+Output: false  
+
+Solution:  
+2^0 - 1  
+2^1 - 10  
+2^2 - 100    
+2^3 - 1000  
+
+if n is power of 2, n&(n-1)=1    
+10 & 01 = 0  
+100 & 011 = 0  
+
+```python
+class Solution(object):
+    def isPowerOfTwo(self,n):
+
+        return n>0 and not n&(n-1)     
+```
+
+
 ### References
 
-[leetcode bit manipulation questions](https://leetcode.com/tag/bit-manipulation/)
-[A summary: how to use bit manipulation to solve problems easily and efficiently](https://leetcode.com/problems/sum-of-two-integers/discuss/84278/a-summary-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently)
+[leetcode bit manipulation questions](https://leetcode.com/tag/bit-manipulation/)  
+[A summary: how to use bit manipulation to solve problems easily and efficiently](https://leetcode.com/problems/sum-of-two-integers/discuss/84278/a-summary-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently)  
 
 https://www.cnblogs.com/JYNNO1/p/10525649.html

@@ -10,7 +10,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-tree.html",
         "teaser":null},{
         "title": "Data Structure 10 - binary search tree",
-        "excerpt":"Definition A binary search tree (BST), also known as an ordered binary tree, is a node-based data structure in which each node has no more than two child nodes. The left sub-tree contains only nodes with keys less than the parent node; The right sub-tree contains only nodes with keys...","categories": ["Programming"],
+        "excerpt":"Background Definition A binary search tree (BST), also known as an ordered binary tree, is a node-based data structure in which each node has no more than two child nodes. The left sub-tree contains only nodes with keys less than the parent node; The right sub-tree contains only nodes with...","categories": ["Programming"],
         "tags": ["Data Structure","Tree","Binary Search Tree","Recursion"],
         "url": "http://localhost:4000/programming/2019/10/21/data-structrue-bst.html",
         "teaser":null},{
@@ -40,7 +40,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/27/algorithm-bfs.html",
         "teaser":null},{
         "title": "Data Structure 7 - queue",
-        "excerpt":"Definition A Queue is a linear structure which follows a particular order in which the operations are performed. The order is First In First Out (FIFO). A good example of a queue is any queue of consumers for a resource where the consumer that came first is served first. The...","categories": ["Programming"],
+        "excerpt":"Background Definition A Queue is a linear structure which follows a particular order in which the operations are performed. The order is First In First Out (FIFO). A good example of a queue is any queue of consumers for a resource where the consumer that came first is served first....","categories": ["Programming"],
         "tags": ["Data Structure","Queue","Python Collections"],
         "url": "http://localhost:4000/programming/2019/10/27/data-structrue-queue.html",
         "teaser":null},{
@@ -75,9 +75,9 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/08/data-structrue-linkedlist.html",
         "teaser":null},{
         "title": "Selected Papers - CoRL 2019",
-        "excerpt":"Deep Value Model Predictive Control Motivation the sparsity of the reward and potential non-differentiability rule out the possibility of using Trajectory Optimization (TO) Goal combine model-based and sample-based approaches to exploit the knowledge of the system dynamics while effectively exploring the env MPC - a model-based Trajectory Optimization approach MPC...","categories": ["LiteratureReview"],
+        "excerpt":"Deep Value Model Predictive Control Motivation the sparsity of the reward and potential non-differentiability rule out the possibility of using Trajectory Optimization (TO) Goal combine model-based and sample-based approaches to exploit the knowledge of the system dynamics while effectively exploring the env MPC - a model-based Trajectory Optimization approach MPC...","categories": ["Literature"],
         "tags": ["MPC","Reinforcement Learning"],
-        "url": "http://localhost:4000/literaturereview/2019/11/11/selected-paper-corl.html",
+        "url": "http://localhost:4000/literature/2019/11/11/selected-paper-corl.html",
         "teaser":null},{
         "title": "OThers 1 - math",
         "excerpt":"Greatest Common Divisor Example: gcd(2,4) -&gt; 2 gcd(3,0) -&gt; 3 gcd(-5,-10) -&gt; -5 #loop def gcd(x,y): while y: x,y=y,x%y return x #recursive def gcd(x,y): if y==0: return x else: gcd(y,x%y) #one line max([x for x in range(1,a+1) if a%x==0 and b%x==0]) #or [x for x in range(1,a+1) if a %...","categories": ["Programming"],
@@ -100,9 +100,9 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/13/algorithm-backtracking.html",
         "teaser":null},{
         "title": "Control as Inference",
-        "excerpt":"Introduction the Equivalence probabilistic inference under deterministic dynamics - - a generalization of RL | &lt;=&gt; max entropy RL | variational inference - - optimal control problem under stochastic dynamics Probabilistic Graphical Models (PGMs) provide a consistent and flexible framework to devise principled objectives set up models that reflect the...","categories": ["LiteratureReview"],
+        "excerpt":"Introduction the Equivalence probabilistic inference under deterministic dynamics - - a generalization of RL | &lt;=&gt; max entropy RL | variational inference - - optimal control problem under stochastic dynamics Probabilistic Graphical Models (PGMs) provide a consistent and flexible framework to devise principled objectives set up models that reflect the...","categories": ["Literature"],
         "tags": ["Soft-Q Learning","KL Divergence","Reinforcement Learning"],
-        "url": "http://localhost:4000/literaturereview/2019/11/13/control-as-inference.html",
+        "url": "http://localhost:4000/literature/2019/11/13/control-as-inference.html",
         "teaser":null},{
         "title": "ALgorithms 2 - binary search",
         "excerpt":"Time Complexity O(log n) Find Peak leetcode 153 - Find Minimum in Rotated Sorted Array [M] Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand, find the minimum element Example 1: Input: [3,4,5,1,2] Output: 1 Example 2: Input: [4,5,6,7,0,1,2] Output: 0 Solution: create...","categories": ["Programming"],
@@ -180,9 +180,9 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/12/03/data-structrue-segmenttree.html",
         "teaser":null},{
         "title": "Multi Agent Reinforcement Learning",
-        "excerpt":"Background In cooperative MARL, one central challenge is coping with the size of the joint action space, which grows exponentially in the number of agents (Game theory suffers this problem) Efficient MARL therefore must be able to generalize over large joint action spaces, in the same way taht CNN allows...","categories": ["LiteratureReview"],
+        "excerpt":"Background In cooperative MARL, one central challenge is coping with the size of the joint action space, which grows exponentially in the number of agents (Game theory suffers this problem) Efficient MARL therefore must be able to generalize over large joint action spaces, in the same way taht CNN allows...","categories": ["Literature"],
         "tags": ["Reinforcement Learning"],
-        "url": "http://localhost:4000/literaturereview/2019/12/04/marl.html",
+        "url": "http://localhost:4000/literature/2019/12/04/marl.html",
         "teaser":null},{
         "title": "OThers 12 - python class",
         "excerpt":"Public and Private   class M():     def public(self):         print('You can see me!')      def _private(self):         print('You cannot see me!')  m=M() m.public() &gt;&gt;You can see me! m._private() ??? &gt;&gt;'You cannot see me!'  ","categories": ["Programming"],
@@ -195,7 +195,17 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/12/06/algorithm-greedy.html",
         "teaser":null},{
         "title": "Soft Q-Learning",
-        "excerpt":"Background keywords: energy-based policies &lt;- boltzmann distribution max-entropy policies amortized stein variational gradient descent DRL: a promising direction for autonomous acquisition of complex behaviors (+) can process complex sensory input (+) so that can acquire elaborate behavior skills using general-purpose neural network representations However, (-) most DRL methods operate on...","categories": ["LiteratureReview"],
+        "excerpt":"Background keywords: energy-based policies &lt;- boltzmann distribution max-entropy policies amortized stein variational gradient descent DRL: a promising direction for autonomous acquisition of complex behaviors (+) can process complex sensory input (+) so that can acquire elaborate behavior skills using general-purpose neural network representations However, (-) most DRL methods operate on...","categories": ["Literature"],
         "tags": ["Reinforcement Learning","Soft-Q Learning"],
-        "url": "http://localhost:4000/literaturereview/2019/12/06/softq.html",
+        "url": "http://localhost:4000/literature/2019/12/06/softq.html",
+        "teaser":null},{
+        "title": "Bellman Equation",
+        "excerpt":"finite MDP MDPs are a classical formalization of sequential decision making, where actions influence not just immediate rewards, but subsequent situations, or states, and through those future reward Thus MDPs involve delayed reward and the need to tradeoff immediate and delayed reward In Bandit Problems: estimate the Q*(a) of each...","categories": ["RL-Basic"],
+        "tags": ["Reinforcement Learning"],
+        "url": "http://localhost:4000/rl-basic/2019/12/12/bellman.html",
+        "teaser":null},{
+        "title": "RL Dynamic Programming",
+        "excerpt":"Dynamic Programming in RL DP here refers to algorithms that can be used to compute optimal policies given a perfect model of the env as MDP. The key idea is the use of value functions to organize and structure the search for good policies Assumption: MDP Dynamics is known Goal:...","categories": ["RL-Basic"],
+        "tags": ["Reinforcement Learning"],
+        "url": "http://localhost:4000/rl-basic/2019/12/13/rldp.html",
         "teaser":null}]
