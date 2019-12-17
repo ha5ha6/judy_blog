@@ -84,3 +84,102 @@ def dfs(s,res,path):
 
 scan_string("abcd")
 ```
+
+### Parentheses  
+
+**leetcode 241 - Different Ways to Add Parentheses [M]**  
+Given a string of numbers and operators return all possible results from computing all the different possible ways to group numbers and operators. The valid operators are +,-,*  
+
+Example 1:  
+Input: "2-1-1"  
+Output: [0,2]  
+Explanation:  
+((2-1)-1)=0  
+(2-(1-1))=0   
+
+Example 2:  
+Input: "2\*3-4\*5"  
+Output: [-34,-14,-10,-10,10]  
+
+Solution 1:  
+1. split the string into list  
+2. append nums, and ops  
+3. dfs()  
+
+Details of example 2\*3-4\*5:
+
+    dfs(['2','3','4','5'],['*','-','*'])
+    i=0 dfs(['(2*3)','4','5'],['-','*'])
+        i=0 dfs(['((2*3)-4)','5'],['*'])
+            i=0 dfs(['(((2*3)-4)*5)'],[])
+                ops=[],d[(((2*3)-4)*5)]=eval('(((2*3)-4)*5)')
+        i=1 dfs(['(2*3)','(4*5)'],['-'])
+            i=0 dfs(['((2*3)-(4*5))'])
+                ops=[],d[((2*3)-(4*5))]=eval('((2*3)-(4*5))')
+    i=1 dfs(['2','(3-4)','5'],['*','*'])
+        i=0 dfs(['(2*(3-4))','5'],['*'])
+            i=0 dfs(['((2*(3-4))*5)'])
+                ops=[],d[((2*(3-4))*5)]=eval('((2*(3-4))*5)')
+        i=1 dfs(['2','((3-4)*5'],['*'])
+            i=0 dfs(['(2*((3-4)*5)'])
+                ops=[],d[(2*((3-4)*5)]=eval('(2*((3-4)*5)')
+    i=2 dfs(['2','3','(4*5)'],['*','-'])
+        i=0 dfs(['(2*3)','(4*5)'],['-'])
+            i=0 dfs(['((2*3)-(4*5))'])
+                ops=[], '(2*3)-(4*5)' already in d
+        i=1 dfs(['2','(3-(4*5))'],['*'])
+            i=0 dfs(['(2*(3-(4*5)))'])
+                ops=[], d['(2*(3-(4*5)))']=eval('(2*(3-(4*5)))')
+
+In short:  
+
+    cur expression  remaining ops
+    (2*3),4,5          -*
+    ((2*3)-4),5        *
+    (((2*3)-4)*5) - 1
+
+    (2*3),(4*5)        -
+    ((2*3)-(4*5)) - 2
+
+    2,(3-4),5          **
+    (2*(3-4)),5        *
+    ((2*(3-4))*5) - 3
+
+    2,((3-4)*5)        *
+    (2*((3-4)*5) - 4  
+
+    2,3,(4*5)          *-
+    (2*3),(4*5)        -
+    ((2*3)-(4*5)) - same as 2
+
+    2,(3-(4*5))        *
+    (2*(3-(4*5))) - 5
+
+
+```python
+import re
+class Solution():
+    def diffWaysToCompute(self,s):
+
+        d=dict()
+        nums,ops=[],[]
+        s=re.split(r'(\D)',s) #split digits
+        for c in s:
+            if c.isdigit():
+                nums.append(c)
+            else:
+                ops.append(c)
+
+        self.dfs(nums,ops,d)
+
+        return d.values()
+
+    def dfs(self,nums,ops,d):
+        if ops:
+            for i in range(len(ops)):
+                self.dfs(nums[:i]+['('+nums[i]+ops[i]+nums[i+1]+')']+nums[i+2:],ops[:i]+ops[i+1:],d)
+        elif nums[0] not in d:
+            d[nums[0]]=eval(nums[0])
+```
+
+Solution 2: divide and conquer see [divide and conquer]()

@@ -51,7 +51,45 @@ In Merge Sort, we divide array into two halves, sort the two halves recursively,
 - The Skyline Problem
 - Maximum Subarray Sum
 - Longest Common Prefix
-- Search in a row-wise and column-wise sorted 2d array
+- Search in a row-wise and column-wise sorted 2d array  
+
+**leetcode 95 - Unique Binary Search Trees II [M]** see [bst #generate]()
+
+**leetcode 241 - Different Ways to Add Parentheses [M]**  
+Given a string of numbers and operators return all possible results from computing all the different possible ways to group numbers and operators. The valid operators are +,-,*  
+
+Example 1:  
+Input: "2-1-1"  
+Output: [0,2]  
+Explanation:  
+((2-1)-1)=0  
+(2-(1-1))=0   
+
+Example 2:  
+Input: "2\*3-4\*5"  
+Output: [-34,-14,-10,-10,10]  
+
+```python
+class Solution():
+    def diffWaysToCompute(self,s):
+        res=[]
+        for i in range(len(s)):
+            if s[i] in '+-*':
+                lefts=self.diffWaysToCompute(s[:i])
+                rights=self.diffWaysToCompute(s[i+1:])
+                for l in lefts:
+                    for r in rights:
+                        if s[i]=='+':
+                            res.append(l+r)
+                        elif s[i]=='-':
+                            res.append(l-r)
+                        else:
+                            res.append(l*r)
+        if not res:
+            res.append(int(s))
+
+        return res
+```
 
 
 References:  

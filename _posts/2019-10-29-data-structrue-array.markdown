@@ -447,3 +447,175 @@ class Solution():
 
         return prod
 ```
+
+### Flatten  
+
+**flatten a 2D list**  
+
+- use list comprehension
+
+```python
+l=[[1, 2, 3], [3, 6, 7], [7, 5, 4]]
+f=[i for sub in l for i in sub]
+```
+
+- use chain.iterable()
+
+```python
+from itertools import chain
+l=[[1, 2, 3], [3, 6, 7], [7, 5, 4]]
+f=list(chain.from_iterable(l))
+>>f
+[1, 2, 3, 3, 6, 7, 7, 5, 4]
+```
+
+- use functools.reduce  (check later!!)
+
+```python
+from functools import reduce
+l=[[1, 2, 3], [3, 6, 7], [7, 5, 4]]
+f=reduce(lambda z,y:z+y,l)
+```
+
+- use numpy
+
+```python
+a=np.array([[1, 2, 3], [3, 6, 7], [7, 5, 4]])
+a.flatten()
+>>array([1, 2, 3, 3, 6, 7, 7, 5, 4])
+```
+
+**flatten a nested list** - recursion
+Input:  
+l = [1, 2, [3, 4, [5, 6]], 7, 8, [9, [10]]]  
+Output:  
+l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+```python
+l=[1,2,[3,4,[5,6]],7,8,[9,[10]]]  
+res=[]
+def flatten(l):
+    for i in l:
+        if type(i)==list:
+            flatten(i)
+        else:
+            res.append(i)
+
+>>res
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+**leetcode 251 - Flatten 2D Vector [M]**  
+Implement an iterator to flatten a 2d vector.  
+
+Input: [[1,2],[3],[4,5,6]]  
+Output: [1,2,3,4,5,6]
+
+Explanation:  
+By calling next repeatedly until hasNext returns False  
+The order of elements returned by next should be:  
+[1,2,3,4,5,6]
+
+Solution:  
+use two pointers l for each sublist, i for each element in each sublist  
+l,i=0,0, increase i and l in every step    
+
+```python
+class Vector2D():
+    def __init__(self,vec):
+        self.vec=vec
+        self.l,self.i=0,0
+
+        #if empty sublist
+        while self.l<len(self.vec) and len(self.vec[self.l])==0:
+            self.l+=1
+
+    def next(self):
+        res=self.vec[self.l][self.i]
+        if self.i<len(self.vec[self.l])-1:  #still in current sub list
+            self.i+=1
+        else:
+            self.i=0
+            self.l+=1
+            #if empty sublist
+            while self.l<len(self.vec) and len(self.vec[self.l])==0:
+                self.l+=1
+
+        return res
+
+    def hasNext(self):
+        return self.l<len(self.vec)
+
+v=Vector2D([[1,2],[3],[4,5,6]])
+print(v.hasNext())
+print(v.next())
+print(v.next())
+print(v.next())
+print(v.next())
+print(v.next())
+>>
+True
+1
+2
+3
+4
+5
+```
+
+**leetcode 341 - Flatten Nested List Iterator [M]**  
+Given a nested list of integers, implement an iterator to flatten it.  
+Each element is either an integer, or a list -- whose elements may also be integers or other lists.
+
+Example 1:  
+Input: [[1,1],2,[1,1]]  
+Output: [1,1,2,1,1]  
+Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,1,2,1,1].  
+
+Example 2:  
+Input: [1,[4,[6]]]  
+Output: [1,4,6]  
+Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].  
+
+Solution:  
+first transfer to list and then using pop
+
+```python
+class NestedIterator():
+    def __init__(self,nestedList):
+        self.res=[]
+        self.flatten(nestedList)
+        self.res=self.res[::-1]
+
+    def flatten(self,l):
+        for i in l:
+            if type(i)==list:
+                self.flatten(i)
+            else:
+                self.res.append(i)
+
+    #should use built-in functions like following
+    #isInteger, getList
+    def flatten(self,l):
+        for i in l:
+            if i.isInteger():
+                self.res.append(i)
+            else:
+                self.flatten(i.getList())
+
+    def next(self):
+
+        return self.res.pop()
+
+    def hasNext(self):
+
+        return len(self.res)!=0
+
+n=NestedIterator([[1,1],2,[1,1]])
+print(n.next())
+print(n.next())
+print(n.next())
+print(n.hasNext())
+print(n.next())
+print(n.next())
+print(n.hasNext())
+```

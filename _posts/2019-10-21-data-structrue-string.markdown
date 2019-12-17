@@ -263,6 +263,41 @@ class Solution():
         s.pop()
 ```
 
+### Shifting  
+
+**leetcode 249 - Group Shifted Strings [M] - hash**  
+Given a string, we can "shift" each of its letter to its successive letter    
+i.e: 'abc'->'bcd'->...->'xyz'  
+Given a list of strings which contains only lowercase alphabets, group all strings that belong to the same shifting sequence  
+
+Input:['abc','bcd','acef','xyz','az','ba','a','z']  
+Output: [['abc','bcd','xyz'],['az','ba'],['acef'],['a','z']]  
+
+Solution:  
+use a auto-length list dict to record each head char of shifted values  
+
+    {'a':'a','z',  
+     'az':'az','ba',  
+     'abc':'abc','bcd','xyz',  
+     'acef':'acef'}
+
+shift is determined by the first char: shift=ord(s[0])-ord('a')  
+check shifted by (ord(c)-ord('a')-shift)%26, return the origin as dict key, given string as dict values       
+
+```python
+from collections import defaultdict
+class Solution():
+    def groupStrings(self,strings):
+        shifted=defaultdict(list)
+        for s in strings:
+            shift=ord(s[0])-ord('a')
+            s_shifted=''.join([chr((ord(c)-ord('a')-shift)%26+ord('a')) for c in s])
+            shifted[s_shifted].append(s)
+
+        return shifted.values()
+```
+
+
 ### Palindrome
 
 **leetcode 125 - Valid Palindrome [E]**   
@@ -330,3 +365,28 @@ class Solution():
 
 Solution 2:  
 use KMP failure function algorithm to find the longest prefix of s that is also a suffix of s[::-1]   
+
+### Anagram  
+
+**leetcode 242 - Valid Anagram [E]**  
+Anagram means chars in string has randomized order but still same chars  
+
+Input: s="anagram", t="nagaram"  
+Output: True
+
+Solution 1: hash TO(m+n)  
+
+```python
+from collections import Counter
+class Solution():
+    def isAnagram(self,s,t):
+        return Counter(s)==Counter(t)
+```
+
+Solution 2: sort TO(logm+logn)    
+
+```python
+class Solution():
+    def isAnagram(self,s,t):
+        return sorted(s)==sorted(t)
+```

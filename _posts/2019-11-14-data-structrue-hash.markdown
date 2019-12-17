@@ -289,6 +289,33 @@ class Solution():
 
 **leetcode 20 - Valid Parentheses [E] - hashtable + stack** see [stack #parentheses](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html#parentheses)
 
+### Strobogrammatic  
+
+**leetcode 246 - Strobogrammatic Number [E]**    
+A Strobogrammatic number is a number that looks the same when rotated 180 degrees.  
+Write a function to determine if a number is Strobogrammatic.  
+
+Examples:   
+Input: "69"   
+Output: True   
+Input: "88"   
+Output: True  
+Input: "962"  
+Output: False  
+
+```python
+class Solution():
+    def isStrobogrammatic(self,num):
+        strob={'0':'0','1':'1','8':'8','6':'9','9':'6'}
+        for left in range((len(num)+1)//2):
+            right=len(num)-1-left
+            if num[left] not in strob or strob[num[left]]!=num[right]:
+                return False
+
+        return True
+```
+
+
 ### Word Dictionary / Trie
 
 **leetcode 208 - Implement Trie (Prefix Tree) [M] - design, linked hash** see [trie](https://ha5ha6.github.io/judy_blog/programming/2019/11/29/data-structrue-tree-trie.html)  

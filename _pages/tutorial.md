@@ -27,7 +27,7 @@ feature_row:
     #image_caption: "Image courtesy of J.Wang"
     alt: "placeholder image 2"
     title: "Reinforcement Learning"
-    excerpt: "Value based, Policy based, Deep RL, ... "
+    excerpt: "Bellman Equation, Dynamic Programming, Value based, Policy based, Deep RL, ... "
     url: "/rl-basic/2019/12/16/rlbasic.html"
     btn_label: "Read More"
     btn_class: "btn--primary"

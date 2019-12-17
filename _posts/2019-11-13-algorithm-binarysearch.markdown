@@ -19,7 +19,7 @@ author_profile: true
 
 **Time Complexity O(log n)**
 
-### Find Peak
+### Find Peak in Array
 
 **leetcode 153 - Find Minimum in Rotated Sorted Array [M]**  
 Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand, find the minimum element  
@@ -186,6 +186,116 @@ class Solution():
        return right
 ```
 
+### Find Element in Matrix  
+
+**leetcode 74 - Search a 2D Matrix [M]**  
+Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:  
+Integers in each row are sorted from left to right.  
+The first integer of each row is greater than the last integer of the previous row.  
+
+Example 1:  
+Input:  
+matrix = [
+  [1,   3,  5,  7],  
+  [10, 11, 16, 20],  
+  [23, 30, 34, 50]]  
+target = 3  
+Output: true  
+
+Example 2:  
+Input:  
+matrix = [  
+  [1,   3,  5,  7],  
+  [10, 11, 16, 20],  
+  [23, 30, 34, 50]]    
+target = 13  
+Output: false  
+
+Solution: TO(logm+logn)    
+since elements are still in order when matrix been flattened  
+can do binary search in 0 to rows*cols-1, of sub2num  
+
+```python
+class Solution():
+    def searchMatrix(self,matrix,target):
+        if not matrix or not matrix[0]:
+            return False
+
+        rows,cols=len(matrix),len(matrix[0])
+        left,right=0,rows*cols-1
+
+        while left<=right:
+            mid=(left+right)//2
+            val=matrix[mid//cols][mid%cols]
+            if target==val:
+                return True
+            elif target>val:
+                left=mid+1
+            else:
+                right=mid-1
+
+        return False
+```
+
+**leetcode 240 - Search a 2D Matrix II [M]**  
+Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:  
+Integers in each row are sorted in ascending from left to right.  
+Integers in each column are sorted in ascending from top to bottom.  
+
+Example:
+Consider the following matrix:
+[  
+  [1,   4,  7, 11, 15],  
+  [2,   5,  8, 12, 19],  
+  [3,   6,  9, 16, 22],  
+  [10, 13, 14, 17, 24],  
+  [18, 21, 23, 26, 30]]  
+
+Given target = 5, return true.  
+Given target = 20, return false.  
+
+Solution: TO(m+n)   
+start searching from (0,4) - 15*  
+find target=12:
+
+    [1,   4,  7, 11,  15*]
+                  ^ <- ^    15>target, c-1 (0,3)
+    [2,   5,  8, 12,  19]   11<target, r+1 (1,3)  
+                  ^
+    [3,   6,  9, 16,  22]  
+    [10, 13, 14, 17,  24]
+
+
+find target=10:  
+
+    [1,   4,   7,   11,  15*]
+               ^ <- ^ <- ^    15>target, c-1 (0,3)
+    [2,   5,   8,   12,  19]  11>target, c-1 (0,2)  
+               ^              7<target, r+1 (1,2)
+    [3,   6,   9,   16,  22]  8<target, r+1 (2,2)
+               ^              9<target, r+1 (3,2)
+    [10,  13,  14,  17,  24]  14>target, c-1 (3,1)
+     ^ <- ^ <- ^              13>target, c-1 (3,0)
+
+```python
+class Solution():
+    def searchMatrix(self,matrix,target):
+        if not matrix or not matrix[0]:
+            return False
+
+        rows,cols=len(matrix),len(matrix[0])
+        r,c=0,cols-1
+        while r<rows and c>=0:
+            if matrix[r][c]==target:
+                return True
+            if matrix[r][c]<target:
+                r+=1
+            else:
+                c-=1
+
+        return False
+```
+
 ### Two Sum
 
 **leetcode 167 - Two Sum II - Input array is sorted [E]**  
@@ -235,7 +345,7 @@ Input:
      / \  /
     4  5 6
 
-Solution 2: binary search check later!! 
+Solution 2: binary search check later!!
 
 ```python  
 class Solution():

@@ -349,6 +349,88 @@ class Solution():
         return sum
 ```
 
+### Strobogrammatic Number  
+
+**leetcode 246 - Strobogrammatic Number (T/F) [E]** - hash  
+A Strobogrammatic number is a number that looks the same when rotated 180 degrees.  
+Write a function to determine if a number is Strobogrammatic.  
+
+Examples:   
+Input: "69"   
+Output: True   
+Input: "88"   
+Output: True  
+Input: "962"  
+Output: False  
+
+```python
+class Solution():
+    def isStrobogrammatic(self,num):
+        strob={'0':'0','1':'1','8':'8','6':'9','9':'6'}
+        for left in range((len(num)+1)//2):
+            right=len(num)-1-left
+            if num[left] not in strob or strob[num[left]]!=num[right]:
+                return False
+
+        return True
+```
+
+**leetcode 247 - Strobogrammatic Number II (find all) [M]**  
+Find all strobogrammatic numbers that are of length=n  
+
+Input: n=2  
+Output: ['11','69','88','96']  
+
+```python
+class Solution():
+    def findStrobogrammatic(self,n):
+        if n<=0:
+            return ['']
+
+        if n%2==1:
+            res=['0','1','8']  #hamburger for odd bits
+        else:
+            res=['']
+
+        strob={'0':'0','1':'1','8':'8','6':'9','9':'6'}
+        for i in range(n//2):
+            res=[c+r+strob[c] for r in res for c in strob]
+
+        return [r for r in res if (res[0]!='0' or n==1)]
+```
+
+**leetcode 248 - Strobogrammatic Number III (find in range) [H]**  
+Write a function to count the total strobogrammatic numbers that exist in the range of low<=num<=high  
+
+Input: low='50', high='100'  
+Output: 3
+Explanation: 69, 88, 96  
+
+```python
+class Solution():
+    def strobogrammaticInRange(self,low,high):
+        min_len,max_len=len(low),len(high)
+        low,high=int(low),int(high)
+        even=['']
+        odd=['0','1','8'] #burger
+        strob_cnt=0
+        strob={'0':'0','1':'1','8':'8','6':'9','9':'6'}
+
+        if min_len==1:
+            strob_cnt+=len([i for i in odd if low<=int(i)<=high])
+
+        for i in range(2,max_len+1):
+            even=[c+r+strob[c] for r in even for c in strob]
+            if min_len<i<max_len: #add all numbers in list not beginning with 0
+                strob_cnt+=len([True for r in even if r[0]!='0'])
+            elif i==min_len or i==max_len:
+                strob_cnt+=len([True for r in even if r[0]!='0' and low<=int(r)<=high])
+
+            even,odd=odd,even
+
+        return strob_cnt
+```
+
 ### Count Digit  
 
 **leetcode 233 - Number of Digit One [H]**  

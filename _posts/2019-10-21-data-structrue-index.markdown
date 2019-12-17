@@ -140,20 +140,28 @@ toc_label: "Index"
 
 ### Topics
 
-1.  [N Sum](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#n-sum---3-questions) [hash, binary search, design]
-2.  [Parentheses](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#parentheses---2-questions) [hash, stack, backtracking]
-3.  [Palindrome](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#palindrome---10-questions) [string, backtracking, dp, linked list, hash, trie]
-4.  [Contains Dups](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#contains-dups---3-questions) [hash]
-5.  [Combination](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#combination---7-questions) [backtracking, dp]
-6.  [Permutation](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#permutation---6-questions) [list, backtracking, hash]
-7.  [Word Break](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#word-break-iii) [dp, dfs]
-8.  [Majority Element](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#majority-elements---8-solutions) [hash, set, Counter, sort, randomization, divide n conquer, Moore Voting, bit manipulation]
-9.  [Kth Largest Element](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#kth-largest-element---4-solutions) [sorting, max heap, quick select, partition]
-10. [Best Time Buy n Sell](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#best-time-buy-n-sell-iiiiiiiv) [list, minmax, dp]  
-11. [House Robber](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#house-robber-iii) [dp]
-12. [Word Ladder](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#word-ladder-iii) [bfs, dfs]
+1. [general](/programming/2019/10/25/topics.html)  
+2. [multi-answers](/programming/2019/12/16/topics-multians.html)
+3. [series](/programming/2019/10/25/topics-series.html)
 
+Topics 1 includes:  
+-  [N Sum]() [hash, binary search, design]
+-  [Parentheses]() [hash, stack, backtracking]
+-  [Palindrome]() [string, backtracking, dp, linked list, hash, trie]
+-  [Contains Dups]() [hash]
+-  [Combination]() [backtracking, dp]
+-  [Permutation]() [list, backtracking, hash]
 
+Topics 2 includes:  
+-  [Majority Element]() [hash, set, Counter, sort, randomization, divide n conquer, Moore Voting, bit manipulation]
+-  [Kth Largest Element]() [sorting, max heap, quick select, partition]
+
+Topics 3 includes:  
+-  [Best Time Buy n Sell]() [list, minmax, dp]  
+-  [House Robber]() [dp]
+-  [Shortest Word Distance]() [array, hash]
+-  [Word Break]() [dp, dfs]
+-  [Word Ladder]() [bfs, dfs]
 
 
 ### Resources

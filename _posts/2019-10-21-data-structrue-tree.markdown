@@ -697,7 +697,7 @@ class TreeConstruction():
 
 ## Problems
 
-### Simple - Same, Symmetric, Invert, Path Sum, Ancestor  
+### Simple - Same, Symmetric, Invert, Univalue, Path Sum, Ancestor  
 
 **leetcode 100 - Same Tree [E] - [T/F]**  
 
@@ -780,6 +780,47 @@ class Solution():
 
         return root
 ```
+
+**leetcode 250 - Count Univalue Subtrees [E]**  
+Given a binary tree,count the number of uni-value subtrees  
+A uni-value subtree means all nodes of the subtree have the same value  
+see [leetcode ref](https://leetcode.com/articles/count-univalue-subtrees/)
+
+Input: root=[5,1,5,5,5,null,5]  
+
+        5
+       / \
+      1   5*
+     / \   \
+    5*  5*  5*
+
+Output: 4  
+
+```python
+class Solution():
+    def countUnivalueSubtrees(self,root):
+
+        self.cnt=0
+        self.isUni(root)
+        return self.cnt
+
+    def isUni(self,node):
+        if not node.left and not node.right:
+            self.cnt+=1
+            return True
+
+        is_uni=True
+        if node.left:
+            is_uni=self.isUni(node.left) and is_uni and node.left.val==node.val
+
+        if node.right:
+            is_uni=self.isUni(node.right) and is_uni and node.right.val=node.val
+
+        self.cnt+=is_uni
+
+        return is_uni
+```
+
 
 **leetcode 112 - Path Sum [E]**  
 Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.  

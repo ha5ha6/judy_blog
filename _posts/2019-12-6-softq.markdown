@@ -136,7 +136,7 @@ However, **engergy-based model** is more general class of distribution that can 
 
 **Soft Q-Iteration**  
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/softqiter.png){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/softqiter.jpg){:width="80%"}
 
 **Practical Problems**  
 

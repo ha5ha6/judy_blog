@@ -63,3 +63,9 @@ class TwoSum():
 
         return False
 ```
+
+### Iterator  
+
+**leetcode 173 - Binary Search Tree Iterator [M]** see [bst #basic](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html#basic)  
+**leetcode 251 - Flatten 2D Vector [M]** see [array #flatten]()  
+**leetcode 341 - Flatten Nested List Iterator [M]**   

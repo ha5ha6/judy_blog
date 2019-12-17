@@ -1,22 +1,13 @@
 ---
 layout: single
 type: posts
-title:  "Topics"
+title:  "Topics 1 - general"
 date:   2019-10-25 15:58:25 +0900
 related: true
 categories: Programming
 tags:
   #- Index
-  - MinMax
-  - Bfs
-  - Dfs
-  - DP
-  - Recursion
   - Topics
-  - Hash Table
-  - Binary Search
-  - N-Sum
-  - Sorting
 author:  Jiexin Wang
 classes:  wide
 author_profile: true
@@ -24,24 +15,31 @@ toc: true
 toc_label: "Index"
 ---
 
-### N Sum - 3 questions
+## Topics 1 general
+
+### N Sum x3
 
 **leetcode 1 - Two Sum [E] - hash** see [hash table #nsum](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/data-structrue-hash.html#n-sum)  
 **leetcode 167 - Two Sum II - Input array is sorted [M] - binary search** see [binary search #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-binarysearch.html#two-sum)  
 **leetcode 170 - Two Sum III - Data structure design [E]**  see [design #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-design.html#two-sum)
 
-### Parentheses - 2 questions
+### Basic Calculator x5
+
+see [stack #arithmetic calculator](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html#arithmetic-calculator)  
+**leetcode 150 - Evaluate Reverse Polish Notation [M] - stack**  
+**leetcode 224 - Basic Calculator [H] - stack**  
+**leetcode 227 - Basic Calculator II [M] - stack, record pre**   
+**leetcode 772 - Basic Calculator III [H]**  
+**leetcode 241 - Different Ways to Add Parentheses [M] - divide n conquer / dfs** see [dfs #parentheses]() [divide and conquer #parentheses]()  
+**leetcode 282 - Expression Add Operators [H]**  
+
+### Parentheses x3  
 
 **leetcode 20 - Valid Parentheses [E] - hash + stack**  see [stack #parentheses](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html#parentheses)  
-**leetcode 22 - Generate Parentheses [M] - backtracking** see [backtracking #parentheses](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#parentheses)
+**leetcode 22 - Generate Parentheses [M] - backtracking** see [backtracking #parentheses](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#parentheses)  
+**leetcode 241 - Different Ways to Add Parentheses [M] - divide n conquer / dfs** see [dfs #parentheses]() [divide and conquer #parentheses]()
 
-### Basic Calculator - 3 questions
-
-**leetcode 224 - Basic Calculator [H] - stack**  
-**leetcode 227 - Basic Calculator [M] - stack, record pre**  see [stack #arithmetic calculator](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/data-structrue-stack.html#arithmetic-calculator)  
-**leetcode 772 - Basic Calculator III [H]**  
-
-### Palindrome - 10 questions
+### Palindrome x10
 
 **leetcode 9 - Palindrome Number [E]**  
 **leetcode 125 - Valid Palindrome [E] - string** see [string #palindrome](https://ha5ha6.github.io/judy_blog/programming/2019/10/26/data-structrue-string.html#palindrome)  
@@ -54,13 +52,8 @@ toc_label: "Index"
 **leetcode 336 - Palindrome Pairs [H] - hash, trie** see [trie #palindrome]()  
 **leetcode 409 - Longest Palindrome [E] - hash** see [hash #palindrome]()
 
-### Contains Dups - 3 questions
 
-**leetcode 217 - Contains Duplicate [E] - hash**   
-**leetcode 219 - Contains Duplicate [E] - hash**  
-**leetcode 220 - Contains Duplicate [M] - hash** see [hash #find dups](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/data-structrue-hash.html#find-dups)   
-
-### Combination - 7 questions  
+### Combination x7
 
 **leetcode 17 - Letter Combinations of a Phone Number [M] - backtracking**  
 **leetcode 77 - Combinations [M] - backtracking**  
@@ -70,7 +63,7 @@ toc_label: "Index"
 **leetcode 254 - Factor Combinations [M] - backtracking** see [backtracking #combinations](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#combinations)  
 **leetcode 377 - Combination Sum IV [M] - dp** see [dp]()  
 
-### Permutation - 6 questions
+### Permutation x6
 
 **leetcode 31 - Next Permutation [M] - list**  
 **leetcode 46 - Permutations [M] - backtracking**  
@@ -79,7 +72,9 @@ toc_label: "Index"
 **leetcode 266 - Palindrome Permutation [E] - hash** see [hash #palindrome]()  
 **leetcode 267 - Palindrome Permutation II [M] - backtracking** see [backtracking #palindrome]()  
 
-### Binary Tree - 19 questions
+### Linked List  
+
+### Binary Tree x19
 
 **Operations** see [tree #implementation](/programming/2019/10/21/data-structrue-tree.html#implementation)  
 leetcode 104 - Maximum Depth of Binary Tree [E]  
@@ -103,656 +98,72 @@ leetcode 112 - Path Sum [E]
 leetcode 113 - Path Sum II [M]  
 leetcode 124 - Binary Tree Maximum Path Sum [H]  
 leetcode 129 - Sum Root to Leaf Numbers [M]  
+leetcode 250 - Count Univalue Subtrees [E]
 
+### Binary Search Tree
 
-### Word Break I,II
+### Trie  
 
-**leetcode 139 - Word Break [M] - dp**  
-**leetcode 140 - Word Break II [H] - dp + dfs** see [dp #word break](https://ha5ha6.github.io/judy_blog/programming/2019/10/23/algorithm-dp.html#word-break)  
+### Graph  
 
-### Majority Elements - 2 questions, 8 solutions
+## Topics 2 multi-ans
 
+### Majority Elements x2
+
+see [topics 2](/programming/2019/12/16/topics-multians.html#majority-elements)  
 **leetcode 169 - Majority Element [E]**  
-[Hash, Set, Counter, Sort, Randomization, Divide n Conquer, Moore Voting, Bit Manipulation]  
+**leetcode 229 - Majority Element II [M]**
 
-Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.  
-Examples:  
-Input: [3,2,3]  
-Output: 3  
-Input: [2,2,1,1,1,2,2]  
-Output: 2  
+### Kth Largest/Smallest Element x2  
 
-Solution 1 - Brute - Time O(n^2), Space O(1):  
-
-```python  
-class Solution():
-    def majorityElement(self, nums):
-        for n in nums:
-            cnt=sum(1 for i in nums if i==n)
-            print(n,cnt)
-            if cnt>len(nums)//2:
-                return n
-
-Output (n,cnt):
-2 4
-2 4
-1 3
-1 3
-1 3
-2 4
-2 4
-```
-
-Solution 2.1 - Hash - Time O(n):
-
-```python  
-class Solution():
-    def majorityElement(self, nums):
-        cnt={}
-        for n in nums:
-            if n not in cnt:
-                cnt[n]=1
-            else:
-                cnt[n]+=1
-            #or
-            #cnt[n] = cnt.get(n, 0) + 1
-
-            if cnt[n]>len(nums)//2:
-                return n
-```
-
-Solution 2.2 - Hash,Counter - Time O(n), Space O(n):
-
-```python  
-class Solution():
-    def majorityElement(self, nums):
-        cnt=collections.Counter(nums)
-        return max(cnt.keys(),key=cnt.get)
-```
-
-Solution 3 - Set
-
-```python  
-class Solution():
-    def majorityElement(self, nums):
-        nset=set(nums)
-        for n in nset:
-            if nums.count(n)>len(nums)//2:
-                return n
-```
-
-Solution 4 - Sort - Time O(nlogn), Space O(1) or O(n):
-
-```python  
-class Solution():
-    def majorityElement(self, nums):
-        nums.sort()
-        return nums[len(nums)//2]
-```
-
-Solution 5 - Randomization - Time O(inf):
-
-```python  
-import random
-class Solution():
-    def majorityElement(self, nums):
-        while True:
-            candidate=random.choice(nums)
-            if sum(1 for i in nums if i==candidate)>len(nums)//2:
-                return candidate
-```
-
-Solution 6 - Divide n Conquer - Time O(nlogn), Space O(logn):  
-
-```python  
-class Solution():
-    def majorityElement(self, nums):
-        return self.dnc(nums,0,len(nums)-1)
-
-    def dnc(self,nums,left,right):
-        if left==right:
-            return nums[left]
-
-        mid=(left+right)//2
-        new_left=self.dnc(nums,left,mid)
-        new_right=self.dns(nums,mid+1,right)
-        if new_left==new_right:
-            return new_left
-
-        return new_left if nums[left:right+1].count(new_left)>nums[left:right+1].count(new_right) else new_right
-```
-
-**olution 7 (Best) - Boyer-Moore Voting** - Time O(n), Space O(1):  
-use a counter, cnt+=1 if encountering same element, else cnt-=1   
-when cnt==0, change candidate
-
-```python
-class Solution():
-    def majorityElement(self, nums):
-        cnt=0
-        candidate=None
-        for n in nums:
-            if cnt==0:
-                candidate=n
-            cnt+=(1 if n==candidate else -1)
-
-        return candidate
-```
-
-Solution 8 - Bit Manipulation: see [ref](https://blog.csdn.net/coder_orz/article/details/51407713)
-
-```python
-class Solution():
-    def majorityElement(self, nums):
-        major=0
-        mask=1
-        for i in range(0,32):
-            cnt=0
-            for j in nums:
-                if j&mask:
-                    cnt+=1
-                    if cnt>len(nums)//2:
-                        major|=mask
-                        break
-            mask<<=1
-
-        return major if major>>31==0 else major-(1<<32)
-```
-
-**leetcode 229 - Majority Element II [M]**   
-Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.  
-Note: The algorithm should run in linear time and in O(1) space.  
-
-Example 1:  
-Input: [3,2,3]  
-Output: [3]  
-Example 2:  
-Input: [1,1,1,3,3,2,2,2]  
-Output: [1,2]  
-
-**Best Solution Boyer-Moore Voting** - Time O(n), Space O(1):  
-find the element cnt first reach 0, switch candidate for the new number    
-
-```python
-class Solution():
-    def majorityElement(self, nums):
-        cand1, cnt1=None,0
-        cand2, cnt2=None,0
-
-        for n in nums:
-            if n==cand1:
-                cnt1+=1
-            elif n==cand2:
-                cnt2+=1
-            elif cnt1==0:
-                cand1=n
-                cnt1=1
-            elif cnt2==0:
-                cand2=n
-                cnt2=1
-            else:
-                cnt1-=1
-                cnt2-=1
-
-        return [n for n in (cand1,cand2) if nums.count(n)>len(nums)//3]
-```
-
-
-
-
-### Kth Largest/Smallest Element - 2 questions, 4 solutions
-
+see[topics 2](/programming/2019/12/16/topics-multians.html#kth-largestsmallest-element)  
 **leetcode 215 - Kth Largest in an Array [M]**  
-Find the kth largest element in an unsorted array, note: not the kth distinct element.  
+**leetcode 230 - Kth Smallest in a BST [M]** see [bst #Kth smallest](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html#kth-smallest)  
 
-Examples:  
-Input: [3,2,1,5,6,4] and k=2  
-Output: 5  
-Input: [3,2,3,1,2,4,5,5,6] and k=4  
-Output: 4  
+## Topics 3 series
 
-Solution 1: sorting, TO(nlogn), SO(1)
+### Contains Dups x3
 
-```python
-class Solution():
-    def findKthLargest(self,nums,k):
+see [hash #find dups](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/data-structrue-hash.html#find-dups)     
+**leetcode 217 - Contains Duplicate [E] - hash**    
+**leetcode 219 - Contains Duplicate II [E] - hash**   
+**leetcode 220 - Contains Duplicate III [M] - hash**  
 
-        return sorted(nums,reverse=True)[k-1]
-```
+### Best Time Buy n Sell x4
 
-Solution 2: max heap, TO(nlogk), SO(k)  
-
-```python
-from heapq import *
-class Solution():
-    def findKthLargest(self,nums,k):
-
-        if not nums:
-            return -1
-
-        h=[]
-        for i in range(len(nums)):
-            if len(h)<k:
-                heappush(h,nums[i])
-            else:
-                if h[0]<nums[i]:
-                    heappop(h)
-                    heappush(h,nums[i])
-
-        return h[0]
-```
-
-Solution 3: quick select, T: avg O(n), worst O(n^2), SO(1)  
-
-```python
-import random
-class Solution():
-    def findKthLargest(self,nums,k):
-
-        pivot=random.choice(nums)
-        nums1,nums2=[],[]
-        for n in nums:
-            if n>pivot:
-                nums1.append(n)
-            elif n<pivot:
-                nums2.append(n)
-
-        if k<=len(nums1):
-            return self.findKthLargest(nums1,k)
-        if k>len(nums)-len(nums2):
-            return self.findKthLargest(nums2,k-(len(nums)-len(nums2)))
-
-        return pivot
-```
-
-Solution 4: quick select partition  
-
-```python
-import random
-class Solution():
-    def findKthLargest(self,nums,k):
-
-        k=len(nums)-k
-        left,right=0,len(nums)-1
-        while True:
-            idx=self.partition(nums,left,right)
-            if idx==k:
-                return nums[idx]
-            if idx>k:
-                right=idx-1
-            else:
-                left=idx+1
-
-    def partition(self,nums,left,right):
-
-        ran_idx=random.randint(left,right)
-        ran_entry=nums[ran_idx]
-        nums[ran_idx],nums[right]=nums[right],nums[ran_idx]
-
-        next_lower=left
-        for i in range(left,right):
-            if nums[i]<=ran_entry:
-                nums[next_lower],nums[i]=nums[i],nums[next_lower]
-                next_lower+=1
-
-        nums[next_lower],nums[right]=nums[right],nums[next_lower]
-
-        return next_lower
-```
-
-**leetcode 230 - Kth Smallest in a BST [M]** see [bst #Kth smallest]()
-
-### Best Time Buy n Sell I,II,III,IV
-
+see [topics 3](/programming/2019/10/25/topics-series.html#best-time-buy-n-sell)  
 **leetcode 121 - Best Time to Buy and Sell Stock (Once) [E] - record min and max**  
-Input: [7,1,5,3,6,4]  
-Output: 5  
-Explanation: Buy on 1 and sell on 6, profit = 6-1 = 5. Not 7-1 = 6, as selling price needs to be larger than buying price.  
-
-Solution 1 - straightforward understandable  
-
-```python      
-class Solution1(object):
-    def maxProfit(self,prices):
-        if not prices:
-            return 0
-
-        minp=prices[0]
-        maxp=0 #maxprofit
-        for p in prices:
-            if p<minp:
-                minp=p
-            elif p-minp>maxp:
-                maxp=p-minp
-
-        return maxp
-```
-
-Solution 2 - advanced  
-minp <- find the min price, and remember it  
-maxp <- find the max of p-minp, and remember it  
-Input: [7,1,5,3,6,4]  
-
-
-    (minp,maxp) =  
-      (7, 0)  
-      (1, 0)  
-      (1, 4)  
-      (1, 4)  
-      (1, 5)  
-      (1, 5)  
-
-```python      
-class Solution2(object):
-    def maxProfit(self,prices):
-        minp=float('inf')
-        maxp=0
-        for p in prices:
-            minp=min(p,minp)
-            maxp=max(p-minp,maxp)
-
-        return maxp
-```
-
-**leetcode 122 - Best Time to Buy and Sell Stock II (Multiple) [E]**  
-Input: [7,1,5,3,6,4]  
-Output: 7  
-Explanation: Buy on 1 and sell on 5, profit = 5-1 = 4. Then buy on 3 and sell on 6, profit = 6-3 = 3.  
-
-```python      
-class Solution(object):
-    def maxProfit(self,prices):
-        res=0
-        if not prices:
-            return res
-
-        for i in range(len(prices)-1):
-            if prices[i]<prices[i+1]:
-                res+=prices[i+1]-prices[i]
-
-        return res
-```
-
-**leetcode 123 - Best Time to Buy and Sell Stock III (Twice) [H]**  
-Input: [3,3,5,0,-1,3,1,4]  
-Output: 7  
-
-Solution:  
-minp1 <- find the first min price minp1, and remember it  
-maxp1 <- find the max of p-minp1, and remember the difference as maxp1  
-minp2 <- find the second min price closest to the previous profit: minp2=p-maxp1, and remember it as minp2  
-maxp2 <- find the second max of p-minp2, and remember it  
-
-
-    (minp1,maxp1,minp2,maxp2) =   
-          (3, 0, 3, 0)
-          (3, 0, 3, 0)
-          (3, 2, 3, 2)
-          (0, 2, -2, 2)
-         (-1, 2, -3, 2)
-         (-1, 4, -3, 6)
-         (-1, 4, -3, 6)
-         (-1, 5, -3, 7)
-
-```python      
-class Solution(object):
-    def maxProfit(self,prices):
-        minp1,minp2=float('inf'),float('inf')
-        maxp1,maxp2=0,0
-        for p in prices:
-            minp1=min(p,minp1)
-            maxp1=max(p-minp1,maxp1)
-            minp2=min(p-maxp1,minp2)
-            maxp2=max(p-minp2,maxp2)
-
-        return maxp2
-```
-
+**leetcode 122 - Best Time to Buy and Sell Stock II (Multiple) [E]**    
+**leetcode 123 - Best Time to Buy and Sell Stock III (Twice) [H]**   
 **leetcode 188 - Best Time to Buy and Sell Stock IV (k times) [H] - dp**  
-Say you have an array for which the i-th element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete at most k transactions.  
-Note:  
-You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).  
 
-Example 1:  
-Input: [2,4,1], k = 2  
-Output: 2  
-Explanation: Buy on day 1 (price = 2) and sell on day 2 (price = 4), profit = 4-2 = 2.
+### House Robber x2
 
-Example 2:  
-Input: [3,2,6,5,0,3], k = 2  
-Output: 7  
-Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-2 = 4.
-             Then buy on day 5 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.  
-
-Solution:  
-
-
-     i: k transitions, j: days, m: days before j from 0
-
-                 / T[i][j-1] - no transition on jth day
-     T[i][j]=max
-                 \ price[j]-price[m]+T[i-1][m] - best you can get by completing transaction on jth day
-                   m=0 to j-1, m is the day you bought the stock before the jth day
-                   T[i-1][m] means you had a transition on mth day at least
-                 \ T[i-1][m]-price[m] can be optimized to max_diff=max(T[i-1][j]-price[j]) at each i iteration
-
-     say T[1][1]=max(T[1][0],p[1]-p[m]+T[0][m])  j=1, m=0      max_diff_ini <- T[0][0]-p[0]=-2
-                =max(0,5-2+0)                                 
-                =3                                            
-         T[1][2]=max(T[1][1],p[2]-p[m]+T[0][m])  j=2, m=0,1    max_diff<- max(-2,T[0][1]-p[1]=-5)=-2
-                =max(3,p[2]-p[0]+T[0][0],p[2]-p[1]+T[0][1])   
-                =max(3,7-2+0,7-5+0) =========================> -2>-5 can omit -5+7
-                =5
-         T[1][3]=max(5,p[3]-p[m]+T[0][m]) j=3, m=0,1,2
-                =max(5,1-2+0,1-5+0,1-7+0)                      max_diff<- max(-2,-7)=-2
-                =max(5)
-         T[1][4]=max(5,p[4]-p[m]+T[0][m]) j=4, m=0,1,2,3
-                =max(5,4-2,4-5,4-7,4-1)                        max_diff<- max(-2,-1)=-1
-                =max(5)
-         T[2][1]=max(0,p[1]-p[m]+T[1][m]) j=1, m=0            
-                =max(0,5-2+T[1][0])                            max_diff ini<- T[1][0]-p[0]=-2
-                =3                                                           
-         T[2][2]=max(3,p[2]-p[m]+T[1][m]) j=2, m=0,1
-                =max(3,7-2+0,7-5+3)                            max_diff<- max(0-2,3-5)=-2
-                =5
-          note: 7-5+3=(day 1->2 profit (7-5))+(day 0->1 profit (5-2))
-                       new transition now      one transition before
-         T[2][3]=max(5,p[3]-p[m]+T[1][m]) j=3, m=0,1,2
-                =max(5,1-2+0,1-5+3,1-7+5)                      max_diff<- max(0-2,3-5,5-7)=max(0-2,5-7)=-2
-                =5
-          note: 1-2+0=(day 0->3 profit (1-2))+(day 0->0 profit 0)
-                1-5+3=(day 1->3 profit (1-5))+(day 0->1 profit (5-2))
-                1-7+5=(day 2->3 profit (1-5))+(day 0->2 profit (7-2))
-         T[2][4]=max(5,4-2+0,4-5+3,4-7+5,4-1+5)
-                =8                                             max_diff<- max(-2,5-1)=4
-         T[2][5]=max(8,3-2+0,3-5+3,3-7+5,3-1+5,3-4+5)
-                =8                                             max_diff<- max(4,4-5)=4
-         T[3][1]=max(0,5-2+0)
-                =3                                             max_diff ini<- T[2,0]-p[0]=-2
-         T[3][2]=max(3,7-2+0,7-5+3)
-                =5                                             max_diff<- max(-2,3-5)=-2
-         T[3][3]=max(5,1-2+0,1-5+3,1-7+5)
-                =5                                             max_diff<- max(-2,5-7)=-2
-         T[3][4]=max(5,4-2+0,4-5+3,4-7+5,4-1+5)
-                =8                                             max_diff<- max(-2,5-1)=4
-         T[3][5]=max(8,3-2+0,3-5+3,3-7+5,3-1+5,3-4+8)
-                =8                                             max_diff<- max(4,8-4)=4
-         T[3][7]=max(8,3-2+0,3-5+3,3-7+5,3-1+5,3-4+8,3-3+8,3-1+8)
-                =10                                            max_diff<- max(4,8-1)=7
-
-        0   1   2   3   4   5   6   7  <- day prices from 0 to 7th days
-        2   5   7   1   4   3   1   3
-     0  0   0   0   0   0   0   0   0  <- no transition at all
-          \
-     1  0 - 3 - 5 - 5 - 5 - 5 - 5 - 5  <- one transition
-          \   \
-     2  0 - 3 - 5 - 5 - 8 - 8 - 8 - 8
-
-     3  0 - 3 - 5 - 5 - 8 - 8 - 8 - 10
-        in day 0 cannot make any profit
-     k=3 times
-
-```python  
-class Solution(object):
-    def maxProfit(self, k, prices):
-        if k>=len(prices)//2: #leetcode 122
-            max_profit=0
-            for i in range(len(prices)-1):
-                max_profit+=max(prices[i+1]-prices[i],0)
-            return max_profit
-
-        dp=[[0 for i in range(len(prices))] for j in range(k+1)]
-        for i in range(1,k+1):
-            max_diff=dp[i-1][0]-prices[0]
-            for j in range(1,len(prices)):
-                dp[i][j]=max(dp[i][j-1],max_diff+prices[j])
-                max_diff=max(max_diff,dp[i-1][j]-prices[j])
-
-        return dp[-1][-1]
-```
-
-### House Robber I,II
-
+see [topics 3](/programming/2019/10/25/topics-series.html#house-robber)  
 **leetcode 198 - House Robber [E] - light dp**  
-You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.  
-Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.  
-
-Example 1:  
-Input: [1,2,3,1]  
-Output: 4  
-Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3). Total amount you can rob = 1 + 3 = 4.  
-
-Example 2:  
-Input: [2,7,9,3,1]  
-Output: 12  
-Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1). Total amount you can rob = 2 + 9 + 1 = 12.  
-
-Solution for [2,3,5,2,3,7,3,7,4]:  
-
-
-        loot                   prev
-          0                     0
-      max(2+0,0)=2      \/      0
-      max(3+0,2)=3      /\      2           
-      max(5+2,3)=7              3          
-      max(2+3,5+2)=7            7     
-      max(3+5+2,5+2)=10         7     
-      max(7+5+2,3+5+2)=14       10           
-      max(3+3+5+2,7+5+2)=14     14           
-      max(7+7+5+2,7+5+2)=21     14          
-      max(4+7+5+2,7+7+5+2)=21   21
-
-
-```python
-class Solution():
-    def rob(self,nums):
-        if not nums:
-            return 0
-
-        loot,prev=0,0
-        for n in nums:
-            loot,prev=max(n+prev,loot),loot
-
-        return loot
-```
-
 **leetcode 213 - House Robber II [M]**  
-All houses are arranged in a circle. That means the first house is the neighbor of the last one.  
 
-Example 1:  
-Input: [2,3,2]  
-Output: 3  
-Explanation: You cannot rob house 1 and 3 which are 2 and 2 in total 4 amount, cuz they are neighbors.  
+### Word Break x2   
 
-Example 2:  
-Input: [1,2,3,1]  
-Output: 4  
-Explanation: rob house 1 and 3, in total amount 4  
+see [dp #word break](/programming/2019/10/23/algorithm-dp.html#word-break)  
+**leetcode 139 - Word Break [M] - dp**
+**leetcode 140 - Word Break II [H] - dp + dfs**  
 
-Solution:  
-separate into two cases, do not rob the first house, or do not rob the last house  
+### Shortest Word Distance x3
 
-```python
-class Solution():
-    def rob(self,nums):
-        if len(nums)<2:
-            return sum(nums)  #rob only one house
+see [topics 3](/programming/2019/10/25/topics-series.html#shortest-word-distance)  
+**leetcode 243 - Shortest Word Distance [E]**  
+**leetcode 244 - Shortest Word Distance II [M] - hash**  
+**leetcode 245 - Shortest Word Distance III (repeated) [M]**  
 
-        loot,prev=0,0  
-        for n in nums[1:]:  #do not rob the first house
-            loot,prev=max(n+prev,loot),loot
+### Word Ladder x2  
 
-        loot2,prev=0,0
-        for n in nums[:-1]:  #do not rob the last house
-            loot2,prev=max(n+prev,loot2),loot2
-
-        return max(loot,loot2)
-```
-
-### Word Ladder I,II
-
+see [topics 3](/programming/2019/10/25/topics-series.html#word-ladder)  
 **leetcode 127 - Word Ladder [M] (return shortest length) - bfs**  
-Example 1:  
-Input:  
-beginWord = "hit",  
-endWord = "cog",  
-wordList = ["hot","dot","dog","lot","log","cog"]  
-Output: 5  
-Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
-return its length 5.  
-
-Example 2:  
-Input:   
-beginWord = "hit"  
-endWord = "cog"  
-wordList = ["hot","dot","dog","lot","log"]  
-Output: 0  
-Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
-
-Solution:  
-1. make a set  
-2. put beginWord into bfs (collections.deque)  
-3. transform in every char of the word (popleft)  
-4. if found valid new word remove it from the set and append it to bfs  
-
-Reference:  
-[huahuachan](https://zxi.mytechroad.com/blog/searching/127-word-ladder/)
-
-```python      
-class Solution(object):
-    def ladderLength(self, beginWord, endWord, wordList):
-        wset=set(wordList)
-        bfs=collections.deque()
-        bfs.append((beginWord,1)) #[(word,length),...]
-        while bfs:
-            w,l=bfs.popleft()
-            if w==endWord:
-                return l
-            for i in range(len(w)):
-                for c in 'abcdefghijklmnopqrstuvwxyz':
-                    neww=w[:i]+c+w[i+1:] #transform            
-                    if neww in wset and neww!=w:
-                        wset.remove(neww)
-                        bfs.append((neww,l+1))
-
-        return 0
-```
-
 **leetcode 126 - Word Ladder II [H] (return all shortest sequences) - dfs, bidirectional bfs**  
-Example:  
-Input:  
-beginWord = "hit",  
-endWord = "cog",  
-wordList = ["hot","dot","dog","lot","log","cog"]  
-Output:  
-[["hit","hot","dot","dog","cog"],  
-  ["hit","hot","lot","log","cog"]]  
 
-Solution:  
+### Strobogrammatic Number x3
 
-                  dot -> dog -> cog  
-    hit -> hot ->   
-                  lot -> log -> cog  
-
-Reference:
-[segmentfault](https://segmentfault.com/a/1190000015859013), [huahuachan](https://zxi.mytechroad.com/blog/searching/leetcode-126-word-ladder-ii/)   
+**leetcode 246 - Strobogrammatic Number [E] - hash** see [hash #strobogrammatic](/programming/2019/11/14/data-structrue-hash.html#strobogrammatic)  
+**leetcode 247 - Strobogrammatic Number II [] - math**    
+**leetcode 248 - Strobogrammatic Number III [] - math** see [math #strobogrammatic]()   

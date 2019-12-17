@@ -24,10 +24,15 @@ var store = [{
         "tags": ["Data Structure","Tree","Linked List","Recursion"],
         "url": "http://localhost:4000/programming/2019/10/23/data-structrue-tree-linkedlist.html",
         "teaser":null},{
-        "title": "Topics",
-        "excerpt":"N Sum - 3 questions leetcode 1 - Two Sum [E] - hash see hash table #nsum leetcode 167 - Two Sum II - Input array is sorted [M] - binary search see binary search #twosum leetcode 170 - Two Sum III - Data structure design [E] see design #twosum...","categories": ["Programming"],
-        "tags": ["MinMax","Bfs","Dfs","DP","Recursion","Topics","Hash Table","Binary Search","N-Sum","Sorting"],
+        "title": "Topics 1 - general",
+        "excerpt":"Topics 1 general N Sum x3 leetcode 1 - Two Sum [E] - hash see hash table #nsum leetcode 167 - Two Sum II - Input array is sorted [M] - binary search see binary search #twosum leetcode 170 - Two Sum III - Data structure design [E] see design...","categories": ["Programming"],
+        "tags": ["Topics"],
         "url": "http://localhost:4000/programming/2019/10/25/topics.html",
+        "teaser":null},{
+        "title": "Topics 3 - series",
+        "excerpt":"Best Time Buy n Sell leetcode 121 - Best Time to Buy and Sell Stock (Once) [E] - record min and max Input: [7,1,5,3,6,4] Output: 5 Explanation: Buy on 1 and sell on 6, profit = 6-1 = 5. Not 7-1 = 6, as selling price needs to be larger...","categories": ["Programming"],
+        "tags": ["MinMax","Bfs","Dfs","DP","Recursion","Topics","Hash Table","Binary Search","N-Sum","Sorting"],
+        "url": "http://localhost:4000/programming/2019/10/25/topics-series.html",
         "teaser":null},{
         "title": "Data Structure 3 - string",
         "excerpt":"Definition A string is traditionally a sequence of characters, either as a literal constant or as some kind of variable. The latter may allow its elements to be mutated and the length changed, or it may be fixed (after creation). A string is generally considered as a data type and...","categories": ["Programming"],
@@ -50,7 +55,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-array.html",
         "teaser":null},{
         "title": "Data Structure 2 - matrix",
-        "excerpt":"Word Search leetcode 79 - Word Search [M] - backtracking see backtracking #matrix word search Given a 2D board and a word, find if the word exists in the grid. Example: board= [[‘A’,’B’,’C’,’E’], [‘S’,’F’,’C’,’S’], [‘A’,’D’,’E’,’E’],] word=”ABCCED” return True word=”SEE” return True word=”ABCB” return False leetcode 212 - Word Search II...","categories": ["Programming"],
+        "excerpt":"Element Search see binary search #matrix leetcode 74 - Search a 2D Matrix [M] Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties: Integers in each row are sorted from left to right. The first integer of each...","categories": ["Programming"],
         "tags": ["Data Structure","Matrix","Board Game"],
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-matrix.html",
         "teaser":null},{
@@ -105,7 +110,7 @@ var store = [{
         "url": "http://localhost:4000/literature/2019/11/13/control-as-inference.html",
         "teaser":null},{
         "title": "ALgorithms 2 - binary search",
-        "excerpt":"Time Complexity O(log n) Find Peak leetcode 153 - Find Minimum in Rotated Sorted Array [M] Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand, find the minimum element Example 1: Input: [3,4,5,1,2] Output: 1 Example 2: Input: [4,5,6,7,0,1,2] Output: 0 Solution: create...","categories": ["Programming"],
+        "excerpt":"Time Complexity O(log n) Find Peak in Array leetcode 153 - Find Minimum in Rotated Sorted Array [M] Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand, find the minimum element Example 1: Input: [3,4,5,1,2] Output: 1 Example 2: Input: [4,5,6,7,0,1,2] Output: 0...","categories": ["Programming"],
         "tags": ["Algorithms","Binary Search","N-Sum"],
         "url": "http://localhost:4000/programming/2019/11/13/algorithm-binarysearch.html",
         "teaser":null},{
@@ -213,4 +218,9 @@ var store = [{
         "excerpt":"RL Basic      Bellman Equation   Dynamic Programming in RL   RL Advanced      Soft Q Learning   Control as Inference   Model-based RL      Model Predictive Control in CoRL 2019   Multi-Agent RL      MARL partial  ","categories": ["RL-Basic"],
         "tags": ["Reinforcement Learning","Index"],
         "url": "http://localhost:4000/rl-basic/2019/12/16/rlbasic.html",
+        "teaser":null},{
+        "title": "Topics 2 - multiple answers",
+        "excerpt":"Majority Elements leetcode 169 - Majority Element [E] [Hash, Set, Counter, Sort, Randomization, Divide n Conquer, Moore Voting, Bit Manipulation] Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times. Examples: Input: [3,2,3] Output: 3 Input:...","categories": ["Programming"],
+        "tags": ["MinMax","Bfs","Dfs","DP","Recursion","Topics","Hash Table","Binary Search","N-Sum","Sorting"],
+        "url": "http://localhost:4000/programming/2019/12/16/topics-multians.html",
         "teaser":null}]

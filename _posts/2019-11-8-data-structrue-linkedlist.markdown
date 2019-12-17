@@ -24,13 +24,12 @@ author_profile: true
 A linked list is **a linear collection of data elements**, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence.  
 In its most basic form, each node contains: **data, and a reference** (in other words, a link) to the next node in the sequence.
 
-(+) **allows for efficient insertion or removal of elements from any position in the sequence during iteration**, and allow doing so with a constant number of operations by keeping the link previous to the link being added or removed in memory during list traversal.     
-(+) can be easily inserted or removed **without reallocation or reorganization** of the entire structure because the data items need not be stored contiguously in memory or on disk, while restructuring an array at run-time is a much more expensive operation.    
-(+) Linked list are dynamic, so the length of list can increase or decrease as necessary.   
-(+) Each node does not necessarily follow the previous one physically in the memory.  
+(+) save memory compared to array, it only allocates the memory required for values to be stored
+(+) dynamic, length can be increased or decreased as necessary     
+(+) list nodes can live anywhere (not continguously) in the memory, only update references
+(+) can be easily inserted or removed **without reallocation or reorganization**  
 
-
-(-) **access time is linear** (and difficult to pipeline).  
+(-) **access time is linear** (and difficult to pipeline)    
 (-) no faster access, such as random access. Arrays have better cache locality compared to linked lists.   
 (-) no efficient indexing, (iterate k times to find index k), many basic operations—such as obtaining the last node of the list, finding a node that contains a given datum, or locating the place where a new node should be inserted—may require iterating through most or all of the list elements.   
 
@@ -51,10 +50,12 @@ Linked lists are among the simplest and most common data structures. They can be
 3. access_last() - TO(n)
 4. access_arbitrary() - TO(n)
 5. insert_front() - TO(1)
-6. insert_back() - TO(n)
+6. insert_end() - TO(n)
 7. insert_arbitrary() - TO(n)
 8. delete_front() - TO(1)
-9. delete_back() - TO(n)
+9. delete_end() - TO(n)
+10. size() - TO(n)
+11. isEmpty() - TO(1)  
 
 ### Implementation
 
@@ -72,7 +73,124 @@ head.next.next.next=ListNode(3)
 head.next.next.next.next=ListNode(4)
 ```   
 
+- insert_front, insert_end, insert_mid
+- delete - use two pointers, cur h and pre     
+- print = traverse  
+
+Note:  
+the difference between while last and while last.next in scanning the list  
+
+    last=self.head
+
+    0->1->2->3->N
+
+    while last.next             while last:
+        last=last.next              last=last.next
+
+    0->1->2->3->N               0->1->2->3->N
+             ^                              ^
+             last stops at 3                last stops at None
+
+```python
+class LinkedList():
+    def __init__(self):
+        self.head=None
+
+    def printList(self):
+        node=self.head
+        while node:
+            print(node.val)
+            node=p.next
+
+    def insert_front(self,data):
+        new=ListNode(data)
+        new.next=self.head
+        self.head=new
+
+    def insert_end(self,data):
+        new=ListNode(data)
+        if not self.head:
+            self.head=new
+            return
+
+        last=self.head
+        while last.next:
+            last=last.next
+
+        last.next=new
+
+    def insert_mid(self,mid,data):
+        if not mid:
+            print('The mentioned mid node is absent.')
+            return
+
+        new=ListNode(data)
+        new.next=mid.next
+        mid.next=new
+
+    #use two pointers to record current h and pre h
+    def delete(self,data):
+        h=self.head
+
+        #if data==head.val, delete head
+        if h.val==data:
+            self.head=h.next
+            h=None
+            return  
+
+        while h:
+            if h.val==data:
+                break
+            pre=h
+            h=h.next
+
+        #if data not in list, h to the end None
+        if not h:
+            return
+
+        pre.next=h.next
+        h=None  
+
+l=LinkedList()
+l.head=ListNode(1)
+n2=ListNode(2)
+n3=ListNode(3)
+l.head.next=n2
+n2.next=n3
+l.insert_front(0)
+l.insert_end(4)
+l.insert_mid(l.head.next,1.5)
+l.printList()
+>>
+0
+1
+1.5
+2
+3
+4
+
+l.delete(3)
+l.printList()
+>>
+0
+1
+1.5
+2
+4
+```
+
 ### Remove  
+
+**leetcode 237 - Delete Node in a Linked List [E]**  
+Given linked list: 4->5->1->9, node=5  
+Output: 4->1->9
+
+```python
+class Solution():
+    def deleteNode(self,node):
+        node.val=node.next.val
+        node.next=node.next.next
+```
 
 **leetcode 19 - Remove Nth Node From End of List [M]**  
 Given a linked list, remove the n-th node from the end of list and return its head.  
@@ -245,6 +363,8 @@ class Solution():
         return dummy.next
 ```
 
+## Problems
+
 ### Partition
 
 **leetcode 86 - Partition List [M]**  
@@ -383,7 +503,7 @@ class Solution(object):
         return dummy.next
 ```
 
-### Swap n Rotate
+### Swap
 
 **leetcode 24 - Swap Nodes in Pairs [M]**  
 Given a linked list, swap every two adjacent nodes and return its head.  
@@ -425,6 +545,8 @@ class Solution():
 
        return dummy.next
 ```
+
+### Rotate
 
 **leetcode 61 - Rotate List [M]**  
 Given a linked list, rotate the list to the right by k places, where k is non-negative.  
@@ -846,6 +968,67 @@ class Solution(object):
 
         return None
 ```
+
+**leetcode 234 - Palindrome Linked List [E]**  
+Given a singly linked list, determine if it is a palindrome.  
+
+Examples:  
+Input: 1->2  
+Output: false  
+Input: 1->2->2->1  
+Output: true  
+
+Solution:  
+while fast and fast.next is for odd and even length of list  
+if odd length (including None), fast reaches the end of None  
+if even length (including None), fast reaches the node before end  
+
+    1->2->2->1->N   stack=[1,2]
+    f     f     f
+    s  s  s
+
+    1->2->3->2->1->N   stack=[1,2]
+    f     f     f
+    s  s  s   
+
+record slow visited nodes into a stack  
+if fast reaches the None, slow keeps its current position  
+if fast doesnot reach the None, slow moves to next  
+
+    1->2->2->1->N   stack=[1,2]
+    f     f     f
+    s  s  s*
+
+    1->2->3->2->1->N   stack=[1,2]
+    f     f     f
+    s  s  s->s*   
+
+compare stack.pop with s*, move slow to the end of the list and return matching result  
+
+
+```python
+class Solution():
+    def isPalindrome(self,head):
+        fast=slow=head
+        stack=[]
+
+        while fast and fast.next:
+            stack.append(slow.val)
+            slow=slow.next
+            fast=fast.next.next
+
+        if fast:
+            slow=slow.next
+
+        while slow:
+            top=stack.pop()
+            if top!=slow.val:
+                return False
+            slow=slow.next
+
+        return True
+```
+
 
 ### Sorting
 
