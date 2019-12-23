@@ -25,7 +25,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/23/data-structrue-tree-linkedlist.html",
         "teaser":null},{
         "title": "Topics 1 - general",
-        "excerpt":"Topics 1 general N Sum x3 leetcode 1 - Two Sum [E] - hash see hash table #nsum leetcode 167 - Two Sum II - Input array is sorted [M] - binary search see binary search #twosum leetcode 170 - Two Sum III - Data structure design [E] see design...","categories": ["Programming"],
+        "excerpt":"Topics 1 general N Sum x4 leetcode 1 - Two Sum [E] - hash see hash table #nsum leetcode 167 - Two Sum II - Input array is sorted [M] - binary search see binary search #twosum leetcode 170 - Two Sum III - Data structure design [E] see design...","categories": ["Programming"],
         "tags": ["Topics"],
         "url": "http://localhost:4000/programming/2019/10/25/topics.html",
         "teaser":null},{
@@ -35,7 +35,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/25/topics-series.html",
         "teaser":null},{
         "title": "Data Structure 3 - string",
-        "excerpt":"Definition A string is traditionally a sequence of characters, either as a literal constant or as some kind of variable. The latter may allow its elements to be mutated and the length changed, or it may be fixed (after creation). A string is generally considered as a data type and...","categories": ["Programming"],
+        "excerpt":"Background Definition A string is traditionally a sequence of characters, either as a literal constant or as some kind of variable. The latter may allow its elements to be mutated and the length changed, or it may be fixed (after creation). A string is generally considered as a data type...","categories": ["Programming"],
         "tags": ["Data Structure","String","Palindrome","Dfs"],
         "url": "http://localhost:4000/programming/2019/10/26/data-structrue-string.html",
         "teaser":null},{
@@ -65,7 +65,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/31/algorithm-dfs.html",
         "teaser":null},{
         "title": "Data Structure 14 - graph",
-        "excerpt":"Definition A Graph is a non-linear data structure consisting of nodes and edges. The nodes are sometimes also referred to as vertices and the edges are lines or arcs that connect any two nodes in the graph. More formally a Graph can be defined as, 0 - 1 \\ |...","categories": ["Programming"],
+        "excerpt":"Background Definition A Graph is a non-linear data structure consisting of nodes and edges. The nodes are sometimes also referred to as vertices and the edges are lines or arcs that connect any two nodes in the graph. More formally a Graph can be defined as, 0 - 1 \\...","categories": ["Programming"],
         "tags": ["Data Structure","Graph","Topological Sort"],
         "url": "http://localhost:4000/programming/2019/11/01/data-structrue-graph.html",
         "teaser":null},{
@@ -115,7 +115,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/13/algorithm-binarysearch.html",
         "teaser":null},{
         "title": "ALgorithms 1 - sorting",
-        "excerpt":"Big O Table ------------------------------------------------------------------ | Sort | Time Complexity | Space Complexity | ------------------------------------------------------------------ | | Average | Best | Worst | Worst | ------------------------------------------------------------------ | Tim | O(n) | O(nlogn) | O(nlogn) | O(n) | | Merge | O(nlogn) | O(nlogn) | O(nlogn) | O(n) | | Quick |...","categories": ["Programming"],
+        "excerpt":"Background Big O Table ------------------------------------------------------------------ | Sort | Time Complexity | Space Complexity | ------------------------------------------------------------------ | | Average | Best | Worst | Worst | ------------------------------------------------------------------ | Tim | O(n) | O(nlogn) | O(nlogn) | O(n) | | Merge | O(nlogn) | O(nlogn) | O(nlogn) | O(n) | | Quick...","categories": ["Programming"],
         "tags": ["Algorithms","Bucket Sort"],
         "url": "http://localhost:4000/programming/2019/11/14/algorithm-sorting.html",
         "teaser":null},{
@@ -145,7 +145,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/18/others-regex.html",
         "teaser":null},{
         "title": "ALgorithms 9 - topological sort",
-        "excerpt":"Motivation Many real world situation can be modeled as a graph with directed edges where some events must occur before others, say prerequisites problems, i.e. school class prerequisites program dependencies build systems advanced-packaging tool (apt-get) event/task scheduling assembly instructions For example, school class prerequisites ---&gt; class C ---&gt; class J...","categories": ["Programming"],
+        "excerpt":"Background Motivation Many real world situation can be modeled as a graph with directed edges where some events must occur before others, say prerequisites problems, i.e. school class prerequisites program dependencies build systems advanced-packaging tool (apt-get) event/task scheduling assembly instructions For example, school class prerequisites ---&gt; class C ---&gt; class...","categories": ["Programming"],
         "tags": ["Algorithms","Graph"],
         "url": "http://localhost:4000/programming/2019/11/20/algorithm-topological.html",
         "teaser":null},{
@@ -155,12 +155,12 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/11/29/data-structrue-tree-trie.html",
         "teaser":null},{
         "title": "Data Structure 8 - heap",
-        "excerpt":"Definition A heap is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the heap property: In a max heap, for any given node C, if P is a parent node of C, then the key (the value) of P is greater than or equal...","categories": ["Programming"],
+        "excerpt":"Background Definition A heap is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the heap property: In a max heap, for any given node C, if P is a parent node of C, then the key (the value) of P is greater than or...","categories": ["Programming"],
         "tags": ["Data Structure","Heap"],
         "url": "http://localhost:4000/programming/2019/11/30/data-structrue-heap.html",
         "teaser":null},{
         "title": "ALgorithms 10 - union find",
-        "excerpt":"Definition A disjoint-set data structure is a data structure that keeps track of a set of elements partitioned into a number of disjoint (non-overlapping) subsets. A union-find algorithm is an algorithm that performs two useful operations on such a data structure: Find: Determine which subset a particular element is in....","categories": ["Programming"],
+        "excerpt":"Background Definition A disjoint-set data structure is a data structure that keeps track of a set of elements partitioned into a number of disjoint (non-overlapping) subsets. A union-find algorithm is an algorithm that performs two useful operations on such a data structure: Find: Determine which subset a particular element is...","categories": ["Programming"],
         "tags": ["Algorithms","Union Find"],
         "url": "http://localhost:4000/programming/2019/12/02/algorithm-unionfind.html",
         "teaser":null},{
@@ -223,4 +223,19 @@ var store = [{
         "excerpt":"Majority Elements leetcode 169 - Majority Element [E] [Hash, Set, Counter, Sort, Randomization, Divide n Conquer, Moore Voting, Bit Manipulation] Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times. Examples: Input: [3,2,3] Output: 3 Input:...","categories": ["Programming"],
         "tags": ["MinMax","Bfs","Dfs","DP","Recursion","Topics","Hash Table","Binary Search","N-Sum","Sorting"],
         "url": "http://localhost:4000/programming/2019/12/16/topics-multians.html",
+        "teaser":null},{
+        "title": "Q-function Learning",
+        "excerpt":"Definition       Algorithms      References  ","categories": ["RL-Basic"],
+        "tags": ["Reinforcement Learning"],
+        "url": "http://localhost:4000/rl-basic/2019/12/17/qfunctionlearning.html",
+        "teaser":null},{
+        "title": "Stochastic Optimization",
+        "excerpt":"Background Stochastic optimization (SO) methods are optimization methods for minimizing or maximizing an objective function when randomness is present. Randomness Injection through: the objective functions the constraint sets can be other ways like random iterates, etc Algorithms stochastic approximation SA [Robbins and Monro 1951] stochastic gradient descent finite-difference SA [Kiefer...","categories": ["ML-Basic"],
+        "tags": ["Machine Learning"],
+        "url": "http://localhost:4000/ml-basic/2019/12/18/stochasticoptimization.html",
+        "teaser":null},{
+        "title": "Markov Chain Monte Carlo",
+        "excerpt":"Background Markov Chain Monte Carlo refers to a class of methods for sampling from a probability distribution in order to construct the most likely distribution. For example, we cannot directly calculate the logistic distribution, so instead we generate thousands of values — called samples — for the parameters of the...","categories": ["ML-Basic"],
+        "tags": ["Machine Learning"],
+        "url": "http://localhost:4000/ml-basic/2019/12/20/mcmc.html",
         "teaser":null}]

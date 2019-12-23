@@ -697,7 +697,7 @@ class TreeConstruction():
 
 ## Problems
 
-### Simple - Same, Symmetric, Invert, Univalue, Path Sum, Ancestor  
+### Simple - Same, Symmetric, Invert, Univalue, Path, Path Sum, Ancestor  
 
 **leetcode 100 - Same Tree [E] - [T/F]**  
 
@@ -821,6 +821,67 @@ class Solution():
         return is_uni
 ```
 
+**leetcode 257 - Binary Tree Paths [E]**  
+Given a binary tree, return all root-to-leaf paths.  
+Note: A leaf is a node with no children.  
+
+Input:
+
+        1
+      /   \
+     2     3
+      \
+        5
+
+Output: ["1->2->5", "1->3"]  
+
+Explanation: All root-to-leaf paths are: 1->2->5, 1->3  
+
+Solution 1: recursion  
+
+```python
+class Solution():
+    def binaryTreePaths(self, root):
+        if not root:
+            return []
+
+        res=[]
+        self.dfs(root,res,''+str(root.val))
+
+        return res
+
+    def dfs(self,node,res,path):
+
+        if not node.left and not node.right:
+            res.append(path)
+        if node.left:
+            self.dfs(node.left,res,path+'->'+str(node.left.val))
+        if node.right:
+            self.dfs(node.right,res,path+'->'+str(node.right.val))
+```
+
+Solution 2: iteration  
+
+```python
+class Solution():
+    def binaryTreePaths(self, root):
+        if not root:
+            return []
+
+        stack=[]
+        res=[]
+        stack.append((root,str(root.val)))
+        while stack:
+            node,path=stack.pop()
+            if not node.left and not node.right:
+                res.append(path)
+            if node.left:
+                stack.append((node.left,path+'->'+str(node.left.val)))
+            if node.right:
+                stack.append((node.right,path+'->'+str(node.right.val)))
+
+        return res
+```
 
 **leetcode 112 - Path Sum [E]**  
 Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.  
@@ -891,6 +952,38 @@ class TreeSimple():
 ```
 
 **leetcode 236 - Lowest Common Ancestor of a Binary Tree [M]** see [bst #Ancestor](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html#ancestor)
+
+Example:  
+Input: Given root=[3,5,1,6,2,0,8,null,null,7,4], p=5, q=1  
+
+            3
+           / \
+          5   1
+         / \ / \
+        6  2 0  8
+          / \
+         7   4
+
+Output: 3  
+Input: same tree, p=5, q=4   
+Output: 5    
+
+Note: All of the nodes' values will be unique, and p and q are different and must exist in the tree  
+
+```python
+class Solution():
+    def lowestCommonAncestor(self,root,p,q):
+        if not root or q==root or p==root:
+            return root  
+
+        left=self.lowestCommonAncestor(root.left,p,q)
+        right=self.lowestCommonAncestor(root.right,p,q)
+
+        if left and right:
+            return root
+
+        return left or right
+```
 
 ### Hard - Max Path Sum, Sum Root to Leaf Numbers
 

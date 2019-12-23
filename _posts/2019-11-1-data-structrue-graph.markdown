@@ -17,6 +17,8 @@ toc_label: "Index"
 author_profile: true
 ---
 
+## Background
+
 ### Definition
 
 A Graph is a **non-linear data structure** consisting of **nodes and edges**. The **nodes** are sometimes also referred to as **vertices** and the **edges** are lines or arcs that connect any two nodes in the graph. More formally a Graph can be defined as,  
@@ -353,12 +355,19 @@ g.vertex_degree('c')
 
 **Distance and Diameter**
 
-### Related Questions  
+### Graph Related ALgorithms
+
+1. [dfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/31/algorithm-dfs.html)
+2. [bfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/algorithm-bfs.html)
+3. [topological sort](https://ha5ha6.github.io/judy_blog/programming/2019/11/20/algorithm-topological.html)
+4. [union find](https://ha5ha6.github.io/judy_blog/programming/2019/12/02/algorithm-unionfind.html)
+
+
+## Problems  
 
 **leetcode 133 - Clone Graph [M] - hash** see [hash #deep copy](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/data-structrue-hash.html#deep-copy)  
 Given a reference of a node in a connected undirected graph, return a **deep copy** (clone) of the graph. Each node in the graph contains a val (int) and a list (List[Node]) of its neighbors.  
 
-Example:    
 Input:   
 
       1 - 2       1:[2,4]
@@ -367,9 +376,25 @@ Input:
                   4:[1,3]
 
 
-### Related ALgorithms
+**leetcode 261 - Graph Valid Tree [M] - dfs, bfs, unionfind**  
+Given n nodes labeled from 0 to n-1 and a list of undirected edges, write a function to check whether these edges make up a valid tree.  
 
-1. [dfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/31/algorithm-dfs.html)
-2. [bfs](https://ha5ha6.github.io/judy_blog/programming/2019/10/27/algorithm-bfs.html)
-3. [topological sort](https://ha5ha6.github.io/judy_blog/programming/2019/11/20/algorithm-topological.html)
-4. [union find](https://ha5ha6.github.io/judy_blog/programming/2019/12/02/algorithm-unionfind.html)
+Input: n=5, edges=[[0,1],[0,2],[0,3],[1,4]]  
+Output: True  
+Input: n=5, edges=[[0,1],[1,2],[2,3],[1,3],[1,4]]  
+Output: False  
+
+Solution 1: dfs  
+
+```python
+from collections import defaultdict
+class Solution():
+    def validTree(self,n,edges):
+        d=defaultdict(list)
+        for e in edges:
+            d[e[0]].append(e[1])
+            d[e[1]].append(e[0])
+
+        visited=[False]*n
+
+```

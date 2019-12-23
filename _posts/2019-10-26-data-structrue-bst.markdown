@@ -475,7 +475,7 @@ class Solution():
         self.inOrder(node.right)   
 ```
 
-### Kth Smallest
+### Search
 
 **leetcode 230 - Kth Smallest Element in a BST [M]**  
 Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
@@ -586,8 +586,6 @@ class Solution():
             root=root.right
 ```
 
-### Ancestor  
-
 **leetcode 235 - Lowest Common Ancestor of a Binary Search Tree [E]**  
 Given a bst, find the LCA of two given nodes in the BST.  
 
@@ -627,35 +625,119 @@ class Solution():
         return root
 ```
 
-**leetcode 236 - Lowest Common Ancestor of a Binary Tree [M]**  
-Example:  
-Input: Given root=[3,5,1,6,2,0,8,null,null,7,4], p=5, q=1  
+**leetcode 270 - Closest Binary Search Tree Value [E]** - binary search  
+Given a non-empty binary search tree and a target value
+find the value in the bst that is closest to the target  
 
-            3
-           / \
-          5   1
-         / \ / \
-        6  2 0  8
-          / \
-         7   4
+Note:  
+1. given target value is a floating point
+2. you are guaranteed to have only one unique value in the bst that is closest to the target
 
-Output: 3  
-Input: same tree, p=5, q=4   
-Output: 5    
+Input: root=[4,2,5,1,3], target 3.714286
 
-Note: All of the nodes' values will be unique, and p and q are different and must exist in the tree  
+          4
+         / \
+        2   5
+       / \
+      1   3
+
+Output: 4
 
 ```python
 class Solution():
-    def lowestCommonAncestor(self,root,p,q):
-        if not root or q==root or p==root:
-            return root  
+    def closestValue(self,root,target):
+        if not root:
+            return None
 
-        left=self.lowestCommonAncestor(root.left,p,q)
-        right=self.lowestCommonAncestor(root.right,p,q)
+        diff=abs(root.val-target)
+        res=root.val
 
-        if left and right:
-            return root
+        while root.left or root.right:
+            if abs(root.val-target)<diff:
+                diff=abs(root.val-target)
+                res=root.val
+            if target<root.val and root.left:
+                root=root.left
+            elif target>root.val and root.right:
+                root=root.right
 
-        return left or right
+        return res
+```
+
+**leetcode 272 - Closest Binary Search Tree Value II (multiple k values) [H]** - see [heap](/programming/2019/11/30/data-structrue-heap.html#problems)   
+Given a non-empty binary search tree and a target value, find k values in the bst that is closest to the target  
+
+Input: root=[4,2,5,1,3], target 3.714286, k=2
+
+          4
+         / \
+        2   5
+       / \
+      1   3
+
+Output: [4,3]
+
+
+
+
+
+### Verify Order  
+
+**leetcode 255 - Verify Preorder Sequence in Binary Search Tree [M]** - stack   
+
+         5
+        / \
+       2   6
+      / \
+     1   3
+
+Input: [5,2,6,1,3]  
+Output: False  
+Input: [5,2,1,3,6]  
+Output: True  
+
+Solution:  
+
+    [5,2,1,3,6]
+
+    v   stack  
+    5   [inf,5]  
+    2   [inf,5,2]
+    1   [inf,5,2,1]  descending order allowed
+    3   3>1          descending order stopped
+        [inf,5,2]    pop 1 mini=1
+        3>2
+        [inf,5]      pop 2 mini=2  <- subtree root
+        [inf,5,3]
+    6   6>3
+        [inf,5]      pop 3 mini=3
+        6>5
+        [inf,6]      pop 5 mini=5  <- tree root
+
+    [5,2,6,1,3]
+
+    v   stack  
+    5   [inf,5]
+    2   [inf,5,2]
+    6   6>2 [inf,5]  min=2
+        6>5 [inf,]   min=5
+        [inf,6]
+    1   1<min=5   return False
+
+
+```python
+class Solution():
+    def verifyPreorder(self,preorder):
+        stack=[float('inf')]
+        mini=float('-inf')
+        for v in preorder:
+            if v<mini:
+                return False
+
+            while v>stack[-1]:
+                mini=stack.pop()
+
+            stack.append(v)
+
+        return True
 ```

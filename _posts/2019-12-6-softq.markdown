@@ -113,7 +113,7 @@ Experiment results:
 
 **MaxEnt RL problem formulation**
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/maxentrl.png){:width="80%"}
+![](/assets/images/maxentrl.png){:width="80%"}
 
 Note that, the MaxEnt objective differs qualitatively from  
 - Boltzmann Exploration  
@@ -130,18 +130,54 @@ prior work:
 
 However, **engergy-based model** is more general class of distribution that can represent complex, multimodal behaviors  
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/softbellman.png){:width="70%"}
+![](/assets/images/softbellman.png){:width="70%"}
 
 ### Soft Q-Learning
 
 **Soft Q-Iteration**  
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/softqiter.jpg){:width="80%"}
+![](/assets/images/softqiter.jpg){:width="80%"}
 
 **Practical Problems**  
 
 - the soft Bellman backup cannot be performed exactly in continuous or large state and action spaces  
 - sampling from the energy-based model is intractable in general  
+
+**Soft Q-Learning**
+
+Normally, since the soft Bellman backup is a contraction, the optimal value function is the fixed point of the Bellman backup  
+We can find Q* by minimizing the soft Bellman error \|𝒯Q-Q\|, where 𝒯 is the soft bellman operator  
+
+However,
+This procedure is intractable due to the integral in V_soft(st)  
+
+Solution:  
+Turn this procedure into a **stochastic optimization**, which leads to a SGD update  
+
+![](/assets/images/softqstoupdate.jpg){:width="80%"}
+
+This SGD can be updated using sampled states and actions, the sampling distribution **qs and qa** can be arbitrary    
+We can use real samples from rollouts of current policy π(at\|st) ∝ exp⁡[1/α(Q_soft^θ(st,at))]  
+
+For **qa'**, can be uniform, or can be the current policy which produces an unbiased estimate of the soft value as can be confirmed by substitution  
+
+(-) uniform scale poorly to high dimensions  
+
+Problem:  
+In continuous spaces, we still need a tractable way to sample from the policy π(at\|st) ∝ exp⁡[1/α(Q_soft^θ(st,at))], both to take on-policy actions and to generate action samples for estimating the soft value function  
+Since the form of the policy is so general, sampling from it is intractable  
+
+Solution:  
+will need to use an approximate sampling procedure  
+
+### Approximate Sampling  
+
+How to sample from the soft Q-function?
+
+Two categories of sampling from **energy-based distribution**:  
+- Markov chain Monte Carlo (MCMC) [Sallans & Hinton, 2004]  
+- learn a strochastic sampling network trained to output approximate samples from the target distribution  [Zhao et al, 2016][Kim & Bengio, 2016]
+
 
 
 

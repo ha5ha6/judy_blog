@@ -34,7 +34,7 @@ A common way of obtaining approximate solutions for tasks with continuous states
 
 Recall the Bellman Equations:  
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/bellmanqv.jpg){:width="80%"}  
+![](/assets/images/bellmanqv.jpg){:width="80%"}  
 
 We can easily obtain optimal policies once we found the optimal value function V* or Q* which satisfy the Bellman optimality equations  
 
@@ -44,7 +44,7 @@ To compute Vπ by given π
 
 **Iterative Policy Evaluation**  
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/policyeval.jpg){:width="80%"}  
+![](/assets/images/policyeval.jpg){:width="80%"}  
 
 **Expected Updates**  
 based on an expectation over all possible next states rather than on a sample next state  
@@ -63,11 +63,11 @@ The reason to compute Vπ is to find better policies
 How to determine if it is better to change to the new policy?  
 Use Qπ(s,a) - selecting a in s following policy π  
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/piimprov.jpg){:width="80%"}  
+![](/assets/images/piimprov.jpg){:width="80%"}  
 
 **Given a policy π and it's value functions Vπ and Qπ, we can evaluate a change in the policy at a single state to a particular action**   
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/piimprov2.jpg){:width="80%"}
+![](/assets/images/piimprov2.jpg){:width="80%"}
 
 **Example 4.1 GridWorld** - python, implementation of Policy Evaluation  
 
@@ -161,7 +161,7 @@ PI - Policy Improvement
 
 Policy Iteration results in **faster convergence** than Policy Evaluation, presumably because the value function changes little from one policy to the next  
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/piiter.jpg){:width="80%"}  
+![](/assets/images/piiter.jpg){:width="80%"}  
 
 ### Value Iteration  
 
@@ -180,9 +180,9 @@ Ways of viewing Value Iteration
 - compare backup diagrams of Vπ and V*  
 - the max operation is added to some sweeps of policy evaluation  
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/viter1.jpg){:width="80%"}  
+![](/assets/images/viter1.jpg){:width="80%"}  
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/viter2.jpg){:width="80%"}    
+![](/assets/images/viter2.jpg){:width="80%"}    
 
 All of these algorithms converge to an optimal policy for discounted finite MDPs  
 
@@ -202,9 +202,9 @@ Space: O(|S|)
 
 ### Q-Value Iteration  
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/qiter1.jpg){:width="80%"}  
+![](/assets/images/qiter1.jpg){:width="80%"}  
 
-![](https://ha5ha6.github.io/judy_blog/assets/images/qiter2.jpg){:width="80%"}  
+![](/assets/images/qiter2.jpg){:width="80%"}  
 
 **Example 4.1 GridWorld** - python, implementation of Value Iteration and Q-Value Iteration    
 

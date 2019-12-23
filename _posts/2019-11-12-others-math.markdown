@@ -47,57 +47,7 @@ max([x for x in range(1,a+1) if a%x==0 and b%x==0])
 [x for x in range(1,a+1) if a % x ==0 and b % x ==0][-1]
 ```
 
-### Prime Number  
-If num is divisible by any number between 2 and n / 2, it is not prime  
-Example: [2,3,5,7,11,...]  
-
-```python
-def isPrime(n): #O(n**3/2)
-    if n<=1:
-        return False
-
-    for i in range(2,n//2):
-        if n%i==0:
-            return False
-
-    return True
-```
-
-**leetcode 204 - Count Primes [E] - sieve of eratosthenes**  
-Count the number of prime numbers less than a non-negative number, n.  
-Example:  
-Input: 10  
-Output: 4  
-Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.  
-
-Solution of 15: O(n**3/2)
-
-            2,3,4,5,6,7,8,9,10,11,12,13,14
-            ^   ^   ^   ^   ^     ^     ^     remove all multiples of 2
-              ^           ^                   remove all multiples of 3
-
-        0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
-        F F T T T T T T T T  T  T  T  T  T  
-            ^   F   F   F    F     F     F
-            sieve[2*2:15:2]=False*len(sieve[2*2:15:2]) <- put idx[4,6,8,10,12,14] to F
-        0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
-        F F T T F T F T F T  F  T  F  T  F
-              ^           F        F
-              sieve[3*3:15:3]=False*len <- idx[9,12]
-        4*4>15 end
-
-```python
-class Solution():
-    def countPrimes(self,n):
-        sieve=[False,False]+[True for i in range(n-1)]
-        for i in range(2,int(n**0.5)+1):
-            if sieve[i]:
-                sieve[i*i:n:i]=[False]*len(sieve[i*i:n:i])
-
-        return sum(sieve)
-```
-
-### Dividing / Fraction  
+### Division / Fraction  
 
 **leetcode 166 - Fraction to Recurring Decimal [M] - divmod + dict**  
 Examples:  
@@ -179,7 +129,6 @@ the output column will be the remainder value from left to right in deque
 
 ```python
 from collections import deque
-
 class Solution():
     def convertToTitle(self,n):
         res=deque()
@@ -234,6 +183,109 @@ class Solution():
         return res
 ```
 
+**leetcode 273 - Integer to English Words [H]**  
+Convert a non-negative integer to its english words representation   
+Given input is guaranteed to be less than 2^31-1  
+
+Input: 123  
+Output: "One Hundred Twenty Three"  
+Input: 12345  
+Output: "Twelve Thousand Three Hundred Forty Five"  
+Input: 1234567  
+Output: "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"   
+Input: 1234567891  
+Output: "One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Thousand Eight Hundred Ninety One"  
+
+Solution of 1234567891:  
+1. separate last three digits by n,rem=divmod(n,1000), digits=0  
+2. in rem, first digit is hundred, second and third are tens and the only one last digit
+3. hundreds,tens=divmod(rem,100)
+4. digits+=3
+5. if tens<20, appleft 1~19, all different single by single  
+6. if tens>=20 and tens%10, appleft the only one last digit  
+7. if tens>=20, appleft the tens digit
+8. if hundreds, appleft hundreds+'Hundred'
+9. if new rem and digits>0, appleft 'Thousand' (check digits2word[digits])  
+10. ...
+
+Details:  
+
+
+       n      rem      divmod(1234567891,1000)
+    1234567   891      
+    hundreds  tens     divmod(891,100)    
+       8      91       
+      d=3              91>=20, 91%10!=0, appleft(i2w[91%10]) -> One]
+                       appleft(i2w[10*(91//10)]) -> Ninety,One]
+                       Eight, Hundred, Ninety, One]
+
+       n      rem      divmod(1234567,1000)
+     1234     567
+    hundreds  tens     divmod(567,100)
+       5      67       d>0, appleft(d2w[3])    Thousand, Eight, Hundred, Ninety, One]
+      d=6              67>=20, appleft(i2w[67%10])  ->Seven
+                       appleft(i2w[10*(67//10)])  -> Sixty
+                       Five, Hundred, Sixty, Seven, Thousand, Eight, Hundred, Ninety, One]
+
+       n      rem      divmod(1234,1000)
+       1      234
+    hundreds  tens     divmod(234,100)
+       2      34       d>0 appleft(d2w[6]) -> Million
+      d=9              Two, Hundred, Thirty, Four, Million, Five, Hundred, Sixty, Seven, Thousand, Eight, Hundred, Ninety, One]
+
+       n      rem      divmod(1,1000)
+       0      1
+    hundreds  tens     divmod(1,100)
+       0      1        d>0 appleft(d2w[9]) -> Billion
+                       [One, Billion, Two, Hundred, Thirty, Four, Million, Five, Hundred, Sixty, Seven, Thousand, Eight, Hundred, Ninety, One]
+
+
+
+
+```python
+from collections import deque
+class Solution():
+    def numberToWords(self,n):
+
+        int2word={1:'One',2:'Two',3:'Three',4:'Four',5:'Five',
+                  6:'Six',7:'Seven',8:'Eight',9:'Nine',10:'Ten',
+                  11:'Eleven',12:'Twelve',13:'Thirteen',14:'Fourteen',15:'Fifteen',
+                  16:'Sixteen',17:'Seventeen',18:'Eighteen',19:'Nineteen',20:'Twenty',
+                  30:'Thirty',40:'Forty',50:'Fifty',60:'Sixty',70:'Seventy',80:'Eighty',90:'Ninety'}
+
+        digits2word={3:'Thousand',6:'Million',9:'Billion',
+                     12:'Trillion',15:'Quadrillion',18:'Quintillion',
+                     21:'Sextillion',24:'Septillion',27:'Octillion',
+                     30:'Nonillion'}
+
+        en=deque() #english
+        d=0 #digits
+        if n==0:
+            return 'zero'
+
+        while n:
+            n,rem=divmod(n,1000)
+            hundreds,tens=divmod(rem,100)
+
+            if rem and d>0:
+                en.appendleft(digits2word[d])
+            d+=3
+
+            if tens>=20:
+                if tens%10:
+                    en.appendleft(int2word[tens%10])
+                en.appendleft(int2word[10*(tens//10)])
+            elif tens:
+                en.appendleft(int2word[tens])
+
+            if hundreds:
+                en.appendleft('Hundred')
+                en.appendleft(int2word[hundreds])
+
+          return "".join(en)
+```
+
+
 ### Factorial n!
 
 
@@ -287,6 +339,133 @@ class Solution():
 
         return zs
 ```
+
+### Prime Number  
+If num is divisible by any number between 2 and n / 2, it is not prime  
+Example: [2,3,5,7,11,...]  
+
+```python
+def isPrime(n): #O(n**3/2)
+    if n<=1:
+        return False
+
+    for i in range(2,n//2):
+        if n%i==0:
+            return False
+
+    return True
+```
+
+**leetcode 204 - Count Primes [E] - sieve of eratosthenes**  
+Count the number of prime numbers less than a non-negative number, n.  
+Example:  
+Input: 10  
+Output: 4  
+Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.  
+
+Solution of 15: O(n**3/2)
+
+            2,3,4,5,6,7,8,9,10,11,12,13,14
+            ^   ^   ^   ^   ^     ^     ^     remove all multiples of 2
+              ^           ^                   remove all multiples of 3
+
+        0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
+        F F T T T T T T T T  T  T  T  T  T  
+            ^   F   F   F    F     F     F
+            sieve[2*2:15:2]=False*len(sieve[2*2:15:2]) <- put idx[4,6,8,10,12,14] to F
+        0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
+        F F T T F T F T F T  F  T  F  T  F
+              ^           F        F
+              sieve[3*3:15:3]=False*len <- idx[9,12]
+        4*4>15 end
+
+```python
+class Solution():
+    def countPrimes(self,n):
+        sieve=[False,False]+[True for i in range(n-1)]
+        for i in range(2,int(n**0.5)+1):
+            if sieve[i]:
+                sieve[i*i:n:i]=[False]*len(sieve[i*i:n:i])
+
+        return sum(sieve)
+```
+
+### Ugly Number  
+
+**leetcode 263 - Ugly Number [E]**  
+Write a program to check whether a given number is an ugly number.  
+Ugly numbers are positive numbers whose prime factors only include 2, 3, 5.  
+
+Input: 6  
+Output: true  
+Explanation: 6 = 2 × 3  
+Input: 8  
+Output: true  
+Explanation: 8 = 2 × 2 × 2  
+Input: 14  
+Output: false   
+Explanation: 14 is not ugly since it includes another prime factor 7.  
+
+
+```python
+class Solution():
+    def isUgly(self,n):
+        if n<=0:
+            return False
+
+        while n%2==0:
+            n//=2
+        while n%3==0:
+            n//=3
+        while n%5==0:
+            n//=5
+
+        return n==1
+```
+
+**leetcode 264 - Ugly Number II [M]**  
+Write a program to find the n-th ugly number.
+
+Input: n = 10  
+Output: 12  
+Explanation: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 is the sequence of the first 10 ugly numbers.
+
+Note:  
+1 is typically treated as an ugly number.  
+n does not exceed 1690.  
+
+Solution:  
+
+    2*1,3*1,5*1   [1,2
+    min  
+    2*2,3*1,5*1   [1,2,3
+        min
+    2*2,3*2,5*1   [1,2,3,4
+    min
+    2*3,3*2,5*1   [1,2,3,4,5,...
+            min
+
+```python
+class Solution():
+    def nthUgly(self,n):
+        res=[1]
+        i_2,i_3,i_5=0,0,0
+        while len(res)<n:
+            res.append(min(2*res[i_2],3*res[i_3],5*res[i_5]))
+            if res[-1]==2*res[i_2]:
+                i_2+=1
+            if res[-1]==3*res[i_3]:
+                i_3+=1
+            if res[-1]==5*res[i_5]:
+                i_5+=1
+
+        return res[-1]
+```
+
+**Ugly Number III**  
+
+**Super Ugly Number**
+
 
 ### Happy Number    
 
@@ -431,7 +610,55 @@ class Solution():
         return strob_cnt
 ```
 
-### Count Digit  
+### Digits
+
+**leetcode 258 - Add Digits [E]**  
+Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.  
+
+Input: 38  
+Output: 2   
+Explanation: The process is like: 3 + 8 = 11, 1 + 1 = 2.
+             Since 2 has only one digit, return it.    
+
+Solution 1: by definition
+
+```python
+class Solution():
+    def addDigits(self,n):
+        while n>9:
+            s=0
+            while n>=1:
+                s+=n%10
+                n//=10
+            n=s
+        return n
+```
+
+Solution 2: TO(1)
+
+    n   digit res
+    1    1
+    2    2
+    9    9
+    10   1
+    11   2
+    18   9
+    19   1
+    20   2
+    27   9
+
+    res=[1~9]x11+[1]
+
+```python
+class Solution():
+    def addDigits(self,n):
+        if n==0:
+            return 0
+
+        return 1+(n-1)%9
+```
+
+**leetcode 1085 - Sum of Digits in the Minimum Number [E]**  
 
 **leetcode 233 - Number of Digit One [H]**  
 Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n.  
@@ -481,6 +708,43 @@ class Solution():
             n//=10
 
         return res
+```
+
+### Permutation
+
+**leetcode 60 - Permutation Sequence [M]**  
+The set [1,2,3,...,n] contains a total of n! unique permutations.  
+By listing and labeling all of the permutations in order, we get the following sequence for n = 3:  
+1 - "123"  
+2 - "132"  
+3 - "213"  
+4 - "231"  
+5 - "312"  
+6 - "321"  
+
+Given n and k, return the kth permutation sequence.  
+Input: n = 3, k = 3  
+Output: "213"  
+Input: n = 4, k = 9  
+Output: "2314"  
+
+
+### Arithmetic Progression  
+
+**leetcode 268 - Missing Number [E]**  
+Given an array containing n distinct numbers taken from 0~n, find the one that is missing from the array.  
+
+Input: [3,0,1]  
+Output: 2  
+Input: [9,6,4,2,3,5,7,0,1]  
+Output: 8  
+
+```python
+class Solution():
+    def missingNumber(self,nums):
+        n=len(nums)
+
+        return ((n+1)*n)//2)-sum(nums)
 ```
 
 

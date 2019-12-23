@@ -16,6 +16,8 @@ toc_label: "Index"
 author_profile: true
 ---
 
+## Background
+
 ### Definition
 
 A **disjoint-set data structure** is a data structure that keeps track of a set of elements partitioned into a number of disjoint (non-overlapping) subsets.  
@@ -29,14 +31,6 @@ find closest magnets and merge them into a bigger group
 
 ![](https://ha5ha6.github.io/judy_blog/assets/images/unionfind.png){:width="60%"}
 
-### Application
-
-- Kruskal's minimum spanning tree algorithm
-- Grid percolation
-- Network connectivity
-- Least common ancestor in trees
-- Image Processing
-
 ### Complexity
 
 O(n) - Construction  
@@ -48,12 +42,21 @@ O(1) - Count components
 
 A() - Amortized constant time  
 
-### Detect Cycle in an Undirected Graph
+### Applications
+
+- Kruskal's minimum spanning tree algorithm
+- Grid percolation
+- Network connectivity
+- Least common ancestor in trees
+- Image Processing
+
+
+#### Detect Cycle in an Undirected Graph
 
 References:
 [geeks for geeks](https://www.geeksforgeeks.org/union-find/)
 
-### Kruskal's Minimum Sapnning Tree  
+#### Kruskal's Minimum Spanning Tree  
 Given a graph G=(V,E) we want to find a **minimum spanning tree** in the graph (it may not be unique).  
 A **minimum spanning tree** is a subset of the edges which connect all vertices in the graph with minimal total edge cost.  
 
@@ -175,6 +178,17 @@ H 7
 I 8
 J 9
 ```
+
+## Problems  
+
+**leetcode 261 - Graph Valid Tree [M]**  see [graph #problems]()  
+Given n nodes labeled from 0 to n-1 and a list of undirected edges, write a function to check whether these edges make up a valid tree.  
+
+Input: n=5, edges=[[0,1],[0,2],[0,3],[1,4]]  
+Output: True  
+Input: n=5, edges=[[0,1],[1,2],[2,3],[1,3],[1,4]]  
+Output: False  
+
 
 
 

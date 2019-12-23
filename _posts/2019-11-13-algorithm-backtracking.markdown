@@ -36,6 +36,9 @@ For example, given n = 3, a solution set is:
 ### Palindrome  
 
 **leetcode 131 - Palindrome Partitioning [M]**  
+Given a string s, partition s such that every substring of the partition is a palindrome.  
+Return all possible palindrome partitioning of s.  
+
 Input: "aab"  
 Output:   
 [["aa","b"],  
@@ -104,49 +107,49 @@ Solution 2: recursion
 class Solution():
     def combine(self,n,k):
         res=[]
-        self.helper(range(1,n+1),k,res,[])
+        self.dfs(range(1,n+1),k,res,[])
         return res
 
-    def helper(self,arr,k,res,path):
+    def dfs(self,arr,k,res,path):
         if k>len(arr):
             return
         if k==0:
             res.append(path)
         else:
-            self.helper(arr[1:],k-1,res,path+[arr[0]])
-            self.helper(arr[1:],k,res,path)
+            self.dfs(arr[1:],k-1,res,path+[arr[0]])
+            self.dfs(arr[1:],k,res,path)
 ```
 
 Solution 3: backtracking  
 after appending return to upper function, run next i  
 
-    h([1,2,3,4],2,[]) <- path=[]
-        i=0 h([2,3,4],1,[1])
-            i=0 h([3,4],0,[1,2]) res+[1,2]
-            i=1 h([4],0,[1,3]) res+[1,3]
-            i=2 h([],0,[1,4]) res+[1,4]
-        i=1 h([3,4],1,[2])
-            i=0 h([4],0,[2,3]) res+[2,3]
-            i=1 h([],0,[2,4]) res+[2,4]
-        i=2 h([4],1,[3])
-            i=0 h([],0,[3,4]) res+[3,4]
+    dfs([1,2,3,4],2,[]) <- path=[]
+        i=0 dfs([2,3,4],1,[1])
+            i=0 dfs([3,4],0,[1,2]) res+[1,2]
+            i=1 dfs([4],0,[1,3]) res+[1,3]
+            i=2 dfs([],0,[1,4]) res+[1,4]
+        i=1 dfs([3,4],1,[2])
+            i=0 dfs([4],0,[2,3]) res+[2,3]
+            i=1 dfs([],0,[2,4]) res+[2,4]
+        i=2 dfs([4],1,[3])
+            i=0 dfs([],0,[3,4]) res+[3,4]
 
 
 ```python
 class Solution():
     def combine(self,n,k):
         res=[]
-        self.helper(range(1,n+1),k,res,[])
+        self.dfs(range(1,n+1),k,res,[])
         return res
 
-    def helper(self,arr,k,res,path):
+    def dfs(self,arr,k,res,path):
         if k>len(arr):
             return
         if k==0:
             res.append(path)
         else:
             for i in range(len(arr)):
-                self.helper(arr[i+1:],k-1,res,path+[arr[i]])
+                self.dfs(arr[i+1:],k-1,res,path+[arr[i]])
 ```
 
 **leetcode 39 - Combination Sum [M] - dups**  
@@ -165,31 +168,31 @@ A solution set is:
 
 Solution:  
 
-    h(0,7,[],[2,3,6,7]) <- path=[]
-        h(i=0,5,[2])
-            h(i=0,3=5-2,[2,2])
-                h(i=0,1=3-2,[2,2,2])  k=0,arr[k]=2>target=1 return
-                h(i=1,0*=3-3,[2,2,3]) append, return
-                h(i=2,-3=3-6,[2,2,6]) return
-                h(i=3,-4=3-7,[2,2,7]) return
-            h(i=1,2=5-3,[2,3])        k=1,arr[k]=3>target=2 return
-            h(i=2,-1=5-6,[2,6]) return
-            h(i=3,-2=5-7,[2,7]) return
-        h(i=1,4=7-3,[3])              
-            h(i=1,1=4-3,[3,3]) return k=1,arr[1]=3>target=1 return
-            h(i=2,-2=4-6,[3,6]) return
-            h(i=3,-3=4-7,[3,7]) return
-        h(i=2,1=7-6,[6])              k=2,arr[k]=2>target=1 return
-        h(i=3,0*,[7]) append, return
+    dfs(0,7,[],[2,3,6,7]) <- path=[]
+        dfs(i=0,5,[2])
+            dfs(i=0,3=5-2,[2,2])
+                dfs(i=0,1=3-2,[2,2,2])  k=0,arr[k]=2>target=1 return
+                dfs(i=1,0*=3-3,[2,2,3]) append, return
+                dfs(i=2,-3=3-6,[2,2,6]) return
+                dfs(i=3,-4=3-7,[2,2,7]) return
+            dfs(i=1,2=5-3,[2,3])        k=1,arr[k]=3>target=2 return
+            dfs(i=2,-1=5-6,[2,6]) return
+            dfs(i=3,-2=5-7,[2,7]) return
+        dfs(i=1,4=7-3,[3])              
+            dfs(i=1,1=4-3,[3,3]) return k=1,arr[1]=3>target=1 return
+            dfs(i=2,-2=4-6,[3,6]) return
+            dfs(i=3,-3=4-7,[3,7]) return
+        dfs(i=2,1=7-6,[6])              k=2,arr[k]=2>target=1 return
+        dfs(i=3,0*,[7]) append, return
 
 ```python
 class Solution():
     def combinationSum(self,cand,target): #candidate
         res=[]
-        self.helper(cand,target,0,res,[])
+        self.dfs(cand,target,0,res,[])
         return res
 
-    def helper(self,arr,target,k,res,path): #k = start from 0
+    def dfs(self,arr,target,k,res,path): #k = start from 0
         if target<0:
             return
         elif target==0:
@@ -199,7 +202,7 @@ class Solution():
         for i in range(k,len(arr)):
             if arr[k]>target:
                 return
-            self.helper(arr,target-arr[i],i,res,path+[arr[i]])
+            self.dfs(arr,target-arr[i],i,res,path+[arr[i]])
 ```
 
 **leetcode 40 - Combination Sum II [M] - no dups**  
@@ -218,7 +221,7 @@ A solution set is:
 Solution for [10,1,2,7,6,1,5], target=8:  
 
     [1,1,2,5,6,7,10] sorted
-    h(can,8,k=0,[])
+    dfs(can,8,k=0,[])
 
       i, k,tar,path
      (0, 0, 7, [1])
@@ -271,10 +274,10 @@ class Solution():
     def combinationSum(self,cand,target): #candidate
         res=[]
         cand.sort()
-        self.helper(cand,target,0,res,[])
+        self.dfs(cand,target,0,res,[])
         return res
 
-    def helper(self,arr,target,k,res,path): #k = start from 0
+    def dfs(self,arr,target,k,res,path): #k = start from 0
         if target<0:
             return
         elif target==0:
@@ -287,7 +290,7 @@ class Solution():
             if arr[k]>target:
                 return
 
-            self.helper(arr,target-arr[i],i+1,res,path+[arr[i]])
+            self.dfs(arr,target-arr[i],i+1,res,path+[arr[i]])
 ```
 
 **leetcode 216 - Combination Sum III [M] - no dups**  
@@ -295,7 +298,7 @@ Find all possible combinations of k numbers that add up to a number n, given tha
 
 Example 1:  
 Input: k=3, n=7  
-Output: [[1,2,4]]
+Output: [[1,2,4]]  
 Explanation: 3 numbers from 1 to 9 add up to 7  
 
 Example 2:  
@@ -308,13 +311,13 @@ class Solution():
     #n is the target sum
     def combinationSum(self,k,n):
         res=[]
-        self.helper(k,n,0,res,[])
+        self.dfs(k,n,0,res,[])
         return res
 
     #k->n number of required elements
     #n->target
     #new k is the start index from 0
-    def helper(self,n,target,k,res,path):
+    def dfs(self,n,target,k,res,path):
         if target<0:
             return
         if n==0 and target==0:
@@ -322,11 +325,315 @@ class Solution():
             return
 
         for i in range(k+1,10):
-            self.helper(n-1,target-i,i,res,path+[i])
+            self.dfs(n-1,target-i,i,res,path+[i])
+```
+
+**leetcode 254 - Factor Combinations [M]**  
+Numbers can be regarded as product of its factors  
+i.e. 8=2x2x2=2x4  
+Write a function that takes an integer n and return all possible combinations of its factors  
+
+Input: 1  
+Output: []  
+Input: 37  
+Output: []  
+Input: 12  
+Output: [[2,6],[2,2,3],[3,4]]  
+Input: 32  
+Output: [[2,16],[2,2,8],[2,2,2,4],[2,2,2,2,2],[2,4,4],[4,8]]  
+
+Solution of 12:  
+
+      f(12,2,[])
+      while1 2*2<12
+             res+[6,2]
+             f(6,2,[2])
+             while2 2*2<6
+                    res+[2,3,2]
+                    f(3,2,[2,2])
+                    2*2>3 no while3 return
+                    de=3
+                    3*3>6 end while2 return
+             de=3
+             3*3<12
+             res+[4,3]
+             f(4,3,[3])
+             3*3>4 no while4 return  
+             de=4
+             4*4>12 end while1 return
+
+
+```python
+class Solution():
+    def getFactors(self,n):
+        return self.factorize(n,2,[],[])
+
+    def factorize(self,n,de,path,res):
+        while de*de<=n:
+            if n%de==0:
+                res.append(path+[n//de,de])
+                self.factorize(n//de,de,path+[de],res)
+            de+=1
+
+        return res
 ```
 
 
+
 ### Permutations
+
+Permutation is the act of arranging the members of a set into a sequence or order, or, if the set is already ordered, rearranging (reordering) its elements — a process called permuting.  
+Permutations differ from combinations, which are selections of some members of a set regardless of order.  
+
+For example, written as tuples, there are six permutations of the set {1,2,3}, namely:
+(1,2,3), (1,3,2), (2,1,3), (2,3,1), (3,1,2), and (3,2,1).   
+These are all the possible orderings of this three-element set.  
+
+Anagrams of words whose letters are different are also permutations: the letters are already ordered in the original word, and the anagram is a reordering of the letters.  
+
+Number of permutations of n things, taken k at a time:
+
+
+               n!                      n!      P(k,n)
+    P(k,n) = ------         C(k,n)= ------- = --------
+             (n-k)!                 k!(n-k)!   P(k,k)
+
+    P(2,3) = 3!/(2-1)!=3*2
+    P(3,6) = 6!/(6-3)!=6*5*4
+    P(4,9) = 9!/(9-4)!=9*8*7*6
+    P(4,4) = 4!/0!=4*3*2*1
+
+    from 3 types of {apple, orange, pear} select 2 for permutations
+          3      2
+    -> {apple, orange}
+       {apple, pear}
+       {orange, apple}
+       {orange, pear}
+       {pear, orange}
+       {pear, apple}
+
+
+**leetcode 46 - Permutations [M]**  
+Given a collection of distinct integers, return all possible permutations.  
+
+Input: [1,2,3]  
+Output:  
+[ [1,2,3],  
+  [1,3,2],  
+  [2,1,3],  
+  [2,3,1],  
+  [3,1,2],  
+  [3,2,1]]  
+
+Solution 1: itertools.permutations  
+
+```python
+from itertools import permutations
+class Solution():
+    def permute(self,nums):
+
+        return list(permutations(nums))
+
+s=Solution()
+print(s.permute([1,2,3]))
+>>
+[(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]
+```
+
+Solution 2: recursion  
+
+    [1,2,3]     path
+    dfs([1,2,3],[])
+    i=0 dfs([]+[2,3],[1])
+        i=0 dfs([]+[3],[1,2])
+            i=0 dfs([],[1,2,3]) append res
+        i=1 dfs([2]+[],[1,3])
+            i=0 dfs([],[1,3,2]) append res
+    i=1 dfs([1]+[3],[2])
+        i=0 dfs([]+[3],[2,1])
+            i=0 dfs([],[2,1,3]) append res
+        i=1 dfs([1]+[],[2,3])
+            i=0 dfs([],[2,3,1]) append res
+    i=2 dfs([1,2],[3])
+        i=0 dfs([]+[2],[3,1])
+            i=0 dfs([],[3,1,2]) append res
+        i=1 dfs([1]+[],[3,2])
+            i=0 dfs([],[3,2,1]) append res  
+
+```python
+class Solution():
+    def permute(self,nums):
+        res=[]
+        self.dfs(nums,res,[])
+        return res
+
+    def dfs(self,nums,res,path):
+        if not nums:
+            res.append(path)
+        else:
+            for i in range(len(nums)):
+                self.dfs(nums[:i]+nums[i+1:],res,path+[nums[i]])
+```
+
+Solution 3: backtracking
+
+    nums     visited   path
+    [1,2,3]  [0,0,0]   
+
+             [1,0,0]   [1]
+             [1,1,0]   [1,2]
+             [1,1,1]   [1,2,3]
+             [1,0,1]   [1,3]
+             [1,1,1]   [1,3,2]
+
+             [0,1,0]   [2]
+             [1,1,0]   [2,1]
+             [1,1,1]   [2,1,3]
+             [0,1,1]   [2,3]
+             [1,1,1]   [2,3,1]
+
+             [0,0,1]   [3]
+             [1,0,1]   [3,1]
+             [1,1,1]   [3,1,2]
+             [0,1,1]   [3,2]
+             [1,1,1]   [3,1,1]
+
+        path visited
+    dfs([],  [0,0,0])
+    i=0 dfs([1],[1,0,0])
+        i=0 visited
+        i=1 dfs([1,2],[1,1,0])
+            i=0 visited
+            i=1 visited
+            i=2 dfs([1,2,3],[1,1,1]) append res
+        i=2 dfs([1,3],[1,0,1])
+            i=0 visited
+            i=1 dfs([1,3,2],[1,1,1]) append res
+    i=1 dfs([2],[0,1,0])
+        i=0 dfs([2,1],[1,1,0])
+            i=0 visited
+            i=1 visited
+            i=2 dfs([2,1,3],[1,1,1]) append res
+        i=1 visited
+        i=2 dfs([2,3],[0,1,1])
+            i=0 dfs([2,3,1],[1,1,1]) append res
+    i=2 dfs([3],[0,0,1])
+        i=0 dfs([3,1],[1,0,1])
+            i=0 visited
+            i=1 dfs([3,1,2],[1,1,1]) append res
+        i=1 dfs([3,2],[0,1,1])
+            i=0 dfs([3,2,1],[1,1,1]) append res  
+
+
+```python
+class Solution():
+    def permute(self,nums):
+        visited=[0]*len(nums)
+        res=[]
+        self.dfs(nums,[],res,visited)
+        return res
+
+    def dfs(self,nums,path,res,visited):
+        if len(path)==len(nums):
+            res.append(path)
+        else:
+            for i in range(len(nums)):
+                if not visited[i]:
+                    visited[i]=1
+                    self.dfs(nums,path+[nums[i]],res,visited)
+                    visited[i]=0  
+```
+
+**leetcode 47 - Permutation II (dups) [M]**  
+Given a collection of numbers that might contain duplicates, return all possible unique permutations.  
+
+Input: [1,1,2]  
+Output:  
+[ [1,1,2],  
+  [1,2,1],  
+  [2,1,1]]  
+
+Solution 1: recursion  
+
+```python
+class Solution():
+    def permute(self,nums):
+        res=[]
+        self.dfs(nums,res,[])
+        return res
+
+    def dfs(self,nums,res,path):
+        if not nums and path not in res:
+            res.append(path)
+        else:
+            for i in range(len(nums)):
+                self.dfs(nums[:i]+nums[i+1:],res,path+[nums[i]])
+```
+
+Solution 2: backtracking, backtracking should not change nums
+
+```python
+class Solution():
+    def permuteUnique(self,nums):
+        visited=[0]*len(nums)
+        res=[]
+        nums.sort()
+        self.dfs(nums,[],res,visited)
+        return res
+
+    def dfs(self,nums,path,res,visited):
+        if len(path)==len(nums):
+            res.append(path)
+        else:
+            for i in range(len(nums)):
+                if i>0 and not visited[i-1] and nums[i-1]==nums[i]:
+                    continue
+                if not visited[i]:            
+                    visited[i]=1
+                    self.dfs(nums,path+[nums[i]],res,visited)
+                    visited[i]=0  
+```
+
+**leetcode 267 - Palindrome Permutation [M]** need to pass online!!  
+Given a string, return all the palindromic permutations (without dups) of it. Return an empty list if no palindromic permutaiton could be formed.  
+
+Input: 'aabb'  
+Output: ['abba','baab']  
+Input: 'abc'  
+Output: []  
+
+Solution:  
+1. separate even and odd  
+2. do permutation with even  
+
+
+```python
+from collections import Counter
+class Solution():
+    def generatePalindromes(self,s):
+        cnt=Counter(s)
+        even=[]
+        odd=[]
+        for c in cnt:
+            if cnt[c]%2==0:
+                even.append(c)
+            else:
+                odd.append(c)
+
+        if len(odd)>1:
+            return []
+
+        res=[]
+        self.dfs(even,[],res,odd)
+        return res
+
+    def dfs(self,s,path,res,odd):
+        if not s:
+            res.append(''.join(path+odd+path[::-1]))
+        else:
+            for i in range(len(s)):
+                self.dfs(s[:i]+s[i+1:],path+[s[i]],res,odd)
+```
 
 ### N Queens
 

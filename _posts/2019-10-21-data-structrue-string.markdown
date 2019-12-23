@@ -18,6 +18,8 @@ toc_label: "Index"
 author_profile: true
 ---
 
+## Background
+
 ### Definition
 
 A string is traditionally a sequence of characters, either as a literal constant or as some kind of variable. The latter may allow its elements to be mutated and the length changed, or it may be fixed (after creation).  
@@ -122,6 +124,8 @@ str_cmp=lambda x,y:1 if x+y<y+x else -1
 sorted(strs,str_cmp)
 >>['9', '3', '30', '12']
 ```
+
+## Problem
 
 ### Slice  
 
@@ -366,6 +370,36 @@ class Solution():
 Solution 2:  
 use KMP failure function algorithm to find the longest prefix of s that is also a suffix of s[::-1]   
 
+**leetcode 266 - Palindrome Permutation [E]**  
+Given a string, determine if a permutation of the string could form a palindrome  
+
+Input: 'code'  
+Output: False  
+Input: 'aab'  
+Output: True  
+Input: 'carerac'  
+Output: True  
+
+Solution:  
+should be even characters and at most one odd character in the middle  
+i.e. 'carerac', after permutaiton can be 'racecar'  
+
+```python
+from collections import Counter
+class Solution():
+    def canPermutePalindrome(self, s):
+        cnt=Counter(s)
+        odd=False
+        for l in cnt:
+            if cnt[l]%2==1:
+                if odd:  #check if have more than one odd char
+                    return False
+                odd=True
+
+        return True
+```   
+
+
 ### Anagram  
 
 **leetcode 242 - Valid Anagram [E]**  
@@ -389,4 +423,38 @@ Solution 2: sort TO(logm+logn)
 class Solution():
     def isAnagram(self,s,t):
         return sorted(s)==sorted(t)
+```
+
+### Encode n Decode  
+
+**leetcode 271 - Encode and Decode Strings [M]**  
+Design an algorithm to encode a list of strings to a string.  
+The encoded string is then sent over the network and is decoded back to the original list of strings.  
+
+i.e. encode ['abc','def','hij'] to '3\*abc3\*def3\*hij'
+
+Solution:  
+encode to 'len+\*+sub_string'
+
+```python
+class Codec():
+    def encode(self,strs):
+        en=[]
+        for s in strs:
+            en.append(str(len(s)))
+            en.append('*')
+            en.append(s)
+
+        return "".join(en)
+
+    def decode(self,s):
+        de=[]
+        i=0
+        while i<len(s):
+            j=s.find('*',i) #find start from index i
+            sub_len=int(s[i:j])
+            de.append(s[j+1:j+1+sub_len])
+            i=j+1+sub_len
+
+        return de
 ```

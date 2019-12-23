@@ -17,11 +17,12 @@ toc_label: "Index"
 
 ## Topics 1 general
 
-### N Sum x3
+### N Sum x4
 
 **leetcode 1 - Two Sum [E] - hash** see [hash table #nsum](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/data-structrue-hash.html#n-sum)  
 **leetcode 167 - Two Sum II - Input array is sorted [M] - binary search** see [binary search #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-binarysearch.html#two-sum)  
-**leetcode 170 - Two Sum III - Data structure design [E]**  see [design #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-design.html#two-sum)
+**leetcode 170 - Two Sum III - Data structure design [E]**  see [design #twosum](https://ha5ha6.github.io/judy_blog/programming/2019/11/15/others-design.html#two-sum)  
+**leetcode 259 - 3Sum Smaller [M] - array, two pointer**    
 
 ### Basic Calculator x5
 
@@ -65,12 +66,12 @@ see [stack #arithmetic calculator](https://ha5ha6.github.io/judy_blog/programmin
 
 ### Permutation x6
 
-**leetcode 31 - Next Permutation [M] - list**  
-**leetcode 46 - Permutations [M] - backtracking**  
-**leetcode 47 - Permutations II [M] - backtracking**  
-**leetcode 60 - Permutation Sequence [M] - backtracking**  
-**leetcode 266 - Palindrome Permutation [E] - hash** see [hash #palindrome]()  
-**leetcode 267 - Palindrome Permutation II [M] - backtracking** see [backtracking #palindrome]()  
+**leetcode 31 - Next Permutation [M] - array** see [array #permutation](/programming/2019/10/29/data-structrue-array.html#permutation)    
+**leetcode 46 - Permutations [M] - backtracking**   
+**leetcode 47 - Permutations II [M] - backtracking** see [backtracking #permutation](/programming/2019/11/13/algorithm-backtracking.html#permutations)   
+**leetcode 60 - Permutation Sequence [M] - math** see [math #permutation]()   
+**leetcode 266 - Palindrome Permutation [E] - hash** see [string #palindrome](/programming/2019/10/26/data-structrue-string.html#palindrome)   
+**leetcode 267 - Palindrome Permutation II [M] - backtracking** see [backtracking #palindrome](/programming/2019/11/13/algorithm-backtracking.html#palindrome)  
 
 ### Linked List  
 
@@ -98,13 +99,40 @@ leetcode 112 - Path Sum [E]
 leetcode 113 - Path Sum II [M]  
 leetcode 124 - Binary Tree Maximum Path Sum [H]  
 leetcode 129 - Sum Root to Leaf Numbers [M]  
+leetcode 236 - Lowest Common Ancestor of a Binary Tree [M]  
 leetcode 250 - Count Univalue Subtrees [E]
 
 ### Binary Search Tree
 
+leetcode 235 - Lowest Common Ancestor of a Binary Search Tree [E]  
+leetcode 270 - Closest Binary Search Tree Value [E]  
+leetcode 272 - Closest Binary Search Tree Value II [M]  
+
+
 ### Trie  
 
 ### Graph  
+
+### Sorting  
+
+**leetcode 164 - Maximum Gap [H]**   
+**leetcode 215 - Kth Largest in an Array [M] - min heap** see [heap #problems](/programming/2019/11/30/data-structrue-heap.html#problems)  
+**leetcode 218 - The Skyline Problem [H] - priority queue, min heap** see [priority queue #problems](/programming/2019/12/02/data-structrue-priorityqueue.html#problems)  
+**leetcode 252 - Meeting Rooms [E]** see [sorting #problems](programming/2019/11/14/algorithm-sorting.html#problems)  
+**leetcode 253 - Meeting Rooms II - min heap[M]** see [heap #problems](/programming/2019/11/30/data-structrue-heap.html#problems)  
+**leetcode 274 - H-index [M] - bucket sort** see [sorting #problems](/programming/2019/11/14/algorithm-sorting.html#problems)    
+**leetcode 275 - H-index II (given sorted) [M] - binary search** see [binary search #h-index](/programming/2019/11/13/algorithm-binarysearch.html#h-index)
+
+### Stack  
+
+### Queue  
+
+### Bit Manipulation  
+
+**leetcode 136 - Single Number - xor[E]**   
+**leedcode 137 - Single Number II - xor[M]**  
+**leedcode 260 - Single Number III - xor[M]**  see [bit Manipulation # cancel out](/programming/2019/11/02/others-bit-manipulation.html#cancel-out)  
+
 
 ## Topics 2 multi-ans
 
@@ -143,6 +171,13 @@ see [topics 3](/programming/2019/10/25/topics-series.html#house-robber)
 **leetcode 198 - House Robber [E] - light dp**  
 **leetcode 213 - House Robber II [M]**  
 
+### Paint House x2
+
+**leetcode 256 - Paint House [E] - dp**  
+**leetcode 265 - Paint House [H] - dp,record 2 mins**  see [dp #paint house](/programming/2019/10/23/algorithm-dp.html#paint-house)
+
+### Paint Fence  
+
 ### Word Break x2   
 
 see [dp #word break](/programming/2019/10/23/algorithm-dp.html#word-break)  
@@ -166,4 +201,11 @@ see [topics 3](/programming/2019/10/25/topics-series.html#word-ladder)
 
 **leetcode 246 - Strobogrammatic Number [E] - hash** see [hash #strobogrammatic](/programming/2019/11/14/data-structrue-hash.html#strobogrammatic)  
 **leetcode 247 - Strobogrammatic Number II [] - math**    
-**leetcode 248 - Strobogrammatic Number III [] - math** see [math #strobogrammatic]()   
+**leetcode 248 - Strobogrammatic Number III [] - math** see [math #strobogrammatic]()
+
+### Ugly Number x4
+
+**leetcode 263 - Ugly Number [E]**  
+**leetcode 264 - Ugly Number II [M]**  
+**Ugly Number III**  
+**Super Ugly Number**  

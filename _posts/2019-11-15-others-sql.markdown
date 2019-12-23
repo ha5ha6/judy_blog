@@ -39,3 +39,5 @@ author_profile: true
 **leetcode 196 - Delete Duplicate Emails [E]**
 
 **leetcode 197 - Rising Temperature [E]**
+
+**leetcode 262 - Trips and Users [H]**

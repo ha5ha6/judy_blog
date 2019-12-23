@@ -388,3 +388,36 @@ class Solution():
 
         return node is not None
 ```
+
+### H-Index  
+
+**leetcode 275 - H-index II [M]**
+Given an array of sorted citations of a researcher, write a function to compute the researcher's h-index  
+h-index: a scientist has index h if h of his/her N papers have at least h citations each, and the other N-h papers have no more than h citations each  
+
+Input: citations=[0,1,3,5,6]  
+Output: 3  
+
+Solution:  
+
+    0   1   2   3   4
+    0,  1,  3,  5,  6
+    l       m       r    n-mid=5-2=3
+    l/m r                n-mid=5-0=5
+        l/m/r            n-mid=5-1=4        
+            l              
+
+```python
+class Solution():
+    def hIndex(self,citations):
+        n=len(citations)
+        l,r=0,n-1
+        while l<=r:
+            mid=(l+r)//2
+            if citations[mid]>=n-mid:
+                r=mid-1
+            else:
+                l=mid+1
+
+        return n-l
+```

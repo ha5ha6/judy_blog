@@ -16,6 +16,7 @@ toc_label: "Index"
 author_profile: true
 ---
 
+## Background
 
 ### Big O Table
 
@@ -317,6 +318,10 @@ def bucketSort(arr):
     return arr
 ```  
 
+### Radix Sort
+
+## Problems  
+
 **leetcode 164 - Maximum Gap [H]**  
 
 
@@ -326,4 +331,78 @@ class Solution():
 
 ```  
 
-### Radix Sort
+**leetcode 215 - Kth Largest in an Array [M] - max heap** see [heap #problems](/programming/2019/11/30/data-structrue-heap.html#problems)  
+
+**leetcode 218 - The Skyline Problem [H] - priority queue, max heap** see [priority queue #problems](/programming/2019/12/02/data-structrue-priorityqueue.html#problems)  
+
+**leetcode 252 - Meeting Rooms [E]**   
+Given an array of meeting time intervals [[start,end],...], start<end    
+Determine if a person could attend all meetings  
+
+Input: [[0,30],[5,10],[15,20]]  
+Output: False  
+Input: [[7,10],[2,4]]  
+Output: True
+
+```python
+class Interval():
+    def __init__(self,s=0,e=0):
+        self.start=s
+        self.end=e
+
+class Solution():
+    def canAttendMeetings(self,intervals):
+        intervals.sort(key=lambda x:x[0]) # or key=lambda x:x.start
+        for i,t in enumerate(intervals[1:],1):  #one for i starting from 1
+            if intervals[i-1][1]>t[0]:  #n.start<intervals[i-1].end    
+                return False
+
+        return True
+```
+
+**leetcode 253 - Meeting Rooms II [M] - max heap** - see [heap #problems](/programming/2019/11/30/data-structrue-heap.html#problems)  
+Find the minimum number of conference rooms required   
+Input: [[0,30],[5,10],[15,20]]    
+Output: 2  
+Input: [[7,10],[2,4]]  
+Output: 1  
+
+**leetcode 274 - H-index [M]**  
+Given an array of citations of a researcher, write a function to compute the researcher's h-index  
+h-index: a scientist has index h if h of his/her N papers have at least h citations each, and the other N-h papers have no more than h citations each  
+
+Input: citations=[3,0,6,1,5]  
+Output: 3  
+Explanation: 5 papers in total, each of them have 3,0,6,1,5 citations respectively   
+Since the researcher has 3 papers with at least 3 citations each and the remaining two with no more than 3 citations each, her h-index is 3  
+
+Solution 1: normal sort TO(nlogn)   
+h-index=3 -> have 3 papers cited at least 3 times  
+h-index=5 -> have 5 papers cited at least 5 times  
+
+```python
+class Solution():
+    def hIndex(self,citations):
+        citations.sort()
+        h=0
+        for i,c in enumerate(citations):
+            h=max(h,min(len(citations)-i,c))
+
+        return h
+```
+
+Solution 2: bucket sort TO(n)   
+
+```python
+class Solution():
+    def hIndex(self,citations):
+        buckets=[0]*(len(citations)+1)
+        for c in citations:
+            buckets[min(c,len(citations))]+=1
+
+        papers=0
+        for b in range(len(buckets)-1,-1,-1):
+            papers+=buckets[b]
+            if papers>=b:
+                return b
+```

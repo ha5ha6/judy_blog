@@ -312,6 +312,45 @@ class Solution():
         return left      
 ```
 
+**leetcode 259 - 3Sum Smaller [M] - two pointers**  
+Given an array of n integers nums and a target,  
+Find the number of index triplets i,j,k with 0<=i<j<k<n that satisfy the condition  
+nums[i]+nums[j]+nums[k]<target  
+
+Input: nums=[-2,0,1,3], target=2  
+Output: 2  
+Explanation: there are two triplets sums less than 2, [-2,0,1] and [-2,0,3]  
+
+Solution of [-2,0,1,3,4,-1,2],target=3:  
+most minimum two from start + max < target means indices between max all valid  
+
+    [-2,0,1,3,4,-1,2]
+    sorted
+      0  1 2 3 4 5 6
+    [-2,-1,0,1,2,3,4]
+      i  l         r
+
+    sum([-2,-1,4])<3
+    means [-2,-1,0][-2,-1,1][-2,-1,2][-2,-1,3][-2,-1,4] all count
+
+```python
+class Solution():
+    def threeSumSmaller(self,nums,target):
+        cnt=0
+        nums.sort()
+
+        for i in range(len(nums)-2):
+            l,r=i+1,len(nums)-1
+            while l<r:
+                if nums[i]+nums[l]+nums[r]<target:
+                    cnt+=r-l
+                    l+=1
+                else:
+                    r-=1
+
+        return cnt
+```
+
 
 **leetcode 53 - Maximum Subarray**  
 **leetcode - Maximum Size Subarray Sum Equals k**  
@@ -485,8 +524,8 @@ a.flatten()
 >>array([1, 2, 3, 3, 6, 7, 7, 5, 4])
 ```
 
-**flatten a nested list** - recursion
-Input:  
+**flatten a nested list** - recursion  
+Input:   
 l = [1, 2, [3, 4, [5, 6]], 7, 8, [9, [10]]]  
 Output:  
 l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -618,4 +657,50 @@ print(n.hasNext())
 print(n.next())
 print(n.next())
 print(n.hasNext())
+```
+
+### Permutation  
+
+**leetcode 31 - Next Permutation [E]**  
+Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.  
+If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).  
+
+The replacement must be in-place and use only constant extra memory.  
+
+    1,2,3 → 1,3,2  
+    3,2,1 → 1,2,3  
+    1,1,5 → 1,5,1  
+
+Solution of 1,2,7,4,3,1:  
+1. find the top descending idx r from right most  
+2. partially reverse the nums[r:]  
+3. find the first element in nums[r:] > r-1  
+4. swap nums[r-1] with the found nums  
+
+Details:  
+
+    1,2,7,4,3,1 -> 1,3,1,2,4,7 ->  1,3,2,1,4,7
+        |  -> |      ^ |  <- |         ^ | <-|
+
+    0 1 2 3 4 5
+    1,2,7,4,3,1
+        r <-  r   flip [7,4,3,1] -> [1,3,4,7]
+    1,2,1,3,4,7
+        r     n   find the first element in [1,3,4,7]>nums[r-1]=2
+      ^   ^       swap 2 and 3
+    1,3,1,2,4,7
+
+
+```python
+class Solution():
+    def nextPermutation(self,nums):
+        r=len(nums)-1
+        while r>0 and nums[r]<=nums[r-1]:
+            r-=1
+        nums[r:]=list(reversed(nums[r:]))
+        if r>0:
+            for i in range(r,len(nums)):
+                if nums[i]>nums[r-1]:
+                    nums[i],nums[r-1]=nums[r-1],nums[i]
+                    break
 ```

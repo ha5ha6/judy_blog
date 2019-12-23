@@ -16,6 +16,8 @@ toc_label: "Index"
 author_profile: true
 ---
 
+## Background
+
 ### Definition
 
 A heap is a specialized **tree-based data structure** which is essentially an almost complete tree that satisfies the heap property:  
@@ -56,7 +58,7 @@ Max Heap Example:
 **Relation with priority queue**: see [priority queue](/programming/2019/12/02/data-structrue-priorityqueue.html)  
 The heap is one maximally efficient implementation of an abstract data type called a **priority queue**, and in fact, priority queues are often referred to as "heaps", regardless of how they may be implemented.  
 
-### Pick Point  
+### Points to Note
 
 take min heap
 
@@ -204,7 +206,7 @@ TO(n) for create and build heap
 TO(nlogn) overall  
 SO(1)  
 
-### Problems  
+## Problems  
 
 **leetcode 215 - Kth Largest in an Array [M] - max heap** see [topic #kth largest](https://ha5ha6.github.io/judy_blog/programming/2019/10/25/topics.html#kth-largest-element---4-solutions)  
 Find the kth largest element in an unsorted array, note: not the kth distinct element.  
@@ -222,4 +224,198 @@ class Solution():
         heapq.heapify(nums)
 
         return heapq.nlargest(k,nums)[-1]
+```
+
+**leetcode 218 - The Skyline Problem [H]**  
+Given the locations and height of all the buildings, write a program to output the skyline formed by these buildings collectively.
+
+Example:  
+Input: [left,right,height]  
+[[1,3,3],[2,4,4],[5,8,2],[6,7,4],[8,9,4]]  
+Output: [[1,3],[2,4],[4,0],[5,2],[6,4],[7,2],[8,4],[9,0]]  
+
+
+      5 |
+      4 |     |-----|     |--|  |--|
+      3 |  |--|--|  |     |  |  |  |
+      2 |  |  |  |  |  |--|--|--|  |
+      1 |  |  |  |  |  |  |  |  |  |
+        ------------------------------
+        0  1  2  3  4  5  6  7  8  9  
+
+      5 |
+      4 |     x-----|     x--|  x--|
+      3 |  x--|--|  |     |  |  |  |
+      2 |  |  |  |  |  x--|--x--|  |
+      1 |  |  |  |  |  |  |  |  |  |
+        ------------x--------------x--
+        0  1  2  3  4  5  6  7  8  9  
+
+Solution - use max heap:  
+1. transfer [l,r,h] to [l,-h,r]+[r,h,None]  
+Note 1: -h for discriminating the left and the right edges  
+Note 2: for the left to be sorted ahead of the right  
+Note 3: minus value of height suits for the default minheap setting  
+2. sort the new rectangles of [l,-h,r]+[r,h,None]
+3. use a min heap (default) to record height and right (h,r)
+4. when meets left edge (h<0), heap push (h,r)
+5. when not left edge and current left (which was the right edge originally) is larger than the recorded right, which means the previous whole block reaches right end, heap pop all the recorded (h,r)
+6. every time when earlier top!=new heap[0][0], which is the latest max height, res append [l,-heap[0][0]]  
+Note 1: always append left edge points  
+Note 2: heap[0][0] is always the highest right edges, cuz of the property of default minheap from heapq
+
+
+        l,r,h
+       [1,3,3]        
+       [2,4,4]
+       [5,8,2]
+       [6,7,4]
+       [8,9,4]
+
+       -> sorted([l,-h,r]+[r,h,None])
+       [1,-3,3]
+       [2,-4,4]
+       [3,3,N]
+       [4,4,N]
+       [5,-2,8]
+       [6,-4,7]
+       [7,4,N]
+       [8,-4,9]
+       [8,2,N]
+       [9,4,N]
+
+                            heap
+       ('leftpush', [(-3, 3), (0, inf)])
+       ('leftpush', [(-4, 4), (0, inf), (-3, 3)])
+       ('whilepop', [(-3, 3), (0, inf)])
+       ('whilepop', [(0, inf)])
+       ('leftpush', [(-2, 8), (0, inf)])
+       ('leftpush', [(-4, 7), (0, inf), (-2, 8)])
+       ('whilepop', [(-2, 8), (0, inf)])
+       ('whilepop', [(0, inf)])
+       ('leftpush', [(-4, 9), (0, inf)])
+       ('whilepop', [(0, inf)])
+
+
+```python
+import heapq
+
+class Solution():
+    def getSkyline(self,buildings):
+
+        rect=[[l,-h,r] for l,r,h in buildings]+[[r,h,None] for l,r,h in buildings]
+        rect.sort()
+        res=[]
+        heap=[(0,float('inf'))] #store (h,r)
+
+        for l,h,r in rect:
+            top=heap[0][0]
+            while l>=heap[0][1]: #left >= most right, jump to next new block
+                heapq.heappop(heap) #pop all
+            if h<0:
+                heapq.heappush(heap,(h,r))
+            if top!=heap[0][0]:
+                res.append([l,-heap[0][0]])
+
+        return res
+```
+
+**leetcode 253 - Meeting Rooms II [M]** - heap sort  
+Given an array of meeting time intervals [[start,end],...], start<end  
+Find the minimum number of conference rooms required  
+
+Input: [[0,30],[5,10],[15,20]]  
+Output: 2  
+Input: [[7,10],[2,4]]  
+Output: 1  
+
+Solution: minheap  
+heap[0] is always the minimum value, and everytime popping the minimum  
+1. sort by first element  
+2. heappush the end time (the second element)  
+3. if min value <= next.start, heappop     
+4. max rooms = max(max rooms, len(heap))  
+
+Details:  
+
+    [[0,30],[5,10],[15,20]]
+
+     i  heap     max rooms
+    (0, [30],     1)
+    (1, [10, 30], 2)       10<15 pop 10  
+    (2, [20, 30], 2)
+
+
+```python
+import heapq
+class Solution():
+    def minMeetingRooms(self,intervals):
+        max_rooms=0
+        heap=[] #rooms
+        intervals.sort(key=lambda x:x[0])
+
+        for i in intervals:
+            heapq.heappush(heap,i[1])  
+            while heap[0]<=i[0]:
+                heapq.heappop(heap)
+            max_rooms=max(max_rooms,len(heap))
+
+        return max_rooms
+```
+
+**leetcode 272 - Closest Binary Search Tree Value II (multiple k values) [H]**  
+Given a non-empty binary search tree and a target value, find k values in the bst that is closest to the target  
+
+Input: root=[4,2,5,1,3], target 3.714286, k=2
+
+          4
+         / \
+        2   5
+       / \
+      1   3
+
+Output: [4,3]
+
+Solution:  
+1. use min heap to record (-diff,node.val)
+2. when len(heap) > k, heappop the min (-diff), and keep k largest -diff which is closest value  
+3. first check (node.val-target)<max diff
+4. if not, check target> or <node.val, if <, go to left child, else go to right child  
+
+Details:  
+
+                                     min  heap
+    find(4,3.7)               [(-inf,  0),(-0.3,  4)]     
+        find(2,3.7)           [(-1.7,  2),(-0.3,  4)]
+            find(1,3.7)        2.7>1.7, 3.7>1
+                find(1.right) return
+            find(3,3.7)       [(-0.7,  3),(-0.3,  4)]
+                find(3.left)  return
+        find(5,3.7)            2.7>0,7, 3.7<5
+            find(5.left)      return  
+
+```python
+import heapq
+class Solution():
+    def closestKValues(self,root,target,k):
+        closest=[(float('-inf'),0)]
+        self.find(root,target,k,closest)
+
+        return [v for diff,v in closest]
+
+    def find(self,node,target,k,closest):
+        if not node:
+            return
+
+        if abs(node.val-target)<-closest[0][0]:
+            heapq.heappush(closest,(-abs(node.val-target),node.val))
+            if len(closest)>k:
+                heapq.heappop(closest)
+            self.find(node.left,target,k,closest)
+            self.find(node.right,target,k,closest)
+
+        elif target>node.val:
+            self.find(node.right,target,k,closest)
+        else:
+            self.find(node.left,target,k,closest)
 ```

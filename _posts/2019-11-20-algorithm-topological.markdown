@@ -16,6 +16,8 @@ toc_label: "Index"
 author_profile: true
 ---
 
+## Background
+
 ### Motivation  
 
 Many real world situation can be modeled as a **graph** with **directed edges** where some events must occur before others, say
@@ -72,7 +74,9 @@ DAG can be verified by **Tarjan's strongly connected component algorithm**.
 
 By definition, all **rooted trees** have a topological ordering since they do not contain any cycles.  
 
-### the Algorithm - graph, set and stack/queue
+### Implementation   
+
+**graph, set and stack/queue**
 
 1. pick an unvisited node   
 2. beginning with the selected node, do a dfs exploring only unvisited nodes, use set for seen  
@@ -166,7 +170,7 @@ def dfs(k,v2,visted,graph):
     return i-1
 ```
 
-### the Algorithm - dict
+**dict**  
 
 DAG can be represented by G={'a':'bce','b':d,'c':'d','d':'','e':'cd'}  
 Build an in-degree dict={'a':0,'b':1,'c':2,'d':3,'e':1}  
@@ -235,7 +239,7 @@ print(topsort(G))
 >>['a', 'e', 'c', 'b', 'd']
 ```
 
-### Problems
+## Problems
 
 **leetcode 207 - Course Schedule [M] - if DAG**  
 There are a total of n courses you have to take, labeled from 0 to n-1. Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]  
@@ -425,3 +429,15 @@ class Solution():
 
         return True
 ```
+
+**leetcode 269 - Alien Dictionary [H]**  
+There is a new alien language which uses the latin alphabet. However, the order among letters are unknown to you. You receive a list of non-empty words from the dictionary, where words are sorted lexicographically by the rules of this new language.  
+Derive the order of letters in this language.  
+
+Input: ["wrt","wrf","er","ett","rftt"]  
+Output: "wertf"  
+Input: ["z","x"]  
+Output: "zx"  
+Input ["z","x","z"]  
+Output: ""  
+Explanation: the order is invalid.  

@@ -332,6 +332,60 @@ class Solution(object):
         return ones
 ```
 
+**leedcode 260 - Single Number III [M]**  
+Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.  
+
+Input:  [1,2,1,3,2,5]  
+Output: [3,5]  
+
+Solution:  
+1. find n1^n2=xor by xor all the nums  
+2. use a mask=1 to & xor, while mask&xor ==0, mask<<=1 to find the first the bit 3 and 5 differ     
+3. re xor all the numbers  
+
+Details:  
+
+    [1,2,1,3,2,5]
+     1^2^1^3^2^5 -> 3^5 -> 6
+
+     3: 011
+     5: 101 ^
+     ---------
+     6: 110
+         ^   first 1 bit appears, means 3 and 5 differ from this bit
+
+     mask=010
+
+     nums of the second bit = 0
+     [1,1,5]  001,001,101
+      1^1^5 -> 5
+
+     nums of the second bit = 1
+     [2,2,3]  010,010,011
+      2^2^3 -> 3
+
+```python
+class Solution(object):
+    def singleNumber(self, nums):
+        n1,n2=0
+        xor=0
+        for n in nums:
+            xor^=n
+
+        mask=1
+        while mask&xor==0:
+            mask<<=1
+
+        for n in nums:
+            if n&mask==0:
+                n1^=n
+            else:
+                n2^=n
+
+        return [n1,n2]
+```
+
+
 **leedcode 461 - Hamming Distance []**
 ```python
 class Solution(object):

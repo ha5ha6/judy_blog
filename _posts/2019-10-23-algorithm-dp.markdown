@@ -86,6 +86,161 @@ class Solution(object):
         return dp[0]
 ```
 
+### Paint House  
+
+**leetcode 256 - Paint House (3 colors) [E]**  
+There are a row of n houses, each house can be painted with one
+of the three colors: red, blue or green. The cost of painting
+each house with a certain color is different. You have to paint
+all the houses such that no two adjacent houses have the same color.  
+
+The cost of painting each house with a certain color is represented
+by a n x 3 cost matrix. For example, costs[0][0] is the
+cost of painting house 0 with color red; costs[1][2] is
+the cost of painting house 1 with color green, and so on...
+Find the minimum cost to paint all houses.  
+
+Note:  
+All costs are positive integers.  
+
+Input: [[17,2,17],[16,16,5],[14,3,19]]  
+Output: 10=2+5+3  
+
+Explanation:  
+
+     r   b   g
+    [17, 2,  17] house 1
+    [16, 16, 5]  house 2
+    [14, 3,  19] house 3
+
+    dp ini: cost matrix, i starts from 1
+    dp transition:  
+    dp[i][0]+=min(dp[i-1][1],dp[i-1][2])
+    dp[i][1]+=min(dp[i-1][0],dp[i-1][2])
+    dp[i][2]+=min(dp[i-1][0],dp[i-1][1])
+
+    [17,      2,     17]
+         \ /      \
+         / \       \
+    [16+2*,   16+17,  5+2]
+                    /
+         -----------  
+        /       /   
+    [14+7,   3+7,   19+18*]
+
+
+```python    
+class Solution():
+    def minCost(self,cost):
+        if not cost:
+            return 0
+
+        dp=cost
+        for i in range(1,len(cost)):
+            dp[i][0]+=min(dp[i-1][1],dp[i-1][2])
+            dp[i][1]+=min(dp[i-1][0],dp[i-1][2])
+            dp[i][2]+=min(dp[i-1][0],dp[i-1][1])
+
+        return min(dp[-1])
+
+```
+
+**leetcode 265 - Paint House (k colors) [H]**  
+There are a row of n houses, each house can be painted with one
+of the k colors. The cost of painting
+each house with a certain color is different. You have to paint
+all the houses such that no two adjacent houses have the same color.  
+
+The cost of painting each house with a certain color is represented
+by a n x k cost matrix. For example, costs[0][0] is the
+cost of painting house 0 with color 0; costs[1][2] is
+the cost of painting house 1 with color 2, and so on...
+Find the minimum cost to paint all houses.  
+
+Input: [[1,5,3],[2,9,4]]  
+Output: 5
+Explanation:
+
+     0 1 2   color
+    [1,5,3]  house 0
+     ^   ¥
+    [2,9,4]  house 1
+     ¥   ^
+
+
+
+Solution 1: TO(nk^2)
+
+```python    
+class Solution():
+    def minCost(self,cost):
+        if not cost:
+            return 0
+
+        dp=cost
+        for i in range(1,len(cost)):
+            for k in range(len(cost[i])):
+                dp[i][k]+=self.getMin(cost,i-1,k)
+
+        return min(dp[-1])
+
+    def getMin(self,cost,i,k):
+        minn=max(cost[i])
+        for i,c in enumerate(cost[i]):
+            if i==k:
+                continue
+            minn=min(minn,c)
+
+        return minn
+```
+
+Solution 2: TO(nk)  
+1. use a list min_c to record min and second min idx of each house  
+2. add previous cost of non current idx min  
+dp transition: dp[i][k]+=dp[i-1][min_c[k==min_c[0]]]   
+k=0, if min_c[0,x], k==0, +dp[i-1][min_c[1]]  
+k=1, if min_c[0,x], k!=0, +dp[i-1][min_c[0]]  
+
+Details:  
+
+     0  1  2  3   color  k     min_c     dp ini:
+    [1, 8, 4, 9]  house 0      [0,2]     dp=cost
+     ^     ^                             dp transition:
+    [6, 0, 3, 1]  house 1      [1,3]     dp[i][k]+=dp[i-1][min_c[k==min_c[0]]]
+        ^     ^
+    [3, 7, 5, 4]  house 2      [0,3]
+     ^        ^
+    [2, 1, 9, 3]  house 3      [1,0]
+     ^  ^
+    [5, 0, 4, 7]  house 4      [1,2]
+        ^  ^
+
+
+```python    
+class Solution():
+    def minCost(self,cost):
+        if not cost or not cost[0]:
+            return 0
+
+        for i in range(1,len(cost)):
+            min_c=[0,1]  #min and second min color idx
+            if cost[i-1][0]>cost[i-1][1]:
+                min_c=[1,0]
+
+            for c in range(2,len(cost[0])):
+                if cost[i-1][c]<=cost[i-1][min_c[0]]:
+                    min_c[1],min_c[0]=min_c[0],c
+                elif cost[i-1][c]<cost[i-1][min_c[1]]:
+                    min_c[1]=c
+
+            print(min_c)
+            for c in range(len(cost[0])):
+                cost[i][c]+=cost[i-1][min_c[c==min_c[0]]]
+
+        return min(cost[-1])
+```
+
+
 ### String Subsequence
 
 **leetcode 115 - Distinct Subsequences [H]**  
