@@ -30,7 +30,7 @@ In MDPs:
 
 **Basic Formulation and Return**  
 
-![](/assets/images/return.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/return.jpg){:width="80%"}
 
 **Episodic and Continuing tasks**  
 
@@ -48,7 +48,7 @@ Episodic: the agent-env interaction naturally breaks down into a sequence of sep
 
 **Value function are defined w.r.t particular policies**, that is the rewards the agent can expect to receive in the future depend on what actions it will take  
 
-![](/assets/images/bellman.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/bellman.jpg){:width="80%"}
 
 - V and Q can be estimated from experience, such as Monte Carlo methods
 - V and Q can be maintained as parameterized functions by the agent, and the parameters can be adjusted to better match the observed returns  
@@ -159,7 +159,7 @@ while True:
 
 If the dynamics of the environment are known, in principle one can solve this system of equations for V* using any one of a variety of methods for solving systems of nonlinear equations  
 
-![](/assets/images/bellmanop.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/bellmanop.jpg){:width="80%"}
 
 Because it is the optimal value function, however, V\*'s consistency condition can be written in a special form without reference to any specific policy  
 
@@ -203,13 +203,13 @@ while True:
 
 Recall  
 
-![](/assets/images/bellrevisit.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/bellrevisit.jpg){:width="80%"}
 
-![](/assets/images/belloperator.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/belloperator.jpg){:width="80%"}
 
 **Bellman Operator Properties**  
 
-![](/assets/images/operatorproperty.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/operatorproperty.jpg){:width="80%"}
 
 
 
@@ -220,4 +220,4 @@ Sutton's RL book second edition, Chapter 3 Finite MDPs
 
 ### Previous Edition  
 
-![](/assets/images/bellmanold.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/bellmanold.jpg){:width="80%"}

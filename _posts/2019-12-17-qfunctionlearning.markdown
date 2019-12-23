@@ -17,12 +17,12 @@ author_profile: true
 
 ### Definition
 
-![](/assets/images/qdefinition.jpg){:width="80%"}
-![](/assets/images/qdefinition2.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/qdefinition.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/qdefinition2.jpg){:width="80%"}
 
 ### Algorithms
 
-![](/assets/images/qiters.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/qiters.jpg){:width="80%"}
 
 
 ### References

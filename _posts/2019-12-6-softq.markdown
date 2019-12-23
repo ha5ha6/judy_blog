@@ -113,7 +113,7 @@ Experiment results:
 
 **MaxEnt RL problem formulation**
 
-![](/assets/images/maxentrl.png){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/maxentrl.png){:width="80%"}
 
 Note that, the MaxEnt objective differs qualitatively from  
 - Boltzmann Exploration  
@@ -130,13 +130,13 @@ prior work:
 
 However, **engergy-based model** is more general class of distribution that can represent complex, multimodal behaviors  
 
-![](/assets/images/softbellman.png){:width="70%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/softbellman.png){:width="70%"}
 
 ### Soft Q-Learning
 
 **Soft Q-Iteration**  
 
-![](/assets/images/softqiter.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/softqiter.jpg){:width="80%"}
 
 **Practical Problems**  
 
@@ -154,7 +154,7 @@ This procedure is intractable due to the integral in V_soft(st)
 Solution:  
 Turn this procedure into a **stochastic optimization**, which leads to a SGD update  
 
-![](/assets/images/softqstoupdate.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/softqstoupdate.jpg){:width="80%"}
 
 This SGD can be updated using sampled states and actions, the sampling distribution **qs and qa** can be arbitrary    
 We can use real samples from rollouts of current policy π(at\|st) ∝ exp⁡[1/α(Q_soft^θ(st,at))]  

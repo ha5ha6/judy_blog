@@ -48,7 +48,7 @@ data=np.random.randn(100)
 plt.hist(data)
 ```
 
-![](/assets/images/randn100.png){:width="50%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/randn100.png){:width="50%"}
 
 Steps:  
 1. assume data is normal distributed: the likelihood of the model is Gaussian with parameter μ,σ - mean and standard deviation, assume σ=1 is known for simplicity    
@@ -68,7 +68,7 @@ Can compute the posterior analytically, because for a Gaussian likelihood with k
 **Conjugate**  
 posterior and prior will be the same distribution  
 
-![](/assets/images/normalnor.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/normalnor.jpg){:width="80%"}
 
 
 ```python
@@ -98,7 +98,7 @@ plt.plot(x,pdf1,color='r',linewidth=2)
 plt.plot(x,pdf2,'g',linewidth=2)
 ```
 
-![](/assets/images/randn100_post.png){:width="50%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/randn100_post.png){:width="50%"}
 
 
 

@@ -45,11 +45,11 @@ x=2*np.random.rand(100)  #0~2 uniform distribution data
 y=3+4*x+np.random.randn(100)  #0~1 normal distribution noise
 ```
 
-![](/assets/images/y=3+4x.png){:width="50%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x.png){:width="50%"}
 
 **Analytical Solution**  
 
-![](/assets/images/simplelinearestimate.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/simplelinearestimate.jpg){:width="80%"}
 
 ```python
 import matplotlib.pyplot as plt
@@ -82,7 +82,7 @@ X_b = np.c_[np.ones((100,1)),X]
 theta_best = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(y)
 ```
 
-![](/assets/images/y=3+4x_fitted.png){:width="50%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x_fitted.png){:width="50%"}
 
 Problem:  
 If the #feature increases, it's hard to do the matrix multiplication anymore.   
@@ -100,7 +100,7 @@ Machine learning analogy:
 
 Reformulate the problem setting:
 
-![](/assets/images/gdestimate.jpg){:width="80%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/gdestimate.jpg){:width="80%"}
 
 ```python
 from __future__ import division
@@ -156,12 +156,12 @@ plt.plot(x,theta[1]*x+theta[0],'g',label='gradient_descent')
 
 Fitted results and the parameter trajs   
 
-![](/assets/images/y=3+4x_gd_fitted.png){:width="45%"} ![](/assets/images/y=3+4x_theta_traj.png){:width="45%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x_gd_fitted.png){:width="45%"} ![](https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x_theta_traj.png){:width="45%"}
 
 
 ### Stochastic Gradient Descent  
 
-![](/assets/images/gdvssgd.png){:width="50%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/gdvssgd.png){:width="50%"}
 
 In Gradient Descent, parameter gradients are computed on all observations (sample) at each iteration.  
 In Stochastic Gradient Descent, we can choose the observation (sample) randomly instead of a single group or in the order they appear in the training set.  
@@ -264,11 +264,11 @@ theta_msgd,obj_traj_msgd,grad_traj_msgd=mini_sgd(X,y,theta,alpha,n_iter,batch_si
 
 Fitted results
 
-![](/assets/images/y=3+4x_msgd_fitted.png){:width="45%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x_msgd_fitted.png){:width="45%"}
 
 The gradients and the objective convergence  
 
-![](/assets/images/y=3+4x_msgd_grad.png){:width="45%"}  ![](/assets/images/y=3+4x_msgd_obj.png){:width="45%"}
+![](https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x_msgd_grad.png){:width="45%"}  ![](https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x_msgd_obj.png){:width="45%"}
 
 ### References
 
