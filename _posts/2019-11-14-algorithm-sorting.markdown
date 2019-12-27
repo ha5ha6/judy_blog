@@ -406,3 +406,33 @@ class Solution():
             if papers>=b:
                 return b
 ```
+
+**leetcode 280 - Wiggle Sort [M]**  
+Given an unsorted array nums, reorder it in-place such that nums[0]<=nums[1]>=nums[2]<=nums[3]...  
+
+Input: nums=[3,5,2,1,6,4]  
+Output: one possible [3,5,1,6,2,4]  
+
+Solution:  
+if index is odd and not greater than or equal to previous, swap  
+if index is even and greater than or equal to previous, swap  
+
+        0 1 2 3 4 5
+        3 5 2 1 6 4
+    i%2 0 1 0 1 0 1
+    >=    1 0 0     xor
+    --------------------
+          0 0 1
+        3 5 1 2 6 4
+    >=          1
+    --------------------
+        3 5 1 6 2 4
+
+
+```python
+class Solution():
+    def wiggleSort(self,nums):
+        for i in range(1,len(nums)):
+            if i%2 ^ (nums[i]>=nums[i-1]):
+                nums[i],nums[i-1]=nums[i-1],nums[i]
+```

@@ -122,6 +122,7 @@ leetcode 272 - Closest Binary Search Tree Value II [M]
 **leetcode 253 - Meeting Rooms II - min heap[M]** see [heap #problems](/programming/2019/11/30/data-structrue-heap.html#problems)  
 **leetcode 274 - H-index [M] - bucket sort** see [sorting #problems](/programming/2019/11/14/algorithm-sorting.html#problems)    
 **leetcode 275 - H-index II (given sorted) [M] - binary search** see [binary search #h-index](/programming/2019/11/13/algorithm-binarysearch.html#h-index)
+**leetcode 280 - Wiggle Sort [M]**  
 
 ### Stack  
 
@@ -132,6 +133,20 @@ leetcode 272 - Closest Binary Search Tree Value II [M]
 **leetcode 136 - Single Number - xor[E]**   
 **leedcode 137 - Single Number II - xor[M]**  
 **leedcode 260 - Single Number III - xor[M]**  see [bit Manipulation # cancel out](/programming/2019/11/02/others-bit-manipulation.html#cancel-out)  
+
+### Greedy  
+
+see [greedy](/programming/2019/12/06/algorithm-greedy.html#array)  
+**leetcode 134 - Gas Station [M]**   
+**leetcode 135 - Candy [H]**  
+**leetcode 277 - Find the Celebrity [M]** (array? not sure)   
+
+### Arithmetic Calculator  
+
+**leetcode 150 - Evaluate Reverse Polish Notation [M]**  
+**leetcode 224 - Basic Calculator [H]**
+**leetcode 227 - Basic Calculator II [M]**  see [stack #arithmetic](/programming/2019/11/13/data-structrue-stack.html#arithmetic-calculator)
+**leetcode 282 - Expression Add Operators [H]** see [dfs]
 
 
 ## Topics 2 multi-ans
@@ -150,12 +165,12 @@ see[topics 2](/programming/2019/12/16/topics-multians.html#kth-largestsmallest-e
 
 ## Topics 3 series
 
-### Contains Dups x3
+### Find Dups x4
 
-see [hash #find dups](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/data-structrue-hash.html#find-dups)     
 **leetcode 217 - Contains Duplicate [E] - hash**    
 **leetcode 219 - Contains Duplicate II [E] - hash**   
-**leetcode 220 - Contains Duplicate III [M] - hash**  
+**leetcode 220 - Contains Duplicate III [M] - hash**  see [hash #find dups](https://ha5ha6.github.io/judy_blog/programming/2019/11/14/data-structrue-hash.html#find-dups)  
+**leetcode 287 - Find the Duplicate Number [M] - two pointers circle** see [array #find ele](/programming/2019/10/29/data-structrue-array.html#find-element)  
 
 ### Best Time Buy n Sell x4
 
@@ -174,9 +189,11 @@ see [topics 3](/programming/2019/10/25/topics-series.html#house-robber)
 ### Paint House x2
 
 **leetcode 256 - Paint House [E] - dp**  
-**leetcode 265 - Paint House [H] - dp,record 2 mins**  see [dp #paint house](/programming/2019/10/23/algorithm-dp.html#paint-house)
+**leetcode 265 - Paint House [H] - dp,record 2 mins**  see [dp #paint colors](/programming/2019/10/23/algorithm-dp.html#paint-colors)
 
 ### Paint Fence  
+
+**leetcode 276 - Paint House [E] - dp** see [dp #paint colors](/programming/2019/10/23/algorithm-dp.html#paint-colors)
 
 ### Word Break x2   
 
@@ -184,18 +201,23 @@ see [dp #word break](/programming/2019/10/23/algorithm-dp.html#word-break)
 **leetcode 139 - Word Break [M] - dp**
 **leetcode 140 - Word Break II [H] - dp + dfs**  
 
-### Shortest Word Distance x3
+### Word Pattern x2  
 
-see [topics 3](/programming/2019/10/25/topics-series.html#shortest-word-distance)  
-**leetcode 243 - Shortest Word Distance [E]**  
-**leetcode 244 - Shortest Word Distance II [M] - hash**  
-**leetcode 245 - Shortest Word Distance III (repeated) [M]**  
+**leetcode 290 - Word Pattern [E] - hash**  
+**leetcode 291 - Word Pattern (no space split) [H] - hash+backtracking**  
 
 ### Word Ladder x2  
 
 see [topics 3](/programming/2019/10/25/topics-series.html#word-ladder)  
 **leetcode 127 - Word Ladder [M] (return shortest length) - bfs**  
 **leetcode 126 - Word Ladder II [H] (return all shortest sequences) - dfs, bidirectional bfs**  
+
+### Shortest Word Distance x3
+
+see [topics 3](/programming/2019/10/25/topics-series.html#shortest-word-distance)  
+**leetcode 243 - Shortest Word Distance [E]**  
+**leetcode 244 - Shortest Word Distance II [M] - hash**  
+**leetcode 245 - Shortest Word Distance III (repeated) [M]**  
 
 ### Strobogrammatic Number x3
 

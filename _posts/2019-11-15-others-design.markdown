@@ -67,5 +67,47 @@ class TwoSum():
 ### Iterator  
 
 **leetcode 173 - Binary Search Tree Iterator [M]** see [bst #basic](https://ha5ha6.github.io/judy_blog/programming/2019/10/21/data-structrue-bst.html#basic)  
-**leetcode 251 - Flatten 2D Vector [M]** see [array #flatten]()  
-**leetcode 341 - Flatten Nested List Iterator [M]**   
+**leetcode 251 - Flatten 2D Vector [M]**  
+**leetcode 341 - Flatten Nested List Iterator [M]** see [array #flatten](/programming/2019/10/29/data-structrue-array.html#flatten)   
+**leetcode 281 - Zigzag Iterator [M]** see [queue #problems](/programming/2019/10/27/data-structrue-queue.html#problems)   
+
+**leetcode 284 - Peeking Iterator [M]** look ahead  
+Given an Iterator class interface with methods: next() and hasNext(), design and implement a PeekingIterator that support the peek() operation -- it essentially peek() at the element that will be returned by the next call to next().  
+
+Assume that the iterator is initialized to the beginning of the list: [1,2,3].  
+
+Call next() gets you 1, the first element in the list.  
+Now you call peek() and it returns 2, the next element.   
+Calling next() after that still return 2.   
+You call next() the final time and it returns 3, the last element.   
+Calling hasNext() after that should return false.   
+
+```python
+#pre-defined
+class Iterator(object):
+    def __init__(self, nums):
+
+    def hasNext(self):
+
+    def next(self):
+
+class PeekingIterator():
+    def __init__(self,iterator):
+        self.front=None
+        self.it=iterator
+        if self.it.hasNext():
+            self.front=self.it.next()
+
+    def peek(self):
+        return self.front
+
+    def next(self):
+        temp=self.front
+        self.front=None
+        if self.it.hasNext():
+            self.front=self.it.next()
+        return temp  
+
+    def hasNext(self):
+        return bool(self.front)
+```

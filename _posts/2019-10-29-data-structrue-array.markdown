@@ -145,7 +145,143 @@ resizing factor??
 
 ## Problems
 
-### Rotate  
+### Find Element  
+
+**leetcode 287 - Find the Duplicate Number [M]** - two pointers  
+Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.  
+
+Input: [1,3,4,2,2]  
+Output: 2  
+Input: [3,1,3,4,2]  
+Output: 3  
+
+Solution: TO(n)   
+Suppose no dups array [1,2,3]
+
+    0 1 2
+    1,2,3
+
+    idx       
+    0,arr[0]->1,arr[1]->2,arr[2]->3
+
+    idx ele idx ele idx ele
+    0 -> 1, 1 -> 2, 2 -> 3
+
+Suppose dups array [1,3,3,2]
+
+    0 1 2 3
+    1,3,3,2
+
+    i    e i    e i    e i
+    0 -> 1,3 -> 2,3 -> 2,3
+                |--------| circle
+
+Steps:  
+1. move slow pointer 1 step and fast pointer 2 steps until collide  
+2. restart the fast from index 0 and move both pointers 1 step at a time
+
+Details:   
+
+    0 1 2 3 4
+    1,3,4,2,2
+    s f
+      s f
+        f s
+        s/f
+
+    f       s
+      f s
+          f s  return 2
+
+```python
+class Solution():
+    def findDuplicate(self,nums):
+        slow=nums[0]
+        fast=nums[slow]
+
+        while fast!=slow:
+            slow=nums[slow]
+            fast=nums[nums[fast]]
+
+        fast=0
+        while fast!=slow:
+            slow=nums[slow]
+            fast=nums[fast]
+
+        return fast
+```
+
+**leetcode 645 - Set Mismatch [E]**  
+The set S originally contains numbers from 1 to n. But unfortunately, due to the data error, one of the numbers in the set got duplicated to another number in the set, which results in repetition of one number and loss of another number.  
+Given an array nums representing the data status of this set after the error. Your task is to firstly find the number occurs twice and then find the number that is missing. Return them in the form of an array.  
+
+Input: nums = [1,2,2,4]  
+Output: [2,3]  
+
+
+
+### In-place Move  
+
+**leetcode 26 - Remove Duplicates from Sorted Array [E]**  
+Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.  
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.  
+
+Given nums = [1,1,2],  
+Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.  
+Given nums = [0,0,1,1,1,2,2,3,3,4],  
+Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.  
+
+```python
+class Solution():
+    def removeDuplicates(self,nums):
+        i=0
+        for j in range(len(nums)):
+            if j==0 or nums[j]!=nums[j-1]:  #insert nums[0] in the beginning as always
+                nums[i]=nums[j]
+                i+=1
+
+        return i
+```
+
+**leetcode 27 - Remove Element [E]**  
+Given an array nums and a value val, remove all instances of that value in-place and return the new length.  
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.  
+The order of elements can be changed. It doesn't matter what you leave beyond the new length.  
+
+Given nums = [3,2,2,3], val = 3,    
+Your function should return length = 2, with the first two elements of nums being 2.  
+Given nums = [0,1,2,2,3,0,4,2], val = 2,  
+Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.  
+
+```python
+class Solution():
+    def removeElement(self,nums,val):
+        i=0
+        for n in nums:
+            if n!=val:
+                nums[i]=n
+                i+=1
+
+        return i
+```
+
+**leetcode 283 - Move Zeroes [E]** - two pointers   
+Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.  
+
+Input: [0,1,0,3,12]  
+Output: [1,3,12,0,0]  
+
+```python
+class Solution():
+    def moveZeroes(self,nums):
+        i=0
+        for n in nums:
+            if n!=0:
+                nums[i]=n
+                i+=1
+
+        nums[i:]=[0]*(len(nums)-i)
+```
 
 **leetcode 189 - Rotate Array [E]**  
 Given an array, rotate the array to the right by k steps, where k is non-negative.  
@@ -486,6 +622,7 @@ class Solution():
 
         return prod
 ```
+
 
 ### Flatten  
 

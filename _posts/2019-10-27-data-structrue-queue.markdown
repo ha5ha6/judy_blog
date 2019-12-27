@@ -209,3 +209,67 @@ class Solution():
 
         return res
 ```
+
+**leetcode 281 - Zigzag Iterator [M]**  
+Given two 1d vectors, implement an iterator to return their elements alternately.  
+
+Input: v1=[1,2], v2=[3,4,5,6]  
+Output: [1,3,2,4,5,6]  
+
+Solution 1: arrange v1+v2 at init  
+
+```python
+class ZigzagIterator():
+    def __init__(self,v1,v2):
+
+        self.v=[]
+        self.i=0
+
+        for i in range(min(len(v1),len(v2))):
+            self.v.append(v1[i])
+            self.v.append(v2[i])
+
+        if len(v1)<len(v2):
+            for v in v2[i+1:]:
+                self.v.append(v)
+        else:
+            for v in v1[i+1:]:
+                self.v.append(v)
+
+    def next(self):
+        out=self.v[self.i]
+        self.i+=1
+
+        return out
+
+    def hasNext(self):
+
+        return self.i!=len(self.v)
+```
+
+Solution 2: maintain a queue, store a tuple of (vector index, index inside vector)
+
+    self.v = [[1,2],[3,4,5,6]]
+    self.q = [(0,0),(1,0)]     to record two-layer pointers
+
+```python
+from collections import deque
+
+class ZigzagIterator():
+    def __init__(self,v1,v2):
+        self.v=[v for v in (v1,v2) if v]
+        self.q=deque((i,0) for i in range(len(self.v)))
+
+    def next(self):
+        v,i=self.q.popleft()
+        if i<len(self.v[v])-1:
+            self.q.append((v,i+1))
+
+        return self.v[v][i]
+
+    def hasNext(self):
+
+        return bool(self.q)
+
+
+```

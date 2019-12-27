@@ -60,6 +60,46 @@ class Solution():
                 self.helper(s[i:],res,path+[s[:i]])
 ```
 
+### Word Pattern  
+
+**leetcode 291 - Word Pattern II (no space split) [H]** - hash + backtracking   
+Given a pattern and a string str, find if str follows the same pattern.  
+Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty substring in str.  
+
+pattern = "abab", str = "redblueredblue" should return true.  
+pattern = "aaaa", str = "asdasdasdasd" should return true.  
+pattern = "aabb", str = "xyzabcxzyabc" should return false.   
+
+```python
+class Solution():
+    def wordPatternMatch(self,pattern,str):
+        m,n=len(pattern),len(str)
+        def is_match(i,j):
+            if i>=m and j>=n:
+                return True
+            if i>=m:
+                return False
+
+            for end in range(j,n-(m-i)+1):
+                p,s=pattern[i],str[j:end+1]
+                if p not in p2s and s not in s_used:
+                    p2s[p]=s
+                    s_used.add(s)
+                    if is_match(i+1,end+1):
+                        return True
+                    del p2s[p]
+                    s_used.discard(s)
+
+                elif p in p2s and p2s[p]==s:
+                    if is_match(i+1,end+1):
+                        return True
+            return False
+
+        p2s={}
+        s_used=()
+        return is_match(0,0)
+```
+
 ### Combinations
 
 A Combination is a selection of items from a collection, such that the order of selection does not matter.  

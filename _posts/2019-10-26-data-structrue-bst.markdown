@@ -741,3 +741,68 @@ class Solution():
 
         return True
 ```
+
+**leetcode 285 - Inorder Successor in BST [M]**  
+Given a bst and a node in it, find the in-order successor of that node.  
+
+Input: root=[2,1,3], p=1  
+
+       2
+      / \
+     1   3
+
+Output: 2  
+Input: root=[5,3,6,2,4,null,null,1], p=6  
+
+          5
+         / \
+        3   6
+       / \
+      2   4
+     /
+    1
+
+Output: null
+
+Solution 1: iteration  
+
+
+           5(s0)
+         /       \
+        3(r0/s1)  6
+       /     \
+      2*(r1)  4
+     /  \
+    1    N(r2)
+
+
+
+```python
+class Solution():
+    def inorderSuccessor(self,root,p):
+        succ=None
+        while root:
+            if p.val>=root.val:
+                root=root.right
+            else:
+                succ=root
+                root=root.left
+
+        return succ
+```
+
+Solution 2: recursion  
+
+```python
+class Solution():
+    def inorderSuccessor(self,root,p):
+        if not root:
+            return None
+
+        if p.val>=root.val:
+            return self.inorderSuccessor(root.right,p)
+
+        left_succ=self.inorderSuccessor(root.left,p)
+
+        return root if not left_succ else left_succ
+```

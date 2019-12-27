@@ -86,7 +86,61 @@ class Solution(object):
         return dp[0]
 ```
 
-### Paint House  
+### Find Numbers
+
+**leetcode 279 - Perfect Squares [M]**  
+Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.  
+
+Input: n = 12  
+Output: 3   
+Explanation: 12 = 4 + 4 + 4.  
+Input: n = 13  
+Output: 2  
+Explanation: 13 = 4 + 9.  
+
+Solution:  
+
+    dp[i] - min numbers to form squares  
+
+    dp initial: dp[0] = 0, dp[1] = 1, dp[n] rest = n
+    dp transit: dp[i]=min(dp[i],dp[i-j*j]+1), j from 1
+
+    n=13, 13-2*2=9, dp[13]=min(dp[13]+dp[9]+1)
+
+    i  j  dp[i]
+    2  1  dp[2]=min(dp[2],dp[2-1*1]+1)=dp[1]+1=2
+    3  1  dp[3]=min(dp[3],dp[3-1*1]+1)=dp[2]+1=3
+    4  1  dp[4]=min(dp[4],dp[4-1*1]+1)=dp[3]+1=4
+       2  dp[4]=min(dp[4],dp[4-2*2]+1)=min(4,dp[0]+1)=1
+    5  1  dp[5]=min(dp[5],dp[5-1*1]+1)=dp[4]+1=2
+       2  dp[5]=min(dp[5],dp[5-2*2]+1)=min(2,dp[1]+1)=2
+    6  1
+       2
+       ...
+    9  1
+       2
+       3
+    10 1
+       2
+       3
+       ...
+
+```python    
+class Solution(object):
+    def numSquares(self,n):
+        dp=[n]*(n+1)
+        dp[0]=0
+        dp[1]=1
+        for i in range(2,n+1):
+            j=1
+            while j*j<=i:
+                dp[i]=min(dp[i],dp[i-j*j]+1)
+                j+=1
+
+        return dp[-1]
+```
+
+### Paint Colors  
 
 **leetcode 256 - Paint House (3 colors) [E]**  
 There are a row of n houses, each house can be painted with one
@@ -240,6 +294,46 @@ class Solution():
         return min(cost[-1])
 ```
 
+**leetcode 276 - Paint Fence [E]**  
+There is a fence with n posts, each post can be painted with one of the k colors.  
+You have to paint all the posts such that no more than two adjacent fence posts have the same color.  
+Return the total number of ways you can paint the fence.  
+
+Input: n=3,k=2  
+Output: 6  
+
+        post1 post2 post3
+    1    c1    c1    c2
+    2    c1    c2    c1
+    3    c1    c2    c2
+    4    c2    c1    c1
+    5    c2    c1    c2
+    6    c2    c2    c1
+
+Solution:  
+
+    n     possibility(colors)
+    1          k       
+    2     k*1+k*(k-1)               same: k*1, diff: k*(k-1)
+    3     k*(k-1)+k*(k-1)\*(k-1)    same: k*(k-1) - 1,2same:k, 3:k-1 or 1:k, 2,3same:k-1
+                                    diff: k*(k-1)\*(k-1)        
+
+
+```python    
+class Solution():
+    def numWays(self,n,k):
+        if k==0 or n==0:
+            return 0
+        if n==1:
+            return k
+
+        same=k
+        diff=k*(k-1)
+        for i in range(3,n+1):
+            same,diff=diff,(same+diff)*(k-1)
+
+        return same+diff
+```
 
 ### String Subsequence
 

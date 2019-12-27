@@ -40,7 +40,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/26/data-structrue-string.html",
         "teaser":null},{
         "title": "ALgorithms 8 - breadth first traversal",
-        "excerpt":"bfs graph   normally use queue   bfs related   (string) leetcode 127 - word ladder [M] see topics     ","categories": ["Programming"],
+        "excerpt":"bfs graph normally use queue Problems leetcode 127 - Word Ladder [M] see topics3 leetcode 286 - Walls and Gates [M] You are given a m x n 2D grid initialized with these three possible values: -1 - A wall or an obstacle 0 - A gate INF - Infinity...","categories": ["Programming"],
         "tags": ["Algorithms","Bfs"],
         "url": "http://localhost:4000/programming/2019/10/27/algorithm-bfs.html",
         "teaser":null},{
@@ -55,7 +55,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-array.html",
         "teaser":null},{
         "title": "Data Structure 2 - matrix",
-        "excerpt":"Element Search see binary search #matrix leetcode 74 - Search a 2D Matrix [M] Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties: Integers in each row are sorted from left to right. The first integer of each...","categories": ["Programming"],
+        "excerpt":"Element / Word Search see binary search #matrix leetcode 74 - Search a 2D Matrix [M] Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties: Integers in each row are sorted from left to right. The first integer...","categories": ["Programming"],
         "tags": ["Data Structure","Matrix","Board Game"],
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-matrix.html",
         "teaser":null},{
@@ -110,7 +110,7 @@ var store = [{
         "url": "http://localhost:4000/literature/2019/11/13/control-as-inference.html",
         "teaser":null},{
         "title": "ALgorithms 2 - binary search",
-        "excerpt":"Time Complexity O(log n) Find Peak in Array leetcode 153 - Find Minimum in Rotated Sorted Array [M] Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand, find the minimum element Example 1: Input: [3,4,5,1,2] Output: 1 Example 2: Input: [4,5,6,7,0,1,2] Output: 0...","categories": ["Programming"],
+        "excerpt":"Time Complexity O(log n) Find Element in Array leetcode 153 - Find Minimum in Rotated Sorted Array [M] Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand, find the minimum element Example 1: Input: [3,4,5,1,2] Output: 1 Example 2: Input: [4,5,6,7,0,1,2] Output: 0...","categories": ["Programming"],
         "tags": ["Algorithms","Binary Search","N-Sum"],
         "url": "http://localhost:4000/programming/2019/11/13/algorithm-binarysearch.html",
         "teaser":null},{
@@ -235,7 +235,7 @@ var store = [{
         "url": "http://localhost:4000/ml-basic/2019/12/18/stochasticoptimization.html",
         "teaser":null},{
         "title": "Markov Chain Monte Carlo",
-        "excerpt":"Background Markov Chain Monte Carlo refers to a class of methods for sampling from a probability distribution in order to construct the most likely distribution. For example, we cannot directly calculate the logistic distribution, so instead we generate thousands of values — called samples — for the parameters of the...","categories": ["ML-Basic"],
+        "excerpt":"Motivation It turns out sampling from any but the most basic probability distribution is a difficult task. Methods include inverse transform sampling (IRT) rejection sampling (RS) IRT requires the cumulative distribution function aka normalization constant, which can be obtained by numerical integration. (-) however, it quickly gets infeasible with an...","categories": ["ML-Basic"],
         "tags": ["Machine Learning"],
         "url": "http://localhost:4000/ml-basic/2019/12/20/mcmc.html",
         "teaser":null}]

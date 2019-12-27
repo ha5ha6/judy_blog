@@ -183,3 +183,87 @@ class Solution():
 ```
 
 Solution 2: divide and conquer see [divide and conquer]()
+
+### Calculator  
+
+**leetcode 282 - Expression Add Operators [H]**  
+Given a string that contains only digits 0-9 and a target value, return all possibilities to add binary operators (not unary) +, -, or * between the digits so they evaluate to the target value.
+
+Input: num = "123", target = 6  
+Output: ["1+2+3", "1*2*3"]  
+Input: num = "232", target = 8  
+Output: ["2*3+2", "2+3*2"]  
+Input: num = "105", target = 5  
+Output: ["1*0+5","10-5"]  
+Input: num = "00", target = 0  
+Output: ["0+0", "0-0", "0*0"]   
+Input: num = "3456237490", target = 9191  
+Output: []  
+
+Solution:  
+
+        path,start,eval,mul
+    dfs('',  0,    0,   0)
+        i=0, cur_str='1', dfs('1',1,1,1)
+            i=1, cur_str='2', dfs('1+2',2,1+2,2)
+                i=2, cur_str='3', dfs('1+2+3',3,3+3,3)  append
+                i=2, cur_str='3', dfs('1+2-3',3,3-3,-3) append
+                i=2, cur_str='3', dfs('1+2*3',3,3-2+2*3,2*3) append  
+
+    i, path
+    (0, '')
+    (0, '1')
+    (1, '1+2')
+    (2, '1+2+3')
+    (2, '1+2-3')
+    (2, '1+2*3')
+    (1, '1-2')
+    (2, '1-2+3')
+    (2, '1-2-3')
+    (2, '1-2*3')
+    (1, '1*2')
+    (2, '1*2+3')
+    (2, '1*2-3')
+    (2, '1*2*3')
+    (2, '1+23')
+    (2, '1-23')
+    (2, '1*23')
+    (1, '12')
+    (2, '12+3')
+    (2, '12-3')
+    (2, '12*3')
+    (2, '123')
+    ['1+2+3', '1*2*3']
+
+
+
+
+```python
+class Solution():
+    def addOperators(self,num,target):
+        if not num:
+            return []
+        self.num=num
+        self.target=target
+        self.expr=[]
+        self.dfs('',0,0,0)
+
+        return self.expr
+
+    def dfs(self,path,start,eval,mul):
+        if start==len(self.num) and self.target==eval:
+            self.expr.append(path)
+        for i in range(start,len(num)):
+            if i!=start and self.num[start]=='0':
+                break
+
+            cur_str=self.num[start:i+1]
+            cur_int=int(cur_str)
+
+            if start==0:
+                self.dfs(path+cur_str,i+1,cur_int,cur_int)
+            else:
+                self.dfs(path+'+'+cur_str,i+1,eval+cur_int,cur_int)
+                self.dfs(path+'-'+cur_str,i+1,eval-cur_int,-cur_int)
+                self.dfs(path+'*'+cur_str,i+1,eval-mul+mul*cur_int,mul*cur_int)
+```

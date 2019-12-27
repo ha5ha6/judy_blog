@@ -258,6 +258,49 @@ class Solution():
         return True
 ```
 
+**leetcode 288 - Unique Word Abbreviation [M]**  
+An abbreviation of a word follows the form <first letter><number><last letter>. Below are some examples of word abbreviations:  
+
+    a) it                      --> it    (no abbreviation)
+         1
+    b) d|o|g                   --> d1g
+         18
+    c) i|nternationalizatio|n  --> i18n
+         10
+    d) l|ocalizatio|n          --> l10n
+
+Assume you have a dictionary and given a word, find whether its abbreviation is unique in the dictionary. A word's abbreviation is unique if no other word from the dictionary has the same abbreviation.  
+
+Given dictionary = [ "deer", "door", "cake", "card" ]   
+isUnique("dear") -> false  
+isUnique("cart") -> true  
+isUnique("cane") -> false  
+isUnique("make") -> true  
+
+```python
+from collections import defaultdict
+class ValidWordAbbr():
+    def __init__(self,dictionary):
+        self.dict=set(dictionary)
+        self.dict_abb=defaultdict(int)
+        for w in self.dict:
+            self.dict_abb[self.abbr(w)]+=1
+
+    def isUnique(self,w):
+        abbr=self.abbr(w)
+        if w in self.dict:
+            return self.dict_abb[abbr]==1
+        else:
+            return abbr not in self.dict_abb
+
+    def abbr(self,w):
+        n=len(w)
+        if n<3:
+            return w
+
+        return w[0]+str(n-2)+w[-1]
+```
+
 ### N Sum
 
 using python dict see [python built-in #dict](https://ha5ha6.github.io/judy_blog/programming/2019/11/12/data-structrue-python-builtin.html#dict-)

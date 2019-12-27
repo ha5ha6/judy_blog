@@ -1,7 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-12-23T00:16:12+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Markov Chain Monte Carlo</title><link href="http://localhost:4000/ml-basic/2019/12/20/mcmc.html" rel="alternate" type="text/html" title="Markov Chain Monte Carlo" /><published>2019-12-20T16:28:25+09:00</published><updated>2019-12-20T16:28:25+09:00</updated><id>http://localhost:4000/ml-basic/2019/12/20/mcmc</id><content type="html" xml:base="http://localhost:4000/ml-basic/2019/12/20/mcmc.html">&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-12-27T14:44:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Markov Chain Monte Carlo</title><link href="http://localhost:4000/ml-basic/2019/12/20/mcmc.html" rel="alternate" type="text/html" title="Markov Chain Monte Carlo" /><published>2019-12-20T16:28:25+09:00</published><updated>2019-12-20T16:28:25+09:00</updated><id>http://localhost:4000/ml-basic/2019/12/20/mcmc</id><content type="html" xml:base="http://localhost:4000/ml-basic/2019/12/20/mcmc.html">&lt;h3 id=&quot;motivation&quot;&gt;Motivation&lt;/h3&gt;
 
-&lt;p&gt;Markov Chain Monte Carlo refers to a class of methods for &lt;strong&gt;sampling from a probability distribution in order to construct the most likely distribution&lt;/strong&gt;.&lt;br /&gt;
-For example, we cannot directly calculate the logistic distribution, so instead we generate thousands of values — called samples — for the parameters of the function to create an approximation of the distribution.&lt;br /&gt;
+&lt;p&gt;It turns out sampling from any but the most basic probability distribution is a difficult task. Methods include&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;inverse transform sampling (IRT)&lt;/li&gt;
+  &lt;li&gt;rejection sampling (RS)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;IRT requires the cumulative distribution function aka normalization constant, which can be obtained by numerical integration.&lt;br /&gt;
+(-) however, it quickly gets infeasible with an increasing number of dimensions&lt;/p&gt;
+
+&lt;p&gt;RS doesnt require a normalized distribution&lt;br /&gt;
+(-) however, efficiently implementing it requires a good deal of knowledge about the distribution of interest &lt;br /&gt;
+(-) it suffers strongly from the curse of dimension&lt;/p&gt;
+
+&lt;p&gt;Markov Chain Monte Carlo refers to a class of methods doing so as well, namely for &lt;strong&gt;sampling from a probability distribution in order to construct the most likely distribution&lt;/strong&gt;.&lt;br /&gt;
+For example, we cannot directly calculate the logistic distribution, so instead we generate thousands of values — called samples — &lt;strong&gt;for the parameters of the function&lt;/strong&gt; to create an approximation of the distribution.&lt;br /&gt;
 The more samples generated, the closer and closer the approximation gets to the actual true distribution.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Monte Carlo&lt;/strong&gt;&lt;br /&gt;
@@ -10,18 +23,218 @@ It can be thought of as carrying out many experiments, each time changing the va
 By choosing random values, we can explore a large portion of the parameter space, the range of possible values for the variables.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Markov Chain&lt;/strong&gt;&lt;br /&gt;
-A Markov Chain is &lt;strong&gt;a process where the next state depends only on the current state&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;(+) it’s memoryless because only the current state matters and not how it arrived in that state.&lt;/p&gt;
+A Markov Chain is &lt;strong&gt;a process where the next state depends only on the current state&lt;/strong&gt;.&lt;br /&gt;
+(+) it’s memoryless because only the current state matters and not how it arrived in that state.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Markov Chain Monte Carlo&lt;/strong&gt;&lt;br /&gt;
 MCMC is a method that &lt;strong&gt;repeatedly draws random values for the parameters of a distribution based on the current values. Each sample of values is random, but the choices for the values are limited by the current state and the assumed prior distribution of the parameters&lt;/strong&gt;.&lt;br /&gt;
 MCMC can be considered as a random walk that gradually converges to the true distribution.&lt;/p&gt;
 
-&lt;h3 id=&quot;example-problem&quot;&gt;Example Problem&lt;/h3&gt;
+&lt;h3 id=&quot;markov-chain-example&quot;&gt;Markov Chain Example&lt;/h3&gt;
+
+&lt;p&gt;In order to sample from a distribution p(x), a MCMC algorithm construts and simulates a Markov Chain whose stationary distribution is p(x), meaning that, after an initial ‘burn-in’ phase, the states of that Markov Chain are distributed according to p(x). We thus just have to store the states to obtain samples from p(x).&lt;/p&gt;
+
+&lt;p&gt;Let’s consider a discrete state space and discrete time,&lt;br /&gt;
+Markov Chain maintains a transition operator T(x’|x) which gives you the probability of being in state x’ at time t+1 that the chain is in state x at time t.&lt;/p&gt;
+
+&lt;p&gt;Let’s assume three weather states {‘sunny’,’cloudy’,’rainy’}&lt;br /&gt;
+The transition matrix is:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;T=[[0.6,0,3,0.1],
+   [0.3,0.4,0.3],
+   [0.2,0.3,0.5]]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;which means&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if current,next -&amp;gt; sunny cloudy rainy
+   sunny           [0.6,  0,3,   0.1]
+   cloudy          [0.3,  0.4,   0.3]
+   rainy           [0.2,  0.3,   0.5]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;empricial probability:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;states=[0,0,0,0,1,1,2,1,0,2,1...]
+interval=range(1,20000,5)=[1,6,11,16,...], len=4000
+x=1,6,11,16,...
+take x=11
+count0=5, p0=5/11
+count1=4, p1=3/11
+count2=2, p2=2/11   
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;__future__&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;division&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;n_steps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20000&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;n_states&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;states&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_steps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;states&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;choice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;states&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;states&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;states&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;emp_prob&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;interval&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_steps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#sample interval&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_states&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;emp_prob&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;states&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;interval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#empirical probability&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/weather_emp.png&quot; alt=&quot;&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can observe the convergence of the Markov chain to its stationary distribution by calculating the empirical probability for each of the states as a function of chain length.&lt;/p&gt;
+
+&lt;h3 id=&quot;metropolis-hastings&quot;&gt;Metropolis-Hastings&lt;/h3&gt;
+
+&lt;p&gt;In discrete case, we call T a &lt;strong&gt;transition matrix&lt;/strong&gt;.&lt;br /&gt;
+In continuous case, we call T a &lt;strong&gt;transition kernel&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Goal is to design the transition kernel T&lt;/p&gt;
+
+&lt;p&gt;Split T(x’|x) into two parts:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a proposal step&lt;/li&gt;
+  &lt;li&gt;an acceptance/rejection step&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Recall the original distribution is defined by p(x)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The proposal step&lt;/strong&gt; features a proposal distribution q(x’|x), where we can sample possible next states of the chain&lt;br /&gt;
+We can choose q arbitrarily, however, we need to design the q such that samples from it are both as little correlated with the current state as possible and have a good chance of being accepted in the acceptance step&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The acceptance step&lt;/strong&gt; corrects for the error introduced by proposal states drawn from q!=p&lt;br /&gt;
+It involves calculating an acceptance probability p_acc(x’|x) and accepting the proposal x’ with that probability as the next state in the chain&lt;/p&gt;
+
+&lt;p&gt;Steps:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;a proposal point x’~q(x’|x)&lt;/li&gt;
+  &lt;li&gt;x’ is accepted with p_acc(x’|x), or is rejected with 1-p_acc(x’|x)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Therefore, we have &lt;strong&gt;T(x’|x)=q(x’|x)*p_acc(x’|x)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;sufficient condition&lt;/strong&gt; for Markov Chain to have p as its stationary distribution is:&lt;br /&gt;
+the transition kernel obeying &lt;strong&gt;detailed balance&lt;/strong&gt;: p(x)T(x’|x)=p(x’)T(x|x’)&lt;br /&gt;
+meaning: the probability of being in a state x and transitioning to x’ must be equal to the probability of the reverse process, namely, being in state x’ and transitioning to x.&lt;/p&gt;
+
+&lt;p&gt;For the two-part transition kernel to obey detailed balance, we need to choose p_acc correctly, one possibility is the &lt;strong&gt;Metropolis Acceptance criterion&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                     p(x')q(x|x')
+p_acc(x'|x)=min { 1, ------------ }
+                     p(x)q(x'|x)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;where the unknown constant cancels out. This makes the algorithm work for unnormalized distributions&lt;/p&gt;
+
+&lt;p&gt;Often, symmetric proposal distributions with q(x|x’)=q(x’|x), then we have&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                      p(x')
+p_acc(x'|x)=min { 1, ------ }
+                      p(x)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;           q(x'|x)p_acc(x'|x)   :  x'!=x
+T(x'|x)={
+           1-∫dx'q(x'|x)p_acc(x'|x)  :  x'==x
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Implementation&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;step 1&lt;/strong&gt;: set a log-probability of the p we want to sample from, without normalization constants, say a standard Gaussian&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;log_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/loggaussian.png&quot; alt=&quot;&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;step 2&lt;/strong&gt;: choose a symmetric proposal distribution, a naive approach is just take the current state x and pick a proposal from U(x-∆/2,x+∆/2), where ∆ is a step size&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;proposal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uniform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;low&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;high&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;step 3&lt;/strong&gt;: calculate our acceptance probability&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;p_acc_MH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_old&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_old&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;brief implementation of a Metropolis-Hastings sampling step&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sample_MH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_old&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x_new&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;proposal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_old&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p_acc_MH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_old&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_new&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_old&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;build the Markov Chain&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;build_MH_chain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;n_accepted&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;chain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample_MH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;chain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;n_accepted&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;acceptance_rate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_accepted&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;chain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;acceptance_rate&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;TESTING!!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;3.0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;chain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;acceptance_rate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;build_MH_chain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;chain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;chain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;Z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;quad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#Z=2.50662827463&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log_prob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Z&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;density&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'MCMC samples'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linewidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'True distribution'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;legend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/mcmc_fitted.png&quot; alt=&quot;&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;motivation-from-bayesian&quot;&gt;Motivation from Bayesian&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Bayes Formula&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        p(x|θ)p(θ)
+p(θ|x)=------------
+           p(x)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;p(θ|x)&lt;/strong&gt; - the probability of our model parameters θ given the data x&lt;br /&gt;
+&lt;strong&gt;p(θ)&lt;/strong&gt; - prior: what we think about θ before we have seen any data&lt;br /&gt;
+&lt;strong&gt;p(x|θ)&lt;/strong&gt; - likelihood: how we think our data is distributed&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;p(x)&lt;/strong&gt; - the evidence: the evidence that the data x was generated by this model&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;p(x)=∫ p(x,θ) dθ
+     θ
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;difficulty: p(x) can not be computed in a closed-form way&lt;/p&gt;
+
+&lt;h3 id=&quot;bayesian-example&quot;&gt;Bayesian Example&lt;/h3&gt;
 
 &lt;p&gt;Given 100 data points, estimate the posterior of the mean.&lt;br /&gt;
-(The date is generated by Gaussian distribution mean=0, variance=1)&lt;/p&gt;
+(The data is generated by Gaussian distribution mean=0, variance=1)&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
@@ -30,18 +243,20 @@ MCMC can be considered as a random walk that gradually converges to the true dis
 &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/randn100.png&quot; alt=&quot;&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/randn100.png&quot; alt=&quot;&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Steps:&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;assume data is normal distributed: the likelihood of the model is Gaussian with parameter μ,σ - mean and standard deviation, assume σ=1 is known for simplicity&lt;/li&gt;
-  &lt;li&gt;choose a prior, assume a Gaussian as prior for simplicity&lt;/li&gt;
+  &lt;li&gt;assume data is normal distributed: p(x|θ) ~ Gaussian(μ,σ) - mean and standard deviation, assume σ=1 is known for simplicity&lt;/li&gt;
+  &lt;li&gt;choose a prior: p(θ) ~ Gaussian(0,1) for simplicity&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Model:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  μ ~ Gaussian (0,1)       &amp;lt;-   prior
-x|μ ~ Gaussian (x|μ,σ=1)   &amp;lt;-   likelihood
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;p(x|θ): p(x|μ,σ)=p(x|μ,1) -&amp;gt; p(x|μ) ~ Gaussian (μ,1) &amp;lt;- likelihood
+                                      Gaussian (μ,σ)
+p(θ):   p(μ,σ)=p(μ,1)     -&amp;gt; p(μ)   ~ Gaussian (0,1) &amp;lt;- prior
+                                      Gaussian (ρ,τ) (mean,std)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;Analytical Solution&lt;/strong&gt;&lt;br /&gt;
@@ -52,22 +267,22 @@ Can compute the posterior analytically, because for a Gaussian likelihood with k
 &lt;p&gt;&lt;strong&gt;Conjugate&lt;/strong&gt;&lt;br /&gt;
 posterior and prior will be the same distribution&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/normalnor.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/normalnor.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.stats&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;gaussian&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sigma&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;pdf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sigma&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sigma&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;gaussian&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pdf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pdf&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;posterior_analytical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#mu_0,sig_0 prior parameters&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;posterior_analytical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rho&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tau&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#mu,sig prior parameters&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sigma_like&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;mu_post&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu_0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig_0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig_like&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig_0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sigma_like&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sigma_post&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig_0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig_like&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mu_post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sigma_post&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sig&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mu_post&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rho&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tau&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tau&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sig_post&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tau&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mu_post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig_post&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -76,18 +291,115 @@ posterior and prior will be the same distribution&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;pdf1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gaussian&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu_post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig_post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#by hand&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;pdf2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu_post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sig_post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#by library, same way to get pdf&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pdf1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linewidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pdf1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linewidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pdf2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'g'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linewidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/randn100_post.png&quot; alt=&quot;&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/randn100_post.png&quot; alt=&quot;&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;However&lt;/strong&gt;, the prior wasn’t conjugate and we couldn’ sovle this by hand is usually the case.&lt;/p&gt;
+
+&lt;h3 id=&quot;mcmc-sampling&quot;&gt;MCMC sampling&lt;/h3&gt;
+
+&lt;p&gt;Start sampling: μ = 1.&lt;br /&gt;
+Proposal: μ’ ~ Gaussian(μ,width)&lt;br /&gt;
+Acceptance:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        p(μ'|x)   p(x|μ')p(μ')     prod(G(μ',1).x)G(ρ,τ).μ'
+p_acc = ------- = ------------- = -------------------------
+        p(μ|x)     p(x|μ)p(μ)       prod(G(μ,1).x)G(ρ,τ).μ
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This way, we are visiting regions of high posterior probability relatively more often than those of low posterior probability.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sampler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_samples&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;witdh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu_pri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std_pri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;n_accepted&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;      
+        &lt;span class=&quot;n&quot;&gt;mu_prop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rvs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;lh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# likelihood should be all producted up&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;lh_prop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu_prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;pri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu_pri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std_pri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;pri_prop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu_pri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std_pri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu_prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pri&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;post_prop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lh_prop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pri_prop&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;p_acc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;post_prop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;  
+
+        &lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p_acc&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu_prop&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;n_accepted&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n_accepted&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Iteration 0:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/prior_0.png&quot; alt=&quot;&quot; width=&quot;32%&quot; /&gt; &lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/likeli_0.png&quot; alt=&quot;&quot; width=&quot;32%&quot; /&gt; &lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/post_0.png&quot; alt=&quot;&quot; width=&quot;32%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Itertation 10:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/prior_10.png&quot; alt=&quot;&quot; width=&quot;32%&quot; /&gt; &lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/likeli_10.png&quot; alt=&quot;&quot; width=&quot;32%&quot; /&gt; &lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/post_10.png&quot; alt=&quot;&quot; width=&quot;32%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Iteration 1000:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/prior_1000.png&quot; alt=&quot;&quot; width=&quot;32%&quot; /&gt; &lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/likeli_1000.png&quot; alt=&quot;&quot; width=&quot;32%&quot; /&gt; &lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/post_1000.png&quot; alt=&quot;&quot; width=&quot;32%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Iteration 10000:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/prior_10000.png&quot; alt=&quot;&quot; width=&quot;32%&quot; /&gt; &lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/likeli_10000.png&quot; alt=&quot;&quot; width=&quot;32%&quot; /&gt; &lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/post_10000.png&quot; alt=&quot;&quot; width=&quot;32%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;logistic-example&quot;&gt;Logistic Example&lt;/h3&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;Suppose we want to sample from p(x), p(x) originally is Gaussian&lt;/p&gt;
+
+&lt;p&gt;Pre-requisite:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;assume log-probability of p(x) = -0.5*np.sum(x**2) without normalization constant&lt;/li&gt;
+  &lt;li&gt;determine proposal distribution: x’ ~ U(x-∆/2,x+∆/2)&lt;/li&gt;
+  &lt;li&gt;calculate p_acc: exp-log-p(x’)/exp-log-p(x)&lt;/li&gt;
+  &lt;li&gt;generate chain of x, calculate acceptance rate&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Or, Given 100 data points, suppose we want to estimate the posterior of the mean p(θ|x)&lt;/p&gt;
+
+&lt;p&gt;Pre-requisite:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;assume a prior ~ Gaussian(ρ,τ), parameters known&lt;/li&gt;
+  &lt;li&gt;assume the likelihood based on data distribution ~ Gaussian(μ,σ), σ known for simplicity&lt;/li&gt;
+  &lt;li&gt;determine proposal distribution: Gaussian(μ,∆), ∆ known&lt;/li&gt;
+  &lt;li&gt;calculate p_acc: p(x|μ’)p(μ’)/p(x|μ)p(μ)&lt;/li&gt;
+  &lt;li&gt;generate chain of μ, calculate acceptance rate&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In detail:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;initialize μ
+                    calc p(μ) fr prior G(ρ,τ)
+  proposal       -&amp;gt; calc p(μ') fr prior G(ρ,τ) -                  lh(μ',σ|data)p(μ')
+μ --------&amp;gt; μ' -|                               |--&amp;gt; calc p_acc = ------------------- -&amp;gt; μ=μ or μ'
+                 -&amp;gt; calc likelihood fr G(μ,σ)  -                   lh(μ,σ|data)p(μ)
+                    calc likelihood fr G(μ',σ)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://towardsdatascience.com/markov-chain-monte-carlo-in-python-44f7e609be98&quot;&gt;Markov Chain Monte Carlo in Python by Will Koehrsen&lt;/a&gt;&lt;br /&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/tweag/blog-resources/blob/master/mcmc-intro/mcmc_introduction.ipynb&quot;&gt;Markov chain Monte Carlo (MCMC) sampling by Simeon Carstens&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://twiecki.io/blog/2015/11/10/mcmc-sampling/&quot;&gt;MCMC sampling for dummies&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://towardsdatascience.com/markov-chain-monte-carlo-in-python-44f7e609be98&quot;&gt;Markov Chain Monte Carlo in Python by Will Koehrsen&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;https://brilliant.org/wiki/markov-chains/&quot;&gt;Markov Chain&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;http://statweb.stanford.edu/~owen/mc/&quot;&gt;Monte Carlo theory, methods and examples&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers&quot;&gt;Bayesian Methods for Hackers&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Machine Learning" /><summary type="html">Background</summary></entry><entry><title type="html">Stochastic Optimization</title><link href="http://localhost:4000/ml-basic/2019/12/18/stochasticoptimization.html" rel="alternate" type="text/html" title="Stochastic Optimization" /><published>2019-12-18T14:18:25+09:00</published><updated>2019-12-18T14:18:25+09:00</updated><id>http://localhost:4000/ml-basic/2019/12/18/stochasticoptimization</id><content type="html" xml:base="http://localhost:4000/ml-basic/2019/12/18/stochasticoptimization.html">&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+&lt;a href=&quot;https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers&quot;&gt;Bayesian Methods for Hackers&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Machine Learning" /><summary type="html">Motivation</summary></entry><entry><title type="html">Stochastic Optimization</title><link href="http://localhost:4000/ml-basic/2019/12/18/stochasticoptimization.html" rel="alternate" type="text/html" title="Stochastic Optimization" /><published>2019-12-18T14:18:25+09:00</published><updated>2019-12-18T14:18:25+09:00</updated><id>http://localhost:4000/ml-basic/2019/12/18/stochasticoptimization</id><content type="html" xml:base="http://localhost:4000/ml-basic/2019/12/18/stochasticoptimization.html">&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
 
 &lt;p&gt;Stochastic optimization (SO) methods are optimization methods for minimizing or maximizing an objective function when randomness is present.&lt;/p&gt;
 
@@ -119,11 +431,11 @@ posterior and prior will be the same distribution&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#0~1 normal distribution noise&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/y=3+4x.png&quot; alt=&quot;&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x.png&quot; alt=&quot;&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Analytical Solution&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/simplelinearestimate.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/simplelinearestimate.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
 
@@ -153,7 +465,7 @@ posterior and prior will be the same distribution&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;theta_best&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linalg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/y=3+4x_fitted.png&quot; alt=&quot;&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x_fitted.png&quot; alt=&quot;&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Problem:&lt;br /&gt;
 If the #feature increases, it’s hard to do the matrix multiplication anymore.&lt;/p&gt;
@@ -173,7 +485,7 @@ Repeatedly choose a direction and check if the height is smaller than before.&lt
 
 &lt;p&gt;Reformulate the problem setting:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/gdestimate.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/gdestimate.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;__future__&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;division&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
@@ -228,11 +540,11 @@ Repeatedly choose a direction and check if the height is smaller than before.&lt
 
 &lt;p&gt;Fitted results and the parameter trajs&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/y=3+4x_gd_fitted.png&quot; alt=&quot;&quot; width=&quot;45%&quot; /&gt; &lt;img src=&quot;/assets/images/y=3+4x_theta_traj.png&quot; alt=&quot;&quot; width=&quot;45%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x_gd_fitted.png&quot; alt=&quot;&quot; width=&quot;45%&quot; /&gt; &lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x_theta_traj.png&quot; alt=&quot;&quot; width=&quot;45%&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;stochastic-gradient-descent&quot;&gt;Stochastic Gradient Descent&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/gdvssgd.png&quot; alt=&quot;&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/gdvssgd.png&quot; alt=&quot;&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In Gradient Descent, parameter gradients are computed on all observations (sample) at each iteration.&lt;br /&gt;
 In Stochastic Gradient Descent, we can choose the observation (sample) randomly instead of a single group or in the order they appear in the training set.&lt;/p&gt;
@@ -333,22 +645,22 @@ In Stochastic Gradient Descent, we can choose the observation (sample) randomly 
 
 &lt;p&gt;Fitted results&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/y=3+4x_msgd_fitted.png&quot; alt=&quot;&quot; width=&quot;45%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x_msgd_fitted.png&quot; alt=&quot;&quot; width=&quot;45%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The gradients and the objective convergence&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/y=3+4x_msgd_grad.png&quot; alt=&quot;&quot; width=&quot;45%&quot; /&gt;  &lt;img src=&quot;/assets/images/y=3+4x_msgd_obj.png&quot; alt=&quot;&quot; width=&quot;45%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x_msgd_grad.png&quot; alt=&quot;&quot; width=&quot;45%&quot; /&gt;  &lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/y=3+4x_msgd_obj.png&quot; alt=&quot;&quot; width=&quot;45%&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://towardsdatascience.com/gradient-descent-in-python-a0d07285742f&quot;&gt;Gradient Descent in Python by Sagar Mainkar&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Machine Learning" /><summary type="html">Background</summary></entry><entry><title type="html">Q-function Learning</title><link href="http://localhost:4000/rl-basic/2019/12/17/qfunctionlearning.html" rel="alternate" type="text/html" title="Q-function Learning" /><published>2019-12-17T21:27:25+09:00</published><updated>2019-12-17T21:27:25+09:00</updated><id>http://localhost:4000/rl-basic/2019/12/17/qfunctionlearning</id><content type="html" xml:base="http://localhost:4000/rl-basic/2019/12/17/qfunctionlearning.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/qdefinition.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;
-&lt;img src=&quot;/assets/images/qdefinition2.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/qdefinition.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;
+&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/qdefinition2.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;algorithms&quot;&gt;Algorithms&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/qiters.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/qiters.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><summary type="html">Definition</summary></entry><entry><title type="html">Topics 2 - multiple answers</title><link href="http://localhost:4000/programming/2019/12/16/topics-multians.html" rel="alternate" type="text/html" title="Topics 2 - multiple answers" /><published>2019-12-16T23:56:25+09:00</published><updated>2019-12-16T23:56:25+09:00</updated><id>http://localhost:4000/programming/2019/12/16/topics-multians</id><content type="html" xml:base="http://localhost:4000/programming/2019/12/16/topics-multians.html">&lt;h3 id=&quot;majority-elements&quot;&gt;Majority Elements&lt;/h3&gt;
 
@@ -666,7 +978,7 @@ A common way of obtaining approximate solutions for tasks with continuous states
 
 &lt;p&gt;Recall the Bellman Equations:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/bellmanqv.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/bellmanqv.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We can easily obtain optimal policies once we found the optimal value function V* or Q* which satisfy the Bellman optimality equations&lt;/p&gt;
 
@@ -676,7 +988,7 @@ A common way of obtaining approximate solutions for tasks with continuous states
 
 &lt;p&gt;&lt;strong&gt;Iterative Policy Evaluation&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/policyeval.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/policyeval.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Expected Updates&lt;/strong&gt;&lt;br /&gt;
 based on an expectation over all possible next states rather than on a sample next state&lt;/p&gt;
@@ -695,11 +1007,11 @@ The reason to compute Vπ is to find better policies&lt;/p&gt;
 &lt;p&gt;How to determine if it is better to change to the new policy?&lt;br /&gt;
 Use Qπ(s,a) - selecting a in s following policy π&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/piimprov.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/piimprov.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Given a policy π and it’s value functions Vπ and Qπ, we can evaluate a change in the policy at a single state to a particular action&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/piimprov2.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/piimprov2.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Example 4.1 GridWorld&lt;/strong&gt; - python, implementation of Policy Evaluation&lt;/p&gt;
 
@@ -793,7 +1105,7 @@ PI - Policy Improvement&lt;/p&gt;
 
 &lt;p&gt;Policy Iteration results in &lt;strong&gt;faster convergence&lt;/strong&gt; than Policy Evaluation, presumably because the value function changes little from one policy to the next&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/piiter.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/piiter.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;value-iteration&quot;&gt;Value Iteration&lt;/h3&gt;
 
@@ -814,9 +1126,9 @@ It may be possible to truncate policy evaluation without losing the convergence 
   &lt;li&gt;the max operation is added to some sweeps of policy evaluation&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/viter1.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/viter1.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/viter2.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/viter2.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;All of these algorithms converge to an optimal policy for discounted finite MDPs&lt;/p&gt;
 
@@ -836,9 +1148,9 @@ Space: O(|S|)&lt;/p&gt;
 
 &lt;h3 id=&quot;q-value-iteration&quot;&gt;Q-Value Iteration&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/qiter1.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/qiter1.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/qiter2.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/qiter2.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Example 4.1 GridWorld&lt;/strong&gt; - python, implementation of Value Iteration and Q-Value Iteration&lt;/p&gt;
 
@@ -1000,7 +1312,7 @@ They updates the values of states in any order whatsoever, using whatever values
 
 &lt;p&gt;&lt;strong&gt;Basic Formulation and Return&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/return.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/return.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Episodic and Continuing tasks&lt;/strong&gt;&lt;/p&gt;
 
@@ -1018,7 +1330,7 @@ They updates the values of states in any order whatsoever, using whatever values
 
 &lt;p&gt;&lt;strong&gt;Value function are defined w.r.t particular policies&lt;/strong&gt;, that is the rewards the agent can expect to receive in the future depend on what actions it will take&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/bellman.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/bellman.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;V and Q can be estimated from experience, such as Monte Carlo methods&lt;/li&gt;
@@ -1134,7 +1446,7 @@ start over, until convergence
 
 &lt;p&gt;If the dynamics of the environment are known, in principle one can solve this system of equations for V* using any one of a variety of methods for solving systems of nonlinear equations&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/bellmanop.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/bellmanop.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Because it is the optimal value function, however, V*’s consistency condition can be written in a special form without reference to any specific policy&lt;/p&gt;
 
@@ -1179,13 +1491,13 @@ Every time we compute V(s)=max of all [r+gamma*V(s’)] along actions&lt;/p&gt;
 
 &lt;p&gt;Recall&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/bellrevisit.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/bellrevisit.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/belloperator.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/belloperator.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Bellman Operator Properties&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/operatorproperty.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/operatorproperty.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
 
@@ -1194,7 +1506,7 @@ Every time we compute V(s)=max of all [r+gamma*V(s’)] along actions&lt;/p&gt;
 
 &lt;h3 id=&quot;previous-edition&quot;&gt;Previous Edition&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/bellmanold.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><summary type="html">finite MDP</summary></entry><entry><title type="html">Soft Q-Learning</title><link href="http://localhost:4000/literature/2019/12/06/softq.html" rel="alternate" type="text/html" title="Soft Q-Learning" /><published>2019-12-06T17:12:25+09:00</published><updated>2019-12-06T17:12:25+09:00</updated><id>http://localhost:4000/literature/2019/12/06/softq</id><content type="html" xml:base="http://localhost:4000/literature/2019/12/06/softq.html">&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/bellmanold.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><summary type="html">finite MDP</summary></entry><entry><title type="html">Soft Q-Learning</title><link href="http://localhost:4000/literature/2019/12/06/softq.html" rel="alternate" type="text/html" title="Soft Q-Learning" /><published>2019-12-06T17:12:25+09:00</published><updated>2019-12-06T17:12:25+09:00</updated><id>http://localhost:4000/literature/2019/12/06/softq</id><content type="html" xml:base="http://localhost:4000/literature/2019/12/06/softq.html">&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
 
 &lt;p&gt;keywords:&lt;/p&gt;
 &lt;ul&gt;
@@ -1315,7 +1627,7 @@ must define an objective that promotes stochasticity&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;MaxEnt RL problem formulation&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/maxentrl.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/maxentrl.png&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Note that, the MaxEnt objective differs qualitatively from&lt;/p&gt;
 &lt;ul&gt;
@@ -1336,13 +1648,13 @@ While the MaxEnt objective can maximize the entropy of the entire traj distribut
 
 &lt;p&gt;However, &lt;strong&gt;engergy-based model&lt;/strong&gt; is more general class of distribution that can represent complex, multimodal behaviors&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/softbellman.png&quot; alt=&quot;&quot; width=&quot;70%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/softbellman.png&quot; alt=&quot;&quot; width=&quot;70%&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;soft-q-learning&quot;&gt;Soft Q-Learning&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Soft Q-Iteration&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/softqiter.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/softqiter.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Practical Problems&lt;/strong&gt;&lt;/p&gt;
 
@@ -1362,7 +1674,7 @@ This procedure is intractable due to the integral in V_soft(st)&lt;/p&gt;
 &lt;p&gt;Solution:&lt;br /&gt;
 Turn this procedure into a &lt;strong&gt;stochastic optimization&lt;/strong&gt;, which leads to a SGD update&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/softqstoupdate.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ha5ha6.github.io/judy_blog/assets/images/softqstoupdate.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This SGD can be updated using sampled states and actions, the sampling distribution &lt;strong&gt;qs and qa&lt;/strong&gt; can be arbitrary  &lt;br /&gt;
 We can use real samples from rollouts of current policy π(at|st) ∝ exp⁡[1/α(Q_soft^θ(st,at))]&lt;/p&gt;
@@ -1594,6 +1906,34 @@ Say&lt;/p&gt;
                 &lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;leetcode 277 - Find the Celebrity [M]&lt;/strong&gt;&lt;br /&gt;
+Suppose you are at a party with n people (labeled from 0 to n - 1) and among them, there may exist one celebrity. The definition of a celebrity is that all the other n - 1 people know him/her but he/she does not know any of them.&lt;/p&gt;
+
+&lt;p&gt;Now you want to find out who the celebrity is or verify that there is not one. The only thing you are allowed to do is to ask questions like: “Hi, A. Do you know B?” to get information of whether A knows B. You need to find out the celebrity (or verify there is not one) by asking as few questions as possible (in the asymptotic sense).&lt;/p&gt;
+
+&lt;p&gt;You are given a helper function bool knows(a, b) which tells you whether A knows B. Implement a function int findCelebrity(n), your function should minimize the number of calls to knows.&lt;/p&gt;
+
+&lt;p&gt;Note: There will be exactly one celebrity if he/she is in the party. Return the celebrity’s label if there is a celebrity in the party. If there is no celebrity, return -1.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;knows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;  
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findCelebrity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;knows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;knows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;knows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Algorithms" /><category term="Greedy" /><summary type="html">Background</summary></entry><entry><title type="html">OThers 12 - python class</title><link href="http://localhost:4000/programming/2019/12/06/others-pythonclass.html" rel="alternate" type="text/html" title="OThers 12 - python class" /><published>2019-12-06T14:50:25+09:00</published><updated>2019-12-06T14:50:25+09:00</updated><id>http://localhost:4000/programming/2019/12/06/others-pythonclass</id><content type="html" xml:base="http://localhost:4000/programming/2019/12/06/others-pythonclass.html">&lt;h3 id=&quot;public-and-private&quot;&gt;Public and Private&lt;/h3&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;

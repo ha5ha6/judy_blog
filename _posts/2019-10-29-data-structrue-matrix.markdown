@@ -17,7 +17,7 @@ toc_label: "Index"
 author_profile: true
 ---
 
-### Element Search  
+### Element / Word Search  
 
 see [binary search #matrix](/programming/2019/11/13/algorithm-binarysearch.html#find-element-in-matrix)    
 **leetcode 74 - Search a 2D Matrix [M]**  
@@ -60,8 +60,6 @@ Consider the following matrix:
 Given target = 5, return true.  
 Given target = 20, return false.  
 
-### Word Search  
-
 **leetcode 79 - Word Search [M] - backtracking** see [backtracking #matrix word search](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#matrix-word-search)  
 Given a 2D board and a word, find if the word exists in the grid.  
 
@@ -88,7 +86,7 @@ board=
 words=['oath','pea','eat','rain']   
 output: ['eat',oath]  
 
-### Region Search
+### Board Game
 
 **leetcode 130 - Surrounded Regions [M] - stack or dfs**  
 Given a 2D board containing ‘X’ and ‘O’ (the letter O), capture all regions surrounded by ‘X’.  
@@ -183,3 +181,82 @@ Input:
     1 0 0 1 0
 
 Output: 4  
+
+**leetcode 286 - Walls and Gates [M]** see [bfs](/programming/2019/10/27/algorithm-bfs.html)  
+You are given a m x n 2D grid initialized with these three possible values:    
+-1 - A wall or an obstacle  
+0 - A gate  
+INF - Infinity means an empty room  
+
+We use the value 231 - 1 = 2147483647 to represent INF as you may assume that the distance to a gate is less than 2147483647.  
+Fill each empty room with the distance to its nearest gate. If it is impossible to reach a gate, it should be filled with INF.  
+
+Given the 2D grid:  
+
+    INF -1  0   INF  
+    INF INF INF -1  
+    INF -1  INF -1  
+    0   -1  INF INF  
+
+After running your function, the 2D grid should be:    
+
+    3 -1 0  1
+    2  2 1 -1
+    1 -1 2 -1
+    0 -1 3  4
+
+**leetcode 289 - Game of Life [M]**  
+According to the Wikipedia's article: "The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970."  
+
+Given a board with m by n cells, each cell has an initial state live (1) or dead (0). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):  
+
+1. Any live cell with fewer than two live neighbors dies, as if caused by under-population.  
+2. Any live cell with two or three live neighbors lives on to the next generation.  
+3. Any live cell with more than three live neighbors dies, as if by over-population.  
+4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.  
+
+Write a function to compute the next state (after one update) of the board given its current state. The next state is created by applying the above rules simultaneously to every cell in the current state, where births and deaths occur simultaneously.  
+
+Input:
+
+    [[0,1,0],
+     [0,0,1],
+     [1,1,1],
+     [0,0,0]]
+
+Output:
+
+    [[0,0,0],
+     [1,0,1],
+     [0,1,1],
+     [0,1,0]]
+
+
+```python
+class Solution():
+    def gameOfLife(self,board):
+        if not board or not board[0]:
+            return
+
+        rows,cols=len(board),len(board[0])
+        for r in range(rows):
+            for c in range(cols):
+                nbors=self.count_nbors(r,c,board)
+                if nbors==3 or (board[r][c] and nbors==2):
+                    board[r][c]+=2  #next state alive  
+
+        for r in range(rows):
+            for c in range(cols):
+                board[r][c]>>=1
+
+    def count_nbors_(self,r,c,b):  # 8 nbors!!
+        cnt=0
+        for dr in range(-1,2):
+            for dc in range(-1,2):
+                if dr==dc==0:
+                    continue
+                if 0<=r+dr<len(b) and 0<=c+dc<len(b[0]):
+                    cnt+=b[r+dr][c+dc]%2
+
+        return cnt
+```

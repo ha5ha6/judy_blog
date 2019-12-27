@@ -19,7 +19,7 @@ author_profile: true
 
 **Time Complexity O(log n)**
 
-### Find Peak in Array
+### Find Element in Array
 
 **leetcode 153 - Find Minimum in Rotated Sorted Array [M]**  
 Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand, find the minimum element  
@@ -185,6 +185,50 @@ class Solution():
 
        return right
 ```
+
+**leetcode 278 - First Bad Version [E]**  
+You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.  
+Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad.  
+
+You are given an API bool isBadVersion(version) which will return whether version is bad. Implement a function to find the first bad version. You should minimize the number of calls to the API.  
+
+Given n = 5, and version = 4 is the first bad version.  
+call isBadVersion(3) -> false  
+call isBadVersion(5) -> true  
+call isBadVersion(4) -> true  
+Then 4 is the first bad version.   
+
+```python
+def isBadVersion(n):
+    return
+
+class Solution():
+    def firstBadVersion(self, n):
+        left,right=1,n
+        while left<right:
+            mid=(left+right)//2
+            if isBadVersion(mid):
+                right=mid
+            else:
+                left=mid+1
+
+        return left
+```
+
+
+**leetcode 374 - Guess Number Higher or Lower [E]**  
+We are playing the Guess Game. The game is as follows:  
+I pick a number from 1 to n. You have to guess which number I picked.  
+Every time you guess wrong, I'll tell you whether the number is higher or lower.  
+You call a pre-defined API guess(int num) which returns 3 possible results (-1, 1, or 0):  
+-1 : My number is lower  
+ 1 : My number is higher  
+ 0 : Congrats! You got it!  
+
+Input: n = 10, pick = 6  
+Output: 6  
+
+
 
 ### Find Element in Matrix  
 
@@ -414,10 +458,10 @@ class Solution():
         l,r=0,n-1
         while l<=r:
             mid=(l+r)//2
-            if citations[mid]>=n-mid:
-                r=mid-1
-            else:
+            if citations[mid]<n-mid:
                 l=mid+1
+            else:
+                r=mid-1
 
         return n-l
 ```
