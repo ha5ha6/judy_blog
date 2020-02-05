@@ -58,11 +58,11 @@ gallery:
     title: "Kashgar"
   - url: /assets/images/tibet1.jpg
     image_path: /assets/images/tibet1.jpg
-    alt: "placeholder image 2"
+    alt: "placeholder image 4"
     title: "Tibet"
   - url: /assets/images/tibet2.jpg
     image_path: /assets/images/tibet2.jpg
-    alt: "placeholder image 2"
+    alt: "placeholder image 5"
     title: "Tibet"
 
 ---
