@@ -125,6 +125,516 @@ sorted(strs,str_cmp)
 >>['9', '3', '30', '12']
 ```
 
+8. replace
+```python
+#remove space
+s='ab c e f'
+s.replace(' ','')
+>>'abcef'
+```
+
+
+### Knowledge
+
+bit: the smallest unit of storage, 1 bit stores just a 0 or 1  
+byte: collection of 8 bits, i.e. 01011010, 1 byte can store one character, i.e. 'A','x','$'  
+ASCII: 1 byte, fixed length, NO.0~127, in total 128, 'A'-65, 'z'-122    
+GB2312: Chinese  
+Unicode: 2 bytes, 4 bytes for strange words, fixed length, include all languages   
+UTF-8: changeable length, 1-4 bytes, 1 bytes for alphabet, 3 bytes for Chinese character, 4 for strange words, ACSII is a part of UTF-8  
+
+## Cracking  
+
+**1.1 is Unique**: Implement an algorithm to determine if a string has all unique chars.  
+What if you cannot use additional data structure?  
+
+Check points:  
+- check if the string is ACSII (128), Unicode (UTF-8 1112064), or extended ACSII (256)  
+- return False if the string length exceeds the 128-char alphabet  
+- can argue TO(1) because the scan would not exceed 128
+
+Solution 1: boolean array, TO(n), n=len(str), or TO(min(c,n)), c=size of the char set, SO(128), assume ASCII-128  
+
+```python
+class Solution():
+    def isUnique(self,str):
+        if len(str)>128:
+            return False
+
+        flag=[False]*128
+        for c in str:
+            if flag[ord(c)]:
+                return False
+            flag[ord(c)]=True
+
+        return True
+```
+
+Solution 2: bit vector, save SO(128) to SO(1), assume only use 'a'-'z'  
+
+```python
+class Solution():
+    def isUnique(self,str):
+        checker=0
+        for c in str:
+            v=ord(c)-ord('a')
+            if (checker & (1<<v))>0:
+                return False
+
+            checker |= 1<<v
+
+        return True
+```
+
+Solution 3: not using additional data structure  
+
+compare every char of the string to every other char of the string TO(n^2)  
+
+Solution 4: not using additional data structure  
+
+if modify the string is allowed, sort the string in TO(nlogn), then linearly check the string for neighboring char that are indentical  
+
+**1.2 Check Permutation**: Given two strings, write a method to decide if one is a permutation of the other (similar as leetcode 242 - Valid Anagram [E])
+
+check points:
+- case sensitive? i.e. 'God' vs 'dog'
+- whitespace is significant? i.e. 'god   ' vs 'dog'
+- check lengths, different length cannot be permutations of each other  
+
+Solution 1: sorting, TO(mlogm+nlogn)
+
+```python
+class Solution():
+    def isPermutation(self,s,t):
+        if len(s)!=len(t):
+            return False
+
+        return sorted(s)==sorted(t)
+```
+
+Solution 2: check counts TO(m+n), assume it's ASCII
+
+```python
+class Solution():
+    def isPermutation(self,s,t):
+        if len(s)!=len(t):
+            return False
+
+        cnt=[0]*128 #assumption
+        for c in s:
+            cnt[ord(c)]+=1
+
+        for c in t:
+            cnt[ord(c)]-=1
+            if cnt[ord(c)]<0:
+                return False
+
+        return True
+```
+
+Solution 3: check counts, assume it's Unicode  
+
+```python
+class Solution():
+    #waste SO, two dicts
+    def isPermutation(self,s,t):
+        if len(s)!=len(t):
+            return False
+
+        alpha={}
+        beta={}
+        for c in s:
+            if c in alpha:
+                alpha[c]+=1
+            else:
+                alpha[c]=1
+
+        for c in t:
+            if c in beta:
+                beta[c]+=1
+            else:
+                beta[c]=1
+
+        return alpha==beta
+
+    def isPermutation_2(self,s,t):
+        if len(s)!=len(t):
+            return False
+
+        d={}
+        for c in s:
+            if c in d:
+                d[c]+=1
+            else:
+                d[c]=1
+
+        for c in t:
+            d[c]-=1
+
+        return all(v==0 for v in d.values())
+```
+
+make a counter 2 using dict:
+
+```python
+from collections import defaultdict
+
+str='abcdefgadbdec'
+d=defaultdict(int)
+
+for c in str:
+    d[c]+=1
+
+>>defaultdict(int, {'a': 2, 'b': 2, 'c': 2, 'd': 3, 'e': 2, 'f': 1, 'g': 1})
+```
+
+make a counter 3 using dict:
+
+```python
+str='abcdefgadbdec'
+d={x:str.count(x) for x in str}
+
+>>{'a': 2, 'b': 2, 'c': 2, 'd': 3, 'e': 2, 'f': 1, 'g': 1}
+```
+
+make a counter 4 using dict:
+
+```python
+str='abcdefgadbdec'
+d={}
+
+for c in s:
+    d[c]=d.get(c,0)+1
+```
+
+**1.3 URLify**: Write a method to replace all spaces in a string with '%20'.  
+You may assume that the string has sufficient space at the end to hold the additional characters, and that you are given the 'true' length of the string.  
+
+Input: 'Mr John Smith    ', 13  
+Output: 'Mr%20John%20Smith'
+
+**String Manipulation common approach**: to edit the string starting from the end and working backwards. Because we have an extra buffet at the end, which allows us to change characters without worrying what we're overwriting!
+
+2 scans:  
+1. count the number of spaces, and tripling this number for extra character
+2. edit the string in reverse order  
+
+should be careful of the total length of the str list  
+
+
+    0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17
+    m r _ j o h n _ s m i  t  h  _  _  _  _  _  cnt_space=2, idx=13+4=17
+                          <-  i        <- idx-1
+    m r % 2 0 j o h n % 2  0  s  m  i  t  h
+
+
+```python
+class Solution():
+    def urlify(self,str,trueLength):
+        cnt_space=0
+        str=list(str)
+        for i in range(trueLength):
+            if str[i]==' ':
+                cnt_space+=1
+
+        idx=trueLength+cnt_space*2 #total length needed
+
+        for i in range(trueLength-1,-1,-1):
+            if str[i]==' ':
+                str[idx-1]='0'
+                str[idx-2]='2'
+                str[idx-3]='%'
+                idx-=3
+            else:
+                str[idx-1]=str[i]
+                idx-=1
+```
+
+Solution 2:
+
+```python
+class Solution():
+    def urlify(self,str,trueLength):
+        return '%20'.join(str.split())
+
+    def urlify(self,str,trueLength):
+        return str[:trueLength].replace(' ','%20')
+
+    def urlify(self,str,trueLength):
+        return ''.join('%20' if c==' ' else c for c in str[:trueLength])
+```
+
+**1.4 Palindrome Permutation**: Given a string, write a function to check if it is a permutation of a palindrome. (same as leetcode 266 - Palindrome Permutation [E])
+
+Input: Tact Coa  
+Output: True  
+Explanation: taco cat, atco cta  
+
+Note: a string can have no moare than one character that is odd, check max one odd  
+
+Solution 1: TO(n)   
+
+```python
+class Solution():
+    def isPalindromePermutation(self,s):
+        cnt=dict()
+        s.replace(' ','')
+
+        for c in s:
+            if c in cnt:
+                cnt[c]+=1
+            else:
+                cnt[c]=1
+
+        foundOdd=False
+        for c in cnt:
+            if cnt[c]%2==1:
+                if foundOdd:  #only find once!
+                    return False
+                foundOdd=True
+
+        return True
+```
+
+Solution 2: TO(n)  
+
+```python
+class Solution():
+    def isPalindromePermutation(self,s):
+        cnt=dict()
+        cnt_odd=0
+        s.replace(' ','')
+
+        for c in s:
+            if c in cnt:
+                cnt[c]+=1
+            else:
+                cnt[c]=1
+
+            if cnt[c]%2==1:
+                cnt_odd+=1
+            else:
+                cnt_odd-=1
+
+        return cnt_odd<=1
+```
+
+Solution 3: bit vector, switch on/off as even/odd  
+When we see a letter, we map it to an integer between 0 to 26  
+Then we toggle the bit at that value  
+At the end, we check that at most one bit in the integer is set to 1  
+
+    00010000-1=00001111
+
+     00010000
+    &00001111
+    ----------
+            0
+
+    00101000-1=00100111
+
+     00101000
+    &00100111
+    ----------
+     00100000
+
+```python
+class Solution():
+   def isPalindromePermutation(self,s):
+       bitVector=0
+        for c in s:
+          v=ord(c)
+          if v>0:
+              mask=1<<v
+              if (bitVector&mask)==0:
+                  bitVector |=mask
+              else:
+                  bitVector &=~mask
+
+        return bitVector==0 or (bitVector&(bitVector-1)==0)
+```
+
+**1.5 One Away**: There are 3 types of edits that can be performed on strings:  
+1. insert a character
+2. remove a character
+3. replace a character  
+Given two strings, write a function to check if they are one edit (or zero edit) away.  
+
+pale, ple -> True   
+pales, pale -> True  
+pale, bale -> True  
+pale, bae -> False  
+
+Solution 1: brute force TO(n), n=len(shorter string)   
+
+- replacement: only one char different  
+- insertion: if you compared the strings, they would be identical except for a shift at some point in the strings  
+- removal: the inverse of insertion, so they can be merged  
+
+```python
+class Solution():
+    def oneEditAway(self,s,t):
+        if len(s)==len(t):
+            return self.oneEditReplace(s,t)
+        if len(s)+1==len(t):
+            return self.oneEditInsert(s,t)
+        if len(s)-1==len(t):
+            return self.oneEditInsert(t,s)
+
+        return False
+
+    def oneEditReplace(self,s,t):
+        diff=False
+        for c,d in zip(s,t):
+            if c!=d:
+                if diff:
+                    return False
+                diff=True
+
+        return True  
+
+    def oneEditInsert(self,s,t):
+        i1,i2=0,0
+        while i1<len(s) and i2<len(t):
+            if s[i1]!=t[i2]:
+                if i1!=i2:
+                    return False
+                i2+=1
+            else:
+                i1+=1
+                i2+=1
+
+        return True
+```
+
+Solution 2: merge two methods  
+
+```python
+class Solution():
+    def oneEditAway(self,s,t):
+        if abs(len(s)-len(t))>1:
+            return False  
+
+        sh=s if len(s)<len(t) else t  #short
+        lo=t if len(s)<len(t) else s  #long
+
+        i1,i2=0,0
+        diff=False
+
+        while i1<len(sh) and i2<len(lo):
+            if sh[i1]!=lo[i2]:
+                if diff:
+                    return False  
+                diff=True  
+
+                if len(sh)==len(lo):
+                    i1+=1
+            else:
+                i1+=1
+
+            i2+=1
+
+        return True
+```
+
+**1.6 String Compression**: Implement a method to perform basic string compression using the counts of repeated characters.  
+
+aabccccaaa -> a2b1c4a3  
+
+If the "compressed" string would not become smaller than the original string, your method should return the original string.  
+
+Solution 1: brute force, TO(p+k^2), p=len(s), k=number of character sequences  
+if 'aabccdeeaa', there are 6 character sequences  
+the slowness is on string concatenation, it operates in TO(n^2), see string builder  
+
+```python
+class Solution():
+    def compress(self,s):
+        res=""
+        cnt_consecutive=0
+        for i in range(len(s)):
+            cnt_consecutive+=1
+
+            if (i+1>=len(s)) or s[i]!=s[i+1]:
+                res+=s[i]+str(cnt_consecutive)
+                cnt_consecutive=0
+
+        return res if len(res)<len(s) else s  
+```
+
+String Builder    
+
+```python
+new_s=""
+new_s+=s[i]+str(cnt)
+
+new_s=[]
+new_s.append(s[i])
+new_s.append(str(cnt))
+
+''.join(new_s)
+```
+
+Solution 2: save space for stringbuilder  
+
+```python
+class Solution():
+    def compress(self,s):
+        finalLength=countCompression(s)
+        if finalLength>=len(s):
+            return s
+
+        compressed=[] #stringbuilder len=finalLength
+        cnt_consecutive=0
+        for i in range(len(s)):
+            cnt_consecutive+=1
+            if i+1>=len(s) or s[i]!=s[i+1]:
+                compressed.append(s[i])
+                compressed.append(str(cnt_consecutive))
+                cnt_consecutive=0
+
+        return "".join(compressed)
+
+    def countCompression(self,s):
+        compressedLength=0
+        cnt_consecutive=0
+        for i in range(len(s)):
+            cnt_consecutive+=1
+            if i+1>=len(s) or s[i]!=s[i+1]:
+                compressedLength+=1+len(str(cnt_consecutive))
+                cnt_consecutive=0
+
+        return compressedLength
+```
+
+**1.9 String Rotation**: Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings s1 and s2, write code to check if s2 is a rotation of s1 using only one call to isSubstring.  
+
+"waterbottle" is a rotation of 'erbottlewat'  
+
+Solution:  
+- find the pivot  
+s1=xy=waterbottle  
+x=wat  
+y=erbottle  
+s2=yx=erbottlewat  
+
+- yx will always be a substring of xyxy, that is s2 will always be a substring of s1s1
+- if isSubstring() is TO(A+B), A,B are string lengths, isRotation() is TO(n)
+
+```python
+class Solution():
+    def isRotation(self,s1,s2):
+        l=len(s1)
+        if l==len(s2) and l>0:
+            s1s1=s1+s1
+            return self.isSubstring(s1s1,s2)
+
+        return False
+
+    def isSubstring(self,s1,s2):
+        #already known
+```
+
 ## Problem
 
 ### Slice  
@@ -399,7 +909,6 @@ class Solution():
         return True
 ```   
 
-
 ### Anagram  
 
 **leetcode 242 - Valid Anagram [E]**  
@@ -417,12 +926,36 @@ class Solution():
         return Counter(s)==Counter(t)
 ```
 
-Solution 2: sort TO(logm+logn)    
+Solution 2: sort TO(mlogm+nlogn)    
 
 ```python
 class Solution():
     def isAnagram(self,s,t):
         return sorted(s)==sorted(t)
+```
+
+### Flip Game
+
+**leetcode 293 - Flip Game [E]**  
+You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive “++” into “–”. The game ends when a person can no longer make a move and therefore the other person will be the winner.  
+
+Write a function to compute all possible states of the string after one valid move.  
+
+Input: s = “++++“  
+Output:  
+[”--++”,  
+"+--+",  
+"++--"]  
+
+```python
+class Solution():
+    def generatePossibleNextMoves(self,s):
+        res=[]
+        for i in range(len(s)-1):
+            if s[i:i+2]=='++':
+                res.append(s[:i]+'--'+s[i+2:])
+
+        return res
 ```
 
 ### Encode n Decode  

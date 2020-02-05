@@ -1,4 +1,828 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-12-27T14:44:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Markov Chain Monte Carlo</title><link href="http://localhost:4000/ml-basic/2019/12/20/mcmc.html" rel="alternate" type="text/html" title="Markov Chain Monte Carlo" /><published>2019-12-20T16:28:25+09:00</published><updated>2019-12-20T16:28:25+09:00</updated><id>http://localhost:4000/ml-basic/2019/12/20/mcmc</id><content type="html" xml:base="http://localhost:4000/ml-basic/2019/12/20/mcmc.html">&lt;h3 id=&quot;motivation&quot;&gt;Motivation&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-05T16:50:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Energy-based Model</title><link href="http://localhost:4000/ml-basic/2020/02/05/energybasedmodel.html" rel="alternate" type="text/html" title="Energy-based Model" /><published>2020-02-05T14:59:25+09:00</published><updated>2020-02-05T14:59:25+09:00</updated><id>http://localhost:4000/ml-basic/2020/02/05/energybasedmodel</id><content type="html" xml:base="http://localhost:4000/ml-basic/2020/02/05/energybasedmodel.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;The main purpose of statistical modeling and machine learning is to encode dependencies between variables. By capturing those dependencies, a model can be used to answer questions about the values of unknown variables given the values of known variables.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Energy-Based Models&lt;/strong&gt; (EBMs) capture dependencies by associating a scalar energy (a measure of compatibility) to each configuration of the variables.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Inference&lt;/strong&gt; consists in setting the value of observed variables and finding values of the remaining variables that minimize the energy.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Learning&lt;/strong&gt; consists in finding an energy function that associates low energies to correct values of the remaining variables, and higher energies to incorrect values.&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;loss functional&lt;/strong&gt;, minimized during learning, is used to measure the quality of the available energy functions.&lt;/p&gt;
+
+&lt;p&gt;With this common &lt;strong&gt;inference/learning framework&lt;/strong&gt;, the wide choice of &lt;strong&gt;energy functions and loss functionals&lt;/strong&gt; allows for the design of many types of &lt;strong&gt;statistical models&lt;/strong&gt;, both &lt;strong&gt;probabilistic and non-probabilistic&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Applications&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;non-probabilistic training of&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;graphical models&lt;/li&gt;
+  &lt;li&gt;other structured models&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;probabilistic estimation for&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;prediction&lt;/li&gt;
+  &lt;li&gt;classification&lt;/li&gt;
+  &lt;li&gt;decision-making&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Because&lt;/strong&gt; there is no requirement for proper normalization, &lt;strong&gt;energy-based approaches avoid the problems associated with estimating the normalization constant in probabilistic models&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;X (observed variables, i.e. image pixels)
+Y (variables to be predicted, i.e. classification labels of 'Human','Animal','Car', ...)
+
+X,Y -&amp;gt; E(Y,X) (energy function)
+
+          Energy (the lower the better)
+Human     ||||||
+Animal*   |||
+Car       |||||||||
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;energy-based-inference&quot;&gt;Energy-Based Inference&lt;/h3&gt;
+
+&lt;p&gt;Let us consider a model with two sets of variables, X and Y as above example.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Energy function&lt;/strong&gt; measures the “goodness”/”badness” of each possible configuration of X and Y, and the output number can be interpreted as the degree of &lt;strong&gt;compatibility&lt;/strong&gt; between the values of X and Y.&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+
+&lt;p&gt;[1] LeCun, Yann, et al. “A tutorial on energy-based learning.” Predicting structured data 1.0 (2006).&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="EBM" /><summary type="html">Definition</summary></entry><entry><title type="html">Modular RL</title><link href="http://localhost:4000/rl-basic/2020/01/16/modulerrl.html" rel="alternate" type="text/html" title="Modular RL" /><published>2020-01-16T12:02:25+09:00</published><updated>2020-01-16T12:02:25+09:00</updated><id>http://localhost:4000/rl-basic/2020/01/16/modulerrl</id><content type="html" xml:base="http://localhost:4000/rl-basic/2020/01/16/modulerrl.html">&lt;h3 id=&quot;modular-deep-reinforcement-learning-with-temporal-logic-specification&quot;&gt;Modular Deep Reinforcement Learning with Temporal Logic Specification&lt;/h3&gt;
+
+&lt;p&gt;a modular Deep Deterministic Policy Gradient (DDPG) architecture is proposed to generate a low-level control policy&lt;/p&gt;
+
+&lt;p&gt;Deep reinforcement learning is an emerging paradigm for autonomous solving of decision-making tasks in &lt;strong&gt;complex and unknown environments&lt;/strong&gt;. However, tasks featuring extremely &lt;strong&gt;delayed rewards&lt;/strong&gt; are often difficult, if at all possible, to solve with monolithic learning in Reinforcement Learning (RL). A well-known example is the Atari game Montezuma’s Revenge in which deep RL methods such as (Mnih et al. 2015) failed to score even once.&lt;/p&gt;
+
+&lt;p&gt;Despite their generality, it is not fair to compare deep RL methods with how humans learn these problems, since &lt;strong&gt;humans already have prior knowledge and associations regarding elements and their corresponding function&lt;/strong&gt;, e.g. “keys open doors” in Montezuma’s Revenge. These simple yet &lt;strong&gt;critical temporal high-level associations&lt;/strong&gt; in Montezuma’s Revenge and a large number of real world complex problems, can lift deep RL initial knowledge about the problem to efficiently find the global optimal policy, while &lt;strong&gt;avoiding an exhaustive unnecessary exploration in the beginning&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Hierarchical RL -&amp;gt; options&lt;/p&gt;
+
+&lt;p&gt;LTL - Linear Temporal Logic&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;used to encode the structure of the high-level mission task and to automatically shape the reward function&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Refs&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;[Precup 2001] Precup, D. 2001. Temporal abstraction in reinforcement learning. Ph.D. Dissertation, University of Massachusetts Amherst.&lt;br /&gt;
+[Kearns and Singh 2002] Kearns, M., and Singh, S. 2002. Near-optimal reinforcement learning in polynomial time. Machine learning 49(2-3):209–232.&lt;br /&gt;
+[Daniel, Neumann, and Peters 2012] Daniel, C.; Neumann, G.; and Peters, J. 2012. Hierarchical relative entropy policy search. In Artificial Intelligence and Statistics, 273–281.&lt;br /&gt;
+[Kulkarni et al. 2016] Kulkarni, T. D.; Narasimhan, K.; Saeedi, A.; and Tenenbaum, J. 2016. Hierarchical deep reinforcement learning: Integrating temporal abstraction and intrinsic motivation. In Advances in neural information processing systems, 3675–3683.&lt;br /&gt;
+[Vezhnevets et al. 2016] Vezhnevets, A.; Mnih, V.; Osindero, S.; Graves, A.; Vinyals, O.; Agapiou, J.; et al. 2016. Strategic attentive writer for learning macro-actions. In Advances in neural information processing systems, 3486–3494.&lt;br /&gt;
+[Andreas, Klein, and Levine 2017] Andreas, J.; Klein, D.; and Levine, S. 2017. Modular multitask reinforcement learning with policy sketches. In Proceedings of the 34th International Conference on Machine Learning-Volume 70, 166–175.&lt;/p&gt;
+
+&lt;h3 id=&quot;modular-reinforcement-learning-an-application-to-a-real-robot-task&quot;&gt;Modular Reinforcement Learning An Application to a Real Robot Task&lt;/h3&gt;
+
+&lt;p&gt;The key idea is to break up the problem into subtasks and design controllers for each of the subtasks. Then operating conditions are attached to the controllers (together the controllers and their operating conditions which are called modules) and possible additional features are designed to facilitate observability.&lt;/p&gt;
+
+&lt;p&gt;A new discrete time-counter is introduced at the “module-level” that clicks only when a change in the value of one of the features is observed.&lt;/p&gt;
+
+&lt;p&gt;The learnt switching strategy performed equally well as a handcrafted version.&lt;/p&gt;
+
+&lt;p&gt;RL algorithms are based on modifications of the two basic dynamic-programming algorithms used to solve MDPs namely the value- and policy-iteration algorithms.&lt;/p&gt;
+
+&lt;p&gt;Problem: Partial Observability&lt;/p&gt;
+
+&lt;p&gt;In this article an attempt is made to show that RL can be applied to learn real life tasks &lt;strong&gt;when a priori knowledge is combined in some suitable way.&lt;/strong&gt; The key to our proposed method lies in the use of high-level modules along with a specification of the operating conditions for the modules and other features to transform the task into a finite-state and action completely-observable task.&lt;/p&gt;
+
+&lt;p&gt;Bellman equations can be solved by various dynamic programming methods such as the value- or policy-iteration methods.&lt;/p&gt;
+
+&lt;p&gt;There are two possible ways to learn the optimal value-function.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;to estimate the model i.e. the transition probabilities and immediate costs&lt;/li&gt;
+  &lt;li&gt;to estimate the optimal action-values directly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A switching function S maps featrue-vectors to the indices of modules: S(f)=i&lt;/p&gt;
+
+&lt;p&gt;RL can&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;find the best switching function assuming that at least two proper switching functions exist&lt;/li&gt;
+  &lt;li&gt;decide empirically whether a valid switching controller exists at all&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The work of Connell and Mahadevan complements the works in that they set-up subtasks to be learned by RL and fixed the switching controller.&lt;br /&gt;
+[S Mahadevan and J Connell Automatic programming of behavior-based robots using reinforcement learning. Artificial Intelligence]&lt;/p&gt;
+
+&lt;p&gt;Asada et al. describe a goal-shooting problem in which a mobile robot shot a goal while avoiding another robot [Uchibe 1996]. The robot learned two behaviors separately: the “shot” and “avoid” behaviors. Then the two behaviors were synthetized by a handcrafted rule and later this rule was refined via RL. The learnt action-values of the two behaviors were reused in the learning process while the combination of rules took place at the level of state variables.&lt;/p&gt;
+
+&lt;p&gt;[Uchibe 1996] Behavior coordination for a mobile robot using modular reinforcement learning.&lt;/p&gt;
+
+&lt;h3 id=&quot;composable-modular-reinforcement-learning&quot;&gt;Composable Modular Reinforcement Learning&lt;/h3&gt;
+
+&lt;p&gt;Truly modular RL would support not only decomposition into modules, but composability of separately written modules in new modular RL agents.&lt;/p&gt;
+
+&lt;p&gt;However, the performance of MRL agts that arbitrate module preferences using additive reward schemes degrades when the modules have incomparable reward scales. The performance degradation means that separately written modules cannot be composed in new modular RL agents as-is - they may need to be modified to align their reward scales.&lt;/p&gt;
+
+&lt;p&gt;The problem is solved with a Q-learning based command arbitration algorithm and demonstrate that it does not exhibit the same performance degradation as existing approaches to MRL.&lt;/p&gt;
+
+&lt;p&gt;Decomposition is an important tool for dealing with the larger state spaces likely to be encountered in real-world problems.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Hierarchical RL&lt;/strong&gt; decomposes RL problems &lt;strong&gt;temporally&lt;/strong&gt;, modeling intermediate tasks as higher-level actions.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Modular RL&lt;/strong&gt; decomposes the original problem &lt;strong&gt;concurrently&lt;/strong&gt;, modeling an agent as a set of concurrently running RL modules.&lt;/p&gt;
+
+&lt;p&gt;MRL has been used primarily &lt;strong&gt;to model multi-goal problems&lt;/strong&gt; and &lt;strong&gt;to deal with large state spaces.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;hierarchical-deep-reinforcement-learning-integrating-temporal-abstraction-and-intrinsic-motivation&quot;&gt;Hierarchical Deep Reinforcement Learning: Integrating Temporal Abstraction and Intrinsic Motivation&lt;/h3&gt;
+
+&lt;p&gt;Learning goal-directed behavior with sparse feedback from complex environments is a fundamental challenge for artificial intelligence.&lt;/p&gt;
+
+&lt;p&gt;Learning in this setting requires the agent to &lt;strong&gt;represent knowledge at multiple levels of spatio-temporal abstractions&lt;/strong&gt; and to explore the environment efficiently.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;represent knowledge at multiple levels of spatio-temporal abstractions -&amp;gt; non-linear function approximators + RL&lt;/li&gt;
+  &lt;li&gt;explore with sparse feedback -&amp;gt; still remains a major challenge&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Exploration methods:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Boltzmann exploration [31]&lt;/li&gt;
+  &lt;li&gt;Thomson sampling [19]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this work, we propose a framework that integrates &lt;strong&gt;deep reinforcement learning with hierarchical action-value functions&lt;/strong&gt; (h-DQN), where&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;the top-level module learns a policy over options (subgoals) and&lt;/li&gt;
+  &lt;li&gt;the bottom-level module learns policies to accomplish the objective of each option&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The model takes decisions over two levels of hierarchy –&lt;br /&gt;
+(a) a top level module (meta-controller) takes in the state and picks a new goal, and&lt;br /&gt;
+(b) a lower-level module (con- troller) uses both the state and the chosen goal to select actions either until the goal is reached or the episode terminates.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Value functions&lt;/strong&gt; V (s) are central to RL, and they cache the utility of any state s in achieving the agent’s overall objective.&lt;br /&gt;
+Recently, value functions have also been generalized as V (s, g) in order to represent the utility of state s for achieving a given goal g ∈ G [33, 21].&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Temporal Abstraction&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Hierarchical reinforcement learning [2] - Barto&lt;br /&gt;
+&lt;strong&gt;“Options” framework&lt;/strong&gt; [34] - Sutton - involves abstractions over the space of actions&lt;/p&gt;
+
+&lt;p&gt;At each step, the agent chooses either a one step “primitive” action or a “multi-step” action poilicy (option).&lt;br /&gt;
+Each option defines a policy over actions and can be terminated according to a stochastic function β.&lt;/p&gt;
+
+&lt;p&gt;MDP -&amp;gt; semi-MDP&lt;/p&gt;
+
+&lt;p&gt;recent proposed methods about learning options in real-time&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;by using varying reward functions [35]&lt;/li&gt;
+  &lt;li&gt;by composing existing options [28]&lt;/li&gt;
+  &lt;li&gt;value functions considering goals along with states [21]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;MAXQ framework&lt;/strong&gt; decomposed the value function of an MDP into combinations of value functions of smaller constituent MDPs [6]&lt;/p&gt;
+
+&lt;p&gt;[31] B. C. Stadie, S. Levine, and P. Abbeel. Incentivizing exploration in reinforcement learning with deep predictive models. arXiv preprint arXiv:1507.00814, 2015.&lt;br /&gt;
+[19] I.Osband,C.Blundell,A.Pritzel,andB.VanRoy.Deepexploration via bootstrapped dqn.arXivpreprint arXiv:1602.04621, 2016. &lt;br /&gt;
+[2] A. G. Barto and S. Mahadevan. Recent advances in hierarchical reinforcement learning. Discrete Event Dynamic Systems, 13(4):341–379, 2003.&lt;br /&gt;
+[34] R.S.Sutton,D.Precup,andS.Singh. Between mdps and semi-mdps: A framework for temporal abstraction in reinforcement learning. Artificial intelligence, 112(1):181–211, 1999.&lt;br /&gt;
+[35] C. Szepesvari, R. S. Sutton, J. Modayil, S. Bhatnagar, et al. Universal option models. In Advances in Neural Information Processing Systems, pages 990–998, 2014.&lt;br /&gt;
+[28] J. Sorg and S. Singh. Linear options. In Proceedings of the 9th International Conference on Autonomous Agents and Multiagent Systems, pages 31–38, Richland, SC, 2010.&lt;br /&gt;
+[21] T. Schaul, D. Horgan, K. Gregor, and D. Silver. Universal value function approximators. In Proceedings of the 32nd International Conference on Machine Learning (ICML-15), pages 1312–1320, 2015.&lt;/p&gt;
+
+&lt;h3 id=&quot;hierarchical-reinforcement-learning-learning-sub-goals-and-state-abstraction&quot;&gt;Hierarchical Reinforcement Learning: Learning sub-goals and state-abstraction&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Hierarchical RL&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Motivation - the curse of dimensionality&lt;br /&gt;
+problem caused by the exponential growth of parameters to be learned, associated with adding extra variables to a representation of a state. Applying RL with a very large action and state space tunred to be an impossible task.&lt;/p&gt;
+
+&lt;p&gt;HRL introduces various forms of &lt;strong&gt;abstraction and problem hierarchization&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Hierarchization&lt;/strong&gt; divides the main problem in sub-problems that can be solved using regular RL. Each sub-problem has its own sub-goal. The sequential resolution of serveral sub-goals takes us to the solution of the main problem.&lt;/p&gt;
+
+&lt;p&gt;Hierarchical Abstract Machines - [Parr and Russell 1998]
+The options framework - [Sutton 1999]&lt;/p&gt;
+
+&lt;p&gt;The goal of HRL:&lt;br /&gt;
+discovering and exploiting hierarchical structure within a MDP&lt;/p&gt;
+
+&lt;p&gt;Given an MDP, the programmer will be responsible for designing a task hierarchy for a specific problem&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;decomposing the main task into several subtasks that are, in turn, also decomposed until a subtask is reached that is composed only by primitive actions&lt;/li&gt;
+  &lt;li&gt;each subtask will learn its own Q function which represents the expected total reward of performing subtask on an initial state&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;HSMQ - Hierarchical Semi-Markov Q-learning - is seen as a collection of simultaneous, independent Q-Learning problems, no representational decoomposition of the value function&lt;/p&gt;
+
+&lt;p&gt;MAXQ did the value function decomposition [dietterich 2000a] &lt;br /&gt;
+MAXQ + state abstractions -&amp;gt; four times efficient &lt;br /&gt;
+(-) hand code for the task structure&lt;/p&gt;
+
+&lt;p&gt;HEXQ - automatically tries to decompose and solve a model-free factored MDP [Hengst, 2002]&lt;br /&gt;
+automatically discovering state and temporal abstraction, finding appropriate sub-golas in order to construct a hierarchical representation&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Scalability&lt;/strong&gt; is one of the biggest limitations in RL, cuz sub-policies need to be relevant in every new context.&lt;/p&gt;
+
+&lt;p&gt;The perfect solution would be to learn once each sub-task, and then reuse that whenever the skill was needed.&lt;/p&gt;
+
+&lt;p&gt;[Bernhard Hengst. Discovering Hierarchy in Reinforcement Learning with HEXQ. Proceedings of the Nineteenth International Conference on Machine Learning, 2002. URL http://portal.acm.org/citation.cfm?id=645531.656017.]&lt;/p&gt;
+
+&lt;h3 id=&quot;multiple-model-based-reinforcement-learning&quot;&gt;Multiple Model-based Reinforcement Learning&lt;/h3&gt;
+
+&lt;p&gt;MMRL - basic idea:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;decompose a complex task into multiple domains in space and time based on the predictability of the environmental dynamics&lt;/li&gt;
+  &lt;li&gt;the system is composed of multiple modules, each of which consists of a state prediction model and a RL controller&lt;/li&gt;
+  &lt;li&gt;a “responsibility signal” given by a softmax function of the prediction errors is used to weight the outputs of multiple modules as well as to gate the learning of the prediction models and RL controllers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Real World RL problem: Non-linearity and non-stationarity&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;for non-linear, high-dimensional system, learning is slow&lt;/li&gt;
+  &lt;li&gt;for non-stationary, hidden states, perform badly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;modular or hierarchical RL&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Compositional Q-learning - [Singh 1992]&lt;br /&gt;
+Feudal reinforcement learning - [Dayan and Hinton 1993]&lt;br /&gt;
+Learning policies for partially observable environments: Scaling up - [Littman et al. 1995]&lt;br /&gt;
+HQ-learning - [Wiering and Schmidhuber 1998]&lt;br /&gt;
+Reinforcement learning with hierarchies of machines - [Parr and Russel 1998]&lt;br /&gt;
+Between mdps and semi-mdps: A framework for temporal abstraction in reinforcement learning - [Sutton 1999]&lt;br /&gt;
+Acquisition of stand-up behavior by a real robot using hierarchical reinforcement learning - [Morimoto and Doya 2001]&lt;/p&gt;
+
+&lt;p&gt;The basic problem in modular or hierarchical RL is &lt;strong&gt;how to decompose a complex task into simpler subtasks&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;policy-reuse-in-reinforcement-learning-for-modular-agents&quot;&gt;Policy Reuse in Reinforcement Learning for Modular Agents&lt;/h3&gt;
+
+&lt;p&gt;Hierarchical RL addresses continuous environment spaces by using different abstraction levels to learn task-specific partial policies with computable bounds [7]&lt;/p&gt;
+
+&lt;p&gt;For exceedingly large state spaces, HRL has been widely practiced.&lt;br /&gt;
+Where multiple objectives and temporal abstractions are adopted to facilitate space explorations.&lt;/p&gt;
+
+&lt;p&gt;i.e. in [11] [12], at each time t and for each state st, a higher level controler chooses the goal gt where G is the set of all possible goals currently available for the controller to choose from.&lt;/p&gt;
+
+&lt;p&gt;RL problems -&amp;gt; modular task, and every problem is actually composed of concurrent sub-problems with matter of abstraction levels. [3]&lt;/p&gt;
+
+&lt;p&gt;Different approaches to hierarchical RL result in variants on this overall approach, choosing different trade-offs in flexibility, training speed, and other properties [25]&lt;/p&gt;
+
+&lt;p&gt;[7] J. Z. Kolter, P. Abbeel, and A. Y. Ng, “Hierarchical apprenticeship learning with application to quadruped locomotion,” in Advances in Neural Information Processing Systems, pp. 769–776, 2008.&lt;br /&gt;
+[10] T. Haarnoja, V. Pong, A. Zhou, M. Dalal, P. Abbeel, and S. Levine, “Composable deep reinforcement learning for robotic manipulation,” arXiv preprint arXiv:1803.06773, 2018. &lt;br /&gt;
+[11] T. D. Kulkarni, K. Narasimhan, A. Saeedi, and J. Tenenbaum, “Hier- archical deep reinforcement learning: Integrating temporal abstraction and intrinsic motivation,” in Advances in neural information processing systems, pp. 3675–3683, 2016.&lt;br /&gt;
+[12] V. Mnih, A. P. Badia, M. Mirza, A. Graves, T. Lillicrap, T. Harley, D. Silver, and K. Kavukcuoglu, “Asynchronous methods for deep reinforcement learning,” in International conference on machine learning, pp. 1928–1937, 2016.&lt;br /&gt;
+[13] S. Levine, C. Finn, T. Darrell, and P. Abbeel, “End-to-end training of deep visuomotor policies,” The Journal of Machine Learning Research, vol. 17, no. 1, pp. 1334–1373, 2016.&lt;br /&gt;
+[14] S. Bhat, C. L. Isbell, and M. Mateas, “On the difficulty of modular reinforcement learning for real-world partial programming,” in Proceedings of the National Conference on Artificial Intelligence, vol. 21, p. 318, Menlo Park, CA; Cambridge, MA; London; AAAI Press; MIT Press; 1999, 2006.&lt;br /&gt;
+[3] O. S ̧ims ̧ek, A. P. Wolfe, and A. G. Barto, “Identifying useful subgoals in reinforcement learning by local graph partitioning,” in Proceedings of the 22nd international conference on Machine learning, pp. 816–823, ACM, 2005.&lt;br /&gt;
+[25] K. Frans, J. Ho, X. Chen, P. Abbeel, and J. Schulman, “Meta learning shared hierarchies,” arXiv preprint arXiv:1710.09767, 2017.&lt;/p&gt;
+
+&lt;h3 id=&quot;on-the-difficulty-of-modular-reinforcement-learning-for-real-world-partial-programming&quot;&gt;On the Difficulty of Modular Reinforcement Learning for Real-World Partial Programming&lt;/h3&gt;
+
+&lt;p&gt;Modular reinforcement learning (MRL) refers to the decomposition of a complex, multi-goal problem into a collection of simultaneously running single-goal learning processes, typically modeled as MDP.   These subagents share an action set but have their own reward signal and state space.&lt;/p&gt;
+
+&lt;p&gt;At each time step, every subagent reports a numerical preference (Q-values) for each available action to &lt;strong&gt;an arbitrator&lt;/strong&gt;, which then selects one of the actions for the agent as a whole to take.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Optimally combining subagent Q-values in a meaningful way has thus become the focus of recent work.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Arbitration:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;choose the action maximizing average happiness - argmax Sum(Qj)&lt;/li&gt;
+  &lt;li&gt;choose the action using winner-take-all - argmax maxj Qj&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Arbitration approaches assume the subagent reward signals are comparable. However, it’s only reasonable for toy problems, not for real-world, multi-goal problems.&lt;/p&gt;
+
+&lt;p&gt;In multi-goal case, not only must the designer properly craft a reward signal for each subagent, she also must &lt;strong&gt;ensure that the reward units are consistent between the subproblems&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Solution: &lt;strong&gt;Social Choice Theory&lt;/strong&gt;&lt;br /&gt;
+Reduce the problem of constructing an arbitration function to a variant of Impossibility Theorem for social ordering functions [Arrow 1966] - characterizing MRL as a social welfare problem&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Partial Programming&lt;/strong&gt;&lt;br /&gt;
+a designer or programmer specifies only that part of the program known to be correct, allowing a learning system to learn the rest from experience i.e. RL&lt;br /&gt;
+One can think partial programming as a way for a designer to inject prior knowledge into a learning agent&lt;/p&gt;
+
+&lt;p&gt;Allowing the programmer to constrain the set of policies considered by hand-authoring a subroutine hierarchy -
+[Andre and Russel 2000] - Programmable Reinforcment Learning Agents.&lt;br /&gt;
+[Dietterich 1998] - The MAXQ Method for Hierarchical Reinforcement Learning.&lt;/p&gt;
+
+&lt;p&gt;HRL - a temporal dexomposition of goals&lt;br /&gt;
+MRL - concurrent subgoal decomposition&lt;/p&gt;
+
+&lt;p&gt;Predator-Food Task:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;avoiding the predator - can assign a large negative reward&lt;/li&gt;
+  &lt;li&gt;find food - can assign a large positive reward&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;However, how to design the magnitudes of the rewards particularly in relation to each other is difficult! Should maintain some reward consistency.&lt;/p&gt;
+
+&lt;p&gt;Solution: to require the reward signal to be internally consistent, rather than consistent across different subgoals&lt;/p&gt;
+
+&lt;p&gt;Arbitration techniques:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Great Mass Q-Learning [Sprague and Ballard 2003]&lt;/li&gt;
+  &lt;li&gt;Top Q-Learning [Humphrys 1996]&lt;/li&gt;
+  &lt;li&gt;Negotiated W-Learning []&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;multiobjective-reinforcement-learning-a-comprehensive-overview&quot;&gt;Multiobjective Reinforcement Learning: A Comprehensive Overview&lt;/h3&gt;
+
+&lt;p&gt;challenge: to scale up RL to larger and come complex problems - the scaling problem&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a problem has very large or continuous state or action space&lt;/li&gt;
+  &lt;li&gt;a problem is best described as a set of hierarchically organized tasks and sub-tasks&lt;/li&gt;
+  &lt;li&gt;a problem needs to solve several tasks with different reward simultaneously &amp;lt;- multiobjective RL (MORL)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;MORL requires a learning agent to obtain action policies that can optimize two or more objectives at the same time. Each objective has its own associated reward, so the reward is not a scalar but a &lt;strong&gt;vector&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;related objectives, a single objective can be derived by combining all&lt;/li&gt;
+  &lt;li&gt;unrelated objectives, each obj can be optimized separately, can find a combined policy to optimize all of them&lt;/li&gt;
+  &lt;li&gt;conflicting objectives, (any policy can only max one of the objs), need trade-off&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;MORL - combination of multiobj optimization (MOO) + RL to solve the sequential decision making problems with multiple conflicting objs.&lt;/p&gt;
+
+&lt;p&gt;MOO has 2 strategies:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;multi-obj to single-obj strategy, to optimize a scalar value&lt;/li&gt;
+  &lt;li&gt;Pareto strategy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Multi-obj to single-obj: a scalar value is computed from the multi objs for the utility of an action decision, so the single obj optimization can be used&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Weighted sum method [14]&lt;/li&gt;
+  &lt;li&gt;Constraint method [15]&lt;/li&gt;
+  &lt;li&gt;Sequential method [16]&lt;/li&gt;
+  &lt;li&gt;Max-min method [17]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pareto: use the vector-valued utilities, the Pareto optimality concept [25]
+The Pareto optimal solutions are defined as noninferior and alternative solutions among the candidate solutions, and they represent the optimal solutions for some possible trade-offs among the multiple conflicting objs.&lt;br /&gt;
+Goal is to find Pareto front&lt;/p&gt;
+
+&lt;p&gt;Early approach to solve MDPs is to use DP&lt;br /&gt;
+DP computes the optimal policies by estimating the optimal state-action value functions&lt;br /&gt;
+(-) DP requires full model info&lt;br /&gt;
+(-) large amounts of computation are needed for large state and action spaces&lt;/p&gt;
+
+&lt;p&gt;RL use Monte Carlo + stochastic approximation + function approximation&lt;/p&gt;
+
+&lt;p&gt;Temporal-difference (TD) = Monte Carlo + DP&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;learn the value function without model like Monte Carlo&lt;/li&gt;
+  &lt;li&gt;update the current estimation of value functions partially based on previous learned results&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For discounted reward criteria&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Q learning&lt;/li&gt;
+  &lt;li&gt;SARSA&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For the average reward criteria&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;R learning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;MORL problem definition:&lt;br /&gt;
+MQ^π(s,a)=[Q1^π(s,a),Q2^π(s,a),…,Qn^π(s,a)]^T - vectored state-action value function&lt;br /&gt;
+Qi^π - ith obj&lt;/p&gt;
+
+&lt;p&gt;MQ&lt;em&gt;(s,a)=max_π MQ^π(s,a)&lt;br /&gt;
+π&lt;/em&gt;(s)=argmax_a MQ*(s,a)&lt;/p&gt;
+
+&lt;p&gt;MORL approaches:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Single-policy approach&lt;/li&gt;
+  &lt;li&gt;Multi-policy approach&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Single-policy approach: to obtain the best policy which simultaneously satisfies the preferences among the multiple objs&lt;/p&gt;
+
+&lt;p&gt;Naive solution: to design &lt;strong&gt;a synthetic obj function TQ(s,a)&lt;/strong&gt;, which can suitably represent the overall preferences&lt;/p&gt;
+
+&lt;p&gt;Multi-policy approach: to obtain a set of policies that can approximate the Pareto front&lt;/p&gt;
+
+&lt;p&gt;Naive solution: to find policies in the Pareto front by using different synthetic obj functions.&lt;br /&gt;
+Obviously, if a set of parameters can be specified in a synthetic obj function, the optimal policy can be learned for this set of parameters.&lt;/p&gt;
+
+&lt;p&gt;MORL Approaches:&lt;/p&gt;
+
+&lt;p&gt;Single-policy:&lt;/p&gt;
+
+&lt;p&gt;A. Weighted Sum Approaches&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Great Mass&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Synthetic objective function: TQ(s,a)=sum Qi(s,a)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GM-Sarsa(0) - avoid the positive bias problem&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Synthetic objective function: TQ(s,a)=sum wi*Qi(s,a)&lt;/p&gt;
+
+&lt;p&gt;positive bias problem: caused by off-policy RL methods which only use the estimates of greedy actions for learning updates&lt;br /&gt;
+GM-Sarsa(0) is expected to have smaller errors between the estimated Q and the true Q, since the updates are based on the actually selected actions rather than the best action determined by the value function&lt;/p&gt;
+
+&lt;p&gt;Linear weighted sum will meet the problem of concave regions&lt;/p&gt;
+
+&lt;p&gt;B. W-Learning Approaches (winner-take-all)&lt;/p&gt;
+
+&lt;p&gt;to ensure the selected action is optimal for at least one obj&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Top-Q&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Synthetic objective function: TQ(s,a)=max_i Qi(s,a)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;W-learning [32]&lt;/li&gt;
+  &lt;li&gt;negotiated W-learning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;C. AHP Approach&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the Analytic Hierarchy process [34]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Based on the designer’s prior knowledege of the problem, the degree of relative importance between 2 objs can be quantified by L grades, and a scalar value is defined for each grade&lt;/p&gt;
+
+&lt;p&gt;D. Ranking Approach [37]&lt;/p&gt;
+
+&lt;p&gt;threshold values were specified for some objs in order to put the constraints on the objs&lt;/p&gt;
+
+&lt;p&gt;Synthetic objective function: CQi(s,a)=min {Qi(s,a), Ci}&lt;br /&gt;
+Ci - the threshold value for obj i&lt;/p&gt;
+
+&lt;p&gt;E. Geometric Approach&lt;/p&gt;
+
+&lt;p&gt;Multi-policy:&lt;/p&gt;
+
+&lt;p&gt;F. Convex Hull Approach&lt;/p&gt;
+
+&lt;p&gt;G. Varying Parameter Approach&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HRL&lt;/strong&gt; - makes use of a divide-and-conquer strategy to solve complex tasks with large state or decision spaces&lt;/p&gt;
+
+&lt;p&gt;MORL requires the learning agent to solve serveral tasks with differnt objs at once&lt;br /&gt;
+HRL aimes to solve sequential decision-making problem that can be best described as a set of hierarchically organized tasks and sub-tasks.&lt;/p&gt;
+
+&lt;p&gt;HRL approaches:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;HAMs [81]&lt;/li&gt;
+  &lt;li&gt;MAXQ [82]&lt;/li&gt;
+  &lt;li&gt;Options [83]&lt;/li&gt;
+  &lt;li&gt;ALisp [84]&lt;/li&gt;
+  &lt;li&gt;using simi-MDP [85]&lt;/li&gt;
+  &lt;li&gt;state space partitioned by critical state [86]&lt;/li&gt;
+  &lt;li&gt;HAPI, binary-tree state space decomposition [87]&lt;/li&gt;
+  &lt;li&gt;HRL + MORL [88]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;[14] I.Y.KimandO.L.deWeck,“Adaptive weighted sum method for multiobjective optimization: A new method for Pareto front generation,” Struct. Multidiscipl. Optim., vol. 31, no. 2, pp. 105–116, 2006.&lt;br /&gt;
+[15] A. Konaka, D. W. Coitb, and A. E. Smith, “Multi-objective optimiza- tion using genetic algorithms: A tutorial,” Reliab. Eng. Syst. Safety, vol. 91, no. 9, pp. 992–1007, Sep. 2006.&lt;br /&gt;
+[16] M. Yoon, Y. Yun, and H. Nakayama, Sequential Approximate Multiobjective Optimization Using Computational Intelligence. Berlin, Germany: Springer, 2009.&lt;br /&gt;
+[17] J. G. Lin, “On min-norm and min-max methods of multi-objective optimization,” Math. Program., vol. 103, no. 1, pp. 1–33, 2005.&lt;/p&gt;
+
+&lt;p&gt;[25] P. Vamplew, J. Yearwood, R. Dazeley, and A. Berry, “On the limitations of scalarisation for multi-objective reinforcement learning of Pareto fronts,” in Proc. 21st Aust. Joint Conf. Artif. Intell., vol. 5360. 2008, pp. 372–378.&lt;/p&gt;
+
+&lt;p&gt;[32] M. Humphrys, “Action selection methods using reinforcement learning,” in From Animals to Animats 4, P. Maes, M. Mataric, J.-A. Meyer, J. Pollack, and S. W. Wilson, Eds. Cambridge, MA, USA: MIT Press, 1996, pp. 134–144. &lt;br /&gt;
+[34] Y. Zhao, Q. W. Chen, and W. L. Hu, “Multi-objective reinforcement learning algorithm for MOSDMP in unknown environment,” in Proc. 8th World Congr. Int. Control Autom., 2010, pp. 3190–3194.&lt;br /&gt;
+[37] Z. Gabor, Z. Kalmar, and C. Szepesvari, “Multi-criteria reinforcement learning,” in Proc. 15th Int. Conf. Mach. Learn., 1998, pp. 197–205.&lt;br /&gt;
+[38] P. Geibel, “Reinforcement learning with bounded risk,” in Proc. 18th Int. Conf. Mach. Learn., 2001, pp. 162–169.&lt;/p&gt;
+
+&lt;p&gt;[81] R. Parr and S. Russell, “Reinforcement learning with hierarchies of machines,” in Advances in Neural Information Processing Systems. Cambridge, MA, USA: MIT Press, 1997, pp. 1043–1049.&lt;br /&gt;
+[82] T. Dietterich, “Hierarchical reinforcement learning with the MaxQ value function decomposition,” J. Artif. Intell. Res., vol. 13, no. 1, pp. 227–303, Aug. 2000.&lt;br /&gt;
+[83] D. Precup and R. Sutton, “Multi-time models for temporally abstract planning,” in Advances in Neural Information Processing Systems. Cambridge, MA, USA: MIT Press, 1998, pp. 1050–1056.&lt;br /&gt;
+[84] D. Andre and S. Russell, “State abstraction for programmable reinforcement learning agents,” in Proc. 18th Nat. Conf. Artif. Intell., 2002, pp. 119–125.&lt;br /&gt;
+[85] A. G. Barto and S. Mahadevan, “Recent advances in hierarchical rein- forcement learning,” Discrete Event Dyn. Syst. Theory Appl., vol. 13, nos. 1–2, pp. 341–379, 2003.&lt;br /&gt;
+[86] Z. Jin, W. Y. Liu, and J. Jin, “Partitioning the state space by critical states,” in Proc. 4th Int. Conf. Bio-Inspired Comput., 2009, pp. 1–7.&lt;br /&gt;
+[87] X. Xu, C. Liu, S. Yang, and D. Hu, “Hierarchial approximate policy iteration with binary-tree state space decomposition,” IEEE Trans. Neural Netw., vol. 22, no. 12, pp. 1863–1877, Dec. 2011.&lt;br /&gt;
+[88] H. B. He and B. Liu, “A hierarchical learning architecture with multiple-goal representations based on adaptive dynamic programming,” in Proc. Int. Conf. Netw. Sens. Control, 2010, pp. 286–291.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-generalized-algorithm-for-multi-objective-reinforcement-learning-and-policy-adaptation&quot;&gt;A Generalized Algorithm for Multi-Objective Reinforcement Learning and Policy Adaptation&lt;/h3&gt;
+
+&lt;p&gt;MORL deals with learning control policies to simultaneously optimize over several criteria&lt;/p&gt;
+
+&lt;p&gt;The optimal policy in a multi-obj setting depends on the relative preferences among competing criteria&lt;/p&gt;
+
+&lt;p&gt;MORL
+(+) reduced dependence on scalar reward design to combine different objs with is both a tedious manual task and can lead to unintended consequences&lt;br /&gt;
+(+) dynamic adaptation or transfer to related tasks with different preferences&lt;/p&gt;
+
+&lt;h3 id=&quot;hra&quot;&gt;HRA&lt;/h3&gt;
+
+&lt;p&gt;challenge of RL: to scale methods such that they can be applied to large, real-world problems&lt;/p&gt;
+
+&lt;p&gt;Because the state-space of such problems is typically massive, strong generalization is required to learn a good policy efficiently &amp;lt;- DRL breakthrough&lt;/p&gt;
+
+&lt;p&gt;Generalization properties of DQN is achieved by approximating the optimal value function&lt;/p&gt;
+
+&lt;p&gt;Value function predicts the expected return, conditioned on a state or state-action pair&lt;/p&gt;
+
+&lt;p&gt;The generalization behavior of DQN is achieved by regularization on the model for the optimal value function.&lt;/p&gt;
+
+&lt;p&gt;However, if the optimal value function is complex, then learning an accurate low-dimensional representation can be challenging or impossible.&lt;/p&gt;
+
+&lt;p&gt;When the optimal value function cannot easily be reduced to a low-dimensional representation, we can &lt;strong&gt;apply a complementary form of regularization on the target side&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Propose to replace the optimal value function as target for training with an alternative value function that is easier to learn, but still yields a reasonable - but generally not optimal - policy, when acting greedily with respect to it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The key observation behind regularization on the target function is that two very different value functions can result in the same policy when an agent acts greedily with respect to them.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Intrinsic motivation&lt;/strong&gt; uses this observation to improve learning in sparse-reward domains&lt;/p&gt;
+
+&lt;p&gt;[Stout et al 2005] - Intrinsically motivated reinforcement learning: A promising framework for developmental robotics&lt;br /&gt;
+[Schmidhuber, 2010] - Formal theory of creativity, fun, and intrinsic motivation&lt;/p&gt;
+
+&lt;p&gt;by adding a domain-specific intrinsic reward signal to the reward coming from the env.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reward Decomposition&lt;/strong&gt;*: decompose the reward function into n different reward functions. Each of them is assigned a separate RL agent.&lt;/p&gt;
+
+&lt;p&gt;Same as &lt;strong&gt;Horde architecture&lt;/strong&gt; [Sutton et al 2011] - Horde: A scalable real-time architecture for learning knowledge from unsupervised sensorimotor interaction&lt;/p&gt;
+
+&lt;p&gt;All the agents can learn in parallel on the same sample sequence by using off-policy learning.&lt;/p&gt;
+
+&lt;p&gt;Each agent gives its action-values of the current state to an aggregator, which combines them into a single value for each action. The current action is selected based on the aggregated values.&lt;/p&gt;
+
+&lt;p&gt;Horde architecture:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a large of “demons” that learn in parallel via off-policy learning&lt;/li&gt;
+  &lt;li&gt;each demon trains a separate general value function based on its own policy and pseudo-reward function&lt;/li&gt;
+  &lt;li&gt;a pseudo-reward can be any feature-based signal that encodes useful info&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The Horde architecture is focused son building up &lt;strong&gt;general knowledge about the world&lt;/strong&gt;, encoded via a large number of GVFs.&lt;/p&gt;
+
+&lt;p&gt;UVFA [Schaul et al. 2015] - Universal value function approximators&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;enables generalization across different tasks/goals&lt;/li&gt;
+  &lt;li&gt;does not address how to solve a single, complex task&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Multi-objective learning [Roijers et al. 2013] - A survey of multi-objective sequential decision-making&lt;/p&gt;
+
+&lt;p&gt;Reward function decomposition:&lt;br /&gt;
+[Russell and Zimdar 2003] - Q-decomposition for reinforcement learning agents&lt;br /&gt;
+[Sprague and Ballard 2003] - Multiple-goal reinforcement learning with modular sarsa(0)&lt;/p&gt;
+
+&lt;p&gt;HRA and UNREAL [Jaderberg et al 2017] - Reinforcement learning with unsupervised auxiliary tasks&lt;br /&gt;
+(same) solve multiple smaller problems in order to tackle a hard one&lt;br /&gt;
+(diff) working ways&lt;br /&gt;
+(diff) the challenge they address&lt;/p&gt;
+
+&lt;p&gt;UNREAL:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;boosts representation learning in difficult scenarios&lt;/li&gt;
+  &lt;li&gt;by using auxiliary tasks to help train the lower-level layers of the nn&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;HRA:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;HRA’s multiple smaller tasks are not unsupervised, they are tasks directly relevant to the main task&lt;/li&gt;
+  &lt;li&gt;HRA is agnostic to the type of function approximation used, i.e. dnn or tabular representation&lt;/li&gt;
+  &lt;li&gt;useful for domains where having a high-quality representation is not sufficient to solve the task efficiently&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;“Options”:&lt;br /&gt;
+[Sutton et al 1999] - Between mdps and semi-mdps: A framework for temporal abstraction in reinforcement learning&lt;br /&gt;
+[Bacon et al 2017] - The option-critic architecture&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;options&lt;/strong&gt; are temporally-extended actions that can be trained in parallel based on their own reward functions.&lt;br /&gt;
+However, once an option has been trained, the role for its intrinsic reward function is over.&lt;br /&gt;
+A higher-level agent that uses an option sees it as just another action and evaluates it using its own reward function.&lt;br /&gt;
+This can yield great speed-ups in learning and help substaintially with better exploration, but they do not directly make the value function of the higher-level agent less complex.&lt;/p&gt;
+
+&lt;p&gt;Hierarchical RL:&lt;br /&gt;
+[Barto and Mahadevan 2003] - Recent advances in hierarchical reinforcement learning&lt;br /&gt;
+[Kulkarni el al 2016] - Hierarchical deep reinforce- ment learning: Integrating temporal abstraction and intrinsic motivation&lt;/p&gt;
+
+&lt;h3 id=&quot;horde-architecture&quot;&gt;Horde architecture&lt;/h3&gt;
+
+&lt;p&gt;How to learn, represent, and use knowledge of the world in a general sense remains a key open problem in AI.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;high-level representation: based on first-order predicate logic and Bayes network that are very expressive, but difficult to learn and computationally expensive to use&lt;/li&gt;
+  &lt;li&gt;low-level representation: i.e. equations and state-transition matrices that can be learned from data without supervision, but less expressive&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There remains room for exploring alternate formats for knowledge that are expressive yet learnable from unsupervised sensori-motor data&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Knowledge representation&lt;/strong&gt; based on the notion of value functions&lt;br /&gt;
+Knowledge is represented as a large number of approximate value functions learned in parallel&lt;br /&gt;
+each with its own policy, pseudo-reward function, pseudo-termination function, and pseudo-terminal-reward function&lt;/p&gt;
+
+&lt;p&gt;Related:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;options [Sutton et al 2006] [Sutton et al 1999], explored as temporal-difference networks&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Gradient-descent temporal-difference algorithms&lt;br /&gt;
+[sutton et al 2009,2008] - A convergent O(n) algorithm for off-policy temporal-difference
+learning with linear function approximation
+[Maei et al 2009,2010] - Convergent temporaldifference learning with arbitrary smooth function approximation, Toward off-policy learning control with function approximation&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Off-policy experience&lt;/strong&gt; means experience generated by a policy called the &lt;strong&gt;behavior policy&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Behavior policy is different from that being learned about, called &lt;strong&gt;target policy&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;One wants to learn in parallel about many policies - the different target policy π of each GVF - but of course one can only behave according to one policy.&lt;/p&gt;
+
+&lt;p&gt;For a typical GVF, the actions taken by the behavior policy will match its target policy only on occasion, and rarely for more than a few steps in a row.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;For efficient learning, we need to be able to learn from these snippets of relevant experience, and this requires off-policy learning.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The on-policy learning would require learning only from snippets that are complete in that the actions match those of the GVF’s target policy all the way to pseudo-termination, a much less common occurrence.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;If learning can be done off-policy from incomplete snippets of experience then it can be massively parallel and potentially much faster than on-policy learning.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;learning-independently-obtainable-reward-functions&quot;&gt;Learning Independently-Obtainable Reward Functions&lt;/h3&gt;
+
+&lt;p&gt;2019&lt;/p&gt;
+
+&lt;p&gt;proposed a method learning a set of disentangled reward functions that sum to the original env reward and are constrained to be independently obtainable.&lt;/p&gt;
+
+&lt;p&gt;state decomposition:&lt;/p&gt;
+
+&lt;p&gt;many goals RL [Kaelbling 1993] - Learning to achieve goals&lt;/p&gt;
+
+&lt;p&gt;[Laversannne-Finot et al 2018] - Curiosity driven exploration of learned disentangled goal spaces&lt;/p&gt;
+
+&lt;p&gt;decomposition of env state and learning corresponding control policies are separate processes&lt;/p&gt;
+
+&lt;p&gt;[Thomas et al 2017] - Independently controllable features&lt;/p&gt;
+
+&lt;p&gt;pairs together components of the learned state representation with control policies and measures the degree to which policies can control their corresponding components independently of other components&lt;/p&gt;
+
+&lt;p&gt;They leverage some notion of disentanglement to address RL problems, but they didn’t take into account the reward function.&lt;/p&gt;
+
+&lt;p&gt;=&amp;gt; &lt;strong&gt;Reward Decomposition&lt;/strong&gt;:&lt;br /&gt;
+rewards are functions of state and have corresponding policies and hence decomposing rewards also implicitly decomposes states as well as policies.&lt;/p&gt;
+
+&lt;p&gt;Env decompositions:&lt;br /&gt;
+[Guestrin et al 2002] - Multiagent planning with factored mdps&lt;br /&gt;
+[Kok and Vlassis 2006] - Collaborative multiagent reinforcement learning by payoff propagation&lt;br /&gt;
+[Hu et al 1998] - Multiagent reinforcement learning: theoretical framework and an algorithm&lt;/p&gt;
+
+&lt;p&gt;Reward factorization:&lt;br /&gt;
+[Van Seijen et al 2017] - HRA&lt;br /&gt;
+[Russell and Zimdars 2003] - Q-decomposition&lt;/p&gt;
+
+&lt;h3 id=&quot;distributional-reward-decomposition-for-reinforcement-learning&quot;&gt;Distributional Reward Decomposition for Reinforcement Learning&lt;/h3&gt;
+
+&lt;p&gt;2019 nips&lt;/p&gt;
+
+&lt;p&gt;multiple reward channel&lt;/p&gt;
+
+&lt;p&gt;exisiting reward decomposition methods requires:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;prior knowledge of the env&lt;/li&gt;
+  &lt;li&gt;without prior knowledge but with degraded performance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Reward decomposition views the total reward as the sum of sub-rewards that are usually disentangled and can be obtained independently&lt;/p&gt;
+
+&lt;p&gt;[Sprague and Ballard 2003] - Modular Sarsa (0)&lt;br /&gt;
+[Russell and Zimdars 2003] - Q decomposition &lt;br /&gt;
+[Van Seijen et al 2017] - HRA&lt;br /&gt;
+(-) require prior knowledge&lt;br /&gt;
+[Grimm and Singh 2019] - Learning Independently-Obtainable Reward Functions&lt;br /&gt;
+(-) requires the env can be reset to arbitrary state and cannot apply to general RL setting where states can hardly be revisited&lt;br /&gt;
+(-) despite the meaningful reward decomposition they achieved, they fail to utilize the reward decomposition into learning better policies&lt;/p&gt;
+
+&lt;p&gt;The sub-rewards may further be leveraged to learn better policies&lt;/p&gt;
+
+&lt;p&gt;propose &lt;strong&gt;Distributional Reward Decomposition&lt;/strong&gt; for RL:&lt;br /&gt;
+captures the latent multiple-channel structure for reward, under the setting of distributional RL&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Distributional RL&lt;/strong&gt; estimates the distribution rather than the expectation of returns, and therefore captures richer information than value-based RL&lt;/p&gt;
+
+&lt;p&gt;propose an RL algorithm that estimates distributions of the sub-returns and combine the sub-returns to get the distribution of the total returns&lt;/p&gt;
+
+&lt;p&gt;To avoid naive decomposition such as 0-1 or half-half, further propose a disentanglement regularization term to encourage the sub-returns to be diverged&lt;/p&gt;
+
+&lt;p&gt;Learn Different state representations for different channels&lt;/p&gt;
+
+&lt;p&gt;State Decomposition:&lt;br /&gt;
+[Laversannne-Finot et al 2018]  &lt;br /&gt;
+[Thomas et al 2017]&lt;/p&gt;
+
+&lt;p&gt;Distributional RL:&lt;br /&gt;
+C51 - [Bellemare et al 2017] - A distributional perspective on reinforcement learning&lt;/p&gt;
+
+&lt;p&gt;Horde - [Sutton et al 2011]&lt;br /&gt;
+UVFA - [Schaul et al 2015] - Universal value function approximators&lt;/p&gt;
+
+&lt;h3 id=&quot;behavior-coordination-for-a-mobile-robot-using-modular-reinforcement-learning&quot;&gt;Behavior Coordination for a Mobile Robot Using Modular Reinforcement Learning&lt;/h3&gt;
+
+&lt;p&gt;the prominence of RL role is largely dependent on the extent to which the learning can be scaled to solve larger and more complex robot learning tasks.&lt;/p&gt;
+
+&lt;p&gt;[Singh] [11]&lt;br /&gt;
+[Whitehead et al] [14]&lt;br /&gt;
+[Connel and Mahadevan] [5]&lt;br /&gt;
+[Gachet et al] [7]&lt;/p&gt;
+
+&lt;p&gt;Existing methods explained above assume that the subtask state spaces do not interfere with each other or they are completely independent of each other. This assumption is too idealized and often does not hold in real robot tasks.&lt;/p&gt;
+
+&lt;p&gt;[Asada et al ] [3]&lt;/p&gt;
+
+&lt;p&gt;proposed a method for behavior coordination in a case that the subtask state spaces interfere with each other, and they applied it to real soccer robots.&lt;/p&gt;
+
+&lt;p&gt;propose&lt;/p&gt;
+
+&lt;p&gt;1) state space is classified into 2 categories based on the action values separately obtained by Q-learning&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;no more learning area - where one of the learned behaviors is directly applicable&lt;/li&gt;
+  &lt;li&gt;re-learning area - learning is necessary due to the competition of multiple Behaviors&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2) hidden states are detected by model fitting to the learned action values based on the information criterion&lt;/p&gt;
+
+&lt;p&gt;3) the initial action values in the re-learning area are adjusted so that they can be consistent with the values in the no more learning area&lt;/p&gt;
+
+&lt;p&gt;previous methods for multi-goal:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;simple addition Q(s,a)=sum(Qi(s,a))&lt;/li&gt;
+  &lt;li&gt;simple switching Q(s,a)=i_Qi(s,a)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These methods cannot cope with local maxima and/or hidden states caused by combination of state spaces. Consequently, an action suitable for these situations has never been learned&lt;/p&gt;
+
+&lt;p&gt;To cope with these new situations, the robot needs to learn a new behavior by using the previously learned behaviors&lt;/p&gt;
+
+&lt;p&gt;proposed:&lt;/p&gt;
+
+&lt;p&gt;1) construct a new combined state space&lt;br /&gt;
+2) learn a new behavior in the new state space&lt;/p&gt;
+
+&lt;p&gt;Q(s,a) for normal states s&lt;br /&gt;
+Q(s_sub,a) for new sub-states&lt;br /&gt;
+Q initial = sum(Q)&lt;/p&gt;
+
+&lt;p&gt;conservative strategy is used around the normal states&lt;br /&gt;
+high random strategy around the new sub-states&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Hidden states&lt;/strong&gt;:&lt;br /&gt;
+aka inconsistent states&lt;br /&gt;
+hidden states prevent the learning robot from acquiring an optimal behavior, therefore the robot should be able to find hidden states autonomously&lt;/p&gt;
+
+&lt;p&gt;experiment: shoot a ball into a goal without collisions with a keeper robot&lt;/p&gt;
+
+&lt;p&gt;two sub-tasks:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;shoot a ball into the goal&lt;/li&gt;
+  &lt;li&gt;avoid a moving keeper robot&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;then coordinate&lt;/p&gt;
+
+&lt;p&gt;[11] S. P. Singh. Transfer of Learning by Composing So- lution of Elemental Sequential Tasks. In Machine Learning, Vol. 8, pp. 99–115, 1992.&lt;br /&gt;
+[14] S. D. Whitehead, J. Karlsson, and J. Tenenberg. Learning Multiple Goal Behavior Via Task Decomposition And Dynamic Policy Merging. In Connel and Mahadevan [6], chapter 3.&lt;br /&gt;
+[5] J. H. Connel and S. Mahadevan. Rapid Task Learning for Real Robot. In Robot Learning [6], chapter 5, pp. 105–140.&lt;br /&gt;
+[7] D. Gachet, M. A. Salichs, L. Moreno, and J. R. Pi- mentel. Learning Emergent Tasks for an Autonomous Mobile Robot. In Proc. of the 1994 IEEE/RSJ In- ternational Conference on Intelligent Robots and Sys- tems, pp. 290–297, 1994.&lt;/p&gt;
+
+&lt;p&gt;[3] M. Asada, E. Uchibe, S. Noda, S. Tawaratsumida, and K. Hosoda. Coordination Of Multiple Behaviors Acquired By A Vision-Based Reinforcement Learn- ing. In Proc. of the 1994 IEEE/RSJ International Conference on Intelligent Robots and Systems, Vol. 2, pp. 917–924, 1994.&lt;/p&gt;
+
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+
+&lt;p&gt;[1] Modular Deep Reinforcement Learning with Temporal Logic Specifications, 2019&lt;br /&gt;
+[2] Modular Reinforcement Learning An Application to a Real Robot Task, 1997&lt;br /&gt;
+[3] Composable Modular Reinforcement Learning, 2019&lt;br /&gt;
+[4] Hierarchical Deep Reinforcement Learning: Integrating Temporal Abstraction and Intrinsic Motivation, 2016&lt;br /&gt;
+[5] Hierarchical Reinforcement Learning: Learning sub-goals and state-abstraction, 2011&lt;br /&gt;
+[6] Multiple Model-based Reinforcement Learning, 2002&lt;br /&gt;
+[7] Policy Reuse in Reinforcement Learning for Modular Agents, 2019&lt;br /&gt;
+[8] On the Difficulty of Modular Reinforcement Learning for Real-World Partial Programming, 2006&lt;br /&gt;
+[9] Multiobjective Reinforcement Learning: A Comprehensive Overview, 2014  &lt;br /&gt;
+[10] A Generalized Algorithm for Multi-Objective Reinforcement Learning and Policy Adaptation, 2019&lt;br /&gt;
+[11] Hybrid Reward Architecture for Reinforcement Learning, 2017&lt;br /&gt;
+[12] Horde: A scalable real-time architecture for learning knowledge from unsupervised sensorimotor interaction, 2011&lt;br /&gt;
+[13] Learning Independently-Obtainable Reward Functions, 2019&lt;br /&gt;
+[14] Distributional Reward Decomposition for Reinforcement Learning, 2019&lt;br /&gt;
+[?] Global Policy Construction in Modular Reinforcement Learning, 2015&lt;/p&gt;
+
+&lt;h3 id=&quot;additional&quot;&gt;Additional&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Convergence guarantee of Q-learning and SARSA&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If in the limit the Q values of all admissible state-action pairs are updated infinitely often, and α decays in a way satisfying the usual stochastic approximation conditions, then the Q values will converge to the optimal value Q* with probability 1 [20].&lt;/p&gt;
+
+&lt;p&gt;For the Sarsa algorithm, if each action is executed infinitely often in every state that is visited infinitely often, the action is greedy with respect to the current Q value in the limit, and the learning rate decays appropriately, then the estimated Q values will also converge to the optimal value Q* with probability 1 [21].&lt;/p&gt;
+
+&lt;p&gt;[20] T. Jaakkola, M. I. Jordan, and S. P. Singh, “On the convergence
+of stochastic iterative dynamic programming algorithms,” Neural
+Comput., vol. 6, no. 6, pp. 1185–1201, Nov. 1994.
+[21] S. P. Singh, T. Jaakkola, M. L. Littman, and C. Szepesvari,
+“Convergence results for single-step on-policy reinforcement learning
+algorithms,” Mach. Learn., vol. 38, no. 3, pp. 287–308, Mar. 2000.&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><summary type="html">Modular Deep Reinforcement Learning with Temporal Logic Specification</summary></entry><entry><title type="html">Markov Chain Monte Carlo</title><link href="http://localhost:4000/ml-basic/2019/12/20/mcmc.html" rel="alternate" type="text/html" title="Markov Chain Monte Carlo" /><published>2019-12-20T16:28:25+09:00</published><updated>2019-12-20T16:28:25+09:00</updated><id>http://localhost:4000/ml-basic/2019/12/20/mcmc</id><content type="html" xml:base="http://localhost:4000/ml-basic/2019/12/20/mcmc.html">&lt;h3 id=&quot;motivation&quot;&gt;Motivation&lt;/h3&gt;
 
 &lt;p&gt;It turns out sampling from any but the most basic probability distribution is a difficult task. Methods include&lt;/p&gt;
 &lt;ul&gt;
@@ -1720,232 +2544,4 @@ will need to use an approximate sampling procedure&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Soft V and Q&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;[6]Ziebart, B. D. Modeling purposeful adaptive behavior with the principle of maximum causal entropy. PhD thesis, 2010.&lt;br /&gt;
-[7]Fox, R., Pakman, A., and Tishby, N. Taming the noise in reinforcement learning via soft updates. In Conf. on Uncertainty in Artificial Intelligence, 2016.&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><category term="Soft-Q Learning" /><summary type="html">Background</summary></entry><entry><title type="html">ALgorithms 4 - greedy</title><link href="http://localhost:4000/programming/2019/12/06/algorithm-greedy.html" rel="alternate" type="text/html" title="ALgorithms 4 - greedy" /><published>2019-12-06T15:43:25+09:00</published><updated>2019-12-06T15:43:25+09:00</updated><id>http://localhost:4000/programming/2019/12/06/algorithm-greedy</id><content type="html" xml:base="http://localhost:4000/programming/2019/12/06/algorithm-greedy.html">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-
-&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
-
-&lt;p&gt;A greedy algorithm is any algorithm that follows the problem-solving heuristic of &lt;strong&gt;making the locally optimal choice at each stage with the intent of finding a global optimum&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;For example, a greedy strategy for &lt;strong&gt;the traveling salesman problem&lt;/strong&gt; (which is of a high computational complexity) is the following heuristic:&lt;br /&gt;
-“At each step of the journey, visit the nearest unvisited city.”&lt;br /&gt;
-This heuristic does not intend to find a best solution, but it terminates in a reasonable number of steps; finding an optimal solution to such a complex problem typically requires unreasonably many steps.&lt;/p&gt;
-
-&lt;p&gt;Used to solve &lt;strong&gt;optimization problem&lt;/strong&gt;, an &lt;strong&gt;optimization problem&lt;/strong&gt; is the problem of finding the &lt;strong&gt;best&lt;/strong&gt; (minimum/maximum) solution from all &lt;strong&gt;feasible solutions&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Methods to solve &lt;strong&gt;optimization problem&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Greedy&lt;/li&gt;
-  &lt;li&gt;Dynamic Programming&lt;/li&gt;
-  &lt;li&gt;Branch and Bound&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Greedy &lt;strong&gt;pros and cons&lt;/strong&gt;:&lt;br /&gt;
-(+) simplicity: simple, easy to implement&lt;br /&gt;
-(+) efficiency: run fast&lt;br /&gt;
-(-) hard to design and find approach&lt;br /&gt;
-(-) hard to verify: showing a greedy algorithm is correct often requires a nuanced argument  &lt;br /&gt;
-(-) Greedy never reconsiders its choices (one difference from dp)&lt;br /&gt;
-(-) very often dont provide a globally optimum solution&lt;/p&gt;
-
-&lt;p&gt;Example find the max tree sum:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    3*(g)
-   /   \
-  4*    7(g)
- / \    / \
-6  20* 9 11(g)  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Greedy always chooses the larger leaf to go, ends up sum=3+7+11=21&lt;br /&gt;
-However, the global optimal will be 3+4+20=27&lt;/p&gt;
-
-&lt;p&gt;When to use Greedy?&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;choice property: a global optimum can be arrived at by selecting a local optimum&lt;/li&gt;
-  &lt;li&gt;optimal substructure: an optimal solution to the problem contains an optimal solution to subproblems&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;Greedy and Dynamic Programming&lt;/strong&gt;&lt;br /&gt;
-In dynamic programming, we solve subproblems before making the first choice and usually processing in a &lt;strong&gt;bottom-up&lt;/strong&gt; fashion&lt;br /&gt;
-A greedy algorithm makes its first choice before solving any subproblems, which is usually in &lt;strong&gt;top-down&lt;/strong&gt; fashion, reducing each given problem instance to a smaller one.&lt;/p&gt;
-
-&lt;p&gt;“Beneath every greedy algorithm, there is almost always a more cumbersome dynamic programming solution”&lt;/p&gt;
-
-&lt;p&gt;Six steps to solve a problem which can be potentially solved by making greedy choice:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Divide the problem into subproblems, including one small problem and the remaining subproblem.&lt;/li&gt;
-  &lt;li&gt;Determine the optimal substructure of the problems (formulating a recurrence function).&lt;/li&gt;
-  &lt;li&gt;Show that if we make the greedy choice, then only one subproblem remains.&lt;/li&gt;
-  &lt;li&gt;Validate the rightness of the greedy choice.&lt;/li&gt;
-  &lt;li&gt;Write either a recursive or an iterative implementation.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;References:&lt;br /&gt;
-&lt;a href=&quot;https://medium.com/algorithms-and-leetcode/greedy-algorithm-explained-using-leetcode-problems-80d6fee071c4&quot;&gt;LiYin from Medium&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
-
-&lt;p&gt;Greedy method should be solving problems &lt;strong&gt;in stages&lt;/strong&gt;. At each stage, take an input to see if it’s feasible, if feasible put it into candidate solutions. Finally we have the optimal solution.&lt;/p&gt;
-
-&lt;p&gt;pseudo code of an array example [a1,a2,a3,a4,a5]:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Greedy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Feasible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;applications&quot;&gt;Applications&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Activity Selection Problem&lt;/li&gt;
-  &lt;li&gt;Huffman Coding&lt;/li&gt;
-  &lt;li&gt;Job Sequencing Problem&lt;/li&gt;
-  &lt;li&gt;Fractional Knapsack Problem&lt;/li&gt;
-  &lt;li&gt;Prim’s or Kruskal’s Minimum Spanning Tree - graph&lt;/li&gt;
-  &lt;li&gt;Minimum path (Dijkstra) - graph&lt;/li&gt;
-  &lt;li&gt;Frog Jumping&lt;/li&gt;
-  &lt;li&gt;Data Compression&lt;/li&gt;
-  &lt;li&gt;file Merging&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
-
-&lt;h3 id=&quot;array&quot;&gt;Array&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;leetcode 134 - Gas Station [M]&lt;/strong&gt; &lt;br /&gt;
-There are N gas stations along a circular route, where the amount of gas at station i is gas[i].&lt;br /&gt;
-You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from station i to its next station (i+1). You begin the journey with an empty tank at one of the gas stations.&lt;br /&gt;
-Return the starting gas station’s index if you can travel around the circuit once in the clockwise direction, otherwise return -1.&lt;/p&gt;
-
-&lt;p&gt;Input:   &lt;br /&gt;
-gas  = [1,2,3,4,5]&lt;br /&gt;
-cost = [3,4,5,1,2]&lt;br /&gt;
-Output: 3&lt;/p&gt;
-
-&lt;p&gt;Explanation:&lt;br /&gt;
-Start at station 3 (index 3) and fill up with 4 unit of gas. Your tank = 0 + 4 = 4&lt;br /&gt;
-Travel to station 4. Your tank = 4 - 1 + 5 = 8&lt;br /&gt;
-Travel to station 0. Your tank = 8 - 2 + 1 = 7&lt;br /&gt;
-Travel to station 1. Your tank = 7 - 3 + 2 = 6&lt;br /&gt;
-Travel to station 2. Your tank = 6 - 4 + 3 = 5&lt;br /&gt;
-Travel to station 3. The cost is 5. Your gas is just enough to travel back to station 3.&lt;br /&gt;
-Therefore, return 3 as the starting index.&lt;/p&gt;
-
-&lt;p&gt;Solution:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;if total &amp;gt; 0, can fill the circle&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;canCompleteCirsuit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;tank&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;tank&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tank&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;tank&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;leetcode 135 - Candy [H]&lt;/strong&gt;&lt;br /&gt;
-Giving at least one candy to every kid, higher score one gets more.&lt;br /&gt;
-What is the number of minimum candies should be distributed?&lt;/p&gt;
-
-&lt;p&gt;Example 1:&lt;br /&gt;
-Input: [1,0,2]&lt;br /&gt;
-Output: 5&lt;br /&gt;
-Explanation: You can allocate to the first, second and third child with 2, 1, 2 candies respectively.&lt;/p&gt;
-
-&lt;p&gt;Example 2:&lt;br /&gt;
-Input: [1,2,2]&lt;br /&gt;
-Output: 4&lt;br /&gt;
-Explanation: You can allocate to the first, second and third child with 1, 2, 1 candies respectively. The third child gets 1 candy because it satisfies the above two conditions.&lt;/p&gt;
-
-&lt;p&gt;Solution:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;initialize with [1]xlen(ratings)&lt;/li&gt;
-  &lt;li&gt;from left to right, if cur&amp;gt;onebefore, cur=onebefore+1, cur start from index:1 to len-1&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;from right to left, if cur&amp;gt;oneafter, cur=max(oneafter+1,cur), cur start from index:len-2 to 0
-Say&lt;/p&gt;
-
-    &lt;p&gt;index:  [0,1,2,3,4,5,6,7,8,9,10]&lt;br /&gt;
- input:  [1,8,7,6,2,3,5,6,2,3,1]   &lt;br /&gt;
- initial:  [1,1,1,1,1,1,1,1,1,1,1]    &lt;br /&gt;
- l2r-&amp;gt;:  [1,2,1,1,1,2,3,4,1,2,1] (1&amp;lt;8, 2&amp;lt;3, 3&amp;lt;5, 5&amp;lt;6, 2&amp;lt;3)&lt;br /&gt;
- r2l&amp;lt;-:  [1,4,3,2,1,2,3,4,1,2,1] (6&amp;gt;2, 6&amp;gt;2, 7&amp;gt;6, 8&amp;gt;7)&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Note:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;in candy&amp;lt;- case 2&amp;lt;3&amp;gt;1 can be omitted because it’s the last one, should start from index:8 (len-2)&lt;/li&gt;
-  &lt;li&gt;in candy&amp;lt;- case 5&amp;lt;6&amp;gt;2, input element &amp;lt;6&amp;gt;=input[idx=7], 4=max(1+1,4), oneafter+1&amp;lt;cur&lt;/li&gt;
-  &lt;li&gt;in candy&amp;lt;- case 7&amp;lt;6&amp;gt;2, input element &amp;lt;6&amp;gt;=input[idx=3], 2=max(1+1,1), oneafter+1&amp;gt;cur&lt;/li&gt;
-  &lt;li&gt;in candy&amp;lt;- case 8&amp;gt;7&amp;gt;6, input element &amp;lt;7&amp;gt;=input[idx=2], 3=max(2+1,1), oneafter+1&amp;gt;cur&lt;/li&gt;
-  &lt;li&gt;in candy&amp;lt;- case 1&amp;lt;8&amp;gt;7, input element &amp;lt;8&amp;gt;=input[idx=1], 4=max(3+1,2), oneafter+1&amp;gt;cur&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ratings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ratings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))]&lt;/span&gt;
-
-        &lt;span class=&quot;c&quot;&gt;#left to right&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ratings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ratings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ratings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-
-        &lt;span class=&quot;c&quot;&gt;#right to left&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ratings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ratings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ratings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;candy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;leetcode 277 - Find the Celebrity [M]&lt;/strong&gt;&lt;br /&gt;
-Suppose you are at a party with n people (labeled from 0 to n - 1) and among them, there may exist one celebrity. The definition of a celebrity is that all the other n - 1 people know him/her but he/she does not know any of them.&lt;/p&gt;
-
-&lt;p&gt;Now you want to find out who the celebrity is or verify that there is not one. The only thing you are allowed to do is to ask questions like: “Hi, A. Do you know B?” to get information of whether A knows B. You need to find out the celebrity (or verify there is not one) by asking as few questions as possible (in the asymptotic sense).&lt;/p&gt;
-
-&lt;p&gt;You are given a helper function bool knows(a, b) which tells you whether A knows B. Implement a function int findCelebrity(n), your function should minimize the number of calls to knows.&lt;/p&gt;
-
-&lt;p&gt;Note: There will be exactly one celebrity if he/she is in the party. Return the celebrity’s label if there is a celebrity in the party. If there is no celebrity, return -1.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;knows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;  
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findCelebrity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;knows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;knows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;knows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cand&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Algorithms" /><category term="Greedy" /><summary type="html">Background</summary></entry><entry><title type="html">OThers 12 - python class</title><link href="http://localhost:4000/programming/2019/12/06/others-pythonclass.html" rel="alternate" type="text/html" title="OThers 12 - python class" /><published>2019-12-06T14:50:25+09:00</published><updated>2019-12-06T14:50:25+09:00</updated><id>http://localhost:4000/programming/2019/12/06/others-pythonclass</id><content type="html" xml:base="http://localhost:4000/programming/2019/12/06/others-pythonclass.html">&lt;h3 id=&quot;public-and-private&quot;&gt;Public and Private&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'You can see me!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_private&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'You cannot see me!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;You&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;see&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;me&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;!&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_private&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;???&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'You cannot see me!'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiexin Wang</name></author><category term="Others" /><summary type="html">Public and Private</summary></entry></feed>
+[7]Fox, R., Pakman, A., and Tishby, N. Taming the noise in reinforcement learning via soft updates. In Conf. on Uncertainty in Artificial Intelligence, 2016.&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><category term="Soft-Q Learning" /><summary type="html">Background</summary></entry></feed>

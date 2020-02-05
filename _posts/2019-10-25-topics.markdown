@@ -206,6 +206,11 @@ see [dp #word break](/programming/2019/10/23/algorithm-dp.html#word-break)
 **leetcode 290 - Word Pattern [E] - hash**  
 **leetcode 291 - Word Pattern (no space split) [H] - hash+backtracking**  
 
+### Flip Game x2  
+
+**leetcode 293 - Flip Game [E] - string**  
+**leetcode 294 - Flip Game II [M] - backtracking**  
+
 ### Word Ladder x2  
 
 see [topics 3](/programming/2019/10/25/topics-series.html#word-ladder)  

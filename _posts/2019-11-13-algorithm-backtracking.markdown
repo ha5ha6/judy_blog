@@ -70,34 +70,85 @@ pattern = "abab", str = "redblueredblue" should return true.
 pattern = "aaaa", str = "asdasdasdasd" should return true.  
 pattern = "aabb", str = "xyzabcxzyabc" should return false.   
 
+Solution of p='aba', str='redbluered':  
+TO(m*n) for each char of pattern, try each prefix of str  
+
+    r\|e\|d\|bluered   
+    r\|e\|db\|luered   
+    r\|e\|dbl\|uered   
+    r\|e\|dblu\|ered  
+    r\|e\|dblue\|red  
+    r\|e\|dbluer\|ed   
+    r\|e\|dbluere\|d  
+    r\|e\|dbluered\|  
+
+    r\|ed\|b\|luered   
+    r\|ed\|bl\|uered   
+    r\|ed\|blu\|ered   
+    r\|ed\|blue\|red   
+    r\|ed\|bluer\|ed   
+    r\|ed\|bluere\|d   
+    r\|ed\|bluered\|   
+
+    ...
+
+    red\|blue\|red  
+
 ```python
 class Solution():
     def wordPatternMatch(self,pattern,str):
-        m,n=len(pattern),len(str)
-        def is_match(i,j):
-            if i>=m and j>=n:
-                return True
-            if i>=m:
-                return False
+        p2s,s2p={},{}
+        return self.match(pattern,str,p2s,s2p)
 
-            for end in range(j,n-(m-i)+1):
-                p,s=pattern[i],str[j:end+1]
-                if p not in p2s and s not in s_used:
-                    p2s[p]=s
-                    s_used.add(s)
-                    if is_match(i+1,end+1):
-                        return True
-                    del p2s[p]
-                    s_used.discard(s)
+    def match(self,pattern,str,p2s,s2p):
+        if not (pattern or str):
+            return True
 
-                elif p in p2s and p2s[p]==s:
-                    if is_match(i+1,end+1):
-                        return True
+        if not pattern and str or pattern and not str:
             return False
 
-        p2s={}
-        s_used=()
-        return is_match(0,0)
+        char=pattern[0]
+        for j in range(len(str)):
+            sub_str=str[:j+1]
+            if char not in p2s and sub_str not in s2p:
+                p2s[char]=sub_str
+                s2p[sub_str]=char
+
+                if self.match(pattern[1:],str[j+1:],p2s,s2p):
+                    return True
+
+                del p2s[char]
+                del s2p[sub_str]
+
+            elif (char in p2s and p2s[char]==sub_str and self.match(pattern[1:],str[j+1:],p2s,s2p)):
+                return True
+
+        return False
+```
+
+### Flip Game  
+
+**leetcode 294 - Flip Game II [M]**  
+You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive "++" into "--". The game ends when a person can no longer make a move and therefore the other person will be the winner.  
+
+Write a function to determine if the starting player can guarantee a win.  
+
+For example, given s = "++++", return true.
+The starting player can guarantee a win by flipping the middle "++" to become "+--+".   
+
+Follow up:  
+Derive your algorithm's runtime complexity.  
+
+```python
+class Solution():
+    def canWin(self,s):
+        for i in range(len(s)-1):
+            if s[i:i+2]=='++':
+                cur=s[:i]+'--'+s[i+2:]
+                if not self.canWin(cur):
+                    return True
+
+        return False
 ```
 
 ### Combinations

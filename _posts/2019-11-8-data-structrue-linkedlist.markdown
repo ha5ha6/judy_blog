@@ -24,9 +24,9 @@ author_profile: true
 A linked list is **a linear collection of data elements**, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence.  
 In its most basic form, each node contains: **data, and a reference** (in other words, a link) to the next node in the sequence.
 
-(+) save memory compared to array, it only allocates the memory required for values to be stored
+(+) save memory compared to array, it only allocates the memory required for values to be stored  
 (+) dynamic, length can be increased or decreased as necessary     
-(+) list nodes can live anywhere (not continguously) in the memory, only update references
+(+) list nodes can live anywhere (not continguously) in the memory, only update references  
 (+) can be easily inserted or removed **without reallocation or reorganization**  
 
 (-) **access time is linear** (and difficult to pipeline)    
@@ -37,11 +37,27 @@ Linked lists are among the simplest and most common data structures. They can be
 
 ### Points to Note  
 
-1. single linked list or double, what to be careful of deleting of double linked list
-2. two pointers - the Runner Technique
-3. recursion SO(n), n- the depth of the recursive call
+1. single linked list or double
+2. when deletion in a double linked list, must also update n.next, to set n.next.prev equal to n.prev  
+3. two pointers (slow and fast) - the Runner Technique  
 
-**all recursive algs can be implemented iteratively**
+        rearrange a1->a2->a3->...->an->b1->b2->b3->...->bn
+        to        a1->b1->a2->b2..................->an->bn
+
+        use the fast move every 2 nodes
+        a1->a2->a3->...->an->b1->b2->b3->...->bn
+        f       f     
+        s   s                s                f
+
+        move f to the front and begin "weaving"
+        on each iteration, s selects an element from b, and inserts it after f
+
+
+
+
+4. recursion algs take at least SO(n), n is the depth of the recursive call, **all recursive algs can be implemented iteratively**, **recursive solutions are often cleaner but less optimal**
+
+
 
 ### Basic Operations  
 
@@ -179,6 +195,468 @@ l.printList()
 4
 ```
 
+Simple Deletion:
+
+```python
+def deleteNode(head,data):
+    h=head
+    if h.val==data:
+        return head.next
+
+    while h.next:
+        if h.next.val==data:
+            h.next=h.next.next
+            return head
+
+        h=h.next
+
+    return head
+```
+
+## Cracking  
+
+### 2.1 Remove Dups
+
+Write code to remove duplicates from an unsorted linked list.  
+
+- use hash table or set to track dups  
+
+Solution: TO(n), SO(n)  
+
+```python
+def deleteDups(head):
+    h=head
+    prev=None
+    seen=set()
+
+    while h:
+        if h.val in seen:
+            prev.next=h.next
+        else:
+            seen.add(h.val)
+            prev=h
+
+        h=h.next
+```
+
+Solution 2: no buffer allowed, use two pointers, TO(n^2), SO(1)   
+
+```python
+def deleteDups(head):
+    cur=head
+    while cur:
+        runner=cur
+        while runner.next:
+            if runner.next.val==cur.val:
+                runner.next=runner.next.next
+            else:
+                runner=runner.next
+
+        cur=cur.next
+```
+
+### 2.2 Return Kth to Last
+
+Implement an algorithm to find the kth to last element of a singly linked list.  
+
+define passing k=1, return the last element  
+k=2, return to the second to last element  
+
+Solution 1: if the length is known, iterate (length-k), too trivial    
+
+Solution 2.1: recursive, SO(n)    
+
+    1->2->3->N
+
+    p((1),2)
+        idx=p((2),2)+1
+            idx=p((3),2)+1=2  idx==k  print((2).val), because (2).next=(3)
+                idx=p((N),2)+1=1
+                       0
+
+
+```python
+def printKthToLast(head,k):
+    if not head:
+        return 0
+
+    idx=printKthToLast(head.next,k)+1
+    if idx==k:
+        print(head.val)
+
+    return idx
+```
+
+Solution 2.2: wrapping into a class
+
+```python
+class ListNode():
+    def __init__(self,val):
+        self.val=val
+        self.next=None
+
+class Index():
+    value=0
+
+def kthToLast(head,k):
+    idx=Index()
+
+    return kthToLast2(head,k,idx)
+
+def kthToLast2(head,k,idx):
+
+    if not head:
+        return None
+
+    node=kthToLast2(head.next,k,idx)
+    idx.value+=1
+
+    if idx.value==k:
+        return head
+
+    return node
+
+h=ListNode(1)
+h.next=ListNode(2)
+h.next.next=ListNode(3)
+
+print(kthToLast(h,3).val)
+```
+
+Solution 3: iterative, two pointers, TO(n), SO(1)  
+p1 goes first at k steps  
+p2 goes together with p1 for the rest steps of p1  
+i.e. total 5 nodes, k=2
+p1 goes 2 steps
+then p2 goes 5-2 steps with p1 touches the end  
+
+```python
+def KthToLast(head,k):
+    p1=head
+    p2=head
+
+    for i in range(k):
+        if not p1:
+            return None  
+        p1=p1.next
+
+    while p1:
+        p1=p1.next
+        p2=p2.next
+
+    return p2
+```
+
+### 2.3 Delete Middle Node
+
+Implement an algorithm to delete a node in the middle of a singly linked list, given only access to that node. (Given the middle node)   
+
+Input: the node from the linked list a->b->c->d->e->f  
+Output: nothing is returned, but the new linked list looks like a->b->d->e->f  
+
+- This problem can not be solved if the node to be deleted is the last node
+- to handle this case, could consider marking the node as dummy  
+
+```python
+def deleteNode(node):
+    if not node or not node.next:
+        return False
+
+    node.data=node.next.data
+    node.next=node.next.next
+    return True  
+```
+
+### 2.4 Partition
+
+Write code to partition a linked list around a value x, such that all nodes less than x come before all nodes greater than or equal to x. If x is contained within the list, the values of x only need to be after the elements less than x. The partition element x can appear anywhere in the "right partition". It does not need to appear between the left and right partitions.
+
+Input: 3->5->8->5->10->2->1, x=5  
+Output: 3->1->2->10->5->5->8  
+
+- array shifting is expensive, however, in linked list is easy
+- we can create 2 different linked lists one for elements <x, one for >=x, then merge_sort
+- this approach is stable because every element stays in their original order  
+
+Solution 1:
+
+```python
+def partition(node,x):
+    left_head=None
+    left_end=None
+    right_head=None
+    right_end=None
+
+    while node:
+        node_next=node.next
+        node.next=None
+
+        if node.val<x:
+            if not left_head:
+                left_head=node
+                left_end=left_head
+            else:
+                left_end.next=node
+                left_end=node   #before_end always points to the end node
+
+        else:
+            if not right_head:
+                right_head=node
+                right_end=right_head
+            else:
+                right_end.next=node
+                right_end=node
+
+        node=node_next
+
+        if not left_head:
+            return right_head
+
+        left_end.next=right_head
+
+        return left_head
+```  
+
+Solution 2??: start a new list usding the existing nodes, elements <x are put at the head, otherwise put at the tail  
+
+?? 1->2->3->3 ??  
+?? 3->5->8->5->10 ??  
+Does this two halves naturally connected??  
+
+
+```python
+def partition(node,x):
+    head=node  
+    tail=node
+
+    while node:
+        if node.val<x:
+            #insert node at head
+            node.next=head
+            head=node
+        else:
+            #insert node at tail
+            tail.next=node
+            tail=node
+
+        node=node.next
+
+    tail.next=None
+
+    return head
+```  
+
+### 2.5 Sum Lists
+
+You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in reverse order, such that the 1's digit is at the head of the list. Write a function that adds the two numbers and return the sum as a linked list. (same as leetcode 2)
+
+Input: 7->1->6 + 5->9->2  that is 617+295  
+Output: 2->1->9  that is 912  
+
+Solution: recursive  
+
+          7->1->6
+    +     5->9->2
+    -----------------
+         12 11  9
+    keep  2  1  9
+    carry 1  1
+
+```python
+def addLists(l1,l2,carry):
+    if not l1 and not l2 and carry==0:
+        return None
+
+    res=ListNode(0)
+    value=carry
+
+    if l1:
+        value+=l1.val
+
+    if l2:
+        value+=l2.val
+
+    res.val=value%10
+
+    if l1 or l2:
+        more=addLists(l1.next if l1 else None, l2.next if l2 else None, 1 if value >=10 else 0)
+        res.next=more
+
+    return res
+```  
+
+Follow up - In right order:  
+Input: 6->1->7 + 2->9->5  that is 617+295  
+Output: 9->1->2  that is 912  
+
+Solution:  
+
+```python
+class PartialSum():
+    head=ListNode(None)
+    carry=0
+
+def addLists(l1,l2):
+    len1=length(l1)
+    len2=length(l2)
+
+    if len1<len2:
+        l1=padList(l1,len2-len1)
+    else:
+        l2=padList(l2,len1-len2)
+
+    ps=PartialSum()
+    ps=addListHelper(l1,l2)
+
+    if ps.carry==0:
+        return ps.head
+    else:
+        res=insertBefore(ps.head,ps.carry)
+        return res
+
+def addListHelper(l1,l2):
+    if not l1 and not l2:
+        ps=PartialSum()
+        return ps
+
+    ps=addListHelper(l1.next,l2.next)
+    val=ps.carry+l1.val+l2.val
+
+    full_res=insertBefore(ps.head,val%10)
+
+    ps.head=full_res
+    ps.carry=val//10
+    return ps
+
+def padList(l,padding):
+    head=l
+    for i in range(padding):
+        head=insertBefore(head,0)
+
+    return head
+
+def insertBefore(l,data):
+    node=ListNode(data)
+    if l:
+        node.next=l
+
+    return node
+
+def length(l):
+    cnt=0
+    while l:
+        cnt+=1
+        l=l.next
+
+    return cnt
+```  
+
+### 2.6 Palindrome
+
+Implement a function to check if a linked list is a palindrome.  
+
+i.e. 0->1->2->1->0  
+
+Solution 1: reverse and compare, if same they are identical  
+
+```python
+def isPalindrome(head):
+    reversed=reverseAndClone(head)
+
+    return isEqual(head,reversed)
+
+def reverseAndClone(node):
+    head=ListNode(None)
+    while node:
+        n=ListNode(node.val)
+        n.next=head
+        head=n
+        node=node.next
+
+    return head
+
+def isEqual(one,two):
+    while one and two:
+        if one.val!=two.val:
+            return False
+        one=one.next
+        two=two.next
+
+    return not one and not two
+```
+
+Solution 2: iterative, stack to check the first half of the list is the reverse of the second half  
+
+if length is known, we can directly put them onto stack  
+if length is unknown, use fast and slow pointers - at each step, we push the data from the slow pointer onto a stack  
+
+```python
+def isPalindrome(head):
+    fast=head
+    slow=head
+
+    stack=[]
+
+    while fast and fast.next:
+        stack.append(slow.val)
+        slow=slow.next
+        fast=fast.next.next
+
+    if fast:
+        slow=slow.next
+
+    while slow:
+        top=stack.pop()
+        if top!=slow.val:
+            return False
+
+        slow=slow.next
+
+    return True
+```
+
+Solution: recursive
+
+```python
+class Result():
+    node=ListNode()
+    bool=False
+
+def isPalindrome(head):
+    length=lengthOfList(head)
+    p=Result()
+    p=isPalindromeRecurse(head,length)
+    return p.bool
+
+def isPalindromeRecurse(head,length):
+    if not head or length<=0:
+        return Result(head,True)
+
+    elif length==1:
+        return Result(head.next,True)
+
+    res=isPalindromeRecurse(head.next,length-2)
+
+    if not res.bool or not res.node:
+        return res
+
+    res.bool=(head.val==res.node.val)
+    res.node=res.node.next
+
+    return res
+
+def lengthOfList(node):
+    size=0
+    while node:
+        size+=1
+        node=node.next
+
+    return size
+```
+
+
+## Problems
+
 ### Remove  
 
 **leetcode 237 - Delete Node in a Linked List [E]**  
@@ -252,13 +730,13 @@ Solution:
 
 
         1->1->2->3->3
-        p              p->p.next if p.val==p.next.val
+        p              p->p.next.next if p.val==p.next.val
         1->2->3->3
         p              p=p.next if p.val!=p.next.val
         1->2->3->3
            p           p=p.next if p.val!=p.next.val
         1->2->3->3
-              p        p->p.next if p.val==p.next.val
+              p        p->p.next.next if p.val==p.next.val
         1->2->3->N
               p     
 
@@ -362,8 +840,6 @@ class Solution():
 
         return dummy.next
 ```
-
-## Problems
 
 ### Partition
 

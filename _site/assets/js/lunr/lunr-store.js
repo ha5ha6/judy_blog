@@ -55,7 +55,7 @@ var store = [{
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-array.html",
         "teaser":null},{
         "title": "Data Structure 2 - matrix",
-        "excerpt":"Element / Word Search see binary search #matrix leetcode 74 - Search a 2D Matrix [M] Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties: Integers in each row are sorted from left to right. The first integer...","categories": ["Programming"],
+        "excerpt":"Cracking 1.7 Rotate Matrix: Given an image represented by an nxn matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degree. Can you do this in place? Solution: TO(n^2) for i=0 to n: temp=top[i] top[i]=left[i] left[i]=bottom[i] bottom[i]=right[i] right[i]=temp class Solution():...","categories": ["Programming"],
         "tags": ["Data Structure","Matrix","Board Game"],
         "url": "http://localhost:4000/programming/2019/10/29/data-structrue-matrix.html",
         "teaser":null},{
@@ -238,4 +238,14 @@ var store = [{
         "excerpt":"Motivation It turns out sampling from any but the most basic probability distribution is a difficult task. Methods include inverse transform sampling (IRT) rejection sampling (RS) IRT requires the cumulative distribution function aka normalization constant, which can be obtained by numerical integration. (-) however, it quickly gets infeasible with an...","categories": ["ML-Basic"],
         "tags": ["Machine Learning"],
         "url": "http://localhost:4000/ml-basic/2019/12/20/mcmc.html",
+        "teaser":null},{
+        "title": "Modular RL",
+        "excerpt":"Modular Deep Reinforcement Learning with Temporal Logic Specification a modular Deep Deterministic Policy Gradient (DDPG) architecture is proposed to generate a low-level control policy Deep reinforcement learning is an emerging paradigm for autonomous solving of decision-making tasks in complex and unknown environments. However, tasks featuring extremely delayed rewards are often...","categories": ["RL-Basic"],
+        "tags": ["Reinforcement Learning"],
+        "url": "http://localhost:4000/rl-basic/2020/01/16/modulerrl.html",
+        "teaser":null},{
+        "title": "Energy-based Model",
+        "excerpt":"Definition The main purpose of statistical modeling and machine learning is to encode dependencies between variables. By capturing those dependencies, a model can be used to answer questions about the values of unknown variables given the values of known variables. Energy-Based Models (EBMs) capture dependencies by associating a scalar energy...","categories": ["ML-Basic"],
+        "tags": ["EBM"],
+        "url": "http://localhost:4000/ml-basic/2020/02/05/energybasedmodel.html",
         "teaser":null}]

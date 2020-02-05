@@ -17,6 +17,139 @@ toc_label: "Index"
 author_profile: true
 ---
 
+### Cracking  
+
+**1.7 Rotate Matrix**: Given an image represented by an nxn matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degree. Can you do this in place?  
+
+Solution: TO(n^2)  
+
+    for i=0 to n:
+        temp=top[i]
+        top[i]=left[i]
+        left[i]=bottom[i]
+        bottom[i]=right[i]
+        right[i]=temp
+
+```python
+class Solution():
+    def rotate(self,matrix):
+        if not matrix and not matrix[0]:
+            return False
+
+        n=len(matrix)
+        for layer in range(n//2):
+            first=layer
+            last=n-1-layer
+            for i in range(first,last):
+                offset=i-first
+                top=matrix[first][i]
+                matrix[first][i]=matrix[last-offset][first]
+                matrix[last-offset][first]=matrix[last][last-offset]
+                matrix[last][last-offset]=matrix[i][last]
+                matrix[i][last]=top
+
+        return True
+```
+
+Simpler  
+
+```python
+def rotate90Clockwise(A):
+    N = len(A[0])
+    for i in range(N // 2):
+        for j in range(i, N - i - 1):
+            temp = A[i][j]
+            A[i][j] = A[N - 1 - j][i]
+            A[N - 1 - j][i] = A[N - 1 - i][N - 1 - j]
+            A[N - 1 - i][N - 1 - j] = A[j][N - 1 - i]
+            A[j][N - 1 - i] = temp
+```
+
+**1.8 Zero Matrix**: Write an algorithm such that if an element in an mxn matrix is 0, its entire row and column are set to 0.  
+
+Note:  
+We don't need to track the exact zero location, only need to know row 2 has zero, or column 3 has zero.  
+
+Solution 1: use 2 arrays to track zero included row and zero included column, SO(n) from SO(mn)
+
+```python
+class Solution():
+    def setZeros(self,matrix):
+        row=[False]*len(matrix)
+        col=[False]*len(matrix[0])
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if matrix[i][j]==0:
+                    row[i]=True
+                    col[j]=True
+
+        for i in range(len(row)):
+            if row[i]:
+                self.nullifyRow(matrix,i)
+
+        for j in range(len(col)):
+            if col[j]:
+                self.nullifyCol(matrix,j)
+
+    def nullifyRow(self,matrix,row):
+        for j in range(len(matrix[0])):
+            matrix[row][j]=0
+
+    def nullifyCol(self,matrix,col):
+        for i in range(len(matrix)):
+            matrix[i][col]=0
+```
+
+Solution 2: reduce SO(n) -> SO(1), use first row and col to store 0  
+
+```python
+class Solution():
+    def setZeros(self,matrix):
+        rowHasZero=False
+        colHasZero=False
+
+        #check first row
+        for j in range(len(matrix[0])):
+            if matrix[0][j]==0:
+                rowHasZero=True
+                break
+
+        #check first col
+        for i in range(len(matrix)):
+            if matrix[i][0]==0:
+                colHasZero=True
+                break
+
+        #check zeros for the rest
+        for i in range(1,len(matrix)):
+            for j in range(1,len(matrix[0])):
+                if matrix[i][j]==0:
+                    matrix[i][0]=0
+                    matrix[0][j]=0
+
+        for i in range(len(matrix)):
+            if matrix[i][0]==0:
+                self.nullifyRow(matrix,i)
+
+        for j in range(len(matrix[0])):
+            if matrix[0][j]==0:
+                self.nullifyCol(matrix,j)
+
+        if rowHasZero:
+            self.nullifyRow(matrix,0)
+
+        if colHasZero:
+            self.nullifyCol(matrix,0)
+
+    def nullifyRow(self,matrix,row):
+        for j in range(len(matrix[0])):
+            matrix[row][j]=0
+
+    def nullifyCol(self,matrix,col):
+        for i in range(len(matrix)):
+            matrix[i][col]=0
+```
+
 ### Element / Word Search  
 
 see [binary search #matrix](/programming/2019/11/13/algorithm-binarysearch.html#find-element-in-matrix)    
@@ -145,7 +278,7 @@ class Solution():
                     board[r][c]='O'              
 ```
 
-**leetcode 200 - Number of Islands [M] - backtracking** see [backtracking #matrix region search](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#matrix-region-search)
+**leetcode 200 - Number of Islands [M] - backtracking** see [backtracking #matrix region search](https://ha5ha6.github.io/judy_blog/programming/2019/11/13/algorithm-backtracking.html#matrix-region-search)  
 Given a 2d grid map of '1's (land) and '0's (water), count the number of islands.  
 An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.  
 

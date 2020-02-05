@@ -56,6 +56,14 @@ gallery:
     image_path: /assets/images/xinjiang.jpg
     alt: "placeholder image 2"
     title: "Kashgar"
+  - url: /assets/images/tibet1.jpg
+    image_path: /assets/images/tibet1.jpg
+    alt: "placeholder image 2"
+    title: "Tibet"
+  - url: /assets/images/tibet2.jpg
+    image_path: /assets/images/tibet2.jpg
+    alt: "placeholder image 2"
+    title: "Tibet"
 
 ---
 
