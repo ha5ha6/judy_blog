@@ -20,11 +20,11 @@ author_profile: true
 
 1. [Bellman Equation](https://ha5ha6.github.io/judy_blog/rl-basic/2019/12/12/bellman.html)  
 2. [Dynamic Programming in RL](https://ha5ha6.github.io/judy_blog/rl-basic/2019/12/13/rldp.html)  
-3. [Q-function Learning](http://localhost:4000/rl-basic/2019/12/17/qfunctionlearning.html)
+3. [Q-function Learning](https://ha5ha6.github.io/judy_blog/rl-basic/2019/12/17/qfunctionlearning.html)
 
 ### RL Advanced  
 
-1. [Maximum Entropy RL](http://localhost:4000/rl-basic/2020/03/02/maxentrl.html)
+1. [Maximum Entropy RL](https://ha5ha6.github.io/judy_blog/rl-basic/2020/03/02/maxentrl.html)
 2. [Soft Q Learning](https://ha5ha6.github.io/judy_blog/literature/2019/12/06/softq.html)  
 3. [Control as Inference](https://ha5ha6.github.io/judy_blog/literature/2019/11/13/control-as-inference.html)
 
