@@ -1,0 +1,67 @@
+---
+layout: single
+type: posts
+title:  "Machine Learning Index"
+date:   2020-2-19 17:29:25 +0900
+related: true
+categories: ML-Basic
+tags:
+  #- Index
+  - Machine Learning
+  - Index
+author:  Jiexin Wang
+classes:  wide
+toc: true
+toc_label: "Index"
+author_profile: true
+---
+
+### Basic  
+
+[**KL Divergence**](https://ha5ha6.github.io/judy_blog/ml-basic/2020/03/02/kl.html)  
+
+
+### Sampling  
+
+[**Importance Sampling**](https://ha5ha6.github.io/judy_blog/ml-basic/2020/02/21/importancesampling.html)  
+
+[**MCMC**](https://ha5ha6.github.io/judy_blog/ml-basic/2019/12/20/mcmc.html) includes
+- [Metropolis-Hastings](https://ha5ha6.github.io/judy_blog/ml-basic/2019/12/20/mcmc.html#metropolis-hastings)
+- [Gibbs Sampling](https://ha5ha6.github.io/judy_blog/ml-basic/2020/02/18/gibbssampling.html)
+
+[**MCMC**](https://ha5ha6.github.io/judy_blog/ml-basic/2019/12/20/mcmc.html) - a method that repeatedly draws random values for the parameters of a distribution based on the current values. Each sample of values is random, but the choices for the values are limited by the current state and the assumed prior distribution of the parameters  
+
+**MCMC** can be considered as a random walk that gradually converges to the true distribution
+
+[**Metropolis–Hastings**](https://ha5ha6.github.io/judy_blog/ml-basic/2019/12/20/mcmc.html#metropolis-hastings) is a MCMC method for obtaining a sequence of random samples from a probability distribution from which direct sampling is difficult  
+
+[**Gibbs Sampling**](https://ha5ha6.github.io/judy_blog/ml-basic/2020/02/18/gibbssampling.html) is a MCMC method for obtaining a sequence of observations which are approximately from a specified multivariate probability distribution, when direct sampling is difficult  
+
+### Stochastic Optimization
+
+[**Stochastic optimization**](https://ha5ha6.github.io/judy_blog/ml-basic/2019/12/18/stochasticoptimization.html) (SO) methods are optimization methods for minimizing or maximizing an objective function when randomness is present
+
+SO Includes:
+- Stochastic Gradient Descent
+- Mini-Batch Stochastic Gradient Descent
+
+### Energy-based Model
+
+[**Energy-based Model**](https://ha5ha6.github.io/judy_blog/ml-basic/2020/02/05/energybasedmodel.html) includes
+- [Restricted Boltzmann Machines (RBM)](https://ha5ha6.github.io/judy_blog/ml-basic/2020/02/10/RBM.html)
+
+[**Energy-based Model**](https://ha5ha6.github.io/judy_blog/ml-basic/2020/02/05/energybasedmodel.html) (EBM) captures dependencies by associating a scalar energy (a measure of compatibility) to each configuration of the variables
+
+[**Restricted Boltzmann Machine**](https://ha5ha6.github.io/judy_blog/ml-basic/2020/02/10/RBM.html) is a generative stochastic artificial neural network that can learn a probability distribution over its set of inputs
+
+**RBMs** are a variant of **Boltzmann machines**, with the restriction that their neurons must form a bipartite graph: a pair of nodes from each of the two groups of units (commonly referred to as the "visible" and "hidden" units respectively) may have a symmetric connection between them; and there are no connections between nodes within a group  
+
+**RBM** related:  
+- the gradient-based **Contrastive Divergence algorithm**
+- Deep Belief Networks (stacking RBMs)
+
+
+### Unsupervised
+
+- RBMs
+- Autoencoder

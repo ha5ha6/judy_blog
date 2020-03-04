@@ -8,6 +8,8 @@ categories: ML-Basic
 tags:
   #- Index
   - Machine Learning
+  - sampling
+  - MCMC
 author:  Jiexin Wang
 classes:  wide
 toc: true

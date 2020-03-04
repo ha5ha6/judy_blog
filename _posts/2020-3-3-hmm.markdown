@@ -1,0 +1,27 @@
+---
+layout: single
+type: posts
+title:  "Hidden Markov Model"
+date:   2020-3-3 22:28:25 +0900
+related: true
+categories: ML-Basic
+tags:
+  #- Index
+  - Machine Learning
+author:  Jiexin Wang
+classes:  wide
+toc: true
+toc_label: "Index"
+author_profile: true
+---
+
+### Definition
+
+
+
+
+### Reference
+
+https://medium.com/@kangeugine/hidden-markov-model-7681c22f5b9
+
+https://towardsdatascience.com/introduction-to-hidden-markov-models-cd2c93e6b781

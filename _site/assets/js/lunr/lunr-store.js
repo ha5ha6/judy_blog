@@ -215,7 +215,7 @@ var store = [{
         "url": "http://localhost:4000/rl-basic/2019/12/13/rldp.html",
         "teaser":null},{
         "title": "Reinforcement Learning Index",
-        "excerpt":"RL Basic      Bellman Equation   Dynamic Programming in RL   RL Advanced      Soft Q Learning   Control as Inference   Model-based RL      Model Predictive Control in CoRL 2019   Multi-Agent RL      MARL partial  ","categories": ["RL-Basic"],
+        "excerpt":"RL Basic      Bellman Equation   Dynamic Programming in RL   Q-function Learning   RL Advanced      Maximum Entropy RL   Soft Q Learning   Control as Inference   Literature Review      Model Predictive Control in CoRL 2019   MARL partial   Modular RL   Model-based RL   Multi-Agent RL  ","categories": ["RL-Basic"],
         "tags": ["Reinforcement Learning","Index"],
         "url": "http://localhost:4000/rl-basic/2019/12/16/rlbasic.html",
         "teaser":null},{
@@ -236,7 +236,7 @@ var store = [{
         "teaser":null},{
         "title": "Markov Chain Monte Carlo",
         "excerpt":"Motivation It turns out sampling from any but the most basic probability distribution is a difficult task. Methods include inverse transform sampling (IRT) rejection sampling (RS) IRT requires the cumulative distribution function aka normalization constant, which can be obtained by numerical integration. (-) however, it quickly gets infeasible with an...","categories": ["ML-Basic"],
-        "tags": ["Machine Learning"],
+        "tags": ["Machine Learning","sampling","MCMC"],
         "url": "http://localhost:4000/ml-basic/2019/12/20/mcmc.html",
         "teaser":null},{
         "title": "Modular RL",
@@ -248,4 +248,44 @@ var store = [{
         "excerpt":"Definition The main purpose of statistical modeling and machine learning is to encode dependencies between variables. By capturing those dependencies, a model can be used to answer questions about the values of unknown variables given the values of known variables. Energy-Based Models (EBMs) capture dependencies by associating a scalar energy...","categories": ["ML-Basic"],
         "tags": ["EBM"],
         "url": "http://localhost:4000/ml-basic/2020/02/05/energybasedmodel.html",
+        "teaser":null},{
+        "title": "Restricted Boltzmann Machine",
+        "excerpt":"Energy-based Model EBM defines a probability distribution through an Energy function exp(-E(x)) exp(-E(x)) p(x) = ----------- = ----------- Z Σ exp(-E(x)) x Z = Σ exp(-E(x)) x An EBM can be learned by performing SGD on the empirical negative log-likelihood of the training data L(θ,D) = 1/N Σ log p(x_i)...","categories": ["ML-Basic"],
+        "tags": ["EBM"],
+        "url": "http://localhost:4000/ml-basic/2020/02/10/RBM.html",
+        "teaser":null},{
+        "title": "Gibbs Sampling",
+        "excerpt":"Definition In statistics, Gibbs sampling or a Gibbs sampler is a Markov chain Monte Carlo (MCMC) algorithm for obtaining a sequence of observations which are approximately from a specified multivariate probability distribution, when direct sampling is difficult. This sequence can be used to approximate the joint distribution (i.e. to generate...","categories": ["ML-Basic"],
+        "tags": ["Machine Learning","sampling","MCMC"],
+        "url": "http://localhost:4000/ml-basic/2020/02/18/gibbssampling.html",
+        "teaser":null},{
+        "title": "Machine Learning Index",
+        "excerpt":"Basic KL Divergence Sampling Importance Sampling MCMC includes Metropolis-Hastings Gibbs Sampling MCMC - a method that repeatedly draws random values for the parameters of a distribution based on the current values. Each sample of values is random, but the choices for the values are limited by the current state and...","categories": ["ML-Basic"],
+        "tags": ["Machine Learning","Index"],
+        "url": "http://localhost:4000/ml-basic/2020/02/19/mlbasic.html",
+        "teaser":null},{
+        "title": "Importance Sampling",
+        "excerpt":"Definition   Reference   Importance Sampling Introduction   Later check! Metropolis and Gibbs Sampling  ","categories": ["ML-Basic"],
+        "tags": ["Machine Learning"],
+        "url": "http://localhost:4000/ml-basic/2020/02/21/importancesampling.html",
+        "teaser":null},{
+        "title": "Maximum Entropy RL",
+        "excerpt":"Definition Randomness is for exploration a ~ π(a|s) - policy is defined by a probability distribution, in many RL algorithms For discrete actions, picking one of many possible actions, a categoritcal distribution is used (left fig) For continuous actions, a Gaussian with a mean and a std may be used...","categories": ["RL-Basic"],
+        "tags": ["Reinforcement Learning"],
+        "url": "http://localhost:4000/rl-basic/2020/03/02/maxentrl.html",
+        "teaser":null},{
+        "title": "Entropy & KL Divergence",
+        "excerpt":"Entropy Entropy gives us a way to quantify the information content of a given probability distribution n H(X) = - Σ p(x_i) log p(x_i) i=1 Suppose we have a simple probability distribution over the likelihood of a coin flip resulting in heads or tails [p,1-p] Plugging [p,1-p] into H(X), we...","categories": ["ML-Basic"],
+        "tags": ["Machine Learning"],
+        "url": "http://localhost:4000/ml-basic/2020/03/02/kl.html",
+        "teaser":null},{
+        "title": "Hidden Markov Model",
+        "excerpt":"Definition   Reference   https://medium.com/@kangeugine/hidden-markov-model-7681c22f5b9   https://towardsdatascience.com/introduction-to-hidden-markov-models-cd2c93e6b781  ","categories": ["ML-Basic"],
+        "tags": ["Machine Learning"],
+        "url": "http://localhost:4000/ml-basic/2020/03/03/hmm.html",
+        "teaser":null},{
+        "title": "Variational Inference",
+        "excerpt":"Definition   Reference   https://zhiyzuo.github.io/VI/#a-motivating-example   https://www.slideshare.net/PeadarCoyle/variational-inference-in-python  ","categories": ["ML-Basic"],
+        "tags": ["Machine Learning"],
+        "url": "http://localhost:4000/ml-basic/2020/03/03/variationalinference.html",
         "teaser":null}]
