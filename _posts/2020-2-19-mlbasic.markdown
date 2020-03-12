@@ -18,7 +18,8 @@ author_profile: true
 
 ### Basic  
 
-[**Distributions I Binomial**](/judy_blog/ml-basic/2020/03/05/distributions.html)  
+[**Distributions I Binomial**](/judy_blog/ml-basic/2020/03/05/distributions.html)   
+[**Distributions II Multinomial**](/judy_blog/ml-basic/2020/03/10/distributions2.html)    
 [**KL Divergence**](https://ha5ha6.github.io/judy_blog/ml-basic/2020/03/02/kl.html)  
 
 
