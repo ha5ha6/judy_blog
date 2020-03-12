@@ -97,7 +97,7 @@ ax=sns.distplot(data,kde=False,hist_kws={'linewidth':15})
 ax.set(xlabel='Bernoulli',ylabel='Frequency')
 ```
 
-![](/judy_blog/assets/images/bernoulli.png){:width="45%"} ![](/judy_blog/assets/images/bernoulli2.png){:width="45%"}
+![](/judy_blog/assets/images/Bernoulli.png){:width="45%"} ![](/judy_blog/assets/images/bernoulli2.png){:width="45%"}
 
 
 Suppose we have data set D={x_1,...x_N} of observed values of x,
