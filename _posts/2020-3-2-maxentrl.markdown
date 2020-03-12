@@ -111,3 +111,5 @@ Optimal value functions:
 
 [Maximum Entropy Policies in Reinforcement Learning & Everyday Life](https://medium.com/@awjuliani/maximum-entropy-policies-in-reinforcement-learning-everyday-life-f5a1cc18d32d)  
 [Learning Diverse Skills via Maximum Entropy Deep Reinforcement Learning](https://bair.berkeley.edu/blog/2017/10/06/soft-q-learning/)
+
+https://towardsdatascience.com/in-depth-review-of-soft-actor-critic-91448aba63d4

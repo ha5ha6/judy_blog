@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.18.1 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,25 +10,24 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Research - Jiexin Wang</title>
-<meta name="description" content="publications by years">
+<meta name="description" content="publications by years ">
 
+
+  <meta name="author" content="Jiexin Wang">
 
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Jiexin Wang">
 <meta property="og:title" content="Research">
-<meta property="og:url" content="http://localhost:4000/research/">
+<meta property="og:url" content="http://localhost:4000/judy_blog/research/">
 
 
-  <meta property="og:description" content="publications by years">
-
-
-
-  <meta property="og:image" content="http://localhost:4000/assets/images/chiba.JPG">
+  <meta property="og:description" content="publications by years ">
 
 
 
+  <meta property="og:image" content="http://localhost:4000/judy_blog/assets/images/chiba.JPG">
 
 
 
@@ -36,14 +35,24 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/research/">
+
+
+
+<link rel="canonical" href="http://localhost:4000/judy_blog/research/">
 
 
 
 
-
-
-
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/judy_blog/"
+    
+  }
+</script>
 
 
 
@@ -53,7 +62,7 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Jiexin Wang Feed">
+<link href="/judy_blog/feed.xml" type="application/atom+xml" rel="alternate" title="Jiexin Wang Feed">
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,9 +72,9 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/judy_blog/assets/css/main.css">
 
-<!--[if IE ]>
+<!--[if IE]>
   <style>
     /* old IE unsupported flexbox fixes */
     .greedy-nav .site-title {
@@ -91,6 +100,14 @@
   </head>
 
   <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -103,15 +120,18 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/">Jiexin Wang</a>
+        <a class="site-title" href="/judy_blog/">
+          Jiexin Wang
+          
+        </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/about/" >About</a>
+              <a href="/judy_blog/about/">About</a>
             </li><li class="masthead__menu-item">
-              <a href="/research/" >Research</a>
+              <a href="/judy_blog/research/">Research</a>
             </li><li class="masthead__menu-item">
-              <a href="/project/" >Project</a>
+              <a href="/judy_blog/project/">Project</a>
             </li><li class="masthead__menu-item">
-              <a href="/gallery/" >Gallery</a>
+              <a href="/judy_blog/gallery/">Gallery</a>
             </li></ul>
         
         <button class="search__toggle" type="button">
@@ -142,12 +162,8 @@
 
 
 
-
-
-
-
 <div class="page__hero--overlay"
-  style=" background-image: url('/assets/images/chiba.JPG');"
+  style=" background-image: url('/judy_blog/assets/images/chiba.JPG');"
 >
   
     <div class="wrapper">
@@ -187,9 +203,7 @@
   
     <div class="author__avatar">
       
-
-      
-        <img src="/assets/images/head.jpg" alt="Jiexin Wang" itemprop="image">
+        <img src="/judy_blog/assets/images/head.jpg" alt="Jiexin Wang" itemprop="image">
       
     </div>
   
@@ -199,9 +213,10 @@
       <h3 class="author__name" itemprop="name">Jiexin Wang</h3>
     
     
-      <p class="author__bio" itemprop="description">
-        Reinforcement Learning <br /> Mobile & Joint Robots
-      </p>
+      <div class="author__bio" itemprop="description">
+        <p>Reinforcement Learning <br /> Mobile &amp; Joint Robots</p>
+
+      </div>
     
   </div>
 
@@ -295,6 +310,7 @@
 
   
   </div>
+
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
@@ -403,13 +419,18 @@
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
-    <div id="results" class="results"></div></div>
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
       </div>
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
@@ -420,7 +441,7 @@
 
     
 
-    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    <li><a href="/judy_blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
   </ul>
 </div>
 
@@ -430,15 +451,15 @@
     </div>
 
     
-  <script src="/assets/js/main.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+  <script src="/judy_blog/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 
 
-<script src="/assets/js/lunr/lunr.min.js"></script>
-<script src="/assets/js/lunr/lunr-store.js"></script>
-<script src="/assets/js/lunr/lunr-en.js"></script>
+<script src="/judy_blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/judy_blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/judy_blog/assets/js/lunr/lunr-en.js"></script>
 
 
 
