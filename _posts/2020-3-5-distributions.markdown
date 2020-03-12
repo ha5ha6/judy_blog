@@ -337,12 +337,7 @@ AKA a general property of Bayesian learning, that **as we observe more and more 
 
 **Proof of this property**
 
-### Multinomial Variables
 
-K-dimensional vector X with one x_k equals 1, others equal 0, i.e. X=(0,0,1,0,0,0)'  
-Note: Σ_K x_k=1
-
-If we denote the probability of x_k=1 by the parameter μ_k
 
 
 
