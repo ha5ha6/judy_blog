@@ -22,7 +22,6 @@ author_profile: true
 [**Distributions II Multinomial**](/judy_blog/ml-basic/2020/03/10/distributions2.html)    
 [**KL Divergence**](https://ha5ha6.github.io/judy_blog/ml-basic/2020/03/02/kl.html)  
 
-
 ### Sampling  
 
 [**Importance Sampling**](https://ha5ha6.github.io/judy_blog/ml-basic/2020/02/21/importancesampling.html)  

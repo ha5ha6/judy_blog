@@ -88,14 +88,31 @@ Note: because of the summation constraint, the distribution over the space of th
 
 The normalized form of Dirichlet is:
 
-                     Γ(α_0)     K
-    Dir(μ_|α_) = ------------- ∏  μ_k^(α_k-1)
+                     Γ(α_0)      K
+    Dir(μ_|α_) = --------------- ∏  μ_k^(α_k-1)
                  Γ(α_1)...Γ(α_K)k=1
 
     α_0 = Σ_K α_k
 
+Prior: Dir(μ_|α_)  
+Likelihood: Mult(m1,m2,...mK|μ_,N)  
+Posterior:
 
+                                   K
+    p(μ_|D,α_) ∝ p(D|μ_)p(μ_|α_) ∝ ∏  μ_k^(α_k+m_k-1)
+                                  k=1
 
+The posterior again takes the form of Dirichlet distribution  
+=> Dirichelet is indeed a conjugate prior for the multinomial  
+Then the normalization coefficient is  
+
+                                       Γ(α_0)+N       K
+    p(μ_|D,α_) =  Dir(μ_|α_+m_) = ------------------- ∏  μ_k^(α_k+m_k-1)
+                                  Γ(α1+m1)...Γ(αK+mK)
+
+    m_ = (m_1,...,m_K)'
+
+    
 ### Reference
 
 Bishop Chapter 2 Probability Distributions  

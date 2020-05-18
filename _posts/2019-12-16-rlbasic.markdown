@@ -21,6 +21,8 @@ author_profile: true
 1. [Bellman Equation](https://ha5ha6.github.io/judy_blog/rl-basic/2019/12/12/bellman.html)  
 2. [Dynamic Programming in RL](https://ha5ha6.github.io/judy_blog/rl-basic/2019/12/13/rldp.html)  
 3. [Q-function Learning](https://ha5ha6.github.io/judy_blog/rl-basic/2019/12/17/qfunctionlearning.html)
+4. [Operators in RL](/judy_blog/rl-basic/2020/03/04/rloperators.html)
+5. [POMDP]()
 
 ### RL Advanced  
 
@@ -37,3 +39,7 @@ author_profile: true
 ### Model-based RL
 
 ### Multi-Agent RL  
+
+### Sim2Real
+
+[**Domain Randomization**](/judy_blog/rl-basic/2020/03/12/domainrandom.html)
