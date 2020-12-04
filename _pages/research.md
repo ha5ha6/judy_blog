@@ -19,6 +19,8 @@ excerpt: "publications by years"
 
 
 ## Journal Paper
+- <span style="font-family:Serif; font-size:0.95em;"> J. Wang, S. Elfwing and E. Uchibe. Modular Deep Reinforcement Learning from Reward and Punishment for Robot Navigation. <br /> *Neural Networks*. 2020. Accepted<br /> </span>
+
 - <span style="font-family:Serif; font-size:0.95em;"> E. Uchibe and J. Wang. Deterministic policy search method for real robot control. <br /> *The Brain & Neural Networks.* 24(4). DOI 10.3902/jnns.24.195. 2017 <br /> [[website]](https://www.jstage.jst.go.jp/article/jnns/24/4/24_195/_article/-char/ja/) [[researchgate]](https://www.researchgate.net/publication/322928518_Deterministic_Policy_Search_Method_for_Real_Robot_Control) [[pdf]](https://www.jstage.jst.go.jp/article/jnns/24/4/24_195/_pdf/-char/ja)</span>
 
 - <span style="font-family:Serif; font-size:0.95em;"> J. Wang, E. Uchibe, and K. Doya. Adaptive baseline enhances EM-based policy search: Validation in a view-based positioning task of a smartphone balancer. <br /> *Frontiers in Neurorobotics.* 11:1. DOI 10.3389/fnbot.2017.00001. 2017 <br /> [[website]](https://www.frontiersin.org/articles/10.3389/fnbot.2017.00001/full) [[researchgate]](https://www.researchgate.net/publication/312643347_Adaptive_Baseline_Enhances_EM-Based_Policy_Search_Validation_in_a_View-Based_Positioning_Task_of_a_Smartphone_Balancer) [[pdf]](https://www.frontiersin.org/articles/10.3389/fnbot.2017.00001/pdf)</span>

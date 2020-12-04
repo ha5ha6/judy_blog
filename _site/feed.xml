@@ -1,4 +1,299 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/judy_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/judy_blog/" rel="alternate" type="text/html" /><updated>2020-05-18T12:09:42+09:00</updated><id>http://localhost:4000/judy_blog/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Semi-gradient N-step SARSA</title><link href="http://localhost:4000/judy_blog/rl-basic/2020/05/11/semigradientsarsan.html" rel="alternate" type="text/html" title="Semi-gradient N-step SARSA" /><published>2020-05-11T11:42:25+09:00</published><updated>2020-05-11T11:42:25+09:00</updated><id>http://localhost:4000/judy_blog/rl-basic/2020/05/11/semigradientsarsan</id><content type="html" xml:base="http://localhost:4000/judy_blog/rl-basic/2020/05/11/semigradientsarsan.html">&lt;h3 id=&quot;general-update-rule&quot;&gt;General Update Rule&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/judy_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/judy_blog/" rel="alternate" type="text/html" /><updated>2020-12-04T11:07:23+09:00</updated><id>http://localhost:4000/judy_blog/feed.xml</id><title type="html">Jiexin Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Jiexin Wang</name></author><entry><title type="html">Curiosity</title><link href="http://localhost:4000/judy_blog/literature/2020/12/03/curiosity.html" rel="alternate" type="text/html" title="Curiosity" /><published>2020-12-03T12:31:25+09:00</published><updated>2020-12-03T12:31:25+09:00</updated><id>http://localhost:4000/judy_blog/literature/2020/12/03/curiosity</id><content type="html" xml:base="http://localhost:4000/judy_blog/literature/2020/12/03/curiosity.html">&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;Deal with sparse reward:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;curiosity-driven / intrinsic motivation&lt;br /&gt;
+intrinsic curiosity model&lt;br /&gt;
+curiosity in model-based RL&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;curriculum learning&lt;br /&gt;
+automatic generation of easy goals&lt;br /&gt;
+learning to select easy tasks&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;auxiliary tasks&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;reward shaping&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;dense reward&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;curiosity-1&quot;&gt;Curiosity [1]&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;curiosity&lt;/strong&gt; can serve as an intrinsic reward signal to enable the agent to explore its env
+&lt;strong&gt;curiosity&lt;/strong&gt; helps an agent explore its env in the quest for new knowledge&lt;br /&gt;
+&lt;strong&gt;curiosity&lt;/strong&gt; is a mechanism for an agent to learn skills that might be helpful in future scenarios&lt;/p&gt;
+
+&lt;p&gt;fomulate &lt;strong&gt;curiosity&lt;/strong&gt; as the error in an agent’s ability to predict the consequence of its own actions in a visual feature space learned by a self-supervised inverse dynamics model&lt;/p&gt;
+
+&lt;p&gt;Intrinsic Reward:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;encourage the agent to explore “novel” states&lt;/li&gt;
+  &lt;li&gt;encourage the agent to perform actions that reduce the error/uncertainty in the agent’s ability to predict the consequence of its own actions&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Difficulty:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;measuring “novelty” requires a statistical model of the distribution of the env states&lt;/li&gt;
+  &lt;li&gt;measuring prediction error/uncertainty requires building a model of env dynamics that predicts the next state given the current state and the action&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Self-supervision:&lt;br /&gt;
+Training an NN on a proxy inverse dynamics task of predicting the agent’s action given its current and next states&lt;/p&gt;
+
+&lt;p&gt;Two subsystems:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a curiosity-driven intrinsic reward signal&lt;/li&gt;
+  &lt;li&gt;a policy that outputs a sequence of actions to maximize that reward signal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;divide all sources that can modify the agent’s observations into 3 cases:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;things that can be controlled by the agent&lt;/li&gt;
+  &lt;li&gt;things that the agent cannot control but can affect the agent (a vehicle driven by another agent)&lt;/li&gt;
+  &lt;li&gt;things out of the agent’s control and not affecting the agent (moving leaves)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A good feature space for curiosity should model 1 and 2 and be unaffected by 3&lt;/p&gt;
+
+&lt;p&gt;Two sub-modules:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;encodes the raw state into a feature vector  st -&amp;gt; φ(st)&lt;/li&gt;
+  &lt;li&gt;input φ(st) and φ(st+1) and output a_hat_t, a_hat_t=g(st,st+1;θ_I), a_hat_t is the predicted estimate of the action at&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Loss function of inverse model:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;min L_I (a_hat_t,a_t)
+θ_I
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;the learned model g() is also known as the inverse dynamics model&lt;/p&gt;
+
+&lt;p&gt;Loss function of feature prediction:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;min L_F (φ(st),φ_hat_(st+1)) = 1/2 ||φ_hat_(st+1)-φ(st+1)||^2_2
+
+φ_hat_(st+1)=f(φ(st),at:θ_F)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;the learned model f() is known as the forward dynamics model&lt;/p&gt;
+
+&lt;p&gt;The intrinsic reward signal r^i_t is&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;r^i_t=η/2 ||φ_hat_(st+1)-φ(st+1)||^2_2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The overall optimization problem:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;min          -λE   [Σ r_t] + (1 − β)L_I + β_LF]
+θP ,θI ,θF      π(st;θP )
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;refs&quot;&gt;Refs&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@m.k.daaboul/dealing-with-sparse-reward-environments-38c0489c844d&quot;&gt;Reinforcement Learning: Dealing with Sparse Reward Environments&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[1] Pathak et al. “curiosity-driven exploration by self-supervised prediction.”&lt;/p&gt;
+
+&lt;p&gt;[2] Burda et al. “Large-Scale Study of Curiosity-Driven Learning”&lt;/p&gt;
+
+&lt;p&gt;[3]&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><summary type="html">Background</summary></entry><entry><title type="html">Soft Actor Critic</title><link href="http://localhost:4000/judy_blog/literature/2020/07/10/softac.html" rel="alternate" type="text/html" title="Soft Actor Critic" /><published>2020-07-10T12:04:25+09:00</published><updated>2020-07-10T12:04:25+09:00</updated><id>http://localhost:4000/judy_blog/literature/2020/07/10/softac</id><content type="html" xml:base="http://localhost:4000/judy_blog/literature/2020/07/10/softac.html">&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;model-free DRL:&lt;br /&gt;
+(-) very high sample complexity: even relatively simple tasks can require millions of steps of data collection, and complex behaviors with high-dimensional observations might need substantially more&lt;br /&gt;
+(-) brittle convergence properties, which necessitate meticulous hyperparameter tuning&lt;/p&gt;
+
+&lt;p&gt;on-policy learning, i.e. TRPO,PPO,A3C, poor sample efficiency because:  &lt;br /&gt;
+&lt;strong&gt;they require new samples to be collected for each gradient step&lt;/strong&gt;, however, the number of gradient steps and samples per step needed to learn an effective policy increases with task complexity&lt;/p&gt;
+
+&lt;p&gt;off-policy learning, i.e. DDPG:&lt;br /&gt;
+&lt;strong&gt;reuse past experience&lt;/strong&gt;, and attain better sample efficiency&lt;/p&gt;
+
+&lt;p&gt;max-ent RL:&lt;br /&gt;
+to succeed at the task while acting as randomly as possible&lt;br /&gt;
+(+) provides a substantial improvement in exploration (acquiring diverse behaviors) and robustness (in the face of model and estimation errors)&lt;/p&gt;
+
+&lt;p&gt;max-ent on-policy:&lt;br /&gt;
+[O’Donoghue et al 2016]&lt;br /&gt;
+(-) suffer from poor sample complexity&lt;/p&gt;
+
+&lt;p&gt;max-ent off-policy:&lt;br /&gt;
+[Schulman et al 2017a]  &lt;br /&gt;
+[Nachum et al 2017a]  &lt;br /&gt;
+[Haarnoja et al 2017]&lt;br /&gt;
+(-) require complex approximate inference procedures in continuous action spaces&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;proposed SAC&lt;/strong&gt;:&lt;br /&gt;
+off-policy max-ent&lt;br /&gt;
+humanoid benchmark with 21 action dimensions&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;an actor-critic architecture with separate policy and value function networks&lt;/li&gt;
+  &lt;li&gt;an off-policy formulation that enables resue of previously collected data for efficiency&lt;/li&gt;
+  &lt;li&gt;entropy maximization to enable stability and exploration&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;AC algs are derived starting from policy iteration alternates between&lt;br /&gt;
+policy evaluation: computing the value function for a policy&lt;br /&gt;
+policy improvement: using the value function to obtain a better policy&lt;/p&gt;
+
+&lt;p&gt;However, in large-scale RL problems, it is impractical to run either of above, and instead&lt;br /&gt;
+&lt;strong&gt;the value function and policy are optimized jointly&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;policy -&amp;gt; actor&lt;br /&gt;
+value function -&amp;gt; critic&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;compared algs&lt;/strong&gt;:&lt;br /&gt;
+TD3 - twin delayed deep deterministic policy gradient (latest best)&lt;br /&gt;
+DDPG&lt;/p&gt;
+
+&lt;p&gt;DDPG adopts:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a Q-function estimator to enable off-policy learning&lt;/li&gt;
+  &lt;li&gt;a deterministic actor that maximizes this Q function&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;SAC:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a stochastic actor&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;max-ent related&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Inverse RL [Ziebart et al 2008]&lt;/li&gt;
+  &lt;li&gt;optimal control [Todorov 2008] [Toussaint 2009] [Rawlik et al 2012]&lt;/li&gt;
+  &lt;li&gt;guided policy search [Levine &amp;amp; Koltun 2013] [Levine et al 2016]&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;connection between Q-learning and policy gradient [O’Donoghue et al 2016] [Haarnoja et al 2017] [Nachum et al 2017a] [Schulman et al 2017a]&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;discrete action space [Nachum etl al 2017b] approximate the maximum entropy distribution with a Gaussian&lt;/li&gt;
+  &lt;li&gt;continuous action space [Haarnoja et al 2017] (soft Q learning)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;soft Q learning&lt;/strong&gt; has:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a value function&lt;/li&gt;
+  &lt;li&gt;an actor network&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;however, it’s not a true actor critic alg, because&lt;/strong&gt;:&lt;br /&gt;
+the Q-function is estimating the optimal Q-function&lt;br /&gt;
+the actor does not directly affect the Q-function except through the data distribution&lt;br /&gt;
+the actor network is more like an approximate sampler, rather than the actor in an actor-critic alg&lt;br /&gt;
+&lt;strong&gt;Crucially&lt;/strong&gt;, the convergence of this method hinges on how well this sampler approximates the true posterior&lt;/p&gt;
+
+&lt;h3 id=&quot;context&quot;&gt;Context&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;MaxEnt RL problem formulation&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;an infinite-horizon MDP&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/sac_context.jpeg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;policy iteration&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;soft policy evaluation&lt;/li&gt;
+  &lt;li&gt;soft policy improvement&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/softpolicyeval.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/softpolicyimpr.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;soft-actor-critic&quot;&gt;Soft Actor Critic&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/sac1.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/sac2.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/sac3.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Two Q functions update:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/2qupdate.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;experiment&quot;&gt;Experiment&lt;/h3&gt;
+
+&lt;p&gt;Compared with:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;DDPG (off-policy)&lt;/li&gt;
+  &lt;li&gt;PPO (on-policy)&lt;/li&gt;
+  &lt;li&gt;SQL (off-policy)&lt;/li&gt;
+  &lt;li&gt;TD3 (an extension to DDPG)&lt;/li&gt;
+  &lt;li&gt;Trust-PCL trust region path consistency learning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;SAC has good performance in terms of complicated tasks such as Humanoid-v1 and Humanoid rllab&lt;/p&gt;
+
+&lt;h3 id=&quot;ablation-study&quot;&gt;Ablation Study&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Stochastic vs Deterministic Policy&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The entropy appears in both the policy and value function&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/stovsdeter.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Stochasticity can stabilize training as the variability between the random seeds becomes much higher with a deterministic policy&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Policy Evaluation&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;deterministic is better than Stochastic&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reward Scale&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;SAC is sensitive to the scaling of the reward signal, because it serves the role of temperature of the energy-based optimal policy and thus controls its stochasticity&lt;/p&gt;
+
+&lt;p&gt;Larger reward magnitudes correspond to lower entries&lt;/p&gt;
+
+&lt;p&gt;With the right reward scaling, the model balances exploration and exploitation, leading to faster learning and better asymptotic performance&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Target Network Update&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;comparison-with-sql&quot;&gt;Comparison with SQL&lt;/h3&gt;
+
+&lt;p&gt;Difference in Value function&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/sacsql_value.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Difference in Policy&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/sacsql_policy.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;sac-with-automating-entropy-adjustment&quot;&gt;SAC with Automating Entropy Adjustment&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/sac_alpha1.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/sac_alpha2.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;SAC variant&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/sac_alpha3.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/sac_alpha4.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Alpha-Entropy Objective&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/alpha_obj.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;discrete-soft-ac&quot;&gt;Discrete Soft AC&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/judy_blog/assets/images/sac_discrete.jpg&quot; alt=&quot;&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;refs&quot;&gt;Refs&lt;/h3&gt;
+
+&lt;p&gt;[1] Haarnoja, Tuomas, et al. “Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor.” arXiv preprint arXiv:1801.01290 (2018).&lt;/p&gt;
+
+&lt;p&gt;[2] Haarnoja, Tuomas, et al. “Soft actor-critic algorithms and applications.” arXiv preprint arXiv:1812.05905 (2018).&lt;/p&gt;
+
+&lt;p&gt;[3] Christodoulou, Petros. “Soft actor-critic for discrete action settings.” arXiv preprint arXiv:1910.07207 (2019).&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><category term="Soft-Q Learning" /><summary type="html">Background</summary></entry><entry><title type="html">Semi-gradient N-step SARSA</title><link href="http://localhost:4000/judy_blog/rl-basic/2020/05/11/semigradientsarsan.html" rel="alternate" type="text/html" title="Semi-gradient N-step SARSA" /><published>2020-05-11T11:42:25+09:00</published><updated>2020-05-11T11:42:25+09:00</updated><id>http://localhost:4000/judy_blog/rl-basic/2020/05/11/semigradientsarsan</id><content type="html" xml:base="http://localhost:4000/judy_blog/rl-basic/2020/05/11/semigradientsarsan.html">&lt;h3 id=&quot;general-update-rule&quot;&gt;General Update Rule&lt;/h3&gt;
 
 &lt;p&gt;The general approach to computing the estimations of value functions is to have the agent follow policy π and maintain for each state (or state-action) a running average of the returns that follow&lt;/p&gt;
 
@@ -2070,112 +2365,4 @@ AKA a general property of Bayesian learning, that &lt;strong&gt;as we observe mo
 
 &lt;p&gt;Bishop Chapter 2 Probability Distributions&lt;br /&gt;
 &lt;a href=&quot;https://cmdlinetips.com/2018/03/probability-distributions-in-python/&quot;&gt;Probability Distributions in Python with SciPy and Seaborn&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://www.statisticshowto.datasciencecentral.com/probability-and-statistics/binomial-theorem/binomial-distribution-formula/&quot;&gt;Binomial Distribution: Formula, What it is and How to use it&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Machine Learning" /><summary type="html">Keywords</summary></entry><entry><title type="html">Operators in RL</title><link href="http://localhost:4000/judy_blog/rl-basic/2020/03/04/rloperators.html" rel="alternate" type="text/html" title="Operators in RL" /><published>2020-03-04T15:34:25+09:00</published><updated>2020-03-04T15:34:25+09:00</updated><id>http://localhost:4000/judy_blog/rl-basic/2020/03/04/rloperators</id><content type="html" xml:base="http://localhost:4000/judy_blog/rl-basic/2020/03/04/rloperators.html">&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
-
-&lt;p&gt;There is a fundamental tension in decision making between choosing the action that has highest expected utility and avoiding ‘starving’ the other actions.&lt;/p&gt;
-
-&lt;p&gt;Related context:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;exploration-exploitation dilemma [Thrun 1992]&lt;/li&gt;
-  &lt;li&gt;non-stationary decision problems [Sutton 1990]&lt;/li&gt;
-  &lt;li&gt;when interpreting observed decisions [Baker et al 2007]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;softmax operator can be used for&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;value-function optimization&lt;/li&gt;
-  &lt;li&gt;action selection policies&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Common operators:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;max (X) = max x_i
-          1~n
-
-               n
-mean (X) = 1/n Σ x_i
-               1
-
-eps_ε (X) = ε mean(X) + (1-ε) max(X)
-
-              Σ_n x_i*exp(βx_i)
-boltz_β (X) = ------------------
-                Σ_n exp(βx_i)
-
-β -&amp;gt; ∞, boltz_β (X) -&amp;gt; max (X)
-β -&amp;gt; 0, boltz_β (X) -&amp;gt; mean (X)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;SARSA is known to converge&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;in the tabular setting using ε-greedy [Littman &amp;amp; Szepesvari 1996]&lt;/li&gt;
-  &lt;li&gt;under decreasing exploration [Singh et al 2000]&lt;/li&gt;
-  &lt;li&gt;to a region in the function approximation setting [Gordon 2001]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Optimal Bellman Q:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Q*(s,a) = r(s,a) + Σ γ p(s'|s,a) max Q*(s',a')
-                 s'∈S             a'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Regardless of initial value of Q^, Q^ converges to Q*:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Q^(s,a) &amp;lt;- r(s,a) + γ Σ (s'|s,a) max Q^(s',a')
-                    s'∈S          a'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Generalized Value Iteration&lt;/strong&gt; [Littman &amp;amp; Szepesvari 1996]: replace max operator to ⨂:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Q^(s,a) &amp;lt;- r(s,a) + γ Σ (s'|s,a) ⨂ Q^(s',a')
-                    s'∈S         a'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Convergence of GVI to a unique fixed point follows if operator ⨂ is a non-expansion w.r.t the infinity norm&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|⨂Q^(s,a)-⨂Q^'(s,a)| ≤ max |Q^(s,a)-Q^'(s,a)|
- a         a             a
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;max, mean, eps operators are non-expansions&lt;/strong&gt;, therefore each of these operators can play the role of ⨂ in GVI, resulting in convergence to the corresponding unique fixed point&lt;/p&gt;
-
-&lt;p&gt;boltz operator is not a non-expansion, so it has multiple fixed points and ultimately leads to a misbehavior in learning and planning&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Mellow Max&lt;/strong&gt; operator, an alternative softmax operator:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;            log(1/n Σ_n exp(wx_i))
-MM_w (X) = ------------------------
-                      w
-
-w -&amp;gt; ∞, MM_w (X) -&amp;gt; max (X)
-w -&amp;gt; -∞, MM_w (X) -&amp;gt; min (X)
-w -&amp;gt; 0, MM_x (X) -&amp;gt; mean (X)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;MM can be derived from information theoretical principles as a way of regularizing policies with a cost function defined by KL divergence [Todorov 2006] [Rubin et al 2012] [Fox et al 2016]&lt;/p&gt;
-
-&lt;p&gt;MM follows the non-expansion property inside the infinity norm proof, therefore converges to a fixed point&lt;/p&gt;
-
-&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
-
-&lt;p&gt;[1] Asadi, Kavosh, and Michael L. Littman. “An alternative softmax operator for reinforcement learning.” Proceedings of the 34th International Conference on Machine Learning-Volume 70. JMLR. org, 2017.&lt;/p&gt;
-
-&lt;p&gt;[Thrun 1992]&lt;br /&gt;
-[Sutton 1990]&lt;br /&gt;
-[Baker et al 2007]&lt;/p&gt;
-
-&lt;p&gt;SARSA convergence:&lt;br /&gt;
-[Littman &amp;amp; Szepesvari 1996]&lt;br /&gt;
-[Singh et al 2000]&lt;br /&gt;
-[Gordon 2001]&lt;/p&gt;
-
-&lt;p&gt;SARSA variant convergence:&lt;br /&gt;
-[Perkins &amp;amp; Precup 2002]&lt;br /&gt;
-[Baird &amp;amp; Moore 1999]&lt;br /&gt;
-[Van Seijen et al 2009]&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Reinforcement Learning" /><summary type="html">Background</summary></entry><entry><title type="html">Variational Inference</title><link href="http://localhost:4000/judy_blog/ml-basic/2020/03/03/variationalinference.html" rel="alternate" type="text/html" title="Variational Inference" /><published>2020-03-03T22:28:25+09:00</published><updated>2020-03-03T22:28:25+09:00</updated><id>http://localhost:4000/judy_blog/ml-basic/2020/03/03/variationalinference</id><content type="html" xml:base="http://localhost:4000/judy_blog/ml-basic/2020/03/03/variationalinference.html">&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
-
-&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
-
-&lt;p&gt;https://zhiyzuo.github.io/VI/#a-motivating-example&lt;/p&gt;
-
-&lt;p&gt;https://www.slideshare.net/PeadarCoyle/variational-inference-in-python&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Machine Learning" /><summary type="html">Definition</summary></entry></feed>
+&lt;a href=&quot;https://www.statisticshowto.datasciencecentral.com/probability-and-statistics/binomial-theorem/binomial-distribution-formula/&quot;&gt;Binomial Distribution: Formula, What it is and How to use it&lt;/a&gt;&lt;/p&gt;</content><author><name>Jiexin Wang</name></author><category term="Machine Learning" /><summary type="html">Keywords</summary></entry></feed>

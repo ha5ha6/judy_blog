@@ -1,0 +1,212 @@
+---
+layout: single
+type: posts
+title:  "Soft Actor Critic"
+date:   2020-7-10 12:04:25 +0900
+related: true
+categories: Literature
+tags:
+  #- Index
+  - Reinforcement Learning
+  - Soft-Q Learning
+author:  Jiexin Wang
+classes:  wide
+toc: true
+toc_label: "Index"
+author_profile: true
+---
+
+### Background
+
+model-free DRL:  
+(-) very high sample complexity: even relatively simple tasks can require millions of steps of data collection, and complex behaviors with high-dimensional observations might need substantially more  
+(-) brittle convergence properties, which necessitate meticulous hyperparameter tuning  
+
+on-policy learning, i.e. TRPO,PPO,A3C, poor sample efficiency because:    
+**they require new samples to be collected for each gradient step**, however, the number of gradient steps and samples per step needed to learn an effective policy increases with task complexity  
+
+off-policy learning, i.e. DDPG:  
+**reuse past experience**, and attain better sample efficiency  
+
+max-ent RL:  
+to succeed at the task while acting as randomly as possible  
+(+) provides a substantial improvement in exploration (acquiring diverse behaviors) and robustness (in the face of model and estimation errors)  
+
+max-ent on-policy:  
+[O'Donoghue et al 2016]  
+(-) suffer from poor sample complexity  
+
+max-ent off-policy:  
+[Schulman et al 2017a]    
+[Nachum et al 2017a]    
+[Haarnoja et al 2017]  
+(-) require complex approximate inference procedures in continuous action spaces  
+
+**proposed SAC**:  
+off-policy max-ent  
+humanoid benchmark with 21 action dimensions  
+- an actor-critic architecture with separate policy and value function networks
+- an off-policy formulation that enables resue of previously collected data for efficiency
+- entropy maximization to enable stability and exploration  
+
+AC algs are derived starting from policy iteration alternates between  
+policy evaluation: computing the value function for a policy  
+policy improvement: using the value function to obtain a better policy  
+
+However, in large-scale RL problems, it is impractical to run either of above, and instead  
+**the value function and policy are optimized jointly**  
+
+policy -> actor  
+value function -> critic  
+
+**compared algs**:  
+TD3 - twin delayed deep deterministic policy gradient (latest best)  
+DDPG
+
+DDPG adopts:  
+- a Q-function estimator to enable off-policy learning  
+- a deterministic actor that maximizes this Q function  
+
+SAC:  
+- a stochastic actor  
+
+**max-ent related**:  
+- Inverse RL [Ziebart et al 2008]
+- optimal control [Todorov 2008] [Toussaint 2009] [Rawlik et al 2012]  
+- guided policy search [Levine & Koltun 2013] [Levine et al 2016]
+- connection between Q-learning and policy gradient [O'Donoghue et al 2016] [Haarnoja et al 2017] [Nachum et al 2017a] [Schulman et al 2017a]  
+
+- discrete action space [Nachum etl al 2017b] approximate the maximum entropy distribution with a Gaussian  
+- continuous action space [Haarnoja et al 2017] (soft Q learning)
+
+**soft Q learning** has:  
+- a value function  
+- an actor network  
+
+**however, it's not a true actor critic alg, because**:  
+the Q-function is estimating the optimal Q-function  
+the actor does not directly affect the Q-function except through the data distribution  
+the actor network is more like an approximate sampler, rather than the actor in an actor-critic alg  
+**Crucially**, the convergence of this method hinges on how well this sampler approximates the true posterior  
+
+### Context
+
+**MaxEnt RL problem formulation**
+
+an infinite-horizon MDP  
+
+![](http://localhost:4000/judy_blog/assets/images/sac_context.jpeg){:width="80%"}
+
+**policy iteration**:  
+- soft policy evaluation
+- soft policy improvement  
+
+![](http://localhost:4000/judy_blog/assets/images/softpolicyeval.jpg){:width="80%"}
+
+![](http://localhost:4000/judy_blog/assets/images/softpolicyimpr.jpg){:width="80%"}
+
+
+### Soft Actor Critic
+
+![](http://localhost:4000/judy_blog/assets/images/sac1.jpg){:width="80%"}
+
+![](http://localhost:4000/judy_blog/assets/images/sac2.jpg){:width="80%"}
+
+![](http://localhost:4000/judy_blog/assets/images/sac3.jpg){:width="80%"}
+
+Two Q functions update:
+
+![](http://localhost:4000/judy_blog/assets/images/2qupdate.jpg){:width="80%"}
+
+
+
+### Experiment
+
+Compared with:  
+- DDPG (off-policy)
+- PPO (on-policy)
+- SQL (off-policy)
+- TD3 (an extension to DDPG)
+- Trust-PCL trust region path consistency learning  
+
+SAC has good performance in terms of complicated tasks such as Humanoid-v1 and Humanoid rllab
+
+### Ablation Study
+
+**Stochastic vs Deterministic Policy**  
+
+The entropy appears in both the policy and value function
+
+![](http://localhost:4000/judy_blog/assets/images/stovsdeter.jpg){:width="80%"}
+
+Stochasticity can stabilize training as the variability between the random seeds becomes much higher with a deterministic policy  
+
+**Policy Evaluation**  
+
+deterministic is better than Stochastic
+
+**Reward Scale**  
+
+SAC is sensitive to the scaling of the reward signal, because it serves the role of temperature of the energy-based optimal policy and thus controls its stochasticity  
+
+Larger reward magnitudes correspond to lower entries  
+
+With the right reward scaling, the model balances exploration and exploitation, leading to faster learning and better asymptotic performance  
+
+**Target Network Update**  
+
+### Comparison with SQL
+
+Difference in Value function
+
+![](http://localhost:4000/judy_blog/assets/images/sacsql_value.jpg){:width="80%"}
+
+Difference in Policy
+
+![](http://localhost:4000/judy_blog/assets/images/sacsql_policy.jpg){:width="80%"}
+
+
+### SAC with Automating Entropy Adjustment
+
+![](http://localhost:4000/judy_blog/assets/images/sac_alpha1.jpg){:width="80%"}
+
+![](http://localhost:4000/judy_blog/assets/images/sac_alpha2.jpg){:width="80%"}
+
+SAC variant
+
+![](http://localhost:4000/judy_blog/assets/images/sac_alpha3.jpg){:width="80%"}
+
+![](http://localhost:4000/judy_blog/assets/images/sac_alpha4.jpg){:width="80%"}
+
+Alpha-Entropy Objective
+
+![](http://localhost:4000/judy_blog/assets/images/alpha_obj.jpg){:width="80%"}
+
+
+### Discrete Soft AC
+
+![](http://localhost:4000/judy_blog/assets/images/sac_discrete.jpg){:width="80%"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Refs
+
+[1] Haarnoja, Tuomas, et al. "Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor." arXiv preprint arXiv:1801.01290 (2018).
+
+[2] Haarnoja, Tuomas, et al. "Soft actor-critic algorithms and applications." arXiv preprint arXiv:1812.05905 (2018).
+
+[3] Christodoulou, Petros. "Soft actor-critic for discrete action settings." arXiv preprint arXiv:1910.07207 (2019).

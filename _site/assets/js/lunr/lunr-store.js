@@ -333,4 +333,14 @@ var store = [{
         "excerpt":"General Update Rule The general approach to computing the estimations of value functions is to have the agent follow policy π and maintain for each state (or state-action) a running average of the returns that follow NewEstimate &lt;- OldEstimate + α [Target - OldEstimate] Target - the return from the...","categories": ["RL-Basic"],
         "tags": ["Reinforcement Learning"],
         "url": "http://localhost:4000/judy_blog/rl-basic/2020/05/11/semigradientsarsan.html",
+        "teaser":null},{
+        "title": "Soft Actor Critic",
+        "excerpt":"Background model-free DRL: (-) very high sample complexity: even relatively simple tasks can require millions of steps of data collection, and complex behaviors with high-dimensional observations might need substantially more (-) brittle convergence properties, which necessitate meticulous hyperparameter tuning on-policy learning, i.e. TRPO,PPO,A3C, poor sample efficiency because: they require new...","categories": ["Literature"],
+        "tags": ["Reinforcement Learning","Soft-Q Learning"],
+        "url": "http://localhost:4000/judy_blog/literature/2020/07/10/softac.html",
+        "teaser":null},{
+        "title": "Curiosity",
+        "excerpt":"Background Deal with sparse reward: curiosity-driven / intrinsic motivation intrinsic curiosity model curiosity in model-based RL curriculum learning automatic generation of easy goals learning to select easy tasks auxiliary tasks reward shaping dense reward Curiosity [1] curiosity can serve as an intrinsic reward signal to enable the agent to explore...","categories": ["Literature"],
+        "tags": ["Reinforcement Learning"],
+        "url": "http://localhost:4000/judy_blog/literature/2020/12/03/curiosity.html",
         "teaser":null}]

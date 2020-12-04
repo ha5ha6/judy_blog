@@ -89,7 +89,7 @@ MM can be derived from information theoretical principles as a way of regularizi
 
 MM follows the non-expansion property inside the infinity norm proof, therefore converges to a fixed point  
 
-
+### Revisit Softmax Operator
 
 
 
@@ -111,3 +111,5 @@ SARSA variant convergence:
 [Perkins & Precup 2002]  
 [Baird & Moore 1999]  
 [Van Seijen et al 2009]  
+
+[2] Song, Zhao, Ron Parr, and Lawrence Carin. "Revisiting the softmax bellman operator: New benefits and new perspective." International Conference on Machine Learning. 2019.
