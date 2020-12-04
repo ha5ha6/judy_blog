@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
-  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
@@ -13,19 +13,22 @@
 <meta name="description" content="an EM-based deterministic approach">
 
 
+  <meta name="author" content="Jiexin Wang">
+  
+
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Jiexin Wang">
 <meta property="og:title" content="Policy Hyper-parameter Search">
-<meta property="og:url" content="http://localhost:4000/judy_blog/ephe/">
+<meta property="og:url" content="/judy_blog/ephe/">
 
 
   <meta property="og:description" content="an EM-based deterministic approach">
 
 
 
-  <meta property="og:image" content="http://localhost:4000/judy_blog/assets/images/hand.png">
+  <meta property="og:image" content="/judy_blog/assets/images/hand.png">
 
 
 
@@ -36,14 +39,21 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/judy_blog/ephe/">
+<link rel="canonical" href="/judy_blog/ephe/">
 
 
 
 
-
-
-
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "/judy_blog/"
+    
+  }
+</script>
 
 
 
@@ -64,8 +74,9 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/judy_blog/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
 
-<!--[if IE ]>
+<!--[if IE]>
   <style>
     /* old IE unsupported flexbox fixes */
     .greedy-nav .site-title {
@@ -91,6 +102,14 @@
   </head>
 
   <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -103,15 +122,18 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/judy_blog/">Jiexin Wang</a>
+        <a class="site-title" href="/judy_blog/">
+          Jiexin Wang
+          
+        </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/judy_blog/about/" >About</a>
+              <a href="/judy_blog/about/">About</a>
             </li><li class="masthead__menu-item">
-              <a href="/judy_blog/research/" >Research</a>
+              <a href="/judy_blog/research/">Research</a>
             </li><li class="masthead__menu-item">
-              <a href="/judy_blog/project/" >Project</a>
+              <a href="/judy_blog/project/">Project</a>
             </li><li class="masthead__menu-item">
-              <a href="/judy_blog/gallery/" >Gallery</a>
+              <a href="/judy_blog/gallery/">Gallery</a>
             </li></ul>
         
         <button class="search__toggle" type="button">
@@ -142,10 +164,6 @@
 
 
 
-
-
-
-
 <div class="page__hero--overlay"
   style=" background-image: url('/judy_blog/assets/images/hand.png');"
 >
@@ -162,6 +180,8 @@
 </p>
       
       
+
+
       
       
     </div>
@@ -187,8 +207,6 @@
   
     <div class="author__avatar">
       
-
-      
         <img src="/judy_blog/assets/images/head.jpg" alt="Jiexin Wang" itemprop="image">
       
     </div>
@@ -199,9 +217,10 @@
       <h3 class="author__name" itemprop="name">Jiexin Wang</h3>
     
     
-      <p class="author__bio" itemprop="description">
-        Reinforcement Learning <br /> Mobile & Joint Robots
-      </p>
+      <div class="author__bio" itemprop="description">
+        <p>Reinforcement Learning <br /> Mobile &amp; Joint Robots</p>
+
+      </div>
     
   </div>
 
@@ -213,23 +232,23 @@
       
         
           
-            <li><a href="https://www.google.com/maps/place/Kyoto/@35.0978739,135.4386868,10z/data=!3m1!4b1!4m5!3m4!1s0x6001a8d6cd3cc3f1:0xc0961d366bbb1d3d!8m2!3d35.011564!4d135.7681489" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> Kyoto, JP</a></li>
+            <li><a href="https://www.google.com/maps/place/Kyoto/@35.0978739,135.4386868,10z/data=!3m1!4b1!4m5!3m4!1s0x6001a8d6cd3cc3f1:0xc0961d366bbb1d3d!8m2!3d35.011564!4d135.7681489" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i><span class="label">Kyoto, JP</span></a></li>
           
         
           
-            <li><a href="https://mail.google.com/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> superheartheart<br />(at)gmail.com</a></li>
+            <li><a href="https://mail.google.com/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">superheartheart<br />(at)gmail.com</span></a></li>
           
         
           
-            <li><a href="https://www.researchgate.net/profile/Jiexin_Wang" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> ResearchGate</a></li>
+            <li><a href="https://www.researchgate.net/profile/Jiexin_Wang" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">ResearchGate</span></a></li>
           
         
           
-            <li><a href="https://github.com/ha5ha6" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+            <li><a href="https://github.com/ha5ha6" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
           
         
           
-            <li><a href="https://www.linkedin.com/in/jiexin-wang-54b66591/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+            <li><a href="https://www.linkedin.com/in/jiexin-wang-54b66591/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
           
         
       
@@ -297,6 +316,7 @@
   </div>
 
 
+
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Policy Hyper-parameter Search">
     <meta itemprop="description" content="an EM-based deterministic approach">
@@ -314,73 +334,73 @@
   
     
       <a href="/judy_blog/assets/images/Slide09.jpeg" title="slide01">
-        <img src="/judy_blog/assets/images/Slide09.jpeg" alt="placeholder image 1" />
+          <img src="/judy_blog/assets/images/Slide09.jpeg" alt="placeholder image 1" />
       </a>
     
   
     
       <a href="/judy_blog/assets/images/Slide10.jpeg" title="slide02">
-        <img src="/judy_blog/assets/images/Slide10.jpeg" alt="placeholder image 2" />
+          <img src="/judy_blog/assets/images/Slide10.jpeg" alt="placeholder image 2" />
       </a>
     
   
     
       <a href="/judy_blog/assets/images/Slide11.jpeg" title="slide03">
-        <img src="/judy_blog/assets/images/Slide11.jpeg" alt="placeholder image 3" />
+          <img src="/judy_blog/assets/images/Slide11.jpeg" alt="placeholder image 3" />
       </a>
     
   
     
       <a href="/judy_blog/assets/images/Slide12.jpeg" title="slide04">
-        <img src="/judy_blog/assets/images/Slide12.jpeg" alt="placeholder image 4" />
+          <img src="/judy_blog/assets/images/Slide12.jpeg" alt="placeholder image 4" />
       </a>
     
   
     
       <a href="/judy_blog/assets/images/Slide13.jpeg" title="slide05">
-        <img src="/judy_blog/assets/images/Slide13.jpeg" alt="placeholder image 5" />
+          <img src="/judy_blog/assets/images/Slide13.jpeg" alt="placeholder image 5" />
       </a>
     
   
     
       <a href="/judy_blog/assets/images/Slide14.jpeg" title="slide06">
-        <img src="/judy_blog/assets/images/Slide14.jpeg" alt="placeholder image 6" />
+          <img src="/judy_blog/assets/images/Slide14.jpeg" alt="placeholder image 6" />
       </a>
     
   
     
       <a href="/judy_blog/assets/images/Slide15.jpeg" title="slide07">
-        <img src="/judy_blog/assets/images/Slide15.jpeg" alt="placeholder image 7" />
+          <img src="/judy_blog/assets/images/Slide15.jpeg" alt="placeholder image 7" />
       </a>
     
   
     
       <a href="/judy_blog/assets/images/Slide16.jpeg" title="slide08">
-        <img src="/judy_blog/assets/images/Slide16.jpeg" alt="placeholder image 8" />
+          <img src="/judy_blog/assets/images/Slide16.jpeg" alt="placeholder image 8" />
       </a>
     
   
     
       <a href="/judy_blog/assets/images/Slide17.jpeg" title="slide09">
-        <img src="/judy_blog/assets/images/Slide17.jpeg" alt="placeholder image 9" />
+          <img src="/judy_blog/assets/images/Slide17.jpeg" alt="placeholder image 9" />
       </a>
     
   
     
       <a href="/judy_blog/assets/images/Slide18.jpeg" title="slide10">
-        <img src="/judy_blog/assets/images/Slide18.jpeg" alt="placeholder image 10" />
+          <img src="/judy_blog/assets/images/Slide18.jpeg" alt="placeholder image 10" />
       </a>
     
   
     
       <a href="/judy_blog/assets/images/Slide19.jpeg" title="slide11">
-        <img src="/judy_blog/assets/images/Slide19.jpeg" alt="placeholder image 11" />
+          <img src="/judy_blog/assets/images/Slide19.jpeg" alt="placeholder image 11" />
       </a>
     
   
     
       <a href="/judy_blog/assets/images/Slide20.jpeg" title="slide12">
-        <img src="/judy_blog/assets/images/Slide20.jpeg" alt="placeholder image 12" />
+          <img src="/judy_blog/assets/images/Slide20.jpeg" alt="placeholder image 12" />
       </a>
     
   
@@ -407,6 +427,7 @@
 
 
         
+
       </footer>
 
       
@@ -425,13 +446,18 @@
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
-    <div id="results" class="results"></div></div>
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
       </div>
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
@@ -453,7 +479,6 @@
 
     
   <script src="/judy_blog/assets/js/main.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
 
 
 

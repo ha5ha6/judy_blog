@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
-  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
@@ -13,28 +13,22 @@
 <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
 
 
+  <meta name="author" content="Jiexin Wang">
+  
+
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Jiexin Wang">
 <meta property="og:title" content="Jiexin Wang">
-<meta property="og:url" content="http://localhost:4000/judy_blog/">
+<meta property="og:url" content="/judy_blog/">
+
+
+  <meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
 
 
 
-
-  <meta property="og:image" content="http://localhost:4000/judy_blog/assets/images/innermongolia.jpeg">
-
-
-
-
-
-
-
-
-
-
-<link rel="canonical" href="http://localhost:4000/judy_blog/">
+  <meta property="og:image" content="/judy_blog/assets/images/innermongolia.jpeg">
 
 
 
@@ -42,6 +36,24 @@
 
 
 
+
+
+
+<link rel="canonical" href="/judy_blog/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "/judy_blog/"
+    
+  }
+</script>
 
 
 
@@ -62,8 +74,9 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/judy_blog/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
 
-<!--[if IE ]>
+<!--[if IE]>
   <style>
     /* old IE unsupported flexbox fixes */
     .greedy-nav .site-title {
@@ -89,6 +102,14 @@
   </head>
 
   <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -101,15 +122,18 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/judy_blog/">Jiexin Wang</a>
+        <a class="site-title" href="/judy_blog/">
+          Jiexin Wang
+          
+        </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/judy_blog/about/" >About</a>
+              <a href="/judy_blog/about/">About</a>
             </li><li class="masthead__menu-item">
-              <a href="/judy_blog/research/" >Research</a>
+              <a href="/judy_blog/research/">Research</a>
             </li><li class="masthead__menu-item">
-              <a href="/judy_blog/project/" >Project</a>
+              <a href="/judy_blog/project/">Project</a>
             </li><li class="masthead__menu-item">
-              <a href="/judy_blog/gallery/" >Gallery</a>
+              <a href="/judy_blog/gallery/">Gallery</a>
             </li></ul>
         
         <button class="search__toggle" type="button">
@@ -140,12 +164,8 @@
 
 
 
-
-
-
-
 <div class="page__hero"
-  style=" "
+  style=" background-image: url('');"
 >
   
     <img src="/judy_blog/assets/images/innermongolia.jpeg" alt="" class="page__hero-image">
@@ -163,6 +183,7 @@
 <div id="main" role="main">
   
 
+
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     
     
@@ -174,6 +195,8 @@
         <header>
           
           
+
+
         </header>
       
 
@@ -190,6 +213,7 @@
 
 
         
+
       </footer>
 
       
@@ -208,13 +232,18 @@
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
-    <div id="results" class="results"></div></div>
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
       </div>
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
@@ -236,7 +265,6 @@
 
     
   <script src="/judy_blog/assets/js/main.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
 
 
 
