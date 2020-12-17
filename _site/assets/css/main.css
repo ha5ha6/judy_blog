@@ -5,7 +5,7 @@
 
 .page__footer { color: #fff !important; }
 
-.page__footer-follow .social-icons .svg-inline--fa { color: inherit; }
+.page__footer-follow .social-icons i, .page__footer-follow .social-icons .svg-inline--fa { color: inherit; }
 
 /*!
  * Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
