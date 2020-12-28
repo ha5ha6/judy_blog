@@ -19,7 +19,7 @@ excerpt: "publications by years"
 
 
 ## Journal Paper
-- <span style="font-family:Serif; font-size:0.95em;"> J. Wang, S. Elfwing and E. Uchibe. Modular Deep Reinforcement Learning from Reward and Punishment for Robot Navigation. <br /> *Neural Networks*. DOI 10.1016/j.neunet.2020.12.001. 2020 <br /> [[website]](https://www.sciencedirect.com/science/article/pii/S0893608020304184)</span>
+- <span style="font-family:Serif; font-size:0.95em;"> J. Wang, S. Elfwing and E. Uchibe. Modular Deep Reinforcement Learning from Reward and Punishment for Robot Navigation. <br /> *Neural Networks*. DOI 10.1016/j.neunet.2020.12.001. 2020 <br /> [[website]](https://www.sciencedirect.com/science/article/pii/S0893608020304184) [[researchgate]](https://www.researchgate.net/publication/347457388_Modular_deep_reinforcement_learning_from_reward_and_punishment_for_robot_navigation) [[pdf]](https://www.sciencedirect.com/science/article/pii/S0893608020304184/pdfft?md5=1d159d73318147716fc1ecdab06d0da5&pid=1-s2.0-S0893608020304184-main.pdf)</span>
 
 - <span style="font-family:Serif; font-size:0.95em;"> E. Uchibe and J. Wang. Deterministic policy search method for real robot control. <br /> *The Brain & Neural Networks.* 24(4). DOI 10.3902/jnns.24.195. 2017 <br /> [[website]](https://www.jstage.jst.go.jp/article/jnns/24/4/24_195/_article/-char/ja/) [[researchgate]](https://www.researchgate.net/publication/322928518_Deterministic_Policy_Search_Method_for_Real_Robot_Control) [[pdf]](https://www.jstage.jst.go.jp/article/jnns/24/4/24_195/_pdf/-char/ja)</span>
 
