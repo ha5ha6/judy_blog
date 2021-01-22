@@ -26,9 +26,9 @@ github_username:  ha5ha6
 
 # Build settings
 markdown: kramdown
-theme: minimal-mistakes-jekyll
+#theme: minimal-mistakes-jekyll
 remote_theme: mmistakes/minimal-mistakes
-#minimal_mistakes_skin: "contrast"
+minimal_mistakes_skin: "contrast"
 plugins:
   - jekyll-feed
   - jekyll-include-cache
