@@ -8,8 +8,8 @@ gallery:
     image_path: /assets/images/okinawa.jpg
     alt: "placeholder image 1"
     title: "Okinawa"
-  - url: /assets/images/nara.JPG
-    image_path: /assets/images/nara.JPG
+  - url: /assets/images/nara.jpg
+    image_path: /assets/images/nara.jpg
     alt: "placeholder image 3"
     title: "Nara"
   - url: /assets/images/innermongolia.jpeg
