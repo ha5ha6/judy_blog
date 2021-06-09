@@ -1,0 +1,281 @@
+---
+layout: single
+type: posts
+title:  "Recurrent Neural Network"
+date:   2021-6-4 15:55:25 +0900
+related: true
+categories: ML-Basic
+tags:
+  #- Index
+  - Machine Learning
+author:  Jiexin Wang
+classes:  wide
+toc: true
+toc_label: "Index"
+author_profile: true
+---
+
+### Rough Intro
+
+a more biological design inspired by brain modules  
+
+RNN is characterized by cycles between units:  
+this allows the development of self-sustained temporal activations along network's connection pathways, even in absence of inputs  
+
+**dynamic memory**:  
+
+the influence of inputs in the network is maintained through cycles among nodes, allowing to model a dynamic system in function of time  
+
+it has been mathematically demonstrated that RNN have the universal approximiation property and thus able to model dynamic systems with arbitrary precision  
+
+**Turing-Equivalent**:  
+an RNN can be computationally Turing-Equivalent  
+
+RNN for two major perspectives:  
+for an emulation purpose of biological models of brain processes in neuroscience  
+or as a tool, a sort of black-box to model engineering problems and signal processing   
+
+**Training methods**:  
+- Backpropagation Through Time (BPTT), high computational power O(TN^2), vanishing gradient problems  
+- Real-time Recurent learning (RTRL)
+- Extended Kalman-filtering (EKF)
+- AtiyaParlos learning (APRL), O(n^2)
+
+**Vanishing Gradient**  problem:  
+does not allow the capture of the effects of previous inputs for a time longer than a dozen of time steps, make this alg a poor choice for training    
+
+**RNN architectures**:  
+- fully recurrent network
+- Hopfield network  
+- Jordan network  
+- Elman network  
+- Long short-term memory network (LSTM), doesnot suffer the vanishing gradient issue  
+
+in LSTM, there is a memory cell, a linear unit which holds the state of the cell surrounded by three gates:  
+1. GI: the modify of the neuron internal state is allows only when the input gate is open  
+2. GO: controls when data flow to other parts of the network, that is, how much and when the cell fires  
+3. GF: the forget gate, determines how much the state is attenuated at each time step  
+
+
+### Reservoir Computing  
+
+- Liquid State Machine  
+- Echo State Network  
+- Backpropagation-Decorrelation Learning Rule  
+
+these methods aim to promote a new approach of modeling complex dynamic systems in mathematical and engineering fields via an artificial RNN  
+
+each approach covered consists of a fixed-weight RNN that fed by a data set, outputs a series of activation's states  
+
+these intermediate values are then used to train output connections to the second part of the system which will output a description of original model's dynamics obtained from dataset
+
+**Reservor**: the first part of the system  
+is an RNN with fixed weights that acts as 'black-box' model of a complex system  
+
+**Readout**:  the second part of the system  
+a classifier layer of some kind, usually a simple linear one, connected by a set of weights to the Reservoir  
+
+a fundamental property is to have a sort of intrinsic **memory effect**, due to recurrent connections in the reservoir than whose size, represented by the time steps needed to exhaust the effect of the th-input in reservoir's computed output  
+
+### Echo State Network [Jaeger 2001]  
+
+the key idea of echo state networks: (perceptrons again?)  
+
+like a simple way to learn a feedforward network is to make the early layers random and fixed, and then learn the last layer which is a linear model that uses the transformed inputs to predict the target outputs,  
+in this case a big random expansion of the input vector can help  
+
+the equivalent idea for RNNs is to fix **input->hidden**, **hidden->hidden** at random values, and only learn the **hidden->output**,  
+in this case, the learning is very simple, and it's important to set the random connections very carefully so the RNN does not explode or die  
+
+**setting the random connections in an ESN**:  
+- set the **hidden->hidden** weights so that the length of the activity vector stays about the same after each iteration  
+this allows the input to echo around the network for a long time  
+- use sparse connectivity (i.e. set most of the weights to zero)  
+this creates lots of loosly coupled oscillators  
+- choose the scale of the **input->hidden** connections very carefully  
+they need to drive the loosely coupled oscillators without wiping out the information from the past that they already contain  
+- the learning is so fast that we can try many different scales for the weights and sparsenesses  
+
+ESN:  
+(+) can be trained very fast because they just fit a linear model  
+(+) demonstrate that it's very important to initialize weights sensibly  
+(+) they can do impressive modeling of one-dimensional time-series  
+(-) but they cannot compete seriously for high-dimensional data like pre-processed speech  
+(-) they need many more hidden units for a given task than an RNN that learns the **hidden->hidden** weights  
+(-) Sutskever [2012] has shown that if the weights are initialized using the ESN methods, RNNs can be trained very effectively (used rmsprop with momentum)  
+
+reservoir computing: much simpler and faster than nn  
+
+ESN or Reservoir computing:  
+
+to compute less weights, by ignoring the input and hidden weights, only compute the optimal output weigths  
+
+**Reservoir**: a collection of the input weights and hidden weights  
+
+Say NN structure is like a sandwich, then RC is like putting the sandwich into a blender, nodes are not stacked and any node in the reservoir can connect to any other node including itself  
+
+when creating a reservoir, we just put a random assortment of numbers in it, and we distribute those numbers on a bell curve centered around zero, whatever  
+
+then only train the last layer of output weights  
+
+RC drawbacks and conditions:  
+- ESN only works if it has the **echo state property**    
+a network has this property when we can figure out the path that a signal will move through the reservoir based solely on the data that we input to the network, (the path that a signal moves through the reservoir echoes the inputs)  
+this means the actual structure of the network, the actual way that the neurons are connected to each other does not determine the way that information will flow through the network, it's the input that does that, this is why we can fill the reservoir with random numbers as the input and hidden weights  
+as long as the network has echo state property, these weights don't actually determine the information flow  
+
+any network can be pretty easily made into an ESN
+
+**when and what kind of problem to use ESN?**  
+
+**input forgetting**: after a few more inputs are added the original input you put in doesn't really matter  
+
+any problem that is done in steps where you can figure out the next step of the problem based only on the most recent ones  
+
+i.e. weather, double pendulum, chaos (very small changes cause big changes down the road), mdp  
+
+in chaos, the approximate will blow up over time  
+and it oscillates in a random way with a certain boundary  
+
+**creating the reservoir**:  
+the bigger the reservoir the better the performance  
+1. we can have serveral thousand random input weights and hidden weights  
+2. we train the network with selected features, i.e. wind velocity, temperature and humidity  
+3. prediction stage  
+
+input: the weather at a given time  
+output: its guess for the weather at the next time  
+loop input and output through time line  
+
+
+
+
+
+
+### Time series  
+
+dynamics based on time,  
+i.e. stock market, air movement, spreading of covid19  
+
+stationary: statistical properties such as mean, variance and serial correlation are constant over time  
+
+stationarity makes analysis more straightforward but modern approaches makes it possible to work with data without pre-processing for stationarity  
+
+autocorrelation:
+
+RNN is good at short sequences such as:  
+the sky is ___ (blue)
+
+However, it fails when a lot of previous information comes:  
+This is the 10th day of wildfires in the San Francisco bay area. There is smoke everywhere, it is snowing ash and the sky is ___ (red)  
+
+LSTM is a special kind of RNN, it is designed to overcome limitations of RNNs such as:  
+- gradient vanishing and exploding  
+- complex training
+- difficulty to process very long sequences  
+
+**remembering information for long periods of time is intrisic to LSTM**  
+
+### LSTM
+
+                                           h_t
+                forget                      ^
+                 gate                       |
+    c_{t-1} ------x----------+----------------> c_t
+                  ^          ^         |    |
+                  |          |        tanh  |
+                  |          |         |    |
+                  |    |---->x    |--->x    |
+                  |    |     ^    |    |    |
+                  σ    σ     |    σ    |    |
+                  |    |    tanh  |    |    |
+                  |    |     |    |    |    |
+    h_{t-1} -----------------------     ------> h_t
+              |        input      output
+             x_t        gate       gate
+
+
+    c: cell state  
+    from c_{t-1} to c_t: information flows through the path  
+    x,+: gates let info through the cell state  
+    sigmoid: output 0 to 1, can be used to forget or remember the info
+    tanh: output from -1 to 1, good for being weights, to overcome the vanishing gradient problem, tanh's second derivative can sustain for a long range before going to zero  
+
+**forget gate** outputs a number between 0 and 1 for each number in the cell state. 0 to completely forget and 1 to keep all info:
+
+    f_t = σ(W_f*[h_{t-1},x_t]+b_f)
+
+**input gate**: what new info will be stored in the cell state  
+
+    i_t = σ(W_i*[h_{t-1},x_t]+b_i)
+    C_t = tanh(W_C*[h_{t-1},x_t]+b_C)
+
+    i_t: sigmoid layer decides which values are updated  
+    C_t: tanh layer gives weights to the values to be added to the state  
+
+**output gate** decide what part of current cell makes to the output  
+
+    o_t = σ(W_o*[h_{t-1},x_t]+b_o)
+    h_t = o_t*tanh(C_t)  
+
+    o_t: sigmoid layer decides which part of cell state is selected for output  
+    h_t: tanh layer gives weights to the values -1 to 1  
+
+LSTM in keras:
+
+```python
+model=Sequential()
+
+model.add(LSTM(units=50, return_sequence=True, input_shape=(X_train.shape[1],1)))
+model.add(Dropout(0,2))
+
+model.add(LSTM(units=50,return_sequence=True))
+model.add(Dropout(0,2))
+
+model.add(LSTM(units=50))
+model.add(Dropout(0,2))
+
+model.add(Dense(units=1))
+
+model.compile(optimizer='adam', loss='mean_squared_error')
+
+model.fit(X_train, y_train, epochs=100, batch_size=32)
+```    
+
+
+### Why Machine Learning?  
+
+computers are good at doing what have been told, but bad at being creative  
+
+any problem where on the spot decision is required is what machine learning wants to solve in the first hand  
+
+the point of ML is to teach the program to make creative decisions  
+
+an important step in completing a task using ML is to figure out which alg is best suited for your scenario  
+
+training (trial and error) -> prediction   
+
+the structure of nn is crucial to make it work  
+
+nn drawback:  
+long time training   
+complex big scale    
+
+
+### Ablation Study  
+
+An ablation study typically refers to removing some “feature” of the model or algorithm and seeing how that affects performance.  
+
+Examples:  
+An LSTM has 4 gates: feature, input, output, forget. We might ask: are all 4 necessary? What if I remove one? Indeed, lots of experimentation has gone into LSTM variants, the GRU being a notable example (which is simpler).  
+If certain tricks are used to get an algorithm to work, it’s useful to know whether the algorithm is robust to removing these tricks. For example, DeepMind’s original DQN paper reports using (1) only periodically updating the reference network and (2) using a replay buffer rather than updating online. It’s very useful for the research community to know that both these tricks are necessary, in order to build on top of these results.  
+If an algorithm is a modification of a previous work, and has multiple differences, researchers want to know what the key difference is.  
+Simpler is better (inductive prior towards simpler model classes). If you can get the same performance with two models, prefer the simpler one.
+
+
+
+
+### Reference
+
+[Introduction to Reservoir Computing
+Methods](https://amslaurea.unibo.it/8268/1/melandri_luca_tesi.pdf)　　  

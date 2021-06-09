@@ -1,0 +1,130 @@
+---
+layout: single
+type: posts
+title:  "Maximum Likelihood Estimation"
+date:   2021-5-7 17:12:25 +0900
+related: true
+categories: ML-Basic
+tags:
+  #- Index
+  - Machine Learning
+author:  Jiexin Wang
+classes:  wide
+toc: true
+toc_label: "Index"
+author_profile: true
+---
+
+### Definition
+
+**Maximum Likelihood Estimation (MLE)** is a method of estimating the parameters of a statistical model given observations. In MLE, the parameters are chosen to maximize the likelihood that the assumed results in the observed data.
+
+MLE is a special case of **maximum a posteriori estimation (MAP)** that assumes a uniform prior distribution of the parameters
+
+To implement MLE:  
+1. assume a model, also known as a data generating process  
+2. be able to derive the likelihood function for our data, given our assumed model  
+
+Once **the likelihood function** is derived, MLE is nothing but a simple optimization problem  
+
+MLE adv and disadv:  
+(+) if the model is correctly assumed, the MLEstimator is the most efficient estimator  
+(+) it provides a consistent but flexible approach which makes it suitable for a wide variety of applications, including cases where assumptions of other models are violated  
+(+) it results in unbiased estimates in larger samples  
+(-) it relies on the assumption of a model and the derivation of the likelihood function which is not always easy  
+(-) like other optimization problems, MLE can be sensitive to the choice of starting values  
+(-) depending on the complexity of the likelihood function, the numerical estimation can be computationally expensive  
+(-) estimates can be biased in small samples   
+
+**Efficiency** - an efficient estimator is one that has a small variance or mean squared error  
+
+### Likelihood
+
+the distinction between probability and likelihood is:  
+probability attaches to possible results;  
+likelihood attaches to hypotheses;  
+a probability density function expresses the probability of observing our data given the underlying distribution parameters. it assumes that the parameters are known;  
+the likelihood function expresses the likelihood of parameter values occuring given the observed data. it assumes the parameters are unknown;  
+
+probability: p(y\|θ), p(y1,y2,y3,...\|θ)    
+likelihood: L(θ\|y), L(θ\|y1,y2,y3,...)   
+
+mathematically:  
+
+    L(θ|y1,y2,y3,...) = p(y1,y2,y3,...|θ) = p(y1|θ)p(y2|θ)p(y3|θ)... = ∏ p(yi|θ)   
+
+i.e. we have one series y with 10 independent observations:5,0,1,1,0,3,2,3,4,1  
+
+**step 1 in MLE: to assume a probability distribution of the data**  
+
+a probability density function measures the probability of observing the data given a set of underlying model parameters  
+
+so assume the data has an underlying Poisson distribution  
+
+              e^(-θ)θ^(yi)
+    f(yi|θ) = ------------
+                  yi!
+
+because the observation in our sample are independent, the **probability density** of our observed sample can be found by taking the product of the probability of the individual observation  
+
+                        10  e^(-θ)θ^(yi)                       e^(-10θ)θ^(20)
+    f(y1,y2,...y10|θ) =  ∏  -----------  = L(θ|y1,y2,...y10) = --------------
+                        i=1     yi!                              207360
+
+
+which is the likelihood function being plugged in the observed data. by maximizing this function, we can have the parameter θ
+
+in practice the joint product can be difficult to work with, and log is a monotonic transformation, so the Likelihood function can be simplified to
+
+    log(L(θ|y1,y2,...y10)) = - nθ + logΣyi - logθΣyi! = - 10θ + 20logθ - log207360  
+
+
+In short, we have an objective  
+
+
+    max ∏ p(yi|θ)  -->  max log ∏ p(yi|θ) --> max Σ log p(yi|θ)
+     θ                   θ                     θ
+
+
+### MLE and Linear Regression
+
+        ^
+    y = βx + ε
+
+
+Assume that the model residuals are identical and independently normally distributed:  
+
+            ^
+    ε = y - βx ~ N(0, σ^2)  
+
+Based on this assumption, the log-likelihood function for the unknown parameter vector θ = {β, σ^2}  
+
+The probability density of N(0, σ^2) is  
+
+              1      (x-μ)^2
+    f(x) = ------ e^[-------]
+           √2πσ^2     -2σ^2
+                                ^
+               n    1        (y-βx)^2
+    L(θ|y,x) = ∏  ------ e^[-------]
+                  √2πσ^2     -2σ^2
+                                       ^
+                       n    1       (y-βx)^2
+    log L(θ|y,x) = log ∏  ------ e^[-------]
+                          √2πσ^2     -2σ^2
+                                      ^
+                   n       1       (y-βx)^2
+                 = Σ log ------ e^[-------]
+                         √2πσ^2     -2σ^2
+                                      ^
+                          1      n (y-βx)^2
+                 = nlog ------ - Σ --------
+                        √2πσ^2       2σ^2
+
+θ = {β, σ^2} are those that maximize the likelihood  
+
+
+### Reference
+
+[A Gentle Introduction to Maximum Likelihood Estimation](https://towardsdatascience.com/a-gentle-introduction-to-maximum-likelihood-estimation-9fbff27ea12f)　　  
+[Beginner's guide to MLE](https://www.aptech.com/blog/beginners-guide-to-maximum-likelihood-estimation-in-gauss/)

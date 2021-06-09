@@ -1,0 +1,53 @@
+---
+layout: single
+type: posts
+title:  "Softmax"
+date:   2021-5-14 14:36:25 +0900
+related: true
+categories: ML-Basic
+tags:
+  #- Index
+  - Machine Learning
+author:  Jiexin Wang
+classes:  wide
+toc: true
+toc_label: "Index"
+author_profile: true
+---
+
+### As activation function  
+
+is usually placed at the output layer of a nn  
+
+the equation is a normalized explonential function  
+
+                     exp(f_yi)
+    softmax(f_yi) = -----------
+                    ∑j exp(f_yj)
+
+basically, softmax squashes a vector of size K between 0 to 1 and its sum is 1  
+
+then the output of the softmax can be interpreted as probabilities, so that softmax improves the interpretability of the nn  
+
+### Negative Log-Likelihood (NLL)
+
+in practice, the softmax function is used in tandem with the NLL  
+
+    L(y) = -log(y)  
+
+this is summed for all the correct classes  
+
+with more correct classifications NLL becomes low  
+
+    input       Softmax    
+    pixels       output            NLL
+             cat  dog  horse
+     cat     0.71 0.26 0.04    -ln(0.71)=0.34
+    horse    0.02 0.0  0.98    -ln(0.98)=0.02
+     dog     0.49 0.49 0.02    -ln(0.49)=0.71
+
+
+
+### Reference
+
+[Understanding softmax and the negative log-likelihood](https://ljvmiranda921.github.io/notebook/2017/08/13/softmax-and-the-negative-log-likelihood/)　　  

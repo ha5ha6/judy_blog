@@ -238,10 +238,335 @@ Implication has a property that a true implication leads to a true conclusion fr
 φ =/> ψ    
 φ does not imply ψ if: even though φ is T, ψ is nevertheless F  
 φ =/> ψ is T, if φ is T and ψ is F,  
-in all other circumstances φ =/> ψ is F  
-in all other circumstances φ => ψ is T  
+in all other circumstances φ =/> ψ is F, which means φ => ψ is T  
+other circumstances include φ F and ψ T, φ F and ψ F  
+
+i.e.  
+Euclid's birthday was July 4 => Rectangles have four sides (T)  
+T => T is T  
+F => T is T  
+
+
+### Equivalence  
+
+Φ, Ψ are said to be (logically) equivalent if each implies the other (notation changed from φ,ψ to Φ,Ψ)
+
+**biconditional** of Φ and Ψ is denoted Φ<=>Ψ, an abbreviation of (Φ=>Ψ)^(Ψ=>Φ)  
+
+Φ<=>Ψ is T, if Φ, Ψ are both true or both false  
+
+i.e.  
+(φ^ψ)v(¬φ) is equivalent to φ=>ψ  
+"(φ^ψ)v(¬φ) is equivalent" is Φ  
+"φ=>ψ" is Ψ   
+
+the following all mean "Φ implies Ψ"  
+1. if Φ, then Ψ
+2. Φ is sufficient for Ψ
+3. Φ only if Ψ (not the same as "if Ψ then Φ")
+4. Ψ if Φ  
+5. Ψ whenever Φ
+6. Ψ is necessary for Φ
+
+"Φ is equivalent to Ψ" is itself equivalent to  
+1. Φ is necessary and sufficient for Ψ
+2. Φ if and only if Ψ (iff)
+
+### Quantifiers
+
+there exists ...  
+for all ...  
+
+quantifiers are used to refer to the two extremes, there is at least one and for all  
+
+"there is an object x having property p, for all objects x property p holds"  
+
+"there is an object x having property p"  
+
+i.e the equation x^2+2x+1=0 has a real root  
+can be written into:  
+there is a real number x such that x^2+2x+1=0  
+there exists a real number x such that x^2+2x+1=0  
+in math:
+
+    ∃x [x^2+2x+1=0]  
+
+∃ - the existential quantifier  
+
+to prove this statement, suppose x=-1, 1-2+1=0  
+
+i.e ∃x [x^3+3x+1=0] (sometime this statement can be proved without solving it - indirect proof)  
+
+look at y=x^3+3x+1 (a cubic equation)  
+this is a continuous function  
+if x=-1, this curve has value y=-3  
+if x=+1, the curve has value y=5  
+so the curve lies below the x-axis for x=-1, and above the x-axis for x=+1  
+the point when the curve crosses the x-axis is when the x satisfies x^3+3x+1=0
+
+**there is a solution to some euqation or that there is an object that satisfies some property over there without finding such an object**  
+
+to prove a statement of the form ∃x A(x), where A(x) is some property of x, you have to find an object p such that A(p) is False??  
+
+Wobbly Table Theorem  
+
+Suppose you are sitting in a restaurant at a perfectly square table with four identical legs, one at each corner. Because the floor is uneven, the table wobbles. One solution is to fold a small piece of paper and insert it under one leg until the table is stable. But there's another solution. Simply by rotating the table, you'll be able to position it so that it doesn't wobble. You might enjoy trying to prove this.  
+
+i.e. statement: squared root of 2 is rational  
+it doenst look like an existence statement, but it is!  
+-> there exists natural number p,q such that √2 = p/q  
+-> ∃p, ∃q [√2 = p/q], p,q should be natural number  
+-> (∃p∈N)(∃q∈N) [√2 = p/q], where N denotes the set of natural numbers  
+-> (∃p,q∈N) [√2 = p/q] (should be avoided in the beginning for distinction, keep things distinct)  
+
+prove that √2 is not rational  
+is to prove ¬(∃p∈N)(∃q∈N) [2 = p^2/q^2]  
+
+∀ - universal quantifier, for all  
+∀x means "for all x it is the case that ..."  
+
+"the square of any real number is greater than or equal to zero"  
+∀x (x^2>=0)  
+∃x [x^2=0] is not rigorous  
+more explicitly: (∀x∈R) (x^2>=0)  
+
+**combinations of quantifiers**:  
+
+"there is no largest natural number"  
+(∀m∈N)(∃n∈N)(n>m)  
+
+**the order of the quantifiers is important**  
+
+(∃n∈N)(∀m∈N)(n>m) means  
+"thre is a natural number bigger than all natural numbers" <- False  
+
+AMF: "one American dies of melanoma almost every hour" <- False, mocking!!  
+∃A ∀H [A dies in hour H]  
+what they meant was:  
+∀H ∃A [A dies in hour H]  
+
+quiz: "Do you have a license from more than one state?"  
+L denotes a license you own and S denotes a state  
+
+(∃L)(∃S1)(∃S2)[(S1!=S2)^From(L,S1)^From(L,S2)] is the literal meaning <- False!  
+because license is issued by state, you can not get one license issued by two different states  
+
+(∃L1)(∃L2)(∃S)[(L1!=L2)^From(L1,S)^From(L2,S)] <- True  
+you can have two licenses from one state  
+
+(∃L1)(∃L2)(∃S1)(∃S2)[(S1!=S2)(L1!=SL2)^From(L1,S1)^From(L2,S2)] <- True  
+this is what the sentence meant  
+
+quiz: "A drivers license valid in one state is valid in any state."  
+
+(∀L)[(∃S1)Valid(L,S1)=>(∀S2)Valid(L,S2)] <- True  
+
+**binding precedence**  
+
+1. quantifiers bind whatever comes next (∀L)(...) (∃L)(...)
+2. so does negation ¬(...)
+3. next priority is conjunction (...)^(...)
+4. then come disjunction, implication (conditional) and equivalence (...)v(...) (...)=>(...) (...)<=>(...)
+
+i.e.  
+(∀L)[(∃S1)Valid(L,S1)=>(∀S2)Valid(L,S2)] <- True in US   
+L is bound by ∀L  
+for any license L, if L is valid in some state, then L is valid in every state  
+
+(∀L)[(∃S1)Valid(L,S1)^(∀S2)Valid(L,S2)] <- False   
+for any license L, there is a state in which L is valid, and L is valid in every state  
+(∀L)[(∃S1)Valid(L,S1)]... this means for every license it is valid in some state, but it can be not  
+
+(∀L)(∃S1)Valid(L,S1)=>(∀S2)Valid(L,S2) <- meaningless  
+[(∀L)(∃S1)Valid(L,S1)]=>[(∀S2)Valid(L,S2)]  
+[all license are valid somewhere]=>L is valid in all states   (undefined, what is L?) so it's meaningless    
+
+(∀L)(∀S1)(∀S2)[Valid(L,S1)^Valid(L,S2)] <- False
+all licenses are valid in all states, can have invalid license and the second term Valid(L,S2) is redundant  
+
+(∀x)[P(x)=>Q(x)] <- logical force/strong statement   
+for every x, if P(x) then Q(x)  
+
+(∀x)[P(x)^Q(x)] <=> (∀x)P(x) ^ (∀x)Q(x) <- 'strong' but redundant   
+for every x, P(x) and Q(x)  
+meaning every x satisfies P(x) and Q(x)    
+
+(∃x)[P(x)^Q(x)] <- strong statement   
+there is an x for which P(x) and Q(x)  
+meaning you can find a single x which satisfies P(x) and satisfies Q(x)  
+
+(∃x)[P(x)=>Q(x)] <- weak statement, can get confused   
+there is an x, such that if P(x) then Q(x)  
+if you can find an x that does not satisfy P then the statement is True, so that's why it's weak  
+
+**Negating statements that have quantifiers**  
+
+Let A(x) be some property of x, ¬[∀xA(x)] <=> ∃x[¬A(x)]  
+
+eg. 'it is not the case that all motorists run red lights'
+<=> 'there is a motorist who does not run red lights'
+
+    proof of =>:  
+
+    assume ¬[∀xA(x)],  
+    if it is not the case that for all x, A(x), then at least one x must fail to satisfy A(x)  
+    so, for at least one x, ¬A(x) is true  
+    in symbols, ∃x[¬A(x)]  
+
+    proof of <=:
+
+    assume ∃x[¬A(x)],
+    then there is an x for which A(x) is false, then A(x) cannot be true for all x  
+    for other words, ∀xA(x) must be false  
+    in symbols, ¬∀xA(x)
+
+show that ¬[∃xA(x)] <=> ∀x[¬A(x)]
+
+    proof of =>:
+
+    assume ¬[∃xA(x)],
+    if it is not the case that there exists one x that satisfies A(x)
+    it means, for all x, A(x) is false  
+    in symbols, ∀x[¬A(x)]
+
+    proof of <=:
+
+    assume ∀x[¬A(x)],
+    if for all x, no A(x) is true, it means there doesn't exist one x that satisfies A(x)  
+    in symbols, ¬[∃xA(x)]  
+
+
+'all domestic cars are badly made'  
+
+    let C be the set of all cars
+    D(x) means x is domestic  
+    M(x) means x is badly made  
+
+    (∀x∈C)[D(x)=>M(x)]
+
+    negation is:
+    (∃x∈C)[D(x)=|>M(x)] <- (∃x∈C)¬[D(x)=>M(x)]
+
+    D(x)=|>M(x) <=> D(x)^¬M(x)
+
+    so ¬(∀x∈C)[D(x)=>M(x)] <=> ∃x∈C [D(x)^¬M(x)]
+
+    'there is a domestic car that is not badly made'  
+
+'all prime numbers are odd' <- False  
+
+    let P(x) mean x is prime  
+    O(x) means x is odd  
+
+    ∀x[P(x)=>O(x)]
+    ¬∀x[P(x)=>O(x)] <=> ∃x[P(x)=|>O(x)]  
+                    <=> ∃x[P(x)^¬O(x)]
+
+    'there is a prime that is not odd'  
+    proving 'all prime numbers are odd' is False means
+    proving 'there is a prime that is not odd' is True  
+    2 is a prime not odd  
+
+'all prime numbers bigger than 2 are odd'  
+
+    (∀x>2)[P(x)=>O(x)]
+
+    the negation is 1. (∃x<=2)[P(x)^¬O(x)]
+                    2. (∃x>2)[P(x)^¬O(x)] the correct answer  
+
+    because the original statement is talking about x>2, we dont negate the definition of x  
+
+let x denote a person  
+P(x): 'x plays for sports team T'  
+H(x): 'x is healthy'  
+what does this ∃x[P(x)^¬H(x)] mean?
+
+    'there is an unhealthy player on team T'
+
+    negation: ∀x¬[P(x)^¬H(x)]  
+              ∀x[¬P(x)vH(x)]       p=>q <=> ¬pvq
+              ∀x[P(x)=>H(x)]
+
+    'all players on team T are healthy'
+
+'all cats are cunning'
+
+    ∀x[Cat(x)=>Cunning(x)]
+
+∀x[x>0 => ∃y(xy=1)]?
+
+the quantifier only tells you something only the variable is denoted  
+**Domain of quantification** tells what the x denote
+
+    should be (∀x∈Q)[x>0 => ∃y(xy=1)], Q - rational numbers, how about y?  
+    should be (∀x∈Q)[x>0 => (∃y∈Q)(xy=1)],
+
+
+**Mathematisians sometime omit the quantifier**  
+
+x>=0 => √x>=0  <- implicit quantification  
+
+it means (∀x∈R)[x>=0 => √x>=0]  
+
+PLZ avoid doing this!
+
+x>0 => ∃y(y^2=x) is an abbreviation of ∀x[x>0 => ∃y(y^2=x)]  
+
+**you cannot take for all inside a bracket of a statement/conjunction/disjunction**   
+
+Let N be the domain of quatificaiton  
+let E(x): x is even, O(x): x is odd  
+
+∀x [E(x)vO(x)] <- True  for all natural number, it's even or odd  
+∀xE(x) v ∀xO(x) <- False  every natural number is even, or every natural number is odd  
+
+∃x [E(x)^O(x)] <- False  there is a natural number, which is both even and odd  
+∃xE(x) ^ ∃xO(x) <- True  there is a natural number which is even and there is a natural number which is odd  
+
+quiz:  
+
+∀x [A(x)vB(x)] <|=> ∀xA(x) v ∀xB(x)  
+however ∀x [A(x)^B(x)] <=> ∀xA(x) ^ ∀xB(x)  
+
+'all athletes are big and strong'   
+'all athletes are big' and 'all athletes are strong'  
+
+∃x [E(x)^O(x)] <|=> ∃xE(x) ^ ∃xO(x)  
+however ∃x [E(x)vO(x)] <=> ∃xE(x) v ∃xO(x)
+
+'there is a player who is a good attacker or a good defender'    
+'there is a good attacker' or 'there is a good defender'  
+
+∀ is 'like' ^ <- all  
+∃ is 'like' v <- at least one  
+
+
+**multiple domains of quantifications**
+
+Real numbers, x,y,z  
+Rational numbers, ∃x∈Q, ∀y∈Q  
+Natural numbers, ∀n∈N  
+
+suppose the domain of quantification is a set of animals  
+
+'every leopard has spots'  
+
+(∀x∈L)S(x) wrong, a set of leopard belongs to animal set, it's redundant to have multiple animal sets like leopard set or horse set  
+
+∀x[L(x)=>S(x)] correct, all leopard has spots  
+∃x[H(x)^S(x)] correct, there is a horse having spots  
+∀x[T(x)=>¬S(x)] correct, all tigers dont have spots  
+
+
+
+
+
 
 ### Reference
+
+[The wobbly Table Theorem](http://people.math.harvard.edu/~knill/teaching/math1a_2011/exhibits/wobblytable/#:~:text=The%20wobbly%20table%20theorem%3A%20you,depends%20on%20the%20angle%20x.)
+
+https://math.stackexchange.com/questions/2425167/fixing-a-wobbly-table-revisited
 
 https://b-ok.asia/book/2665796/97e675?dsource=recommend
 
