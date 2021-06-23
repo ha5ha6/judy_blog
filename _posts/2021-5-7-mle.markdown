@@ -47,7 +47,10 @@ a probability density function expresses the probability of observing our data g
 the likelihood function expresses the likelihood of parameter values occuring given the observed data. it assumes the parameters are unknown;  
 
 probability: p(y\|θ), p(y1,y2,y3,...\|θ)    
+p(y1,y2,y3,...\|θ)=∏p(yi\|θ)=p(y1\|θ)p(y2\|θ)p(y3\|θ)p(y4\|θ)...  
 likelihood: L(θ\|y), L(θ\|y1,y2,y3,...)   
+L(θ\|y1,y2,y3,...)=∏L(θ\|yi)=L(θ\|y1)L(θ\|y2)L(θ\|y3)L(θ\|y4)...  
+log likelihood: logL(θ\|y1,y2,y3,...)=log∏L(θ\|yi)=ΣlogL(θ\|yi)  
 
 mathematically:  
 

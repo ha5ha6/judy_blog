@@ -418,7 +418,7 @@ eg. 'it is not the case that all motorists run red lights'
     assume ∃x[¬A(x)],
     then there is an x for which A(x) is false, then A(x) cannot be true for all x  
     for other words, ∀xA(x) must be false  
-    in symbols, ¬∀xA(x)
+    in symbols, ¬∀xA(x) ■
 
 show that ¬[∃xA(x)] <=> ∀x[¬A(x)]
 
@@ -433,7 +433,7 @@ show that ¬[∃xA(x)] <=> ∀x[¬A(x)]
 
     assume ∀x[¬A(x)],
     if for all x, no A(x) is true, it means there doesn't exist one x that satisfies A(x)  
-    in symbols, ¬[∃xA(x)]  
+    in symbols, ¬[∃xA(x)] ■
 
 
 'all domestic cars are badly made'  
@@ -557,7 +557,454 @@ suppose the domain of quantification is a set of animals
 ∃x[H(x)^S(x)] correct, there is a horse having spots  
 ∀x[T(x)=>¬S(x)] correct, all tigers dont have spots  
 
+### Proofs  
 
+What is a proof?  
+evidence or argument establishing a fact or the truth of a statement
+
+How to use proof?  
+- to establish truth (convince myself)   
+- to communicate with others (convince others)  
+
+Reading a proof is how we convince ourselves that some statement is true  
+
+The **logical structure** is the main point of a proof  
+
+Prove 'there are infinitely many primes'  
+
+    proof: 1. list the primes to increasing order as p1, p2, p3 ..., pn, ... and show that the list must continue for ever  
+           2. given the list up to some stage n, p1, p2, p3 ... pn show there is another prime that can be added to the list  
+           3. let N be the number we get when we multiply together all the primes we have listed so far and then add 1  
+              N=(p1*p2*p3...)+1
+           4. obviously, N is bigger than all the primes in out list  
+           5. if N is prime, we know there is a prime bigger than pn, and hence the list can be continued  
+           6. if N is not prime, then there must be a prime q<N such that q divides N  
+           7. but none of p1,...pn divides N, since the division of N by any one of these leaves a remainder of 1  
+           8. so q must be bigger than pn, hence there is a prime bigger than pn, and the list can be continued  
+           9. either way, there is another prime to add to the list  
+           10. it follows that there are infinitely many primes. the result is proved ■
+
+
+
+
+**Proof of Contradiction**  
+
+1. you want to prove some statement Φ
+2. you start by assuming ¬Φ
+3. you reason until you reach a conclusion that is false  
+often by deducing both Φ and ¬Φ for some Φ, i.e. 'p, q have no common factors' and 'p,q are both even'  
+4. a true assumption cannot lead to a false conclusion
+5. hence the assumption ¬Φ must be false  
+6. in other words, Φ must be true  
+
+What can we conclude from a proof of Θ=>Φ where Φ is false?
+
+    Θ  Φ  Θ=>Φ
+    T  T   T
+    T  F   F
+    F  T   T
+    F  F   T    <-  Θ is F  
+
+
+Prove 'theorem: √2 is irrational'  
+
+    proof: (assumption) assume on the contrary, √2 is rational  
+           (unfolding) then, there are natural numbers p,q with no common factors, such that √2=p/q  
+           (reasoning) squarring: 2=p^2/q^2
+           (reasoning) rearranging: 2q^2=p^2  
+           (reasoning) so p^2 is even, hence p is even  
+           (reasoning) so p=2r for some r  
+           (reasoning) substituting for p: 2q^2=(2r)^2=4r^2  
+           (reasoning) canceling: q^2=2r^2  
+           (reasoning) so q^2 is even  
+           (reasoning) so q is even
+           (reasoning) so p and q are both even
+           (reasoning) but this is impossible, since p,q have no common factors  
+           (conclusion) hence the original assumption that √2 is rational must be false  
+           (conclusion) hence √2 must be irrational ■
+
+
+
+
+**Proving Conditionals**  
+
+We want to prove a conditional φ=>ψ  
+We know this is True if φ is False, so we can assume φ is True  
+
+To prove it, we assume φ and deduce ψ  
+
+For example, let x, y be variables for real numbers, and prove:  
+
+[x,y are rational] => [x+y is rational]  
+
+    proof: (assumption) assume x,y are rational
+           (reasoning)  then there are integers p,q,n,m such that x=p/m, y=q/n  
+           (reasoning)  then x+y=p/m+q/n=(pn+qm)/(mn)
+           (conclusion) hence x+y is rational ■
+
+
+quiz:  
+let r,s be irrational numbers, say which of the following are necessarily irrational  
+- r+3  *
+- 5r   *
+- r+s
+- rs  
+- √r   *
+
+
+**Conditionals involving quantifiers are sometimes best handled by proving the Contrapositive**  
+
+To prove φ=>ψ, prove (¬ψ)=>(¬φ)  
+
+Example, prove [sinΘ!=0]=>(∀n∈N)(Θ!=nπ)  
+
+    proof: the statement is equivalent to ¬(∀n∈N)(Θ!=nπ)=>¬sinΘ!=0
+           in positive form: ∃n∈N(Θ=nπ)=>sinΘ=0  
+           this is True!  
+           this proves the desired result! ■
+
+To prove biconditional φ<=>ψ, we generally construct two proofs: φ=>ψ, ψ=>φ  
+
+Occasionally, it is easier to prove the two conditionals:  
+φ=>ψ and ¬φ=>¬ψ  
+
+
+### Proofs with Quantifiers  
+
+To prove ∃xA(x)  
+
+the obvious way is to find an object a for which A(a)  
+
+i.e. to show there is an irrational number, prove that √2 is irrational  
+
+**However**, this does not always work. Sometimes we use indirect proofs  
+
+**Method of proof by cases**
+
+**Theorem**: There are irrationals r,s such that r^s is rational  
+
+    Proof: we consider 2 cases  
+           case 1: if √2^(√2) is rational, take r=s=√2
+           case 2: if √2^(√2) is irrational, take r=√2^(√2), s=√2
+                   then r^s=[√2^(√2)]^√2=√2^2=2   
+           the theorem is proved ■
+
+
+To prove ∀xA(x)
+
+one way is to take an arbitrary x and show that is satisfies A(x)  
+
+i.e. to prove ∀n∃m(m>n^2), n,m∈N  
+
+    proof: let n be an arbitrary natural number
+           set m=n^2+1
+           then m>n^2
+           this proves ∃m(m>n^2)  
+           if follows that ∀n∃m(m>n^2) ■
+
+    note: this works because the n is arbitrary  
+
+another approach is to use the **method of contradiction**  
+
+To prove ∀xA(x), assume ¬∀xA(x), this is equivalent to ∃x¬A(x)  
+
+let c be an object such that ¬A(c), now reason with c (and the fact that ¬A(c)) to derive a contradicition  
+
+quiz: is the following proof valid? NO!
+
+To prove: (∀x>0)(∃y>0)[y<x], where variables range over rational numbers. (this says that, given any positive rational, you can always find a smaller one)  
+
+to prove it, pick a positive rational p arbitrarily, say p=0.001  
+take q=0.0001. Thus 0<q<p  
+since our choice of p was arbitrary, this proves the desired result  
+
+'pick a positive rational p arbitrarily' is not the same as 'let p be arbitrary' because once the choice is made it's specific  
+
+when letting p be arbitrary, you don't know anything about p  
+
+**Induction**  
+
+to prove statements of the form ∀nA(n), where n ranges over the natural numbers
+
+i.e. prove that 1+2+...+n=(1/2)n(n+1)
+
+    proof: step 1 check the first few cases  
+           n=1 1=(1/2)1(1+1)=1
+           n=2 1+2=(1/2)2(3)=3
+           n=3 1+2+3=(1/2)3(4)=6
+           this is not a proof, beware of jumping to conclusions!
+
+[Euler 1772] consider the formula p(n)=n^2-n+41  
+all values of p(n) for n=1,2,...etc are prime numbers until you reach n=40  
+p(41)=1681=41^2  
+if the formula is p(n)=n^2+n+41, prime for n=1,...,39  
+p(40)=40^2+40+41=40(40+1)+41=41^2  
+
+**Principle of Mathematical Induction**  
+
+to prove ∀nA(n), establish the following 2 statements  
+
+1. A(1) (initial case, initial step)
+2. (∀n)[A(n)=>A(n+1)] (induction step)  
+
+intuitively, this gives ∀nA(n) as follows:  
+by step 1, A(1)   
+by step 2, A(1)=>A(2)  
+so from A(1) we can conclude A(2)   
+by A(2) and the induction step, we can conclude A(3), etc  
+
+**You need an axiom (or principle) to make this work, called the 'principle of mathematical induction'**  
+the PMI is what tells you that step 1 and 2 above yield ∀nA(n)  
+
+Theorem: for any n, 1+2+3+...+n=(1/2)n(n+1)  
+
+A theorem means a rigorous proof can be drived  
+proof is to explain why something is true  
+
+    proof: by mathematical induction  
+           for n=1, the identity reduces to 1=(1/2)1(2)=1  
+           which is true, since both sides equal 1  
+           assume the identity holds for n
+           i.e. 1+2+...+n=(1/2)n(n+1) (*)
+           [want to deduce: 1+2+...+n+1=(1/2)(n+1)((n+1)+1)]
+           add (n+1) to both sides of (*):
+           1+2+...+n+(n+1)=(1/2)n(n+1)+(n+1)
+                          =(1/2)[n(n+1)+2(n+1)]
+                          =(1/2)[n^2+n+2n+2]
+                          =(1/2)[n^2+3n+2]
+                          =(1/2)[(n+1)(n+2)]
+                          =(1/2)[(n+1)(n+1+1)]
+           which is the identity with n+1 in place of n
+           hence, by PMI, the identity holds for all n ■
+
+
+Expressions of the form P(x)=R(x), where P(x), R(x) are formulas involving x, are sometimes called 'equations' and sometimes 'identities'  
+Strictly speaking, the expression is an equation if it can be solved for x  
+and the expression is an identity if it is valid for all x  
+
+
+**Theorem**: if x>0, then for any natural number n, (1+x)^(n+1)>1+(n+1)x  
+
+    proof: by mathematical induction  
+           let A(n) be the statement (1+x)^(n+1)>1+(n+1)x
+           we will prove ∀nA(n)
+           A(1) is the statement (1+x)^2>1+2x  
+           by the binomial theorem  
+           (1+x)^2=1+2x+x^2>1+2x (since x^2>0)     
+           to prove ∀n[A(n)=>A(n+1)]
+           pick an arbitrary n and prove A(n)=>A(n+1)
+           we assume A(n) and deduce A(n+1)
+           A(n): (1+x)^(n+1)>1+(n+1)x
+           A(n+1): (1+x)^(n+2)>1+(n+2)x
+           (1+x)^(n+2)=(1+x)(1+x)^(n+1)>(1+x)[1+(n+1)x]
+                                       =1+(n+1)x+x+(n+1)x^2
+                                       =1+(n+2)x+(n+1)x^2
+                                       >1+(n+2)x
+           this proves A(n+1)
+           the theorem follows by induction ■
+
+Induction - Summary  
+1. you want to prove that some statement A(n) is valid for all natural number n
+2. first prove A(1). usually a matter of simple observation
+3. given an algebraic argument to establish the conditional A(n)=>A(n+1): reduce A(n+1) to form where you can use A(n)
+4. conclusion: by the PMI (principle of mathematical induction), this proves ∀nA(n)
+
+**Common Variant of Induction**
+
+We sometimes need to prove a statement of the form (∀n>=n_0)A(n)  
+step 1 is to verify A(n_0) [A(1) may not be true]  
+step induction is to prove (∀n>=n_0)[A(n)=>A(n+1)]
+
+**The fundamental theorom of Arithmetic**  
+
+**Theorem**: every natural number greater than 1 is either prime or a product of primes  
+
+    proof: by induction  
+           the induction statement A(n) is:
+           ∀m[2<=m<=n => m is either a prime or a product of primes]
+           for n=2, A(2) says '2 is either prime or a product of primes' True!!
+           assume A(n), and deduce A(n+1)
+           let m be a natural number, 2<=m<=n+1
+           if m<=n, then by A(n), m is either a prime or a product of primes  
+           if m=n+1 and if n+1 is prime, then m is prime  
+           if m=n+1 and n+1 is not prime, then there are natural numbers p,q such that 1<p,q<n+1 and n+1=pq
+           since 2<=p,q<=n, by A(n), p,q are either primes or products of primes  
+           hence n+1 is a product of primes
+           the theorem follows by induction ■    
+
+### Number Theory  
+
+Arithmetic is about calculation  
+Number theory examines the abstract properties of numbers  
+
+**Division Theorem**: let a,b be integers, b>0. Then there are unique integers q,r such that a=q*b+r and 0<=r<b  
+
+    proof: we prove existence first, then uniqueness  
+           existence: look at all non-negative integers of the form a-kb
+           where k is an integer, and show that one of them is less than b   
+           step 1 to show that such integers do exist  
+           take k=-|a|, then since b>=1,
+           a-kb=a+|a|b>=a+|a|>=0
+           let r be the smallest such integer  
+           let q be the value of k for which it occurs  
+           i.e. r=a-qb
+           to complete the proof, we show that r<b  
+           suppose on the contrary that r>=b
+           then a-(q+1)b=a-qb-b=r-b>=0  
+           thus a-(q+1)b is a non-negative integer of the form a-kb  
+           but r is the smallest such and yet a-(q+1)b<a-qb=r  
+           Contradiction!
+           hence r<b  
+           this proves existence!
+
+           uniqueness. we show that if there are two representations of a,
+           a=qb+r=q'b+r', 0<=r,r'<b  
+           then r=r' and q=q'  
+           rearranging the above equations
+           (1) r'-r=b(q-q')
+           taking absolute values in (1)
+           (2) |r'-r|=b|q-q'|
+           but -b<-r<=0 and 0<=r'<b, so -b<r'-r<b
+           i.e. |r'-r|<b
+           so by (2) b|q-q'|<b
+           hence |q-q'|<1
+           hence q=q'
+           then by (1), r=r'  
+           this proves uniqueness ■
+
+
+**Hilbert's Hotel** [David Hilbert 1862-1943]
+
+Hilbert's Hotel is a thought experiment which illustrates a counterintuitive property of infinite sets. It is demonstrated that a fully occupied hotel with infinitely many rooms may still accommodate additional guests, even infinitely many of them, and this process may be repeated infinitely often.
+
+Examples like Hilbert's hotel demonstrate the importance of rigorous proofs in mathematics
+
+when proving obvious results like Division Theorem, it seems frivolous, however, when concerning 'infinity', rigorous proof is the only thing we can rely on  
+
+**General Division Theorem**: let a,b be integers, b!=0, then there are unique integers q,r such that a=qb+r and 0<=r<\|b\|
+
+    proof: we have proved the result in the case b>0
+           so assume b<0
+           then since |b|>0, the previous theorem tells us
+           there are unique integers q',r'
+           such that a=q'|b|+r' and 0<=r'<|b|
+           let q=-q', r=r'
+           then since |b|=-b  
+           we get a=qb+r, 0<=r<|b| ■
+
+officially, the number q is called the **quotient** of a by b  
+and r is called the **remainder**  
+
+**Divisibility**
+
+if division of a by b produces a remainder r=0  
+we say a is **divisible** by b  
+hence a is divisible by b iff there is an integer q such that a=bq  
+i.e. 45 is divisible by 9, but 44 is not divisible by 9  
+
+    notation: b|a denotes a is divisible by b  
+    warning: b\|a is not the same b/a  
+             b\|a is a relationship between a and b, which is True or False  
+             b/a denotes a rational number, the result of dividing b by a in the rational numbers   
+
+**Definition of Prime Number**  
+a prime number is an integer p>1 that is divisible only by 1 and p  
+
+quiz:
+
+    b|a iff ∃q[a=bq]
+
+    0|7  F   9|0   T   0|0  F   1|1   T    
+    7|44 F   7|-42 T  -7|49 T  -7|-56 T
+
+
+**Theorem**: let a,b,c,d be integers, a≠0, then:  
+1. a\|0, a\|a  
+2. a\|1 iff a=+-1
+3. if a\|b and c\|d, then ac\|bd for c≠0  
+4. if a\|b and b\|c, then a\|c for b≠0
+5. [a\|b and b\|a] iff a=+-b  
+6. if a\|b and b≠0, then \|a\|<=\|b\|
+7. if a\|b and a\|c, then a\|(bx+cy) for any integers x,y  
+
+        proof: 4. ∃d,e such that b=da, c=eb
+               so c=(de)a, hence a|c ■
+
+        proof: 6. ∃d such that b=da  
+               so |b|=|d||a|
+               since b≠0, |d|>=1
+               so |a|<=|b| ■
+
+**Fundamental Theorem of Arithmetic**  
+
+**Theorem**: every natural number greater than 1 is either prime or can be expressed as a product of primes in a way that is unique except for their order (in which they are written)  
+
+i.e. 4=2x2=2^2, 6=2x3, 8=2^3, 9=3^2, 10=2x5, 12=2^2x3, ..., 3366=2x3^2x11x17, ...
+
+The expression of a number as a product of primes is called its **prime decomposition**  
+
+The uniqueness proof will require **'Euclid's Lemma'**: if a prime p divides a product ab, then p divides at least one of a,b  
+
+    proof: existence. prove it by contradiction  
+           suppose there were a composite number (i.e. non-prime) that could not be written as a product of primes  
+           then there must be a smallest such number, call it n
+           since n is not prime, there are numbers a,b with 1<a,b<n  
+           such that n=ab  
+           if a,b are primes, then n=ab is a prime decomposition of n  
+           and we have a contradiction
+           (because n is chosen to not have a prime decomposition)  
+           if either of a,b is composite, then because it is less than n, it must be a product of primes
+           so by replacing one or both of a,b by its prime decomposition in n=ab  
+           we get a prime decomposition of n
+           and again, we have a contradiction  
+           this proves the existence  
+
+           uniqueness. to prove the prime decomposition of any natural number n>1 is unique up to the ordering of the primes  
+           proof by contradiction
+           assume there is a number n>1 that has two (or more) different prime decomposition  
+           let n be the smallest such number  
+           let n=p1p2...pr=q1q2...q2 (*) be two different prime decomposition of n  
+           since p1 divides (q1)(q2...qs)
+           by Euclid's Lemma, either p1|q1 or p1|(q2...qs)
+           hence, either p1=q1, or else p1=qi for some i between 2 and s  
+           but then we can delete p1 and qi from the two decomposition in (*)
+           which gives us a number smaller than n that has two different prime decompositions
+           contrary to the choice of n as the smallest such
+           this proves uniqueness ■
+
+
+
+
+
+
+
+### Some Definitions  
+
+Integers include the operations of +-x  
+Rationals include the operations of +-x/  
+
+0 is not a natural number
+
+1 is not a prime number
+
+A **prime number** is a positive integer n, greater than 1, whose only exact divisors are 1 and n
+
+A **rational number** is a number that can be expressed as the quotient or fraction p/q of two integers, a numerator p and a non-zero denominator q  
+
+
+
+
+### Theorem, Lemma, etc  
+
+Theorem — a mathematical statement that is proved using rigorous mathematical reasoning.  In a mathematical paper, the term theorem is often reserved for the most important results.
+
+Lemma — a minor result whose sole purpose is to help in proving a theorem.  It is a stepping stone on the path to proving a theorem. Very occasionally lemmas can take on a life of their own (Zorn’s lemma, Urysohn’s lemma, Burnside’s lemma, Sperner’s lemma).
+
+Corollary — a result in which the (usually short) proof relies heavily on a given theorem (we often say that “this is a corollary of Theorem A”).
+
+Proposition — a proved and often interesting result, but generally less important than a theorem.
+
+Conjecture — a statement that is unproved, but is believed to be true (Collatz conjecture, Goldbach conjecture, twin prime conjecture).
 
 
 
@@ -571,3 +1018,5 @@ https://math.stackexchange.com/questions/2425167/fixing-a-wobbly-table-revisited
 https://b-ok.asia/book/2665796/97e675?dsource=recommend
 
 https://www.coursera.org/learn/mathematical-thinking/discussions
+
+[What is the difference between a theorem, a lemma, and a corollary?](https://divisbyzero.com/2008/09/22/what-is-the-difference-between-a-theorem-a-lemma-and-a-corollary/)
