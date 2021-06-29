@@ -64,6 +64,10 @@ gallery:
     image_path: /assets/images/tibet2.jpg
     alt: "placeholder image 5"
     title: "Tibet"
+  - url: /assets/images/snowm.png
+    image_path: /assets/images/snowm.png
+    alt: "placeholder image 5"
+    title: "Nara"
 
 ---
 

@@ -44,9 +44,9 @@ The introspection led to the adoption of a new and different conception of math,
 Lejeune Dirichlet, Richard Dedekind, Bernhard Riemann ...
 
 Dirichlet: forget the formula and concentrate on what the function does in terms of input-output behavior. A function is any rule that takes objects of one kind and procduces new objects from them  
-i.e. if x is rational, set f(x)=0; if x is irrational, set f(x)=1  
+eg. if x is rational, set f(x)=0; if x is irrational, set f(x)=1  
 
-Mathematicians began to study the properties of such abstract functions, specified not by some formula but by their behavior. i.e. does the function have the property that when you present it with different starting values it always produces different answers? <- injectivity  
+Mathematicians began to study the properties of such abstract functions, specified not by some formula but by their behavior. eg. does the function have the property that when you present it with different starting values it always produces different answers? <- injectivity  
 
 => real analysis: Some particular properties of real-valued sequences and functions that real analysis studies include convergence, limits, continuity, smoothness, differentiability and integrability.  
 
@@ -196,7 +196,7 @@ the truth of ψ follows from the truth of φ
 implication involves casualty
 
 conjunction and disjunction assume statements are independent without any inner relation <- purely truth and falsity      
-i.e. (Julius caesar is dead) ^ (1+1=3)  F  
+eg. (Julius caesar is dead) ^ (1+1=3)  F  
 (Julius caesar is dead) v (1+1=3)  T  
 
 Implication has truth part and causation part  
@@ -218,7 +218,7 @@ the truth of the conditional φ => ψ is defined in form of the truth of φ and 
     T  T    T
     T  F    F
 
-i.e.  
+eg.  
 φ: N>7  T  
 ψ:N^2>40  T  
 φ=>ψ:T <- there is some connection  
@@ -241,7 +241,7 @@ Implication has a property that a true implication leads to a true conclusion fr
 in all other circumstances φ =/> ψ is F, which means φ => ψ is T  
 other circumstances include φ F and ψ T, φ F and ψ F  
 
-i.e.  
+eg.  
 Euclid's birthday was July 4 => Rectangles have four sides (T)  
 T => T is T  
 F => T is T  
@@ -255,7 +255,7 @@ F => T is T
 
 Φ<=>Ψ is T, if Φ, Ψ are both true or both false  
 
-i.e.  
+eg.  
 (φ^ψ)v(¬φ) is equivalent to φ=>ψ  
 "(φ^ψ)v(¬φ) is equivalent" is Φ  
 "φ=>ψ" is Ψ   
@@ -283,7 +283,7 @@ quantifiers are used to refer to the two extremes, there is at least one and for
 
 "there is an object x having property p"  
 
-i.e the equation x^2+2x+1=0 has a real root  
+eg. the equation x^2+2x+1=0 has a real root  
 can be written into:  
 there is a real number x such that x^2+2x+1=0  
 there exists a real number x such that x^2+2x+1=0  
@@ -295,7 +295,7 @@ in math:
 
 to prove this statement, suppose x=-1, 1-2+1=0  
 
-i.e ∃x [x^3+3x+1=0] (sometime this statement can be proved without solving it - indirect proof)  
+eg. ∃x [x^3+3x+1=0] (sometime this statement can be proved without solving it - indirect proof)  
 
 look at y=x^3+3x+1 (a cubic equation)  
 this is a continuous function  
@@ -312,7 +312,7 @@ Wobbly Table Theorem
 
 Suppose you are sitting in a restaurant at a perfectly square table with four identical legs, one at each corner. Because the floor is uneven, the table wobbles. One solution is to fold a small piece of paper and insert it under one leg until the table is stable. But there's another solution. Simply by rotating the table, you'll be able to position it so that it doesn't wobble. You might enjoy trying to prove this.  
 
-i.e. statement: squared root of 2 is rational  
+eg. statement: squared root of 2 is rational  
 it doenst look like an existence statement, but it is!  
 -> there exists natural number p,q such that √2 = p/q  
 -> ∃p, ∃q [√2 = p/q], p,q should be natural number  
@@ -368,7 +368,7 @@ quiz: "A drivers license valid in one state is valid in any state."
 3. next priority is conjunction (...)^(...)
 4. then come disjunction, implication (conditional) and equivalence (...)v(...) (...)=>(...) (...)<=>(...)
 
-i.e.  
+eg.  
 (∀L)[(∃S1)Valid(L,S1)=>(∀S2)Valid(L,S2)] <- True in US   
 L is bound by ∀L  
 for any license L, if L is valid in some state, then L is valid in every state  
@@ -592,7 +592,7 @@ Prove 'there are infinitely many primes'
 1. you want to prove some statement Φ
 2. you start by assuming ¬Φ
 3. you reason until you reach a conclusion that is false  
-often by deducing both Φ and ¬Φ for some Φ, i.e. 'p, q have no common factors' and 'p,q are both even'  
+often by deducing both Φ and ¬Φ for some Φ, eg. 'p, q have no common factors' and 'p,q are both even'  
 4. a true assumption cannot lead to a false conclusion
 5. hence the assumption ¬Φ must be false  
 6. in other words, Φ must be true  
@@ -675,7 +675,7 @@ To prove ∃xA(x)
 
 the obvious way is to find an object a for which A(a)  
 
-i.e. to show there is an irrational number, prove that √2 is irrational  
+eg. to show there is an irrational number, prove that √2 is irrational  
 
 **However**, this does not always work. Sometimes we use indirect proofs  
 
@@ -694,7 +694,7 @@ To prove ∀xA(x)
 
 one way is to take an arbitrary x and show that is satisfies A(x)  
 
-i.e. to prove ∀n∃m(m>n^2), n,m∈N  
+eg. to prove ∀n∃m(m>n^2), n,m∈N  
 
     proof: let n be an arbitrary natural number
            set m=n^2+1
@@ -726,7 +726,7 @@ when letting p be arbitrary, you don't know anything about p
 
 to prove statements of the form ∀nA(n), where n ranges over the natural numbers
 
-i.e. prove that 1+2+...+n=(1/2)n(n+1)
+eg. prove that 1+2+...+n=(1/2)n(n+1)
 
     proof: step 1 check the first few cases  
            n=1 1=(1/2)1(1+1)=1
@@ -765,7 +765,7 @@ proof is to explain why something is true
            for n=1, the identity reduces to 1=(1/2)1(2)=1  
            which is true, since both sides equal 1  
            assume the identity holds for n
-           i.e. 1+2+...+n=(1/2)n(n+1) (*)
+           eg. 1+2+...+n=(1/2)n(n+1) (*)
            [want to deduce: 1+2+...+n+1=(1/2)(n+1)((n+1)+1)]
            add (n+1) to both sides of (*):
            1+2+...+n+(n+1)=(1/2)n(n+1)+(n+1)
@@ -847,7 +847,7 @@ Number theory examines the abstract properties of numbers
            a-kb=a+|a|b>=a+|a|>=0
            let r be the smallest such integer  
            let q be the value of k for which it occurs  
-           i.e. r=a-qb
+           eg. r=a-qb
            to complete the proof, we show that r<b  
            suppose on the contrary that r>=b
            then a-(q+1)b=a-qb-b=r-b>=0  
@@ -865,7 +865,7 @@ Number theory examines the abstract properties of numbers
            taking absolute values in (1)
            (2) |r'-r|=b|q-q'|
            but -b<-r<=0 and 0<=r'<b, so -b<r'-r<b
-           i.e. |r'-r|<b
+           eg. |r'-r|<b
            so by (2) b|q-q'|<b
            hence |q-q'|<1
            hence q=q'
@@ -900,7 +900,7 @@ and r is called the **remainder**
 if division of a by b produces a remainder r=0  
 we say a is **divisible** by b  
 hence a is divisible by b iff there is an integer q such that a=bq  
-i.e. 45 is divisible by 9, but 44 is not divisible by 9  
+eg. 45 is divisible by 9, but 44 is not divisible by 9  
 
     notation: b|a denotes a is divisible by b  
     warning: b\|a is not the same b/a  
@@ -939,14 +939,14 @@ quiz:
 
 **Theorem**: every natural number greater than 1 is either prime or can be expressed as a product of primes in a way that is unique except for their order (in which they are written)  
 
-i.e. 4=2x2=2^2, 6=2x3, 8=2^3, 9=3^2, 10=2x5, 12=2^2x3, ..., 3366=2x3^2x11x17, ...
+eg. 4=2x2=2^2, 6=2x3, 8=2^3, 9=3^2, 10=2x5, 12=2^2x3, ..., 3366=2x3^2x11x17, ...
 
 The expression of a number as a product of primes is called its **prime decomposition**  
 
 The uniqueness proof will require **'Euclid's Lemma'**: if a prime p divides a product ab, then p divides at least one of a,b  
 
     proof: existence. prove it by contradiction  
-           suppose there were a composite number (i.e. non-prime) that could not be written as a product of primes  
+           suppose there were a composite number (eg. non-prime) that could not be written as a product of primes  
            then there must be a smallest such number, call it n
            since n is not prime, there are numbers a,b with 1<a,b<n  
            such that n=ab  
@@ -973,12 +973,254 @@ The uniqueness proof will require **'Euclid's Lemma'**: if a prime p divides a p
            this proves uniqueness ■
 
 
+### Real Analysis  
+
+Elementary Set Theory
+
+Numbers for counting and measurement  
+
+**Discrete counting numbers** for counting  
+
+**Continuous real numbers** for measurement  
+
+Connection between discrete counting numbers and continuous real numbers were established by
+
+Integers -> Rationals -> Reals  
+
+**Theorem**: If r,s are rationals, r<s, then there is a rational t such that r<t<s  
+
+[This property is called **density**. The rational line is dense]
+
+    ---|---o---|---
+       r   t   s
+
+    proof: let t=(1/2)(r+s)
+           clearly r<t<s
+           is t∈Q?
+
+           let r=m/n, s=p/q, where m,n,p,q∈Z  
+           then t=(1/2)(m/n+p/q)=(mq+np)/(2nq)
+           so as mq+np, 2nq∈Z
+           so t∈Q ■
 
 
+Density means you can always find a value closer to the target value  
+The fact that the rational line is dense is **between every non-equal pair of rationals lies a third rational**  
+However, density does not mean there are no holes in the rational line (eg. √2)
+
+Let A={x∈Q \| x<=0 v x^2<2}, B={x∈Q \| x>0 ^ x^2>=2}
+
+    <----------A-|-B--------->
+    -----|-------o-------->Q
+         0       ^
+                √2
+
+Clearly AUB=Q, but A has no greatest number and B has no smallest number  
+
+Hence, the rationals are inadequate to do mathematics  
+
+In Q, we cannot solve the equation x^2-2=0
+
+N ⊂ Z ⊂ Q ⊂ R  
+
+N is for counting  
+Z is for arithmetics when we have negative values  
+Q is for measuring things  
+R is for mathematics <- fill in the 'holes' in Q  
+
+**Intervals**  
+
+Let a,b ∈ R, a<b.  
+The open interval (a,b) is the set (a,b)={x∈R \| a<x<b}  
+The closed interval [a,b] is the set [a,b]={x∈R \| a<=x<=b}  
+
+Note: a,b∈[a,b], but a,b!∈(a,b), these two are in big big big distinction!  
+
+Variants of the notation:  
+half-open (or half-closed) intervals  
+[a,b)={x∈R \| a<=x<b}  <- left-closed, right-open  
+(a,b]={x∈R \| a<x<=b}  <- left-open, right-closed  
+(-∞,a)={x∈R \| x<a}, (-∞,a]={x∈R \| x<=a}    
+(a,∞)={x∈R \| x>a}, (a,∞]={x∈R \| x>=a}  
+
+Note: we don't have (-,∞] or [∞,-), bc ∞ is not a real number  
+
+**Completeness Property**  
+
+Given a set A of reals, a number b such that (∀a∈A)[a<=b] is said to be an upper bound of A.  
+We say b is a **least upper bound** of A if, in addition, for any upper bound c of A, we have b<=c.  
+
+Notation: lub(A) <- least upper bound  
+[We can make the same definition in N,Z,Q]  
+
+The **completeness property** of the real numbers system says that every nonempty set of reals that has an upper bound, has a least upper bound (in R)  
+
+eg. 7 is the least upper bound of the interval (-3,7)
+
+**Beginnings of 'Real Analysis'**
+
+'Real Analysis' here means 'Real Number System'  
+
+**Theorem**: the rational line is not complete  
+
+[Completeness means if A⊂R has an upper bound then it has a lub in R]  
+if we replace R with Q (rationals), the completeness property will not hold  
+
+    proof: let A={r∈Q | r>=0 ^ r^2<2}
+           A is bounded above, eg. 2 is an upper bound  
+           I will show that A has no lub  
+           let x∈Q be any upper bound of A, show there is a smaller one (in Q)
+           let x=p/q, where p,q∈N
+           suppose x^2<2  
+           then 2q^2>p^2  
+           as n gets larger, (n^2)/(2n+1) increases without bound  
+           so we can pick an n∈N so large that
+             n^2       p^2
+           ------ > --------  eg. (2n^2)(q^2)>(n+1)^2(p^2)
+            2n+1    2q^2-p^2
+
+                  n+1    p^2
+           hence (---)^2 --- < 2  
+                   n     q^2
+
+                  n+1 p
+           let y=(---)-
+                   n  q
+
+           thus y∈Q and y^2<2  
+           so y∈A  
+           but y>x, contradiction!
+           since x is an upper bound of A  
+           so x^2 should be >=2  
+
+           now show show there is a smaller one (in Q)  
+           we have A={r∈Q | r>=0 ^ r^2<2}
+           x is an upper bound of A, x=p/q  
+           goal: show that A has an upper bound smaller than x  
+           we just showed that x^2>=2  
+           since x∈Q, x^2>2  
+           thus p^2>2q^2  
+           pick an integer n so large that:
+
+            n^2     2q^2
+           ---- > -------- , i.e. (p^2)(n^2)>(2q^2)(n+1)^2  
+           2n+1   p^2-2q^2
+
+                p^2   n
+           i.e. --- (---)^2 >2  
+                q^2  n+1
+
+                    n   p
+           let y= (---)---
+                   n+1  q
+
+           then y∈Q and y^2>2  
+           since (n)/(n+1)<1, y<x  
+           but for any a∈A, a^2<2<y^2, so a<y  
+           hence y is an upper bound of A, smaller than x  
+           thus A does not have a lub  
+           this proves the theorem ■
+
+the construction of R from Q can be done in several different ways, but in all cases the aim is to prevent an argument like the above going through for R  
+
+**Real Number Sequences**  
+
+List: a1, a2, a3, ... <- infinite sequence
+
+         ∞
+    {a_n}
+         n=1
+
+
+eg.
+
+    1,2,3,... ={n}^∞_{n=1}  
+    7,7,7,... =[7]^∞_{n=1}  
+    3,1,4,1,5,9, ... = the decimal digits of π  
+    {(-1)^(n+1)}^∞_{n=1} = 1,-1,1,-1 ...(alternating sequence)
+
+
+look at:
+
+    {1/n}^∞_{n=1} = 1, 1/2, 1/3, 1/4 ... the numbers get closer and closer to 0 (arbitrarily to 0)  
+    {1+1/(2^n)}^∞_{n=1} = 1(1/2), 1(1/4), 1(1/8), 1(1/16), ... get arbitrarily close to 1  
+    3, 3.1, 3.14, 3.141, 3.1415, 3.14159, ... gets arbitrarily close to π  
+
+If the numbers in a sequence {a_n}^∞\_{n=1} get arbitrarily closer to some fixed number a, we say {a_n}^∞\_{n=1} tends to the limit a, and write a_n->a as n->∞  
+
+    lim  a_n=a
+    n->∞
+
+**Formal Definition**  
+
+    {a_n}^∞_{n=1}  a_n->a as n->∞ ≈ |a_n-a| becomes arbitrarily close to 0
+
+a_n->a as n->∞ iff (∀ε>0)(∃n∈N)(∀m>=n)[\|a_m-a\|<ε]
+
+ε - a small positive number  
+
+consider the part (∃n)(∀m>=n)[\|a_m-a\|<ε]  
+
+from some point n onwards, all the number in the sequence {a_n}^∞_{n=1} are within a distance of ε from a  
+
+intuition is that we can take ε>0 as small as we want  
+
+eg. {1/n}^∞_{n=1}  1/n -> 0 as n->∞  
+
+    proof: (∀ε>0)(∃n∈N)(∀m>=n)[|1/m-0|<ε]
+           (∀ε>0)(∃n)(∀m>=n)[1/m<ε] (bc m>0)
+           let ε>0 be given (let ε>0 be arbitrary)  
+           we need to find an n such that
+           (∀m>=n)[1/m<ε]
+           pick any n such that n>1/ε [use the Archimedian property]
+           then if m>=n, 1/m <= 1/n < ε ■
+
+Note: quantifier order matter! the choice of n depended on ε, different ε different n!  
+
+quiz:  
+given a sequence {a_n}^∞_{n=1}  
+(∀ε>0)(∃n)(∀m>n)[|a_m-L|<ε] means  
+the sequence tends to limit L as n tends to ∞  
+
+eg. {n/(n+1)}^∞_{n=1} : 1/2,2/3,3/4,4/5 ...  
+
+prove n/(n+1) -> 1 as n->∞  
+
+    proof: (∀ε>0)(∃n∈N)(∀m>=n)[|m/(m+1)-1|<ε]  
+           let ε>0 be given  
+           we need to find an n s.t for all m>=n:
+           |m/(m+1)-1|<ε  
+           pick n so large that n>(1/ε)  
+           then for any m>=n  
+           |m/(m+1)-1|=|-1/(m+1)|=1/(m+1)<1/m<=1/n<ε ■
 
 
 
 ### Some Definitions  
+
+A **real number** is a value of a continuous quantity that can represent a distance along a line (or alternatively, a quantity that can be represented as an infinite decimal expansion)
+
+The real numbers include all the rational numbers, such as the integer −5 and the fraction 4/3, and all the irrational numbers, such as √2 (1.41421356..., the square root of 2, an irrational algebraic number)
+
+Included within the irrationals are the real transcendental numbers, such as π (3.14159265...)
+
+In addition to measuring distance, real numbers can be used to measure quantities such as time, mass, energy, velocity, and many more
+
+The set of real numbers is denoted using the symbol (R)   
+
+A **rational number** is a number that can be expressed as the quotient or fraction p/q of two integers, a numerator p and a non-zero denominator q
+
+eg. −3/7 is a rational number, as is every integer (e.g. 5 = 5/1)
+
+The set of all rational numbers, also referred to as "the rationals" is usually denoted by a boldface (Q)
+
+An **integer** (from the Latin integer meaning "whole") is colloquially defined as a number that can be written without a fractional component
+
+eg. 21, 4, 0, and −2048 are integers, while 9.75, 5(1/2), and √2 are not
+
+The set of integers consists of zero (0), the positive natural numbers (1, 2, 3, ...), also called whole numbers or counting numbers, and their additive inverses (the negative integers, eg., −1, −2, −3, ...)
+
+The set of integers is often denoted by the boldface (Z)
 
 Integers include the operations of +-x  
 Rationals include the operations of +-x/  
