@@ -68,7 +68,10 @@ gallery:
     image_path: /assets/images/snowm.png
     alt: "placeholder image 5"
     title: "Nara"
-
+  - url: /assets/images/karamatsu.jpg
+    image_path: /assets/images/karamatsu.jpg
+    alt: "placeholder image 5"
+    title: "Nagano"
 ---
 
 <center>
