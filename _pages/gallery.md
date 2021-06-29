@@ -28,8 +28,8 @@ gallery:
     image_path: /assets/images/russia.jpg
     alt: "placeholder image 2"
     title: "Russia"
-  - url: /assets/images/shanghai2.jpg
-    image_path: /assets/images/shanghai2.jpg
+  - url: /assets/images/shanghaibw.jpg
+    image_path: /assets/images/shanghaibw.jpg
     alt: "placeholder image 1"
     title: "Shanghai"
   - url: /assets/images/hakuba.jpg
@@ -54,23 +54,27 @@ gallery:
     title: "Wakayama"
   - url: /assets/images/xinjiang.jpg
     image_path: /assets/images/xinjiang.jpg
-    alt: "placeholder image 2"
+    alt: "placeholder image 1"
     title: "Kashgar"
   - url: /assets/images/tibet1.jpg
     image_path: /assets/images/tibet1.jpg
-    alt: "placeholder image 4"
+    alt: "placeholder image 3"
     title: "Tibet"
   - url: /assets/images/tibet2.jpg
     image_path: /assets/images/tibet2.jpg
-    alt: "placeholder image 5"
+    alt: "placeholder image 2"
     title: "Tibet"
   - url: /assets/images/snowm.png
     image_path: /assets/images/snowm.png
-    alt: "placeholder image 5"
+    alt: "placeholder image 3"
     title: "Nara"
+  - url: /assets/images/ibuki.jpg
+    image_path: /assets/images/ibuki.jpg
+    alt: "placeholder image 2"
+    title: "Shiga"
   - url: /assets/images/karamatsu.jpg
     image_path: /assets/images/karamatsu.jpg
-    alt: "placeholder image 5"
+    alt: "placeholder image 1"
     title: "Nagano"
 ---
 
