@@ -20,6 +20,6 @@ I spent my PhD years under the supervisions of [Prof. Shin Ishii](http://ishiila
 
 During Phd, I developed an affordable and sustainable smartphone robotic platform to investigate artificial intelligence, mainly from the perspective of Reinforcement Learning to understand animal and human behaviors.
 
-My current research lies in investigating how separating reward and pain distinguished from traditional RL reward setting could help for exploration and improving data efficiency.
+My current research lies in investigating how separating reward and pain distinguished from traditional RL reward setting could help for exploration and improving learning efficiency.
 
 Personally, I am a mountain climber in a pre-alpinist level.
