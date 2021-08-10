@@ -903,8 +903,8 @@ hence a is divisible by b iff there is an integer q such that a=bq
 eg. 45 is divisible by 9, but 44 is not divisible by 9  
 
     notation: b|a denotes a is divisible by b  
-    warning: b\|a is not the same b/a  
-             b\|a is a relationship between a and b, which is True or False  
+    warning: b|a is not the same b/a  
+             b|a is a relationship between a and b, which is True or False  
              b/a denotes a rational number, the result of dividing b by a in the rational numbers   
 
 **Definition of Prime Number**  
@@ -1262,3 +1262,7 @@ https://b-ok.asia/book/2665796/97e675?dsource=recommend
 https://www.coursera.org/learn/mathematical-thinking/discussions
 
 [What is the difference between a theorem, a lemma, and a corollary?](https://divisbyzero.com/2008/09/22/what-is-the-difference-between-a-theorem-a-lemma-and-a-corollary/)
+
+[Real Analysis solution hints Jay Cummings](https://longformmath.com/hints-and-solutions)
+
+[Course Solution at github](https://github.com/adyavanapalli/stanford-introduction-to-mathematical-thinking)

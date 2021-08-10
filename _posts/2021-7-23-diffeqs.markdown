@@ -1,0 +1,46 @@
+---
+layout: single
+type: posts
+title:  "Differential Equations"
+date:   2021-7-23 17:15:25 +0900
+related: true
+categories: Mathematics
+tags:
+  #- Index
+  - Mathematics
+author:  Jiexin Wang
+classes:  wide
+toc: true
+toc_label: "Index"
+author_profile: true
+---
+
+### First Order Linear
+
+### Notation  
+
+∈ ∉ ∀ ∃ ≤ ≥ ≠ ∅ Σ Π π ∞ ⊆ ∤ ± ≅ ≡
+
+i.e. in other words  
+e.g. for example  
+ex. example  
+sps suppose  
+■ end of proof  
+!contradiction!  
+-> <- implies instead of => <=    
+{} under label  
+gcd() greatest common divisor ex. gcd(5,10)=5 gcd(24,36)=12  
+lcm() least common multiple ex. lcm(36,12)=36 lcm(18,12)=36  
+w/ with   
+w/o without  
+b/c because  
+equv equivalent to  
+
+
+### Memo  
+
+
+
+### Reference
+
+Micheal Penn's Youtube Channel

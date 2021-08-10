@@ -76,6 +76,14 @@ gallery:
     image_path: /assets/images/karamatsu.jpg
     alt: "placeholder image 1"
     title: "Nagano"
+  - url: /assets/images/yari.jpg
+    image_path: /assets/images/yari.jpg
+    alt: "placeholder image 2"
+    title: "North Alps"
+  - url: /assets/images/yaricamp.jpg
+    image_path: /assets/images/yaricamp.jpg
+    alt: "placeholder image 3"
+    title: "North Alps"
 ---
 
 <center>

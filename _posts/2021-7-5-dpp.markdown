@@ -1,0 +1,68 @@
+---
+layout: single
+type: posts
+title:  "Dynamic Policy Programming"
+date:   2021-7-5 15:54:25 +0900
+related: true
+categories: Literature
+tags:
+  #- Index
+  - Reinforcement Learning
+author:  Jiexin Wang
+classes:  wide
+toc: true
+toc_label: "Index"
+author_profile: true
+---
+
+### Intro  
+
+A control problem can be solved by **finding the optimal policy using dynamic programming**  
+
+**Dynamic Programing** estimates some measures of state-action values eg. Q*(x,a) through Bellman equation  
+
+(-) for high-dimensional discrete systems, or for continuous systems, computing the value function by DP is intractable  
+
+common approach is: to use function approximation, or Monte-Carlo sampling  
+
+DPP: forcing an incremental change between two consecutive policies, accumulating the approximation error of all the previous iterations, rather than just minimizing the approximation error of the current iteration  
+
+The proposed setting differs from the standard RL: we rely on a generative model from which samples can be drawn. i.e. the agent has full control on the sample queries that can be made for any arbitrary state  
+
+
+### MDP Formulation
+
+    {X,A,P,R,γ}
+
+    π(·|x) - Markovian stationary policy  
+    Vπ:X->ℝ - given π, the corresponding value function  
+    Vπ(x) - value function in each state x  
+    Qπ:Z->ℝ - given π, the corresponding action value function  
+    Qπ(x,a) - action value function choosing action a from state x following π
+    Tπ - the Bellman operator
+
+
+
+**Assumption 1 (MDP Regularity)**: we assume that X and A are finite sets with the cardinalities \|X\| and \|A\|, respectively. Also, the absolute value of the immediate reward r(x,a) is bounded from above by Rmax>0 ∀(x,a)∈Z.
+
+Denote: X\*A=>Z (joint space of X and A), Vmax=Rmax/(1-γ)
+
+**Stationary Policy:** the distribution of the control action is independent of time  
+
+**Deterministic Policy:** ∀x∈X, ∃a s.t. π(a\|x)=1  
+
+**Value Function:** the expected total discounted reward in each state x, when the action is chosen by policy π
+
+**Action Value Function:** the expected total discounted reward upon choosing action a from state x following π
+
+
+### Notation  
+
+γ · ∀ ∃ ℝ ≜
+
+∈ ∉ ∀ ∃ ≤ ≥ ≠ ∅ Σ Π π ∞ ⊆ ∤ ± ≅ ≡
+
+
+### Reference
+
+[1] Dynamic Policy Programming JMLR 2012
