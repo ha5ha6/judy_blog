@@ -95,28 +95,28 @@ the actor network is more like an approximate sampler, rather than the actor in 
 
 an infinite-horizon MDP  
 
-![](http://localhost:4000/judy_blog/assets/images/sac_context.jpeg){:width="80%"}
+![](/judy_blog/assets/images/sac_context.jpeg){:width="80%"}
 
 **policy iteration**:  
 - soft policy evaluation
 - soft policy improvement  
 
-![](http://localhost:4000/judy_blog/assets/images/softpolicyeval.jpg){:width="80%"}
+![](/judy_blog/assets/images/softpolicyeval.jpg){:width="80%"}
 
-![](http://localhost:4000/judy_blog/assets/images/softpolicyimpr.jpg){:width="80%"}
+![](/judy_blog/assets/images/softpolicyimpr.jpg){:width="80%"}
 
 
 ### Soft Actor Critic
 
-![](http://localhost:4000/judy_blog/assets/images/sac1.jpg){:width="80%"}
+![](/judy_blog/assets/images/sac1.jpg){:width="80%"}
 
-![](http://localhost:4000/judy_blog/assets/images/sac2.jpg){:width="80%"}
+![](/judy_blog/assets/images/sac2.jpg){:width="80%"}
 
-![](http://localhost:4000/judy_blog/assets/images/sac3.jpg){:width="80%"}
+![](/judy_blog/assets/images/sac3.jpg){:width="80%"}
 
 Two Q functions update:
 
-![](http://localhost:4000/judy_blog/assets/images/2qupdate.jpg){:width="80%"}
+![](/judy_blog/assets/images/2qupdate.jpg){:width="80%"}
 
 
 
@@ -137,7 +137,7 @@ SAC has good performance in terms of complicated tasks such as Humanoid-v1 and H
 
 The entropy appears in both the policy and value function
 
-![](http://localhost:4000/judy_blog/assets/images/stovsdeter.jpg){:width="80%"}
+![](/judy_blog/assets/images/stovsdeter.jpg){:width="80%"}
 
 Stochasticity can stabilize training as the variability between the random seeds becomes much higher with a deterministic policy  
 
@@ -159,24 +159,24 @@ With the right reward scaling, the model balances exploration and exploitation, 
 
 Difference in Value function
 
-![](http://localhost:4000/judy_blog/assets/images/sacsql_value.jpg){:width="80%"}
+![](/judy_blog/assets/images/sacsql_value.jpg){:width="80%"}
 
 Difference in Policy
 
-![](http://localhost:4000/judy_blog/assets/images/sacsql_policy.jpg){:width="80%"}
+![](/judy_blog/assets/images/sacsql_policy.jpg){:width="80%"}
 
 
 ### SAC with Automating Entropy Adjustment
 
-![](http://localhost:4000/judy_blog/assets/images/sac_alpha1.jpg){:width="80%"}
+![](/judy_blog/assets/images/sac_alpha1.jpg){:width="80%"}
 
-![](http://localhost:4000/judy_blog/assets/images/sac_alpha2.jpg){:width="80%"}
+![](/judy_blog/assets/images/sac_alpha2.jpg){:width="80%"}
 
 SAC variant
 
-![](http://localhost:4000/judy_blog/assets/images/sac_alpha3.jpg){:width="80%"}
+![](/judy_blog/assets/images/sac_alpha3.jpg){:width="80%"}
 
-![](http://localhost:4000/judy_blog/assets/images/sac_alpha4.jpg){:width="80%"}
+![](/judy_blog/assets/images/sac_alpha4.jpg){:width="80%"}
 
 Alpha-Entropy Objective
 
@@ -185,7 +185,7 @@ Alpha-Entropy Objective
 
 ### Discrete Soft AC
 
-![](http://localhost:4000/judy_blog/assets/images/sac_discrete.jpg){:width="80%"}
+![](/judy_blog/assets/images/sac_discrete.jpg){:width="80%"}
 
 
 
