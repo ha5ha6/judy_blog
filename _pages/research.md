@@ -20,7 +20,6 @@ excerpt: "publications by years"
 
 ## Journal Paper
 - <span style="font-family:Serif; font-size:0.9em;"> J. Wang, S. Elfwing and E. Uchibe. Modular deep reinforcement learning from reward and punishment for robot navigation. <br /> *Neural Networks*. DOI 10.1016/j.neunet.2020.12.001. 2020 <br /> [[website]](https://www.sciencedirect.com/science/article/pii/S0893608020304184) [[researchgate]](https://www.researchgate.net/publication/347457388_Modular_deep_reinforcement_learning_from_reward_and_punishment_for_robot_navigation) [[pdf]](https://www.sciencedirect.com/science/article/pii/S0893608020304184/pdfft?md5=1d159d73318147716fc1ecdab06d0da5&pid=1-s2.0-S0893608020304184-main.pdf)<br /></span>
-
 ![](/judy_blog/assets/images/errata.png){:width="80%"}
 
 
