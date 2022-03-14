@@ -59,16 +59,16 @@ what is data efficiency in machine learning?
 
 ### Distral
 
-![](http://localhost:4000/judy_blog/assets/images/distral1.jpeg){:width="80%"}
-![](http://localhost:4000/judy_blog/assets/images/distral2.jpeg){:width="80%"}
-![](http://localhost:4000/judy_blog/assets/images/distral3.jpeg){:width="80%"}
+![](/judy_blog/assets/images/distral1.jpeg){:width="80%"}
+![](/judy_blog/assets/images/distral2.jpeg){:width="80%"}
+![](/judy_blog/assets/images/distral3.jpeg){:width="80%"}
 
 The learning procedure:  
 
-![](http://localhost:4000/judy_blog/assets/images/distral4.jpeg){:width="80%"}
-![](http://localhost:4000/judy_blog/assets/images/distral5.jpeg){:width="80%"}
-![](http://localhost:4000/judy_blog/assets/images/distral6.jpeg){:width="80%"}
-![](http://localhost:4000/judy_blog/assets/images/distral7.jpeg){:width="80%"}
+![](/judy_blog/assets/images/distral4.jpeg){:width="80%"}
+![](/judy_blog/assets/images/distral5.jpeg){:width="80%"}
+![](/judy_blog/assets/images/distral6.jpeg){:width="80%"}
+![](/judy_blog/assets/images/distral7.jpeg){:width="80%"}
 
 ### Distilled Policies  
 
@@ -137,7 +137,7 @@ Method 3: uses KL divergence with temperature τ, the outputs of the teacher are
                                   τ        softmax(q_i^S)
 
 
-![](http://localhost:4000/judy_blog/assets/images/multitaskdistill.png){:width="100%"}
+![](/judy_blog/assets/images/multitaskdistill.png){:width="100%"}
 
 **Multi-task DQN VS Multi-task distillation agents**:  
 
