@@ -1,7 +1,7 @@
 ---
 layout: splash
 title: Tutorials
-permalink: "/tutorial/"
+permalink: "/tutorial_old/"
 #author_profile: true
 #breadcrumbs: true
 
