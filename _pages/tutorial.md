@@ -21,19 +21,4 @@ usemathjax: true
 
 ## Reinforcement Learning
 
-1. [value-based, policy-based, actor critic](/judy_blog/tutorial_old/)
-
-### Preliminaries
-
-$$\mathcal{S}$$
-
-$$\mathbb{S}$$
-
-
-### Implementation
-
-```python
-def sigmoid(x):
-   return 1./(1.+np.exp(-x))
-
-```
+1. [Basic RL: value-based, policy-based, actor critic](/judy_blog/basicrl/)
