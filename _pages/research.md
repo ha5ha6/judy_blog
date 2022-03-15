@@ -14,7 +14,7 @@ header:
   #    url: "https://github.com/mmistakes/minimal-mistakes/"
   caption: "Photo credit: Koopagua"
 excerpt: "publications by years"
-
+usemathjax: true
 ---
 
 

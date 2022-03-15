@@ -14,6 +14,7 @@ classes:  wide
 toc: true
 toc_label: "Index"
 author_profile: true
+usemathjax: true
 ---
 
 $$ \nabla_\boldsymbol{x} J(\boldsymbol{x}) $$
