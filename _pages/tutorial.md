@@ -21,6 +21,8 @@ usemathjax: true
 
 ## Reinforcement Learning
 
+1. [value-based, policy-based, actorcritic](/tutorial_old/)
+
 ### Preliminaries
 
 $$\mathcal{S}$$
