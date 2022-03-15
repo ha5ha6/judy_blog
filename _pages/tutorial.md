@@ -21,7 +21,7 @@ usemathjax: true
 
 ## Reinforcement Learning
 
-1. [value-based, policy-based, actorcritic](/tutorial_old/)
+1. [value-based, policy-based, actor critic](/judy_blog/tutorial_old/)
 
 ### Preliminaries
 
