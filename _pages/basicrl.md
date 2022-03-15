@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Tutorial
+title: Basic Reinforcement Learning
 permalink: "/basicrl/"
 author_profile: true
 #breadcrumbs: true
@@ -11,8 +11,6 @@ toc: true
 toc_label: "Index"
 usemathjax: true
 ---
-
-## Basic Reinforcement Learning
 
 ### Preliminaries
 

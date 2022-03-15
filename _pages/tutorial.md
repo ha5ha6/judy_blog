@@ -21,4 +21,4 @@ usemathjax: true
 
 ## Reinforcement Learning
 
-1. [Basic RL: value-based, policy-based, actor critic](/judy_blog/basicrl/)
+1. [Basic RL: value-based, policy-based, actor critic, ...](/judy_blog/basicrl/)
