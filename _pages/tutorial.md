@@ -14,8 +14,8 @@ header:
 #excerpt: "an affordable and sustainable robot colony platform based on Android"
 author:  Jiexin Wang
 classes:  wide
-toc: true
-toc_label: "Index"
+#toc: true
+#toc_label: "Index"
 usemathjax: true
 ---
 
