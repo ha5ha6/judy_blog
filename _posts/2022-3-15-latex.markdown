@@ -1,0 +1,19 @@
+---
+layout: single
+type: posts
+title:  "Latex test"
+date:   2022-3-15 12:04:25 +0900
+related: true
+categories: Literature
+tags:
+  #- Index
+  - Reinforcement Learning
+  - Model-based
+author:  Jiexin Wang
+classes:  wide
+toc: true
+toc_label: "Index"
+author_profile: true
+---
+
+$$ \nabla_\boldsymbol{x} J(\boldsymbol{x}) $$
