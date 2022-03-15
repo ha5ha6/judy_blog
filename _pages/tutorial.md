@@ -1,50 +1,21 @@
 ---
-layout: splash
-title: Tutorials
+layout: single
+title: Tutorial
 permalink: "/tutorial/"
-#author_profile: true
+author_profile: true
 #breadcrumbs: true
 
 header:
-  #overlay_color: "#000"
-  #overlay_filter: "0.5"
   overlay_image: /assets/images/tutorial.jpg
   #actions:
   #  - label: "Download"
   #    url: "https://github.com/mmistakes/minimal-mistakes/"
-  caption: "Photo credit: Unknown"
-excerpt: ""
-feature_row:
-  - image_path: /assets/images/datastructure.jpeg
-    #image_caption: ""
-    alt: "placeholder image 3"
-    title: "Data Structure"
-    excerpt: "Data structure, Algorithms, Python, ... "
-    url: "/programming/2019/10/21/data-structrue-index.html"
-    btn_label: "Read More"
-    btn_class: "btn--primary"
-  - image_path: /assets/images/rl.png
-    #image_caption: "Image courtesy of J.Wang"
-    alt: "placeholder image 2"
-    title: "Reinforcement Learning"
-    excerpt: "Bellman Equation, Dynamic Programming, Value based, Policy based, Deep RL, ... "
-    url: "/rl-basic/2019/12/16/rlbasic.html"
-    btn_label: "Read More"
-    btn_class: "btn--primary"
-  - image_path: assets/images/ml.jpg
-#    image_caption: "Image courtesy of J.Wang"
-    alt: "placeholder image 1"
-    title: "Machine Learning"
-    excerpt: "Supervised, Unsupervised, Gaussian Process, ..."
-    url: "."
-    btn_label: "Read More"
-    btn_class: "btn--primary"
-  #- image_path: /assets/images/unsplash-gallery-image-3-th.jpg
-  #  title: "Placeholder 3"
-  #  excerpt: "This is some sample content that goes here with **Markdown** formatting."
+  #caption: "Photo credit: J.Wang"
+#excerpt: "an affordable and sustainable robot colony platform based on Android"
 
-
+usemathjax: true
 ---
-{% include feature_row id="intro" type="center" %}
 
-{% include feature_row id="feature_row" type="left" %}
+## test
+
+$$ \nabla_\boldsymbol{x} J(\boldsymbol{x}) $$
