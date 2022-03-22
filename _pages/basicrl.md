@@ -36,13 +36,13 @@ $$\mathcal{S}, \mathcal{A}$$ - state and action space
 
 $$\mathcal{R}(s,a)$$ - reward function
 
-$$\mathcal{H}=[s_0,a_0,r_0,...,s_t,a_t,r_t,s_{t+1},...,s_T,a_T,r_T]$$ - trajectory
+$$\mathcal{H}=[s_0,a_0,r_0,...,s_t,a_t,r_t,s_{t+1},...,s_T,a_T,r_T]$$ - history trajectory
 
-$$p(s',r|s,a) \triangleq Pr(s_{t+1}=s',r_t=r \| s_t=s,a_t=a)$$ for all $$s',s \in \mathcal{S}, r \in \mathcal{R}, a \in \mathcal{A}$$
+$$p(s',r \| s,a) \triangleq Pr(s_{t+1}=s',r_t=r \| s_t=s,a_t=a)$$ for all $$s',s \in \mathcal{S}, r \in \mathcal{R}, a \in \mathcal{A}$$
 
 or remove the reward:
 
-$$p(s',r|s,a) \triangleq Pr(s_{t+1}=s' \| s_t=s,a_t=a)$$ for all $$s',s \in \mathcal{S}, a \in \mathcal{A}$$
+$$p(s',r \| s,a) \triangleq Pr(s_{t+1}=s' \| s_t=s,a_t=a)$$ for all $$s',s \in \mathcal{S}, a \in \mathcal{A}$$
 
 
 
