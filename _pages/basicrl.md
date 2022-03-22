@@ -30,6 +30,10 @@ usemathjax: true
 
 **finite MDP**: the sets of states, actions, and rewards all have a finite number of elements
 
+**Markov Property**: the probability of each possible value for $$s_t,r_t$$ depends only on the immediately preceding state and action $$s_{t-1}, a_{t-1}$$
+
+in another way: the current state include information about all aspects of the past
+
 ### Preliminaries
 
 $$\mathcal{S}, \mathcal{A}$$ - state and action space
@@ -38,11 +42,15 @@ $$\mathcal{R}(s,a)$$ - reward function
 
 $$\mathcal{H}=[s_0,a_0,r_0,...,s_t,a_t,r_t,s_{t+1},...,s_T,a_T,r_T]$$ - history trajectory
 
-$$p(s',r \| s,a) \triangleq Pr(s_{t+1}=s',r_t=r \| s_t=s,a_t=a)$$ for all $$s',s \in \mathcal{S}, r \in \mathcal{R}, a \in \mathcal{A}$$
+$$p(s',r \given s,a) \triangleq Pr(s_{t+1}=s',r_t=r \given s_t=s,a_t=a)$$ for all $$s',s \in \mathcal{S}, r \in \mathcal{R}, a \in \mathcal{A}$$
+
+$$\sum_{s' \in \mathcal{S}} \sum_{r \in \mathcal{R}} p(s',r \given s,a)=1$$, for all $$s \in \mathcal{S}, a \in \mathcal{A}$$
 
 or remove the reward:
 
-$$p(s',r \| s,a) \triangleq Pr(s_{t+1}=s' \| s_t=s,a_t=a)$$ for all $$s',s \in \mathcal{S}, a \in \mathcal{A}$$
+$$p(s' \given s,a) \triangleq Pr(s_{t+1}=s' \given s_t=s,a_t=a)$$ for all $$s',s \in \mathcal{S}, a \in \mathcal{A}$$
+
+
 
 
 
