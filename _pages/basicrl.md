@@ -2,7 +2,7 @@
 layout: single
 title: Basic Reinforcement Learning
 permalink: "/basicrl/"
-author_profile: true
+#author_profile: true
 #breadcrumbs: true
 
 author:  Jiexin Wang
@@ -12,7 +12,11 @@ author:  Jiexin Wang
 usemathjax: true
 ---
 
-body{font-size: 13pt;}
+<style type="text/css">
+  body{
+  font-size: 14pt;
+  }
+</style>
 
 ### finite MDP
 
@@ -47,13 +51,10 @@ $$\mathcal{R}(s,a)$$ - reward function
 
 $$\mathcal{H}=[s_0,a_0,r_0,...,s_t,a_t,r_t,s_{t+1},...,s_T,a_T,r_T]$$ - history trajectory
 
-<span style="font-family:Arial; font-size:0.9em;">
 $$p(s' \mid s,a)$$ - state transition probability
 
-<span style="font-family:Arial; font-size:0.9em;">
 $$p(s' \mid s,a) \triangleq Pr(s_{t+1}=s' \mid s_t=s,a_t=a), for all s',s \in \mathcal{S}, a \in \mathcal{A}$$
 
-<span style="font-family:Arial; font-size:0.9em;">
 $$\sum_{s' \in \mathcal{S}} p(s' \mid s,a)=1, for all s \in \mathcal{S}, a \in \mathcal{A}$$
 
 
