@@ -8,7 +8,7 @@ permalink: "/basicrl/"
 author:  Jiexin Wang
 #classes:  wide
 toc: true
-#toc_label: "Index"
+toc_label: "Index"
 usemathjax: true
 ---
 
@@ -18,40 +18,44 @@ usemathjax: true
   }
 </style>
 
-### finite MDP
-
-**MDP**: a classical formalization of sequential decision making, where actions influence subsequent situations or states
-
-**Delayed reward**:
-
-**Agent**: the learner or decision maker who produce actions
-
-**Env**: environment dynamics which provide states and rewards
-
-**Discrete Time Step**: $$t=0,1,2,3,...$$
+### RL Setup
 
     Env --- r,s ---> Agent
      |                 |
      |<------ a -------|
 
+**MDP**: Markov Decision Process - a classical formalization of sequential decision making, where actions influence subsequent situations or states
 
-**finite**: the sets of states, actions, and rewards all have a finite number of elements
+**Env**: environment dynamics which provide **states and rewards**
 
-**Markov Property**: the probability of each possible value for $$s_t,r_t$$ depends only on the immediately preceding state and action $$s_{t-1}, a_{t-1}$$
+**Agent**: the learner or decision maker who produce **actions**
+
+**Discrete Time Step**: $$t=0,1,2,3,...$$
+
+**finite**: the sets of **states, actions, and rewards** all have a finite number of elements
+
+**Markov Property**: the probability of each possible value for **current state and reward** depends only on the immediately preceding **state and action**
 
 in another words: the current state include information about all aspects of the past
 
 
-### Preliminaries
+### in Math
 
+**5-tuple MDP** $$(\mathcal{S}, \mathcal{A},p,r,\gamma)$$
 
-$$\mathcal{S}, \mathcal{A}$$ - state and action space
+$$\mathcal{S}, \mathcal{A}$$ - state and action spaces
+
+$$p(s' \mid s,a)$$ - state transition probability (world model)
 
 $$\mathcal{R}(s,a)$$ - reward function
 
+$$\gamma \in (0,1)$$ - discounting factor
+
+$$\pi(a \mid s)$$ - policy distribution giving action
+
 $$\mathcal{H}=[s_0,a_0,r_0,...,s_t,a_t,r_t,s_{t+1},...,s_T,a_T,r_T]$$ - history trajectory
 
-$$p(s' \mid s,a)$$ - state transition probability
+where
 
 $$p(s' \mid s,a) \triangleq Pr(s_{t+1}=s' \mid s_t=s,a_t=a),$$ for all $$s',s \in \mathcal{S}, a \in \mathcal{A}$$
 
@@ -61,7 +65,9 @@ $$\sum_{s' \in \mathcal{S}} p(s' \mid s,a)=1,$$ for all $$s \in \mathcal{S}, a \
 
 
 
+### Important Concepts
 
+**Delayed reward**:
 
 ### later
 
