@@ -12,12 +12,13 @@ classes:  wide
 usemathjax: true
 ---
 
-### finite MDP
-
 <style type="text/css">
   body{
   font-size: 13pt;
 }
+</style>
+
+### finite MDP
 
 **MDP**: a classical formalization of sequential decision making, where actions influence subsequent situations or states
 
