@@ -6,17 +6,13 @@ author_profile: true
 #breadcrumbs: true
 
 author:  Jiexin Wang
-classes:  wide
+#classes:  wide
 #toc: true
 #toc_label: "Index"
 usemathjax: true
 ---
 
-<style type="text/css">
-  body{
-  font-size: 13pt;
-}
-</style>
+body{font-size: 13pt;}
 
 ### finite MDP
 
