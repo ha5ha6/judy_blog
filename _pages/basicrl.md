@@ -7,14 +7,14 @@ permalink: "/basicrl/"
 
 author:  Jiexin Wang
 #classes:  wide
-#toc: true
+toc: true
 #toc_label: "Index"
 usemathjax: true
 ---
 
 <style type="text/css">
   body{
-  font-size: 14pt;
+  font-size: 13pt;
   }
 </style>
 
@@ -53,9 +53,9 @@ $$\mathcal{H}=[s_0,a_0,r_0,...,s_t,a_t,r_t,s_{t+1},...,s_T,a_T,r_T]$$ - history 
 
 $$p(s' \mid s,a)$$ - state transition probability
 
-$$p(s' \mid s,a) \triangleq Pr(s_{t+1}=s' \mid s_t=s,a_t=a), for all s',s \in \mathcal{S}, a \in \mathcal{A}$$
+$$p(s' \mid s,a) \triangleq Pr(s_{t+1}=s' \mid s_t=s,a_t=a),$$ for all $$s',s \in \mathcal{S}, a \in \mathcal{A}$$
 
-$$\sum_{s' \in \mathcal{S}} p(s' \mid s,a)=1, for all s \in \mathcal{S}, a \in \mathcal{A}$$
+$$\sum_{s' \in \mathcal{S}} p(s' \mid s,a)=1,$$ for all $$s \in \mathcal{S}, a \in \mathcal{A}$$
 
 
 
