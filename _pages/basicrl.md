@@ -14,21 +14,26 @@ usemathjax: true
 
 ### finite MDP
 
-<span style="font-family:Serif; font-size:0.9em;">
+<span style="font-family:Arial; font-size:0.9em;">
 **MDP**: a classical formalization of sequential decision making, where actions influence subsequent situations or states
 
+<span style="font-family:Arial; font-size:0.9em;">
 **Delayed reward**:
 
+<span style="font-family:Arial; font-size:0.9em;">
 **Agent**: the learner or decision maker who produce actions
 
+<span style="font-family:Arial; font-size:0.9em;">
 **Env**: environment dynamics which provide states and rewards
 
+<span style="font-family:Arial; font-size:0.9em;">
 **Discrete Time Step**: $$t=0,1,2,3,...$$
 
     Env --- r,s ---> Agent
      |                 |
      |<------ a -------|
 
+<span style="font-family:Arial; font-size:0.9em;">
 **finite**: the sets of states, actions, and rewards all have a finite number of elements
 
 **Markov Property**: the probability of each possible value for $$s_t,r_t$$ depends only on the immediately preceding state and action $$s_{t-1}, a_{t-1}$$
