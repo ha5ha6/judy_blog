@@ -6,7 +6,7 @@ author_profile: true
 #breadcrumbs: true
 
 author:  Jiexin Wang
-#classes:  wide
+classes:  wide
 #toc: true
 #toc_label: "Index"
 usemathjax: true
@@ -16,7 +16,7 @@ usemathjax: true
 
 <style type="text/css">
   body{
-  font-size: 12pt;
+  font-size: 13pt;
 }
 
 **MDP**: a classical formalization of sequential decision making, where actions influence subsequent situations or states
@@ -38,20 +38,16 @@ usemathjax: true
 
 **Markov Property**: the probability of each possible value for $$s_t,r_t$$ depends only on the immediately preceding state and action $$s_{t-1}, a_{t-1}$$
 
-</style>
-
 in another words: the current state include information about all aspects of the past
 
 
 ### Preliminaries
 
-<span style="font-family:Arial; font-size:0.9em;">
+
 $$\mathcal{S}, \mathcal{A}$$ - state and action space
 
-<span style="font-family:Arial; font-size:0.9em;">
 $$\mathcal{R}(s,a)$$ - reward function
 
-<span style="font-family:Arial; font-size:0.9em;">
 $$\mathcal{H}=[s_0,a_0,r_0,...,s_t,a_t,r_t,s_{t+1},...,s_T,a_T,r_T]$$ - history trajectory
 
 <span style="font-family:Arial; font-size:0.9em;">
