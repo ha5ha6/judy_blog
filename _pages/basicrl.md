@@ -6,9 +6,9 @@ author_profile: true
 #breadcrumbs: true
 
 author:  Jiexin Wang
-classes:  wide
-toc: true
-toc_label: "Index"
+#classes:  wide
+#toc: true
+#toc_label: "Index"
 usemathjax: true
 ---
 
