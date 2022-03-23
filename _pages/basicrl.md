@@ -36,23 +36,31 @@ usemathjax: true
 <span style="font-family:Arial; font-size:0.9em;">
 **finite**: the sets of states, actions, and rewards all have a finite number of elements
 
+<span style="font-family:Arial; font-size:0.9em;">
 **Markov Property**: the probability of each possible value for $$s_t,r_t$$ depends only on the immediately preceding state and action $$s_{t-1}, a_{t-1}$$
 
+<span style="font-family:Arial; font-size:0.9em;">
 in another words: the current state include information about all aspects of the past
-</span>
+
 
 ### Preliminaries
 
+<span style="font-family:Arial; font-size:0.9em;">
 $$\mathcal{S}, \mathcal{A}$$ - state and action space
 
+<span style="font-family:Arial; font-size:0.9em;">
 $$\mathcal{R}(s,a)$$ - reward function
 
+<span style="font-family:Arial; font-size:0.9em;">
 $$\mathcal{H}=[s_0,a_0,r_0,...,s_t,a_t,r_t,s_{t+1},...,s_T,a_T,r_T]$$ - history trajectory
 
+<span style="font-family:Arial; font-size:0.9em;">
 $$p(s' \mid s,a)$$ - state transition probability
 
+<span style="font-family:Arial; font-size:0.9em;">
 $$p(s' \mid s,a) \triangleq Pr(s_{t+1}=s' \mid s_t=s,a_t=a), for all s',s \in \mathcal{S}, a \in \mathcal{A}$$
 
+<span style="font-family:Arial; font-size:0.9em;">
 $$\sum_{s' \in \mathcal{S}} p(s' \mid s,a)=1, for all s \in \mathcal{S}, a \in \mathcal{A}$$
 
 
