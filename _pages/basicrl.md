@@ -51,15 +51,15 @@ $$\gamma \in [0,1]$$ - discounting factor
 
 $$T$$ - horizon (can be finite or infinite)
 
-**Extentions**:
+**Extensions**:
 
 $$\pi(a \mid s)$$ - policy distribution gives action
 
-$$t=0,1,2,...,T$$ - discrete time steps
+$$t = 0,1,2,...,T$$ - discrete time steps
 
-$$\mathcal{H}=[s_0,a_0,r_0,...,s_t,a_t,r_t,s_{t+1},...,s_T,a_T,r_T]$$ - history trajectory
+$$\mathcal{H} = [s_0,a_0,r_0,s_1,...,s_t,a_t,r_t,s_{t+1},...,s_T,a_T,r_T,s_{T+1}]$$ - history trajectory
 
-$$\mathcal{R} \triangleq \sum_{i=0}^{T} = \gamma^i r_{t+i}$$
+$$\mathcal{R} \triangleq \sum_{i=0}^{T} = \gamma^i r_{t+i}$$ - discounted return
 
 
 
