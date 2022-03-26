@@ -43,9 +43,9 @@ in another words: the current state include information about all aspects of the
 
 $$\mathcal{S}, \mathcal{A}$$ - state and action spaces
 
-$$p(s' \mid s,a)$$ - state transition probability (world model)
+$$p (s' \mid s,a)$$ - state transition probability (world model)
 
-$$r(s,a,s')$$ - reward function
+$$r (s,a,s')$$ - reward function
 
 $$\gamma \in [0,1]$$ - discounting factor
 
@@ -53,7 +53,7 @@ $$T$$ - horizon (can be finite or infinite)
 
 **Extensions**:
 
-$$\pi(a \mid s)$$ - policy distribution gives action
+$$\pi (a \mid s)$$ - policy distribution gives action
 
 $$t = 0,1,2,...,T$$ - discrete time steps
 
