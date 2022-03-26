@@ -156,6 +156,14 @@ a policy $$\pi$$ is defined to be better than or equal to that of $$\pi'$$ for a
 
 $$\pi \geq \pi' \iff V_{\pi}(s) \geq V_{\pi'}(s), \forall s \in \mathcal{S}$$
 
+**Optimal Policy** $$\pi_*$$: the policy that is better than or equal to all other policies
+
+**Optimal state-value and action-value function**:
+
+$$V_*(s) \triangleq \max_{\pi} V_{\pi}(s), \forall s \in \mathcal{S}$$
+
+$$Q_*(s,a) \triangleq \max_{\pi} Q_{\pi}(s,a), \forall s \in \mathcal{S}, \forall a \in \mathcal{A}$$
+
 ### Important Concepts
 
 **Delayed reward**:
