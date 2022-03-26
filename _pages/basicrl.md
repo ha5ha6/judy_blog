@@ -20,9 +20,10 @@ usemathjax: true
 
 ### RL Setup
 
-    Env --- r,s ---> Agent
-     |                 |
-     |<------ a -------|
+    Env ------- s ------> Agent
+     |     |--(r,s')-->|   |
+     |                     |
+     |<-------- a ---------|
 
 **MDP** (Markov Decision Process): a classical formalization of sequential decision making, where actions influence subsequent situations or states
 
