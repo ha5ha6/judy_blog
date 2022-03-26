@@ -24,13 +24,13 @@ usemathjax: true
      |                 |
      |<------ a -------|
 
-**MDP**: Markov Decision Process - a classical formalization of sequential decision making, where actions influence subsequent situations or states
+**MDP** (Markov Decision Process): a classical formalization of sequential decision making, where actions influence subsequent situations or states
 
 **Env**: the world with env dynamics where the agent lives and interacts, providing **states and rewards**
 
 **Agent**: the learner or decision maker who produce **actions** to the env, but cannot influence the **dynamics** of the env
 
-**finite**: the sets of **states, actions, and rewards** all have a finite number of elements
+**finite MDP**: the sets of **states, actions, and rewards** all have a finite number of elements
 
 **Markov Property**: the probability of each possible value for **current state and reward** depends only on the immediately **preceding state and action**
 
