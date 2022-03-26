@@ -198,7 +198,7 @@ Note:
 
 Once we have $$V_*$$, we can determine $$\pi_*$$:
 
-- any $$\pi$$ assigns nonzero probability only to the actions where $$\max_a V*(s)$$ is obtained
+- any $$\pi$$ assigns nonzero probability only to the actions where $$\max_a V_*(s)$$ is obtained is $$\pi_*$$
 
 - any $$\pi$$ that is greedy w.r.t $$V_*(s)$$ is $$\pi_*$$
 
