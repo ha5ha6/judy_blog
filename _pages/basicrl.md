@@ -102,7 +102,19 @@ Q_{\pi}(s,a) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s,a_t=a \right] \\
 &= \mathbb{E}_{\pi} \left[ \sum_{i=0}^{T} \gamma^i r_{t+i} \mid s_t=s,a_t=a  \right], \forall s \in \mathcal{S}, \forall a \in \mathcal{A}
 \end{align*}$$
 
+**Recursive Property**:
 
+$$\begin{align*}
+
+V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
+
+&= \mathbb{E}_{\pi} \left[ r_t+\gamma R_{t+1} \mid s_t=s  \right] \\
+
+&= \sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma \mathbb{E}_{\pi} \left[R_{t+1} \mid s_{t+1}=s'  \right] \right] \\
+
+&= \sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma V_{\pi}(s') \right], \forall s \in \mathcal{S}
+
+\end{align*}$$
 
 
 ### Important Concepts
