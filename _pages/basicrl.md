@@ -104,7 +104,7 @@ Q_{\pi}(s,a) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s,a_t=a \right] \\
 &= \mathbb{E}_{\pi} \left[ \sum_{i=0}^{T} \gamma^i r_{t+i} \mid s_t=s,a_t=a  \right], \forall s \in \mathcal{S}, \forall a \in \mathcal{A}
 \end{align*}$$
 
-**Recursive Property**:
+**Bellman Equation**:
 
 $$\begin{align*}
 
@@ -117,6 +117,8 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
 &= \sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma V_{\pi}(s') \right], \forall s \in \mathcal{S}
 
 \end{align*}$$
+
+means: the value of the start state must equal the discounted value of the expected next state plus the reward expected along the way
 
 
 ### Important Concepts
