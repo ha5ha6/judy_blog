@@ -180,13 +180,13 @@ V_*(s) &= \max_{a \in \mathcal{A}} Q_{\pi_*}(s,a) \\
 \end{align*}$$
 
 $$\begin{align*}
-Q_*(s,a) &= \mathbb{E}_{r_t+\gamma \max_{a'} Q_*(s',a') \mid s_t=s,a_t=a} \\
+Q_*(s,a) &= \mathbb{E} \left[ {r_t+\gamma \max_{a'} Q_*(s',a') \mid s_t=s,a_t=a} \right]\\
 
 &= \sum_{s'} p(s' \mid s,a) \left[r_t +\gamma \max_{a'} Q_*(s',a')  \right]
 
 \end{align*}$$
 
-
+<center><img src="https://dudeperf3ct.github.io/images/tabular_files/optimal.png" width=300></center>
 
 ### Important Concepts
 
