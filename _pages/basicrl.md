@@ -74,7 +74,7 @@ R_t &\triangleq r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + ...
 
 \end{align*}$$
 
-### Value Related
+### Value Functions
 
 **value functions**: to evaluate *how good* it is for an agent to be in a given state in terms of **future rewards** that can be expected **(Expected Return)**
 
