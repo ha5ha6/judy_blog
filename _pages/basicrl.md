@@ -76,14 +76,15 @@ R_t &\triangleq r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + ...
 
 ### Value Related
 
-**value functions**: to evaluate *how good* it is for an agent to be in a given state in terms of future rewards that can be expected
+**value functions**: to evaluate *how good* it is for an agent to be in a given state in terms of **future rewards** that can be expected (Expected Return)
 
 $$\begin{align*}
 
 V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right]
 
-&= \mathbb{E}_{\pi} \left[ \sum_{i=0}^{T} \gamma^i r_{t+i} \mid s_t=s  \right] 
+&= \mathbb{E}_{\pi} \left[ \sum_{i=0}^{T} \gamma^i r_{t+i} \mid s_t=s  \right]
 
+& for all s \in \mathcal{S}
 \end{align*}$$
 
 
