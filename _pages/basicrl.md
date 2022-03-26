@@ -42,7 +42,9 @@ in another words: **the current state include information about all aspects of t
 
 **6-tuple MDP**: $$(\mathcal{S}, \mathcal{A},p,r,\gamma,T)$$
 
-$$\mathcal{S}, \mathcal{A}$$ - state and action spaces
+$$ s,s' \in \mathcal{S}$$ - state space
+
+$$ a \in \mathcal{A}$$ - action space
 
 $$p (s' \mid s,a)$$ - state transition probability (world model)
 
