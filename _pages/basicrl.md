@@ -40,7 +40,7 @@ in another words: **the current state include information about all aspects of t
 
 ### in Math
 
-**6-tuple MDP**: $$(\mathcal{S}, \mathcal{A},p,r,\gamma,T)$$
+**6-tuple MDP**: $$(\mathcal{S}, \mathcal{A},p,\mathcal{R},\gamma,T)$$
 
 $$ s,s' \in \mathcal{S}$$ - state space
 
@@ -48,7 +48,7 @@ $$ a \in \mathcal{A}$$ - action space
 
 $$p (s' \mid s,a)$$ - state transition probability (world model)
 
-$$r (s,a,s')$$ - reward function
+$$r (s,a,s') \in \mathcal{R}$$ - reward function
 
 $$\gamma \in [0,1)$$ - discounting factor
 
