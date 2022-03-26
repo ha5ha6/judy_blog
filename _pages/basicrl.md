@@ -104,7 +104,7 @@ Q_{\pi}(s,a) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s,a_t=a \right] \\
 &= \mathbb{E}_{\pi} \left[ \sum_{i=0}^{T} \gamma^i r_{t+i} \mid s_t=s,a_t=a  \right], \forall s \in \mathcal{S}, \forall a \in \mathcal{A}
 \end{align*}$$
 
-**Bellman Equation of V**:
+**Bellman Equation of** $$V_{\pi}$$:
 
 $$\begin{align*}
 
@@ -116,7 +116,7 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
 
 &= \sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma V_{\pi}(s') \right] \\
 
-&= \mathbb{E}_{\pi} \left[ r_t+\gamma V_{\pi}(s') \mid s_t=s  \right], \forall s \in \mathcal{S} 
+&= \mathbb{E}_{\pi} \left[ r_t+\gamma V_{\pi}(s') \mid s_t=s  \right], \forall s \in \mathcal{S}
 
 \end{align*}$$
 
@@ -128,7 +128,7 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
 
 **update/backup operations**: transfer value information *back* to a state or a state-action pair from its successor states or state-action pairs
 
-**Bellman Equation of Q**:
+**Bellman Equation of** $$Q_{\pi}$$:
 
 $$\begin{align*}
 
@@ -136,15 +136,15 @@ Q_{\pi}(s,a) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s,a_t=a  \right] \
 
 &= \mathbb{E}_{\pi} \left[ r_t+\gamma V_{\pi}(s') \mid s_t=s,a_t=a \right] \\
 
-&= \sum_{s'} p(s' \mid s,a) \left[ r_t+\gamma \mathbb{E}_{a \sim \pi} Q(s',a) \mid s_t=s,a_t=a \right] \\
+&= \sum_{s'} p(s' \mid s,a) \left[ r_t+\gamma \mathbb{E}_{a \sim \pi} Q_{\pi}(s',a) \mid s_t=s,a_t=a \right] \\
 
-&= \sum_{s'} p(s' \mid s,a) \left[ r_t+\gamma \sum_{a} \pi(a \mid s') Q(s',a) \mid s_t=s,a_t=a \right], \forall s \in \mathcal{S}, a \in \mathcal{A}
+&= \sum_{s'} p(s' \mid s,a) \left[ r_t+\gamma \sum_{a} \pi(a \mid s') Q_{\pi}(s',a) \mid s_t=s,a_t=a \right], \forall s \in \mathcal{S}, a \in \mathcal{A}
 
 \end{align*}$$
 
 where
 
-$$V_{\pi}=\sum_{a \in \mathcal{A}} \pi(a \mid s) Q_{\pi} (s,a)$$
+$$V_{\pi}(s)=\sum_{a \in \mathcal{A}} \pi(a \mid s) Q_{\pi} (s,a)$$
 
 
 ### Important Concepts
@@ -157,23 +157,9 @@ $$V_{\pi}=\sum_{a \in \mathcal{A}} \pi(a \mid s) Q_{\pi} (s,a)$$
 
 **Monte Carlo methods**: estimate $$V_{\pi}$$ and $$Q_{\pi}$$ from experience by averaging over many random samples of actual returns
 
-### later
-
-where
-
-$$p(s' \mid s,a) \triangleq Pr(s_{t+1}=s' \mid s_t=s,a_t=a),$$ for all $$s',s \in \mathcal{S}, a \in \mathcal{A}$$
-
-$$\sum_{s' \in \mathcal{S}} p(s' \mid s,a)=1,$$ for all $$s \in \mathcal{S}, a \in \mathcal{A}$$
 
 
-
-$$p(s',r \mid s,a) \triangleq Pr(s_{t+1}=s',r_t=r \mid s_t=s,a_t=a)$$, for all $$s',s \in \mathcal{S}, r \in \mathcal{R}, a \in \mathcal{A}$$
-
-$$\sum_{s' \in \mathcal{S}} \sum_{r \in \mathcal{R}} p(s',r \mid s,a)=1$$, for all $$s \in \mathcal{S}, a \in \mathcal{A}$$
-
-$$\mathbb{S}$$
-
-### Implementation
+### Gridworld
 
 ```python
 def sigmoid(x):
