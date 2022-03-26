@@ -122,7 +122,7 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
 
 **Backup Diagram**:
 
-<center><img src="https://miro.medium.com/max/612/1*NwP8EPGMmu8UuE5bycYRUQ.png" width=200><c/enter>
+<center><img src="https://miro.medium.com/max/612/1*NwP8EPGMmu8UuE5bycYRUQ.png" width=200></center>
 
 **update/backup operations**: transfer value information *back* to a state or a state-action pair from its successor states or state-action pairs
 
