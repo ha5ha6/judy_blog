@@ -76,9 +76,9 @@ R_t &\triangleq r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + ...
 
 ### Value Functions
 
-**value functions**: to evaluate *how good* it is for an agent to be in a given state in terms of **future rewards** that can be expected **(Expected Return)**
+**Def**: to evaluate *how good* it is for an agent to be in a given state in terms of **future rewards** that can be expected **(Expected Return)**
 
-**state-value function for policy** $$\pi$$: **value function of a state** $$s$$ **under a policy** $$\pi$$ is the **expected return** when starting in $$s$$ and following $$\pi$$ thereafter:
+**State-value function for policy** $$\pi$$: **value function of a state** $$s$$ **under a policy** $$\pi$$ is the **expected return** when starting in $$s$$ and following $$\pi$$ thereafter:
 
 $$\begin{align*}
 
@@ -87,13 +87,13 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
 &= \mathbb{E}_{\pi} \left[ \sum_{i=0}^{T} \gamma^i r_{t+i} \mid s_t=s  \right], \forall s \in \mathcal{S}
 \end{align*}$$
 
-note:
+Note:
 
 - $$V(s)$$ can be changed due to different $$\pi$$
 
 - $$\mathbb{E}_{\pi}$$ comes from the randomness of $$\pi$$ and $$p(s' \mid s,a)$$
 
-**action-value function for policy** $$\pi$$: **the value of taking action** $$a$$ **in state** $$s$$ **under a policy** $$\pi$$ is the **expected return** starting from $$s$$, taking the action $$a$$ and following $$\pi$$ thereafter:
+**Action-value function for policy** $$\pi$$: **the value of taking action** $$a$$ **in state** $$s$$ **under a policy** $$\pi$$ is the **expected return** starting from $$s$$, taking the action $$a$$ and following $$\pi$$ thereafter:
 
 $$\begin{align*}
 
@@ -103,9 +103,17 @@ Q_{\pi}(s,a) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s,a_t=a \right] \\
 \end{align*}$$
 
 
+
+
 ### Important Concepts
 
 **Delayed reward**:
+
+**Deterministic/Stochastic policy**:
+
+**Deterministic/Stochastic env**:
+
+**Monte Carlo methods**: estimate $$V_{\pi}$$ and $$Q_{\pi}$$ from experience by averaging over many random samples of actual returns
 
 ### later
 
