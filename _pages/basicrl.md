@@ -48,11 +48,11 @@ $$p (s' \mid s,a)$$ - state transition probability (world model)
 
 $$r (s,a,s')$$ - reward function
 
-$$\gamma \in [0,1]$$ - discounting factor
+$$\gamma \in [0,1)$$ - discounting factor
 
 $$T$$ - horizon (can be finite or infinite)
 
-**Extensions**:
+**Others**:
 
 $$\pi (a \mid s)$$ - policy distribution gives action
 
@@ -74,6 +74,17 @@ R_t &\triangleq r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + ...
 
 \end{align*}$$
 
+### Value Related
+
+**value functions**: to evaluate *how good* it is for an agent to be in a given state in terms of future rewards that can be expected
+
+$$\begin{align*}
+
+V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right]
+
+&= \mathbb{E}_{\pi} \left[ \sum_{i=0}^{T} \gamma^i r_{t+i} \mid s_t=s  \right] 
+
+\end{align*}$$
 
 
 ### Important Concepts
