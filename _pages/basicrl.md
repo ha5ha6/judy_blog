@@ -190,6 +190,19 @@ Q_*(s,a) &= \mathbb{E} \left[ {r_t+\gamma \max_{a'} Q_*(s',a') \mid s_t=s,a_t=a}
 
 the **backup diagram** is similar as before except that the arcs represent the maximum over the choices instead of taking expectation
 
+Note:
+
+- Bellman optimality equation for $$V_*$$ has a unique solution independent of $$\pi$$
+
+- if the dynamics $$p$$ are known, the system equations w.r.t number of states of $$V_*$$ can be solved
+
+Once we have $$V_*$$, we can determine $$\pi_*$$:
+
+- any $$\pi$$ assigns nonzero probability only to the actions where $$\max_a V*(s)$$ is obtained
+
+- any $$\pi$$ that is greedy w.r.t $$V_*(s)$$ is $$\pi_*$$
+
+
 ### Important Concepts
 
 **Delayed reward**:
