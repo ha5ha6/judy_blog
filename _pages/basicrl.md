@@ -80,16 +80,11 @@ R_t &\triangleq r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + ...
 
 **value function of a state** $$s$$ **under a policy** $$\pi$$:
 
-$$\begin{align*}
+$$
+V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] = \mathbb{E}_{\pi} \left[ \sum_{i=0}^{T} \gamma^i r_{t+i} \mid s_t=s  \right] \forall s \in \mathcal{S}
+$$
 
-V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
-
-&= \mathbb{E}_{\pi} \left[ \sum_{i=0}^{T} \gamma^i r_{t+i} \mid s_t=s  \right] \\
-
-& for \quad all \quad s \in \mathcal{S}
-\end{align*}$$
-
-note: $$V(s)$$ can be changed due to different policies 
+note: $$V(s)$$ can be changed due to different policies
 
 
 ### Important Concepts
