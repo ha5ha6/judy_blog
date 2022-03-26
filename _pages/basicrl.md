@@ -168,6 +168,18 @@ therefore
 
 $$Q_*(s,a) = \mathbb{E} \left[r_t + \gamma V_*(s_{t+1}) \mid s_t=s,a_t=a \right]$$
 
+**Bellman Optimality Equations**:
+
+$$
+\begin{align*}
+V_*(s) &= \max_{a \in \mathcal{A}} Q_{\pi_*}(s,a) \\
+
+&= \max_a \mathbb{E}_{\pi_*} \left[r_t + \gamma V_*(s') \mid s_t=s,a_t=a   \right] \\
+
+&= \max_a \sum_{s'} p(s' \mid s,a) \left[r+\gamma V_*(s')  \right]
+
+\end{align*}$$
+
 ### Important Concepts
 
 **Delayed reward**:
