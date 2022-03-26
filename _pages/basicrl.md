@@ -124,7 +124,7 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
 
 **Backup Diagram**:
 
-<center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsHlGyLVEFtCbSq2wiR0w5qvHs0KxZAryhrPj75Md_bP9nM17gZVx6sb8SjcFk9sS5rjY&usqp=CAU" width=200></center>
+<center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsHlGyLVEFtCbSq2wiR0w5qvHs0KxZAryhrPj75Md_bP9nM17gZVx6sb8SjcFk9sS5rjY&usqp=CAU" width=500></center>
 
 **update/backup operations**: transfer value information *back* to a state or a state-action pair from its successor states or state-action pairs
 
@@ -198,6 +198,7 @@ Q_*(s,a) &= \mathbb{E} \left[ {r_t+\gamma \max_{a'} Q_*(s',a') \mid s_t=s,a_t=a}
 
 **Monte Carlo methods**: estimate $$V_{\pi}$$ and $$Q_{\pi}$$ from experience by averaging over many random samples of actual returns
 
+**Greedy**: any search or decision procedure that selects alternatives based only on local or immediate considerations, without considering the possibility that such a selection may prevent future access to even better alternatives
 
 
 ### Gridworld
