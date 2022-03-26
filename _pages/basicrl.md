@@ -140,6 +140,10 @@ Q_{\pi}(s,a) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s,a_t=a  \right] \
 
 \end{align*}$$
 
+where
+
+$$V_{\pi}=\sum_{a \in \mathcal{A}} \pi(a \mid s) Q_{\pi} (s,a)$$
+
 
 ### Important Concepts
 
