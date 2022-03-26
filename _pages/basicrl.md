@@ -76,7 +76,9 @@ R_t &\triangleq r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + ...
 
 ### Value Related
 
-**value functions**: to evaluate *how good* it is for an agent to be in a given state in terms of **future rewards** that can be expected (Expected Return)
+**value functions**: to evaluate *how good* it is for an agent to be in a given state in terms of **future rewards** that can be expected **(Expected Return)**
+
+**value function of a state** $$s$$ **under a policy** $$\pi$$:
 
 $$\begin{align*}
 
@@ -86,6 +88,8 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
 
 & for \quad all \quad s \in \mathcal{S}
 \end{align*}$$
+
+note: $$V(s)$$ can be changed due to different policies 
 
 
 ### Important Concepts
