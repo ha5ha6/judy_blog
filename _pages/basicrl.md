@@ -84,14 +84,14 @@ $$\begin{align*}
 
 V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
 
-&= \mathbb{E}_{\pi} \left[ \sum_{i=0}^{T} \gamma^i r_{t+i} \mid s_t=s  \right] \forall \in \mathcal{S}
+&= \mathbb{E}_{\pi} \left[ \sum_{i=0}^{T} \gamma^i r_{t+i} \mid s_t=s  \right] \forall s \in \mathcal{S}
 \end{align*}$$
 
 note:
 
 - $$V(s)$$ can be changed due to different $$\pi$$
 
-- $$\mathbb{E}_\{pi}$$ comes from the randomness of $$\pi$$ and $$p(s' \mid s,a)$$
+- $$\mathbb{E}_{\pi}$$ comes from the randomness of $$\pi$$ and $$p(s' \mid s,a)$$
 
 
 ### Important Concepts
