@@ -124,7 +124,7 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
 
 **Backup Diagram**:
 
-<center><img src="https://miro.medium.com/max/612/1*NwP8EPGMmu8UuE5bycYRUQ.png" width=200></center>
+<center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsHlGyLVEFtCbSq2wiR0w5qvHs0KxZAryhrPj75Md_bP9nM17gZVx6sb8SjcFk9sS5rjY&usqp=CAU" width=200></center>
 
 **update/backup operations**: transfer value information *back* to a state or a state-action pair from its successor states or state-action pairs
 
