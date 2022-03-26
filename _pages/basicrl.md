@@ -166,19 +166,27 @@ $$Q_*(s,a) \triangleq \max_{\pi} Q_{\pi}(s,a), \forall s \in \mathcal{S}, \foral
 
 therefore
 
-$$Q_*(s,a) = \mathbb{E} \left[r_t + \gamma V_*(s_{t+1}) \mid s_t=s,a_t=a \right]$$
+$$Q_*(s,a) = \mathbb{E} \left[r_t + \gamma V_*(s') \mid s_t=s,a_t=a \right]$$
 
 **Bellman Optimality Equations**:
 
-$$
-\begin{align*}
+$$\begin{align*}
 V_*(s) &= \max_{a \in \mathcal{A}} Q_{\pi_*}(s,a) \\
 
 &= \max_a \mathbb{E}_{\pi_*} \left[r_t + \gamma V_*(s') \mid s_t=s,a_t=a   \right] \\
 
-&= \max_a \sum_{s'} p(s' \mid s,a) \left[r+\gamma V_*(s')  \right]
+&= \max_a \sum_{s'} p(s' \mid s,a) \left[r_t +\gamma V_*(s')  \right]
 
 \end{align*}$$
+
+$$\begin{align*}
+Q_*(s,a) &= \mathbb{E}_{r_t+\gamma \max_{a'} Q_*(s',a') \mid s_t=s,a_t=a} \\
+
+&= \sum_{s'} p(s' \mid s,a) \left[r_t +\gamma \max_{a'} Q_*(s',a')  \right]
+
+\end{align*}$$
+
+
 
 ### Important Concepts
 
