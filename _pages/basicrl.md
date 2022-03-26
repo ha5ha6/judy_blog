@@ -124,7 +124,7 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
 
 **Backup Diagram**:
 
-<center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsHlGyLVEFtCbSq2wiR0w5qvHs0KxZAryhrPj75Md_bP9nM17gZVx6sb8SjcFk9sS5rjY&usqp=CAU" width=500></center>
+<center><img src="https://i.stack.imgur.com/AdR3z.png" width=500></center>
 
 **update/backup operations**: transfer value information *back* to a state or a state-action pair from its successor states or state-action pairs
 
@@ -187,6 +187,8 @@ Q_*(s,a) &= \mathbb{E} \left[ {r_t+\gamma \max_{a'} Q_*(s',a') \mid s_t=s,a_t=a}
 \end{align*}$$
 
 <center><img src="https://dudeperf3ct.github.io/images/tabular_files/optimal.png" width=500></center>
+
+the **backup diagram** is similar as before except that the arcs represent the maximum over the choices instead of taking expectation
 
 ### Important Concepts
 
