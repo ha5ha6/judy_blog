@@ -84,7 +84,7 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
 
 &= \mathbb{E}_{\pi} \left[ \sum_{i=0}^{T} \gamma^i r_{t+i} \mid s_t=s  \right] \\
 
-& for all s \in \mathcal{S}
+& for \quad all \quad s \in \mathcal{S}
 \end{align*}$$
 
 
