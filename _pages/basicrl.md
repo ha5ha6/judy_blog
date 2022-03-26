@@ -33,7 +33,7 @@ usemathjax: true
 
 **finite MDP**: the sets of **states** $$s$$, **actions** $$a$$, and **rewards** $$r$$ in a specific MDP all have a finite number of elements
 
-**Markov Property**: the probability of each possible value for **current state and reward** $$s_t,r_t$$ depends only on the immediately **preceding state and action** $$s_{t-1},a_{t-1}$$
+**Markov Property**: the probability of each possible value for **current state and reward**: $$s_t,r_t$$ depends only on the immediately **preceding state and action**: $$s_{t-1},a_{t-1}$$
 
 in another words: **the current state include information about all aspects of the past**
 
