@@ -65,6 +65,8 @@ $$R_t \triangleq \sum_{i=0}^{T} \gamma^i r_{t+i}$$ - discounted return
 
 $$R_t \triangleq &= r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + ...
 
+&= r_t + \gamma (r_{t+1} + \gamma r_{t+2} + \gamma^2 r_{t+3} + ...)
+
 &= r_t + \gamma R_{t+1}$$
 
 
