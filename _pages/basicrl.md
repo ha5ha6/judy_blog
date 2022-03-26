@@ -118,7 +118,11 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s  \right] \\
 
 \end{align*}$$
 
-means: the value of the start state must equal the discounted value of the expected next state plus the reward expected along the way
+**Meaning**: the value of the start state must equal the discounted value of the expected next state plus the reward expected along the way
+
+**Backup Diagram**:
+
+<img src="https://miro.medium.com/max/612/1*NwP8EPGMmu8UuE5bycYRUQ.png" width=400>
 
 
 ### Important Concepts
