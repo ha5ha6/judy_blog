@@ -57,17 +57,21 @@ $$\pi (a \mid s)$$ - policy distribution gives action
 
 $$t = 0,1,2,...,T$$ - discrete time steps
 
-$$h \triangleq [s_0,a_0,r_0,s_1,...,s_t,a_t,r_t,s_{t+1},...,s_T,a_T,r_T,s_{T+1}]$$ - history trajectory
+$$h \triangleq [s_0,a_0,r_0,s_1,...,s_t,a_t,r_t,s_{t+1},...,s_T,a_T,r_T,s_{T+1}]$$ - history trajectory (finite case)
 
 $$R_t \triangleq \sum_{i=0}^{T} \gamma^i r_{t+i}$$ - discounted return
 
 **Recursive Property**:
 
-$$R_t \triangleq &= r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + ...
+$$\begin{align*}
+
+R_t \triangleq &= r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + ...
 
 &= r_t + \gamma (r_{t+1} + \gamma r_{t+2} + \gamma^2 r_{t+3} + ...)
 
-&= r_t + \gamma R_{t+1}$$
+&= r_t + \gamma R_{t+1}
+
+\end{align*}$$
 
 
 
