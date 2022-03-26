@@ -186,7 +186,7 @@ Q_*(s,a) &= \mathbb{E} \left[ {r_t+\gamma \max_{a'} Q_*(s',a') \mid s_t=s,a_t=a}
 
 \end{align*}$$
 
-<center><img src="https://dudeperf3ct.github.io/images/tabular_files/optimal.png" width=300></center>
+<center><img src="https://dudeperf3ct.github.io/images/tabular_files/optimal.png" width=500></center>
 
 ### Important Concepts
 
