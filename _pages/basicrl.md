@@ -152,7 +152,7 @@ $$V_{\pi}(s)=\sum_{a \in \mathcal{A}} \pi(a \mid s) Q_{\pi} (s,a)$$
 
 **Value functions define a partial ordering over policies**:
 
-a policy $$\pi$$ is defined to be better than or equal to that of $$\pi'$$ for all states
+a policy $$\pi$$ is defined to be better than or equal to another $$\pi'$$ for all states
 
 $$\pi \geq \pi' \iff V_{\pi}(s) \geq V_{\pi'}(s), \forall s \in \mathcal{S}$$
 
@@ -163,6 +163,10 @@ $$\pi \geq \pi' \iff V_{\pi}(s) \geq V_{\pi'}(s), \forall s \in \mathcal{S}$$
 $$V_*(s) \triangleq \max_{\pi} V_{\pi}(s), \forall s \in \mathcal{S}$$
 
 $$Q_*(s,a) \triangleq \max_{\pi} Q_{\pi}(s,a), \forall s \in \mathcal{S}, \forall a \in \mathcal{A}$$
+
+therefore
+
+$$Q_*(s,a) = \mathbb{E} \left[r_t + \gamma V_*(s_{t+1}) \mid s_t=s,a_t=a \right]$$
 
 ### Important Concepts
 
