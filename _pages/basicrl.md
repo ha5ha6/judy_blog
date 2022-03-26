@@ -146,6 +146,15 @@ where
 
 $$V_{\pi}(s)=\sum_{a \in \mathcal{A}} \pi(a \mid s) Q_{\pi} (s,a)$$
 
+### Optimal Value Functions
+
+**Goal of RL**: finding a policy that maximizes the expected return
+
+**Value functions define a partial ordering over policies**:
+
+a policy $$\pi$$ is defined to be better than or equal to that of $$\pi'$$ for all states
+
+$$\pi \geq \pi' \iff V_{\pi}(s) \geq V_{\pi'}(s), \forall s \in \mathcal{S}$$
 
 ### Important Concepts
 
