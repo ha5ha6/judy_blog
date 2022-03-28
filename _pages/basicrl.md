@@ -238,6 +238,11 @@ Once we have $$V_*$$, we can determine $$\pi_*$$:
     what is Vπ for π(a|s) ~ uniform with γ=0.9?
 
 
+Solution is computed by solving the system of linear equations:
+
+$$V_{\pi}(s)=\sum_a \pi(a \mid s) \sum_{s',r} p(s',r \mid s,a) \left[r+\gamma V_{\pi}(s') \right]$$
+
+
 ```python
 def sigmoid(x):
    return 1./(1.+np.exp(-x))
