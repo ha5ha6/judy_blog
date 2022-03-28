@@ -252,16 +252,15 @@ $$V_{\pi}(s)=\sum_a \pi(a \mid s) \left[r+\gamma V_{\pi}(s') \right]$$
 
 for example from state $$s=(0,0)$$ to $$s'$$
 
-<div align="center">
-
-| $$s$$ | $$a$$ | $$s'$$ | $$r$$ |
-|-------|-------|--------|-------|
-|  0,0  | left  |  0,0   |  -1   |
-|  0,0  |  up   |  0,0   |  -1   |
-|  0,0  | right |  0,1   |  0    |
-|  0,0  | down  |  1,0   |  0    |
-
-</div>
+    |   s   |   a   |   s'   |   r   |    |0,0|0,1|   |0,3|   |
+    |-------|-------|--------|-------|    |---|---|---|---|---|
+    |  0,0  | left  |  0,0   |  -1   |    |1,0|1,1|   |   |   |
+    |  0,0  |  up   |  0,0   |  -1   |    |---|---|---|---|---|
+    |  0,0  | right |  0,1   |  0    |    |   |   |   |2,3|   |
+    |  0,0  | down  |  1,0   |  0    |    |---|---|---|---|---|
+                                          |   |   |   |   |   |
+                                          |---|---|---|---|---|
+                                          |   |4,1|   |   |   |
 
 $$\begin{align*}
 
@@ -272,33 +271,6 @@ V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
        = &-0.5
 
 \end{align*}$$
-
-<div align="center">
-
-|0,0|0,1|   |0,3|   |
-|---|---|---|---|---|
-|1,0|1,1|   |   |   |
-|   |   |   |2,3|   |
-|   |   |   |   |   |
-|   |4,1|   |   |   |
-
-</div>
-
-
-    ----|---|---|---|----
-    |0,0|0,1|   |0,3|   |        
-    |---|---|---|---|---|        
-    |1,0|1,1|   |   |   |          
-    |---|---|---|---|---|          
-    |   |   |   |2,3|   |          
-    |---|---|---|---|---|          
-    |   |   |   |   |   |        
-    |---|---|---|---|---|        
-    |   |4,1|   |   |   |        
-    ----|---|---|---|----        
-
-
-
 
 ```python
 import numpy as np
@@ -331,11 +303,11 @@ while True:
     V_=np.zeros_like(V)
     for x in range(nx):
         for y in range(ny):
-            va=[]
+            v_a=[]
             for a in actions:
                 (x_,y_),r=step([x,y],a)
-                va.append(pi*(r+gm*V[x_,y_]))
-            V_[x,y]=np.sum(va)
+                v_a.append(pi*(r+gm*V[x_,y_]))
+            V_[x,y]=np.sum(v_a)
 
     #print(np.around(V,decimals=2))
     if np.sum(np.abs(V-V_))<1e-4:
@@ -343,4 +315,65 @@ while True:
         break
 
     V=V_
+
+output:
+[[ 3.3  8.8  4.4  5.3  1.5]
+ [ 1.5  3.   2.3  1.9  0.5]
+ [ 0.1  0.7  0.7  0.4 -0.4]
+ [-1.  -0.4 -0.4 -0.6 -1.2]
+ [-1.9 -1.3 -1.2 -1.4 -2. ]]
 ```
+
+    [[ 3.3  8.8  4.4  5.3  1.5]
+     [ 1.5  3.   2.3  1.9  0.5]
+     [ 0.1  0.7  0.7  0.4 -0.4]
+     [-1.  -0.4 -0.4 -0.6 -1.2]
+     [-1.9 -1.3 -1.2 -1.4 -2. ]]
+
+insights:
+
+- negative values near the lower edge is due to the high probability of hitting the edge of the grid under the random policy
+
+- A is the best state to be under this policy
+
+- V(A)<10 because A' is close to the edge and V(A') has a negative value -1.3
+
+- V(B)>5 because V(B') has a positive value 0.4
+
+#### calculate V\*
+
+in this case, we don't know the policy, and use $$max_a V(s')$$ to update $$V$$
+
+```python
+V=np.zeros((nx,ny))
+
+while True:
+    V_=np.zeros_like(V)
+    for x in range(nx):
+        for y in range(ny):
+            v_a=[]
+            for a in actions:
+                (x_,y_),r=step([x,y],a)
+                v_a.append(r+gm*V[x_,y_])
+            V_[x,y]=np.max(v_a)
+
+    #print(np.around(V,decimals=2))
+    if np.sum(np.abs(V-V_))<1e-4:
+        print(np.around(V,decimals=1))
+        break
+
+    V=V_
+
+output:
+[[22.  24.4 22.  19.4 17.5]
+ [19.8 22.  19.8 17.8 16. ]
+ [17.8 19.8 17.8 16.  14.4]
+ [16.  17.8 16.  14.4 13. ]
+ [14.4 16.  14.4 13.  11.7]]
+```
+
+### References
+
+
+
+https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions
