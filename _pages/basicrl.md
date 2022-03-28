@@ -250,6 +250,14 @@ $$V_{\pi}(s)=\sum_a \pi(a \mid s) \left[r+\gamma V_{\pi}(s') \right]$$
 
 for example from state $$s=(0,0)$$ to $$s'$$
 
+| $$s$$ | $$a$$ | $$s'$$ | $$r$$ |
+|-------|-------|--------|-------|
+|  0,0  | left  |  0,0   |  -1   |
+|  0,0  |  up   |  0,0   |  -1   |
+|  0,0  | right |  0,1   |  0    |
+|  0,0  | down  |  1,0   |  0    |
+
+
 $$(0,0) \rightarrow left \rightarrow (0,0),r=-1$$
 
 $$(0,0) \rightarrow up \rightarrow (0,0),r=-1$$
