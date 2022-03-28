@@ -301,7 +301,46 @@ V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
 
 
 ```python
-def sigmoid(x):
-   return 1./(1.+np.exp(-x))
+import numpy as np
 
+nx,ny=5,5
+A,A_=[0,1],[4,1]
+B,B_=[0,3],[2,3]
+actions=[[0,-1],[-1,0],[0,1],[1,0]]#left,up,right,down
+pi=0.25
+gm=0.9
+
+def step(s,a):
+    if s==A:
+        return A_,10
+    if s==B:
+        return B_,5
+
+    s_=[s[0]+a[0],s[1]+a[1]]
+    if s_[0]<0 or s_[0]>=nx or s_[1]<0 or s_[1]>=ny:
+        r=-1
+        s_=s
+    else:
+        r=0
+
+    return s_,r
+
+V=np.zeros((nx,ny))
+
+while True:
+    V_=np.zeros_like(V)
+    for x in range(nx):
+        for y in range(ny):
+            va=[]
+            for a in actions:
+                (x_,y_),r=step([x,y],a)
+                va.append(pi*(r+gm*V[x_,y_]))
+            V_[x,y]=np.sum(va)
+
+    #print(np.around(V,decimals=2))
+    if np.sum(np.abs(V-V_))<1e-4:
+        print(np.around(V,decimals=1))
+        break
+
+    V=V_
 ```
