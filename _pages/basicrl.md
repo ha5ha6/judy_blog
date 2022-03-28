@@ -261,14 +261,6 @@ for example from state $$s=(0,0)$$ to $$s'$$
 
 <\center>
 
-$$(0,0) \rightarrow left \rightarrow (0,0),r=-1$$
-
-$$(0,0) \rightarrow up \rightarrow (0,0),r=-1$$
-
-$$(0,0) \rightarrow right \rightarrow (0,1),r=0$$
-
-$$(0,0) \rightarrow down \rightarrow (1,0),r=0$$
-
 $$\begin{align*}
 
 V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
