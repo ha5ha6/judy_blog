@@ -144,7 +144,13 @@ Q_{\pi}(s,a) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s,a_t=a  \right] \
 
 where
 
-$$V_{\pi}(s)=\sum_{a \in \mathcal{A}} \pi(a \mid s) Q_{\pi} (s,a)$$
+$$\begin{align*}
+
+V_{\pi}(s) &=\mathbb{E}_{a \sim \pi} Q_{\pi} (s,a) \\
+
+&=\sum_{a \in \mathcal{A}} \pi(a \mid s) Q_{\pi} (s,a)
+
+\end{align*}$$
 
 ### Optimal Value Functions
 
