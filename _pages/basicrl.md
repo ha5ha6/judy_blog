@@ -252,7 +252,7 @@ $$V_{\pi}(s)=\sum_a \pi(a \mid s) \left[r+\gamma V_{\pi}(s') \right]$$
 
 for example from state $$s=(0,0)$$ to $$s'$$
 
-<center>
+<div align="center">
 
 | $$s$$ | $$a$$ | $$s'$$ | $$r$$ |
 |-------|-------|--------|-------|
@@ -261,7 +261,7 @@ for example from state $$s=(0,0)$$ to $$s'$$
 |  0,0  | right |  0,1   |  0    |
 |  0,0  | down  |  1,0   |  0    |
 
-<\center>
+</div>
 
 $$\begin{align*}
 
@@ -273,7 +273,7 @@ V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
 
 \end{align*}$$
 
-<center>
+<div align="center">
 
 |0,0|0,1|   |0,3|   |
 |---|---|---|---|---|
@@ -282,7 +282,7 @@ V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
 |   |   |   |   |   |
 |   |4,1|   |   |   |
 
-<\center>
+</div>
 
 
     ----|---|---|---|----
