@@ -252,13 +252,13 @@ $$V_{\pi}(s)=\sum_a \pi(a \mid s) \left[r+\gamma V_{\pi}(s') \right]$$
 
 for example
 
-$$s=(0,0)$$ -> $$a=left$$ -> $$s'=(0,0),r=-1$$
+$$s=(0,0) \rightarrow a=left \rightarrow s'=(0,0),r=-1$$
 
-$$s=(0,0)$$ -> $$a=up$$ -> $$s'=(0,0),r=-1$$
+$$s=(0,0) \rightarrow a=up \rightarrow s'=(0,0),r=-1$$
 
-$$s=(0,0)$$ -> $$a=right$$ -> $$s'=(0,1),r=0$$
+$$s=(0,0) \rightarrow a=right \rightarrow s'=(0,1),r=0$$
 
-$$s=(0,0)$$ -> $$a=down$$ -> $$s'=(1,0),r=0$$
+$$s=(0,0) \rightarrow a=down \rightarrow s'=(1,0),r=0$$
 
 $$\begin{align*}
 
