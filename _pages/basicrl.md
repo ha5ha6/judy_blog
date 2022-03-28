@@ -250,19 +250,21 @@ $$V_{\pi}(s)=\sum_a \pi(a \mid s) \left[r+\gamma V_{\pi}(s') \right]$$
 
 for example from state $$(0,0)$$
 
-$$s=(0,0) \rightarrow a=left \rightarrow s'=(0,0),r=-1$$
+$$s=(0,0) \rightarrow left \rightarrow s'=(0,0),r=-1$$
 
-$$s=(0,0) \rightarrow a=up \rightarrow s'=(0,0),r=-1$$
+$$s=(0,0) \rightarrow up \rightarrow s'=(0,0),r=-1$$
 
-$$s=(0,0) \rightarrow a=right \rightarrow s'=(0,1),r=0$$
+$$s=(0,0) \rightarrow right \rightarrow s'=(0,1),r=0$$
 
-$$s=(0,0) \rightarrow a=down \rightarrow s'=(1,0),r=0$$
+$$s=(0,0) \rightarrow down \rightarrow s'=(1,0),r=0$$
 
 $$\begin{align*}
 
-V(0,0) &= 0.25*[-1+0.9*V(0,0)]+0.25*[-1+0.9*V(0,0)]+0.25*[0+0.9*V(0,1)]+0.25*[0+0.9*V(1,0)] \\
-
-       &= -0.5
+V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
+       &+ 0.25*[-1+0.9*V(0,0)] \\
+       &+0.25*[0+0.9*V(0,1)] \\
+       &+0.25*[0+0.9*V(1,0)] \\
+       = &-0.5
 
 \end{align*}$$
 
