@@ -224,6 +224,8 @@ Once we have $$V_*$$, we can determine $$\pi_*$$:
 
 ### Gridworld
 
+#### calculate Vπ
+
 <center><img src="https://miro.medium.com/max/507/1*iX-Fu5YzUZ8CNEZ86BvfKA.png" width=400></center>
 
     deterministic dynamics: p(s'|s,a)
@@ -242,7 +244,7 @@ Solution is computed by solving the system of linear equations:
 
 $$V_{\pi}(s)=\sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r+\gamma V_{\pi}(s') \right]$$
 
-$$p(s' \mid s,a)=1$$ since it's deterministic env
+since it's a deterministic env $$p(s' \mid s,a)=1$$
 
 we have
 
