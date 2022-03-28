@@ -224,6 +224,10 @@ Once we have $$V_*$$, we can determine $$\pi_*$$:
 
 ### Gridworld
 
+
+
+<center><img src="https://miro.medium.com/max/507/1*iX-Fu5YzUZ8CNEZ86BvfKA.png" width=400></center>
+
 ```python
 def sigmoid(x):
    return 1./(1.+np.exp(-x))
