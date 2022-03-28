@@ -242,15 +242,13 @@ Solution is computed by solving the system of linear equations:
 
 $$V_{\pi}(s)=\sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r+\gamma V_{\pi}(s') \right]$$
 
-where
-
 $$p(s' \mid s,a)=1$$ since it's deterministic env
 
-then we have
+we have
 
 $$V_{\pi}(s)=\sum_a \pi(a \mid s) \left[r+\gamma V_{\pi}(s') \right]$$
 
-for example
+for example from state $$(0,0)$$
 
 $$s=(0,0) \rightarrow a=left \rightarrow s'=(0,0),r=-1$$
 
