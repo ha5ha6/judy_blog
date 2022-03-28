@@ -235,12 +235,45 @@ Once we have $$V_*$$, we can determine $$\pi_*$$:
     r=-1, off the grid, location remains unchanged
     r=0, otherwise
 
-    what is Vπ for π(a|s) ~ uniform with γ=0.9?
+    What is Vπ for π(a|s) ~ uniform with γ=0.9?
 
 
 Solution is computed by solving the system of linear equations:
 
-$$V_{\pi}(s)=\sum_a \pi(a \mid s) \sum_{s',r} p(s',r \mid s,a) \left[r+\gamma V_{\pi}(s') \right]$$
+$$V_{\pi}(s)=\sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r+\gamma V_{\pi}(s') \right]$$
+
+where
+
+$$p(s' \mid s,a)=1$$ since it's deterministic env
+
+then we have
+
+$$V_{\pi}(s)=\sum_a \pi(a \mid s) \left[r+\gamma V_{\pi}(s') \right]$$
+
+for example
+
+$$s=(0,0)$$ -> $$a=left$$ -> $$s'=(0,0),r=-1$$
+
+$$s=(0,0)$$ -> $$a=up$$ -> $$s'=(0,0),r=-1$$
+
+$$s=(0,0)$$ -> $$a=right$$ -> $$s'=(0,1),r=0$$
+
+$$s=(0,0)$$ -> $$a=down$$ -> $$s'=(1,0),r=0$$
+
+
+    ----|---|---|---|----
+    |0,0|0,1|   | B |   |        
+    |---|---|---|---|---|        
+    |1,0|   |   |   |   |          
+    |---|---|---|---|---|          
+    |   |   |   | B'|   |          
+    |---|---|---|---|---|          
+    |   |   |   |   |   |        
+    |---|---|---|---|---|        
+    |   | A'|   |   |   |        
+    ----|---|---|---|----        
+
+
 
 
 ```python
