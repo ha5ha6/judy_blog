@@ -221,6 +221,8 @@ Once we have $$V_*$$, we can determine $$\pi_*$$:
 
 **Greedy**: any search or decision procedure that selects alternatives based only on local or immediate considerations, without considering the possibility that such a selection may prevent future access to even better alternatives
 
+**Dynamic Programming**: a collection of algs that can be used to compute optimal policies given a perfect model of the env as a MDP (not applicable in practice but forms important theoretical foundations for RL algs)
+
 
 ### Gridworld
 
@@ -244,7 +246,7 @@ Solution is computed by solving the system of linear equations:
 
 $$V_{\pi}(s)=\sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r+\gamma V_{\pi}(s') \right]$$
 
-since it's a deterministic env $$p(s' \mid s,a)=1$$
+since it's a deterministic env, $$p(s' \mid s,a)=1$$
 
 we have
 
