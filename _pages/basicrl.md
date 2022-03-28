@@ -208,6 +208,19 @@ Once we have $$V_*$$, we can determine $$\pi_*$$:
 
 - any $$\pi$$ that is greedy w.r.t $$V_*(s)$$ is $$\pi_*$$
 
+### Policy Evaluation
+
+$$\begin{align*}
+
+V_{k+1}(s) &\triangleq \mathbb{E}_{\pi} \left[r_t+ \gamma V_k(s_{t+1}) \mid s_t=s \right] \\
+
+&=\sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r+\gamma V_k(s') \right]
+
+\end{align*}$$
+
+note:
+
+- $$V_k \rightarrow V_{\pi}$$ is a fixed point for this update rule as $$k \rightarrow \infty$$ because Bellman Equation for $$V_{\pi}$$ assures us of equality in this case
 
 ### Important Concepts
 
