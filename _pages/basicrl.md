@@ -224,9 +224,19 @@ Once we have $$V_*$$, we can determine $$\pi_*$$:
 
 ### Gridworld
 
-
-
 <center><img src="https://miro.medium.com/max/507/1*iX-Fu5YzUZ8CNEZ86BvfKA.png" width=400></center>
+
+    deterministic dynamics: p(s'|s,a)
+
+    actions={up,down,left,right}
+
+    r=+10, state A -> state A'
+    r=+5, state B -> state B'
+    r=-1, off the grid, location remains unchanged
+    r=0, otherwise
+
+    what is Vπ for π(a|s) ~ uniform with γ=0.9?
+
 
 ```python
 def sigmoid(x):
