@@ -234,6 +234,20 @@ that is, it must obtain greater or equal expected return from all states $$s \in
 
 $$V_{\pi'}(s) \geq V_{\pi}(s)$$
 
+**Policy Improvement**: the process of making a new policy that improves on an original policy, by making it greedy w.r.t the value function of the original policy
+
+Define the **new greedy policy** $$\pi'$$:
+
+$$\begin{align*}
+
+\pi'(s) &\triangleq \arg \max_a Q_{\pi}(s,a) \\
+
+&= \arg \max_a \mathbb{E} \left[r_t+\gamma V_{\pi}(s_{t+1}) \mid s_t=s,a_t=a \right] \\
+
+&= \arg \max_a \sum_{s'} p(s' \mid s,a) \left[r+\gamma V_{\pi}(s') \right]
+
+\end{align*}$$
+
 ### Important Concepts
 
 **Delayed reward**:
