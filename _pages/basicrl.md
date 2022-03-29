@@ -415,7 +415,7 @@ while True:
 
 <center><img src="https://miro.medium.com/max/1400/1*G3q-q9gEiDc2fD8sPXHBpQ.png" width=400></center>
 
-    undiscounted episodic task
+    undiscounted episodic task (γ=1)
     deterministic dynamics: p(s'|s,a)=1
     actions={up,down,left,right}
 
@@ -426,7 +426,7 @@ while True:
 
     if off the grid, location remains unchanged
 
-    What is {Vk} by iterative policy evaluation for π(a|s) ~ uniform (with γ=1)?
+    What is {Vk} by iterative policy evaluation for π(a|s) ~ uniform?
 
 ```python
 import numpy as np
