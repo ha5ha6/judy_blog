@@ -243,8 +243,7 @@ note:
 
 <center><img src="https://miro.medium.com/max/507/1*iX-Fu5YzUZ8CNEZ86BvfKA.png" width=400></center>
 
-    deterministic dynamics: p(s'|s,a)
-
+    deterministic dynamics: p(s'|s,a)=1
     actions={up,down,left,right}
 
     r=+10, state A -> state A'
@@ -324,28 +323,21 @@ while True:
                 v_a.append(pi*(r+gm*V[x_,y_]))
             V_[x,y]=np.sum(v_a)
 
-    #print(np.around(V,decimals=2))
     if np.sum(np.abs(V-V_))<1e-4:
         print(np.around(V,decimals=1))
         break
 
     V=V_
-
-output:
-[[ 3.3  8.8  4.4  5.3  1.5]
- [ 1.5  3.   2.3  1.9  0.5]
- [ 0.1  0.7  0.7  0.4 -0.4]
- [-1.  -0.4 -0.4 -0.6 -1.2]
- [-1.9 -1.3 -1.2 -1.4 -2. ]]
 ```
 
+    output:
     [[ 3.3  8.8  4.4  5.3  1.5]
      [ 1.5  3.   2.3  1.9  0.5]
      [ 0.1  0.7  0.7  0.4 -0.4]
      [-1.  -0.4 -0.4 -0.6 -1.2]
      [-1.9 -1.3 -1.2 -1.4 -2. ]]
 
-insights:
+**insights**:
 
 - negative values near the lower edge is due to the high probability of hitting the edge of the grid under the random policy
 
@@ -357,7 +349,7 @@ insights:
 
 #### calculate V\*
 
-in this case, we don't know the policy, and use $$max_a V(s')$$ to update $$V$$
+in this case, we don't know the policy, and use $$max_a [r+\gamma V(s')]$$ to update $$V$$
 
 ```python
 V=np.zeros((nx,ny))
@@ -372,20 +364,19 @@ while True:
                 v_a.append(r+gm*V[x_,y_])
             V_[x,y]=np.max(v_a)
 
-    #print(np.around(V,decimals=2))
     if np.sum(np.abs(V-V_))<1e-4:
         print(np.around(V,decimals=1))
         break
 
     V=V_
-
-output:
-[[22.  24.4 22.  19.4 17.5]
- [19.8 22.  19.8 17.8 16. ]
- [17.8 19.8 17.8 16.  14.4]
- [16.  17.8 16.  14.4 13. ]
- [14.4 16.  14.4 13.  11.7]]
 ```
+
+    output:
+    [[22.  24.4 22.  19.4 17.5]
+     [19.8 22.  19.8 17.8 16. ]
+     [17.8 19.8 17.8 16.  14.4]
+     [16.  17.8 16.  14.4 13. ]
+     [14.4 16.  14.4 13.  11.7]]
 
 ### References
 
