@@ -248,6 +248,10 @@ $$\begin{align*}
 
 \end{align*}$$
 
+Note:
+
+- all the ideas can be easily generated to stochastic policies $$\pi(a \mid s)$$
+
 ### Important Concepts
 
 **Delayed reward**:
@@ -405,6 +409,25 @@ while True:
      [17.8 19.8 17.8 16.  14.4]
      [16.  17.8 16.  14.4 13. ]
      [14.4 16.  14.4 13.  11.7]]
+
+
+#### Policy Evaluation and Policy Iteration
+
+<center><img src="https://miro.medium.com/max/1400/1*G3q-q9gEiDc2fD8sPXHBpQ.png" width=400></center>
+
+    undiscounted episodic task
+    deterministic dynamics: p(s'|s,a)=1
+    actions={up,down,left,right}
+
+    terminal states: the shaded ones
+    non-terminal states: S={1,...,14}
+
+    r=-1, on all transitions until the terminal state is reached
+
+    if off the grid, location remains unchanged
+
+    What is {Vk} by iterative policy evaluation for π(a|s) ~ uniform (with γ=1)?
+
 
 ### References
 
