@@ -37,9 +37,6 @@ usemathjax: true
 
 in another words: **the current state include information about all aspects of the past**
 
-
-### in Math
-
 **6-tuple MDP**: $$(\mathcal{S}, \mathcal{A},p,\mathcal{R},\gamma,T)$$
 
 $$ s,s' \in \mathcal{S}$$ - state space
