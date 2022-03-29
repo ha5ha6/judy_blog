@@ -218,9 +218,21 @@ V_{k+1}(s) &\triangleq \mathbb{E}_{\pi} \left[r_t+ \gamma V_k(s_{t+1}) \mid s_t=
 
 \end{align*}$$
 
-note:
+Note:
 
 - $$V_k \rightarrow V_{\pi}$$ is a fixed point for this update rule as $$k \rightarrow \infty$$ because Bellman Equation for $$V_{\pi}$$ assures us of equality in this case
+
+### Policy Improvement
+
+**Policy Improvement Theorem**: Let $$\pi$$ and $$\pi'$$ be any pair of deterministic policies such that
+
+$$\forall s \in \mathcal{S}, Q_{\pi}(s,\pi'(s)) \geq V_{\pi}(s)$$
+
+then the policy $$\pi'$$ must be as good as or better than $$\pi$$
+
+that is, it must obtain greater or equal expected return from all states $$s \in \mathcal{S}$$:
+
+$$V_{\pi'}(s) \geq V_{\pi}(s)$$
 
 ### Important Concepts
 
@@ -235,6 +247,8 @@ note:
 **Greedy**: any search or decision procedure that selects alternatives based only on local or immediate considerations, without considering the possibility that such a selection may prevent future access to even better alternatives
 
 **Dynamic Programming**: a collection of algs that can be used to compute optimal policies given a perfect model of the env as a MDP (not applicable in practice but forms important theoretical foundations for RL algs)
+
+**Expected Update**: all the updates done in DP is called Expected Update because they are based on an expectation _over all possible next states_ rather than on a sample next state
 
 
 ### Gridworld
