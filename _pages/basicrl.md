@@ -426,7 +426,7 @@ while True:
 
     if off the grid, location remains unchanged
 
-    What is {Vk} by iterative policy evaluation for π(a|s) ~ uniform?
+    What is {V_k} k=0,1,2,3,10,...,until convergence by iterative policy evaluation for π(a|s) ~ uniform?
 
 ```python
 import numpy as np
