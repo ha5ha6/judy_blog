@@ -428,6 +428,64 @@ while True:
 
     What is {Vk} by iterative policy evaluation for π(a|s) ~ uniform (with γ=1)?
 
+```python
+import numpy as np
+
+nx,ny=4,4
+#left, up, right, down
+actions=[[0,-1],[-1,0],[0,1],[1,0]]
+pi=0.25
+gm=1
+
+def is_terminal(s):
+    return s==[0,0] or s==[nx-1,ny-1]
+
+def step(s,a):
+    if is_terminal(s):
+        return s,0
+
+    s_=[s[0]+a[0],s[1]+a[1]]
+
+    if s_[0]<0 or s_[0]>=nx or s_[1]<0 or s_[1]>=ny:
+        s_=s
+
+    r=-1
+    return s_,r
+
+V=np.zeros((nx,ny))
+
+#selected iterations
+iters=[0,1,2,3,10]
+
+for i in range(300):
+    V_=np.zeros_like(V)
+
+    #fig_ini(i,iters)
+
+    for x in range(nx):
+        for y in range(ny):
+            v_a=[]
+            for a in actions:
+                (x_,y_),r=step([x,y],a)
+                v_a.append(pi*(r+gm*V[x_,y_]))
+            V_[x,y]=np.sum(v_a)    
+
+            #plot_arrow(i,iters,v_a,x,y)
+
+    if i in iters:
+        print('i =',str(i))
+        print('V = \n',np.around(V,decimals=1))
+
+    #fig_close()
+
+    #convergence condition
+    if np.sum(np.abs(V-V_))<1e-4:
+        print('i =',str(i))
+        print('V = \n',np.around(V,decimals=1))
+        break
+
+    V=V_
+```
 
 ### References
 
