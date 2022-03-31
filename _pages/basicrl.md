@@ -440,7 +440,7 @@ Note:
 
 - the state-value w.r.t a specific policy $$V_{\pi}$$ converges to a fixed point can be referred to **policy evaluation**
 
-- a better policy obtained from $$V_{\pi}$$ can be referred to **policy improvement**
+- a better policy **greedily** obtained from $$V_{\pi}$$ can be referred to **policy improvement**
 
 
 ```python
@@ -550,9 +550,8 @@ def calc_v_improved(k,pi_op):
 V_pi,pi_=calc_vk(k=217)
 V_pi_=calc_v_improved(k=1,pi_op=pi_)
 ```
-<center>
-![](/judy_blog/assets/images/policy_at_iter_216.png){:width="50%"}
-<\center>
+
+<center><img src="/judy_blog/assets/images/policy_at_iter_216.png" width=400></center>
 
 The above is optimal policy we found at iteration 216
 
