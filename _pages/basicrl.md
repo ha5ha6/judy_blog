@@ -408,7 +408,7 @@ while True:
      [14.4 16.  14.4 13.  11.7]]
 
 
-#### calculate Vk,π\*,Vπ'
+#### calculate Vk,Vπ'
 
 <center><img src="https://miro.medium.com/max/1400/1*G3q-q9gEiDc2fD8sPXHBpQ.png" width=400></center>
 
@@ -434,7 +434,7 @@ while True:
 
 - $$V_{\pi'} \geq V_{\pi}$$ because of policy improvement
 
-Note:
+**Insights**:
 
 - the state-value w.r.t a specific policy $$V_{\pi}$$ converges to a fixed point can be referred to **policy evaluation**
 
@@ -549,7 +549,7 @@ V_pi,pi_=calc_vk(k=217)
 V_pi_=calc_v_improved(k=1,pi_op=pi_)
 ```
 
-<center><img src="/judy_blog/assets/images/policy_at_iter_216.png" width=400></center>
+<center><img src="/judy_blog/assets/images/policy_at_iter_216.png" width=350></center>
 
 The above is optimal policy we found at iteration 216
 
