@@ -551,7 +551,7 @@ V_pi_=calc_v_improved(k=1,pi_op=pi_)
 
 <center><img src="/judy_blog/assets/images/policy_at_iter_216.png" width=350></center>
 
-The above is optimal policy we found at iteration 216
+The above is the greedy policy we found at iteration 216
 
     V_pi=[[  0., -14., -20., -22.],
           [-14., -18., -20., -20.],
