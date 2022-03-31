@@ -544,7 +544,7 @@ V_pi,pi_=calc_vk(k=217)
 V_pi_=calc_v_improved(k=1,pi_op=pi_)
 ```
 
-![](https://ha5ha6.github.io/judy_blog/_notebooks/policy_at_iter_216.png){:width="25%"}
+![](/judy_blog/assets/images/policy_at_iter_216.png){:width="25%"}
 
 Optimal policy we found at iteration 216
 
