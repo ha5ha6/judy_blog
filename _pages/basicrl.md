@@ -436,6 +436,13 @@ while True:
 
 - $$V_{\pi'} \geq V_{\pi}$$ because of policy improvement
 
+Note:
+
+- the state-value w.r.t a specific policy $$V_{\pi}$$ converges to a fixed point can be referred to **policy evaluation**
+
+- a better policy obtained from $$V_{\pi}$$ can be referred to **policy improvement**
+
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -543,10 +550,11 @@ def calc_v_improved(k,pi_op):
 V_pi,pi_=calc_vk(k=217)
 V_pi_=calc_v_improved(k=1,pi_op=pi_)
 ```
+<center>
+![](/judy_blog/assets/images/policy_at_iter_216.png){:width="50%"}
+<\center>
 
-![](/judy_blog/assets/images/policy_at_iter_216.png){:width="25%"}
-
-Optimal policy we found at iteration 216
+The above is optimal policy we found at iteration 216
 
     V_pi=[[  0., -14., -20., -22.],
           [-14., -18., -20., -20.],
