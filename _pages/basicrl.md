@@ -249,6 +249,12 @@ Note:
 
 - All the ideas can be easily generated to stochastic policies $$\pi(a \mid s)$$
 
+### Policy Iteration
+
+The **monotonical** sequence of improving policies and value functions:
+
+$$\pi_0$$ -Eval-> $$V_{\pi_0}$$ -Impr-> $$\pi_1$$ -Eval-> $$V_{\pi_1}$$ -Impr-> ... $$\pi_*$$ -Eval-> $$V_{\pi_*}$$
+
 ### Important Concepts
 
 **Delayed reward**:
