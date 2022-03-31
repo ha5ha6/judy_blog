@@ -414,7 +414,7 @@ while True:
      [14.4 16.  14.4 13.  11.7]]
 
 
-#### calculate Vk,Vπ'
+#### calculate Vk,π',Vπ'
 
 <center><img src="https://miro.medium.com/max/1400/1*G3q-q9gEiDc2fD8sPXHBpQ.png" width=400></center>
 
