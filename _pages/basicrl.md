@@ -253,7 +253,7 @@ Note:
 
 The **monotonical** sequence of improving policies and value functions:
 
-$$\pi_0$$ -Eval-> $$V_{\pi_0}$$ -Impr-> $$\pi_1$$ -Eval-> $$V_{\pi_1}$$ -Impr-> ... $$\pi_*$$ -Eval-> $$V_{\pi_*}$$
+$$\pi_0$$ -Evaluate-> $$V_{\pi_0}$$ -Improve-> $$\pi_1$$ -Evaluate-> $$V_{\pi_1}$$ -Improve-> ... $$\pi_*$$ -Evaluate-> $$V_{\pi_*}$$
 
 ### Important Concepts
 
