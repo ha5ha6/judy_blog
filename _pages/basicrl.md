@@ -366,7 +366,7 @@ while True:
      [-1.  -0.4 -0.4 -0.6 -1.2]
      [-1.9 -1.3 -1.2 -1.4 -2. ]]
 
-**insights**:
+**Insights**:
 
 - negative values near the lower edge is due to the high probability of hitting the edge of the grid under the random policy
 
@@ -429,6 +429,13 @@ while True:
 
     note: k=0,1,2,3,10, and until convergence
 
+
+- We first obtained the $$V_{\pi}$$ with $$\pi$$ as the uniform policy
+
+- Then we replaced the uniform policy $$\pi$$ with the obtained optimal policy $$\pi'$$, and calculate the new $$V_{\pi'}$$
+
+- $$V_{\pi'} \geq V_{\pi}$$ because of policy improvement
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -461,7 +468,7 @@ def plot_arrow(i,pi_op):
     plt.xlim((0,nx))
 
     for (x,y), label in pi_op.items():
-        #print(x,y,label)
+
         if [x,y]==[0,0] or [x,y]==[nx-1,ny-1]:
             pass
         else:  
@@ -498,7 +505,7 @@ def calc_vk(k=217,pi=0.25,gm=1):
                     (x_,y_),r=step([x,y],a)
                     v_a.append(pi*(r+gm*V[x_,y_]))
                 V_[x,y]=np.sum(v_a)    
-                pi_op[x,y]=[i for i, v in enumerate(v_a) if v == max(v_a)]
+                pi_op[x,y]=[i for i,v in enumerate(v_a) if v==max(v_a)]
 
         #convergence condition
         if np.sum(np.abs(V-V_))<1e-4:
@@ -510,7 +517,7 @@ def calc_vk(k=217,pi=0.25,gm=1):
 
     return np.around(V,decimals=1),pi_op
 
-def calc_v_op(k,pi_op):
+def calc_v_improved(k,pi_op):
     V=np.zeros((nx,ny))
 
     for i in range(k):
@@ -533,52 +540,14 @@ def calc_v_op(k,pi_op):
 
     return V
 
-V_random_pi,pi_op=calc_vk(k=217)
-
-V_optimal_pi=calc_v_op(k=1,pi_op=pi_op)
+V_random_pi,pi_=calc_vk(k=217)
+V_improved_pi=calc_v_improved(k=1,pi_op=pi_)
 ```
 
-    i = 0
-    V =
-    [[0. 0. 0. 0.]
-    [0. 0. 0. 0.]
-    [0. 0. 0. 0.]
-    [0. 0. 0. 0.]]
+![](https://ha5ha6.github.io/judy_blog/_notebooks/policy_at_iter_216.png){:width="25%"}
 
-    i = 1
-    V =
-     [[ 0. -1. -1. -1.]
-     [-1. -1. -1. -1.]
-     [-1. -1. -1. -1.]
-     [-1. -1. -1.  0.]]
+Optimal policy we found at iteration 216
 
-    i = 2
-    V =
-    [[ 0.  -1.8 -2.  -2. ]
-    [-1.8 -2.  -2.  -2. ]
-    [-2.  -2.  -2.  -1.8]
-    [-2.  -2.  -1.8  0. ]]
-
-    i = 3
-    V =
-     [[ 0.  -2.4 -2.9 -3. ]
-     [-2.4 -2.9 -3.  -2.9]
-     [-2.9 -3.  -2.9 -2.4]
-     [-3.  -2.9 -2.4  0. ]]
-
-    i = 10
-    V =
-    [[ 0.  -6.1 -8.4 -9. ]
-    [-6.1 -7.7 -8.4 -8.4]
-    [-8.4 -8.4 -7.7 -6.1]
-    [-9.  -8.4 -6.1  0. ]]
-
-    i = 217
-    V =
-     [[  0. -14. -20. -22.]
-     [-14. -18. -20. -20.]
-     [-20. -20. -18. -14.]
-     [-22. -20. -14.   0.]]
 
 ### References
 
