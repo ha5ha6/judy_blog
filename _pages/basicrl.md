@@ -425,9 +425,7 @@ while True:
 
     What is {V_k} by iterative policy evaluation for π(a|s) ~ uniform?
 
-    What is Vπ' with π'=π*?
-
-    note: k=0,1,2,3,10, and until convergence
+    What is Vπ' with π', where π' is an improved π?
 
 
 - We first obtained the $$V_{\pi}$$ with $$\pi$$ as the uniform policy
@@ -567,7 +565,5 @@ The above is optimal policy we found at iteration 216
 
 
 ### References
-
-
 
 https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions
