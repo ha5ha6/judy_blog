@@ -408,7 +408,7 @@ while True:
      [14.4 16.  14.4 13.  11.7]]
 
 
-#### calculate Vk
+#### calculate Vk,π\*
 
 <center><img src="https://miro.medium.com/max/1400/1*G3q-q9gEiDc2fD8sPXHBpQ.png" width=400></center>
 
@@ -424,16 +424,14 @@ while True:
     if off the grid, location remains unchanged
 
     What is {V_k} by iterative policy evaluation for π(a|s) ~ uniform?
-    note: k=0,1,2,3,10,...,until convergence
+
+    What is V* injected by π*?
+    
+    note: k=0,1,2,3,10, and until convergence
 
 ```python
 import numpy as np
-
-nx,ny=4,4
-#left, up, right, down
-actions=[[0,-1],[-1,0],[0,1],[1,0]]
-pi=0.25
-gm=1
+import matplotlib.pyplot as plt
 
 def is_terminal(s):
     return s==[0,0] or s==[nx-1,ny-1]
@@ -450,39 +448,94 @@ def step(s,a):
     r=-1
     return s_,r
 
-V=np.zeros((nx,ny))
+def plot_arrow(i,pi_op):
+    scale=0.3
+    x0=nx-0.5
+    fig=plt.figure(figsize=(6,6))
+    ax=fig.add_subplot(1,1,1)
+    ax.set_aspect('equal', adjustable='box')
+    ax.set_xticks(np.arange(0,nx+1,1))
+    ax.set_yticks(np.arange(0,ny+1,1))
+    plt.grid()
+    plt.ylim((0,ny))
+    plt.xlim((0,nx))
 
-#selected iterations
-iters=[0,1,2,3,10]
+    for (x,y), label in pi_op.items():
+        #print(x,y,label)
+        if [x,y]==[0,0] or [x,y]==[nx-1,ny-1]:
+            pass
+        else:  
+            if 1 in label: #up
+                plt.arrow(y+0.5,x0-x,0,scale,width=0.1, head_width=0.2, head_length=0.1,fc='g', ec='g')
+            if 3 in label: #down
+                plt.arrow(y+0.5,x0-x,0,-scale,width=0.1, head_width=0.2, head_length=0.1,fc='c', ec='c')
+            if 2 in label: #right
+                plt.arrow(y+0.5,x0-x,scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='b', ec='b')
+            if 0 in label: #left
+                plt.arrow(y+0.5,x0-x,-scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='r', ec='r')
+            plt.title('iteration:'+str(i))
 
-for i in range(300):
-    V_=np.zeros_like(V)
+    plt.savefig('policy_at_iter_'+str(i)+'.png',dpi=350)
+    plt.show()
+    plt.close()
 
-    #fig_ini(i,iters)
+def calc_vk(k=217,pi=0.25,gm=1):
 
-    for x in range(nx):
-        for y in range(ny):
-            v_a=[]
-            for a in actions:
-                (x_,y_),r=step([x,y],a)
-                v_a.append(pi*(r+gm*V[x_,y_]))
-            V_[x,y]=np.sum(v_a)    
+    global nx,ny,actions
+    nx,ny=4,4
+    actions=[[0,-1],[-1,0],[0,1],[1,0]] #left, up, right, down
 
-            #plot_arrow(i,iters,v_a,x,y)
+    V=np.zeros((nx,ny))
+    pi_op={}
 
-    if i in iters:
-        print('i =',str(i))
-        print('V = \n',np.around(V,decimals=1))
+    for i in range(k):
+        V_=np.zeros_like(V)
 
-    #fig_close()
+        for x in range(nx):
+            for y in range(ny):
+                v_a=[]
+                for a in actions:
+                    (x_,y_),r=step([x,y],a)
+                    v_a.append(pi*(r+gm*V[x_,y_]))
+                V_[x,y]=np.sum(v_a)    
+                pi_op[x,y]=[i for i, v in enumerate(v_a) if v == max(v_a)]
 
-    #convergence condition
-    if np.sum(np.abs(V-V_))<1e-4:
-        print('i =',str(i))
-        print('V = \n',np.around(V,decimals=1))
-        break
+        #convergence condition
+        if np.sum(np.abs(V-V_))<1e-4:
+            break
 
-    V=V_
+        V=V_
+
+    plot_arrow(i,pi_op)
+
+    return np.around(V,decimals=1),pi_op
+
+def calc_v_op(k,pi_op):
+    V=np.zeros((nx,ny))
+
+    for i in range(k):
+        V_=np.zeros_like(V)
+
+        for x in range(nx):
+            for y in range(ny):
+                v_a,pi=[0]*4,[0]*4
+                for ia,a in enumerate(actions):                
+                    (x_,y_),r=step([x,y],a)            
+                    pi[ia]=1 if ia in pi_op[x,y] else 0    
+                    v_a[ia]=pi[ia]*(r+gm*V[x_,y_])
+                V_[x,y]=np.sum(v_a)    
+
+        #convergence condition
+        if np.sum(np.abs(V-V_))<1e-4:
+            break
+
+        V=V_
+
+    return V
+
+V_random_pi,pi_op=calc_vk(k=217)
+
+V_optimal_pi=calc_v_op(k=1,pi_op=pi_op)
 ```
 
     i = 0
