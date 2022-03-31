@@ -408,7 +408,7 @@ while True:
      [14.4 16.  14.4 13.  11.7]]
 
 
-#### calculate Vk,π\*
+#### calculate Vk,π\*,Vπ'
 
 <center><img src="https://miro.medium.com/max/1400/1*G3q-q9gEiDc2fD8sPXHBpQ.png" width=400></center>
 
@@ -425,8 +425,8 @@ while True:
 
     What is {V_k} by iterative policy evaluation for π(a|s) ~ uniform?
 
-    What is V* injected by π*?
-    
+    What is Vπ' with π'=π*?
+
     note: k=0,1,2,3,10, and until convergence
 
 ```python
