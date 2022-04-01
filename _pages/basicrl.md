@@ -305,7 +305,7 @@ $$\pi_0$$ -Evaluate-> $$Q_{\pi_0}$$ -Improve-> $$\pi_1$$ -Evaluate-> $$Q_{\pi_1}
 
 by making the policy greedy w.r.t the current action value
 
-- **Policy Evaluation**: $$Q(s,a) \leftarrow average(Returns(s,a))$$
+- **Policy Evaluation**: $$Q(s,a) \leftarrow average(Returns(s,a))$$ (run episode-by-episode)
 
 **Two assumptions** for the guarantee of convergence for Monte Carlo method:
 
@@ -685,14 +685,10 @@ The above is the greedy policy we found at iteration 216
     r=-1 lose
     r=0 draw
 
-    states: cards
-
-    the player makes decisions on the basis of three variables:
-        his current sum (12-21)
+    states: 10x10x2=200
+        the player's current sum (12-21)
         the dealer's one showing card (ace-10)
         whether or not he holds a usable ace
-
-        10x10x2=200 states
 
     policy:
         sticks, if the player's sum is 20 or 21
