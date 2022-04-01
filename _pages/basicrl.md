@@ -301,9 +301,7 @@ a **Monte Carlo version** of **Policy Iteration**:
 
 $$\pi_0$$ -Evaluate-> $$Q_{\pi_0}$$ -Improve-> $$\pi_1$$ -Evaluate-> $$Q_{\pi_1}$$ -Improve-> ... $$\pi_*$$ -Evaluate-> $$Q_{\pi_*}$$
 
-- **Policy Improvement**: $$\pi(s) \triangleq \arg \max_a Q(s,a)$$
-
-by making the policy greedy w.r.t the current action value
+- **Policy Improvement**: $$\pi(s) \triangleq \arg \max_a Q(s,a)$$ (by making the policy greedy w.r.t the current action value)
 
 - **Policy Evaluation**: $$Q(s,a) \leftarrow average(Returns(s,a))$$ (run episode-by-episode)
 
@@ -689,16 +687,40 @@ The above is the greedy policy we found at iteration 216
     r=-1 lose
     r=0 draw
 
-    states: 10x10x2=200
+    states: [player's sum, dealer's card, usable ace?], 10x10x2=200
         the player's current sum (12-21)
         the dealer's one showing card (ace-10)
         whether or not he holds a usable ace
+
+    actions: [hit, stick]
 
     policy:
         sticks, if the player's sum is 20 or 21
         hits, otherwise
 
+    episode 1:
+        dealer's card: J
+        player's hand: 9,Q
+        player's action: hit
+        player's hand: 9,Q,3, r=-1
+
+        s=[19,10,no], a=[hit], s'=[22,10,no], r=-1
+
+    episode 2:
+        dealer's card: J,3,9
+        player's hand: 3,Q,3,3
+
+        s=[13,10,no], a=[hit], s'=[16,10,no], r=0
+        s=[16,10,no], a=[hit], s'=[19,10,no], r=0
+        s=[19,10,no], a=[hit], s'=[19,22,no], r=1
+
+        V(13,10,no) <- 1
+        V(16,10,no) <- 1
+        V(19,10,no) <- -1+1
+
 
 ### References
+
+https://towardsdatascience.com/optimizing-blackjack-strategy-through-monte-carlo-methods-cbb606e52d1b
 
 https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions
