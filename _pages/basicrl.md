@@ -211,7 +211,7 @@ $$\begin{align*}
 
 V_{k+1}(s) &\triangleq \mathbb{E}_{\pi} \left[r_t+ \gamma V_k(s_{t+1}) \mid s_t=s \right] \\
 
-&=\sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r+\gamma V_k(s') \right]
+&=\sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma V_k(s') \right]
 
 \end{align*}$$
 
@@ -241,7 +241,7 @@ $$\begin{align*}
 
 &= \arg \max_a \mathbb{E} \left[r_t+\gamma V_{\pi}(s_{t+1}) \mid s_t=s,a_t=a \right] \\
 
-&= \arg \max_a \sum_{s'} p(s' \mid s,a) \left[r+\gamma V_{\pi}(s') \right]
+&= \arg \max_a \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma V_{\pi}(s') \right]
 
 \end{align*}$$
 
@@ -257,9 +257,25 @@ $$\pi_0$$ -Evaluate-> $$V_{\pi_0}$$ -Improve-> $$\pi_1$$ -Evaluate-> $$V_{\pi_1}
 
 In deterministic policy case:
 
-1. Policy Evaluation: $$V(s) \leftarrow \sum_{s'} p(s' \mid s,\pi(s)) \left[r+\gamma V(s') \right] $$ until convergence
+- **Policy Evaluation**: $$V(s) \leftarrow \sum_{s'} p(s' \mid s,\pi(s)) \left[r+\gamma V(s') \right] $$ until convergence
 
-2. Policy Improvement: $$\pi(s) \leftarrow \arg \max_a \sum_{s'} p(s' \mid s,\pi(s)) \left[r+\gamma V(s') \right]$$
+- **Policy Improvement**: $$\pi(s) \leftarrow \arg \max_a \sum_{s'} p(s' \mid s,a) \left[r+\gamma V(s') \right]$$ until policy being stable
+
+### Value Iteration
+
+The **Policy Evaluation** step in **Policy Iteration** can be truncated without losing the convergence guarantees, which means we can do **Policy Evaluation** without waiting for the convergence of $$V_{\pi}$$
+
+**Value Iteration** stops **Policy Evaluation** after just one update of each state  
+
+$$\begin{align*}
+
+V_{k+1}(s) &\triangleq \max_a \mathbb{E}_{\pi} \left[r_t+ \gamma V_k(s_{t+1}) \mid s_t=s \right] \\
+
+&=\max_a \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma V_k(s') \right]
+
+\end{align*}$$
+
+
 
 ### Important Concepts
 
