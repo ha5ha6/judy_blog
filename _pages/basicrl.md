@@ -255,6 +255,12 @@ The **monotonical** sequence of improving policies and value functions:
 
 $$\pi_0$$ -Evaluate-> $$V_{\pi_0}$$ -Improve-> $$\pi_1$$ -Evaluate-> $$V_{\pi_1}$$ -Improve-> ... $$\pi_*$$ -Evaluate-> $$V_{\pi_*}$$
 
+In deterministic policy case:
+
+1. Policy Evaluation: $$V(s) \leftarrow \sum_{s'} p(s' \mid s,\pi(s)) \left[r+\gamma V(s') \right] $$ until convergence
+
+2. Policy Improvement: $$\pi(s) \leftarrow \arg \max_a \sum_{s'} p(s' \mid s,\pi(s)) \left[r+\gamma V(s') \right]$$
+
 ### Important Concepts
 
 **Delayed reward**:
@@ -545,9 +551,10 @@ def calc_v_improved(k,pi_op):
             for y in range(ny):
                 v_a,pi=[0]*4,[0]*4
                 for ia,a in enumerate(actions):                
-                    (x_,y_),r=step([x,y],a)            
+                    (x_,y_),r=step([x,y],a)     
+                    #apply improved policy       
                     pi[ia]=1 if ia in pi_op[x,y] else 0   
-                    #policy evaluation with new pi 
+                    #policy evaluation with new policy
                     v_a[ia]=pi[ia]*(r+gm*V[x_,y_])
                 V_[x,y]=np.sum(v_a)    
 
