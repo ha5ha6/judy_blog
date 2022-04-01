@@ -317,6 +317,12 @@ The process of **Value Iteration**:
 
 **Bootstrapping**: algs update estimates on the basis of other estimates, like all of DP algs update estimates of $$V(s)$$ based on estimates of $$V(s')$$
 
+**V(s)** vs **Q(s,a)**:
+
+- with a model, V(s) alone are sufficient to determine a policy; one simply looks ahead one step and chooses whichever action leads to the best combination of reward and next state  
+
+- without a model, one must explicitly estimate the value of each action in order for the values to be useful in suggesting a policy
+
 
 ### Gridworld
 
@@ -630,6 +636,7 @@ The above is the greedy policy we found at iteration 216
 
     face cards: 10
     ace: 1 or 11
+    otherwise: same as the card number
 
     Game begins with 2 cards dealt to both dealer and player
 
@@ -646,7 +653,26 @@ The above is the greedy policy we found at iteration 216
 
     the outcome is determined by the closeness to 21 of each one's final sum
 
+    if the player holds an ace that he could count as 11 without going bust, then the ace is said to be usable
 
+    an episodic undiscounted finite MDP (one game one episode,γ=1)
+
+    r=+1 win
+    r=-1 lose
+    r=0 draw
+
+    states: cards
+
+    the player makes decisions on the basis of three variables:
+        his current sum (12-21)
+        the dealer's one showing card (ace-10)
+        whether or not he holds a usable ace
+
+        10x10x2=200 states
+
+    policy:
+        sticks, if the player's sum is 20 or 21
+        hits, otherwise
 
 
 ### References
