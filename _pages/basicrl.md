@@ -434,9 +434,13 @@ while True:
     What is Vπ' with π', where π' is an improved π?
 
 
-- We first obtained the $$V_{\pi}$$ with $$\pi$$ as the uniform policy
+- $$\pi$$ is the original equiprobable random policy
 
-- Then we replaced the uniform policy $$\pi$$ with the obtained optimal policy $$\pi'$$, and calculate the new $$V_{\pi'}$$
+- $$\pi'$$ is the new policy greedy w.r.t $$V_{\pi}$$
+
+- we first obtained $$V_{\pi}$$ with $$\pi$$
+
+- Then we replaced $$\pi$$ with $$\pi'$$, and calculate the new $$V_{\pi'}$$
 
 - $$V_{\pi'} \geq V_{\pi}$$ because of policy improvement
 
@@ -515,7 +519,10 @@ def calc_vk(k=217,pi=0.25,gm=1):
                 for a in actions:
                     (x_,y_),r=step([x,y],a)
                     v_a.append(pi*(r+gm*V[x_,y_]))
+                #policy evaluation
                 V_[x,y]=np.sum(v_a)    
+                #obtain policy greedy w.r.t V_pi
+                #policy improvement
                 pi_op[x,y]=[i for i,v in enumerate(v_a) if v==max(v_a)]
 
         #convergence condition
@@ -539,7 +546,8 @@ def calc_v_improved(k,pi_op):
                 v_a,pi=[0]*4,[0]*4
                 for ia,a in enumerate(actions):                
                     (x_,y_),r=step([x,y],a)            
-                    pi[ia]=1 if ia in pi_op[x,y] else 0    
+                    pi[ia]=1 if ia in pi_op[x,y] else 0   
+                    #policy evaluation with new pi 
                     v_a[ia]=pi[ia]*(r+gm*V[x_,y_])
                 V_[x,y]=np.sum(v_a)    
 
