@@ -297,7 +297,7 @@ We consider action values $$Q_{\pi}(s,a)$$ in Monte Carlo Control since Monte Ca
 
 The explicit estimate of value on each action is used to suggest a policy
 
-**a Monte Carlo version** of **Policy Iteration**:
+a **Monte Carlo version** of **Policy Iteration**:
 
 $$\pi_0$$ -Evaluate-> $$Q_{\pi_0}$$ -Improve-> $$\pi_1$$ -Evaluate-> $$Q_{\pi_1}$$ -Improve-> ... $$\pi_*$$ -Evaluate-> $$Q_{\pi_*}$$
 
@@ -656,6 +656,8 @@ The above is the greedy policy we found at iteration 216
 
 ### BlackJack
 
+#### Monte Carlo ES
+
     Goal: to obtain cards the sum of whose numerical values is as great as possible without exceeding 21
 
     face cards: 10
@@ -672,14 +674,16 @@ The above is the greedy policy we found at iteration 216
             if goes bust: lose
             if sticks: then dealer's turn
 
-    dealer's turn: sticks on any sum of 17 or greater, and hits otherwise
+    dealer's policy: sticks on any sum of 17 or greater, and hits otherwise
         if goes bust: lose
 
     the outcome is determined by the closeness to 21 of each one's final sum
 
     if the player holds an ace that he could count as 11 without going bust, then the ace is said to be usable
 
-    an episodic undiscounted finite MDP (one game one episode,γ=1)
+    ---------------------------------------------------------------------------
+
+    an episodic undiscounted finite MDP (one game one episode, γ=1)
 
     r=+1 win
     r=-1 lose
