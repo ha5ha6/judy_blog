@@ -211,7 +211,7 @@ $$\begin{align*}
 
 V_{k+1}(s) &\triangleq \mathbb{E}_{\pi} \left[r_t+ \gamma V_k(s_{t+1}) \mid s_t=s \right] \\
 
-&=\sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma V_k(s') \right]
+&=\sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma V_k(s') \right],
 
 \forall s \in \mathcal{S}
 
@@ -273,7 +273,7 @@ $$\begin{align*}
 
 V_{k+1}(s) &\triangleq \max_a \mathbb{E}_{\pi} \left[r_t+ \gamma V_k(s_{t+1}) \mid s_t=s \right] \\
 
-&=\max_a \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma V_k(s') \right]
+&=\max_a \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma V_k(s') \right],
 
 \forall s \in \mathcal{S}
 
@@ -299,13 +299,23 @@ The process of **Value Iteration**:
 
 **Deterministic/Stochastic env**:
 
-**Monte Carlo methods**: estimate $$V_{\pi}$$ and $$Q_{\pi}$$ from experience by averaging over many random samples of actual returns
+**Monte Carlo methods**: estimate $$V_{\pi}$$ and $$Q_{\pi}$$ from experience by averaging over many random samples of actual returns **without knowing the model of env**
 
 **Greedy**: any search or decision procedure that selects alternatives based only on local or immediate considerations, without considering the possibility that such a selection may prevent future access to even better alternatives
 
-**Dynamic Programming**: a collection of algs that can be used to compute optimal policies given a perfect model of the env as a MDP (not applicable in practice but forms important theoretical foundations for RL algs)
+**Dynamic Programming**: a collection of algs that can be used to compute optimal policies given **a perfect model of the env** as a MDP, and sometime require sweeps of the entire state set, (not applicable in practice but forms important theoretical foundations for RL algs)
 
 **Expected Update**: all the updates done in DP is called Expected Update because they are based on an expectation _over all possible next states_ rather than on a sample next state
+
+**Asynchronous DP**: in-place iterative DP algs update the values of states in any order, using whatever values of other states happen to be available, other than algs sweep the entire state set of MDP
+
+**Generalized Policy Iteration**: the general idea of letting **Policy Evaluation** and **Policy Improvement** process interact, independent of the granularity and other details of the two processes
+
+**A DP method is guaranteed to find an optimal policy in polynomial time w.r.t numbers of states and actions**
+
+**DP** vs **Linear Programming** vs **direct search**
+
+**Bootstrapping**: algs update estimates on the basis of other estimates, like all of DP algs update estimates of $$V(s)$$ based on estimates of $$V(s')$$
 
 
 ### Gridworld
