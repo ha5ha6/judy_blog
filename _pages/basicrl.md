@@ -624,6 +624,30 @@ The above is the greedy policy we found at iteration 216
           [-1., -2., -2., -1.],
           [-2., -1., -1.,  0.]]
 
+### BlackJack
+
+    Goal: to obtain cards the sum of whose numerical values is as great as possible without exceeding 21
+
+    face cards: 10
+    ace: 1 or 11
+
+    Game begins with 2 cards dealt to both dealer and player
+
+    dealer's cards: one face up and one face down
+
+    player's cards:
+        if immediately 21 (ace+10) <- natural: wins unless dealer also has a natural (draw)
+        if not natural: can request additional cards one by one (hits) until he either stops (sticks) or exceeds 21 (goes bust)
+            if goes bust: lose
+            if sticks: then dealer's turn
+
+    dealer's turn: sticks on any sum of 17 or greater, and hits otherwise
+        if goes bust: lose
+
+    the outcome is determined by the closeness to 21 of each one's final sum
+
+
+
 
 ### References
 
