@@ -301,6 +301,18 @@ The explicit estimate of value on each action is used to suggest a policy
 
 $$\pi_0$$ -Evaluate-> $$Q_{\pi_0}$$ -Improve-> $$\pi_1$$ -Evaluate-> $$Q_{\pi_1}$$ -Improve-> ... $$\pi_*$$ -Evaluate-> $$Q_{\pi_*}$$
 
+- **Policy Improvement**: $$\pi(s) \triangleq \arg \max_a Q(s,a)$$
+
+by making the policy greedy w.r.t the current action value
+
+- **Policy Evaluation**: $$Q(s,a) \leftarrow average(Returns(s,a))$$
+
+**Two assumptions** for the guarantee of convergence for Monte Carlo method:
+
+1. the episodes have exploring starts  
+
+2. policy evaluation could be done with an infinite number of episodes  
+
 ### Important Concepts
 
 **Delayed reward**:
