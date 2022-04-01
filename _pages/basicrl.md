@@ -291,6 +291,16 @@ The process of **Value Iteration**:
 
 - output a deterministic policy $$\pi(s)=\arg \max_a \sum_{s'} p(s' \mid s,a) \left[r+\gamma V(s')\right]$$
 
+### Monte Carlo Control
+
+We consider action values $$Q_{\pi}(s,a)$$ in Monte Carlo Control since Monte Carlo methods only uses experience samples without knowing the environment dynamics
+
+The explicit estimate of value on each action is used to suggest a policy
+
+**a Monte Carlo version** of **Policy Iteration**:
+
+$$\pi_0$$ -Evaluate-> $$Q_{\pi_0}$$ -Improve-> $$\pi_1$$ -Evaluate-> $$Q_{\pi_1}$$ -Improve-> ... $$\pi_*$$ -Evaluate-> $$Q_{\pi_*}$$
+
 ### Important Concepts
 
 **Delayed reward**:
@@ -322,6 +332,8 @@ The process of **Value Iteration**:
 - with a model, V(s) alone are sufficient to determine a policy; one simply looks ahead one step and chooses whichever action leads to the best combination of reward and next state  
 
 - without a model, one must explicitly estimate the value of each action in order for the values to be useful in suggesting a policy
+
+**Exploring Starts**: every (s,a) pair has a nonzero probability of being selected as the start
 
 
 ### Gridworld
