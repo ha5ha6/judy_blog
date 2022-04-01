@@ -299,7 +299,7 @@ The process of **Value Iteration**:
 
 **Deterministic/Stochastic env**:
 
-**Monte Carlo methods**: estimate $$V_{\pi}$$ and $$Q_{\pi}$$ from experience by averaging over many random samples of actual returns **without knowing the model of env**
+**Monte Carlo methods**: only require **experience samples** to estimate $$V_{\pi}$$ and $$Q_{\pi}$$ by averaging over those samples and actual returns **without knowing the model of env**, and only for episodic tasks
 
 **Greedy**: any search or decision procedure that selects alternatives based only on local or immediate considerations, without considering the possibility that such a selection may prevent future access to even better alternatives
 
