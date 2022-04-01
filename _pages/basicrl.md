@@ -257,7 +257,7 @@ The **monotonical** sequence of improving policies and value functions:
 
 $$\pi_0$$ -Evaluate-> $$V_{\pi_0}$$ -Improve-> $$\pi_1$$ -Evaluate-> $$V_{\pi_1}$$ -Improve-> ... $$\pi_*$$ -Evaluate-> $$V_{\pi_*}$$
 
-In deterministic policy case:
+The process of **Policy Iteration** in deterministic policy case:
 
 - **Policy Evaluation**: $$V(s) \leftarrow \sum_{s'} p(s' \mid s,\pi(s)) \left[r+\gamma V(s') \right] $$ until convergence
 
@@ -285,7 +285,11 @@ Recall **Bellman Optimality Equation**
 
 $$V_*(s) = \max_a \sum_{s'} p(s' \mid s,a) \left[r_t +\gamma V_*(s')  \right]$$
 
+The process of **Value Iteration**:
 
+- $$V(s) \leftarrow \max_a \sum_{s'} p(s' \mid s,a) \left[r+\gamma V(s')\right]$$ until convergence
+
+- output a deterministic policy $$\pi(s)=\arg \max_a \sum_{s'} p(s' \mid s,a) \left[r+\gamma V(s')\right]$$
 
 ### Important Concepts
 
