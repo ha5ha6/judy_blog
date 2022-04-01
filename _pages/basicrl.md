@@ -213,6 +213,8 @@ V_{k+1}(s) &\triangleq \mathbb{E}_{\pi} \left[r_t+ \gamma V_k(s_{t+1}) \mid s_t=
 
 &=\sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma V_k(s') \right]
 
+\forall s \in \mathcal{S}
+
 \end{align*}$$
 
 Note:
@@ -273,7 +275,15 @@ V_{k+1}(s) &\triangleq \max_a \mathbb{E}_{\pi} \left[r_t+ \gamma V_k(s_{t+1}) \m
 
 &=\max_a \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma V_k(s') \right]
 
+\forall s \in \mathcal{S}
+
 \end{align*}$$
+
+Another way of understanding **Value Iteration** is simply turning the **Bellman Optimality Equation** into an update rule
+
+Recall **Bellman Optimality Equation**
+
+$$V_*(s) = \max_a \sum_{s'} p(s' \mid s,a) \left[r_t +\gamma V_*(s')  \right]$$
 
 
 
