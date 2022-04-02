@@ -7,8 +7,8 @@ main:
     url: /project/
   #- title: "Side Project"
   #  url: /sideproject/
-  #- title: "Tutorial"
-  #  url: /tutorial/
+  - title: "Notes"
+    url: /note/
   - title: "Gallery"
     url: /gallery/
   #- title: "Collections"

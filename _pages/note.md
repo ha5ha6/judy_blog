@@ -1,7 +1,7 @@
 ---
 layout: single
-title: Tutorial
-permalink: "/tutorial/"
+title: Notes
+permalink: "/note/"
 author_profile: true
 #breadcrumbs: true
 
@@ -21,4 +21,4 @@ usemathjax: true
 
 ## Reinforcement Learning
 
-1. [Basic RL: value-based, policy-based, actor critic, ...](/judy_blog/basicrl/)
+[Basic RL:](/judy_blog/basicrl/)

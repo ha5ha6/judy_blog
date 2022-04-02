@@ -757,10 +757,8 @@ def first_visit_mc(policy,env,n_eps,gm=1):
     V=defaultdict(float)
 
     for ep in range(n_eps):
+        traj,done=[],False
         s=env.reset()
-
-        traj=[]
-        done=False
 
         while not done:
             a=policy(s)
@@ -825,6 +823,14 @@ plot_blackjack(V_500000,axes[0,1],axes[1,1])
 
 <center><img src="/judy_blog/assets/images/blackjack_fvmc.png" width=500></center>
 The above corresponds to Figure 5.1
+
+**Insights**:
+
+- the estimates for states with a usable ace are less certain and less regular because these states are less common
+
+- there is only a small winning rate no matter what the number the dealer's holding and what the player's sum is for the policy: hit until reach 20
+
+#### Monte Carlo ES
 
 ### References
 
