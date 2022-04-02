@@ -815,7 +815,7 @@ plot_blackjack(V_10000,axes[0,0],axes[1,0])
 plot_blackjack(V_500000,axes[0,1],axes[1,1])
 ```
 
-<center><img src="/judy_blog/assets/images/blackjack_fvmc.png" width=350></center>
+<center><img src="/judy_blog/assets/images/blackjack_fvmc.png" width=500></center>
 The above corresponds to Figure 5.1
 
 ### References
