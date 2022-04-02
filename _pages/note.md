@@ -21,7 +21,9 @@ usemathjax: true
 
 ## Reinforcement Learning
 
-[Basic RL: MDP, value functions, policy/value iteration, Monte Carlo control, python implementations of Gridworld, Blackjack, etc](/judy_blog/basicrl/):
+[Basic Reinforcement Learning: MDP, value functions, policy/value iteration, Monte Carlo control, python implementations of Gridworld, Blackjack, etc](/judy_blog/basicrl/)
+
+[Temporal Difference Learning]
 
 - reading notes of **Reinforcement Learning an Introduction 2nd Edition**
 
