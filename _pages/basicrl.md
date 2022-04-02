@@ -656,7 +656,7 @@ The above is the greedy policy we found at iteration 216, corresponding to Figur
           [-1., -2., -2., -1.],
           [-2., -1., -1.,  0.]]
 
-### BlackJack
+### Blackjack
 
     Goal: to obtain cards the sum of whose numerical values is as great as possible without exceeding 21
 
