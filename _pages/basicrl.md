@@ -345,7 +345,7 @@ $$\pi_0$$ -Evaluate-> $$Q_{\pi_0}$$ -Improve-> $$\pi_1$$ -Evaluate-> $$Q_{\pi_1}
 
 **First-visit Monte Carlo**: estimates $$V_{\pi}(s)$$ as the average of the returns following first visits to $$s$$
 
-**Every-visit Monte Carlo**: averages the returns following all visits to $$s$$
+**Every-visit Monte Carlo**:  estimates $$V_{\pi}(s)$$ as the average the returns following all visits to $$s$$
 
 **Exploring Starts**: every (s,a) pair has a nonzero probability of being selected as the start
 
@@ -725,9 +725,9 @@ The above is the greedy policy we found at iteration 216, corresponding to Figur
 for every episode:
 
 1. generate episode trajectory $$[s_0,a_0,r_0,s_1,a_1,r_1,...,s_T,a_T,r_T]$$ following $$\pi$$
-2. for each first appeared state $$s_{1st}$$: $$Q=\sum_{s from s_{1st}} r\gamma^i$$
+2. for each first appeared state $$s_{first}$$: $$Q=\sum_{s \in [s_{first}:]} r\gamma^i$$
 3. append $$Q$$ to return $$R(s)$$
-4. $$V(s) \leftarrow average R(s)$$
+4. calculate the average: $$V(s) \leftarrow average(R(s))$$
 
 The following code uses first-visit MC to approximate $$V(s)$$ for the blackjack policy that sticks only on 20 or 21
 
@@ -819,6 +819,8 @@ plot_blackjack(V_500000,axes[0,1],axes[1,1])
 The above corresponds to Figure 5.1
 
 ### References
+
+**Reinforcement Learning an Introduction 2nd edition** by Sutton and Barto
 
 https://ernie55ernie.github.io/machine%20learning/2018/04/08/reinforcement-learning-simple-experiment-blackjack.html
 
