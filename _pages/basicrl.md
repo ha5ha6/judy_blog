@@ -732,12 +732,25 @@ for every episode:
 The following code (based on [this work](https://ernie55ernie.github.io/machine%20learning/2018/04/08/reinforcement-learning-simple-experiment-blackjack.html)) uses first-visit MC to approximate $$V(s)$$ for the blackjack policy that sticks only on 20 or 21
 
 ```python
+import gym
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from collections import defaultdict
+from functools import partial
+
+plt.style.use('ggplot')
+
+env=gym.make('Blackjack-v1')
+
+#policy: hit until reach 20
+#actions: 0-stick, 1-hit
 def sample_policy(s):
 
     player_card, _, _ = s  
     return 0 if player_card >= 20 else 1
 
-def mc(policy,env,n_eps,gm=1):
+def first_visit_mc(policy,env,n_eps,gm=1):
 
     ret_sum=defaultdict(float)
     ret_cnt=defaultdict(float)
@@ -775,17 +788,17 @@ def mc(policy,env,n_eps,gm=1):
 
 def plot_blackjack(V,ax1,ax2):
     player_sum=np.arange(12,21+1)
-    dealer_sum=np.arange(1,10+1)
+    dealer_show=np.arange(1,10+1)
     usable_ace=np.array([True,False])
 
-    vs=np.zeros((len(player_sum),len(dealer_sum),len(usable_ace)))
+    vs=np.zeros((len(player_sum),len(dealer_show),len(usable_ace)))
 
     for i, p in enumerate(player_sum):
-        for j, d in enumerate(dealer_sum):
+        for j, d in enumerate(dealer_show):
             for k, ace in enumerate(usable_ace):
                 vs[i,j,k]=V[p,d,ace]
 
-    X,Y=np.meshgrid(player_sum,dealer_sum)
+    X,Y=np.meshgrid(player_sum,dealer_show)
 
     ax1.plot_wireframe(X,Y,vs[:,:,0])
     ax2.plot_wireframe(X,Y,vs[:,:,1])
@@ -793,12 +806,11 @@ def plot_blackjack(V,ax1,ax2):
     for ax in ax1,ax2:
         ax.set_zlim(-1,1)
         ax.set_ylabel('player sum')
-        ax.set_xlabel('dealer sum')
+        ax.set_xlabel('dealer card')
         ax.set_zlabel('V(s)')
 
-
-V_10000=mc(sample_policy,env,n_eps=10000)
-V_500000=mc(sample_policy,env,n_eps=500000)
+V_10000=first_visit_mc(sample_policy,env,n_eps=10000)
+V_500000=first_visit_mc(sample_policy,env,n_eps=500000)
 
 fig,axes=plt.subplots(nrows=2,ncols=2,figsize=(8,8),subplot_kw={'projection': '3d'})
 
