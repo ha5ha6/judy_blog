@@ -21,4 +21,8 @@ usemathjax: true
 
 ## Reinforcement Learning
 
-[Basic RL:](/judy_blog/basicrl/)
+[Basic RL](/judy_blog/basicrl/)
+
+reading notes of **Reinforcement Learning an Introduction 2nd Edition**, including: MDP setup, value functions, policy/value iteration, Monte Carlo control, python implementations of Gridworld, Blackjack etc
+
+related github repo: https://github.com/ha5ha6/judy_tutorial_basicRL
