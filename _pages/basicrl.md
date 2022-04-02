@@ -343,6 +343,10 @@ $$\pi_0$$ -Evaluate-> $$Q_{\pi_0}$$ -Improve-> $$\pi_1$$ -Evaluate-> $$Q_{\pi_1}
 
 - without a model, one must explicitly estimate the value of each action in order for the values to be useful in suggesting a policy
 
+**First-visit Monte Carlo**: estimates $$V_{\pi}(s)$$ as the average of the returns following first visits to $$s$$
+
+**Every-visit Monte Carlo**: averages the returns following all visits to $$s$$
+
 **Exploring Starts**: every (s,a) pair has a nonzero probability of being selected as the start
 
 
@@ -640,7 +644,7 @@ V_pi_=calc_v_improved(k=1,pi_op=pi_)
 
 <center><img src="/judy_blog/assets/images/policy_at_iter_216.png" width=350></center>
 
-The above is the greedy policy we found at iteration 216
+The above is the greedy policy we found at iteration 216, corresponding to Figure 4.1 k=216
 
     V_pi=[[  0., -14., -20., -22.],
           [-14., -18., -20., -20.],
@@ -653,8 +657,6 @@ The above is the greedy policy we found at iteration 216
           [-2., -1., -1.,  0.]]
 
 ### BlackJack
-
-#### Monte Carlo ES
 
     Goal: to obtain cards the sum of whose numerical values is as great as possible without exceeding 21
 
@@ -688,9 +690,9 @@ The above is the greedy policy we found at iteration 216
     r=0 draw
 
     states: [player's sum, dealer's card, usable ace?], 10x10x2=200
-        the player's current sum (12-21)
-        the dealer's one showing card (ace-10)
-        whether or not he holds a usable ace
+        the player's current sum
+        the dealer's one showing card
+        whether or not the player holds a usable ace
 
     actions: [hit, stick]
 
@@ -718,6 +720,63 @@ The above is the greedy policy we found at iteration 216
         V(16,10,no) <- 1
         V(19,10,no) <- -1+1
 
+#### first-visit MC
+
+for every episode:
+
+1. generate episode trajectory $$[s_0,a_0,r_0,s_1,a_1,r_1,...,s_T,a_T,r_T]$$ following $$\pi$$
+2. for each first appeared state $$s_{1st}$$: $$Q=\sum_{s from s_{1st}} r\gamma^i$$
+3. append $$Q$$ to return $$R(s)$$
+4. $$V(s) \leftarrow average R(s)$$
+
+```python
+def sample_policy(s):
+
+    player_card, _, _ = s  
+    return 0 if player_card >= 20 else 1
+
+def mc(policy,env,n_eps,gm=1):
+
+    ret_sum=defaultdict(float)
+    ret_cnt=defaultdict(float)
+    V=defaultdict(float)
+
+    for ep in range(n_eps):
+        s=env.reset()
+
+        traj=[]
+        done=False
+
+        while not done:
+            a=policy(s)
+            s_,r,done,_=env.step(a)
+
+            traj.append((s,a,r))     
+            s=s_
+
+        #get unique states
+        ss=set([t[0] for t in traj])
+
+        for i, s in enumerate(ss):
+
+            #find first occurence of each unique state
+            idx=traj.index([t for t in traj if t[0]==s][0])    
+
+            #sum up all the discounted rewards starting from the first occurence
+            Q=sum([t[2]*gm**i for t in traj[idx:]])
+
+            ret_sum[s]+=Q
+            ret_cnt[s]+=1.0
+            V[s]=ret_sum[s]/ret_cnt[s]
+
+    #print(ret_sum.values())
+
+    return V
+
+V_10000=mc(sample_policy,env,n_eps=10000)
+V_500000=mc(sample_policy,env,n_eps=500000)
+#print(V)
+```
 
 ### References
 
