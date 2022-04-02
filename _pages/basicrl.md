@@ -729,9 +729,7 @@ for every episode:
 3. append $$Q$$ to return $$R(s)$$
 4. calculate the average: $$V(s) \leftarrow average(R(s))$$
 
-The following code uses first-visit MC to approximate $$V(s)$$ for the blackjack policy that sticks only on 20 or 21
-
-code is based on [this work](https://ernie55ernie.github.io/machine%20learning/2018/04/08/reinforcement-learning-simple-experiment-blackjack.html)
+The following code (based on [this work](https://ernie55ernie.github.io/machine%20learning/2018/04/08/reinforcement-learning-simple-experiment-blackjack.html)) uses first-visit MC to approximate $$V(s)$$ for the blackjack policy that sticks only on 20 or 21
 
 ```python
 def sample_policy(s):
@@ -772,8 +770,6 @@ def mc(policy,env,n_eps,gm=1):
             ret_sum[s]+=Q
             ret_cnt[s]+=1.0
             V[s]=ret_sum[s]/ret_cnt[s]
-
-    #print(ret_sum.values())
 
     return V
 
