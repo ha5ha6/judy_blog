@@ -729,6 +729,10 @@ for every episode:
 3. append $$Q$$ to return $$R(s)$$
 4. $$V(s) \leftarrow average R(s)$$
 
+The following code uses first-visit MC to approximate $$V(s)$$ for the blackjack policy that sticks only on 20 or 21
+
+code is based on [this work](https://ernie55ernie.github.io/machine%20learning/2018/04/08/reinforcement-learning-simple-experiment-blackjack.html)
+
 ```python
 def sample_policy(s):
 
@@ -773,12 +777,50 @@ def mc(policy,env,n_eps,gm=1):
 
     return V
 
+def plot_blackjack(V,ax1,ax2):
+    player_sum=np.arange(12,21+1)
+    dealer_sum=np.arange(1,10+1)
+    usable_ace=np.array([True,False])
+
+    vs=np.zeros((len(player_sum),len(dealer_sum),len(usable_ace)))
+
+    for i, p in enumerate(player_sum):
+        for j, d in enumerate(dealer_sum):
+            for k, ace in enumerate(usable_ace):
+                vs[i,j,k]=V[p,d,ace]
+
+    X,Y=np.meshgrid(player_sum,dealer_sum)
+
+    ax1.plot_wireframe(X,Y,vs[:,:,0])
+    ax2.plot_wireframe(X,Y,vs[:,:,1])
+
+    for ax in ax1,ax2:
+        ax.set_zlim(-1,1)
+        ax.set_ylabel('player sum')
+        ax.set_xlabel('dealer sum')
+        ax.set_zlabel('V(s)')
+
+
 V_10000=mc(sample_policy,env,n_eps=10000)
 V_500000=mc(sample_policy,env,n_eps=500000)
-#print(V)
+
+fig,axes=plt.subplots(nrows=2,ncols=2,figsize=(8,8),subplot_kw={'projection': '3d'})
+
+axes[0,0].set_title('After 10000 episodes \n V(s) usable ace')
+axes[1,0].set_title('V(s) no usable ace')
+axes[0,1].set_title('After 500000 episodes \n V(s) usable ace')
+axes[1,1].set_title('V(s) no usable ace')
+
+plot_blackjack(V_10000,axes[0,0],axes[1,0])
+plot_blackjack(V_500000,axes[0,1],axes[1,1])
 ```
 
+<center><img src="/judy_blog/assets/images/blackjack_fvmc.png" width=350></center>
+The above corresponds to Figure 5.1
+
 ### References
+
+https://ernie55ernie.github.io/machine%20learning/2018/04/08/reinforcement-learning-simple-experiment-blackjack.html
 
 https://towardsdatascience.com/optimizing-blackjack-strategy-through-monte-carlo-methods-cbb606e52d1b
 
