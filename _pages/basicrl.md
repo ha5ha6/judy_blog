@@ -937,7 +937,9 @@ plot_blackjack(V,axes[0],axes[1])
 plot_policy(Q)
 ```
 
-<center><img src="/judy_blog/assets/images/blackjack_fvmc.png" width=500></center>
+<center><img src="/judy_blog/assets/images/blackjack_mces.png" width=500></center>
+<center><img src="/judy_blog/assets/images/blackjack_pi_mces.png" width=500></center>
+
 The above corresponds to Figure 5.2
 
 
