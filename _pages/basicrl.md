@@ -407,9 +407,9 @@ $$\mathbb{E}\left[\rho_{t:T-1} R_t \mid s_t=s \right]=V_{\pi}(s)$$
 
 We define  
 
-$$\mathcal{T}(s)$$ for **every-visit method** - the set of all time steps in which state $$s$$ is visited
+$$\mathcal{T}(s)$$ for **every-visit** method - the set of all time steps in which state $$s$$ is visited
 
-$$\mathcal{T}(s)$$ for **first-visit method** - only include time steps that were first visits to $$s$$ within their episodes
+$$\mathcal{T}(s)$$ for **first-visit** method - only include time steps that were first visits to $$s$$ within their episodes
 
 $$T(t)$$ - the first time of termination following time $$t$$
 
@@ -419,10 +419,13 @@ $$\{R(t)\}_{t \in \mathcal{T}(s)}$$ - the returns that pertain to state $$s$$
 
 $$\{\rho_{t:T(t)-1}\}_{t \in \mathcal{T}(s)}$$ - the corresponding importance-sampling ratios
 
-To estimate $$V_{\pi}(s)$$, we simply scale the returns by the ratios and average the results:
+To estimate $$V_{\pi}(s)$$, a simple average of the "ratio-ed" returns is **Ordinary Importance Sampling**:
 
 $$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}}{\abs{\mathcal{T}(s)}}$$
 
+A weighted average is **Weighted Importance Sampling**:
+
+$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}}{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1}}}$$
 
 
 ### Important Concepts
