@@ -323,9 +323,9 @@ In **On-policy** methods, the policy is generally **soft**, meaning $$\pi(a \mid
 
 **$$\epsilon$$-greedy**:
 
-- nongreedy action with probability of $$\frac{\epsilon}{|\mathcal{A}(s)|}$$
+- nongreedy action with probability of $$\frac{\epsilon}{\|\mathcal{A}(s)\|}$$
 
-- greedy action with probability of $$1-\epsilon+\frac{\epsilon}{|\mathcal{A}(s)|}$$
+- greedy action with probability of $$1-\epsilon+\frac{\epsilon}{\|\mathcal{A}(s)\|}$$
 
 this form ensures any $$\epsilon$$-greedy policy w.r.t $$Q_{\pi}$$ is an improvement aligned with the policy improvement theorem
 
