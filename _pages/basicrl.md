@@ -853,7 +853,7 @@ def mc_es(env,n_eps,gm=1.0):
                 #greedy policy w.r.t Q[s]
                 a=np.random.choice([a for a,q in enumerate(Q[s]) if q==np.max(Q[s])])
 
-            s_,r,done,_ = env.step(a)
+            s_,r,done,_=env.step(a)
             traj.append((s,a,r))
 
             if done:
@@ -862,17 +862,17 @@ def mc_es(env,n_eps,gm=1.0):
             s=s_
 
         # find the unique state-action pairs
-        pairs = set([(t[0],t[1]) for t in traj])
+        pairs=set([(t[0],t[1]) for t in traj])
 
         for (s,a) in pairs:
 
-            pair = (s,a)
+            pair=(s,a)
             # find the first occurence of each state-action pair
-            idx = traj.index([t for t in traj if t[0] == s and t[1] == a][0])
-            V = sum([t[2]*gm**i for i, t in enumerate(traj[idx:])])
+            idx=traj.index([t for t in traj if t[0] == s and t[1] == a][0])
+            V=sum([t[2]*gm**i for i, t in enumerate(traj[idx:])])
 
-            ret_sum[pair]+= V
-            ret_cnt[pair]+= 1.
+            ret_sum[pair]+=V
+            ret_cnt[pair]+=1.
 
             Q[s][a]=ret_sum[pair]/ret_cnt[pair]
 
