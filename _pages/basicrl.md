@@ -383,7 +383,7 @@ Given a starting state $$s_t$$, the probability of the subsequent state-action t
 
 $$\begin{align*}
 
-P&(a_t, s_{t+1},a_{t+1},s_{t+2},...,s_{T-1},a_{T-1},s_T \mid s_t,a_{t:T-1} \sim \pi)  \\
+&P(a_t, s_{t+1},a_{t+1},s_{t+2},...,s_{T-1},a_{T-1},s_T \mid s_t,a_{t:T-1} \sim \pi)  \\
 
 &= \pi(a_t \mid s_t)p(s_{t+1} \mid s_t,a_t) \pi(a_{t+1} \mid s_{t+1})p(s_{t+2} \mid s_{t+1},a_{t+1}) ... \pi(a_{T-1} \mid s_{T-1})p(s_T \mid s_{T-1},a_{T-1}) \\
 
@@ -391,7 +391,7 @@ P&(a_t, s_{t+1},a_{t+1},s_{t+2},...,s_{T-1},a_{T-1},s_T \mid s_t,a_{t:T-1} \sim 
 
 \end{align*}$$
 
-Thus, the relative probability of the trajectory under the target and behavior policies (the importance-sampling ratio) is
+Thus, the relative probability of the trajectory under the target and behavior policies (**the importance-sampling ratio**) is
 
 $$\rho_{t:T-1} \triangleq \frac{\prod_{k=t}^{T-1} \pi(a_k \mid s_k)p(s_{k+1} \mid s_k,a_k)}{\prod_{k=t}^{T-1} b(a_k \mid s_k)p(s_{k+1} \mid s_k,a_k)} = \prod_{k=t}^{T-1} \frac{\pi(a_k \mid s_k)}{b(a_k \mid s_k)}$$
 
