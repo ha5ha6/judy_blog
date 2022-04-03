@@ -311,9 +311,9 @@ $$\pi_0$$ -Evaluate-> $$Q_{\pi_0}$$ -Improve-> $$\pi_1$$ -Evaluate-> $$Q_{\pi_1}
 
 2. policy evaluation could be done with an infinite number of episodes  
 
-#### On/Off Policy
+### On/Off Policy
 
-To avoid the assumption of exploring starts:
+To avoid the assumption of **exploring starts**:
 
 **On-policy** methods: evaluate or improve the policy that is used to make decisions
 
