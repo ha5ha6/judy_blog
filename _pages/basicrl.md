@@ -373,7 +373,7 @@ and both are considered fixed and given
 
 Every action taken under $$\pi$$ is also taken, at least occasionally under $$\pi$$, that is $$\pi(a \mid s)>0$$ implies $$b(a \mid s)>0$$
 
-**meaning**: $$b$$ must be stochastic in states where it is not identical to $$\pi$$
+**Meaning**: $$b$$ must be stochastic in states where it is not identical to $$\pi$$
 
 **Importance Sampling**: a general technique for estimating expected values under one distribution given samples from another  
 
@@ -421,11 +421,11 @@ $$\{\rho_{t:T(t)-1}\}_{t \in \mathcal{T}(s)}$$ - the corresponding importance-sa
 
 To estimate $$V_{\pi}(s)$$, a simple average of the "ratio-ed" returns is **Ordinary Importance Sampling**:
 
-$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}{\abs{\mathcal{T}(s)}}$$
+$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}{\|\mathcal{T}(s)\|}$$
 
 A weighted average is **Weighted Importance Sampling**:
 
-$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1}}}$$
+$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1}}$$
 
 **Ordinary Importance Sampling**
 
