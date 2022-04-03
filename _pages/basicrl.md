@@ -335,7 +335,7 @@ In a sense of exploration, on-policy methods learn action values not for the opt
 
 - **target policy**: the policy being learned about and became optimal  
 
-- **behavioral policy**  the policy used to generate behavior for exploration
+- **behavioral policy**:  the policy used to generate behavior for exploration
 
 **Off-policy**: the process of learning from data 'off' the target policy
 
@@ -359,10 +359,31 @@ Comparison of **0n/Off-policy**:
 
 (+) as key to learning multi-step predictive models of the world's dynamics
 
+### Off-policy w/ Importance Sampling
 
+Suppose we wish to estimate $$V_{\pi}$$ and $$Q_{\pi}$$, but all we have are episodes collected by another policy $$b$$, where $$b \neq \pi$$, in this case
 
+- $$\pi$$ is the target policy  
 
+- $$b$$ is the behavior policy
 
+and both are considered fixed and given  
+
+**the assumption of coverage**:
+
+Every action taken under $$\pi$$ is also taken, at least occasionally under $$\pi$$, that is $$\pi(a \mid s)>0$$ implies $$b(a \mid s)>0$$
+
+**meaning**: $$b$$ must be stochastic in states where it is not identical to $$\pi$$
+
+**Importance Sampling**: a general technique for estimating expected values under one distribution given samples from another  
+
+**Importance Sampling Ratio**: the relative probability of two trajectories occurring under the target and behavior policies  
+
+Given a starting state $$s_t$$, the probability of the subsequent state-action trajectory occuring under any policy $$\pi$$ is
+
+$$\begin{}
+
+$$
 
 
 ### Important Concepts
@@ -1002,6 +1023,8 @@ plot_policy(Q)
 The above corresponds to Figure 5.2: hit-black(1), stick-white(0)
 
 #### on-policy Monte Carlo
+
+- use epsilon-greedy policy with 95% greedy action and 5% non-greedy random action
 
 ```python
 def e_greedy(Q,s,epsilon,na):
