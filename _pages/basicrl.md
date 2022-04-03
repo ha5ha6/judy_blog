@@ -335,7 +335,7 @@ In a sense of exploration, on-policy methods learn action values not for the opt
 
 - **target policy**: the policy being learned about and became optimal  
 
-- **behavioral policy**:  the policy used to generate behavior for exploration
+- **behavior policy**:  the policy used to generate behavior for exploration
 
 **Off-policy**: the process of learning from data 'off' the target policy
 
@@ -449,7 +449,23 @@ $$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}{\sum_{t
 
 (+) easier to extend to the approximate methods using function approximation (preferred in practice)
 
+Note of difference between **first-visit** and **every-visit**:
 
+    Exercise 5.5: an MDP with a single nonterminal state, a single terminal state and a single action
+
+         --p-> s0 --(1-p)--> Terminal
+         |     |
+         |-----|
+
+    r +1 for all transitions
+    γ=1
+
+    Suppose you observe one episode that lasts 10 steps with a return of 10
+    What are the first-visit and every-visit estimators of the value of the nonterminal state?
+
+**first-visit**: $$V(s)=10$$
+
+**every-visit**: $$V(s)=(1/10)(1+2+3+4+5+6+7+8+9+10)=5.5$$
 
 
 ### Important Concepts
