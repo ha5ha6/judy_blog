@@ -690,9 +690,9 @@ The above is the greedy policy we found at iteration 216, corresponding to Figur
     r=0 draw
 
     states: [player's sum, dealer's card, usable ace?], 10x10x2=200
-        the player's current sum
-        the dealer's one showing card
-        whether or not the player holds a usable ace
+        the player's current sum (12-22)
+        the dealer's one showing card (A-10)
+        whether or not the player holds a usable ace (True/False)
 
     actions: [hit, stick]
 
@@ -737,7 +737,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from collections import defaultdict
-from functools import partial
 
 plt.style.use('ggplot')
 
@@ -831,6 +830,116 @@ The above corresponds to Figure 5.1
 - there is only a small winning rate no matter what the number the dealer's holding and what the player's sum is for the policy: hit until reach 20
 
 #### Monte Carlo ES
+
+```python
+def mc_es(env,n_eps,gm=1.0):
+
+    ret_sum=defaultdict(float)
+    ret_cnt=defaultdict(float)
+
+    na=env.action_space.n
+    Q=defaultdict(lambda: np.zeros(na))
+
+    for ep in range(n_eps):
+        traj,done=[],False
+        s=env.reset() #random initial state
+        a=np.random.randint(na) #random initial action
+
+        for i in range(100):
+
+            if i==0:
+                pass
+            else:
+                #greedy policy w.r.t Q[s]
+                a=np.random.choice([a for a,q in enumerate(Q[s]) if q==np.max(Q[s])])
+
+            s_,r,done,_ = env.step(a)
+            traj.append((s,a,r))
+
+            if done:
+                break
+
+            s=s_
+
+        # find the unique state-action pairs
+        pairs = set([(t[0],t[1]) for t in traj])
+
+        for (s,a) in pairs:
+
+            pair = (s,a)
+            # find the first occurence of each state-action pair
+            idx = traj.index([t for t in traj if t[0] == s and t[1] == a][0])
+            V = sum([t[2]*gm**i for i, t in enumerate(traj[idx:])])
+
+            ret_sum[pair]+= V
+            ret_cnt[pair]+= 1.
+
+            Q[s][a]=ret_sum[pair]/ret_cnt[pair]
+
+    V=defaultdict(float)
+    for s, a_s in Q.items():
+        V[s]=np.max(a_s)
+
+    return Q,V
+
+def plot_policy(Q):
+
+    player_sum=np.arange(21,11,-1)
+    dealer_show=np.arange(1,10+1)
+
+    X,Y=np.meshgrid(dealer_show,player_sum)
+
+    pi_ace=np.zeros((len(dealer_show),len(player_sum)))
+    pi_noace=np.zeros((len(dealer_show),len(player_sum)))
+
+    for (p,d,ace),q in Q.items():
+        if ace==1:
+            pi_ace[21-p,d-1]=np.argmax(q)
+        elif ace==0 and p>11:
+            pi_noace[21-p,d-1]=np.argmax(q)
+
+    fig=plt.figure(figsize=(10,6))
+    x_ticks_labels = ['A','2','3','4','5','6','7','8','9','10','11']
+    y_ticks_labels = ['21','20','19','18','17','16','15','14','13','12','11']
+
+    ax1=fig.add_subplot(1,2,1)
+    ax1.set_aspect('equal', adjustable='box')
+    ax1.set_xticks(np.arange(0,11,1))
+    ax1.set_yticks(np.arange(0,11,1))
+    ax1.set_xticklabels(x_ticks_labels)
+    ax1.set_yticklabels(y_ticks_labels)
+    plt.grid()
+    im1=plt.imshow(pi_ace,cmap='gray_r')
+    plt.colorbar(im1,fraction=0.046, pad=0.04)
+    plt.title('$\pi_*$ usable ace')
+
+    ax2=fig.add_subplot(1,2,2)
+    ax2.set_aspect('equal', adjustable='box')
+    ax2.set_xticks(np.arange(0,11,1))
+    ax2.set_yticks(np.arange(0,11,1))
+    ax2.set_xticklabels(x_ticks_labels)
+    ax2.set_yticklabels(y_ticks_labels)
+    plt.grid()
+    im2=plt.imshow(pi_noace,cmap='gray_r')
+    plt.colorbar(im2,fraction=0.046, pad=0.04)
+    plt.title('$\pi_*$ no usable ace')
+
+    plt.savefig('blackjack_pi_mces.png',dpi=350)
+
+Q,V=mc_es(env,n_eps=500000)
+
+fig,axes=plt.subplots(ncols=2,figsize=(10,10),subplot_kw={'projection': '3d'})
+
+axes[0].set_title('After 500000 episodes \n V(s) usable ace')
+axes[1].set_title('After 500000 episodes \n V(s) no usable ace')
+
+plot_blackjack(V,axes[0],axes[1])
+plot_policy(Q)
+```
+
+<center><img src="/judy_blog/assets/images/blackjack_fvmc.png" width=500></center>
+The above corresponds to Figure 5.2
+
 
 ### References
 
