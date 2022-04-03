@@ -317,9 +317,11 @@ To avoid the assumption of exploring starts:
 
 **On-policy** methods: evaluate or improve the policy that is used to make decisions
 
-**Off-policy** methods: evaluate of improve a policy different from that used to generate the data
+**Off-policy** methods: evaluate or improve a policy different from that used to generate the data
 
-In **On-policy** methods, the policy is generally **soft**, meaning $$\pi(a \mid s) >0 \forall s \in \mathcal{S}, a \in \mathcal{A}$$ but gradually shifted closer to a deterministic optimal policy
+In **On-policy** methods, the policy is generally **soft**, meaning $$\pi(a \mid s)>0, \forall s \in \mathcal{S}, a \in \mathcal{A}$$ but gradually shifted closer to a deterministic optimal policy
+
+**$$\epsilon$$-greedy**: nongreedy action with probability of $$\frac{\epsilon}{|\mathcal{A}(s)|}$$
 
 
 ### Important Concepts
@@ -840,7 +842,7 @@ The above corresponds to Figure 5.1
 
 - there is only a small winning rate no matter what the number the dealer's holding and what the player's sum is for the policy: hit until reach 20
 
-#### Monte Carlo ES
+#### Monte Carlo Exploring Start
 
 - use random initialization for state and action
 
@@ -958,7 +960,7 @@ plot_policy(Q)
 
 The above corresponds to Figure 5.2: hit-black(1), stick-white(0)
 
-#### on-policy MC
+#### on-policy Monte Carlo
 
 
 ### References
