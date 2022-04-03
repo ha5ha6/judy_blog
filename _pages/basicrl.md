@@ -321,7 +321,13 @@ To avoid the assumption of exploring starts:
 
 In **On-policy** methods, the policy is generally **soft**, meaning $$\pi(a \mid s)>0, \forall s \in \mathcal{S}, a \in \mathcal{A}$$ but gradually shifted closer to a deterministic optimal policy
 
-**$$\epsilon$$-greedy**: nongreedy action with probability of $$\frac{\epsilon}{|\mathcal{A}(s)|}$$
+**$$\epsilon$$-greedy**:
+
+- nongreedy action with probability of $$\frac{\epsilon}{|\mathcal{A}(s)|}$$
+
+- greedy action with probability of $$1-\epsilon+\frac{\epsilon}{|\mathcal{A}(s)|}$$
+
+this form ensures any $$\epsilon$$-greedy policy w.r.t $$Q_{\pi}$$ is an improvement aligned with the policy improvement theorem
 
 
 ### Important Concepts
