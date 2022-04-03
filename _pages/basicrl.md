@@ -901,7 +901,7 @@ def mc_es(env,n_eps,gm=1.0):
     Q=defaultdict(lambda: np.zeros(na))
 
     for ep in range(n_eps):
-        traj,done=[],False
+        traj=[]
         s=env.reset() #random initial state
         a=np.random.randint(na) #random initial action
 
@@ -928,7 +928,7 @@ def mc_es(env,n_eps,gm=1.0):
 
             pair=(s,a)
             # find the first occurence of each state-action pair
-            idx=traj.index([t for t in traj if t[0] == s and t[1] == a][0])
+            idx=traj.index([t for t in traj if t[0]==s and t[1]==a][0])
             V=sum([t[2]*gm**i for i, t in enumerate(traj[idx:])])
 
             ret_sum[pair]+=V
@@ -1002,6 +1002,69 @@ plot_policy(Q)
 The above corresponds to Figure 5.2: hit-black(1), stick-white(0)
 
 #### on-policy Monte Carlo
+
+```python
+def e_greedy(Q,s,epsilon,na):
+
+    prob=np.ones(na, dtype=float)*epsilon/na
+    best_a=np.argmax(Q[s])
+    prob[best_a]+=1.-epsilon
+    #for example there is 95% for taking greedy(best) action, 5% for random action
+    #prob=prob[::-1]
+    return np.random.choice(np.arange(na),p=prob),prob
+
+def mc_egreedy(env,n_eps,gm=1.0,epsilon=0.1):
+
+    ret_sum=defaultdict(float)
+    ret_cnt=defaultdict(float)
+
+    na=env.action_space.n
+    Q=defaultdict(lambda: np.zeros(na))
+
+    for ep in range(n_eps):
+        traj=[]
+        s=env.reset()
+
+        for i in range(100):
+            a,prob=e_greedy(Q,s,epsilon,na)
+            s_,r,done,_=env.step(a)
+            traj.append((s,a,r))
+
+            if done:
+                break
+            s=s_
+
+        # find the unique state-action pairs
+        pairs=set([(t[0], t[1]) for t in traj])
+
+        for (s,a) in pairs:
+            pair=(s,a)
+            # find the first occurence of each state-action pairs
+            idx=traj.index([t for t in traj if t[0]==s and t[1]==a][0])
+            V=sum([t[2]*gm**i for i, t in enumerate(traj[idx:])])
+
+            ret_sum[pair]+=V
+            ret_cnt[pair]+=1.
+
+            Q[s][a]=ret_sum[pair]/ret_cnt[pair]
+
+    V=defaultdict(float)
+    for s, a_s in Q.items():
+        V[s]=np.max(a_s)
+
+    return Q,V,policy
+
+Q,V,pi=mc_egreedy(env,500000)
+
+fig,axes=plt.subplots(ncols=2,figsize=(10,10),subplot_kw={'projection': '3d'})
+
+axes[0].set_title('After 500000 episodes \n V(s) usable ace')
+axes[1].set_title('After 500000 episodes \n V(s) no usable ace')
+
+plot_blackjack(V,axes[0],axes[1])
+```
+
+<center><img src="/judy_blog/assets/images/blackjack_onpolicymc.png" width=500></center>
 
 
 ### References
