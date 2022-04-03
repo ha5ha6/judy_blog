@@ -395,6 +395,35 @@ Thus, the relative probability of the trajectory under the target and behavior p
 
 $$\rho_{t:T-1} \triangleq \frac{\prod_{k=t}^{T-1} \pi(a_k \mid s_k)p(s_{k+1} \mid s_k,a_k)}{\prod_{k=t}^{T-1} b(a_k \mid s_k)p(s_{k+1} \mid s_k,a_k)} = \prod_{k=t}^{T-1} \frac{\pi(a_k \mid s_k)}{b(a_k \mid s_k)}$$
 
+Recall:
+
+$$\mathbb{E}\left[R_t \mid s_t=s \right]=V_b(s)$$
+
+with the importance-sampling ratio:
+
+$$\mathbb{E}\left[\rho_{t:T-1} R_t \mid s_t=s \right]=V_{\pi}(s)$$
+
+### Off-policy Monte Carlo
+
+We define  
+
+$$\mathcal{T}(s)$$ for **every-visit method** - the set of all time steps in which state $$s$$ is visited
+
+$$\mathcal{T}(s)$$ for **first-visit method** - only include time steps that were first visits to $$s$$ within their episodes
+
+$$T(t)$$ - the first time of termination following time $$t$$
+
+$$R(t)$$ - the return after $$t$$ up through $$T(t)$$
+
+$$\{R(t)\}_{t \in \mathcal{T}(s)}$$ - the returns that pertain to state $$s$$
+
+$$\{\rho_{t:T(t)-1}\}_{t \in \mathcal{T}(s)}$$ - the corresponding importance-sampling ratios
+
+To estimate $$V_{\pi}(s)$$, we simply scale the returns by the ratios and average the results:
+
+$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}}{\abs{\mathcal{T}(s)}}$$
+
+
 
 ### Important Concepts
 
