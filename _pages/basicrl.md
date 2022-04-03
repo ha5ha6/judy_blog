@@ -421,11 +421,35 @@ $$\{\rho_{t:T(t)-1}\}_{t \in \mathcal{T}(s)}$$ - the corresponding importance-sa
 
 To estimate $$V_{\pi}(s)$$, a simple average of the "ratio-ed" returns is **Ordinary Importance Sampling**:
 
-$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}}{\abs{\mathcal{T}(s)}}$$
+$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}{\abs{\mathcal{T}(s)}}$$
 
 A weighted average is **Weighted Importance Sampling**:
 
-$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}}{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1}}}$$
+$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1}}}$$
+
+**Ordinary Importance Sampling**
+
+(+) unbiased
+
+(-) unbounded variance because the variance of the ratios can be unbounded
+
+(+) easier to extend to the approximate methods using function approximation
+
+**Weighted Importance Sampling**
+
+(-) biased (though the bias converges asymptotically to zero)
+
+(+) lower variance (strongly prefer in practice)
+
+**Every-visit** + both **Ordinary and Weighted Importance Sampling**
+
+(-) biased
+
+(+) remove the need to keep track of which states have been visited (preferred in practice)
+
+(+) easier to extend to the approximate methods using function approximation (preferred in practice)
+
+
 
 
 ### Important Concepts
