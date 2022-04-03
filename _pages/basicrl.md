@@ -327,7 +327,22 @@ In **On-policy** methods, the policy is generally **soft**, meaning $$\pi(a \mid
 
 - greedy action with probability of $$1-\epsilon+\frac{\epsilon}{\|\mathcal{A}(s)\|}$$
 
-this form ensures any $$\epsilon$$-greedy policy w.r.t $$Q_{\pi}$$ is an improvement aligned with the policy improvement theorem
+This form ensures any $$\epsilon$$-greedy policy w.r.t $$Q_{\pi}$$ is an improvement under the policy improvement theorem
+
+In a sense of exploration, on-policy methods learn action values not for the optimal policy, but for a near-optimal policy that still explores
+
+**Two-policy framework**:
+
+- **target policy**: the policy being learned about and became optimal  
+
+- **behavioral policy**  the policy used to generate behavior for exploration
+
+**Off-policy**: the process of learning from data 'off' the target policy
+
+**On-policy** methods are generally simpler
+
+**Off-policy** methods require additional concepts and notation, and because the data is due to a different policy, off-policy methods are often of greater variance and are slower to converge  
+
 
 
 ### Important Concepts
