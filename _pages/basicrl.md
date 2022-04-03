@@ -339,7 +339,7 @@ In a sense of exploration, on-policy methods learn action values not for the opt
 
 **Off-policy**: the process of learning from data 'off' the target policy
 
-Comparison of **0n/Off-policy**:
+Comparison of **On/Off-policy**:
 
 **On-policy**
 
@@ -379,11 +379,17 @@ Every action taken under $$\pi$$ is also taken, at least occasionally under $$\p
 
 **Importance Sampling Ratio**: the relative probability of two trajectories occurring under the target and behavior policies  
 
-Given a starting state $$s_t$$, the probability of the subsequent state-action trajectory occuring under any policy $$\pi$$ is
+Given a starting state $$s_t$$, the probability of the subsequent state-action trajectory occurring under any policy $$\pi$$ is
 
-$$\begin{}
+$$\begin{align*}
 
-$$
+P(a_t, &s_{t+1},a_{t+1},s_{t+2},...,s_{T-1},a_{T-1},s_T \mid s_t,a_{t:T-1} \sim \pi)  \\
+
+&= \pi(a_t \mid s_t)p(s_{t+1} \mid s_t,a_t) \pi(a_{t+1} \mid s_{t+1})p(s_{t+2} \mid s_{t+1},a_{t+1}) ... \pi(a_{T-1} \mid s_{T-1})p(s_T \mid s_{T-1},a_{T-1}) \\
+
+&= \prod_{k=t}^{T-1} \pi(a_k \mid s_k)p(s_{k+1} \mid s_k,a_k)
+
+\end{align*}$$
 
 
 ### Important Concepts
