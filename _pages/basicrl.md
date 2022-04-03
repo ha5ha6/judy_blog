@@ -293,7 +293,7 @@ The process of **Value Iteration**:
 
 ### Monte Carlo Control
 
-We consider action values $$Q_{\pi}(s,a)$$ in Monte Carlo Control since Monte Carlo methods only uses experience samples without knowing the environment dynamics
+We consider action values $$Q_{\pi}(s,a)$$ in Monte Carlo Control since Monte Carlo methods only uses **experience samples** without knowing the environment dynamics
 
 The explicit estimate of value on each action is used to suggest a policy
 
