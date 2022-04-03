@@ -311,6 +311,17 @@ $$\pi_0$$ -Evaluate-> $$Q_{\pi_0}$$ -Improve-> $$\pi_1$$ -Evaluate-> $$Q_{\pi_1}
 
 2. policy evaluation could be done with an infinite number of episodes  
 
+#### On/Off Policy
+
+To avoid the assumption of exploring starts:
+
+**On-policy** methods: evaluate or improve the policy that is used to make decisions
+
+**Off-policy** methods: evaluate of improve a policy different from that used to generate the data
+
+In **On-policy** methods, the policy is generally **soft**, meaning $$\pi(a \mid s) >0 \forall s \in \mathcal{S}, a \in \mathcal{A}$$ but gradually shifted closer to a deterministic optimal policy
+
+
 ### Important Concepts
 
 **Delayed reward**:
@@ -720,7 +731,7 @@ The above is the greedy policy we found at iteration 216, corresponding to Figur
         V(16,10,no) <- 1
         V(19,10,no) <- -1+1
 
-#### first-visit MC
+#### first-visit Monte Carlo
 
 for every episode:
 
@@ -945,7 +956,9 @@ plot_policy(Q)
 <center><img src="/judy_blog/assets/images/blackjack_mces.png" width=500>
 <img src="/judy_blog/assets/images/blackjack_pi_mces.png" width=500></center>
 
-The above corresponds to Figure 5.2, hit-black(1), stick-white(0)
+The above corresponds to Figure 5.2: hit-black(1), stick-white(0)
+
+#### on-policy MC
 
 
 ### References
