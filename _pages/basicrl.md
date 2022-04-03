@@ -831,6 +831,12 @@ The above corresponds to Figure 5.1
 
 #### Monte Carlo ES
 
+- use random initialization for state and action
+
+- use greedy policy: $$a=\arg\max_a Q(s,a)$$
+
+- maintain Q(s,a) with state-action pairs instead of V(s) in the previous method
+
 ```python
 def mc_es(env,n_eps,gm=1.0):
 
