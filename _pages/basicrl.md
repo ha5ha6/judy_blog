@@ -1173,7 +1173,7 @@ plot_blackjack(V,axes[0],axes[1])
 
 #### off-policy Monte Carlo
 
-**off-policy estimation of a state value $$V(13,2,True)$$**
+**off-policy estimation of a state value $$V(13,2,True)$$** using both **Ordinary Importance Sampling** and **Weighted Importance Sampling**
 
     Evaluate the state of [13,2,True]:
         player's card: 13
