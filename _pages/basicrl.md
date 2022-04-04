@@ -451,7 +451,7 @@ $$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}{\sum_{t
 
 Note of difference between **first-visit** and **every-visit**:
 
-    Exercise 5.5: an MDP with a single nonterminal state, a single terminal state and a single action
+    Exercise 5.5: an MDP with a single nonterminal state, a single terminal state and two actions
 
          --p-> s0 --(1-p)--> Terminal
          |     |
@@ -1171,14 +1171,114 @@ plot_blackjack(V,axes[0],axes[1])
 
 <center><img src="/judy_blog/assets/images/blackjack_onpolicymc.png" width=500></center>
 
+#### Off-policy Monte Carlo
+
+- estimation
+
+    Evaluate the state of [13,2,True]:
+        player's card: 13
+        dealter's showing: 2
+        has usable ace: True
+
+    Behavior policy: equally random [hit,stick]=[0.5,0.5]
+    Target policy: stick only on a sum of 20 and 21
+
+    True value of V(13,2,True) is approximately -0.27726
+
+    Both Ordinary and Weighted Importance sampling can approximate this value after 1000 off-policy episodes using the random behavior policy  
+
+
+```python
+def sample_policy(s):
+
+    player_card, _, _ = s  
+    return 0 if player_card >= 20 else 1
+
+def offpolicy_mc(n_eps):
+
+    sum_ratio=[0]
+    sum_r=[0]
+    na=env.action_space.n
+
+    for ep in range(n_eps):
+        s=env.reset()
+        s=(13,2,True)
+        traj=[]
+
+        for i in range(100):
+            prob=behavior_policy(na)
+            a=np.random.choice(np.arange(na),p=prob)
+            s_,r,done,_=env.step(a)
+            traj.append((s,a,r))
+            if done:
+                break
+            s=s_
+
+        #numerator and denominator for importance ratio
+        nu,de=1.,1.
+        for s,a,r in traj:
+
+            if a==sample_policy(s):
+                de*=0.5
+            else:
+                nu=0.
+                break
+
+        ratio=nu/de
+        sum_ratio.append(sum_ratio[-1]+ratio)
+        sum_r.append(sum_r[-1]+r*ratio)
+
+    del sum_ratio[0]
+    del sum_r[0]
+
+    sum_r=np.asarray(sum_r)
+    sum_ratio=np.asarray(sum_ratio)
+
+    ordinary_sampling=sum_r/np.arange(1,n_eps+1)
+
+    with np.errstate(divide='ignore',invalid='ignore'):
+        weighted_sampling=np.where(sum_ratio!=0, sum_r/sum_ratio,0)
+
+    return ordinary_sampling, weighted_sampling
+
+true_v=-0.27726
+n_eps=10000
+n_run=100
+mse_ord=np.zeros(n_eps)
+mse_wei=np.zeros(n_eps)
+
+for i in range(n_run):
+
+    ord,wei=offpolicy_mc(n_eps)
+    mse_ord+=np.power(ord-true_v,2)
+    mse_wei+=np.power(wei-true_v,2)
+
+mse_ord/=n_run
+mse_wei/=n_run
+
+plt.plot(mse_ord,label='Ordinary Importance Sampling',color='g')
+plt.plot(mse_wei,label='Weighted Importance Sampling',color='r')
+plt.ylim(-0.1, 5)
+plt.xscale('log')
+plt.legend()
+plt.xlabel('Episodes (log scale)')
+plt.ylabel('MSE over 100 runs')
+plt.savefig('blackjack_offmc_estimation.png',dpi=350)
+```
+
+<center><img src="/judy_blog/assets/images/blackjack_onpolicymc.png" width=500></center>
+
 
 ### References
 
 **Reinforcement Learning an Introduction 2nd edition** by Sutton and Barto
 
+
+
 [RL simple experiment - Blackjack](https://ernie55ernie.github.io/machine%20learning/2018/04/08/reinforcement-learning-simple-experiment-blackjack.html)
 
 [optimizing blackjack strategy through MC](https://towardsdatascience.com/optimizing-blackjack-strategy-through-monte-carlo-methods-cbb606e52d1b)
 
+[ShangtongZhang/reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
 
 [RL 2nd Edition Excercise Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
