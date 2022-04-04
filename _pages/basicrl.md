@@ -1173,7 +1173,7 @@ plot_blackjack(V,axes[0],axes[1])
 
 #### off-policy Monte Carlo
 
-- estimation
+**off-policy estimation of a state value $$V(13,2,True)$$**
 
     Evaluate the state of [13,2,True]:
         player's card: 13
@@ -1282,5 +1282,7 @@ The above corresponds to Figure 5.3
 [optimizing blackjack strategy through MC](https://towardsdatascience.com/optimizing-blackjack-strategy-through-monte-carlo-methods-cbb606e52d1b)
 
 [ShangtongZhang/reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
+
+[jingweiz/reinforcement-learning-an-introduction](https://github.com/jingweiz/reinforcement-learning-an-introduction)
 
 [RL 2nd Edition Excercise Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
