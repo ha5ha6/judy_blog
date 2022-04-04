@@ -1363,7 +1363,7 @@ plot_blackjack(V,axes[0],axes[1])
 
 <center><img src="/judy_blog/assets/images/blackjack_offmc_importance_sampling.png" width=500></center>
 
-Target policy can be inferred from the obtained Q value based on certain states
+Target policy can be inferred from the obtained Q value in terms of certain states
 
 ### References
 
