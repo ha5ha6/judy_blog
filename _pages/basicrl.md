@@ -1263,10 +1263,12 @@ plt.xscale('log')
 plt.legend()
 plt.xlabel('Episodes (log scale)')
 plt.ylabel('MSE over 100 runs')
-plt.savefig('blackjack_offmc_estimation.png',dpi=350)
+#plt.savefig('blackjack_offmc_estimation.png',dpi=350)
 ```
 
-<center><img src="/judy_blog/assets/images/blackjack_onpolicymc.png" width=500></center>
+<center><img src="/judy_blog/assets/images/blackjack_offmc_estimation.png" width=500></center>
+
+The above corresponds to Figure 5.3
 
 
 ### References
