@@ -1194,6 +1194,10 @@ def sample_policy(s):
     player_card, _, _ = s  
     return 0 if player_card >= 20 else 1
 
+def behavior_policy(na):
+
+    return np.ones(na,dtype=float)/na
+
 def offpolicy_mc(n_eps):
 
     sum_ratio=[0]
@@ -1217,7 +1221,6 @@ def offpolicy_mc(n_eps):
         #numerator and denominator for importance ratio
         nu,de=1.,1.
         for s,a,r in traj:
-
             if a==sample_policy(s):
                 de*=0.5
             else:
@@ -1268,7 +1271,7 @@ plt.ylabel('MSE over 100 runs')
 
 <center><img src="/judy_blog/assets/images/blackjack_offmc_estimation.png" width=500></center>
 
-The above corresponds to Figure 5.3, showing **Weighted Importance Sampling** produces lower error estimates of the value of a single blackjack state from off-policy episodes
+The above corresponds to Figure 5.3, showing **Weighted Importance Sampling** produces lower error estimates of the value from off-policy episodes
 
 
 
