@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Notes
-permalink: "/note/"
+permalink: "/notes/"
 author_profile: true
 #breadcrumbs: true
 
@@ -21,7 +21,7 @@ usemathjax: true
 
 ## Reinforcement Learning
 
-[Basic Reinforcement Learning](/judy_blog/basicrl/): MDP, value functions, policy/value iteration, Monte Carlo control, on/off policy, python implementations of Gridworld, Blackjack
+[Basic Reinforcement Learning](/judy_blog/basicrl/): MDP, value functions, policy/value iteration, Monte Carlo control, on/off policy, off policy importance sampling, python implementations of Gridworld, Blackjack
 
 upcoming: Temporal-Difference Learning
 

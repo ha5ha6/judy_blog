@@ -449,7 +449,23 @@ $$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}{\sum_{t
 
 (+) easier to extend to the approximate methods using function approximation (preferred in practice)
 
-Note of difference between **first-visit** and **every-visit**:
+**Episode-by-episode Incremental Monte Carlo**:
+
+Suppose we have a sequence of returns $$R_1,R_2,...,R_{n-1}$$, all starting in the same state and each with a corresponding random weight $$W_i$$ (e.g. $$W_i=\rho_{t_i:T(t_i)-1}$$)
+
+We wish to form the estimate
+
+$$V_n \triangleq \frac{\sum_{k=1}^{n-1} W_k R_k}{\sum_{k=1}^{n-1} W_k}, n \geq 2$$
+
+and keep it up-to-date as we obtain a single additional return $$R_n$$
+
+The update rule is
+
+$$V_{n+1} \triangleq V_n + \frac{W_n}{C_n} \left[R_n - V_n \right], n \geq 1$$
+
+$$C_{n+1} \triangleq C_n + W_{n+1}$$
+
+**Note** of difference between **first-visit** and **every-visit**:
 
     Exercise 5.5: an MDP with a single nonterminal state, a single terminal state and two actions
 
@@ -466,7 +482,6 @@ Note of difference between **first-visit** and **every-visit**:
 **first-visit**: $$V(s)=10$$
 
 **every-visit**: $$V(s)=(1/10)(1+2+3+4+5+6+7+8+9+10)=5.5$$
-
 
 ### Important Concepts
 
