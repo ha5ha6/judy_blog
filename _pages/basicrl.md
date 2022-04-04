@@ -1173,7 +1173,7 @@ plot_blackjack(V,axes[0],axes[1])
 
 #### off-policy Monte Carlo
 
-**off-policy estimation of a state value $$V(13,2,True)$$** using both **Ordinary Importance Sampling** and **Weighted Importance Sampling**
+for value estimation:
 
     Evaluate the state of [13,2,True]:
         player's card: 13
@@ -1274,8 +1274,6 @@ The above corresponds to Figure 5.3
 ### References
 
 **Reinforcement Learning an Introduction 2nd edition** by Sutton and Barto
-
-
 
 [RL simple experiment - Blackjack](https://ernie55ernie.github.io/machine%20learning/2018/04/08/reinforcement-learning-simple-experiment-blackjack.html)
 
