@@ -1173,7 +1173,7 @@ plot_blackjack(V,axes[0],axes[1])
 
 #### off-policy Monte Carlo
 
-for value estimation:
+**for value estimation:**
 
     Evaluate the state of [13,2,True]:
         player's card: 13
@@ -1273,8 +1273,82 @@ plt.ylabel('MSE over 100 runs')
 
 The above corresponds to Figure 5.3, showing **Weighted Importance Sampling** produces lower error estimates of the value from off-policy episodes
 
+**for optimal policy estimation:**
 
+```python
+def behavior_policy(na):
 
+    return np.ones(na,dtype=float)/na
+
+def target_policy(Q,s,na):
+
+    best_a=np.argmax(Q[s])
+    prob=np.zeros(na,dtype=float)
+    prob[best_a]=1.
+
+    return prob
+
+def mc_importance_sampling(env,n_eps,gm=1.0):
+
+    na=env.action_space.n
+    #numerator and denumerator for importance sampling ratio
+    nu=defaultdict(lambda: np.zeros(na))
+    de=defaultdict(lambda: np.zeros(na))
+    Q=defaultdict(lambda: np.zeros(na))
+
+    for ep in range(n_eps):
+        s=env.reset()    
+        traj=[]
+
+        for i in range(100):
+            prob=behavior_policy(na)
+            a=np.random.choice(np.arange(na), p=prob)
+            s_,r,done,_=env.step(a)
+            traj.append((s,a,r))
+            if done:
+                break
+            s=s_
+
+        #find unique state-aciton pairs
+        pairs=set([(t[0], t[1]) for t in traj])
+
+        for (s,a) in pairs:
+            pair=(s,a)
+
+            # find the first occurence of this pair in traj
+            # t[0]-s, t[1]-a, t[2]-r
+            idx=traj.index([t for t in traj if t[0]==s and t[1]==a][0])
+
+            V=sum([t[2]*gm**i for i,t in enumerate(traj[idx:])])
+
+            #calculate product of 1./b(a|s) of each state-action pair
+            w=np.product([1./behavior_policy(na)[t[1]] for t in traj[idx:]])
+
+            nu[s][a]+=w*V
+            de[s][a]+=w
+
+            Q[s][a]=nu[s][a]/de[s][a]
+
+    return Q
+
+Q=mc_importance_sampling(env,n_eps=500000)
+
+V=defaultdict(float)
+for s, a_v in Q.items():
+    V[s]=np.max(a_v)
+
+fig,axes=plt.subplots(ncols=2,figsize=(10,10),subplot_kw={'projection': '3d'})
+
+axes[0].set_title('After 500000 episodes \n V(s) usable ace')
+axes[1].set_title('After 500000 episodes \n V(s) no usable ace')
+
+plot_blackjack(V,axes[0],axes[1])
+#plt.savefig('blackjack_offmc_importance_sampling.png',dpi=350)
+```
+
+<center><img src="/judy_blog/assets/images/blackjack_offmc_importance_sampling.png" width=500></center>
+
+Target policy can be inferred from the obtained Q value based on certain states
 
 ### References
 
