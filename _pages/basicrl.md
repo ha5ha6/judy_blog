@@ -1171,7 +1171,7 @@ plot_blackjack(V,axes[0],axes[1])
 
 <center><img src="/judy_blog/assets/images/blackjack_onpolicymc.png" width=500></center>
 
-#### Off-policy Monte Carlo
+#### off-policy Monte Carlo
 
 - estimation
 
