@@ -1197,7 +1197,7 @@ def sample_policy(s):
 def offpolicy_mc(n_eps):
 
     sum_ratio=[0]
-    sum_r=[0]
+    sum_ret=[0]
     na=env.action_space.n
 
     for ep in range(n_eps):
@@ -1226,18 +1226,18 @@ def offpolicy_mc(n_eps):
 
         ratio=nu/de
         sum_ratio.append(sum_ratio[-1]+ratio)
-        sum_r.append(sum_r[-1]+r*ratio)
+        sum_ret.append(sum_ret[-1]+r*ratio)
 
     del sum_ratio[0]
-    del sum_r[0]
+    del sum_ret[0]
 
-    sum_r=np.asarray(sum_r)
+    sum_ret=np.asarray(sum_ret)
     sum_ratio=np.asarray(sum_ratio)
 
-    ordinary_sampling=sum_r/np.arange(1,n_eps+1)
+    ordinary_sampling=sum_ret/np.arange(1,n_eps+1)
 
     with np.errstate(divide='ignore',invalid='ignore'):
-        weighted_sampling=np.where(sum_ratio!=0, sum_r/sum_ratio,0)
+        weighted_sampling=np.where(sum_ratio!=0, sum_ret/sum_ratio,0)
 
     return ordinary_sampling, weighted_sampling
 
@@ -1268,7 +1268,9 @@ plt.ylabel('MSE over 100 runs')
 
 <center><img src="/judy_blog/assets/images/blackjack_offmc_estimation.png" width=500></center>
 
-The above corresponds to Figure 5.3
+The above corresponds to Figure 5.3, showing **Weighted Importance Sampling** produces lower error estimates of the value of a single blackjack state from off-policy episodes
+
+
 
 
 ### References
