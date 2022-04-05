@@ -421,11 +421,11 @@ $$\{\rho_{t:T(t)-1}\}_{t \in \mathcal{T}(s)}$$ - the corresponding importance-sa
 
 To estimate $$V_{\pi}(s)$$, a simple average of the "ratio-ed" returns is **Ordinary Importance Sampling**:
 
-$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}{\|\mathcal{T}(s)\|}$$
+$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R(t)}{\|\mathcal{T}(s)\|}$$
 
 A weighted average is **Weighted Importance Sampling**:
 
-$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R_t}{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1}}$$
+$$V(s) \triangleq \frac{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1} R(t)}{\sum_{t \in \mathcal{T}(s)} \rho_{t:T(t)-1}}$$
 
 **Ordinary Importance Sampling**
 
