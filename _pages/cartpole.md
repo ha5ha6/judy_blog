@@ -188,9 +188,9 @@ for ep in range(n_eps):
 
 Learned optimal Q values:
 
-<center><img src="/judy_blog/assets/images/q_op_box.png" width=600></center>
+<center><img src="/judy_blog/assets/images/q_op_box.png" width=800></center>
 
-<center><img src="/judy_blog/assets/images/q_op_box_1_3.png" width=600></center>
+<center><img src="/judy_blog/assets/images/q_op_box_1_3.png" width=400></center>
 
 
 ### Q-bins
