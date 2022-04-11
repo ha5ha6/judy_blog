@@ -82,7 +82,13 @@ Box System [Michie et al. 1968] divided the state variables into 3x3x6x3 boxes a
 | box:      | +0   |          | +54      |       | +108     |     |
 
 State space: (4,) -> (162,)<br>
-Action sapce: (2,)
+Action sapce: (2,)<br>
+Hyperparameters:
+
+- learning rate (lr): 0.1
+- discounting factor (gm): 0.99
+- exploration factor (epsilon): from 1
+- exploration decaying rate (epsilon decay rate): 0.995
 
 **Q-learning with box system can reach stable behaviors around 700 episodes due to non-linear epsilon annealing.**
 
