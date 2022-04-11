@@ -69,21 +69,20 @@ Termination:
 - $$\theta < -15^o$$ or $$\theta > 15^o$$, 15 degree = 0.2618 rad
 - $$x<-2.4$$ or $$x>2.4$$
 
-
 ### Q-box
 
 Box System [Michie et al 1968] divided the state variables into 3x3x6x3 boxes as follows:
 
-| variable|      |          |          |       |          |     |
-|---------|------|----------|----------|-------|----------|-----|
-| x       | <-0.8|          |(-0.8,0.8)|       |>0.8      |     |
-| box:    | +0   |          |  +1      |       |+2        |     |
-| x_dot   | <-0.5|          |(-0.5,0.5 |       |>0.5      |     |
-| box:    | +0   |          |  +3      |       |+6        |     |
-| theta   | <-12 |(-12,-1.5)|(-1.5,0)  |(0,1.5)|(1.5,12)  | >12 |
-| box:    | +0   |+9        | +18      | +27   |  +36     | +45 |   
-|theta_dot| <-50 |          |(-50,50)  |       |  >50     |     |
-| box:    | +0   |          | +54      |       | +108     |     |
+| variable  |      |          |          |       |          |     |
+|-----------|------|----------|----------|-------|----------|-----|
+| $$x$$     | <-0.8|          |(-0.8,0.8)|       |>0.8      |     |
+| box:      | +0   |          |  +1      |       |+2        |     |
+| $$\dot{x}$$| <-0.5|          |(-0.5,0.5 |       |>0.5      |     |
+| box:      | +0   |          |  +3      |       |+6        |     |
+| theta(deg)| <-12 |(-12,-1.5)|(-1.5,0)  |(0,1.5)|(1.5,12)  | >12 |
+| box:      | +0   |+9        | +18      | +27   |  +36     | +45 |   
+| theta_dot | <-50 |          |(-50,50)  |       |  >50     |     |
+| box:      | +0   |          | +54      |       | +108     |     |
 
 ### Q-bins
 
@@ -125,6 +124,10 @@ V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
 [Barto et al. 1983] Barto, Andrew G., Richard S. Sutton, and Charles W. Anderson. "Neuronlike adaptive elements that can solve difficult learning control problems." IEEE transactions on systems, man, and cybernetics 5 (1983): 834-846.
 
 [PILCO 2011] Deisenroth, Marc, and Carl E. Rasmussen. "PILCO: A model-based and data-efficient approach to policy search." Proceedings of the 28th International Conference on machine learning (ICML-11). 2011.
+
+[Michie et al. 1968] Michie, Donald, and Roger A. Chambers. "BOXES: An experiment in adaptive control." Machine intelligence 2.2 (1968): 137-152.
+
+[\[Sutton C code\]](http://incompleteideas.net/book/code/pole.c)
 
 **Reinforcement Learning an Introduction 2nd edition** by Sutton and Barto
 
