@@ -58,11 +58,11 @@ Action space: (2,)
 State variables in short:
 
 - $$x$$ - cart position
-- $$\dot(x)$$ - cart velocity
+- $$\dot{x}$$ - cart velocity
 - $$\theta$$ - pole angle
-- $$\dot(\theta)$$ - pole angular velocity
+- $$\dot{\theta}$$ - pole angular velocity
 
-Reward: +1 unless terminate
+Reward: +1 unless termination
 
 Termination:
 
