@@ -20,7 +20,46 @@ usemathjax: true
 
 ### Problem Setup
 
+### cartpole
 
+
+| Num | Observation           | Min                  | Max                |
+|-----|-----------------------|----------------------|--------------------|
+| 0   | Cart Position         | -4.8                 | 4.8                |
+| 1   | Cart Velocity         | -Inf                 | Inf                |
+| 2   | Pole Angle            | ~ -0.418 rad (-24°)  | ~ 0.418 rad (24°)  |
+| 3   | Pole Angular Velocity | -Inf                 | Inf                |
+
+
+| Num | Action                 |
+|-----|------------------------|
+| 0   | Push cart to the left  |
+| 1   | Push cart to the right |
+
+
+state space: (4,)
+
+action space: (2,)
+
+reward: +1 unless terminate
+
+termination:
+
+- pole is more than 15 degrees from vertical
+
+- cart moves more than 2.4 unit from the center
+
+
+
+
+### Q-box
+
+
+### Q-bins
+
+### Q-rbf
+
+### DQN
 
 <center><img src="https://miro.medium.com/max/507/1*iX-Fu5YzUZ8CNEZ86BvfKA.png" width=400></center>
 
