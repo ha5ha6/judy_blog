@@ -51,10 +51,8 @@ This article is trying to cover the insights derived from the performances of cl
 | 1   | Push cart to the right with 10N |
 
 
-State space: (4,)
-
-Action space: (2,)
-
+State space: (4,)<br>
+Action space: (2,)<br>
 State variables in short:
 
 - $$x$$ - cart position
@@ -62,8 +60,7 @@ State variables in short:
 - $$\theta$$ - pole angle
 - $$\dot{\theta}$$ - pole angular velocity
 
-Reward: +1 unless termination
-
+Reward: +1 unless termination<br>
 Termination:
 
 - $$\theta < -15^o$$ or $$\theta > 15^o$$, 15 degree = 0.2618 rad
@@ -84,8 +81,7 @@ Box System [Michie et al 1968] divided the state variables into 3x3x6x3 boxes as
 | $$\dot{\theta}$$ | <-50 |   |(-50,50)  |       |  >50     |     |
 | box:      | +0   |          | +54      |       | +108     |     |
 
-State space: (4,) -> (162,)
-
+State space: (4,) -> (162,)<br>
 Action sapce: (2,)
 
 Q-learning implementation with box system:
@@ -97,38 +93,41 @@ import random
 
 def get_box(s):
 
-	x,x_dot,theta,theta_dot=s
-	if x < -.8:
-		box_idx = 0
-	elif x < .8:
-		box_idx = 1
-	else:
-		box_idx = 2
-	if x_dot < -.5:
-		pass
-	elif x_dot < .5:
-		box_idx += 3
-	else:
-		box_idx += 6
-	if theta < np.radians(-12):
-		pass
-	elif theta < np.radians(-1.5):
-		box_idx += 9
-	elif theta < np.radians(0):  
-		box_idx += 18
-	elif theta < np.radians(1.5):
-		box_idx += 27
-	elif theta < np.radians(12):
-		box_idx += 36
-	else:
-		box_idx += 45
-	if theta_dot < np.radians(-50):
-		pass
-	elif theta_dot < np.radians(50):
-		box_idx += 54
-	else:
-		box_idx += 108
-	return box_idx
+    x,x_dot,theta,theta_dot=s
+    if x < -.8:
+        box_idx = 0
+    elif x < .8:
+		    box_idx = 1
+	  else:
+		    box_idx = 2
+  	if x_dot < -.5:
+		    pass
+    elif x_dot < .5:
+		    box_idx += 3
+    else:
+        box_idx += 6
+
+    if theta < np.radians(-12):
+		    pass
+    elif theta < np.radians(-1.5):
+        box_idx += 9
+    elif theta < np.radians(0):  
+        box_idx += 18
+    elif theta < np.radians(1.5):
+        box_idx += 27
+    elif theta < np.radians(12):
+        box_idx += 36
+    else:
+        box_idx += 45
+
+    if theta_dot < np.radians(-50):
+        pass
+    elif theta_dot < np.radians(50):
+        box_idx += 54
+    else:
+        box_idx += 108
+
+    return box_idx
 
 def e_greedy(q,epsilon):
 
@@ -195,8 +194,6 @@ Learned optimal Q values:
 
 ### DQN
 
-<center><img src="/judy_blog/assets/images/q_op_box_1_3.png" width=600></center>
-
 
 
     |   s   |   a   |   s'   |   r   |    |0,0|0,1|   |0,3|   |
@@ -233,15 +230,3 @@ V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
 [Michie et al. 1968] Michie, Donald, and Roger A. Chambers. "BOXES: An experiment in adaptive control." Machine intelligence 2.2 (1968): 137-152.
 
 [\[Sutton C code\]](http://incompleteideas.net/book/code/pole.c)
-
-**Reinforcement Learning an Introduction 2nd edition** by Sutton and Barto
-
-[RL simple experiment - Blackjack](https://ernie55ernie.github.io/machine%20learning/2018/04/08/reinforcement-learning-simple-experiment-blackjack.html)
-
-[optimizing blackjack strategy through MC](https://towardsdatascience.com/optimizing-blackjack-strategy-through-monte-carlo-methods-cbb606e52d1b)
-
-[ShangtongZhang/reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
-
-[jingweiz/reinforcement-learning-an-introduction](https://github.com/jingweiz/reinforcement-learning-an-introduction)
-
-[RL 2nd Edition Excercise Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
