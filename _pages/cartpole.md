@@ -98,21 +98,18 @@ import random
 def get_box(s):
 
 	x,x_dot,theta,theta_dot=s
-
 	if x < -.8:
 		box_idx = 0
 	elif x < .8:
 		box_idx = 1
 	else:
 		box_idx = 2
-
 	if x_dot < -.5:
 		pass
 	elif x_dot < .5:
 		box_idx += 3
 	else:
 		box_idx += 6
-
 	if theta < np.radians(-12):
 		pass
 	elif theta < np.radians(-1.5):
@@ -125,14 +122,12 @@ def get_box(s):
 		box_idx += 36
 	else:
 		box_idx += 45
-
 	if theta_dot < np.radians(-50):
 		pass
 	elif theta_dot < np.radians(50):
 		box_idx += 54
 	else:
 		box_idx += 108
-
 	return box_idx
 
 def e_greedy(q,epsilon):
@@ -141,7 +136,6 @@ def e_greedy(q,epsilon):
         a=env.action_space.sample()
     else:
         a=np.argmax(q)
-
     return a
 
 env=gym.make("CartPole-v0")
@@ -172,10 +166,8 @@ for ep in range(n_eps):
         a=e_greedy(Q[s_int],epsilon)
         s_,r,done,_=env.step(a)
         s_int_=get_box(s_)
-
         delta=r+gm*np.max(Q[s_int_])-Q[s_int,a]
         Q[s_int,a]+=lr*delta
-
         s_int=s_int_
         r_sum+=r
 
