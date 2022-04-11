@@ -235,7 +235,7 @@ Hyperparameters:
 
 Learned optimal Values:
 
-<center><img src="/judy_blog/assets/images/q_op_rbf.png" width=1000></center>
+<center><img src="/judy_blog/assets/images/q_op_rbf_90deg.png" width=1000></center>
 
 **SARSA(λ)** implementation with 4xRBF networks:
 
@@ -389,5 +389,7 @@ V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
 [PILCO 2011] Deisenroth, Marc, and Carl E. Rasmussen. "PILCO: A model-based and data-efficient approach to policy search." Proceedings of the 28th International Conference on machine learning (ICML-11). 2011.
 
 [Michie et al. 1968] Michie, Donald, and Roger A. Chambers. "BOXES: An experiment in adaptive control." Machine intelligence 2.2 (1968): 137-152.
+
+[Doya 2000] Doya, Kenji. "Reinforcement learning in continuous time and space." Neural computation 12.1 (2000): 219-245.
 
 [\[Sutton's C code\]](http://incompleteideas.net/book/code/pole.c)
