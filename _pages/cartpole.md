@@ -84,6 +84,14 @@ Box System [Michie et al. 1968] divided the state variables into 3x3x6x3 boxes a
 State space: (4,) -> (162,)<br>
 Action sapce: (2,)
 
+**Q-learning with box system can reach stable behaviors around 700 episodes due to non-linear epsilon annealing.**
+
+Learned optimal Q values:
+
+<center><img src="/judy_blog/assets/images/q_op_box.png" width=1000></center>
+
+<center><img src="/judy_blog/assets/images/q_op_box_1_3.png" width=400></center>
+
 **Q-learning** implementation with box system:
 
 ```python
@@ -182,13 +190,7 @@ for ep in range(n_eps):
         print(f"ep:{ep}, stp:{stp}, r:{np.round(r_sum,2)},eps:{epsilon}")
 ```
 
-Learned optimal Q values:
 
-<center><img src="/judy_blog/assets/images/q_op_box.png" width=1000></center>
-
-<center><img src="/judy_blog/assets/images/q_op_box_1_3.png" width=400></center>
-
-**Q-learning with box system can reach stable behaviors around 700 episodes due to non-linear epsilon annealing.**
 
 
 ### Q-bins
