@@ -68,7 +68,7 @@ Termination:
 
 ### Q-box
 
-Box System [Michie et al 1968] divided the state variables into 3x3x6x3 boxes as follows:
+Box System [Michie et al. 1968] divided the state variables into 3x3x6x3 boxes as follows:
 
 | variable  |      |          | range    |       |          |     |
 |-----------|------|----------|----------|-------|----------|-----|
@@ -147,7 +147,7 @@ n_stps=1000
 
 gm=0.99
 lr=0.1
-#non linear decay
+#non-linear decay
 epsilon=1
 epsilon_decay_rate=0.995
 
@@ -166,8 +166,10 @@ for ep in range(n_eps):
         a=e_greedy(Q[s_int],epsilon)
         s_,r,done,_=env.step(a)
         s_int_=get_box(s_)
+
         delta=r+gm*np.max(Q[s_int_])-Q[s_int,a]
         Q[s_int,a]+=lr*delta
+        
         s_int=s_int_
         r_sum+=r
 
