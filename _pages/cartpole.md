@@ -18,13 +18,24 @@ usemathjax: true
   }
 </style>
 
-### Problem Setup
 
 Cartpole is one of the very ancient and classical RL-for-control benchmark, first appeared in
-[\[Barto et al. 1983\]](http://www.derongliu.org/adp/adp-cdrom/Barto1983.pdf). Many RL algorithms from value-based to policy-based, model-free to model-based were justified under it or its variant, from simulation to real robot setup, check PILCO.
+[\[Barto et al. 1983\]](http://www.derongliu.org/adp/adp-cdrom/Barto1983.pdf). Many RL algorithms from value-based to policy-based, model-free to model-based were justified under it or its variants encompassing simulations and real robots, i.e.[\[PILCO\]](http://mlg.eng.cam.ac.uk/pilco/).
 
-[OpenAI CartPole-v0](https://gym.openai.com/envs/CartPole-v0/), ends in 200 episodes
-[OpenAI CartPole-v1](https://gym.openai.com/envs/CartPole-v1/), ends in 500 episodes
+This article is trying to cover the insights derived from the performances of classical RL algorithms under Cartpole environment.
+
+(Temporary) Related algorithms include:
+
+- Q-learning (box, bins)
+- SARSA(λ)
+- DQN
+- and more
+
+### Problem Setup
+
+[\[OpenAI CartPole-v0\]](https://gym.openai.com/envs/CartPole-v0/), ends in 200 episodes
+
+[\[OpenAI CartPole-v1\]](https://gym.openai.com/envs/CartPole-v1/), ends in 500 episodes
 
 | Num | Observation           | Min                  | Max                |
 |-----|-----------------------|----------------------|--------------------|
@@ -40,20 +51,26 @@ Cartpole is one of the very ancient and classical RL-for-control benchmark, firs
 | 1   | Push cart to the right |
 
 
-state space: (4,)
+State space: (4,)
 
-action space: (2,)
+Action space: (2,)
 
-reward: +1 unless terminate
+State variables in short:
 
-termination:
+- $$x$$ - cart position
+- $$\dot(x)$$ - cart velocity
+- $$\theta$$ - pole angle
+- $$\dot(\theta)$$ - pole angular velocity
 
-- pole is more than 15 degrees from vertical
+Reward: +1 unless terminate
 
-- cart moves more than 2.4 unit from the center
+Termination:
+
+- $$\theta < -15^o$$ or $$\theta > 15^o$$, 15 degree = 0.2618 rad
+- $$x<-2.4$$ or $$x>2.4$$
 
 
-### Q-box 1968
+### Q-box
 
 Box System [Michie et al 1968] divided the state variables into 3x3x6x3 boxes as follows:
 
@@ -104,6 +121,10 @@ V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
 
 
 ### References
+
+[Barto et al. 1983] Barto, Andrew G., Richard S. Sutton, and Charles W. Anderson. "Neuronlike adaptive elements that can solve difficult learning control problems." IEEE transactions on systems, man, and cybernetics 5 (1983): 834-846.
+
+[PILCO 2011] Deisenroth, Marc, and Carl E. Rasmussen. "PILCO: A model-based and data-efficient approach to policy search." Proceedings of the 28th International Conference on machine learning (ICML-11). 2011.
 
 **Reinforcement Learning an Introduction 2nd edition** by Sutton and Barto
 
