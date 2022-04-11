@@ -84,6 +84,10 @@ Box System [Michie et al 1968] divided the state variables into 3x3x6x3 boxes as
 | $$\dot{\theta}$$ | <-50 |   |(-50,50)  |       |  >50     |     |
 | box:      | +0   |          | +54      |       | +108     |     |
 
+State space: (4,) -> (162,)
+
+Action sapce: (2,)
+
 Q-learning implementation with box system:
 
 ```python
@@ -189,6 +193,8 @@ Learned optimal Q values:
 <center><img src="/judy_blog/assets/images/q_op_box.png" width=1000></center>
 
 <center><img src="/judy_blog/assets/images/q_op_box_1_3.png" width=400></center>
+
+**Q-learning with box system can reach stable behaviors around 700 episodes.**
 
 
 ### Q-bins
