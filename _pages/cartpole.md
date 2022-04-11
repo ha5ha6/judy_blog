@@ -185,7 +185,7 @@ Learned optimal Q values:
 
 <center><img src="/judy_blog/assets/images/q_op_box_1_3.png" width=400></center>
 
-**Q-learning with box system can reach stable behaviors around 700 episodes.**
+**Q-learning with box system can reach stable behaviors around 700 episodes due to non-linear epsilon annealing.**
 
 
 ### Q-bins
