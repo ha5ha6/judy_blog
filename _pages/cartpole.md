@@ -20,8 +20,8 @@ usemathjax: true
 
 ### Problem Setup
 
-### cartpole
-
+[OpenAI CartPole-v0](https://gym.openai.com/envs/CartPole-v0/), ends in 200 episodes
+[OpenAI CartPole-v1](https://gym.openai.com/envs/CartPole-v1/), ends in 500 episodes
 
 | Num | Observation           | Min                  | Max                |
 |-----|-----------------------|----------------------|--------------------|
@@ -50,10 +50,20 @@ termination:
 - cart moves more than 2.4 unit from the center
 
 
+### Q-box 1968
 
+Box System [Michie et al 1968] divided the state variables into 3x3x6x3 boxes as follows:
 
-### Q-box
-
+| variable|      |          |          |       |          |     |
+|---------|------|----------|----------|-------|----------|-----|
+| x       | <-0.8|          |(-0.8,0.8)|       |>0.8      |     |
+| box:    | +0   |          |  +1      |       |+2        |     |
+| x_dot   | <-0.5|          |(-0.5,0.5 |       |>0.5      |     |
+| box:    | +0   |          |  +3      |       |+6        |     |
+| theta   | <-12 |(-12,-1.5)|(-1.5,0)  |(0,1.5)|(1.5,12)  | >12 |
+| box:    | +0   |+9        | +18      | +27   |  +36     | +45 |   
+|theta_dot| <-50 |          |(-50,50)  |       |  >50     |     |
+| box:    | +0   |          | +54      |       | +108     |     | 
 
 ### Q-bins
 
