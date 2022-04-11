@@ -33,9 +33,11 @@ This article is trying to cover the insights derived from the performances of cl
 
 ### Problem Setup
 
-[\[OpenAI CartPole-v0\]](https://gym.openai.com/envs/CartPole-v0/), ends in 200 episodes
+[\[OpenAI CartPole-v0\]](https://gym.openai.com/envs/CartPole-v0/), ends in 200 episodes \
 
-[\[OpenAI CartPole-v1\]](https://gym.openai.com/envs/CartPole-v1/), ends in 500 episodes
+[\[OpenAI CartPole-v1\]](https://gym.openai.com/envs/CartPole-v1/), ends in 500 episodes \
+
+[\[Env source code-v1\]](https://github.com/openai/gym/blob/master/gym/envs/classic_control/cartpole.py)
 
 | Num | Observation           | Min                  | Max                |
 |-----|-----------------------|----------------------|--------------------|
@@ -45,10 +47,10 @@ This article is trying to cover the insights derived from the performances of cl
 | 3   | Pole Angular Velocity | -Inf                 | Inf                |
 
 
-| Num | Action                 |
-|-----|------------------------|
-| 0   | Push cart to the left  |
-| 1   | Push cart to the right |
+| Num | Action                          |
+|-----|---------------------------------|
+| 0   | Push cart to the left with 10N  |
+| 1   | Push cart to the right with 10N |
 
 
 State space: (4,)
@@ -62,6 +64,8 @@ State variables in short:
 - $$\theta$$ - pole angle
 - $$\dot{\theta}$$ - pole angular velocity
 
+Actions: +/-10 Newtons to the cart
+
 Reward: +1 unless termination
 
 Termination:
@@ -73,15 +77,15 @@ Termination:
 
 Box System [Michie et al 1968] divided the state variables into 3x3x6x3 boxes as follows:
 
-| variable  |      |          |          |       |          |     |
+| variable  |      |          | range    |       |          |     |
 |-----------|------|----------|----------|-------|----------|-----|
 | $$x$$     | <-0.8|          |(-0.8,0.8)|       |>0.8      |     |
 | box:      | +0   |          |  +1      |       |+2        |     |
-| $$\dot{x}$$| <-0.5|          |(-0.5,0.5 |       |>0.5      |     |
+| $$\dot{x}$$| <-0.5|         |(-0.5,0.5 |       |>0.5      |     |
 | box:      | +0   |          |  +3      |       |+6        |     |
-| theta(deg)| <-12 |(-12,-1.5)|(-1.5,0)  |(0,1.5)|(1.5,12)  | >12 |
+| $$\theta$$(deg)|<-12 |(-12,-1.5)|(-1.5,0)|(0,1.5)|(1.5,12)| >12 |
 | box:      | +0   |+9        | +18      | +27   |  +36     | +45 |   
-| theta_dot | <-50 |          |(-50,50)  |       |  >50     |     |
+| $$\dot{\theta}$$ | <-50 |   |(-50,50)  |       |  >50     |     |
 | box:      | +0   |          | +54      |       | +108     |     |
 
 ### Q-bins
