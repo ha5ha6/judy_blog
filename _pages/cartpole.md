@@ -97,18 +97,19 @@ def get_box(s):
     if x < -.8:
         box_idx = 0
     elif x < .8:
-		    box_idx = 1
+        box_idx = 1
 	  else:
-		    box_idx = 2
+        box_idx = 2
+
   	if x_dot < -.5:
-		    pass
+        pass
     elif x_dot < .5:
-		    box_idx += 3
+        box_idx += 3
     else:
         box_idx += 6
 
     if theta < np.radians(-12):
-		    pass
+        pass
     elif theta < np.radians(-1.5):
         box_idx += 9
     elif theta < np.radians(0):  
