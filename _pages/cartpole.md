@@ -83,6 +83,11 @@ Box System [Michie et al. 1968] divided the state variables into 3x3x6x3 boxes a
 
 State space: (4,) -> (162,)<br>
 Action sapce: (2,)<br>
+Experimental length:
+
+- episode length: 2000
+- step length: 1000, actually maximum will be 200 
+
 Hyperparameters:
 
 - learning rate (lr): 0.1
