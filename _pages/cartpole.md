@@ -86,23 +86,17 @@ Box System [Michie et al 1968] divided the state variables into 3x3x6x3 boxes as
 | $$\dot{\theta}$$ | <-50 |   |(-50,50)  |       |  >50     |     |
 | box:      | +0   |          | +54      |       | +108     |     |
 
-Q-learning implementation with box system
+Q-learning implementation with box system:
 
 ```python
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-import numpy as np
-import pandas as pd
 import gym
-import math
 import random
 
 def get_box(s):
 
 	x,x_dot,theta,theta_dot=s
-	# X_pos Pass
+
 	if x < -.8:
 		box_idx = 0
 	elif x < .8:
@@ -110,7 +104,6 @@ def get_box(s):
 	else:
 		box_idx = 2
 
-    # X_velocity Pass
 	if x_dot < -.5:
 		pass
 	elif x_dot < .5:
@@ -122,7 +115,7 @@ def get_box(s):
 		pass
 	elif theta < np.radians(-1.5):
 		box_idx += 9
-	elif theta < np.radians(0):  # goldzone
+	elif theta < np.radians(0):  
 		box_idx += 18
 	elif theta < np.radians(1.5):
 		box_idx += 27
@@ -140,7 +133,7 @@ def get_box(s):
 
 	return box_idx
 
-def get_action(q,epsilon):
+def e_greedy(q,epsilon):
 
     if random.random()<epsilon:
         a=env.action_space.sample()
@@ -158,7 +151,6 @@ n_stps=1000
 
 gm=0.99
 lr=0.1
-
 #non linear decay
 epsilon=1
 epsilon_decay_rate=0.995
@@ -175,7 +167,7 @@ for ep in range(n_eps):
 
     for stp in range(n_stps):
 
-        a=get_action(Q[s_int],epsilon)
+        a=e_greedy(Q[s_int],epsilon)
         s_,r,done,_=env.step(a)
         s_int_=get_box(s_)
 
@@ -192,12 +184,14 @@ for ep in range(n_eps):
     stp_all.append(stp)
     if ep%(n_eps//5)==0 or ep==n_eps-1:
         print(f"ep:{ep}, stp:{stp}, r:{np.round(r_sum,2)},eps:{epsilon}")
-
-#env.close()
-np.save('r.npy',r_all)
-np.save('stp.npy',stp_all)
-np.save('Q_forbox.npy',Q)
 ```
+
+Learned optimal Q values:
+
+<center><img src="/judy_blog/assets/images/q_op_box.png" width=600></center>
+
+<center><img src="/judy_blog/assets/images/q_op_box_1_3.png" width=600></center>
+
 
 ### Q-bins
 
@@ -205,7 +199,7 @@ np.save('Q_forbox.npy',Q)
 
 ### DQN
 
-<center><img src="https://miro.medium.com/max/507/1*iX-Fu5YzUZ8CNEZ86BvfKA.png" width=400></center>
+<center><img src="/judy_blog/assets/images/q_op_box_1_3.png" width=600></center>
 
 
 
