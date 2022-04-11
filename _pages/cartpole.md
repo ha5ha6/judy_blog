@@ -98,10 +98,10 @@ def get_box(s):
         box_idx = 0
     elif x < .8:
         box_idx = 1
-	  else:
+    else:
         box_idx = 2
 
-  	if x_dot < -.5:
+    if x_dot < -.5:
         pass
     elif x_dot < .5:
         box_idx += 3
