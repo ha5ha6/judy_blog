@@ -86,13 +86,13 @@ Action sapce: (2,)<br>
 Experimental length:
 
 - episode length: 2000
-- step length: 1000, actually maximum will be 200 
+- step length: 1000, actually maximum will be 200
 
 Hyperparameters:
 
 - learning rate (lr): 0.1
 - discounting factor (gm): 0.99
-- exploration factor (epsilon): from 1
+- exploration factor (epsilon): from 1, epsilon\*=epsilon_decay_rate for each episode
 - exploration decaying rate (epsilon decay rate): 0.995
 
 **Q-learning with box system can reach stable behaviors around 700 episodes due to non-linear epsilon annealing.**
@@ -202,16 +202,35 @@ for ep in range(n_eps):
 ```
 
 
-
-
 ### Q-bins
 
 ### Q-rbf
 
 **SARSA(λ)** implementation with 4xRBF networks:
 
-State space: (4,) -> (162,)<br>
-Action sapce: (2,)
+RBF parameters:
+
+- n_rbf: 4
+- n_feature: 4^4=256
+- s_range_low: [-4.8,-4,-.418,-4]
+- s_range_high: [4.8,4,.418,4]
+also can be divided into half-size like [-2.4,-2,-.2618,-2] and [2.4,2,.2618,2]
+
+State space to Feature space: (4,) -> (256,)<br>
+Action sapce: (2,)<br>
+
+Experimental length:
+
+- episode length: 2000
+- step length: 1000, actually maximum will be 200
+
+Hyperparameters:
+
+- lr: 0.1
+- gm: 0.99
+- epsilon: from 1, epsilon\*=epsilon_decay_rate for each episode
+- epsilon decay rate: 0.995
+- eligibility trace factor (lmd): 0.5
 
 
 
@@ -252,4 +271,4 @@ V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
 
 [Michie et al. 1968] Michie, Donald, and Roger A. Chambers. "BOXES: An experiment in adaptive control." Machine intelligence 2.2 (1968): 137-152.
 
-[\[Sutton C code\]](http://incompleteideas.net/book/code/pole.c)
+[\[Sutton's C code\]](http://incompleteideas.net/book/code/pole.c)
