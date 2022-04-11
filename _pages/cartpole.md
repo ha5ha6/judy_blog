@@ -84,7 +84,7 @@ Box System [Michie et al. 1968] divided the state variables into 3x3x6x3 boxes a
 State space: (4,) -> (162,)<br>
 Action sapce: (2,)
 
-Q-learning implementation with box system:
+**Q-learning** implementation with box system:
 
 ```python
 import numpy as np
@@ -169,7 +169,7 @@ for ep in range(n_eps):
 
         delta=r+gm*np.max(Q[s_int_])-Q[s_int,a]
         Q[s_int,a]+=lr*delta
-        
+
         s_int=s_int_
         r_sum+=r
 
@@ -194,6 +194,13 @@ Learned optimal Q values:
 ### Q-bins
 
 ### Q-rbf
+
+**SARSA(λ)** implementation with 4xRBF networks:
+
+State space: (4,) -> (162,)<br>
+Action sapce: (2,)
+
+
 
 ### DQN
 
