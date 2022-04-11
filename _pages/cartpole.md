@@ -20,6 +20,9 @@ usemathjax: true
 
 ### Problem Setup
 
+Cartpole is one of the very ancient and classical RL-for-control benchmark, first appeared in
+[\[Barto et al. 1983\]](http://www.derongliu.org/adp/adp-cdrom/Barto1983.pdf). Many RL algorithms from value-based to policy-based, model-free to model-based were justified under it or its variant, from simulation to real robot setup, check PILCO.
+
 [OpenAI CartPole-v0](https://gym.openai.com/envs/CartPole-v0/), ends in 200 episodes
 [OpenAI CartPole-v1](https://gym.openai.com/envs/CartPole-v1/), ends in 500 episodes
 
@@ -63,7 +66,7 @@ Box System [Michie et al 1968] divided the state variables into 3x3x6x3 boxes as
 | theta   | <-12 |(-12,-1.5)|(-1.5,0)  |(0,1.5)|(1.5,12)  | >12 |
 | box:    | +0   |+9        | +18      | +27   |  +36     | +45 |   
 |theta_dot| <-50 |          |(-50,50)  |       |  >50     |     |
-| box:    | +0   |          | +54      |       | +108     |     | 
+| box:    | +0   |          | +54      |       | +108     |     |
 
 ### Q-bins
 
