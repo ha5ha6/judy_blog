@@ -3,9 +3,9 @@ Jiexin Wang:
   bio         : "Reinforcement Learning <br /> Mobile & Joint Robots"
   avatar      : "/assets/images/head.jpg"
   links:
-    - label: "Amsterdam, NL"
+    - label: "Kyoto, JP"
       icon: "fas fa-fw fa-map-marker-alt"
-      url: "https://www.google.nl/maps/place/Amsterdam/@52.3545828,4.7638771,11z/data=!3m1!4b1!4m5!3m4!1s0x47c63fb5949a7755:0x6600fd4cb7c0af8d!8m2!3d52.3675734!4d4.9041389?hl=en"
+      url: "https://www.google.com/maps/place/Kyoto/@35.0978739,135.438682,10z/data=!3m1!4b1!4m5!3m4!1s0x6001a8d6cd3cc3f1:0xc0961d366bbb1d3d!8m2!3d35.011564!4d135.7681489"
     - label: "superheartheart<br />(at)gmail.com"
       icon: "fas fa-fw fa-envelope-square"
       url: "https://mail.google.com/"

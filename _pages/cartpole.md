@@ -19,7 +19,7 @@ usemathjax: true
 </style>
 
 
-Cartpole is one of the very ancient and classical RL-for-control benchmark, first appeared in
+Cartpole is one of the very ancient and classical RL-for-control benchmark, early appeared in
 [\[Barto et al. 1983\]](http://www.derongliu.org/adp/adp-cdrom/Barto1983.pdf). Many RL algorithms from value-based to policy-based, model-free to model-based were justified under it or its variants encompassing simulations and real robots, i.e.[\[PILCO\]](http://mlg.eng.cam.ac.uk/pilco/).
 
 This article is trying to cover the insights derived from the performances of classical RL algorithms under Cartpole environment.
@@ -393,3 +393,5 @@ V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
 [Doya 2000] Doya, Kenji. "Reinforcement learning in continuous time and space." Neural computation 12.1 (2000): 219-245.
 
 [\[Sutton's C code\]](http://incompleteideas.net/book/code/pole.c)
+
+[\[Java application of continous RL in Cartpole\]](https://brain.cc.kogakuin.ac.jp/~kanamaru/NN/CPRL/)
