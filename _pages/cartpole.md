@@ -215,7 +215,7 @@ RBF parameters:
 
 RBF networks:
 
-<center><img src="/judy_blog/assets/images/rbf.png" width=1000></center>
+<center><img src="/judy_blog/assets/images/rbf.png" width=800></center>
 
 State space to Feature space: (4,) -> (225,)<br>
 Action sapce: (2,)<br>
@@ -239,7 +239,7 @@ Learned optimal Values:
 
 <center><img src="/judy_blog/assets/images/q_op_rbf.png" width=1000></center>
 
-**SARSA(λ)** implementation with 4xRBF networks:
+**SARSA(λ)** implementation:
 
 ```python
 import numpy as np
@@ -402,7 +402,7 @@ for ep in range(n_eps):
         r_sum+=r
 
         if done:
-        	  break
+            break
 
     r_all.append(r_sum)
     stp_all.append(stp)
