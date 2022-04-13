@@ -265,6 +265,20 @@ for i in range(n_s):
     sigma[i]=interval[i]/2
     center[i]=[np.around(s_range[0,i]+j*interval[i],2) for j in range(n_rbf[i])]
 
+def plot_rbf():
+    plt.figure(figsize=(10,10))
+    title=['x','x_dot','theta','theta_dot']
+    for i in range(1,5):
+        plt.subplot(2,2,i)
+        x=np.linspace(s_range[0,i-1],s_range[1,i-1],num=100)
+        y={}
+        for j in range(len(center[i-1])):
+            y[j]=np.exp(-(x-center[i-1][j])**2/(2*sigma[i-1]**2))
+            plt.plot(x,y[j])
+        plt.title(title[i-1])
+
+    plt.savefig('rbf.png',dpi=350)
+
 def get_feature(s):
 
     rbf={}
@@ -339,6 +353,8 @@ epsilon_decay_rate=0.995
 
 r_all,stp_all=[],[]
 q_all=[]
+
+plot_rbf()
 
 for ep in range(n_eps):
 
