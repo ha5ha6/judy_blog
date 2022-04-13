@@ -215,7 +215,7 @@ RBF parameters:
 
 RBF networks:
 
-<center><img src="/judy_blog/assets/images/rbf.png" width=800></center>
+<center><img src="/judy_blog/assets/images/rbf.png" width=600></center>
 
 State space to Feature space: (4,) -> (225,)<br>
 Action sapce: (2,)<br>
