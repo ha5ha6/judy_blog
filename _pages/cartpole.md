@@ -213,6 +213,10 @@ RBF parameters:
 - s_range_low: [-2.4,-4,-np.radians(15),-np.radians(180)]
 - s_range_high: [2.4,4,np.radians(15),np.radians(180)]
 
+RBF networks:
+
+<center><img src="/judy_blog/assets/images/rbf.png" width=1000></center>
+
 State space to Feature space: (4,) -> (225,)<br>
 Action sapce: (2,)<br>
 
@@ -381,13 +385,13 @@ for ep in range(n_eps):
         if done:
             delta=r-Q_old[a]
         else:
-        	  delta=r+gm*Q[a_]-Q_old[a]
+            delta=r+gm*Q[a_]-Q_old[a]
 
         e[:,a]=F
 
         for m in range(n_feature):
-        	  for n in range(n_a):
-        		     w[m,n]+=lr*delta*e[m,n]
+            for n in range(n_a):
+                w[m,n]+=lr*delta*e[m,n]
 
         e*=gm*lmd
 
