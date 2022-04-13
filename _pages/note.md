@@ -19,7 +19,7 @@ author:  Jiexin Wang
 usemathjax: true
 ---
 
-## reading notes of Reinforcement Learning an Introduction 2nd Edition
+## Reading Notes of Reinforcement Learning an Introduction 2nd Edition
 
 [Basic Reinforcement Learning](/judy_blog/basicrl/): MDP, value functions, policy/value iteration, Monte Carlo control, on/off policy, off policy importance sampling, python realizations of Gridworld, Blackjack
 
@@ -27,6 +27,6 @@ upcoming: Temporal-Difference Learning
 
 related github repo: [judy_tutorial_basicRL](https://github.com/ha5ha6/judy_tutorial_basicRL)
 
-## RL applications
+## RL Applications
 
 [All About Cartpole](/judy_blog/cartpole/): Cartpole realizations with classic RL algorithms: Q-learning, SARSA($$\lambda$$), DQN, etc
