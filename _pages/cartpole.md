@@ -245,11 +245,8 @@ Experimental length:
 
 Hyperparameters:
 
-- lr: 0.1
-- gm: 0.99
-- epsilon: from 1, epsilon\*=epsilon_decay_rate for each episode
-- epsilon decay rate: 0.995
 - eligibility trace factor (lmd): 0.5
+- others remain the same as in Q-box
 
 **SARSA($$\lambda$$) with eligibility traces can reach stable behaviors around 200 episodes due to non-linear epsilon annealing**
 
