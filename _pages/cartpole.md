@@ -81,15 +81,12 @@ Box System [Michie et al. 1968] divided the state variables into 3x3x6x3 boxes a
 | $$\dot{\theta}$$ | <-50 |   |(-50,50)  |       |  >50     |     |
 | box:      | +0   |          | +54      |       | +108     |     |
 
-State space: (4,) -> (162,)<br>
-Action sapce: (2,)<br>
-Experimental length:
+Experimental setting:
 
+- State space: (4,) -> (162,)
+- Action sapce: (2,)
 - episode length: 2000
 - step length: 1000, actually maximum will be 200
-
-Hyperparameters:
-
 - learning rate (lr): 0.1
 - discounting factor (gm): 0.99
 - exploration factor (epsilon): from 1, epsilon\*=epsilon_decay_rate for each episode
@@ -206,6 +203,8 @@ for ep in range(n_eps):
 
 ### Q-rbf
 
+We use RBF networks to approximate the Q functions
+
 RBF networks:
 
 $$\begin{align*}
@@ -231,23 +230,16 @@ RBF network ploted w.r.t the above parameters:
 
 <center><img src="/judy_blog/assets/images/rbf.png" width=600></center>
 
-State space to Feature space: (4,) -> (225,)<br>
-Action sapce: (2,)
+Experimental setting:
+
+- State space to Feature space: (4,) -> (225,)
+- eligibility trace factor (lmd): 0.5
+- others remain the same as in Q-box
 
 **Customized Gym Env:**
 
 - In original gym env, state initialization is U(-0.05,0.05) for 4 states, this small range doesn't encourage thorough **state visits in terms of exploration**, we changed it to U(-0.26,0.26) for 4 states (further can be changed to U(range of each state))
 - also self.theta_threshold_radians = 15 * 2 * math.pi / 360 can be changed to 180 to test the property of **continuous controller** (further topic)
-
-Experimental length:
-
-- episode length: 2000
-- step length: 1000, actually maximum will be 200
-
-Hyperparameters:
-
-- eligibility trace factor (lmd): 0.5
-- others remain the same as in Q-box
 
 **SARSA($$\lambda$$) with eligibility traces can reach stable behaviors around 200 episodes due to non-linear epsilon annealing**
 
