@@ -203,7 +203,7 @@ for ep in range(n_eps):
 
 ### Q-rbf
 
-We use RBF networks to approximate the Q functions
+We use RBF networks to approximate the Q function
 
 RBF networks:
 
