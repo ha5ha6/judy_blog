@@ -81,7 +81,7 @@ Box System [Michie et al. 1968] divided the state variables into 3x3x6x3 boxes a
 | $$\dot{\theta}$$ | <-50 |   |(-50,50)  |       |  >50     |     |
 | box:      | +0   |          | +54      |       | +108     |     |
 
-Experimental setting:
+**Experimental setting:**
 
 - State space: (4,) -> (162,)
 - Action sapce: (2,)
@@ -94,7 +94,7 @@ Experimental setting:
 
 **In CartPole-v0, Q-learning with box system can reach stable behaviors around 700 episodes due to non-linear epsilon annealing**
 
-Learned optimal Values:
+**Learned optimal Values:**
 
 <center><img src="/judy_blog/assets/images/q_op_box.png" width=1000></center>
 
@@ -230,7 +230,7 @@ RBF network ploted w.r.t the above parameters:
 
 <center><img src="/judy_blog/assets/images/rbf.png" width=600></center>
 
-Experimental setting:
+**Experimental setting:**
 
 - State space to Feature space: (4,) -> (225,)
 - eligibility trace factor (lmd): 0.5
@@ -243,7 +243,7 @@ Experimental setting:
 
 **SARSA($$\lambda$$) with eligibility traces can reach stable behaviors around 200 episodes due to non-linear epsilon annealing**
 
-Learned optimal Values:
+**Learned optimal Values:**
 
 <center><img src="/judy_blog/assets/images/q_op_rbf.png" width=1000></center>
 
