@@ -225,7 +225,7 @@ where $$c_i$$ is the $$i$$th center point and $$\sigma_i$$ is the $$i$$th varian
 Normalized RBF networks:
 
 $$\begin{align*}
-\Phi_s(i)=\exp \left(-\frac{\|s-c_i\|^2}{2\sigma_i^2} \right)
+\Phi_s(i)= \frac{\exp \left(-\frac{\|s-c_i\|^2}{2\sigma_i^2} \right)}{\sum_i \exp \left(-\frac{\|s-c_i\|^2}{2\sigma_i^2} \right)}
 \end{align*}$$
 
 <center><img src="/judy_blog/assets/images/rbf.png" width=600></center>
