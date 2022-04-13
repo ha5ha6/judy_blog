@@ -206,27 +206,28 @@ for ep in range(n_eps):
 
 ### Q-rbf
 
-
-RBF parameters:
-
-- n_rbf: [3,3,5,5]
-- n_feature: 3x3x5x5=225
-- s_range_low: [-2.4,-4,-np.radians(15),-np.radians(180)]
-- s_range_high: [2.4,4,np.radians(15),np.radians(180)]
-
 RBF networks:
 
 $$\begin{align*}
 \Phi_s(i)=\exp \left(-\frac{\|s-c_i\|^2}{2\sigma_i^2} \right)
 \end{align*}$$
 
-where $$c_i$$ is the $$i$$th center point and $$\sigma_i$$ is the $$i$$th variance
+where $$c_i$$ is the $$i$$th center point and $$\sigma_i$$ is the $$i$$th standard deviation
 
 Normalized RBF networks:
 
 $$\begin{align*}
 \Phi_s(i)= \frac{\exp \left(-\frac{\|s-c_i\|^2}{2\sigma_i^2} \right)}{\sum_i \exp \left(-\frac{\|s-c_i\|^2}{2\sigma_i^2} \right)}
 \end{align*}$$
+
+RBF parameters:
+
+- n_rbf: [3,3,5,5]
+- n_feature: 3x3x5x5=225
+- s_range_low: [-2.4,-4,-np.radians(30),-np.radians(180)]
+- s_range_high: [2.4,4,np.radians(30),np.radians(180)]
+
+RBF network ploted w.r.t the above parameters:
 
 <center><img src="/judy_blog/assets/images/rbf.png" width=600></center>
 
