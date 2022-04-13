@@ -25,7 +25,7 @@ usemathjax: true
 
 upcoming: Temporal-Difference Learning
 
-related github repo: [judy_tutorial_basicRL](https://github.com/ha5ha6/judy_tutorial_basicRL)
+github repo: [judy_tutorial_basicRL](https://github.com/ha5ha6/judy_tutorial_basicRL)
 
 ## RL Applications
 
