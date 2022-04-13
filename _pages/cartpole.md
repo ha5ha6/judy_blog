@@ -218,7 +218,10 @@ RBF networks:
 <center><img src="/judy_blog/assets/images/rbf.png" width=600></center>
 
 State space to Feature space: (4,) -> (225,)<br>
-Action sapce: (2,)<br>
+Action sapce: (2,)
+
+Customized Gym Env:<br>
+State initialization: ~ U(-2deg,2deg) for 4 -> ~ U(-15deg,15deg) for 4 (check later!)<br>
 
 Experimental length:
 
