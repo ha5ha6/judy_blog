@@ -86,7 +86,7 @@ Box System [Michie et al. 1968] divided the state variables into 3x3x6x3 boxes a
 - State space: (4,) -> (162,)
 - Action sapce: (2,)
 - episode length: 2000
-- step length: 1000, actually maximum will be 200
+- step length: 200 in CartPole-v0
 - learning rate (lr): 0.1
 - discounting factor (gm): 0.99
 - exploration factor (epsilon): from 1, epsilon\*=epsilon_decay_rate for each episode
