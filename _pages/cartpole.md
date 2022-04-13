@@ -237,7 +237,7 @@ Hyperparameters:
 
 Learned optimal Values:
 
-<center><img src="/judy_blog/assets/images/q_op_rbf_90deg.png" width=1000></center>
+<center><img src="/judy_blog/assets/images/q_op_rbf.png" width=1000></center>
 
 **SARSA(λ)** implementation with 4xRBF networks:
 
