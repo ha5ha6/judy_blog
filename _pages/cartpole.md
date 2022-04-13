@@ -259,8 +259,8 @@ n_s=env.observation_space.shape[0]
 n_a=env.action_space.n
 
 s_range=np.zeros((2,n_s))
-s_range[0,:]=np.array([-2.4,-4,-np.radians(15),-np.radians(180)])
-s_range[1,:]=np.array([2.4,4,np.radians(15),np.radians(180)])
+s_range[0,:]=np.array([-2.4,-4,-np.radians(30),-np.radians(180)])
+s_range[1,:]=np.array([2.4,4,np.radians(30),np.radians(180)])
 
 n_rbf=np.array([3,3,5,5]).astype(int)
 n_feature=np.prod(n_rbf)
@@ -317,7 +317,7 @@ def e_greedy(e,Q):
 def get_v(x,x_dot):
     n_grid=50
     v=np.zeros((n_grid,n_grid))
-    the=np.linspace(s_range[0,2],s_range[1,2],num=n_grid)
+    the=np.linspace(s_range[0,2]/2,s_range[1,2]/2,num=n_grid)
     the_dot=np.linspace(s_range[1,3],s_range[0,3],num=n_grid)
 
     for i in range(n_grid):
