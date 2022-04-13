@@ -239,7 +239,7 @@ Experimental setting:
 **Customized Gym Env:**
 
 - In original gym env, state initialization is U(-0.05,0.05) for 4 states, this small range doesn't encourage thorough **state visits in terms of exploration**, we changed it to U(-0.26,0.26) for 4 states (further can be changed to U(range of each state))
-- also self.theta_threshold_radians = 15 * 2 * math.pi / 360 can be changed to 180 to test the property of **continuous controller** (further topic)
+- also in **self.theta_threshold_radians = 15 * 2 * math.pi / 360**, **15** can be changed to **180** to test the property of **continuous controller** (further topic)
 
 **SARSA($$\lambda$$) with eligibility traces can reach stable behaviors around 200 episodes due to non-linear epsilon annealing**
 
