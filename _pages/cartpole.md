@@ -253,7 +253,7 @@ s_range=np.zeros((2,n_s))
 s_range[0,:]=np.array([-2.4,-4,-np.radians(15),-np.radians(180)])
 s_range[1,:]=np.array([2.4,4,np.radians(15),np.radians(180)])
 
-n_rbf=np.array([3,3,7,7]).astype(int)
+n_rbf=np.array([3,3,5,5]).astype(int)
 n_feature=np.prod(n_rbf)
 w=np.zeros((n_feature,n_a))
 
@@ -261,20 +261,20 @@ interval={}
 center={}
 sigma={}
 for i in range(n_s):
-  	interval[i]=(s_range[1,i]-s_range[0,i])/(n_rbf[i]-1)
-  	sigma[i]=interval[i]/2
-  	center[i]=[np.around(s_range[0,i]+j*interval[i],2) for j in range(n_rbf[i])]
+    interval[i]=(s_range[1,i]-s_range[0,i])/(n_rbf[i]-1)
+    sigma[i]=interval[i]/2
+    center[i]=[np.around(s_range[0,i]+j*interval[i],2) for j in range(n_rbf[i])]
 
 def get_feature(s):
 
-  	rbf={}
-  	f=1 #feature
-  	for i in range(4):
-    		rbf[i]=np.exp(-(s[i]-center[i])**2/(2*sigma[i]**2))
-    		f=np.outer(f,rbf[i])
-    		f=f.ravel()
+    rbf={}
+    f=1 #feature
+    for i in range(4):
+        rbf[i]=np.exp(-(s[i]-center[i])**2/(2*sigma[i]**2))
+        f=np.outer(f,rbf[i])
+        f=f.ravel()
 
-  	return f
+    return f
 
 def get_Q(F,w):
     Q=np.dot(w.T,F)
@@ -298,33 +298,33 @@ def get_v(x,x_dot):
     the_dot=np.linspace(s_range[1,3],s_range[0,3],num=n_grid)
 
     for i in range(n_grid):
-      	for j in range(n_grid):
-        		s=np.array([x,x_dot,the[j],the_dot[i]])
-        		F=get_feature(s)
-        		v[i,j]=np.max(np.dot(w.T,F))
+        for j in range(n_grid):
+            s=np.array([x,x_dot,the[j],the_dot[i]])
+            F=get_feature(s)
+            v[i,j]=np.max(np.dot(w.T,F))
 
     return v
 
 def plot_v(angle=15,angular=229):
-  	i=1
-  	x_range=[-2.4,0,2.4]
-  	x_dot_range=[-2,0,2]
-  	plt.figure(figsize=(10,10))
-  	for x_dot in reversed(x_dot_range):
-    		for x in x_range:
-      			v=get_v(x,x_dot)
+    i=1
+    x_range=[-2.4,0,2.4]
+    x_dot_range=[-2,0,2]
+    plt.figure(figsize=(10,10))
+    for x_dot in reversed(x_dot_range):
+        for x in x_range:
+            v=get_v(x,x_dot)
 
-      			plt.subplot(3,3,i)
-      			plt.imshow(v,cmap='jet')
-      			plt.colorbar()
-      			plt.title('x='+str(x)+' x_dot='+str(x_dot))
-      			plt.xticks(np.arange(50,step=25),('-'+str(angle),'0',))
-      			plt.yticks(np.arange(50,step=25),(str(angular),'0',))
-      			plt.xlabel('theta')
-      			plt.ylabel('theta_dot')
-      			i+=1
+            plt.subplot(3,3,i)
+            plt.imshow(v,cmap='jet')
+            plt.colorbar()
+            plt.title('x='+str(x)+' x_dot='+str(x_dot))
+            plt.xticks(np.arange(50,step=25),('-'+str(angle),'0',))
+            plt.yticks(np.arange(50,step=25),(str(angular),'0',))
+            plt.xlabel('theta')
+            plt.ylabel('theta_dot')
+            i+=1
 
-  	plt.savefig('q_op_rbf.png',dpi=350)
+    plt.savefig('q_op_rbf.png',dpi=350)
 
 n_eps=2000
 n_stps=1000
@@ -342,47 +342,47 @@ q_all=[]
 
 for ep in range(n_eps):
 
-  	r_sum,done=0,False
-  	epsilon*=epsilon_decay_rate
-  	#eligibility traces
-  	e=np.zeros((n_feature,n_a))
-  	F=get_feature(env.reset())
-  	Q_old=get_Q(F,w)
-  	a=e_greedy(epsilon,Q_old)
+    r_sum,done=0,False
+    epsilon*=epsilon_decay_rate
+    #eligibility traces
+    e=np.zeros((n_feature,n_a))
+    F=get_feature(env.reset())
+    Q_old=get_Q(F,w)
+    a=e_greedy(epsilon,Q_old)
 
-  	for stp in range(n_stps):
+    for stp in range(n_stps):
 
-    		#show animation of last 5 episodes
-    		if ep>n_eps-5:
+        #show animation of last 5 episodes
+        if ep>n_eps-5:
             env.render()
 
-    		q_all.append(Q_old)
-    		s_,r,done,_=env.step(a)
-    		F_=get_feature(s_)
-    		Q=get_Q(F_,w)
-    		a_=e_greedy(epsilon,Q)
+        q_all.append(Q_old)
+        s_,r,done,_=env.step(a)
+        F_=get_feature(s_)
+        Q=get_Q(F_,w)
+        a_=e_greedy(epsilon,Q)
 
-    		if done:
-    		    delta=r-Q_old[a]
-    		else:
-    			  delta=r+gm*Q[a_]-Q_old[a]
+        if done:
+            delta=r-Q_old[a]
+        else:
+        	  delta=r+gm*Q[a_]-Q_old[a]
 
-    		e[:,a]=F
+        e[:,a]=F
 
-    		for m in range(n_feature):
-    			  for n in range(n_a):
-    				     w[m,n]+=lr*delta*e[m,n]
+        for m in range(n_feature):
+        	  for n in range(n_a):
+        		     w[m,n]+=lr*delta*e[m,n]
 
-    		e*=gm*lmd
+        e*=gm*lmd
 
-    		s=s_
-    		F=F_
-    		a=a_
-    		Q_old=Q
-    		r_sum+=r
+        s=s_
+        F=F_
+        a=a_
+        Q_old=Q
+        r_sum+=r
 
-    		if done:
-    			  break
+        if done:
+        	  break
 
     r_all.append(r_sum)
     stp_all.append(stp)
