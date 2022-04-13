@@ -23,7 +23,7 @@ usemathjax: true
 
 [Basic Reinforcement Learning](/judy_blog/basicrl/): MDP, value functions, policy/value iteration, Monte Carlo control, on/off policy, off policy importance sampling, python realizations of Gridworld, Blackjack
 
-upcoming: Temporal-Difference Learning
+Temporal-Difference Learning: TBD
 
 github repo: [judy_tutorial_basicRL](https://github.com/ha5ha6/judy_tutorial_basicRL)
 
