@@ -220,8 +220,10 @@ RBF networks:
 State space to Feature space: (4,) -> (225,)<br>
 Action sapce: (2,)
 
-Customized Gym Env:<br>
-State initialization: ~ U(-2deg,2deg) for 4 -> ~ U(-15deg,15deg) for 4 (check later!)<br>
+Customized Gym Env:
+
+- In original gym env, state initialization is U(-0.05,0.05) for 4 states, this small range doesn't encourage thorough state visits in terms of exploration, we changed it to U(-0.26,0.26) for 4 states (further can be changed to U(range of each state))
+- also self.theta_threshold_radians = 15 * 2 * math.pi / 360 can be changed to 180 to test the continuous property of the controller (further topic)
 
 Experimental length:
 
