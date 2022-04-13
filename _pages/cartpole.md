@@ -206,6 +206,7 @@ for ep in range(n_eps):
 
 ### Q-rbf
 
+
 RBF parameters:
 
 - n_rbf: [3,3,5,5]
@@ -214,6 +215,18 @@ RBF parameters:
 - s_range_high: [2.4,4,np.radians(15),np.radians(180)]
 
 RBF networks:
+
+$$\begin{align*}
+\Phi_s(i)=\exp \left(-\frac{\|s-c_i\|^2}{2\sigma_i^2} \right)
+\end{align*}$$
+
+where $$c_i$$ is the $$i$$th center point and $$\sigma_i$$ is the $$i$$th variance
+
+Normalized RBF networks:
+
+$$\begin{align*}
+\Phi_s(i)=\exp \left(-\frac{\|s-c_i\|^2}{2\sigma_i^2} \right)
+\end{align*}$$
 
 <center><img src="/judy_blog/assets/images/rbf.png" width=600></center>
 
@@ -436,15 +449,7 @@ np.save('weights.npy',w)
                                           |---|---|---|---|---|
                                           |   |4,1|   |   |   |
 
-$$\begin{align*}
 
-V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
-       + &0.25*[-1+0.9*V(0,0)] \\
-       + &0.25*[0+0.9*V(0,1)] \\
-       + &0.25*[0+0.9*V(1,0)] \\
-       = &-0.5
-
-\end{align*}$$
 
 ```python
 
