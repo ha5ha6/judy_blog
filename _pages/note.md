@@ -19,7 +19,7 @@ author:  Jiexin Wang
 usemathjax: true
 ---
 
-## Reading Notes of Reinforcement Learning an Introduction 2nd Edition
+## Reading Notes of RL an Introduction 2nd Edition
 
 [Basic Reinforcement Learning](/judy_blog/basicrl/): MDP, value functions, policy/value iteration, Monte Carlo control, on/off policy, off policy importance sampling, python realizations of Gridworld, Blackjack
 
