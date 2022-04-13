@@ -28,3 +28,5 @@ upcoming: Temporal-Difference Learning
 - reading notes of **Reinforcement Learning an Introduction 2nd Edition**
 
 - related github repo: [judy_tutorial_basicRL](https://github.com/ha5ha6/judy_tutorial_basicRL)
+
+[All About Cartpole](/judy_blog/cartpole/): Cartpole realizations with classic RL algorithms: Q-learning, SARSA($$\lambda$$), DQN, etc
