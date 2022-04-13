@@ -95,7 +95,7 @@ Hyperparameters:
 - exploration factor (epsilon): from 1, epsilon\*=epsilon_decay_rate for each episode
 - exploration decaying rate (epsilon decay rate): 0.995
 
-**Q-learning with box system can reach stable behaviors around 700 episodes due to non-linear epsilon annealing**
+**In CartPole-v0, Q-learning with box system can reach stable behaviors around 700 episodes due to non-linear epsilon annealing**
 
 Learned optimal Values:
 
@@ -208,14 +208,12 @@ for ep in range(n_eps):
 
 RBF parameters:
 
-- n_rbf: 4
-- n_feature: 4^4=256
-- s_range_low: [-4.8,-4,-.418,-4]
-- s_range_high: [4.8,4,.418,4]
+- n_rbf: [3,3,5,5]
+- n_feature: 3x3x5x5=225
+- s_range_low: [-2.4,-4,-np.radians(15),-np.radians(180)]
+- s_range_high: [2.4,4,np.radians(15),np.radians(180)]
 
-also can be divided into half-size like [-2.4,-2,-.2618,-2] and [2.4,2,.2618,2]
-
-State space to Feature space: (4,) -> (256,)<br>
+State space to Feature space: (4,) -> (225,)<br>
 Action sapce: (2,)<br>
 
 Experimental length:
@@ -240,21 +238,50 @@ Learned optimal Values:
 **SARSA(λ)** implementation with 4xRBF networks:
 
 ```python
-def normalize(s):
-    s_norm=np.zeros(len(s))
-    for i in range(len(s)):
-        s_norm[i]=(s[i]-s_range[0,i])/(s_range[1,i]-s_range[0,i])
-    return s_norm
+import numpy as np
+import pandas as pd
+import gym
+import math
+import random
+import matplotlib.pyplot as plt
+
+env=gym.make("CartPole-v0")
+n_s=env.observation_space.shape[0]
+n_a=env.action_space.n
+
+s_range=np.zeros((2,n_s))
+s_range[0,:]=np.array([-2.4,-4,-np.radians(15),-np.radians(180)])
+s_range[1,:]=np.array([2.4,4,np.radians(15),np.radians(180)])
+
+n_rbf=np.array([3,3,7,7]).astype(int)
+n_feature=np.prod(n_rbf)
+w=np.zeros((n_feature,n_a))
+
+interval={}
+center={}
+sigma={}
+for i in range(n_s):
+  	interval[i]=(s_range[1,i]-s_range[0,i])/(n_rbf[i]-1)
+  	sigma[i]=interval[i]/2
+  	center[i]=[np.around(s_range[0,i]+j*interval[i],2) for j in range(n_rbf[i])]
 
 def get_feature(s):
-    fs=np.zeros(n_feature)
-    for i in range(n_feature):
-        fs[i]=np.exp(-np.linalg.norm(s-c[i,:])**2/den)
-    return fs
 
-def get_Q(fs,theta):
-    Q=np.dot(theta.T,fs)
+  	rbf={}
+  	f=1 #feature
+  	for i in range(4):
+    		rbf[i]=np.exp(-(s[i]-center[i])**2/(2*sigma[i]**2))
+    		f=np.outer(f,rbf[i])
+    		f=f.ravel()
+
+  	return f
+
+def get_Q(F,w):
+    Q=np.dot(w.T,F)
     return Q
+
+def get_Q_a(F,a,w):
+    Q=np.dot(w[:,a],F)
 
 def e_greedy(e,Q):
     rand=np.random.random()
@@ -264,31 +291,40 @@ def e_greedy(e,Q):
         a=env.action_space.sample()
     return int(a)
 
-env=gym.make("CartPole-v0")
-n_s=env.observation_space.shape[0]
-n_a=env.action_space.n
+def get_v(x,x_dot):
+    n_grid=50
+    v=np.zeros((n_grid,n_grid))
+    the=np.linspace(s_range[0,2],s_range[1,2],num=n_grid)
+    the_dot=np.linspace(s_range[1,3],s_range[0,3],num=n_grid)
 
-n_rbf=4*np.ones(n_s).astype(int)
-width=1./(n_rbf-1.)
-sigma=width[0]/2.
-den=2*sigma**2
+    for i in range(n_grid):
+      	for j in range(n_grid):
+        		s=np.array([x,x_dot,the[j],the_dot[i]])
+        		F=get_feature(s)
+        		v[i,j]=np.max(np.dot(w.T,F))
 
-s_range=np.zeros((2,n_s))
-s_range[0,:]=np.array([-4.8,-4,-.418,-4])
-s_range[1,:]=np.array([4.8,4,.418,4])
+    return v
 
-n_feature=np.prod(n_rbf)
-fs=np.zeros(n_feature)
-fs_=np.zeros(n_feature)
-theta=np.zeros((n_feature,n_a))
+def plot_v(angle=15,angular=229):
+  	i=1
+  	x_range=[-2.4,0,2.4]
+  	x_dot_range=[-2,0,2]
+  	plt.figure(figsize=(10,10))
+  	for x_dot in reversed(x_dot_range):
+    		for x in x_range:
+      			v=get_v(x,x_dot)
 
-c=np.zeros((n_feature,n_s))
+      			plt.subplot(3,3,i)
+      			plt.imshow(v,cmap='jet')
+      			plt.colorbar()
+      			plt.title('x='+str(x)+' x_dot='+str(x_dot))
+      			plt.xticks(np.arange(50,step=25),('-'+str(angle),'0',))
+      			plt.yticks(np.arange(50,step=25),(str(angular),'0',))
+      			plt.xlabel('theta')
+      			plt.ylabel('theta_dot')
+      			i+=1
 
-for i in range(n_rbf[0]):
-    for j in range(n_rbf[1]):
-        for k in range(n_rbf[2]):
-            for l in range(n_rbf[3]):
-                c[l*(n_rbf[3]**0)+k*(n_rbf[2]**1)+j*(n_rbf[1]**2)+i*(n_rbf[0]**3),:]=(i*width[3],j*width[2],k*width[1],l*width[0])
+  	plt.savefig('q_op_rbf.png',dpi=350)
 
 n_eps=2000
 n_stps=1000
@@ -297,7 +333,7 @@ gm=0.99
 lr=0.1
 lmd=0.5
 
-#non-linear decay
+#non linear decay
 epsilon=1
 epsilon_decay_rate=0.995
 
@@ -306,51 +342,59 @@ q_all=[]
 
 for ep in range(n_eps):
 
-    r_sum,done=0,False
-    epsilon*=epsilon_decay_rate
-    e=np.zeros((n_feature,n_a))
+  	r_sum,done=0,False
+  	epsilon*=epsilon_decay_rate
+  	#eligibility traces
+  	e=np.zeros((n_feature,n_a))
+  	F=get_feature(env.reset())
+  	Q_old=get_Q(F,w)
+  	a=e_greedy(epsilon,Q_old)
 
-    s=normalize(env.reset())
-    fs=get_feature(s)
-    Q_old=get_Q(fs,theta)
+  	for stp in range(n_stps):
 
-    a=e_greedy(epsilon,Q_old)
+    		#show animation of last 5 episodes
+    		if ep>n_eps-5:
+            env.render()
 
-    for stp in range(n_stps):
+    		q_all.append(Q_old)
+    		s_,r,done,_=env.step(a)
+    		F_=get_feature(s_)
+    		Q=get_Q(F_,w)
+    		a_=e_greedy(epsilon,Q)
 
-        s_,r,done,_=env.step(a)
-        s_=normalize(s_)
-        fs_=get_feature(s_)
-        Q=get_Q(fs_,theta)
-        a_=e_greedy(epsilon,Q)
+    		if done:
+    		    delta=r-Q_old[a]
+    		else:
+    			  delta=r+gm*Q[a_]-Q_old[a]
 
-        if done:
-            delta=r-Q_old[a]
-        else:
-            delta=r+gm*Q[a_]-Q_old[a]
+    		e[:,a]=F
 
-        e[:,a]=fs
+    		for m in range(n_feature):
+    			  for n in range(n_a):
+    				     w[m,n]+=lr*delta*e[m,n]
 
-        for m in range(n_feature):
-            for n in range(n_a):
-                theta[m,n]+=lr*delta*e[m,n]
+    		e*=gm*lmd
 
-        e*=gm*lmd
+    		s=s_
+    		F=F_
+    		a=a_
+    		Q_old=Q
+    		r_sum+=r
 
-        s=s_
-        fs=fs_
-        a=a_
-        Q_old=Q
-        r_sum+=r
-
-        if done:
-            break
+    		if done:
+    			  break
 
     r_all.append(r_sum)
     stp_all.append(stp)
-    if ep%(n_eps//5)==0 or ep==n_eps-1:
-        print(f"ep:{ep}, stp:{stp}, r:{np.round(r_sum,2)}, eps:{epsilon}")
+    print(f"ep:{ep}, stp:{stp}, r:{np.round(r_sum,2)}, eps:{epsilon}")
 
+env.close()
+plot_v()
+np.save('r.npy',r_all)
+np.save('stp.npy',stp_all)
+np.save('q.npy',q_all)
+np.save('qvalue.npy',Q)
+np.save('weights.npy',w)
 ```
 
 ### DQN
