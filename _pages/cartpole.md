@@ -226,7 +226,7 @@ $$\begin{align*}
 - s_range_low: [-2.4,-4,-np.radians(30),-np.radians(180)]
 - s_range_high: [2.4,4,np.radians(30),np.radians(180)]
 
-RBF network ploted w.r.t the above parameters:
+RBF network plotted w.r.t the above parameters:
 
 <center><img src="/judy_blog/assets/images/rbf.png" width=600></center>
 
