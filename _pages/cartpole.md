@@ -35,7 +35,7 @@ This article is trying to cover the insights derived from the performances of cl
 
 Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
-<center><img src="/judy_blog/assets/images/cartpole_compare.png" width=800></center>
+<center><img src="/judy_blog/assets/images/cartpole_compare.png" width=600></center>
 
 **Temporary Summary:**
 
@@ -51,7 +51,7 @@ Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
 - analyze and visualize weights and gradients of DQN and RBF
 
-- check different activation functions, e.g. SiLU
+- tune NN capacities, check different activation functions, e.g. SiLU or try NRBF
 
 - increase the difficulty of the task by setting threshold to 180deg or to longer step length
 
