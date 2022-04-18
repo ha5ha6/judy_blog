@@ -548,7 +548,7 @@ class NN:
         batch=random.sample(self.buffer,min(len(self.buffer),self.batch_size))
         for s,a,r,s_, done in batch:
             q=self.model(s)
-            q_tar=y.clone().detach()
+            q_tar=q.clone().detach()
             with torch.no_grad():
                 q_tar[0][a]=r if done else r+self.gm*torch.max(self.model_tar(s_)[0])
             q_batch.append(q[0])
