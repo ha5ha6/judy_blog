@@ -49,11 +49,13 @@ Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
 **Future work:**
 
-- analyze and visualize weights and gradients of DQN
+- analyze and visualize weights and gradients of DQN and RBF
 
 - check different activation functions, e.g. SiLU
 
 - increase the difficulty of the task by setting threshold to 180deg or to longer step length
+
+- test different reward functions
 
 - test different algs with continous controllers
 
