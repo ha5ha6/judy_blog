@@ -39,15 +39,13 @@ Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
 Temporary Summary:
 
-- finer RBF networks may not approximate value funtion well but can achieve better learning efficiency, (maybe should tune hyperparameter more carefully)
+- finer RBF networks may not approximate value funtion well but can achieve better learning efficiency (maybe should tune hyperparameter more carefully)
 
 - DQN requires smaller learning rate for stable learning, say 0.01 or 0.001 compared to Q-box and SARSA($$\lambda$$)s' 0.1
 
 - 3-layer network can capture quite nice value approximation compared to 2-layer or 1-layer wider network
 
 - discounting factor remains 0.99 is good
-
-
 
 
 ### Problem Setup
