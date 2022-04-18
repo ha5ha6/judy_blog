@@ -686,10 +686,7 @@ def main():
               update_tar=10,
               n_eps=3000,
               n_stps=1000,
-              t0=1,
-              tk=0.1,
               eps=1.0,
-              eps_min=0.01,
               eps_decay=0.995,
               lr=0.001,
               gm=0.99,)
