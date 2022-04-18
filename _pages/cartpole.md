@@ -517,9 +517,8 @@ class DQN(nn.Module):
 
 class NN:
 
-    def __init__(self,alg,batch_size=32,buffer_size=2000,**kw):
+    def __init__(self,batch_size=32,buffer_size=2000,**kw):
 
-        self.alg=alg
         self.batch_size=batch_size
         self.buffer=deque(maxlen=buffer_size)
         self.lr=kw['lr']
@@ -583,12 +582,10 @@ class NN:
 
 class Agent:
 
-    def __init__(self,env,alg,buffer_size,batch_size,update_tar,n_eps,n_stps,eps,eps_decay,**kw):
+    def __init__(self,env,buffer_size,batch_size,update_tar,n_eps,n_stps,eps,eps_decay,**kw):
 
         self.env=env
-        self.alg=alg
-        self.nn=NN(alg=alg,
-                   batch_size=batch_size,
+        self.nn=NN(batch_size=batch_size,
                    buffer_size=buffer_size,
                    lr=kw['lr'],
                    gm=kw['gm'])
@@ -661,11 +658,11 @@ class Agent:
         if save_result:
             pre=kw['prefix']
             result=pd.DataFrame(zip(stp_all,r_all),columns=['step','return'])
-            result.to_csv(self.alg+'_'+pre+'_result.csv',index=False)
+            result.to_csv(pre+'_result.csv',index=False)
 
         if record_q:
             pre=kw['prefix']
-            np.save(self.alg+'_'+pre+'_q.npy',q_all)
+            np.save(pre+'_q.npy',q_all)
 
         if save_model:
             pre=kw['prefix']
@@ -683,7 +680,6 @@ class Agent:
 
 def main():
     agt=Agent(env=gym.make('CartPole-v0'),
-              alg='dqn',
               buffer_size=40000,
               batch_size=512,
               update_tar=10,
