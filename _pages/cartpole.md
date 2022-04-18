@@ -24,20 +24,20 @@ Cartpole is one of the very ancient and classical RL-for-control benchmark, earl
 
 This article is trying to cover the insights derived from the performances of classical RL algorithms under Cartpole environment.
 
-(Temporary) Related algorithms include:
+**(Temporary) Related algorithms include:**
 
 - Q-learning (box, bins)
 - SARSA(λ)
 - DQN
 - and more
 
-Temporary Results with 1 run:
+**Temporary Results with 1 run:**
 
 Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
 <center><img src="/judy_blog/assets/images/cartpole_compare.png" width=1000></center>
 
-Temporary Summary:
+**Temporary Summary:**
 
 - finer RBF networks may not approximate value funtion well but can achieve better learning efficiency (maybe should tune hyperparameter more carefully)
 
@@ -47,7 +47,7 @@ Temporary Summary:
 
 - discounting factor remains 0.99 is good
 
-Future work:
+**Future work:**
 
 - analyze and visualize weights and gradients of DQN
 
