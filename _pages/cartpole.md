@@ -47,6 +47,15 @@ Temporary Summary:
 
 - discounting factor remains 0.99 is good
 
+Future work:
+
+- analyze and visualize weights and gradients of DQN
+
+- check different activation functions, e.g. SiLU
+
+- incease the difficulty of the task by setting threshold to 180deg
+
+- test different algs with continous controllers
 
 ### Problem Setup
 
