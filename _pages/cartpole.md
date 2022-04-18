@@ -31,7 +31,7 @@ This article is trying to cover the insights derived from the performances of cl
 - DQN: neural network function approximator
 - and more
 
-**Temporary Results with 1 run:**
+**Temporary Results with 1 run in CartPole-v0:**
 
 Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
@@ -53,7 +53,7 @@ Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
 - check different activation functions, e.g. SiLU
 
-- increase the difficulty of the task by setting threshold to 180deg
+- increase the difficulty of the task by setting threshold to 180deg or to longer step length
 
 - test different algs with continous controllers
 
