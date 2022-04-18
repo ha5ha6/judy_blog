@@ -219,7 +219,7 @@ $$\begin{align*}
 \Phi_s(i)= \frac{\exp \left(-\frac{\|s-c_i\|^2}{2\sigma_i^2} \right)}{\sum_i \exp \left(-\frac{\|s-c_i\|^2}{2\sigma_i^2} \right)}
 \end{align*}$$
 
-RBF parameters:
+**RBF parameters:**
 
 - n_rbf: [3,3,5,5]
 - n_feature: 3x3x5x5=225
@@ -427,10 +427,261 @@ np.save('weights.npy',w)
 
 ### DQN
 
-TBD
+We use deep Neural Network to approaximate Q values
+
+**NN parameters:**
+
+- MLP layers: 3
+- hidden units: 200 for each layer
+- activator: relu
+- state input: (4,)
+- action output: (2,)
+
+**DQN Experimental setting:**
+
+- buffer size: 40000
+- batch size: 512
+- update target: every 10 episodes
+- episode length: 3000
+- step length: 1000
+- lr: 0.001
+- gm: 0.99
+- eps: from 1.
+- eps decay: 0.995
+
+**Customized Gym Env:**
+
+- the initial angle of pole ~ U(-15deg,15deg)
+- end of episode [-30deg, 30deg]
+
+**Learned optimal Values:**
+
+<center><img src="/judy_blog/assets/images/90_q_op_rbf.png" width=1000></center>
+
+**Implementation:**
 
 ```python
+import random
+import copy
+import math
+import numpy as np
+import pandas as pd
+from collections import deque
 
+import gym
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class DQN(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.fc1 = nn.Linear(4, 200)
+        self.fc2 = nn.Linear(200, 200)
+        self.fc3 = nn.Linear(200, 200)
+        self.fc4 = nn.Linear(200, 2)
+
+    def forward(self, x):
+        x = self.fc1(x)
+        x = F.relu(x) #SiLU
+        x = self.fc2(x)
+        x = F.relu(x)
+        x = self.fc3(x)
+        x = F.relu(x)
+        x = self.fc4(x)
+        return x
+
+class NN:
+
+    def __init__(self,alg,batch_size=32,buffer_size=2000,**kw):
+
+        self.alg=alg
+        self.batch_size=batch_size
+        self.buffer=deque(maxlen=buffer_size)
+        self.lr=kw['lr']
+        self.gm=kw['gm']
+
+    def initialize(self):
+
+        self.model,self.model_tar=self.create()
+        self.criterion=torch.nn.MSELoss()
+        self.opt=torch.optim.Adam(self.model.parameters(),lr=self.lr)
+
+    def create(self):
+
+        model=DQN()
+        model_tar=copy.deepcopy(model)
+
+        return model,model_tar
+
+    def update_target(self):
+
+        self.model_tar.load_state_dict(self.model.state_dict())
+
+    def update(self):
+
+        q_batch,q_tar_batch=[],[]
+        batch=random.sample(self.buffer,min(len(self.buffer),self.batch_size))
+        for s,a,r,s_, done in batch:
+            q=self.model(s)
+            q_tar=y.clone().detach()
+            with torch.no_grad():
+                q_tar[0][a]=r if done else r+self.gm*torch.max(self.model_tar(s_)[0])
+            q_batch.append(q[0])
+            q_tar_batch.append(q_tar[0])
+
+        q_batch=torch.cat(q_batch)
+        q_tar_batch=torch.cat(q_tar_batch)
+
+        self.opt.zero_grad()
+        loss=self.criterion(q_batch, q_tar_batch)
+        loss.backward()
+        self.opt.step()
+
+        return loss.item()
+
+    def add_memory(self,s,a,r,s_,done):
+
+        r = torch.tensor(r)
+        self.buffer.append((s,a,r,s_,done))
+
+    def get_q(self,s):
+
+        return self.model(s).detach().numpy()
+
+    def get_tar(self,s):
+
+        return self.model_tar(s).detach().numpy()
+
+    def save_model(self,pre):
+
+        torch.save(self.model.state_dict(), 'model_weights.pth')
+
+class Agent:
+
+    def __init__(self,env,alg,buffer_size,batch_size,update_tar,n_eps,n_stps,eps,eps_decay,**kw):
+
+        self.env=env
+        self.alg=alg
+        self.nn=NN(alg=alg,
+                   batch_size=batch_size,
+                   buffer_size=buffer_size,
+                   lr=kw['lr'],
+                   gm=kw['gm'])
+
+        self.update_tar=update_tar
+        self.n_eps=n_eps
+        self.n_stps=n_stps
+
+        self.epsilon=eps
+        self.epsilon_decay=eps_decay
+
+    def train(self,n=5,save_result=False,save_model=False,record_q=False,record_p=False):
+
+        for i in range(n):
+            self.train_once(save_result=save_result,
+                            save_model=save_model,
+                            record_q=record_q,
+                            record_p=record_p,
+                            prefix='n'+str(i))
+
+    def train_once(self,save_result=True,save_model=False,record_q=False,record_p=False,**kw):
+
+        r_all,stp_all,stpCnt=[],[],0
+        v_all,q_all=[],[]
+
+        self.nn.initialize()
+
+        for ep in range(self.n_eps):
+            r_sum,done=0,False
+
+            s=self.preprocess(self.env.reset())
+            self.epsilon*=self.epsilon_decay
+            ent=self.epsilon
+
+            for stp in range(self.n_stps):
+
+                if ep>self.n_eps-5:
+                    self.env.render()
+
+                q=self.nn.get_q(s)
+                a=self.e_greedy(s,ent)
+
+                if record_q:
+                    q_all.append(q[0])
+
+                s_,r,done,_=self.env.step(a)
+                s_=self.preprocess(s_)
+
+                self.nn.add_memory(s,a,r,s_,done)
+
+                s=s_
+                r_sum+=r
+                stpCnt+=1
+
+                if done:
+                    break
+
+            if ep%self.update_tar==0:
+                self.nn.update_target()
+                print('Target Updated!')
+
+            loss=self.nn.update()
+
+            print("Ep:"+str(ep)+" Stps:"+str(stp)+" R:"+str(r_sum)+" loss:"+str(loss)+" ent:"+str(ent))
+
+            r_all.append(np.round(r_sum,2))
+            stp_all.append(stp)
+
+        self.env.close()
+
+        if save_result:
+            pre=kw['prefix']
+            result=pd.DataFrame(zip(stp_all,r_all),columns=['step','return'])
+            result.to_csv(self.alg+'_'+pre+'_result.csv',index=False)
+
+        if record_q:
+            pre=kw['prefix']
+            np.save(self.alg+'_'+pre+'_q.npy',q_all)
+
+        if save_model:
+            self.nn.save_model(pre)
+
+    def preprocess(self,s):
+        return torch.tensor(np.reshape(s, [1, 4]), dtype=torch.float32)
+
+    def e_greedy(self, s, epsilon):
+        if (np.random.random() <= epsilon):
+            return self.env.action_space.sample()
+        else:
+            with torch.no_grad():
+                return torch.argmax(self.nn.model(s)).numpy()
+
+def main():
+    agt=Agent(env=gym.make('CartPole-v0'),
+              alg='dqn',
+              buffer_size=40000,
+              batch_size=512,
+              update_tar=10,
+              n_eps=3000,
+              n_stps=1000,
+              t0=1,
+              tk=0.1,
+              eps=1.0,
+              eps_min=0.01,
+              eps_decay=0.995,
+              lr=0.001,
+              gm=0.99,)
+
+    agt.train(n=1,
+              save_result=True,
+              save_model=True,
+              record_q=True,
+              record_p=False)
+
+if __name__ == '__main__':
+
+    main()
 ```
 
 
