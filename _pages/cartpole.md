@@ -500,19 +500,19 @@ import torch.nn.functional as F
 class DQN(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(4, 200)
-        self.fc2 = nn.Linear(200, 200)
-        self.fc3 = nn.Linear(200, 200)
-        self.fc4 = nn.Linear(200, 2)
+        self.fc1=nn.Linear(4, 200)
+        self.fc2=nn.Linear(200, 200)
+        self.fc3=nn.Linear(200, 200)
+        self.fc4=nn.Linear(200, 2)
 
     def forward(self, x):
-        x = self.fc1(x)
-        x = F.relu(x) #SiLU
-        x = self.fc2(x)
-        x = F.relu(x)
-        x = self.fc3(x)
-        x = F.relu(x)
-        x = self.fc4(x)
+        x=self.fc1(x)
+        x=F.relu(x) #SiLU
+        x=self.fc2(x)
+        x=F.relu(x)
+        x=self.fc3(x)
+        x=F.relu(x)
+        x=self.fc4(x)
         return x
 
 class NN:
