@@ -566,7 +566,7 @@ class NN:
 
     def add_memory(self,s,a,r,s_,done):
 
-        r = torch.tensor(r)
+        r=torch.tensor(r)
         self.buffer.append((s,a,r,s_,done))
 
     def get_q(self,s):
