@@ -458,7 +458,7 @@ We use deep Neural Network to approaximate Q values
 
 <center><img src="/judy_blog/assets/images/90_q_op_dqn.png" width=1000></center>
 
-**DQN can reach stable behaviors around 900 episodes due to non-linear epsilon annealing with lr and gm same as SARSA($$\lambda$$) in Cartpole-v0**
+**DQN can reach stable behaviors around 900 episodes due to non-linear epsilon annealing with lr and gm be the same as SARSA($$\lambda$$) in Cartpole-v0**
 
 **Implementation:**
 
@@ -578,16 +578,15 @@ class Agent:
         self.epsilon=eps
         self.epsilon_decay=eps_decay
 
-    def train(self,n=5,save_result=False,save_model=False,record_q=False,record_p=False):
+    def train(self,n=5,save_result=False,save_model=False,record_q=False):
 
         for i in range(n):
             self.train_once(save_result=save_result,
                             save_model=save_model,
                             record_q=record_q,
-                            record_p=record_p,
                             prefix='n'+str(i))
 
-    def train_once(self,save_result=True,save_model=False,record_q=False,record_p=False,**kw):
+    def train_once(self,save_result=True,save_model=False,record_q=False,**kw):
 
         r_all,stp_all,stpCnt=[],[],0
         v_all,q_all=[],[]
@@ -678,8 +677,7 @@ def main():
     agt.train(n=1,
               save_result=True,
               save_model=True,
-              record_q=True,
-              record_p=False)
+              record_q=True)
 
 if __name__ == '__main__':
 
