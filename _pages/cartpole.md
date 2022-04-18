@@ -456,7 +456,7 @@ We use deep Neural Network to approaximate Q values
 
 **Learned optimal Values:**
 
-<center><img src="/judy_blog/assets/images/90_q_op_rbf.png" width=1000></center>
+<center><img src="/judy_blog/assets/images/90_q_op_dqn.png" width=1000></center>
 
 **Implementation:**
 
