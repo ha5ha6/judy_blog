@@ -27,8 +27,8 @@ This article is trying to cover the insights derived from the performances of cl
 **(Temporary) Related algorithms include:**
 
 - Q-learning (box, bins)
-- SARSA(λ)
-- DQN
+- SARSA(λ): linear function approximator
+- DQN: neural network function approximator
 - and more
 
 **Temporary Results with 1 run:**
