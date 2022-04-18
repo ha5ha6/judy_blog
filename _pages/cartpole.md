@@ -668,6 +668,7 @@ class Agent:
             np.save(self.alg+'_'+pre+'_q.npy',q_all)
 
         if save_model:
+            pre=kw['prefix']
             self.nn.save_model(pre)
 
     def preprocess(self,s):
