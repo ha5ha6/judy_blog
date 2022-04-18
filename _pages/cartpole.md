@@ -35,7 +35,7 @@ This article is trying to cover the insights derived from the performances of cl
 
 Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
-<center><img src="/judy_blog/assets/images/cartpole_compare.png" width=1000></center>
+<center><img src="/judy_blog/assets/images/cartpole_compare.png" width=800></center>
 
 **Temporary Summary:**
 
@@ -267,7 +267,7 @@ RBF network plotted w.r.t the above parameters:
 
 **Learned optimal Values:**
 
-<center><img src="/judy_blog/assets/images/q_op_rbf.png" width=1000></center>
+<center><img src="/judy_blog/assets/images/q_op_rbf.png" width=800></center>
 
 **SARSA(λ)** implementation:
 
@@ -478,7 +478,7 @@ We use deep neural network to approaximate Q values
 
 **Learned optimal Values:**
 
-<center><img src="/judy_blog/assets/images/90_q_op_dqn.png" width=1000></center>
+<center><img src="/judy_blog/assets/images/90_q_op_dqn.png" width=800></center>
 
 **Implementation:**
 
