@@ -458,6 +458,8 @@ We use deep Neural Network to approaximate Q values
 
 <center><img src="/judy_blog/assets/images/90_q_op_dqn.png" width=1000></center>
 
+**DQN can reach stable behaviors around 900 episodes due to non-linear epsilon annealing with lr and gm same as SARSA($$\lambda$$) in Cartpole-v0**
+
 **Implementation:**
 
 ```python
