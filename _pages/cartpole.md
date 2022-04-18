@@ -31,6 +31,25 @@ This article is trying to cover the insights derived from the performances of cl
 - DQN
 - and more
 
+Temporary Results with 1 run:
+
+Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
+
+<center><img src="/judy_blog/assets/images/cartpole_compare.png" width=1000></center>
+
+Temporary Summary:
+
+- finer RBF networks may not approximate value funtion well but can achieve better learning efficiency, (maybe should tune hyperparameter more carefully)
+
+- DQN requires smaller learning rate for stable learning, say 0.01 or 0.001 compared to Q-box and SARSA($$\lambda$$)s' 0.1
+
+- 3-layer network can capture quite nice value approximation compared to 2-layer or 1-layer wider network
+
+- discounting factor remains 0.99 is good
+
+
+
+
 ### Problem Setup
 
 [\[OpenAI CartPole-v0\]](https://gym.openai.com/envs/CartPole-v0/), ends in 200 episodes <br>
@@ -91,8 +110,6 @@ Box System [Michie et al. 1968] divided the state variables into 3x3x6x3 boxes a
 - discounting factor (gm): 0.99
 - exploration factor (epsilon): from 1, epsilon\*=epsilon_decay_rate for each episode
 - exploration decaying rate (epsilon decay rate): 0.995
-
-**In CartPole-v0, Q-learning with box system can reach stable behaviors around 700 episodes due to non-linear epsilon annealing**
 
 **Learned optimal Values:**
 
@@ -240,8 +257,6 @@ RBF network plotted w.r.t the above parameters:
 
 - In original gym env, state initialization is U(-0.05,0.05) for 4 states, this small range doesn't encourage thorough **state visits in terms of exploration**, we changed it to U(-0.26,0.26) for 4 states (further can be changed to U(range of each state))
 - also in **self.theta_threshold_radians = 15 * 2 * math.pi / 360**, **15** can be changed to **180** to test the property of **continuous controller** (further topic)
-
-**SARSA($$\lambda$$) with eligibility traces can reach stable behaviors around 200 episodes due to non-linear epsilon annealing**
 
 **Learned optimal Values:**
 
@@ -427,7 +442,7 @@ np.save('weights.npy',w)
 
 ### DQN
 
-We use deep Neural Network to approaximate Q values
+We use deep neural network to approaximate Q values
 
 **NN parameters:**
 
@@ -457,8 +472,6 @@ We use deep Neural Network to approaximate Q values
 **Learned optimal Values:**
 
 <center><img src="/judy_blog/assets/images/90_q_op_dqn.png" width=1000></center>
-
-**DQN requires lr to be smaller for stable approximation compared to SARSA($$\lambda$$) and Q learning in Cartpole-v0. It can reach stable behavior after 900 episodes with lr=0.01**
 
 **Implementation:**
 
