@@ -28,7 +28,7 @@ This article is trying to cover the insights derived from the performances of cl
 
 - Q-learning (box, bins)
 - SARSA(λ): linear function approximator
-- DQN: neural network function approximator
+- DQN: non-linear function approximator
 - and more
 
 **Temporary Results with 1 run in CartPole-v0:**
