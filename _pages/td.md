@@ -83,7 +83,6 @@ import matplotlib.pyplot as plt
 
 states=[0,1,2,3,4,5,6]
 actions=[-1,1]
-lr=0.1
 V_true=np.arange(1,6)/6.0
 
 def step(s,a):
@@ -97,9 +96,10 @@ def step(s,a):
     else:
         return s_,0,False
 
-def get_v(n_eps):
+def get_td_v(n_eps,lr=0.1):
 
     V=np.ones(len(states))*0.5
+    rms=[]
     for ep in range(n_eps):
         s=np.random.choice(states[1:6])
 
@@ -115,11 +115,13 @@ def get_v(n_eps):
             if done:
                 break
 
-    return V
+        rms.append(np.sqrt(np.sum(np.power(V_true-V[1:6],2))/5.0))
 
-v1=get_v(1)
-v10=get_v(10)
-v100=get_v(100)
+    return V,rms
+
+v1,rms1=get_td_v(1)
+v10,rms10=get_td_v(10)
+v100,rms100=get_td_v(100)
 
 plt.figure(figsize=(8,6))
 plt.plot(range(1,6),V_true,'-o',label='true')
@@ -133,7 +135,64 @@ plt.legend(fontsize=15)
 plt.savefig('td_randomwalk.png',dpi=350)
 ```
 
-<center><img src="/judy_blog/assets/images/td_randomwalk.png" width=400></center>
+```python
+def get_mc_v(n_eps,lr):
+
+    V=np.ones(len(states))*0.5
+    rms=[]
+
+    for ep in range(n_eps):
+        s=np.random.choice(states[1:6])
+        traj=[s]
+
+        while True:     
+            s_old=s
+            a=np.random.choice(actions)
+            s,r,done=step(s_old,a)
+            traj.append(s)
+
+            if done:
+                break
+
+        for st in traj:
+            V[st]+=lr*(r-V[st])
+
+        rms.append(np.sqrt(np.sum(np.power(V_true-V[1:6],2))/5.0))
+
+    return V,rms
+
+lr_td=[0.15,0.1,0.05]
+lr_mc=[0.01,0.02,0.03,0.04]
+
+ls=['-','--',':','-.']
+plt.figure(figsize=(8,6))
+
+for i,lr in enumerate(lr_td):
+    rms_all=[]
+    for j in range(100):
+        _,rms=get_td_v(100,lr=lr)
+        rms_all.append(rms)
+
+    plt.plot(np.array(rms_all).mean(axis=0),color='r',label='td'+str(lr),linestyle=ls[i])
+
+for i,lr in enumerate(lr_mc):
+    rms_all=[]
+    for j in range(100):
+        _,rms=get_mc_v(100,lr=lr)
+        rms_all.append(rms)
+
+    plt.plot(np.array(rms_all).mean(axis=0),color='b',label='mc'+str(lr),linestyle=ls[i])
+
+plt.legend(loc='upper right',fontsize=13)
+plt.grid()
+plt.xticks(fontsize=15)
+plt.yticks(fontsize=15)
+plt.xlabel('episodes',fontsize=15)
+plt.ylabel('RMS',fontsize=15)
+plt.savefig('td_mc_randomwalk.png',dpi=350)
+```
+
+<center><img src="/judy_blog/assets/images/td_randomwalk.png" width=400><img src="/judy_blog/assets/images/td_mc_randomwalk.png" width=400></center>
 
 The above figure corresponds to Figures in Example 6.2
 
