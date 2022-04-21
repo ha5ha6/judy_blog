@@ -78,7 +78,7 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Tar
 **Sample updates** differ from the **expected updates** of DP in that they are based on a single sample successor rather than on a complete distribution of all possible successors
 
 
-### RandomWalk
+### Random Walk
 
 <center><img src="https://i.stack.imgur.com/ts9va.png" width=600></center>
 
@@ -114,17 +114,13 @@ def step(s,a):
 def get_v(n_eps):
 
     V=np.ones(len(states))*0.5
-
     for ep in range(n_eps):
-
         s=np.random.choice(states[1:6])
 
         while True:     
-
             s_old=s
             a=np.random.choice(actions)
             s,r,done=step(s_old,a)
-
             if done:
                 V[s_old]+=lr*(r-V[s_old])
             else:
