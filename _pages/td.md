@@ -78,11 +78,9 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Tar
 **Sample updates** differ from the **expected updates** of DP in that they are based on a single sample successor rather than on a complete distribution of all possible successors
 
 
-### Gridworld
+### RandomWalk
 
-#### calculate Vπ
-
-<center><img src="https://miro.medium.com/max/507/1*iX-Fu5YzUZ8CNEZ86BvfKA.png" width=400></center>
+<center><img src="https://i.stack.imgur.com/ts9va.png" width=600></center>
 
     deterministic dynamics: p(s'|s,a)=1
     actions={up,down,left,right}
@@ -95,50 +93,71 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Tar
     What is Vπ for π(a|s) ~ uniform with γ=0.9?
 
 
-Solution is computed by solving the system of linear equations:
-
-$$V_{\pi}(s)=\sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r+\gamma V_{\pi}(s') \right]$$
-
-since it's a deterministic env, $$p(s' \mid s,a)=1$$
-
-we have
-
-$$V_{\pi}(s)=\sum_a \pi(a \mid s) \left[r+\gamma V_{\pi}(s') \right]$$
-
-for example from state $$s=(0,0)$$ to $$s'$$
-
-    |   s   |   a   |   s'   |   r   |    |0,0|0,1|   |0,3|   |
-    |-------|-------|--------|-------|    |---|---|---|---|---|
-    |  0,0  | left  |  0,0   |  -1   |    |1,0|1,1|   |   |   |
-    |  0,0  |  up   |  0,0   |  -1   |    |---|---|---|---|---|
-    |  0,0  | right |  0,1   |  0    |    |   |   |   |2,3|   |
-    |  0,0  | down  |  1,0   |  0    |    |---|---|---|---|---|
-                                          |   |   |   |   |   |
-                                          |---|---|---|---|---|
-                                          |   |4,1|   |   |   |
-
-$$\begin{align*}
-
-V(0,0) = &0.25*[-1+0.9*V(0,0)] \\
-       + &0.25*[-1+0.9*V(0,0)] \\
-       + &0.25*[0+0.9*V(0,1)] \\
-       + &0.25*[0+0.9*V(1,0)] \\
-       = &-0.5
-
-\end{align*}$$
 
 ```python
+import numpy as np
+import matplotlib.pyplot as plt
 
+states=[0,1,2,3,4,5,6]
+actions=[-1,1]
+lr=0.1
+V_true=np.arange(1,6)/6.0
+
+def step(s,a):
+
+    s_=s+a
+
+    if s_==0:
+        return s_,0,True
+    elif s_==6:
+        return s_,1,True
+    else:
+        return s_,0,False
+
+def get_v(n_eps):
+
+    V=np.ones(len(states))*0.5
+
+    for ep in range(n_eps):
+
+        s=np.random.choice(states[1:6])
+
+        while True:     
+
+            s_old=s
+            a=np.random.choice(actions)
+            s,r,done=step(s_old,a)
+
+            if done:
+                V[s_old]+=lr*(r-V[s_old])
+            else:
+                V[s_old]+=lr*(r+V[s]-V[s_old])
+
+            if done:
+                break
+
+    return V
+
+v1=get_v(1)
+v10=get_v(10)
+v100=get_v(100)
+
+plt.figure(figsize=(8,6))
+plt.plot(range(1,6),V_true,'-o',label='true')
+plt.plot(range(1,6),v1[1:6],'-o',label='1')
+plt.plot(range(1,6),v10[1:6],'-o',label='10')
+plt.plot(range(1,6),v100[1:6],'-o',label='100')
+plt.grid()
+plt.xticks(range(1,6),('A','B','C','D','E'),fontsize=15)
+plt.yticks(fontsize=15)
+plt.legend(fontsize=15)
+plt.savefig('td_randomwalk.png',dpi=350)
 ```
 
-    output:
-    [[ 3.3  8.8  4.4  5.3  1.5]
-     [ 1.5  3.   2.3  1.9  0.5]
-     [ 0.1  0.7  0.7  0.4 -0.4]
-     [-1.  -0.4 -0.4 -0.6 -1.2]
-     [-1.9 -1.3 -1.2 -1.4 -2. ]]
+<center><img src="/judy_blog/assets/images/td_randomwalk.png" width=600></center>
 
 
+The above figure corresponding to Figures in Example 6.2
 
 ### References
 
