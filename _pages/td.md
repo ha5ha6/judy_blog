@@ -239,7 +239,6 @@ def get_batch(method='td',lr=0.001,n_runs=100,n_eps=100):
         for ep in range(n_eps):
 
             traj,rew=get_traj(method=method)
-
             trajs.append(traj)
             rews.append(rew)
 
