@@ -38,6 +38,15 @@ $$V(s_t) \leftarrow V(s_t)+\alpha \left[r_t + \gamma V(s_{t+1}) - V(s_t) \right]
 
 Target: $$r_t + \gamma V(s_{t+1})$$
 
+**TD error**:
+
+$$\delta_t \triangleq r_t + \gamma V(s_{t+1}) - V(s_t)$$
+
+The difference between the estimated value of $$s_t$$ ($$V(s_t)$$) and the better estimate $$r_t + \gamma V(s_{t+1})$$
+
+
+
+
 **Recall in DP**:
 
 $$\begin{align*}
