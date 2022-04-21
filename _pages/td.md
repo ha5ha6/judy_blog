@@ -42,7 +42,7 @@ Target: $$r_t + \gamma V(s_{t+1})$$ -
 
 $$\begin{align*}
 
-V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] \rlap Target for MC\\
+V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] \shorteqnote{(Target for MC)}\\
 
 &= \mathbb{E}_{\pi} \left[r_t + \gamma V_{\pi}(s_{t+1}) \mid s_t=s \right] \rlap Target for TD
 
