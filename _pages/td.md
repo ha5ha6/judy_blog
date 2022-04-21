@@ -26,7 +26,7 @@ Note: the notations and formalizations follow this [post](/judy_blog/basicrl/).
 
 $$V(s_t) \leftarrow V(s_t)+\alpha\left[R_t - V(s_t) \right]$$
 
-$$R_t$$ - the actual return following time $$t$$
+Target: $$R_t$$ - the actual return following time $$t$$
 
 $$\alpha$$ - a constant step-size parameter
 
@@ -36,15 +36,15 @@ Whereas MC methods must wait until the end of the episode to determine the incre
 
 $$V(s_t) \leftarrow V(s_t)+\alpha \left[r_t + \gamma V(s_{t+1}) - V(s_t) \right]$$
 
-$$r_t + \gamma V(s_{t+1})$$ - target
+Target: $$r_t + \gamma V(s_{t+1})$$ -
 
 **Recall in DP**:
 
 $$\begin{align*}
 
-V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] \\
+V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] \rlap Target for MC\\
 
-&= \mathbb{E}_{\pi} \left[r_t + \gamma V_{\pi}(s_{t+1}) \mid s_t=s \right]
+&= \mathbb{E}_{\pi} \left[r_t + \gamma V_{\pi}(s_{t+1}) \mid s_t=s \right] \rlap Target for TD
 
 \end{align*}$$
 
