@@ -32,9 +32,15 @@ $$\alpha$$ - a constant step-size parameter
 
 Whereas MC methods must wait until the end of the episode to determine the increment to $$V(s_t)$$, TD methods need to wait only until the **next step**
 
-**the simplest TD**:
+**TD(0) or one-step TD**:
 
 $$V(s_t) \leftarrow V(s_t)+\alpha \left[r_t + \gamma V(s_{t+1}) - V(s_t) \right]$$
+
+$$r_t + \gamma V(s_{t+1})$$ - target
+
+**Recall in DP**:
+
+$$V_{\pi}(s)=\mathbb{E}_{\pi} \left[r_t + \gamma V_{\pi}(s_{t+1}) \right]$$
 
 
 $$\begin{align*}
