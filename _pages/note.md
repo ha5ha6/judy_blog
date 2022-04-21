@@ -21,9 +21,9 @@ usemathjax: true
 
 ## Reinforcement Learning
 
-[Basic Reinforcement Learning](/judy_blog/basicrl/): MDP, value functions, policy/value iteration, Monte Carlo control, on/off policy, off policy importance sampling, python realizations of Gridworld, Blackjack [\[github\]](https://github.com/ha5ha6/judy_tutorial_basicRL)
+[Basic Reinforcement Learning](/judy_blog/basicrl/): MDP, value functions, policy/value iteration, Monte Carlo control, on/off policy, off policy importance sampling, python realizations of Gridworld, Blackjack [\[tutorial on github\]](https://github.com/ha5ha6/judy_tutorial_basicRL) [\[ipynb\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/basicRL.ipynb)
 
-Temporal-Difference Learning: TBD
+Temporal-Difference Learning: TD(0), SARSA, Q-learning, python realizations of Random Walk, etc [\[ipynb\]]
 
 [All About Cartpole](/judy_blog/cartpole/): Cartpole realizations with classic RL algorithms: Q-learning, SARSA($$\lambda$$), DQN, etc
 
