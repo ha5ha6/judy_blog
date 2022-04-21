@@ -83,16 +83,13 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Tar
 <center><img src="https://i.stack.imgur.com/ts9va.png" width=600></center>
 
     deterministic dynamics: p(s'|s,a)=1
-    actions={up,down,left,right}
 
-    r=+10, state A -> state A'
-    r=+5, state B -> state B'
-    r=-1, off the grid, location remains unchanged
+    states={0,1(A),2(B),3(C),4(D),5(E),6}
+    actions={left,right}, sample uniformly
+
+    termination: state 0 and 6
+    r=+1, at state 6
     r=0, otherwise
-
-    What is Vπ for π(a|s) ~ uniform with γ=0.9?
-
-
 
 ```python
 import numpy as np
@@ -154,21 +151,14 @@ plt.legend(fontsize=15)
 plt.savefig('td_randomwalk.png',dpi=350)
 ```
 
-<center><img src="/judy_blog/assets/images/td_randomwalk.png" width=600></center>
+<center><img src="/judy_blog/assets/images/td_randomwalk.png" width=400></center>
 
-
-The above figure corresponding to Figures in Example 6.2
+The above figure corresponds to Figures in Example 6.2
 
 ### References
 
 **Reinforcement Learning an Introduction 2nd edition** by Sutton and Barto
 
-[RL simple experiment - Blackjack](https://ernie55ernie.github.io/machine%20learning/2018/04/08/reinforcement-learning-simple-experiment-blackjack.html)
-
-[optimizing blackjack strategy through MC](https://towardsdatascience.com/optimizing-blackjack-strategy-through-monte-carlo-methods-cbb606e52d1b)
-
 [ShangtongZhang/reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
-
-[jingweiz/reinforcement-learning-an-introduction](https://github.com/jingweiz/reinforcement-learning-an-introduction)
 
 [RL 2nd Edition Excercise Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
