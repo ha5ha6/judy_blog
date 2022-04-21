@@ -18,7 +18,7 @@ usemathjax: true
   }
 </style>
 
-Note: the notations and formalizations follow the previous post [Basic Reinforcement Learning](/judy_blog/basicrl/).
+Note: the notations and formalizations follow the previous post [Basic Reinforcement Learning](/judy_blog/basicrl/)
 
 ### TD Prediction
 
