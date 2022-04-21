@@ -18,9 +18,9 @@ usemathjax: true
   }
 </style>
 
-Note: the notations and formalizations follow this [post](/judy_blog/basicrl/).
+Note: the notations and formalizations follow the previous post: [Basic Reinforcement Learning](/judy_blog/basicrl/).
 
-### TD Prediction (Policy Evaluation)
+### TD Prediction
 
 **constant-$$\alpha$$ MC**:
 
@@ -44,9 +44,6 @@ $$\delta_t \triangleq r_t + \gamma V(s_{t+1}) - V(s_t)$$
 
 The difference between the estimated value of $$s_t$$ ($$V(s_t)$$) and the better estimate $$r_t + \gamma V(s_{t+1})$$
 
-
-
-
 **Recall in DP**:
 
 $$\begin{align*}
@@ -58,17 +55,6 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Tar
 \end{align*}$$
 
 **TD target not only samples the expected value but uses the current estimate $$V$$ instead of the true $$V_{\pi}$$.** Thus it combines the sampling of MC with the bootstrapping of DP.
-
-
-
-
-
-
-
-
-
-
-
 
 
 ### Important Concepts
