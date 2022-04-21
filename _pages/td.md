@@ -20,7 +20,7 @@ usemathjax: true
 
 Note: the notations and formalizations follow this [post](/judy_blog/basicrl/).
 
-### TD Prediction
+### TD Prediction (Policy Evaluation)
 
 **constant-$$\alpha$$ MC**:
 
@@ -53,7 +53,7 @@ $$\begin{align*}
 
 V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Target for MC}\\
 
-&= \mathbb{E}_{\pi} \left[r_t + \gamma V_{\pi}(s_{t+1}) \mid s_t=s \right] &\text{:Target for DP}
+&=\mathbb{E}_{\pi} \left[r_t + \gamma V_{\pi}(s_{t+1}) \mid s_t=s \right] &\text{:Target for DP}
 
 \end{align*}$$
 
