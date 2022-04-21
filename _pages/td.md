@@ -36,18 +36,19 @@ Whereas MC methods must wait until the end of the episode to determine the incre
 
 $$V(s_t) \leftarrow V(s_t)+\alpha \left[r_t + \gamma V(s_{t+1}) - V(s_t) \right]$$
 
-Target: $$r_t + \gamma V(s_{t+1})$$ -
+Target: $$r_t + \gamma V(s_{t+1})$$
 
 **Recall in DP**:
 
 $$\begin{align*}
 
-V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{Target for MC}\\
+V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Target for MC}\\
 
-&= \mathbb{E}_{\pi} \left[r_t + \gamma V_{\pi}(s_{t+1}) \mid s_t=s \right] &\text{Target for TD}
+&= \mathbb{E}_{\pi} \left[r_t + \gamma V_{\pi}(s_{t+1}) \mid s_t=s \right] &\text{:Target for DP}
 
 \end{align*}$$
 
+**TD target not only samples the expected value but uses the current estimate $$V$$ instead of the true $$V_{\pi}$$.** Thus it combines the sampling of MC with the bootstrapping of DP.
 
 
 
@@ -56,7 +57,6 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{Targ
 
 
 
-later
 
 
 
@@ -64,8 +64,9 @@ later
 
 ### Important Concepts
 
-**Delayed reward**:
+**Sample updates**: involve looking ahead to a sample successor state (or state-action pair), using the value of the successor and the reward along the way to compute a backed-up value and then updating the value of the original state (or state-action pair)
 
+**Sample updates** differ from the **expected updates** of DP in that they are based on a single sample successor rather than on a complete distribution of all possible successors
 
 
 ### Gridworld
