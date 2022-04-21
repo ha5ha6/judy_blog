@@ -40,7 +40,15 @@ $$r_t + \gamma V(s_{t+1})$$ - target
 
 **Recall in DP**:
 
-$$V_{\pi}(s)=\mathbb{E}_{\pi} \left[r_t + \gamma V_{\pi}(s_{t+1}) \right]$$
+$$\begin{align*}
+
+V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] \\
+
+&= \mathbb{E}_{\pi} \left[r_t + \gamma V_{\pi}(s_{t+1}) \mid s_t=s \right]
+
+\end{align*}$$
+
+
 
 
 
@@ -50,15 +58,7 @@ $$V_{\pi}(s)=\mathbb{E}_{\pi} \left[r_t + \gamma V_{\pi}(s_{t+1}) \right]$$
 
 later
 
-$$\begin{align*}
 
-R_t &\triangleq r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + ... \\
-
-&= r_t + \gamma (r_{t+1} + \gamma r_{t+2} + \gamma^2 r_{t+3} + ...) \\
-
-&= r_t + \gamma R_{t+1}
-
-\end{align*}$$
 
 
 
