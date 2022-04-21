@@ -166,22 +166,22 @@ def get_mc(n_eps,lr):
 
 lr_td=[0.15,0.1,0.05]
 lr_mc=[0.01,0.02,0.03,0.04]
-
+n_runs=100
 ls=['-','--',':','-.']
 plt.figure(figsize=(8,6))
 
 for i,lr in enumerate(lr_td):
     rms_all=[]
-    for j in range(100):
-        _,rms=get_td(100,lr=lr)
+    for n in range(n_runs):
+        _,rms=get_td(n_eps=100,lr=lr)
         rms_all.append(rms)
 
     plt.plot(np.array(rms_all).mean(axis=0),color='r',label='td'+str(lr),linestyle=ls[i])
 
 for i,lr in enumerate(lr_mc):
     rms_all=[]
-    for j in range(100):
-        _,rms=get_mc(100,lr=lr)
+    for n in range(n_runs):
+        _,rms=get_mc(n_eps=100,lr=lr)
         rms_all.append(rms)
 
     plt.plot(np.array(rms_all).mean(axis=0),color='b',label='mc'+str(lr),linestyle=ls[i])
@@ -284,7 +284,7 @@ plt.savefig('batch_randomwalk.png',dpi=350)
 
 <center><img src="/judy_blog/assets/images/batch_randomwalk.png" width=400></center>
 
-The above figures correspond to Figures in Example 6.2
+The above figure corresponds to Figures in Figure 6.2
 
 ### References
 
