@@ -61,8 +61,9 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Tar
 
 **Sample updates**: involve looking ahead to a sample successor state (or state-action pair), using the value of the successor and the reward along the way to compute a backed-up value and then updating the value of the original state (or state-action pair)
 
-**Sample updates** differ from the **expected updates** of DP in that they are based on a single sample successor rather than on a complete distribution of all possible successors
+**Sample updates**: differ from the **expected updates** of DP in that they are based on a single sample successor rather than on a complete distribution of all possible successors
 
+**Batch updating**: updates are made only after processing each complete batch of training data
 
 ### Random Walk
 
@@ -76,6 +77,8 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Tar
     termination: state 0 and 6
     r=+1, at state 6
     r=0, otherwise
+
+**MC vs TD** implementation:
 
 ```python
 import numpy as np
@@ -193,6 +196,93 @@ plt.savefig('td_mc_randomwalk.png',dpi=350)
 ```
 
 <center><img src="/judy_blog/assets/images/td_randomwalk.png" width=400><img src="/judy_blog/assets/images/td_mc_randomwalk.png" width=400></center>
+
+The above figures correspond to Figures in Example 6.2
+
+**Batch updating**:
+
+Under batch updating, TD(0) converges deterministically to a single answer independent of the lr, as long as lr is chosen to be sufficiently small, while constant MC does the same but to a different answer.
+
+```python
+def get_traj(method='td'):
+
+    s=np.random.choice(states[1:6])
+    traj=[s]
+    rew=[0]
+    while True:     
+
+        s_old=s
+        a=np.random.choice(actions)
+        s,r,done=step(s_old,a)
+        traj.append(s)
+        rew.append(r)
+
+        if done:
+            break
+
+    if method=='td':
+        return traj, rew
+    else:
+        return traj, [r]*(len(traj)-1)
+
+def get_batch(method='td',lr=0.001,n_runs=100,n_eps=100):
+
+    rms_all=[]
+
+    for n in range(n_runs):
+
+        trajs=[]
+        rews=[]
+        rms=[]
+        V=np.array([0.,-1.,-1.,-1.,-1.,-1.,1.])
+
+        for ep in range(n_eps):
+
+            traj,rew=get_traj(method=method)
+
+            trajs.append(traj)
+            rews.append(rew)
+
+            while True:
+
+                V_batch=np.zeros(len(states))
+                for tj,r in zip(trajs,rews):
+                    for i in range(0,len(tj)-1):
+                        if method=='td':
+                            V_batch[tj[i]]+=r[i]+V[tj[i+1]]-V[tj[i]]
+                        else:
+                            V_batch[tj[i]]+=r[i]-V[tj[i]]
+
+                V_batch*=lr
+
+                if np.sum(np.abs(V_batch))<1e-3:
+                    break
+
+                V+=V_batch
+
+            rms.append(np.sqrt(np.sum(np.power(V_true-V[1:6],2))/5.0))
+
+        rms_all.append(rms)
+
+    return np.array(rms_all).mean(axis=0)
+
+rms_td=get_batch(method='td')
+rms_mc=get_batch(method='mc')
+
+plt.figure(figsize=(8,6))
+plt.plot(rms_td,label='TD',linewidth=3)
+plt.plot(rms_mc,label='MC',linewidth=3)
+plt.ylim([0,0.25])
+plt.xticks(fontsize=15)
+plt.yticks(fontsize=15)
+plt.xlabel('episodes',fontsize=15)
+plt.ylabel('RMS',fontsize=15)
+plt.legend(fontsize=15)
+plt.grid()
+plt.savefig('batch_randomwalk.png',dpi=350)
+```
+
+<center><img src="/judy_blog/assets/images/batch_randomwalk.png" width=400></center>
 
 The above figures correspond to Figures in Example 6.2
 
