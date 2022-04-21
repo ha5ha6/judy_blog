@@ -283,7 +283,7 @@ plt.savefig('batch_randomwalk.png',dpi=350)
 
 <center><img src="/judy_blog/assets/images/batch_randomwalk.png" width=400></center>
 
-The above figure corresponds to Figures in Figure 6.2
+The above figure corresponds to Figure 6.2
 
 ### References
 
