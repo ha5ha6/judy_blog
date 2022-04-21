@@ -61,7 +61,7 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Tar
 
 **Sample updates**: involve looking ahead to a sample successor state (or state-action pair), using the value of the successor and the reward along the way to compute a backed-up value and then updating the value of the original state (or state-action pair)
 
-**Sample updates**: differ from the **expected updates** of DP in that they are based on a single sample successor rather than on a complete distribution of all possible successors
+**Sample updates** differ from the **expected updates** of DP in that they are based on a single sample successor rather than on a complete distribution of all possible successors
 
 **Batch updating**: updates are made only after processing each complete batch of training data
 
@@ -281,7 +281,7 @@ plt.grid()
 plt.savefig('batch_randomwalk.png',dpi=350)
 ```
 
-<center><img src="/judy_blog/assets/images/batch_randomwalk.png" width=400></center>
+<center><img src="/judy_blog/assets/images/batch_randomwalk.png" width=600></center>
 
 The above figure corresponds to Figure 6.2
 
