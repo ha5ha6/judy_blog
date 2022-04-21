@@ -43,6 +43,13 @@ $$r_t + \gamma V(s_{t+1})$$ - target
 $$V_{\pi}(s)=\mathbb{E}_{\pi} \left[r_t + \gamma V_{\pi}(s_{t+1}) \right]$$
 
 
+
+
+
+
+
+later
+
 $$\begin{align*}
 
 R_t &\triangleq r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \gamma^3 r_{t+3} + ... \\
