@@ -18,9 +18,22 @@ usemathjax: true
   }
 </style>
 
-### abc
+Note: the notations and formalizations follow this [post](/judy_blog/basicrl/).
 
-**Recursive Property**:
+### TD Prediction
+
+**constant-$$\alpha$$ MC**:
+
+$$V(s_t) \leftarrow V(s_t)+\alpha\left[R_t - V(s_t) \right]$$
+
+$$R_t$$ - the actual return following time $$t$$
+
+$$\alpha$$ - a constant step-size parameter
+
+
+
+
+
 
 $$\begin{align*}
 
