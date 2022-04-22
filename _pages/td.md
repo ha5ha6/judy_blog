@@ -281,7 +281,7 @@ plt.grid()
 plt.savefig('batch_randomwalk.png',dpi=350)
 ```
 
-<center><img src="/judy_blog/assets/images/batch_randomwalk.png" width=600></center>
+<center><img src="/judy_blog/assets/images/batch_randomwalk.png" width=500></center>
 
 The above figure corresponds to Figure 6.2
 
