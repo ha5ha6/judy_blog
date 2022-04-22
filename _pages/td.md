@@ -99,7 +99,7 @@ def step(s,a):
     else:
         return s_,0,False
 
-def get_td(n_eps,lr=0.1):
+def run_td(n_eps,lr=0.1):
 
     V=np.ones(len(states))*0.5
     rms=[]
@@ -122,9 +122,9 @@ def get_td(n_eps,lr=0.1):
 
     return V,rms
 
-v1,rms1=get_td(1)
-v10,rms10=get_td(10)
-v100,rms100=get_td(100)
+v1,rms1=run_td(1)
+v10,rms10=run_td(10)
+v100,rms100=run_td(100)
 
 plt.figure(figsize=(8,6))
 plt.plot(range(1,6),V_true,'-o',label='true')
@@ -139,7 +139,7 @@ plt.savefig('td_randomwalk.png',dpi=350)
 ```
 
 ```python
-def get_mc(n_eps,lr):
+def run_mc(n_eps,lr):
 
     V=np.ones(len(states))*0.5
     rms=[]
@@ -173,7 +173,7 @@ plt.figure(figsize=(8,6))
 for i,lr in enumerate(lr_td):
     rms_all=[]
     for n in range(n_runs):
-        _,rms=get_td(n_eps=100,lr=lr)
+        _,rms=run_td(n_eps=100,lr=lr)
         rms_all.append(rms)
 
     plt.plot(np.array(rms_all).mean(axis=0),color='r',label='td'+str(lr),linestyle=ls[i])
@@ -181,7 +181,7 @@ for i,lr in enumerate(lr_td):
 for i,lr in enumerate(lr_mc):
     rms_all=[]
     for n in range(n_runs):
-        _,rms=get_mc(n_eps=100,lr=lr)
+        _,rms=run_mc(n_eps=100,lr=lr)
         rms_all.append(rms)
 
     plt.plot(np.array(rms_all).mean(axis=0),color='b',label='mc'+str(lr),linestyle=ls[i])
