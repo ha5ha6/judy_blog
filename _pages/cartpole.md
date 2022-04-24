@@ -39,6 +39,10 @@ Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
 **Temporary Summary:**
 
+- Q-learning hasn't converged yet, the Q-value should reach 100 like RBF and DQN
+
+- from the heatmap, the optimal Value learned by RBF and DQN have the highest value on both two sides from the center of theta and theta_dot may be the cause of discrete actions, need to further check in continous action case
+
 - finer RBF networks may not approximate value funtion well but can achieve better learning efficiency (maybe should tune hyperparameter more carefully)
 
 - DQN requires smaller learning rate for stable learning, say 0.01 or 0.001 compared to Q-box and SARSA($$\lambda$$)s' 0.1
