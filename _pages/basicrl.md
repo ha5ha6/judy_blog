@@ -133,9 +133,9 @@ Q_{\pi}(s,a) &\triangleq \mathbb{E}_{\pi} \left[ R_t \mid s_t=s,a_t=a  \right] \
 
 &= \mathbb{E}_{\pi} \left[ r_t+\gamma V_{\pi}(s') \mid s_t=s,a_t=a \right] \\
 
-&= \sum_{s'} p(s' \mid s,a) \left[ r_t+\gamma \mathbb{E}_{a \sim \pi} Q_{\pi}(s',a) \mid s_t=s,a_t=a \right] \\
+&= \sum_{s'} p(s' \mid s,a) \left[ r_t+\gamma \mathbb{E}_{a' \sim \pi} Q_{\pi}(s',a') \mid s_{t+1}=s',a_{t+1}=a' \right] \\
 
-&= \sum_{s'} p(s' \mid s,a) \left[ r_t+\gamma \sum_{a} \pi(a \mid s') Q_{\pi}(s',a) \mid s_t=s,a_t=a \right], \forall s \in \mathcal{S}, a \in \mathcal{A}
+&= \sum_{s'} p(s' \mid s,a) \left[ r_t+\gamma \sum_{a'} \pi(a' \mid s') Q_{\pi}(s',a') \mid s_{t+1}=s',a_{t+1}=a' \right], \forall s \in \mathcal{S}, a \in \mathcal{A}
 
 \end{align*}$$
 
