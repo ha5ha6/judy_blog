@@ -96,7 +96,7 @@ $$\delta_t \triangleq r_t + \gamma Q(s_{t+1},a_{t+1}) - Q(s_t,a_t)$$
 
 **Batch updating**: updates are made only after processing each complete batch of training data
 
-**Batch MC** vs **Batch TD**: Batch MC always find the estimates that minimize mean-squared error on the training set, whereas batch TD(0) always finds the estimates that would be exactly correct for the maximum-likelihood model of the Markov process.
+**Batch MC** vs **Batch TD**: Batch MC always find the estimates that minimize mean-squared error on the training set, whereas batch TD(0) always finds the estimates that would be exactly correct for the maximum-likelihood model of the Markov process
 
 **Maximum-likelihood Estimate** of a parameter is the parameter value whose probability of generating the data is greatest
 
