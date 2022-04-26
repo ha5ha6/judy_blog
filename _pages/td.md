@@ -334,8 +334,8 @@ The above figure corresponds to Figure 6.2
     actions = {up, down, left, right}
 
     dynamics:
-    col 3:5,8 wind strengh = 1, shift to one upper state (col started from 0)
-    col 6:7 wind strengh = 2, shift to two upper state
+    col 3:5,8, wind strengh = 1, shift to one upper state (col started from 0)
+    col 6:7, wind strengh = 2, shift to two upper state
 
     termination: reach goal
     r=-1 until goal
