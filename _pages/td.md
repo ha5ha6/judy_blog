@@ -331,7 +331,7 @@ The above figure corresponds to Figure 6.2
     an undiscounted episodic task
 
     states = 7 x 10
-    actions = {up, down, left, right}, sample uniformly
+    actions = {up, down, left, right}
 
     dynamics:
     col 3:5,8 wind strengh = 1, shift to one upper state (col started from 0)
