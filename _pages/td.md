@@ -76,7 +76,7 @@ $$Q(s_{t+1},a_{t+1})=0$$
 
 **TD error:**
 
-$$\delta \triangleq r_t + \gamma Q(s_{t+1},a_{t+1}) - Q(s_t,a_t)$$
+$$\delta_t \triangleq r_t + \gamma Q(s_{t+1},a_{t+1}) - Q(s_t,a_t)$$
 
 **The control algorithm** (as in all on-policy methods):
 
@@ -321,6 +321,106 @@ plt.savefig('batch_randomwalk.png',dpi=350)
 <center><img src="/judy_blog/assets/images/batch_randomwalk.png" width=500></center>
 
 The above figure corresponds to Figure 6.2
+
+### Windy Gridworld
+
+<center><img src="https://img-blog.csdnimg.cn/20210409215142880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1daWF9IZWxsbw==,size_16,color_FFFFFF,t_70" width=800></center>
+
+    a standard gridworld, except there is a crosswind running upward through the middle of grid  
+
+    an undiscounted episodic task
+
+    states = 7 x 10
+    actions = {up, down, left, right}, sample uniformly
+
+    dynamics:
+    col 3:5,8 wind strengh = 1, shift to one upper state (col started from 0)
+    col 6:7 wind strengh = 2, shift to two upper state
+
+    termination: reach goal
+    r=-1 until goal
+
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+n_cols=10
+n_rows=7
+
+actions=[0,1,2,3] #up,down,left,right
+n_a=len(actions)
+
+START=[3,0]
+GOAL=[3,7]
+WIND=[0,0,0,1,1,1,2,2,1,0]
+
+def step(s,a):
+
+    row,col=s
+
+    if a==0:
+        s_=[max(row-1-WIND[col],0),col]
+    elif a==1:
+        s_=[max(min(row+1-WIND[col],n_rows-1),0),col]
+    elif a==2:
+        s_=[max(row-WIND[col],0), max(col-1,0)]
+    else:
+        s_=[max(row-WIND[col],0), min(col+1, n_cols-1)]
+
+    if s_==GOAL:
+        return s_,0,True
+    else:
+        return s_,-1,False
+
+def e_greedy(eps,q):
+
+    if (np.random.random()<=eps):
+        return np.random.choice(actions)
+
+    else:
+        return np.argmax(q)
+
+def run_sarsa(n_eps=500,n_stps=500,eps=0.1,lr=0.5):
+
+    Q=np.zeros((n_rows,n_cols,n_a))
+
+    r_all,stp_all,cnt_all=[],[],[]
+    stpCnt=0
+
+    for ep in range(n_eps):
+
+        r_sum,done=0,False
+        s=START    
+        a=e_greedy(eps,Q[s[0],s[1]])
+
+        for stp in range(n_stps):
+
+            s_,r,done=step(s,a)
+            a_=e_greedy(eps,Q[s_[0],s_[1]])
+            delta=r+Q[s_[0],s_[1],a_]-Q[s[0],s[1],a]
+            Q[s[0],s[1],a]+=lr*delta
+
+            s=s_
+            a=a_
+            r_sum+=r
+            stpCnt+=1
+
+            if done:
+                break
+
+        r_all.append(r_sum)
+        stp_all.append(stp)
+        cnt_all.append(stpCnt)
+
+        if ep%10==0:
+            print(f'ep:{ep}, stps:{stp}, ret:{r_sum}')
+
+    return Q,r_all,stp_all,cnt_all
+
+Q,r,stp,cnt=run_sarsa()
+```
 
 ### References
 
