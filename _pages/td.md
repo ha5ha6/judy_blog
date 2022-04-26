@@ -64,7 +64,7 @@ Consider transitions from state-action pair to state-action pair
 
 $$(s_t,a_t),r_t \rightarrow (s_{t+1},a_{t+1}),r_{t+1} \rightarrow (s_{t+2},a_{t+2}),r_{t+2} ...$$
 
-The theorems assuring the convergence of state values under TD(0) also apply to the corresponding method for action values:
+The update rule of SARSA with TD error:
 
 For nonterminal state $$s_t$$:
 
