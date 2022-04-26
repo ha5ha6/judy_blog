@@ -58,6 +58,25 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Tar
 
 ### SARSA
 
+SARSA is an **on-policy TD control** method, for an on-policy method we must estimate $$Q_{\pi}(s,a)$$ for the current behavior policy $$\pi$$ and for all states $$s$$ and actions $$a$$
+
+Consider transitions from state-action pair to state-action pair
+
+$$(s_t,a_t),r_t \rightarrow (s_{t+1},a_{t+1}),r_{t+1} \rightarrow (s_{t+2},a_{t+2}),r_{t+2} ...$$
+
+The theorems assuring the convergence of state values under TD(0) also apply to the corresponding method for action values:
+
+For nonterminal state $$s_t$$:
+
+$$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma Q(s_{t+1},a_{t+1}) - Q(s_t,a_t) \right]$$
+
+For terminal state $$s_{t+1}$$:
+
+$$Q(s_{t+1},a_{t+1})=0$$
+
+
+
+
 
 ### Important Concepts
 
