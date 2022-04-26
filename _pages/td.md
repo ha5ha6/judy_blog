@@ -64,7 +64,7 @@ Consider transitions from state-action pair to state-action pair
 
 $$(s_t,a_t),r_t \rightarrow (s_{t+1},a_{t+1}),r_{t+1} \rightarrow (s_{t+2},a_{t+2}),r_{t+2} ...$$
 
-The update rule of SARSA with TD error:
+**The update rule** of SARSA:
 
 For nonterminal state $$s_t$$:
 
@@ -74,7 +74,11 @@ For terminal state $$s_{t+1}$$:
 
 $$Q(s_{t+1},a_{t+1})=0$$
 
-The control algorithm (as in all on-policy methods):
+**TD error:**
+
+$$\delta \triangleq r_t + \gamma Q(s_{t+1},a_{t+1}) - Q(s_t,a_t)$$
+
+**The control algorithm** (as in all on-policy methods):
 
 - estimate $$Q_{\pi}$$ for the current behavior policy $$\pi$$
 
