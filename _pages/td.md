@@ -74,7 +74,13 @@ For terminal state $$s_{t+1}$$:
 
 $$Q(s_{t+1},a_{t+1})=0$$
 
+The control algorithm (as in all on-policy methods):
 
+- estimate $$Q_{\pi}$$ for the current behavior policy $$\pi$$
+
+- update $$\pi$$ toward greediness w.r.t $$Q_{\pi}$$
+
+**SARSA converges with probability 1 to an optimal policy and action-value function as long as all state-action pairs are visited an infinite number of times and the policy converges in the limit to the greedy policy** (when using $$\epsilon$$-greedy or $$\epsilon$$-soft policies)
 
 
 
