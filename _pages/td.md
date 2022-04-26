@@ -56,6 +56,8 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Tar
 
 **TD target not only samples the expected value but uses the current estimate $$V$$ instead of the true $$V_{\pi}$$.** Thus it combines the sampling of MC with the bootstrapping of DP.
 
+### SARSA
+
 
 ### Important Concepts
 
@@ -64,6 +66,12 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Tar
 **Sample updates** differ from the **expected updates** of DP in that they are based on a single sample successor rather than on a complete distribution of all possible successors
 
 **Batch updating**: updates are made only after processing each complete batch of training data
+
+**Batch MC** vs **Batch TD**: Batch MC always find the estimates that minimize mean-squared error on the training set, whereas batch TD(0) always finds the estimates that would be exactly correct for the maximum-likelihood model of the Markov process.
+
+**Maximum-likelihood Estimate** of a parameter is the parameter value whose probability of generating the data is greatest
+
+**Batch TD(0) converges to the certainty-equivalence estimate**, which means it assumes that the estimate of the underlying process was known with certainty rather than being approximated
 
 ### Random Walk
 
