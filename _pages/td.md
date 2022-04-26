@@ -324,7 +324,7 @@ The above figure corresponds to Figure 6.2
 
 ### Windy Gridworld
 
-<center><img src="https://img-blog.csdnimg.cn/20210409215142880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1daWF9IZWxsbw==,size_16,color_FFFFFF,t_70" width=800></center>
+<center><img src="https://img-blog.csdnimg.cn/20210409215142880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1daWF9IZWxsbw==,size_16,color_FFFFFF,t_70" width=500></center>
 
     a standard gridworld, except there is a crosswind running upward through the middle of grid  
 
