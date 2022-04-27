@@ -96,6 +96,8 @@ $$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma \max_b Q(s_{t+1},b)
 
 where the learned $$Q$$ directly approximates the optimal $$Q_*$$ independent of the policy being followed
 
+**Some insights**:
+
 - Q-learning drammatically simplifies the analysis of the alg and enabled early convergence proofs
 
 - though the policy has not been evaluated, it still determines which $$(s,a)$$ pairs are visited and updated
@@ -764,9 +766,9 @@ plot_oppi(Q_sarsa,'sarsa')
 plot_oppi(Q_q,'ql')
 ```
 
-<center><img src="/judy_blog/assets/images/sarsa_heatmap_cliffwalk.png" width=400><img src="/judy_blog/assets/images/sarsa_oppi_cliffwalk.png" width=400></center>
+<center><img src="/judy_blog/assets/images/sarsa_heatmap_cliffwalk.png" width=350><img src="/judy_blog/assets/images/sarsa_oppi_cliffwalk.png" width=350></center>
 
-<center><img src="/judy_blog/assets/images/ql_heatmap_cliffwalk.png" width=400><img src="/judy_blog/assets/images/ql_oppi_cliffwalk.png" width=400></center>
+<center><img src="/judy_blog/assets/images/ql_heatmap_cliffwalk.png" width=350><img src="/judy_blog/assets/images/ql_oppi_cliffwalk.png" width=350></center>
 
 <center><img src="/judy_blog/assets/images/sarsa_ql_cliffwalk.png" width=500></center>
 
