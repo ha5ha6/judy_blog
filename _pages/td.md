@@ -86,6 +86,21 @@ $$\delta_t \triangleq r_t + \gamma Q(s_{t+1},a_{t+1}) - Q(s_t,a_t)$$
 
 **SARSA converges with probability 1 to an optimal policy and action-value function as long as all state-action pairs are visited an infinite number of times and the policy converges in the limit to the greedy policy** (when using $$\epsilon$$-greedy or $$\epsilon$$-soft policies)
 
+### Q-learning
+
+Q-learning is an **off-policy TD control** method
+
+**The update rule**:
+
+$$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma \max_b Q(s_{t+1},b) - Q(s_t,a_t) \right]$$
+
+where the learned $$Q$$ directly approximates the optimal $$Q_*$$ independent of the policy being followed
+
+- Q-learning drammatically simplifies the analysis of the alg and enabled early convergence proofs
+
+- though the policy has not been evaluated, it still determines which $$(s,a)$$ pairs are visited and updated
+
+- the requirement for convergence is that all pairs continue to be updated
 
 
 ### Important Concepts
