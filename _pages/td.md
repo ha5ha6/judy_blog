@@ -654,7 +654,6 @@ def run_q(n_eps=500,n_stps=500,eps=0.1,lr=0.5,gm=1.):
 
             a=e_greedy(eps,Q[s[0],s[1]])
             s_,r,done=step(s,a)
-
             delta=r+gm*np.max(Q[s_[0],s_[1]])-Q[s[0],s[1],a]
             Q[s[0],s[1],a]+=lr*delta
 
@@ -750,14 +749,14 @@ def plot_oppi(q,alg='sarsa'):
                 #print(i,j)
                 plt.arrow(j+0.5,edge-i,scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='r', ec='r')
 
-    plt.annotate('S', (0.3,0.3),fontsize=20)
-    plt.annotate('G', (11.3,0.3),fontsize=20)
+    plt.annotate('S',(0.3,0.3),fontsize=20)
+    plt.annotate('G',(11.3,0.3),fontsize=20)
     plt.title('$\pi_*$ of '+alg)
     plt.savefig(alg+'_oppi_cliffwalk.png',dpi=350)
     plt.close()
 
-plot_heat(Q_sarsa)
-plot_heat(Q_q)
+plot_heat(Q_sarsa,'sarsa')
+plot_heat(Q_q,'ql')
 plot_oppi(Q_sarsa,'sarsa')
 plot_oppi(Q_q,'ql')
 ```
