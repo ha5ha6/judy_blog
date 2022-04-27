@@ -104,6 +104,9 @@ where the learned $$Q$$ directly approximates the optimal $$Q_*$$ independent of
 
 - the requirement for convergence is that all pairs continue to be updated
 
+### On/Off Policy Revisit
+
+The comparison between SARSA and Q-learning
 
 ### Important Concepts
 
@@ -491,7 +494,6 @@ for i in range(n_rows):
         elif op_act[i,j]==2:
             plt.arrow(j+0.5,edge-i,-scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='b', ec='b')
         elif op_act[i,j]==3:
-            #print(i,j)
             plt.arrow(j+0.5,edge-i,scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='r', ec='r')
 
 plt.annotate('S',(0.3,3.3),fontsize=20)
@@ -751,7 +753,6 @@ def plot_oppi(q,alg='sarsa'):
             elif op_act[i,j]==2:
                 plt.arrow(j+0.5,edge-i,-scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='b', ec='b')
             elif op_act[i,j]==3:
-                #print(i,j)
                 plt.arrow(j+0.5,edge-i,scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='r', ec='r')
 
     plt.annotate('S',(0.3,0.3),fontsize=20)
