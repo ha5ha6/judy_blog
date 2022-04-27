@@ -438,8 +438,8 @@ for i in range(n_rows):
 plt.figure(figsize=(6,8))
 plt.subplot(211)
 sns.heatmap(q_heat,cmap='jet',annot=True)
-plt.annotate('S', (0.3,3.7),fontsize=20,color = "w")
-plt.annotate('G', (7.3,3.7),fontsize=20,color = "w")
+plt.annotate('S',(0.3,3.7),fontsize=20,color="w")
+plt.annotate('G',(7.3,3.7),fontsize=20,color="w")
 plt.savefig('heatmap_windygrid.png',dpi=350)
 
 op_act=np.zeros((n_rows,n_cols))
@@ -473,12 +473,12 @@ for i in range(n_rows):
             #print(i,j)
             plt.arrow(j+0.5,6.5-i,scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='r', ec='r')
 
-plt.annotate('S', (0.3,3.3),fontsize=20)
-plt.annotate('G', (7.3,3.3),fontsize=20)
+plt.annotate('S',(0.3,3.3),fontsize=20)
+plt.annotate('G',(7.3,3.3),fontsize=20)
 plt.savefig('oppi_windygrid.png',dpi=350)
 
 fig=plt.figure(figsize=(12,10))
-plt.rcParams['font.size'] = '10'
+plt.rcParams['font.size']='10'
 plt.subplot(221)
 plt.plot(r,linewidth=3,color='orange')
 plt.grid()
@@ -503,7 +503,7 @@ plt.savefig('res_windygrid.png',dpi=350)
 
 <center><img src="/judy_blog/assets/images/res_windygrid.png" width=800></center>
 
-The above corresponds figure in Example 6.5
+The above corresponds to figure in Example 6.5
 
 ### References
 
