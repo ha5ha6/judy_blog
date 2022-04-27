@@ -341,6 +341,8 @@ The above figure corresponds to Figure 6.2
     r=-1 until goal
 
 
+Implementation of SARSA:
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -378,7 +380,6 @@ def e_greedy(eps,q):
 
     if (np.random.random()<=eps):
         return np.random.choice(actions)
-
     else:
         return np.argmax(q)
 
@@ -421,6 +422,83 @@ def run_sarsa(n_eps=500,n_stps=500,eps=0.1,lr=0.5):
 
 Q,r,stp,cnt=run_sarsa()
 ```
+
+Draw figures:
+
+```python
+q_heat=np.zeros((n_rows,n_cols))
+
+for i in range(n_rows):
+    for j in range(n_cols):
+        q_heat[i,j]=np.max(Q[i,j])
+
+plt.figure(figsize=(6,8))
+plt.subplot(211)
+sns.heatmap(q_heat,cmap='jet',annot=True)
+plt.annotate('S', (0.3,3.7),fontsize=20,color = "w")
+plt.annotate('G', (7.3,3.7),fontsize=20,color = "w")
+plt.savefig('heatmap_windygrid.png',dpi=350)
+
+op_act=np.zeros((n_rows,n_cols))
+
+for i in range(n_rows):
+    for j in range(n_cols):
+        op_act[i,j]=np.argmax(Q[i,j])
+
+nx=10
+ny=7
+
+scale=0.3
+fig=plt.figure(figsize=(6,6))
+ax=fig.add_subplot(1,1,1)
+ax.set_aspect('equal', adjustable='box')
+ax.set_xticks(np.arange(0,nx+1,1))
+ax.set_yticks(np.arange(0,ny+1,1))
+plt.grid()
+plt.ylim((0,ny))
+plt.xlim((0,nx))
+
+for i in range(n_rows):
+    for j in range(n_cols):
+        if op_act[i,j]==0:
+            plt.arrow(j+0.5,6.5-i,0,scale,width=0.1, head_width=0.2, head_length=0.1,fc='g', ec='g')
+        elif op_act[i,j]==1:
+            plt.arrow(j+0.5,6.5-i,0,-scale,width=0.1, head_width=0.2, head_length=0.1,fc='c', ec='c')
+        elif op_act[i,j]==2:
+            plt.arrow(j+0.5,6.5-i,-scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='b', ec='b')
+        elif op_act[i,j]==3:
+            #print(i,j)
+            plt.arrow(j+0.5,6.5-i,scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='r', ec='r')
+
+plt.annotate('S', (0.3,3.3),fontsize=20)
+plt.annotate('G', (7.3,3.3),fontsize=20)
+plt.savefig('oppi_windygrid.png',dpi=350)
+
+fig=plt.figure(figsize=(12,10))
+plt.rcParams['font.size'] = '10'
+plt.subplot(221)
+plt.plot(r,linewidth=3,color='orange')
+plt.grid()
+plt.xlabel('Episodes')
+plt.ylabel('Return')
+plt.subplot(222)
+plt.plot(stp,linewidth=3,color='orange')
+plt.grid()
+plt.xlabel('Episodes')
+plt.ylabel('Steps')
+
+plt.subplot(223)
+plt.plot(cnt[:170],range(170),linewidth=3,color='orange')
+plt.grid()
+plt.xlabel('Steps')
+plt.ylabel('Episodes')
+
+plt.savefig('res_windygrid.png',dpi=350)
+```
+
+<center><img src="/judy_blog/assets/images/heatmap_windygrid.png" width=400><img src="/judy_blog/assets/images/oppi_windygrid.png" width=400></center>
+
+<center><img src="/judy_blog/assets/images/res_windygrid.png" width=800></center>
 
 ### References
 
