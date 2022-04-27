@@ -500,6 +500,8 @@ plt.savefig('res_windygrid.png',dpi=350)
 
 <center><img src="/judy_blog/assets/images/res_windygrid.png" width=800></center>
 
+The above corresponds figure in Example 6.5
+
 ### References
 
 **Reinforcement Learning an Introduction 2nd edition** by Sutton and Barto
