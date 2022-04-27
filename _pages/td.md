@@ -348,6 +348,9 @@ The above figure corresponds to Figure 6.2
     states = 7 x 10
     actions = {up, down, left, right}
 
+    START=[3,0]
+    GOAL=[3,7]
+
     dynamics:
     col 3:5,8, wind strengh = 1, shift to one upper state (col started from 0)
     col 6:7, wind strengh = 2, shift to two upper state
