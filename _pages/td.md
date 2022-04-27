@@ -340,6 +340,9 @@ The above figure corresponds to Figure 6.2
     termination: reach goal
     r=-1 until goal
 
+    epsilon: 0.1
+    lr: 0.5
+
 
 Implementation of SARSA:
 
