@@ -499,9 +499,9 @@ plt.ylabel('Episodes')
 plt.savefig('res_windygrid.png',dpi=350)
 ```
 
-<center><img src="/judy_blog/assets/images/heatmap_windygrid.png" width=600></center>
+<center><img src="/judy_blog/assets/images/heatmap_windygrid.png" width=500></center>
 
-<center><img src="/judy_blog/assets/images/oppi_windygrid.png" width=600></center>
+<center><img src="/judy_blog/assets/images/oppi_windygrid.png" width=400></center>
 
 <center><img src="/judy_blog/assets/images/res_windygrid.png" width=800></center>
 
