@@ -401,7 +401,7 @@ def e_greedy(eps,q):
     else:
         return np.argmax(q)
 
-def run_sarsa(n_eps=500,n_stps=500,eps=0.1,lr=0.5):
+def run_sarsa(n_eps=500,n_stps=500,eps=0.1,lr=0.5,gm=1.):
 
     Q=np.zeros((n_rows,n_cols,n_a))
 
@@ -418,7 +418,7 @@ def run_sarsa(n_eps=500,n_stps=500,eps=0.1,lr=0.5):
 
             s_,r,done=step(s,a)
             a_=e_greedy(eps,Q[s_[0],s_[1]])
-            delta=r+Q[s_[0],s_[1],a_]-Q[s[0],s[1],a]
+            delta=r+gm*Q[s_[0],s_[1],a_]-Q[s[0],s[1],a]
             Q[s[0],s[1],a]+=lr*delta
 
             s=s_
@@ -467,6 +467,7 @@ nx=10
 ny=7
 
 scale=0.3
+edge=ny-0.5
 fig=plt.figure(figsize=(6,6))
 ax=fig.add_subplot(1,1,1)
 ax.set_aspect('equal', adjustable='box')
@@ -479,14 +480,14 @@ plt.xlim((0,nx))
 for i in range(n_rows):
     for j in range(n_cols):
         if op_act[i,j]==0:
-            plt.arrow(j+0.5,6.5-i,0,scale,width=0.1, head_width=0.2, head_length=0.1,fc='g', ec='g')
+            plt.arrow(j+0.5,edge-i,0,scale,width=0.1, head_width=0.2, head_length=0.1,fc='g', ec='g')
         elif op_act[i,j]==1:
-            plt.arrow(j+0.5,6.5-i,0,-scale,width=0.1, head_width=0.2, head_length=0.1,fc='c', ec='c')
+            plt.arrow(j+0.5,edge-i,0,-scale,width=0.1, head_width=0.2, head_length=0.1,fc='c', ec='c')
         elif op_act[i,j]==2:
-            plt.arrow(j+0.5,6.5-i,-scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='b', ec='b')
+            plt.arrow(j+0.5,edge-i,-scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='b', ec='b')
         elif op_act[i,j]==3:
             #print(i,j)
-            plt.arrow(j+0.5,6.5-i,scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='r', ec='r')
+            plt.arrow(j+0.5,edge-i,scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='r', ec='r')
 
 plt.annotate('S',(0.3,3.3),fontsize=20)
 plt.annotate('G',(7.3,3.3),fontsize=20)
@@ -521,6 +522,252 @@ plt.savefig('res_windygrid.png',dpi=350)
 <center><img src="/judy_blog/assets/images/res_windygrid.png" width=800></center>
 
 The above corresponds to figure in Example 6.5
+
+### Cliff Walking
+
+<center><img src="https://miro.medium.com/max/1400/1*52MwrYKyzQXuKZ88rqu70A.png" width=500></center>
+
+    a standard gridworld, except there is a cliff in the downside  
+
+    an undiscounted episodic task
+
+    states = 4 x 12
+    actions = {up, down, left, right}
+
+    START = [3,0]
+    GOAL = [3,11]
+
+    termination: enter the cliff zone or reach goal
+    r=-1 all other than cliff region
+    r=-100 cliff region
+
+    epsilon: 0.1
+    lr: 0.5
+
+Implementation of SARSA:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+n_cols=12
+n_rows=4
+
+actions=[0,1,2,3] #up,down,left,right
+n_a=len(actions)
+
+START=[3,0]
+GOAL=[3,11]
+CLIFF=list(range(1,11))
+
+def step(s,a):
+
+    row,col=s
+
+    if a==0: #up
+        s_=[max(row-1,0),col]
+    elif a==1: #down
+        s_=[min(row+1,n_rows-1),col]
+    elif a==2: #left
+        s_=[row, max(col-1,0)]
+    else: #right
+        s_=[row, min(col+1, n_cols-1)]
+
+    if s_==GOAL:
+        return s_,0,True
+    elif s_[0]==n_rows-1 and s_[1] in CLIFF:
+        return s_,-100,True
+    else:
+        return s_,-1,False
+
+def e_greedy(eps,q):
+
+    if (np.random.random()<=eps):
+        return np.random.choice(actions)
+    else:
+        return np.argmax(q)
+
+def run_sarsa(n_eps=500,n_stps=500,eps=0.1,lr=0.5,gm=1.):
+
+    Q=np.zeros((n_rows,n_cols,n_a))
+
+    r_all,stp_all,cnt_all=[],[],[]
+    stpCnt=0
+
+    for ep in range(n_eps):
+
+        r_sum,done=0,False
+        s=START    
+        a=e_greedy(eps,Q[s[0],s[1]])
+
+        for stp in range(n_stps):
+
+            s_,r,done=step(s,a)
+            a_=e_greedy(eps,Q[s_[0],s_[1]])
+            delta=r+gm*Q[s_[0],s_[1],a_]-Q[s[0],s[1],a]
+            Q[s[0],s[1],a]+=lr*delta
+
+            s=s_
+            a=a_
+            r_sum+=r
+            stpCnt+=1
+
+            if done:
+                break
+
+        r_all.append(r_sum)
+        stp_all.append(stp)
+        cnt_all.append(stpCnt)
+
+        #if ep%100==0:
+        #    print(f'ep:{ep}, stps:{stp}, ret:{r_sum}')
+
+    return Q,r_all,stp_all,cnt_all
+
+#Q_sarsa,r_sarsa,stp_sarsa,cnt_sarsa=run_sarsa()
+
+n_runs=50
+
+r_sarsa_all=[]
+for n in range(n_runs):
+    Q_sarsa,r_sarsa,stp_sarsa,cnt_sarsa=run_sarsa()
+    r_sarsa_all.append(r_sarsa)
+```
+
+Implementation of Q-learning:
+
+```python
+def run_q(n_eps=500,n_stps=500,eps=0.1,lr=0.5,gm=1.):
+
+    Q=np.zeros((n_rows,n_cols,n_a))
+
+    r_all,stp_all,cnt_all=[],[],[]
+    stpCnt=0
+
+    for ep in range(n_eps):
+
+        r_sum,done=0,False
+        s=START    
+
+        for stp in range(n_stps):
+
+            a=e_greedy(eps,Q[s[0],s[1]])
+            s_,r,done=step(s,a)
+
+            delta=r+gm*np.max(Q[s_[0],s_[1]])-Q[s[0],s[1],a]
+            Q[s[0],s[1],a]+=lr*delta
+
+            s=s_
+            r_sum+=r
+            stpCnt+=1
+
+            if done:
+                break
+
+        r_all.append(r_sum)
+        stp_all.append(stp)
+        cnt_all.append(stpCnt)
+
+        #if ep%100==0:
+        #    print(f'ep:{ep}, stps:{stp}, ret:{r_sum}')
+
+    return Q,r_all,stp_all,cnt_all
+
+n_runs=50
+
+r_q_all=[]
+for n in range(n_runs):
+    Q_q,r_q,stp_q,cnt_q=run_q()
+    r_q_all.append(r_q)
+```
+
+Draw figures:
+
+```python
+r_q_all=np.array(r_q_all)
+r_sarsa_all=np.array(r_sarsa_all)
+
+plt.rcParams['font.size']='14'
+plt.figure(figsize=(8,6))
+plt.plot(r_q_all.mean(axis=0),'r',label='q-learning')
+plt.plot(r_sarsa_all.mean(axis=0),'b',label='sarsa')
+plt.ylim([-100,-10])
+plt.legend()
+plt.grid()
+plt.xlabel('Episodes')
+plt.ylabel('Returns during episode')
+plt.savefig('sarsa_ql_cliffwalk.png',dpi=350)
+plt.close()
+
+def plot_heat(q,alg='sarsa'):
+
+    q_heat=np.zeros((n_rows,n_cols))
+
+    for i in range(n_rows):
+        for j in range(n_cols):
+            q_heat[i,j]=np.max(q[i,j])
+
+    plt.figure(figsize=(8,4))
+    sns.heatmap(q_heat,cmap='jet',annot=True)
+    plt.annotate('S', (0.3,3.7), fontsize=20, color="w")
+    plt.annotate('G', (11.3,3.7), fontsize=20, color="w")
+    plt.title(alg)
+    plt.savefig(alg+'_heatmap_cliffwalk.png',dpi=350)
+    plt.close()
+
+def plot_oppi(q,alg='sarsa'):
+
+    op_act=np.zeros((n_rows,n_cols))
+
+    for i in range(n_rows):
+        for j in range(n_cols):
+            op_act[i,j]=np.argmax(q[i,j])
+
+    nx=12
+    ny=4
+
+    scale=0.3
+    edge=ny-0.5
+    fig=plt.figure(figsize=(8,4))
+    ax=fig.add_subplot(1,1,1)
+    ax.set_aspect('equal', adjustable='box')
+    ax.set_xticks(np.arange(0,nx+1,1))
+    ax.set_yticks(np.arange(0,ny+1,1))
+    plt.grid()
+    plt.ylim((0,ny))
+    plt.xlim((0,nx))
+
+    for i in range(n_rows):
+        for j in range(n_cols):
+            if op_act[i,j]==0:
+                plt.arrow(j+0.5,edge-i,0,scale,width=0.1, head_width=0.2, head_length=0.1,fc='g', ec='g')
+            elif op_act[i,j]==1:
+                plt.arrow(j+0.5,edge-i,0,-scale,width=0.1, head_width=0.2, head_length=0.1,fc='c', ec='c')
+            elif op_act[i,j]==2:
+                plt.arrow(j+0.5,edge-i,-scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='b', ec='b')
+            elif op_act[i,j]==3:
+                #print(i,j)
+                plt.arrow(j+0.5,edge-i,scale,0,width=0.1, head_width=0.2, head_length=0.1,fc='r', ec='r')
+
+    plt.annotate('S', (0.3,0.3),fontsize=20)
+    plt.annotate('G', (11.3,0.3),fontsize=20)
+    plt.title('$\pi_*$ of '+alg)
+    plt.savefig(alg+'_oppi_cliffwalk.png',dpi=350)
+    plt.close()
+
+plot_heat(Q_sarsa)
+plot_heat(Q_q)
+plot_oppi(Q_sarsa,'sarsa')
+plot_oppi(Q_q,'ql')
+```
+
+<center><img src="/judy_blog/assets/images/sarsa_heatmap_cliffwalk.png" width=300><img src="/judy_blog/assets/images/sarsa_oppi_cliffwalk.png" width=300></center>
+
+<center><img src="/judy_blog/assets/images/ql_heatmap_cliffwalk.png" width=300><img src="/judy_blog/assets/images/ql_oppi_cliffwalk.png" width=300></center>
+
+
+
 
 ### References
 
