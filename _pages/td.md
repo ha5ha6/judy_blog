@@ -766,7 +766,9 @@ plot_oppi(Q_q,'ql')
 
 <center><img src="/judy_blog/assets/images/ql_heatmap_cliffwalk.png" width=300><img src="/judy_blog/assets/images/ql_oppi_cliffwalk.png" width=300></center>
 
+<center><img src="/judy_blog/assets/images/sarsa_ql_cliffwalk.png" width=500></center>
 
+The above figure corresponds to figure in Example 6.6
 
 
 ### References
