@@ -25,7 +25,7 @@ usemathjax: true
 
 [\[on github\]](https://github.com/ha5ha6/judy_tutorial_basicRL) [\[Gridworld, Blackjack\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/girdworld_blackjack.ipynb)
 
-[Temporal-Difference Learning](/judy_blog/td/): TD(0), SARSA, Q-learning, python realizations of Random Walk, etc
+[Temporal-Difference Learning](/judy_blog/td/): TD(0), SARSA, Q-learning, python realizations of Random Walk, Windy Grid, Cliff Walking, etc
 
 [\[Random Walk\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/random_walk.ipynb) [\[Windy Grid\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/windy_grid.ipynb) [\[Cliff Walking\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/cliff_walking.ipynb)
 
