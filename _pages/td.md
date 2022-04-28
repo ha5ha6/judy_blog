@@ -783,3 +783,7 @@ The above corresponds to figure in Example 6.6
 [ShangtongZhang/reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
 
 [RL 2nd Edition Excercise Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
+
+### Slides and Code
+
+[judy_tutorial_basicRL](https://github.com/ha5ha6/judy_tutorial_basicRL)

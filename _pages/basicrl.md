@@ -1378,3 +1378,7 @@ Target policy can be inferred from the obtained Q value in terms of certain stat
 [jingweiz/reinforcement-learning-an-introduction](https://github.com/jingweiz/reinforcement-learning-an-introduction)
 
 [RL 2nd Edition Excercise Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
+
+### Slides and Code
+
+[judy_tutorial_basicRL](https://github.com/ha5ha6/judy_tutorial_basicRL)
