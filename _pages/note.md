@@ -21,11 +21,11 @@ usemathjax: true
 
 ## Reinforcement Learning
 
-[Basic Reinforcement Learning](/judy_blog/basicrl/): MDP, value functions, policy/value iteration, Monte Carlo control, on/off policy, off policy importance sampling, python realizations of Gridworld, Blackjack
+[Basic Reinforcement Learning](/judy_blog/basicrl/): MDP, value functions, policy/value iteration, Monte Carlo control, on/off policy, off policy importance sampling, and their python realizations with examples as follows
 
 [\[on github\]](https://github.com/ha5ha6/judy_tutorial_basicRL) [\[Gridworld, Blackjack\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/girdworld_blackjack.ipynb)
 
-[Temporal-Difference Learning](/judy_blog/td/): TD(0), SARSA, Q-learning, python realizations of Random Walk, Windy Grid, Cliff Walking, etc
+[Temporal-Difference Learning](/judy_blog/td/): TD(0), SARSA, Q-learning, and their python realizations with examples as follows
 
 [\[Random Walk\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/random_walk.ipynb) [\[Windy Grid\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/windy_grid.ipynb) [\[Cliff Walking\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/cliff_walking.ipynb)
 
@@ -33,6 +33,6 @@ usemathjax: true
 
 [All About Cartpole](/judy_blog/cartpole/): Cartpole realizations with classic RL algorithms: Q-learning, SARSA($$\lambda$$), DQN, etc
 
-## Machine Learning
-
 ## Deep Learning
+
+## Machine Learning
