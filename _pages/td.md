@@ -773,7 +773,7 @@ plot_oppi(Q_q,'ql')
 
 <center><img src="/judy_blog/assets/images/sarsa_ql_cliffwalk.png" width=500></center>
 
-The above figure corresponds to figure in Example 6.6
+The above corresponds to figure in Example 6.6
 
 
 ### References
