@@ -112,13 +112,15 @@ In the TD setup,
 
 - **Off-policy**: evaluate and improve a greedy policy, where a $$\epsilon$$-greedy policy is used to generate samples (update policy and behavior policy are different)
 
-In SARSA, the policy evaluation takes place in $$r+\gamma Q(s',a')$$, where $$a' \sim \epsilon-greedy(\pi(a' \mid s'))$$
+In SARSA, the policy evaluation takes place in $$r+\gamma Q(s',a')$$, where $$a' \sim \pi(a' \mid s')$$ with $$\epsilon$$-greedy
 
 This means, the agent looks ahead to the next action to see what the agent will do at the next step following the current policy. In other words, the $$\epsilon$$-greedy policy with the property of exploration has been evaluated and updated for whether the next state and action will be safe or dangerous
 
 In Q-learning, the policy evaluation takes place in $$r+\gamma \max_{a'} Q(s',a')$$, where an absolute greedy policy has been evaluated and updated all the time
 
 Since the Q-function always updates with greedy evaluations without attempting to resolve what that policy actually is, it doesn't take into account the exploration effects
+
+**Some insights**:
 
 - when the policy is simply a greedy one, Q-learning and SARSA will produce the same results
 
