@@ -108,21 +108,25 @@ where the learned $$Q$$ directly approximates the optimal $$Q_*$$ independent of
 
 In the TD setup,
 
-- **On-policy**: evaluate and improve a $$\epsilon$$-greedy policy, where this policy is also used to generate samples
+- **On-policy**: evaluate and improve a $$\epsilon$$-greedy policy, where this policy is also used to generate samples (update policy and behavior policy are the same)
 
-- **Off-policy**: evaluate a greedy policy, improve a $$\epsilon$$-greedy policy, where the $$\epsilon$$-greedy policy is used to generate samples
+- **Off-policy**: evaluate and improve a greedy policy, where a $$\epsilon$$-greedy policy is used to generate samples (update policy and behavior policy are different)
 
 In SARSA, the policy evaluation takes place in $$r+\gamma Q(s',a')$$, where $$a' \sim \pi(a' \mid s')$$
 
-This means, the agent looks ahead to the next action to see what the agent will do at the next step following the current policy. In other words, the $$\epsilon$$-greedy policy with the property of exploration has been evaluated for whether the next state will be safe or dangerous
+This means, the agent looks ahead to the next action to see what the agent will do at the next step following the current policy. In other words, the $$\epsilon$$-greedy policy with the property of exploration has been evaluated for whether the next state and action will be safe or dangerous
 
-In Q-learning, the policy evaluation takes place in $$r+\gamma \max_{a'} Q(s',a')$$, where a greedy policy has been evaluated all the time
+In Q-learning, the policy evaluation takes place in $$r+\gamma \max_{a'} Q(s',a')$$, where an absolute greedy policy has been evaluated all the time
 
-Since the Q-function always updates with greedy evaluations without attempting to resolve what that policy actually is, it doesn't take into account the exploration price
+Since the Q-function always updates with greedy evaluations without attempting to resolve what that policy actually is, it doesn't take into account the exploration effects
 
-The policy improvment procedures in SARSA and Q-learning are inside the $$\epsilon$$-greedy policies, where the agent has $$\epsilon$$ chance to take a random policy and $$1-\epsilon$$ chance to take the greedy policy as $$a = \argmax Q(s,a)$$
+- when the policy is simply a greedy one, Q-learning and SARSA will produce the same results
 
-The behavior policies of SARSA and Q-learning are the same, which is the $$\epsilon$$-greedy policy
+- SRASA usually performs better than Q-learning, especially when there is a good chance that the agent will choose to take a random suboptimal action in the next step
+
+- Q-learning's assumption that the agent is following the optimal policy maybe far enough from true that SARSA will converge faster and with fewer errors
+
+- Q-learning is more likely to learn an optimal policy when the agent doesn't explore too much, where SARSA is less likely to learn such an optimal policy but a safer one
 
 ### Important Concepts
 
