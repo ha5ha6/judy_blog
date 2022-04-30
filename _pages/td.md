@@ -6,7 +6,7 @@ permalink: "/td/"
 #breadcrumbs: true
 
 author:  Jiexin Wang
-#classes:  wide
+classes:  wide
 toc: true
 toc_label: "Index"
 usemathjax: true
@@ -783,6 +783,8 @@ The above corresponds to figure in Example 6.6
 [ShangtongZhang/reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
 
 [RL 2nd Edition Excercise Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
+
+[Deep Reinforcement Learning - Julien Vitay](https://julien-vitay.net/deeprl/BasicRL.html)
 
 ### Slides and Code
 
