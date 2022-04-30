@@ -88,3 +88,8 @@ encoded class labels (one-hot encoding):
     in softmax case:
 
     class 2: [0.09, 0.67, 0.24]
+
+
+- the error between the expected and predicted multinomial probability distribution is often calculated using cross-entropy, this error is then used to update the model  
+
+we may want to convert the probabilities back into an integer encoded class label
