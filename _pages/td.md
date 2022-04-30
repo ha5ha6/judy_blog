@@ -112,7 +112,7 @@ In the TD setup,
 
 - **Off-policy**: evaluate and improve a greedy policy, where a $$\epsilon$$-greedy policy is used to generate samples (update policy and behavior policy are different)
 
-In SARSA, the policy evaluation takes place in $$r+\gamma Q(s',a')$$, where $$a' \sim \pi(a' \mid s')$$
+In SARSA, the policy evaluation takes place in $$r+\gamma Q(s',a')$$, where $$a' \sim \epsilon-greedy(\pi(a' \mid s'))$$
 
 This means, the agent looks ahead to the next action to see what the agent will do at the next step following the current policy. In other words, the $$\epsilon$$-greedy policy with the property of exploration has been evaluated for whether the next state and action will be safe or dangerous
 
