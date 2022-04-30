@@ -122,13 +122,22 @@ Since the Q-function always updates with greedy evaluations without attempting t
 
 **Some insights**:
 
-- when the policy is simply a greedy one, Q-learning and SARSA will produce the same results
+- When the policy is simply a greedy one, Q-learning and SARSA will produce the same results
 
 - SRASA usually performs better than Q-learning, especially when there is a good chance that the agent will choose to take a random suboptimal action in the next step
 
 - Q-learning's assumption that the agent is following the optimal policy maybe far enough from true that SARSA will converge faster and with fewer errors
 
 - Q-learning is more likely to learn an optimal policy when the agent doesn't explore too much, where SARSA is less likely to learn such an optimal policy but a safer one
+
+
+### Expected SARSA
+
+**The update rule**:
+
+$$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma \mathbb{E}_{\pi} \left[Q(s_{t+1},a_{t+1}) \mid s_{t+1} \right] - Q(s_t,a_t) \right]$$
+
+$$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma \sum_a \pi(a \mid s_{t+1}) Q(s_{t+1},a) \mid - Q(s_t,a_t) \right]$$
 
 ### Important Concepts
 
