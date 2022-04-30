@@ -6,7 +6,7 @@ permalink: "/td/"
 #breadcrumbs: true
 
 author:  Jiexin Wang
-classes:  wide
+#classes:  wide
 toc: true
 toc_label: "Index"
 usemathjax: true
@@ -338,7 +338,7 @@ plt.grid()
 plt.savefig('batch_randomwalk.png',dpi=350)
 ```
 
-<center><img src="/judy_blog/assets/images/batch_randomwalk.png" width=500></center>
+<center><img src="/judy_blog/assets/images/batch_randomwalk.png" width=400></center>
 
 The above figure corresponds to Figure 6.2
 
@@ -771,7 +771,7 @@ plot_oppi(Q_q,'ql')
 
 <center><img src="/judy_blog/assets/images/ql_heatmap_cliffwalk.png" width=350><img src="/judy_blog/assets/images/ql_oppi_cliffwalk.png" width=350></center>
 
-<center><img src="/judy_blog/assets/images/sarsa_ql_cliffwalk.png" width=500></center>
+<center><img src="/judy_blog/assets/images/sarsa_ql_cliffwalk.png" width=400></center>
 
 The above corresponds to figure in Example 6.6
 
