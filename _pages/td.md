@@ -775,6 +775,15 @@ plot_oppi(Q_q,'ql')
 
 The above corresponds to figure in Example 6.6
 
+If we anneal $$\epsilon$$ from 0.5 with decaying rate 0.99 per episode, we will have the value function and optimal policies as follows
+
+<center><img src="/judy_blog/assets/images/ann_sarsa_heatmap_cliffwalk.png" width=350><img src="/judy_blog/assets/images/ann_sarsa_oppi_cliffwalk.png" width=350></center>
+
+<center><img src="/judy_blog/assets/images/ann_ql_heatmap_cliffwalk.png" width=350><img src="/judy_blog/assets/images/ann_ql_oppi_cliffwalk.png" width=350></center>
+
+<center><img src="/judy_blog/assets/images/ann_sarsa_ql_cliffwalk.png" width=400></center>
+
+Where SARSA converges to a roundabout policy, and Q-learning converges to an optimal one travelling right along the edge of the cliff
 
 ### References
 
