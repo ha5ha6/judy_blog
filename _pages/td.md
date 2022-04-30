@@ -108,17 +108,19 @@ where the learned $$Q$$ directly approximates the optimal $$Q_*$$ independent of
 
 In the TD setup,
 
-- **On-policy**: evaluate and improve a $$\epsilon$$-greedy policy, where the policy is also used to generate samples
+- **On-policy**: evaluate and improve a $$\epsilon$$-greedy policy, where this policy is also used to generate samples
 
 - **Off-policy**: evaluate a greedy policy, improve a $$\epsilon$$-greedy policy, where the $$\epsilon$$-greedy policy is used to generate samples
 
 In SARSA, the policy evaluation takes place in $$r+\gamma Q(s',a')$$, where $$a' \sim \pi(a' \mid s')$$
 
-This means, the $$\epsilon$$-greedy policy with the property of exploration has been evaluated, for example, for whether the current state is safe or dangerous
+This means, the agent looks ahead to the next action to see what the agent will do at the next step following the current policy. In other words, the $$\epsilon$$-greedy policy with the property of exploration has been evaluated for whether the next state will be safe or dangerous
 
 In Q-learning, the policy evaluation takes place in $$r+\gamma \max_{a'} Q(s',a')$$, where a greedy policy has been evaluated all the time
 
-The policy improvment procedures in SARSA and Q-learning are inside the $$\epsilon$$-greedy policy, where the agent has $$\epsilon$$ chance to take a random policy and $$1-\epsilon$$ chance to take the greedy policy as $$a \sim \argmax Q(s,a)$$
+Since the Q-function always updates with greedy evaluations without attempting to resolve what that policy actually is, it doesn't take into account the exploration price
+
+The policy improvment procedures in SARSA and Q-learning are inside the $$\epsilon$$-greedy policies, where the agent has $$\epsilon$$ chance to take a random policy and $$1-\epsilon$$ chance to take the greedy policy as $$a = \argmax Q(s,a)$$
 
 The behavior policies of SARSA and Q-learning are the same, which is the $$\epsilon$$-greedy policy
 
