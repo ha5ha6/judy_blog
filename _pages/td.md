@@ -783,7 +783,16 @@ If we anneal $$\epsilon$$ from 0.5 with decaying rate 0.99 per episode, we will 
 
 <center><img src="/judy_blog/assets/images/ann_sarsa_ql_cliffwalk.png" width=400></center>
 
-Where SARSA converges to a roundabout policy, and Q-learning converges to an optimal one travelling right along the edge of the cliff
+where SARSA converges to a roundabout policy, and Q-learning converges to an optimal one travelling right along the edge of the cliff
+
+If we replace $$\epsilon$$-greedy for SARSA and Q-learning with pure greedy policy, SARSA and Q-learning are the same
+
+<center><img src="/judy_blog/assets/images/greedy_sarsa_heatmap_cliffwalk.png" width=350><img src="/judy_blog/assets/images/greedy_sarsa_oppi_cliffwalk.png" width=350></center>
+
+<center><img src="/judy_blog/assets/images/greedy_ql_heatmap_cliffwalk.png" width=350><img src="/judy_blog/assets/images/greedy_ql_oppi_cliffwalk.png" width=350></center>
+
+<center><img src="/judy_blog/assets/images/greedy_sarsa_ql_cliffwalk.png" width=400></center>
+
 
 ### References
 
