@@ -114,9 +114,9 @@ In the TD setup,
 
 In SARSA, the policy evaluation takes place in $$r+\gamma Q(s',a')$$, where $$a' \sim \epsilon-greedy(\pi(a' \mid s'))$$
 
-This means, the agent looks ahead to the next action to see what the agent will do at the next step following the current policy. In other words, the $$\epsilon$$-greedy policy with the property of exploration has been evaluated for whether the next state and action will be safe or dangerous
+This means, the agent looks ahead to the next action to see what the agent will do at the next step following the current policy. In other words, the $$\epsilon$$-greedy policy with the property of exploration has been evaluated and updated for whether the next state and action will be safe or dangerous
 
-In Q-learning, the policy evaluation takes place in $$r+\gamma \max_{a'} Q(s',a')$$, where an absolute greedy policy has been evaluated all the time
+In Q-learning, the policy evaluation takes place in $$r+\gamma \max_{a'} Q(s',a')$$, where an absolute greedy policy has been evaluated and updated all the time
 
 Since the Q-function always updates with greedy evaluations without attempting to resolve what that policy actually is, it doesn't take into account the exploration effects
 
