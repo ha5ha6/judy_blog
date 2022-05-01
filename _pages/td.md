@@ -585,7 +585,7 @@ The above corresponds to figure in Example 6.5
     epsilon: 0.1
     lr: 0.5
 
-Implementation of SARSA:
+Implementation of SARSA and expected SARSA:
 
 ```python
 import numpy as np
@@ -627,7 +627,8 @@ def e_greedy(eps,q):
     if (np.random.random()<=eps):
         return np.random.choice(actions)
     else:
-        return np.argmax(q)
+        return np.random.choice([a for a, qs in enumerate(q) if qs==np.max(q)])
+        #return np.argmax(q)
 
 def run_sarsa(expected=False,n_eps=500,n_stps=500,eps=0.1,lr=0.5,gm=1.):
 
@@ -839,6 +840,8 @@ If we replace $$\epsilon$$-greedy for SARSA and Q-learning with pure greedy poli
 <center><img src="/judy_blog/assets/images/greedy_ql_heatmap_cliffwalk.png" width=350><img src="/judy_blog/assets/images/greedy_ql_oppi_cliffwalk.png" width=350></center>
 
 <center><img src="/judy_blog/assets/images/greedy_sarsa_ql_cliffwalk.png" width=400></center>
+
+Asymptotic and interim performances:
 
 ```python
 def get_performance(n_runs=10,n_eps=1000):
