@@ -138,7 +138,7 @@ See [Cliff Walking](https://ha5ha6.github.io/judy_blog/td/#cliff-walking) for mo
 
 $$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma \mathbb{E}_{\pi} \left[Q(s_{t+1},a_{t+1}) \mid s_{t+1} \right] - Q(s_t,a_t) \right]$$
 
-$$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma \sum_a \pi(a \mid s_{t+1}) Q(s_{t+1},a) \mid - Q(s_t,a_t) \right]$$
+$$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma \sum_a \pi(a \mid s_{t+1}) Q(s_{t+1},a) - Q(s_t,a_t) \right]$$
 
 Expected SARSA eliminates the variance due to the random selection of $$a_{t+1}$$
 
