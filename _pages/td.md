@@ -140,7 +140,7 @@ $$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma \mathbb{E}_{\pi} \l
 
 $$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma \sum_a \pi(a \mid s_{t+1}) Q(s_{t+1},a) - Q(s_t,a_t) \right]$$
 
-Expected SARSA eliminates the variance due to the random selection of $$a_{t+1}$$
+Expected SARSA is more complex computationally than SARSA but, in return, it eliminates the variance due to the random selection of $$a_{t+1}$$
 
 ### Important Concepts
 
