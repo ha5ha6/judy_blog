@@ -142,6 +142,12 @@ $$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma \sum_a \pi(a \mid s
 
 Expected SARSA is more complex computationally than SARSA but, in return, it eliminates the variance due to the random selection of $$a_{t+1}$$
 
+Expected SARSA can also do off-policy that it can use a policy different from the target policy to generate behavior
+
+### Double Q-learning
+
+A maximum over estimated values can lead to a significant positive bias
+
 ### Important Concepts
 
 **Sample updates**: involve looking ahead to a sample successor state (or state-action pair), using the value of the successor and the reward along the way to compute a backed-up value and then updating the value of the original state (or state-action pair)
@@ -155,6 +161,10 @@ Expected SARSA is more complex computationally than SARSA but, in return, it eli
 **Maximum-likelihood Estimate** of a parameter is the parameter value whose probability of generating the data is greatest
 
 **Batch TD(0) converges to the certainty-equivalence estimate**, which means it assumes that the estimate of the underlying process was known with certainty rather than being approximated
+
+**Maximization Bias**: the maximum of the true values is zero, but the maximum of the estimates is positive, a positive bias
+
+See [Maximization Bias Example](https://ha5ha6.github.io/judy_blog/td/#cliff-walking)
 
 ### Random Walk
 
@@ -883,7 +893,28 @@ plt.savefig('exp_sarsa_cliffwalk.png',dpi=350)
 
 <center><img src="/judy_blog/assets/images/exp_sarsa_cliffwalk.png" width=400></center>
 
-The above corresponds to Figure 6.3: Interim and asymptotic performance of TD control methods on the cliff-walking task as a function of $$\alpha$$
+The above corresponds to Figure 6.3: because the state transitions are all deterministic and all randomness comes from the policy, expected SARSA can safely set learning rate at 1 without suffering any degradation of asymptotic performance, whereas SARSA can only perform well in the long run at a small value of learning rate, at which short-term performance is poor
+
+### Maximization Bias Example
+
+<center><img src="https://miro.medium.com/max/1154/1*BaFiEot8uEtPSCm3UspgvA.png" width=400></center>
+
+
+    states: two non-terminal states A,B
+    actions: {left, right}
+
+    episodes always start in A
+    A - right - terminal,r=0
+    A - left - B - r=N(-0.1,1) - terminal
+
+    The expected return for any traj starting with 'left' is -0.1
+    thus taking 'left' in A is always a mistake  
+
+    However, Q-learning may favor 'left' because of maximization bias
+
+
+
+
 
 ### References
 
