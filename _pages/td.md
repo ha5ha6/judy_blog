@@ -168,7 +168,9 @@ $$\hat{Q}_1 (\arg \max_a \hat{Q}_2(s))$$
 
 **The update rule**:
 
-$$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma Q_2(s_{t+1}, \arg \max_a Q_1(s_{t+1},a)) - Q(s_t,a_t) \right]$$
+$$Q_1(s_t,a_t) \leftarrow Q_1(s_t,a_t)+\alpha \left[r_t + \gamma Q_2(s_{t+1}, \arg \max_a Q_1(s_{t+1},a)) - Q_1(s_t,a_t) \right]$$
+
+$$Q_2(s_t,a_t) \leftarrow Q_2(s_t,a_t)+\alpha \left[r_t + \gamma Q_1(s_{t+1}, \arg \max_a Q_2(s_{t+1},a)) - Q_2(s_t,a_t) \right]$$
 
 There are also double versions of SARSA and Expected SARSA
 
