@@ -840,6 +840,47 @@ If we replace $$\epsilon$$-greedy for SARSA and Q-learning with pure greedy poli
 
 <center><img src="/judy_blog/assets/images/greedy_sarsa_ql_cliffwalk.png" width=400></center>
 
+```python
+def get_performance(n_runs=10,n_eps=1000):
+    lrs=np.arange(0.1,1.1,0.1)
+    performance=np.zeros((len(lrs),3))
+
+    for n in range(n_runs):
+        for i,lr in enumerate(lrs):
+            _,r_sarsa,_,_=run_sarsa(n_eps=n_eps,eps=.1,lr=lr,gm=1.)
+            _,r_exp_sarsa,_,_=run_sarsa(expected=True,n_eps=n_eps,eps=.1,lr=lr,gm=1.)
+            _,r_q,_,_=run_q(n_eps=n_eps,eps=.1,lr=lr,gm=1.)
+
+            performance[i][0]+=sum(r_sarsa)
+            performance[i][1]+=sum(r_exp_sarsa)
+            performance[i][2]+=sum(r_q)
+
+    return performance
+
+asy_performance=get_performance(n_runs=1,n_eps=10000)
+int_performance=get_performance(n_runs=50,n_eps=100)
+
+labels=['asy_sarsa','asy_expected_sarsa','asy_ql',
+        'int_sarsa','int_expected_sarsa','int_ql']
+
+plt.figure(figsize=(8,6))
+for i in range(3):
+    plt.plot((asy_performance/(10*1000))[:,i],'-o',label=labels[i],linewidth=2)
+
+for i in range(3):
+    plt.plot((int_performance/(100*50))[:,i],'-o',label=labels[i+3],linewidth=2)
+
+plt.legend(bbox_to_anchor=(1.04,1), borderaxespad=0)
+plt.grid()
+plt.xticks(np.arange(10),(np.round(np.arange(0.1,1.1,0.1),1)))
+plt.xlabel('Learning rate')
+plt.ylabel('Sum of rewards per episode')
+plt.savefig('exp_sarsa_cliffwalk.png',dpi=350)
+```
+
+<center><img src="/judy_blog/assets/images/exp_sarsa_cliffwalk.png" width=400></center>
+
+The above corresponds to Figure 6.3: Interim and asymptotic performance of TD control methods on the cliff-walking task as a function of $$\alpha$$
 
 ### References
 
