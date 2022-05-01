@@ -148,14 +148,22 @@ Expected SARSA can also do off-policy that it can use a policy different from th
 
 A maximum over estimated values can lead to a significant positive bias
 
-Suppose we learn two independent estimates $$\hat{Q}_1(a), \hat{Q}_2(a) \forall a \in \mathcal{A}$$ of the true value $$Q(a)$$
+Suppose we learn two independent estimates $$\hat{Q}_1(a), \hat{Q}_2(a), \forall a \in \mathcal{A}$$ of the true value $$Q(a)$$
 
-We could use one estimate, say $$\hat{Q}_1$$ to determine the max action $$a^*=\argmax_a \hat{Q}_1(a)$$, and the other $$\hat{Q}_2$$ to provide the estimate of its value $$\hat{Q}_2(a^*)=\hat{Q}_2(\argmax_a \hat{Q}_1(a))$$
+We could use $$\hat{Q}_1$$ to determine the max action
 
-The estimate will then be unbiased in the sense that $$\mathbb{E}[\hat{Q}_2(a^*)]=Q(a^*)$$
+$$a^*=\arg \max_a \hat{Q}_1(a)$$
+
+and use $$\hat{Q}_2$$ to provide the estimate of its value
+
+$$\hat{Q}_2(a^*)=\hat{Q}_2(\arg \max_a \hat{Q}_1(a))$$
+
+The estimate will then be unbiased in the sense that
+
+$$\mathbb{E}[\hat{Q}_2(a^*)]=Q(a^*)$$
 
 
-
+See [Maximization Bias Example](https://ha5ha6.github.io/judy_blog/td/#maximization-bias-example)
 
 
 ### Important Concepts
@@ -173,8 +181,6 @@ The estimate will then be unbiased in the sense that $$\mathbb{E}[\hat{Q}_2(a^*)
 **Batch TD(0) converges to the certainty-equivalence estimate**, which means it assumes that the estimate of the underlying process was known with certainty rather than being approximated
 
 **Maximization Bias**: the maximum of the true values is zero, but the maximum of the estimates is positive, a positive bias
-
-See [Maximization Bias Example](https://ha5ha6.github.io/judy_blog/td/#cliff-walking)
 
 ### Random Walk
 
