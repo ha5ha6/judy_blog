@@ -162,6 +162,10 @@ The estimate will then be unbiased in the sense that
 
 $$\mathbb{E}[\hat{Q}_2(a^*)]=Q(a^*)$$
 
+Then we repeat the process to yield a second unbiased estimate  
+
+$$\hat{Q}_1 (\arg \max_a \hat{Q}_2(s))$$
+
 
 See [Maximization Bias Example](https://ha5ha6.github.io/judy_blog/td/#maximization-bias-example)
 
