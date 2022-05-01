@@ -174,7 +174,7 @@ $$Q_2(s_t,a_t) \leftarrow Q_2(s_t,a_t)+\alpha \left[r_t + \gamma Q_1(s_{t+1}, \a
 
 There are also double versions of SARSA and Expected SARSA
 
-See [Maximization Bias Example](https://ha5ha6.github.io/judy_blog/td/#maximization-bias-example)
+See [Maximization Bias Example](https://ha5ha6.github.io/judy_blog/td/#maximization-bias-example) for more info
 
 
 ### Important Concepts
