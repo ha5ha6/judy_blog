@@ -130,6 +130,7 @@ Since the Q-function always updates with greedy evaluations without attempting t
 
 - Q-learning is more likely to learn an optimal policy when the agent doesn't explore too much, where SARSA is less likely to learn such an optimal policy but a safer one
 
+See [Cliff Walking](https://ha5ha6.github.io/judy_blog/td/#cliff-walking) for more info
 
 ### Expected SARSA
 
@@ -138,6 +139,8 @@ Since the Q-function always updates with greedy evaluations without attempting t
 $$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma \mathbb{E}_{\pi} \left[Q(s_{t+1},a_{t+1}) \mid s_{t+1} \right] - Q(s_t,a_t) \right]$$
 
 $$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma \sum_a \pi(a \mid s_{t+1}) Q(s_{t+1},a) \mid - Q(s_t,a_t) \right]$$
+
+Expected SARSA eliminates the variance due to the random selection of $$a_{t+1}$$
 
 ### Important Concepts
 
@@ -283,7 +286,7 @@ plt.ylabel('RMS',fontsize=15)
 plt.savefig('td_mc_randomwalk.png',dpi=350)
 ```
 
-<center><img src="/judy_blog/assets/images/td_randomwalk.png" width=400><img src="/judy_blog/assets/images/td_mc_randomwalk.png" width=400></center>
+<center><img src="/judy_blog/assets/images/td_randomwalk.png" width=350><img src="/judy_blog/assets/images/td_mc_randomwalk.png" width=350></center>
 
 The above figures correspond to Figures in Example 6.2
 
@@ -626,7 +629,7 @@ def e_greedy(eps,q):
     else:
         return np.argmax(q)
 
-def run_sarsa(n_eps=500,n_stps=500,eps=0.1,lr=0.5,gm=1.):
+def run_sarsa(expected=False,n_eps=500,n_stps=500,eps=0.1,lr=0.5,gm=1.):
 
     Q=np.zeros((n_rows,n_cols,n_a))
 
@@ -643,7 +646,20 @@ def run_sarsa(n_eps=500,n_stps=500,eps=0.1,lr=0.5,gm=1.):
 
             s_,r,done=step(s,a)
             a_=e_greedy(eps,Q[s_[0],s_[1]])
-            delta=r+gm*Q[s_[0],s_[1],a_]-Q[s[0],s[1],a]
+
+            if not expected:
+                delta=r+gm*Q[s_[0],s_[1],a_]-Q[s[0],s[1],a]
+            else:
+                Q_exp=0.0
+                Q_=Q[s_[0],s_[1],:]
+                a_bests=np.argwhere(Q_==np.max(Q_))
+                for act in actions:
+                    if act in a_bests:
+                        Q_exp+=((1.0-eps)/len(a_bests)+eps/len(actions))*Q[s_[0],s_[1],act]
+                    else:
+                        Q_exp+=eps/len(actions)*Q[s_[0],s_[1],act]
+                delta=r+gm*Q_exp-Q[s[0],s[1],a]
+
             Q[s[0],s[1],a]+=lr*delta
 
             s=s_
