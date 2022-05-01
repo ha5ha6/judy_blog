@@ -166,6 +166,11 @@ Then we repeat the process to yield a second unbiased estimate
 
 $$\hat{Q}_1 (\arg \max_a \hat{Q}_2(s))$$
 
+**The update rule**:
+
+$$Q(s_t,a_t) \leftarrow Q(s_t,a_t)+\alpha \left[r_t + \gamma Q_2(s_{t+1}, \arg \max_a Q_1(s_{t+1},a)) - Q(s_t,a_t) \right]$$
+
+There are also double versions of SARSA and Expected SARSA
 
 See [Maximization Bias Example](https://ha5ha6.github.io/judy_blog/td/#maximization-bias-example)
 
@@ -933,8 +938,133 @@ The above corresponds to Figure 6.3: because the state transitions are all deter
     However, Q-learning may favor 'left' because of maximization bias
 
 
+Implementation of Q-learning and Double Q-learning:
 
+```python
+import numpy as np
+import matplotlib.pyplot as plt
 
+A_ACTIONS=[0,1] #right,left
+B_ACTIONS=range(0,10)
+ACTIONS=[A_ACTIONS, B_ACTIONS]
+
+#state A,B,terminal
+A,B,T=0,1,2
+STATES=[A,B]
+
+START=A
+
+def step(s,a):
+
+    if s==A:
+        if a==0: #right
+            return T,0,True
+        else: #left
+            s_=B
+            return s_,0,False     
+    else: #s==B whatever action may lead to Terminal and random Reward
+        return T,np.random.normal(-0.1,1),True
+
+def e_greedy(eps,q,s):
+
+    if (np.random.random()<=eps):
+        if s==A:
+            return np.random.choice(A_ACTIONS)
+        else:
+            return np.random.choice(B_ACTIONS)
+    else:
+        return np.random.choice([a for a, qs in enumerate(q[s]) if qs==np.max(q[s])])
+
+def run_q(double=False,n_eps=300,eps=.1,lr=0.1,gm=1.):
+
+    if not double:
+        Q=[np.zeros(len(A_ACTIONS)),np.zeros(len(B_ACTIONS)),np.zeros(1)]
+    else:
+        Q1=[np.zeros(len(A_ACTIONS)),np.zeros(len(B_ACTIONS)),np.zeros(1)]
+        Q2=[np.zeros(len(A_ACTIONS)),np.zeros(len(B_ACTIONS)),np.zeros(1)]
+
+    r_all,stp_all,left_all=[],[],[]
+
+    for ep in range(n_eps):
+
+        r_sum,done=0,False
+        s=START    
+        stp_cnt=0
+        left_cnt=0
+
+        while not done:
+
+            if not double:
+                a=e_greedy(eps,Q,s)
+            else:
+                a=e_greedy(eps,[q1+q2 for q1,q2 in zip(Q1,Q2)],s)
+
+            if s==A and a==1:
+                left_cnt+=1
+            if s==A:
+                stp_cnt+=1
+
+            s_,r,done=step(s,a)
+
+            if not double:
+                delta=r+gm*np.max(Q[s_])-Q[s][a]
+                Q[s][a]+=lr*delta
+            else:
+                if np.random.choice([0,1])==1:
+                    a_max=np.random.choice([a for a, q in enumerate(Q1[s_]) if q==np.max(Q1[s_])])
+                    delta=r+gm*Q2[s_][a_max]-Q1[s][a]
+                    Q1[s][a]+=lr*delta
+                else:
+                    a_max=np.random.choice([a for a, q in enumerate(Q2[s_]) if q==np.max(Q2[s_])])
+                    delta=r+gm*Q1[s_][a_max]-Q2[s][a]
+                    Q2[s][a]+=lr*delta
+
+            s=s_
+            r_sum+=r            
+
+        r_all.append(r_sum)
+        stp_all.append(stp_cnt)
+        left_all.append(left_cnt)
+
+        #if ep%10==0:
+        #    print(f'ep:{ep}, stps:{stp}, ret:{r_sum}')
+    if not double:
+        return Q,r_all,left_all,stp_all
+    else:
+        return Q1,Q2,r_all,left_all,stp_all
+
+n_runs=1000
+
+left_all=[]
+stp_all=[]
+for n in range(n_runs):
+    Q,r_q,left,stp=run_q()
+    left_all.append(left)
+    stp_all.append(stp)
+
+plt.figure(figsize=(8,6))
+plt.rcParams['font.size']='14'
+plt.plot((np.array(left_all)/np.array(stp_all)).mean(axis=0),label='Q-learning',linewidth=2)
+
+left_all=[]
+stp_all=[]
+for n in range(n_runs):
+    Q1,Q2,r_dq,left,stp=run_q(double=True)
+    left_all.append(left)
+    stp_all.append(stp)
+
+plt.plot((np.array(left_all)/np.array(stp_all)).mean(axis=0),label='Double Q-learning',linewidth=2)
+plt.axhline(0.05,color='g',linestyle='--',label='optimal',linewidth=2)
+plt.legend()
+plt.grid()
+plt.xlabel('Episodes')
+plt.ylabel('% left actions from state A')
+plt.savefig('doubleq_maxbias.png',dpi=350)
+```
+
+<center><img src="/judy_blog/assets/images/doubleq_maxbias.png" width=400></center>
+
+The above corresponds to Figure 6.5
 
 ### References
 
