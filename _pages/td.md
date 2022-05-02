@@ -146,17 +146,17 @@ Expected SARSA can also do off-policy that it can use a policy different from th
 
 ### Double Q-learning
 
-A maximum over estimated values can lead to a significant positive bias
+A maximum over estimated values can lead to a significant positive bias.
 
-Suppose we learn two independent estimates $$\hat{Q}_1(a), \hat{Q}_2(a), \forall a \in \mathcal{A}$$ of the true value $$Q(a)$$
+Suppose we learn two independent estimates $$\hat{Q}_1(a), \hat{Q}_2(a), \forall a \in \mathcal{A}$$ of the true value $$Q(a)$$,
 
 We could use $$\hat{Q}_1$$ to determine the max action $$a^*=\arg \max_a \hat{Q}_1(a)$$
 
 and use $$\hat{Q}_2$$ to provide the estimate of its value $$\hat{Q}_2(a^*)=\hat{Q}_2(\arg \max_a \hat{Q}_1(a))$$
 
-The estimate will then be unbiased in the sense that $$\mathbb{E}[\hat{Q}_2(a^*)]=Q(a^*)$$
+The estimate will then be unbiased in the sense that $$\mathbb{E}[\hat{Q}_2(a^*)]=Q(a^*)$$,
 
-Then we repeat the process to yield a second unbiased estimate $$\hat{Q}_1 (\arg \max_a \hat{Q}_2(s))$$
+then we repeat the process to yield a second unbiased estimate $$\hat{Q}_1 (\arg \max_a \hat{Q}_2(s))$$
 
 **The update rule**:
 
