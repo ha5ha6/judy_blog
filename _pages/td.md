@@ -54,7 +54,7 @@ V_{\pi}(s) &\triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t=s \right] &\text{:Tar
 
 \end{align*}$$
 
-**TD target not only samples the expected value but uses the current estimate $$V$$ instead of the true $$V_{\pi}$$.** Thus it combines the sampling of MC with the bootstrapping of DP.
+**TD target not only samples the expected value but uses the current estimate $$V$$ instead of the true $$V_{\pi}$$.** Thus it combines the sampling of MC with the bootstrapping of DP
 
 ### SARSA
 
@@ -146,17 +146,13 @@ Expected SARSA can also do off-policy that it can use a policy different from th
 
 ### Double Q-learning
 
-A maximum over estimated values can lead to a significant **positive bias**.
+A maximum over estimated values can lead to a significant **positive bias**
 
-Suppose we learn two independent estimates $$\hat{Q}_1(a), \hat{Q}_2(a), \forall a \in \mathcal{A}$$ of the true value $$Q(a)$$,
+Suppose we learn two independent estimates $$Q_1(a), Q_2(a), \forall a \in \mathcal{A}$$ of the true value $$Q(a)$$, we could use $$Q_1$$ to determine the max action $$a^*=\arg \max_a Q_1(a)$$
 
-We could use $$\hat{Q}_1$$ to determine the max action $$a^*=\arg \max_a \hat{Q}_1(a)$$
+and use $$Q_2$$ to provide the estimate of its value $$Q_2(a^*)=Q_2(\arg \max_a Q_1(a))$$
 
-and use $$\hat{Q}_2$$ to provide the estimate of its value $$\hat{Q}_2(a^*)=\hat{Q}_2(\arg \max_a \hat{Q}_1(a))$$.
-
-The estimate will then be unbiased in the sense that $$\mathbb{E}[\hat{Q}_2(a^*)]=Q(a^*)$$,
-
-then we repeat the process to yield a second unbiased estimate $$\hat{Q}_1 (\arg \max_a \hat{Q}_2(s))$$.
+The estimate will then be unbiased in the sense that $$\mathbb{E}[Q_2(a^*)]=Q(a^*)$$, then we repeat the process to yield a second unbiased estimate $$Q_1 (\arg \max_a Q_2(s))$$.
 
 **The update rule**:
 
