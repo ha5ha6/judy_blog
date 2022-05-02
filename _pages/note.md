@@ -23,7 +23,7 @@ usemathjax: true
 
 [Basic Reinforcement Learning](/judy_blog/basicrl/): MDP, value functions, policy/value iteration, Monte Carlo control, on/off policy, off policy importance sampling, and their python realizations with examples as follows
 
-[\[on github\]](https://github.com/ha5ha6/judy_tutorial_basicRL) [\[Gridworld, Blackjack\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/girdworld_blackjack.ipynb)
+[\[Overview\]](https://github.com/ha5ha6/judy_tutorial_basicRL) [\[Gridworld, Blackjack\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/girdworld_blackjack.ipynb)
 
 [Temporal-Difference Learning](/judy_blog/td/): TD(0), SARSA, Q-learning, Expected SARSA, Double Q-learning and their python realizations with examples as follows
 
@@ -35,4 +35,4 @@ Policy Gradient and Actor-Critic: TBD
 
 ## Deep Learning
 
-## Machine Learning
+## Others
