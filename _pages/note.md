@@ -27,9 +27,9 @@ usemathjax: true
 
 [Temporal-Difference Learning](/judy_blog/td/): TD(0), SARSA, Q-learning, Expected SARSA, Double Q-learning and their python realizations with examples as follows
 
-[\[Random Walk\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/random_walk.ipynb) [\[Windy Grid\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/windy_grid.ipynb) [\[Cliff Walking\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/cliff_walking.ipynb) [\[Max Bias\]]()
+[\[Random Walk\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/random_walk.ipynb) [\[Windy Grid\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/windy_grid.ipynb) [\[Cliff Walking\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/cliff_walking.ipynb) [\[Max Bias\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/max_bias.ipynb)
 
-[Policy Gradient and Actor-Critic] TBD
+Policy Gradient and Actor-Critic: TBD
 
 [All About Cartpole](/judy_blog/cartpole/): Cartpole realizations with classic RL algorithms: Q-learning, SARSA($$\lambda$$), DQN, etc
 
