@@ -23,9 +23,9 @@ usemathjax: true
 
 [Basic Reinforcement Learning](/judy_blog/basicrl/): MDP, value functions, policy/value iteration, Monte Carlo control, on/off policy, off policy importance sampling, and their python realizations with examples as follows
 
-[\[Overview\]](https://github.com/ha5ha6/judy_tutorial_basicRL) [\[Gridworld, Blackjack\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/girdworld_blackjack.ipynb)
+[\[Overview on Github\]](https://github.com/ha5ha6/judy_tutorial_basicRL) [\[Gridworld, Blackjack\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/girdworld_blackjack.ipynb)
 
-[Temporal-Difference Learning](/judy_blog/td/): TD(0), SARSA, Q-learning, Expected SARSA, Double Q-learning and their python realizations with examples as follows
+[Temporal-Difference Learning](/judy_blog/td/): TD(0), SARSA, Q-learning, Expected SARSA, Double Q-learning
 
 [\[Random Walk\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/random_walk.ipynb) [\[Windy Grid\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/windy_grid.ipynb) [\[Cliff Walking\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/cliff_walking.ipynb) [\[Max Bias\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/max_bias.ipynb)
 
