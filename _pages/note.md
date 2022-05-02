@@ -13,7 +13,7 @@ header:
   #caption: "Photo credit: J.Wang"
 #excerpt: "an affordable and sustainable robot colony platform based on Android"
 author:  Jiexin Wang
-#classes:  wide
+classes:  wide
 #toc: true
 #toc_label: "Index"
 usemathjax: true
