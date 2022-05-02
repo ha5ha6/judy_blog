@@ -920,11 +920,12 @@ The above corresponds to Figure 6.3: because the state transitions are all deter
 
 
     states: two non-terminal states A,B
-    actions: {left, right}
+    actions in state A: {left, right}
+    actions in state B: like range(0,10)
 
     episodes always start in A
     A - right - terminal,r=0
-    A - left - B - r=N(-0.1,1) - terminal
+    A - left - B - terminal,r=N(-0.1,1)
 
     The expected return for any traj starting with 'left' is -0.1
     thus taking 'left' in A is always a mistake  
@@ -993,10 +994,10 @@ def run_q(double=False,n_eps=300,eps=.1,lr=0.1,gm=1.):
             else:
                 a=e_greedy(eps,[q1+q2 for q1,q2 in zip(Q1,Q2)],s)
 
-            if s==A and a==1:
-                left_cnt+=1
             if s==A:
                 stp_cnt+=1
+                if a==1:
+                    left_cnt+=1
 
             s_,r,done=step(s,a)
 
