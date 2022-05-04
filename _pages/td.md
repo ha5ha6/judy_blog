@@ -152,7 +152,7 @@ Suppose we learn two independent estimates $$Q_1(a), Q_2(a), \forall a \in \math
 
 and use $$Q_2$$ to provide the estimate of its value $$Q_2(a^*)=Q_2(\arg \max_a Q_1(a))$$
 
-The estimate will then be unbiased in the sense that $$\mathbb{E}[Q_2(a^*)]=Q(a^*)$$, then we repeat the process to yield a second unbiased estimate $$Q_1 (\arg \max_a Q_2(s))$$.
+The estimate will then be unbiased in the sense that $$\mathbb{E}[Q_2(a^*)]=Q(a^*)$$, then we repeat the process to yield a second unbiased estimate $$Q_1 (\arg \max_a Q_2(s))$$
 
 **The update rule**:
 
