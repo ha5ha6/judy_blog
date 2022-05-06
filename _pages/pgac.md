@@ -70,7 +70,7 @@ V_{\pi}(s) &= \sum_{a} \pi(a \mid s) \left[r_t+\gamma V_{\pi}(s') \right]
 
 \end{align*}$$
 
-we have
+we have three linear equations
 
 $$\begin{align*}
 
