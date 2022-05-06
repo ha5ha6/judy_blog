@@ -60,35 +60,45 @@ See [Maximization Bias Example](https://ha5ha6.github.io/judy_blog/td/#maximizat
     termination: 3
     r=-1 per step
 
-Since it's a deterministic env where $$p(s' \mid s,a)=1$$, we have three linear Bellman equations
+Since it's a deterministic env where $$p(s' \mid s,a)=1$$, by following Bellman equation
 
 $$\begin{align*}
 
 V_{\pi}(s) &= \sum_{a} \pi(a \mid s) \sum_{s'} p(s' \mid s,a) \left[r_t+\gamma V_{\pi}(s') \right] \\
 
-V_{\pi}(s) &= \sum_{a} \pi(a \mid s) \left[r_t+\gamma V_{\pi}(s') \right] \\
+V_{\pi}(s) &= \sum_{a} \pi(a \mid s) \left[r_t+\gamma V_{\pi}(s') \right]
+
+\end{align*}$$
+
+we have
+
+$$\begin{align*}
 
 V(s_0) &= p(-1+V(s_1))+(1-p)(-1+V(s_0)) \\
 
 V(s_1) &= p(-1+V(s_0))+(1-p)(-1+V(s_2)) \\
 
-V(s_2) &= p(-1+V(s_3))+(1-p)(-1+V(s_1)) \\
+V(s_2) &= p(-1+V(s_3))+(1-p)(-1+V(s_1))
 
 \end{align*}$$
 
 where $$V(s_3)=0$$, $$p$$ is the probability of choosing right action
 
-we have
+Therefore,
 
 $$V(s_0)=\frac{2(p-2)}{p(1-p)}$$
 
 ```python
+#return state value of state 0
+def v0(p):
+    return (2 * p - 4) / (p * (1 - p))
+
 p=np.linspace(0.01, 0.99, 100)
 v=v0(p)
 
-oppi = np.argmax(v)
-p_op = p[oppi]
-v_op = v[oppi]
+op_p = np.argmax(v)
+p_op = p[op_p]
+v_op = v[op_p]
 
 plt.rcParams['font.size']='14'
 plt.figure(figsize=(8,6))
