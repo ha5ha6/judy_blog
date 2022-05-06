@@ -110,7 +110,7 @@ plt.savefig('egreedy_shortcorridor.png',dpi=350)
 
 <center><img src="/judy_blog/assets/images/egreedy_shortcorridor.png" width=400></center>
 
-The above corresponds to Figure 13.1
+The above corresponds to Example 13.1
 
 ```python
 
