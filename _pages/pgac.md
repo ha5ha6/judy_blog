@@ -18,7 +18,13 @@ usemathjax: true
   }
 </style>
 
+Despite value-based methods where policies were derived implicitly from the action value functions, we can learn a parameterized policy $$\pi(a \mid s, \boldsymbol{\theta})$$ directly, with $$\boldsymbol{\theta})$$ being the policy parameters
 
+The parameters are updated in a gradient ascent fashion based on a scalar performance measure $$J(\boldsymbol{\theta})$$:
+
+$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha \hat{\nabla J(\boldsymbol{\theta}_t)}$$
+
+where $$\hat{\nabla J(\boldsymbol{\theta}_t)} \in \mathbb{R}^d$$ is a stochastic estimate whose expectation approsimates the gradient of $$J(\boldsymbol{\theta})$$
 
 ### Action Preference
 
