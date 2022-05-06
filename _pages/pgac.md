@@ -39,27 +39,47 @@ See [Maximization Bias Example](https://ha5ha6.github.io/judy_blog/td/#maximizat
 
 
 
-### Cliff Walking
+### Short Corridor
 
-<center><img src="https://miro.medium.com/max/1400/1*52MwrYKyzQXuKZ88rqu70A.png" width=500></center>
+<center><img src="https://miro.medium.com/max/1400/1*05SUEn1Mc8_EKVUAR5qa4A.png" width=500></center>
 
-    a standard gridworld, except there is a cliff in the downside  
+    a four-state gridworld  
 
     an undiscounted episodic task
 
-    states = 4 x 12
-    actions = {up, down, left, right}
+    states = {0,1,2,3}
+    actions = {left, right}
 
-    START = [3,0]
-    GOAL = [3,11]
+    0,left -> no movement
+    0,right -> 1
+    2,left -> 1
+    2,right -> T
 
-    termination: enter the cliff zone or reach goal
-    r=-1 all other than cliff region
-    r=-100 cliff region
+    but,
+    1,left -> 2
+    1,right -> 0
 
-    epsilon: 0.1
-    lr: 0.5
+    termination: 3
+    r=-1 per step
 
+Since it's a deterministic env, we have three linear Bellman equations
+
+$$\begin{align*}
+
+V_{\pi}(s) &= \sum_{a} \pi(a \mid s) \sum_{s' \mid p(s' \mid s,a)} \left[r_t+\gamma V_{\pi}(s') \right] \\
+
+V(0) &= p(-1+V(1))+(1-p)(-1+V(0)) \\
+
+V(1) &= p(-1+V(0))+(1-p)(-1+V(2)) \\
+
+V(2) &= p(-1+V(3))+(1-p)(-1+V(1)) \\
+
+where V(3)=0
+
+\end{align*}$$
+
+
+```python
 
 ```
 
