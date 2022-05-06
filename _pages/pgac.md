@@ -85,9 +85,9 @@ def v0(p):
 p=np.linspace(0.01, 0.99, 100)
 v=v0(p)
 
-op_p = np.argmax(v)
-p_op = p[op_p]
-v_op = v[op_p]
+op_p=np.argmax(v)
+p_op=p[op_p]
+v_op=v[op_p]
 
 plt.rcParams['font.size']='14'
 plt.figure(figsize=(8,6))
@@ -95,7 +95,7 @@ plt.plot(p,v,linewidth=3)
 plt.plot(p_op,v_op,'o',markersize=20,label="optimal point ({0:.2f}, {1:.2f})".format(p_op, v_op))
 plt.ylim(ymin=-105.0, ymax=5)
 
-epsilon = 0.05
+epsilon=0.05
 
 plt.plot(epsilon, v0(epsilon), 'o',markersize=20,
          label="e-greedy left action ({0:.2f}, {1:.2f})".format(epsilon, v0(epsilon)))
