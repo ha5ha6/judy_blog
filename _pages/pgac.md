@@ -19,24 +19,13 @@ usemathjax: true
 </style>
 
 
-Note: the notations and formalizations follow the previous post [Basic Reinforcement Learning](/judy_blog/basicrl/)
 
-### TD Prediction
+### Action Preference
 
-**constant-$$\alpha$$ MC**:
-
-
-
-
-See [Maximization Bias Example](https://ha5ha6.github.io/judy_blog/td/#maximization-bias-example) for more info
+See [Short Corridor](https://ha5ha6.github.io/judy_blog/pgac/#short-corridor) for more info
 
 
 ### Important Concepts
-
-**Sample updates**: involve looking ahead to a sample successor state (or state-action pair), using the value of the successor and the reward along the way to compute a backed-up value and then updating the value of the original state (or state-action pair)
-
-
-
 
 
 ### Short Corridor
@@ -82,7 +71,7 @@ V(s_2) &= p(-1+V(s_3))+(1-p)(-1+V(s_1))
 
 \end{align*}$$
 
-where $$V(s_3)=0$$, $$p$$ is the probability of choosing right action
+where $$V(s_3)=0$$, $$p$$ is the probability of choosing the right action
 
 Therefore,
 
@@ -91,7 +80,7 @@ $$V(s_0)=\frac{2(p-2)}{p(1-p)}$$
 ```python
 #return state value of state 0
 def v0(p):
-    return (2 * p - 4) / (p * (1 - p))
+    return (2*p-4)/(p*(1-p))
 
 p=np.linspace(0.01, 0.99, 100)
 v=v0(p)
