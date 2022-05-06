@@ -29,7 +29,9 @@ usemathjax: true
 
 [\[Random Walk\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/random_walk.ipynb) [\[Windy Grid\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/windy_grid.ipynb) [\[Cliff Walking\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/cliff_walking.ipynb) [\[Max Bias\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/max_bias.ipynb)
 
-Policy Gradient and Actor-Critic: TBD
+[Policy Gradient and Actor-Critic](/judy_blog/pgac/): REINFORCE, ...
+
+[\[Short Corridor\]]
 
 [All About Cartpole](/judy_blog/cartpole/): Cartpole realizations with classic RL algorithms: Q-learning, SARSA($$\lambda$$), DQN, etc
 
