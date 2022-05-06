@@ -82,25 +82,40 @@ we have
 
 $$V(s_0)=\frac{2(p-2)}{p(1-p)}$$
 
+```python
+p=np.linspace(0.01, 0.99, 100)
+v=v0(p)
+
+oppi = np.argmax(v)
+p_op = p[oppi]
+v_op = v[oppi]
+
+plt.rcParams['font.size']='14'
+plt.figure(figsize=(8,6))
+plt.plot(p,v,linewidth=3)
+plt.plot(p_op,v_op,'o',markersize=20,label="optimal point ({0:.2f}, {1:.2f})".format(p_op, v_op))
+plt.ylim(ymin=-105.0, ymax=5)
+
+epsilon = 0.05
+
+plt.plot(epsilon, v0(epsilon), 'o',markersize=20,
+         label="e-greedy left action ({0:.2f}, {1:.2f})".format(epsilon, v0(epsilon)))
+plt.plot(1-epsilon, v0(1-epsilon), 'o',markersize=20,
+         label="e-greedy right action ({0:.2f}, {1:.2f})".format(1-epsilon, v0(1-epsilon)))
+plt.legend()
+plt.grid()
+plt.ylabel('$V_{\pi}(s_0)$',fontsize=20)
+plt.xlabel('probability of choosing right action',fontsize=20)
+plt.savefig('egreedy_shortcorridor.png',dpi=350)
+```
+
+<center><img src="/judy_blog/assets/images/egreedy_shortcorridor.png" width=400></center>
+
+The above corresponds to Figure 13.1
 
 ```python
 
 ```
-
-
-<center><img src="/judy_blog/assets/images/ann_sarsa_heatmap_cliffwalk.png" width=350><img src="/judy_blog/assets/images/ann_sarsa_oppi_cliffwalk.png" width=350></center>
-
-<center><img src="/judy_blog/assets/images/ann_ql_heatmap_cliffwalk.png" width=350><img src="/judy_blog/assets/images/ann_ql_oppi_cliffwalk.png" width=350></center>
-
-
-
-```python
-
-```
-
-<center><img src="/judy_blog/assets/images/doubleq_maxbias.png" width=400></center>
-
-The above corresponds to Figure 6.5
 
 ### References
 
