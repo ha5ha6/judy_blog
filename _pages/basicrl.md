@@ -487,9 +487,13 @@ $$C_{n+1} \triangleq C_n + W_{n+1}$$
 
 **Delayed reward**:
 
-**Deterministic/Stochastic policy**:
+**Deterministic policy**: $$\pi(s)$$ always gives the exact same action for a given state,
 
-**Deterministic/Stochastic env**:
+**Stochastic policy**: $$a \sim \pi(a \mid s)$$ draws a sample from a distribution over actions when it encounters a state
+
+**Deterministic env**: $$p(s' \mid s,a) = 1$$
+
+**Stochastic env**: $$p(s' \mid s,a) \neq 1$$
 
 **Monte Carlo methods**: only require **experience samples** to estimate $$V_{\pi}$$ and $$Q_{\pi}$$ by averaging over those samples and actual returns **without knowing the model of env**, and only for episodic tasks
 

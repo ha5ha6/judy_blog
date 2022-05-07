@@ -99,7 +99,7 @@ plt.rcParams['font.size']='14'
 plt.figure(figsize=(8,6))
 plt.plot(p,v,linewidth=3)
 plt.plot(p_op,v_op,'o',markersize=20,label="optimal point ({0:.2f}, {1:.2f})".format(p_op, v_op))
-plt.ylim(ymin=-105.0, ymax=5)
+plt.ylim([-105.0,5])
 
 epsilon=0.05
 
