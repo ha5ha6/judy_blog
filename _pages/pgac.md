@@ -44,7 +44,7 @@ where $$\phi(s,a)$$ contains feature vectors
 
 Then the policy can be delivered in a softmax manner w.r.t $$h$$, indicating that the actions with the highest preferences in each state are given the highest probabilities of being selected
 
-$$\pi(a \mid s; \boldsymbol{\theta}) \triangleq \frac{\exp h(s,a; \boldsymbol{\theta})}{\sum_b \exp h(s,a; \boldsymbol{\theta})}$$
+$$\pi(a \mid s; \boldsymbol{\theta}) \triangleq \frac{\exp h(s,a; \boldsymbol{\theta})}{\sum_b \exp h(s,b; \boldsymbol{\theta})}$$
 
 The merits of this formulation include
 
