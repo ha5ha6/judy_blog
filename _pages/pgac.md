@@ -36,7 +36,7 @@ where $$\hat{\nabla J(\boldsymbol{\theta}_t)} \in \mathbb{R}^d$$ is a stochastic
 
 ### Action Preference
 
-In order to construct a **differentiable** policy for **discrete action spaces**, we can form a parameterized numerical **preferences** $$h$$:
+In order to construct a **differentiable** policy for **discrete action spaces**, we form a parameterized numerical **preferences** $$h$$:
 
 $$h(s,a; \boldsymbol{\theta}) = \phi(s,a)^T \boldsymbol{\theta}$$
 
@@ -44,7 +44,7 @@ where $$\phi(s,a)$$ contains feature vectors
 
 Then the policy can be delivered in a softmax manner w.r.t $$h$$, indicating that the actions with the highest preferences in each state are given the highest probabilities of being selected
 
-$$\pi(a \mid s; \boldsymbol{\theta}) \triangleq \frac{\exp h(s,a; \boldsymbol{\theta})}{\sum_b \exp h(s,b; \boldsymbol{\theta})}$$
+$$\pi(a\mids; \boldsymbol{\theta}) \triangleq \frac{\exp h(s,a; \boldsymbol{\theta})}{\sum_b \exp h(s,b; \boldsymbol{\theta})}$$
 
 The merits of this formulation include
 
