@@ -18,7 +18,7 @@ usemathjax: true
   }
 </style>
 
-Despite value-based methods where policies were derived from the action value functions, we can learn a parameterized policy $$\pi(a \mid s, \boldsymbol{\theta})$$ directly, with $$\boldsymbol{\theta}$$ being the policy parameters
+Despite value-based methods where policies were derived from the action-value functions, we can learn a parameterized policy $$\pi(a \mid s; \boldsymbol{\theta})$$ directly, with $$\boldsymbol{\theta}$$ being the policy parameters
 
 The parameters are updated in a gradient ascent fashion based on a scalar performance measure $$J(\boldsymbol{\theta})$$:
 
@@ -38,9 +38,9 @@ where $$\hat{\nabla J(\boldsymbol{\theta}_t)} \in \mathbb{R}^d$$ is a stochastic
 
 In order to construct a **differentiable** policy for **discrete action spaces**, we can form a parameterized numerical **preferences** $$h$$:
 
-$$h(s,a; \boldsymbol{\theta}) = \Phi(s,a)^T \boldsymbol{\theta}$$
+$$h(s,a; \boldsymbol{\theta}) = \phi(s,a)^T \boldsymbol{\theta}$$
 
-where $$\Phi(s,a)$$ contains feature vectors
+where $$\phi(s,a)$$ contains feature vectors
 
 Then the policy can be delivered in a softmax manner w.r.t $$h$$, indicating that the actions with the highest preferences in each state are given the highest probabilities of being selected
 
