@@ -28,6 +28,18 @@ where $$\hat{\nabla J(\boldsymbol{\theta}_t)} \in \mathbb{R}^d$$ is a stochastic
 
 ### Action Preference
 
+In order to construct a differentiable policy for discrete action spaces, we can form a parameterized numerical preferences $$h$$:
+
+$$h(s,a; \boldsymbol{\theta}) = \Phi(s,a)^T \boldsymbol{\theta}$$
+
+where $$\Phi(s,a)$$ contains feature vectors
+
+Then the policy can be delivered in a softmax manner w.r.t $$h$$, indicating that the actions with the highest preferences in each state are given the highest probabilities of being selected
+
+$$\pi(a \mid s; \boldsymbol{\theta}) \triangleq \frac{\exp h(s,a; \boldsymbol{\theta})}{\sum_b \exp h(s,a; \boldsymbol{\theta})}$$
+
+
+
 See [Short Corridor](https://ha5ha6.github.io/judy_blog/pgac/#short-corridor) for more info
 
 

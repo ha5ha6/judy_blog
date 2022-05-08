@@ -487,7 +487,7 @@ $$C_{n+1} \triangleq C_n + W_{n+1}$$
 
 **Delayed reward**:
 
-**Deterministic policy**: $$\pi(s)$$ always gives the exact same action for a given state,
+**Deterministic policy**: $$\pi(s)$$ always gives the exact same action for a given state
 
 **Stochastic policy**: $$a \sim \pi(a \mid s)$$ draws a sample from a distribution over actions when it encounters a state
 
