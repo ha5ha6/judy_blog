@@ -52,18 +52,18 @@ The merits of this formulation include
 
 - it enables the selection of actions with arbitrary probabilities, where action-value based methods have no natural way of finding stochastic optimal policies
 
+See [Short Corridor](https://ha5ha6.github.io/judy_blog/pgac/#short-corridor) for more info
+
+### the Policy Gradient Theorem
+
+### REINFORCE
+
 Since we are interested in the derivative of the policy, we show the log-derivatives of **softmax in action preference**, which will be useful in applying **REINFORCE**, a log-likelihood-based policy gradient method, in discrete action setting
 
 $$\begin{align*}
 \nabla \log \pi(a \mid s; \boldsymbol{\theta}) &= \frac{\nabla \pi(a \mid s; \boldsymbol{\theta})}{\pi(a \mid s; \boldsymbol{\theta})} \\
 
-
 \end{align*}$$
-
-
-
-See [Short Corridor](https://ha5ha6.github.io/judy_blog/pgac/#short-corridor) for more info
-
 
 ### Important Concepts
 
@@ -151,6 +151,8 @@ plt.savefig('egreedy_shortcorridor.png',dpi=350)
 <center><img src="/judy_blog/assets/images/egreedy_shortcorridor.png" width=400></center>
 
 The above corresponds to Example 13.1
+
+This experiment shows action-value-based methods have difficulties to find optimal stochastic policy, while policy-based methods can do much better
 
 ```python
 
