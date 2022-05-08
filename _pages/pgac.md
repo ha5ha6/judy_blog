@@ -52,6 +52,14 @@ The merits of this formulation include
 
 - it enables the selection of actions with arbitrary probabilities, where action-value based methods have no natural way of finding stochastic optimal policies
 
+Since we are interested in the derivative of the policy, we show the log-derivatives of **softmax in action preference**, which will be useful in REINFORCE, a log-likelihood based policy gradient method in later explanation
+
+
+$$\begin{align*}
+\nabla \log \pi(a \mid s; \boldsymbol{\theta}) &= \frac{\nabla \pi(a \mid s; \boldsymbol{\theta})}{\pi(a \mid s; \boldsymbol{\theta})} \\
+
+
+$$\end{align*}
 
 
 
