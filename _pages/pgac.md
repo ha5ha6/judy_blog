@@ -40,11 +40,11 @@ where $$\hat{\nabla J(\boldsymbol{\theta}_t)} \in \mathbb{R}^d$$ is a stochastic
 
 In order to construct a **differentiable** policy for **discrete action spaces**, we often form a **softmax policy**:
 
-$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \frac{\exp \phi(s,a)^T \boldsymbol{\theta}}{\sum_b \exp \phi(s,b)^T \boldsymbol{\theta}}$$
+$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \frac{\exp \boldsymbol{\theta}^T \phi(s,a) \boldsymbol{\theta}}{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)}$$
 
-where $$\phi(s,a)^T \boldsymbol{\theta}$$ is a parameterized numerical **preferences** defined by $$h(s,a; \boldsymbol{\theta})$$ suggesting a linear combination of features $$\phi(s,a)$$
+where $$\boldsymbol{\theta}^T \phi(s,b)$$ is a linear combination of features $$\phi(s,a)$$, which can be defined by a parameterized numerical **preference** $$h(s,a; \boldsymbol{\theta})$$
 
-This can be interpreted as the actions with the highest preferences in each state are given the highest probabilities of being selected
+This suggests that the actions with the highest preferences in each state are given the highest probabilities of being selected
 
 The merits of this formulation include
 
@@ -56,7 +56,7 @@ See [Short Corridor](https://ha5ha6.github.io/judy_blog/pgac/#short-corridor) fo
 
 In the case of **continuous action spaces**, we often use **Gaussian policy**, where the mean is the linear combination of features:
 
-$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathbb{N}(\phi(s,a)^T \boldsymbol{\theta}, \sigma^2)$$
+$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathbb{N}(\boldsymbol{\theta}^T \phi(s,a), \sigma^2)$$
 
 ### Policy Gradient Theorem
 
@@ -70,9 +70,11 @@ $$\nabla J(\boldsymbol{\theta}) \propto \sum_s \mu(s) \sum_a Q_{\pi}(s,a) \nabla
 
 See [\[this post\]](https://lilianweng.github.io/posts/2018-04-08-policy-gradient/) for a detailed proof
 
-Here, $$\mu(s)$$ is the **on-policy distribution** under $$\pi$$
+Here, $$\mu(s)$$ is the **on-policy distribution under $$\pi$$**
 
-Assuming we have far more states then weights,
+Assuming we have far more states than weights, we have to emphasize which states are of more importance by specifying a state distribution
+
+$$\mu(s) \geq 0, \sum_{s \in \mathcal{S}} \mu(s)=1$$
 
 ### REINFORCE
 
