@@ -40,9 +40,9 @@ where $$\hat{\nabla J(\boldsymbol{\theta}_t)} \in \mathbb{R}^d$$ is a stochastic
 
 In order to construct a **differentiable** policy for **discrete action spaces**, we often form a **softmax policy**:
 
-$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \frac{\exp \boldsymbol{\theta}^T \phi(s,a) \boldsymbol{\theta}}{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)}$$
+$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \frac{\exp \boldsymbol{\theta}^T \phi(s,a)}{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)}$$
 
-where $$\boldsymbol{\theta}^T \phi(s,b)$$ is a linear combination of features $$\phi(s,a)$$, which can be defined by a parameterized numerical **preference** $$h(s,a; \boldsymbol{\theta})$$
+where $$\boldsymbol{\theta}^T \phi(s,a)$$ is a linear combination of features $$\phi(s,a)$$, which can be defined by a parameterized numerical **preference** $$h(s,a; \boldsymbol{\theta})$$
 
 This suggests that the actions with the highest preferences in each state are given the highest probabilities of being selected
 
@@ -56,7 +56,7 @@ See [Short Corridor](https://ha5ha6.github.io/judy_blog/pgac/#short-corridor) fo
 
 In the case of **continuous action spaces**, we often use **Gaussian policy**, where the mean is the linear combination of features:
 
-$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathbb{N}(\boldsymbol{\theta}^T \phi(s,a), \sigma^2)$$
+$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s,a), \sigma^2)$$
 
 ### Policy Gradient Theorem
 
@@ -72,7 +72,7 @@ See [\[this post\]](https://lilianweng.github.io/posts/2018-04-08-policy-gradien
 
 Here, $$\mu(s)$$ is the **on-policy distribution under $$\pi$$**
 
-Assuming we have far more states than weights, we have to emphasize which states are of more importance by specifying a state distribution
+Assuming we have far more states than weights, we have to emphasize which states are of more importance by specifying a state distribution:
 
 $$\mu(s) \geq 0, \sum_{s \in \mathcal{S}} \mu(s)=1$$
 
