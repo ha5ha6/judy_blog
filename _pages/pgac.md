@@ -58,7 +58,11 @@ See [Short Corridor](https://ha5ha6.github.io/judy_blog/pgac/#short-corridor) fo
 
 ### Policy Gradient Theorem
 
+With the definition of the performance measure being the value of the start state of an episode:
 
+$$J(\boldsymbol{\theta}) \triangleq V_{\pi_{\boldsymbol{\theta}}} (s_0) $$,
+
+the **Policy Gradient Theorem** provides a general relation between $$\nabla J(\boldsymbol{\theta})$$ and the gradient of the policy $$\nabla \pi(a \mid s)$$ itself without taking derivatives of the state distribution
 
 ### REINFORCE
 
