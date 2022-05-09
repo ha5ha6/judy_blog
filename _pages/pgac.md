@@ -78,7 +78,7 @@ $$\mu(s) \geq 0, \sum_{s \in \mathcal{S}} \mu(s)=1$$
 
 Under on-policy training this is called **on-policy distribution**, and often $$\mu(s)$$ is chosen to be the fraction of time spent in $$s$$
 
-In continuous tasks, it is the **stationary distribution under a policy $$d^\pi (s)$$**:
+In continuous tasks, it is the **stationary distribution under a specific policy** defined by $$d^\pi (s)$$:
 
 $$d^\pi (s) = \lim_{t \rightarrow \infty} P(s_t=s \mid s_0, \pi_{\boldsymbol{\theta}})$$
 
