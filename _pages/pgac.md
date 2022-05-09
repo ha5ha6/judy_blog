@@ -84,7 +84,7 @@ $$d^\pi (s) \triangleq \lim_{t \rightarrow \infty} P(s_t=s \mid s_0, \pi_{\bolds
 
 where $$P(s_t=s \mid s_0, \pi_{\boldsymbol{\theta}})$$ represents the probability of arriving at the state $$s_t$$ from $$s_0$$ following $$\pi_{\boldsymbol{\theta}}$$ in $$t$$ steps
 
-It means, when you travel along a Markov Chain in an infinite scale by following one certain policy, the final probability of visiting each state will be unchanged
+It means, when you travel along a Markov Chain in an infinite scale by following one certain policy, the final probability of visiting one state will be unchanged
 
 ### REINFORCE
 
