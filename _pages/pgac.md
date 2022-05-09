@@ -66,7 +66,7 @@ $$J(\boldsymbol{\theta}) \triangleq V_{\pi_{\boldsymbol{\theta}}} (s_0)$$
 
 the **Policy Gradient Theorem** provides a general link between $$\nabla J(\boldsymbol{\theta})$$ and the gradient of the policy $$\nabla \pi(a \mid s)$$ itself without taking derivatives of the state distribution:
 
-$$\nabla J(\boldsymbol{\theta}) \propto \sum_{s \in \mathcal{S}} \mu(s) \sum_{a \in \mathcal{A}} Q_{\pi}(s,a) \nabla \pi(a \mid s, \boldsymbol{\theta}))$$
+$$\nabla J(\boldsymbol{\theta}) \propto \sum_{s \in \mathcal{S}} \mu(s) \sum_{a \in \mathcal{A}} Q_{\pi}(s,a) \nabla \pi(a \mid s, \boldsymbol{\theta})$$
 
 See [this post](https://lilianweng.github.io/posts/2018-04-08-policy-gradient/) for a detailed proof
 
@@ -80,7 +80,7 @@ Under on-policy training this is called **on-policy distribution**, and often $$
 
 In continuous tasks, it is the **stationary distribution under a specific policy** defined by $$d^\pi (s)$$:
 
-$$d^\pi (s) = \lim_{t \rightarrow \infty} P(s_t=s \mid s_0, \pi_{\boldsymbol{\theta}})$$
+$$d^\pi (s) \triangleq \lim_{t \rightarrow \infty} P(s_t=s \mid s_0, \pi_{\boldsymbol{\theta}})$$
 
 where $$P(s_t=s \mid s_0, \pi_{\boldsymbol{\theta}})$$ represents the probability of arriving at the state $$s_t$$ from $$s_0$$ following $$\pi_{\boldsymbol{\theta}}$$ in $$t$$ steps
 
