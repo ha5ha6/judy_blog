@@ -36,17 +36,15 @@ where $$\hat{\nabla J(\boldsymbol{\theta}_t)} \in \mathbb{R}^d$$ is a stochastic
 
 - etc
 
-### Action Preference
+### Action Formulation
 
-In order to construct a **differentiable** policy for **discrete action spaces**, we form a parameterized numerical **preferences** $$h$$:
+In order to construct a **differentiable** policy for **discrete action spaces**, we often form a **softmax policy**:
 
-$$h(s,a; \boldsymbol{\theta}) = \phi(s,a)^T \boldsymbol{\theta}$$
+$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \frac{\exp \phi(s,a)^T \boldsymbol{\theta}}{\sum_b \exp \phi(s,b)^T \boldsymbol{\theta}}$$
 
-where $$\phi(s,a)$$ contains feature vectors
+where $$\phi(s,a)^T \boldsymbol{\theta}$$ is a parameterized numerical **preferences** defined by $$h(s,a; \boldsymbol{\theta})$$ suggesting a linear combination of features $$\phi(s,a)$$
 
-Then the policy can be delivered in a softmax manner w.r.t action preferences $$h$$, indicating that the actions with the highest preferences in each state are given the highest probabilities of being selected
-
-$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \frac{\exp h(s,a; \boldsymbol{\theta})}{\sum_b \exp h(s,b; \boldsymbol{\theta})}$$
+This can be interpreted as the actions with the highest preferences in each state are given the highest probabilities of being selected
 
 The merits of this formulation include
 
@@ -55,6 +53,10 @@ The merits of this formulation include
 - it enables the selection of actions with arbitrary probabilities, where action-value based methods have no natural way of finding stochastic optimal policies
 
 See [Short Corridor](https://ha5ha6.github.io/judy_blog/pgac/#short-corridor) for more info
+
+In the case of **continuous action spaces**, we often use **Gaussian policy**, where the mean is the linear combination of features:
+
+$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathbb{N}(\phi(s,a)^T \boldsymbol{\theta}, \sigma^2)$$
 
 ### Policy Gradient Theorem
 
@@ -66,7 +68,11 @@ the **Policy Gradient Theorem** provides a general link between $$\nabla J(\bold
 
 $$\nabla J(\boldsymbol{\theta}) \propto \sum_s \mu(s) \sum_a Q_{\pi}(s,a) \nabla \pi(a \mid s, \boldsymbol{\theta}))$$
 
+See [\[this post\]](https://lilianweng.github.io/posts/2018-04-08-policy-gradient/) for a detailed proof
 
+Here, $$\mu(s)$$ is the **on-policy distribution** under $$\pi$$
+
+Assuming we have far more states then weights,
 
 ### REINFORCE
 
