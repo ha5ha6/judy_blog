@@ -36,7 +36,7 @@ where $$\hat{\nabla J(\boldsymbol{\theta}_t)} \in \mathbb{R}^d$$ is a stochastic
 
 - etc
 
-### Action Formulation
+### Action Formulations
 
 In order to construct a **differentiable** policy for **discrete action spaces**, we often form a **softmax policy**:
 
@@ -66,15 +66,23 @@ $$J(\boldsymbol{\theta}) \triangleq V_{\pi_{\boldsymbol{\theta}}} (s_0)$$
 
 the **Policy Gradient Theorem** provides a general link between $$\nabla J(\boldsymbol{\theta})$$ and the gradient of the policy $$\nabla \pi(a \mid s)$$ itself without taking derivatives of the state distribution:
 
-$$\nabla J(\boldsymbol{\theta}) \propto \sum_s \mu(s) \sum_a Q_{\pi}(s,a) \nabla \pi(a \mid s, \boldsymbol{\theta}))$$
+$$\nabla J(\boldsymbol{\theta}) \propto \sum_{s \in \mathcal{S}} \mu(s) \sum_{a \in \mathcal{A}} Q_{\pi}(s,a) \nabla \pi(a \mid s, \boldsymbol{\theta}))$$
 
-See [\[this post\]](https://lilianweng.github.io/posts/2018-04-08-policy-gradient/) for a detailed proof
+See [this post](https://lilianweng.github.io/posts/2018-04-08-policy-gradient/) for a detailed proof
 
 Here, $$\mu(s)$$ is the **on-policy distribution under $$\pi$$**
 
 Assuming we have far more states than weights, we have to emphasize which states are of more importance by specifying a state distribution:
 
 $$\mu(s) \geq 0, \sum_{s \in \mathcal{S}} \mu(s)=1$$
+
+Under on-policy training this is called **on-policy distribution**, often $$\mu(s)$$ is chosen to be the fraction of time spent in $$s$$
+
+In continuous tasks, it is the **stationary distribution under $$\policy$$** $$d^\pi (s)$$:
+
+$$d^\pi (s) = \lim_{t \rightarrow \infty} P(s_t=s \mid s_0, \pi_{\boldsymbol{\theta}})$$
+
+It means, when you travel along a Markov Chain in an infinite scale by following one certain policy, the final probability of visiting each state will be unchanged
 
 ### REINFORCE
 
