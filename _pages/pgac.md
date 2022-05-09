@@ -32,6 +32,8 @@ where $$\hat{\nabla J(\boldsymbol{\theta}_t)} \in \mathbb{R}^d$$ is a stochastic
 
 - the choice of policy parameterization is a good way of injecting prior knowledge
 
+- the continuity of the policy dependence on the parameters enables the action probabilities to change smoothly and therefore allows for convergence guarantees with gradient ascent
+
 - etc
 
 ### Action Preference
@@ -48,13 +50,15 @@ $$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \frac{\exp h(s,a; \boldsymbol{\th
 
 The merits of this formulation include
 
-- the approximate policy can approach a deterministic policy, since action preferences are driven to produce the optimal stochastic policy, which can also be a deterministic policy
+- the approximate policy can approach a deterministic policy, since action preferences are driven to produce the optimal stochastic policy, （which can also be a deterministic policy）
 
 - it enables the selection of actions with arbitrary probabilities, where action-value based methods have no natural way of finding stochastic optimal policies
 
 See [Short Corridor](https://ha5ha6.github.io/judy_blog/pgac/#short-corridor) for more info
 
-### the Policy Gradient Theorem
+### Policy Gradient Theorem
+
+
 
 ### REINFORCE
 
