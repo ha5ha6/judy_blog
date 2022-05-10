@@ -96,7 +96,7 @@ $$\begin{align*}
 &= \mathbb{E}_{\pi} \left[\sum_a Q_{\pi}(s_t,a) \nabla \pi(a \mid s_t, \boldsymbol{\theta}) \right]
 \end{align*}$$
 
-where $$s_t$$ represents the state sample at time $$t$$. We can do the same sampling trick to the action $$a_t$$, where an appropriate sum over actions like $$\sum_a \pi(a \mid s_t, \boldsymbol{\theta}))$$ can be replaced by an expectation under $$\pi$$. Following the above equations
+where $$s_t$$ represents the state sample at time $$t$$. We can do the same sampling trick to the action $$a_t$$, where an appropriate sum over actions like $$\sum_a \pi(a \mid s_t, \boldsymbol{\theta})$$ can be replaced by an expectation under $$\pi$$. Following the above equations
 
 $$\begin{align*}
 \nabla J(\boldsymbol{\theta}) &= \mathbb{E}_{\pi} \left[\sum_a \pi(a \mid s_t, \boldsymbol{\theta}) Q_{\pi}(s_t,a) \frac{\nabla \pi(a \mid s_t, \boldsymbol{\theta})}{\pi(a \mid s_t, \boldsymbol{\theta})} \right] \\
@@ -108,6 +108,11 @@ $$\begin{align*}
 
 Note that $$\mathbb{E}_{\pi} \left[R_t \mid s_t, a_t \right]=Q_{\pi}(s_t, a_t)$$
 
+Therefore, we obtained a quantity that can be sampled on each time step whose expectation is equal to the gradient
+
+The **update rule** of **REINFORCE**:
+
+$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})}$$
 
 Since we are interested in the derivative of the policy, we show the log-derivatives of **softmax in action preference**, which will be useful in applying **REINFORCE**, a log-likelihood-based policy gradient method, in discrete action setting
 
