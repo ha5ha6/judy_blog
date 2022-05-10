@@ -137,7 +137,11 @@ $$\begin{align*}
 
 &\cdot \frac{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)}{\exp \boldsymbol{\theta}^T \phi(s,a)} \\
 
-&= \phi(s,a) - \frac{\sum_b \boldsymbol{\theta}^T \phi(s,b) \cdot \phi(s,a)}{\sum_b \boldsymbol{\theta}^T \phi(s,b)}
+&= \phi(s,a) - \frac{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b) \cdot \phi(s,b)}{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)} \\
+
+&= \phi(s,a) - \sum_b \pi(b \mid s; \boldsymbol{\theta}) \phi(s,b) \\
+
+&= \phi(s,a) - \mathbb{E}_{\pi} \left[\phi(s,\cdot) \right]
 
 \end{align*}$$
 
