@@ -129,7 +129,7 @@ $$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \frac{\exp \boldsymbol{\theta}^T 
 We have
 
 $$\begin{align*}
-\nabla \log \pi(a \mid s; \boldsymbol{\theta}) &= \frac{\nabla \pi(a \mid s; \boldsymbol{\theta})}{\pi(a \mid s; \boldsymbol{\theta})} \\
+\nabla_{\boldsymbol{\theta}} \log \pi(a \mid s; \boldsymbol{\theta}) &= \frac{\nabla \pi(a \mid s; \boldsymbol{\theta})}{\pi(a \mid s; \boldsymbol{\theta})} \\
 
 &= \left[\nabla_{\boldsymbol{\theta}} \frac{\exp \boldsymbol{\theta}^T \phi(s,a)}{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)} \right] \cdot \frac{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)}{\exp \boldsymbol{\theta}^T \phi(s,a)} \\
 
@@ -152,13 +152,15 @@ $$a \sim \pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\t
 We have
 
 $$\begin{align*}
-\nabla \log \pi(a \mid s; \boldsymbol{\theta}) &= \nabla \log \left{\frac{1}{\sigma \sqrt{2\pi}} \exp \left[- \frac{1}{2} \left(\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right)^2 \right]\right}\\
+\nabla_{\boldsymbol{\theta}} \log \pi(a \mid s; \boldsymbol{\theta}) &= \nabla \log \left{\frac{1}{\sigma \sqrt{2\pi}} \exp \left[- \frac{1}{2} \left(\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right)^2 \right]\right}\\
+
+&= \log \frac{1}{\sigma \sqrt{2\pi}} - \log \exp \left[- \frac{1}{2} \left(\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right)^2 \right] \\
 
 &= -\frac{1}{2} \nabla_{\boldsymbol{\theta}} \left[\frac{a - \boldsymbol{\theta}^T \phi(s)}{\sigma} \right]^2 \\
 
 &= -\frac{1}{2} \cdot 2 \cdot \left[\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right] \cdot -\frac{\phi(s)}{\sigma} \\
 
-&= \frac{\left[a-\boldsymbol{\theta}^T \phi(s) \right]\cdot \phi(s)}{\sigma^2}
+&= \frac{\left[a-\boldsymbol{\theta}^T \phi(s) \right] \phi(s)}{\sigma^2}
 
 \end{align*}$$
 
