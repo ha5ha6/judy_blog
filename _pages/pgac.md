@@ -272,6 +272,8 @@ This experiment shows action-value-based methods have difficulties to find optim
 
 [Deep Reinforcement Learning - Julien Vitay](https://julien-vitay.net/deeprl/BasicRL.html)
 
+[Going Deeper Into Reinforcement Learning: Fundamentals of Policy Gradients - Daniel Seita](https://danieltakeshi.github.io/2017/03/28/going-deeper-into-reinforcement-learning-fundamentals-of-policy-gradients/)
+
 ### Slides and Code
 
 [judy_tutorial_basicRL](https://github.com/ha5ha6/judy_tutorial_basicRL)
