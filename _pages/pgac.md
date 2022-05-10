@@ -114,15 +114,15 @@ The **update rule** of **REINFORCE**:
 
 $$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})}$$
 
-**REINFORCE** uses the complete return from time $$t$$ ($$R_t$$), which includes all future rewards up until the end of the episode, so it is a **Monte Carlo** method
+**REINFORCE** uses $$R_t$$, the complete return from time $$t$$ , which includes all future rewards up until the end of the episode, so it is a **Monte Carlo** method
 
-Moreover, we can replace the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})}$$ with $$\nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta})$$, this is called **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$.
+Moreover, we can replace the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})}$$ with $$\nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta})$$. This is called **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
 
 So the **update rule** can be re-written to:
 
-$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta}))$$
+$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta})$$
 
-In discrete action setting
+In a **discrete action** setting
 
 $$\begin{align*}
 \nabla \log \pi(a \mid s; \boldsymbol{\theta}) &= \frac{\nabla \pi(a \mid s; \boldsymbol{\theta})}{\pi(a \mid s; \boldsymbol{\theta})} \\
