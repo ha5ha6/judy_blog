@@ -133,7 +133,7 @@ $$\begin{align*}
 
 &= \left[\nabla_{\boldsymbol{\theta}} \frac{\exp \boldsymbol{\theta}^T \phi(s,a)}{\sum_b \boldsymbol{\theta}^T \phi(s,b)} \right] \cdot \frac{\sum_b \boldsymbol{\theta}^T \phi(s,b)}{\boldsymbol{\theta}^T \phi(s,a)} \\
 
-&= \frac{\exp \boldsymbol{\theta}^T \phi(s,a) \cdot \phi(s,a) \cdot  \sum_b \boldsymbol{\theta}^T \phi(s,b) - \exp \boldsymbol{\theta}^T \phi(s,a) \cdot \sum_b \boldsymbol{\theta}^T \phi(s,b) \cdot \phi(s,a)}{\left[ \sum_b \boldsymbol{\theta}^T \phi(s,b) \right]^2} \\
+&= \frac{\exp \boldsymbol{\theta}^T \phi(s,a) \cdot \phi(s,a) \cdot  \sum_b \boldsymbol{\theta}^T \phi(s,b) - \exp \boldsymbol{\theta}^T \phi(s,a) \cdot \sum_b \boldsymbol{\theta}^T \phi(s,b) \cdot \phi(s,a)}{\left[ \sum_b \boldsymbol{\theta}^T \phi(s,b) \right]^2} \cdot \frac{\sum_b \boldsymbol{\theta}^T \phi(s,b)}{\boldsymbol{\theta}^T \phi(s,a)} \\
 
 &= \phi(s,a) - \frac{\sum_b \boldsymbol{\theta}^T \phi(s,b) \cdot \phi(s,a)}{\sum_b \boldsymbol{\theta}^T \phi(s,b)}
 
