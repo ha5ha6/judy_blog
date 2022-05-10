@@ -122,10 +122,16 @@ So the **update rule** can be re-written to:
 
 $$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta})$$
 
-In a **discrete action** setting
+In a **discrete action** setting, where
+
+$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \frac{\exp \boldsymbol{\theta}^T \phi(s,a)}{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)}$$
+
+We have
 
 $$\begin{align*}
 \nabla \log \pi(a \mid s; \boldsymbol{\theta}) &= \frac{\nabla \pi(a \mid s; \boldsymbol{\theta})}{\pi(a \mid s; \boldsymbol{\theta})} \\
+
+&= \nabla_{\boldsymbol{\theta}} \frac{\exp \boldsymbol{\theta}^T \phi(s,a)}{\sum_b \boldsymbol{\theta}^T \phi(s,b)} \cdot \frac{\sum_b \boldsymbol{\theta}^T \phi(s,b)}{\boldsymbol{\theta}^T \phi(s,a)}
 
 \end{align*}$$
 
