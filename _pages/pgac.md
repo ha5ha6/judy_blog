@@ -88,17 +88,31 @@ It means, when you travel along a Markov Chain in an infinite scale by following
 
 ### REINFORCE
 
-The right-hand side of the **policy gradient theorem** is a sum over states weighted by how often the states occur under the target policy $$\pi$$
-
-If $$\pi$$ is followed, then states will be encountered in these proportions
-
-Thus, we can write
+The right-hand side of the **policy gradient theorem** is a sum over states weighted by how often the states occur under the target policy $$\pi$$. If $$\pi$$ is followed, then states will be encountered in these proportions. Thus, we can write
 
 $$\begin{align*}
 \nabla J(\boldsymbol{\theta}) &\propto \sum_{s \in \mathcal{S}} \mu(s) \sum_{a \in \mathcal{A}} Q_{\pi}(s,a) \nabla \pi(a \mid s, \boldsymbol{\theta}) \\
 
 &= \mathbb{E}_{\pi} \left[\sum_a Q_{\pi}(s_t,a) \nabla \pi(a \mid s_t, \boldsymbol{\theta}) \right]
 \end{align*}$$
+
+where $$s_t$$ represents the state sample at time $$t$$
+
+We can do the same sampling trick to the action $$a_t$$
+
+$$\begin{align*}
+\nabla J(\boldsymbol{\theta}) &\propto \sum_{s \in \mathcal{S}} \mu(s) \sum_{a \in \mathcal{A}} Q_{\pi}(s,a) \nabla \pi(a \mid s, \boldsymbol{\theta}) \\
+
+&= \mathbb{E}_{\pi} \left[\sum_a Q_{\pi}(s_t,a) \nabla \pi(a \mid s_t, \boldsymbol{\theta}) \right] \\
+
+&= \mathbb{E}_{\pi} \left[\sum_a \pi(a \mid s_t, \boldsymbol{\theta}) Q_{\pi}(s_t,a) \frac{\nabla \pi(a \mid s_t, \boldsymbol{\theta})}{\pi(a \mid s_t, \boldsymbol{\theta})} \right] \\
+
+&= \mathbb{E}_{\pi} \left[Q_{\pi}(s_t,a_t) \frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})} \right] \\
+
+&= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})} \right]
+\end{align*}$$
+
+
 
 
 Since we are interested in the derivative of the policy, we show the log-derivatives of **softmax in action preference**, which will be useful in applying **REINFORCE**, a log-likelihood-based policy gradient method, in discrete action setting
