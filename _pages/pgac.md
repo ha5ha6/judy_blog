@@ -256,9 +256,112 @@ The above corresponds to Example 13.1
 
 This experiment shows action-value-based methods have difficulties to find optimal stochastic policy, while policy-based methods can do much better
 
-```python
+Implementation of REINFORCE
 
+```python
+def policy(theta,phi):
+    h=np.dot(theta,phi)
+    upper=np.exp(h-np.max(h)) #avoid overflow
+    pi=upper/np.sum(upper)
+
+    #keep stochasitc policy with a_min>=0.05
+    a_min=np.argmin(pi)
+    epsilon=0.05
+    if pi[a_min]<epsilon:
+        pi[:]=1-epsilon
+        pi[a_min]=epsilon
+
+    if np.random.uniform()<=pi[0]:
+        return 0,pi
+    else:
+        return 1,pi
+
+#calculate derivative of log policy
+def dlog(phi,a,pi):
+
+    return phi[:,a]-np.dot(phi,pi)
+
+def run_reinforce(lr=2e-4, gm=1, n_eps=1000):
+
+    #initialization of policy parameter theta and state-action feature
+    theta=np.array([-1.47,1.47])
+    phi=np.array([[0,1],[1,0]])
+    #result logging
+    s_all,r_all,pi_all=[],[],[]
+
+    for ep in range(n_eps):
+        s,stp,r_sum,done=0,0,0,False
+        #cache for gradient update
+        actions,rewards,policies=[],[],[]
+
+        while not done:
+            a,pi=policy(theta,phi)
+            #pi_all.append(pi)
+            s_,r,done=step(s,a)
+
+            actions.append(a)
+            rewards.append(r)
+            policies.append(pi)
+
+            s=s_
+            stp+=1
+
+        #update policy parameter theta
+        #get discounted return for each step in a reversive way
+        G=np.zeros(len(rewards))
+        G[-1]=rewards[-1]
+        for i in range(2,len(G)+1):
+            G[-i]=gm*G[-i+1]+rewards[-i]
+
+        gmt=1
+
+        for i in range(len(rewards)):
+            grad=dlog(phi,actions[i],policies[i])
+            theta+=lr*gmt*G[i]*grad
+            gmt*=gm
+
+        r_all.append(sum(rewards))
+        s_all.append(stp)
+        #print(f'ep:{ep}, ret:{r_sum}')
+
+    return r_all,s_all#,pi_all
+
+from collections import defaultdict
+n_runs=100
+lr_all=[2e-4,2e-5,2e-3]
+r_res=defaultdict(list) #appendable list
+
+for lr in lr_all:
+    for n in range(n_runs):
+        r,s,pi=run_reinforce(lr=lr)
+        r_res[str(lr)].append(r)   
+
+plt.figure(figsize=(8,6))
+for k,v in r_res.items():
+    plt.plot(np.array(v).mean(axis=0),label='alpha'+k,linewidth=3)
+
+plt.grid()
+plt.axhline(y=-11.6, color='r', linestyle='--',linewidth=3,label='v*(s0)')
+plt.legend()
+plt.xlabel('Episode')
+plt.ylabel('G0 total reward on episode')
+plt.savefig('reinforce_shortcorridor.png',dpi=350)
+
+plt.figure(figsize=(8,6))
+plt.plot(pi,linewidth=3)
+plt.grid()
+plt.xlabel('Step')
+plt.ylabel('$\pi(s,a)$')
+plt.savefig('reinforce_pi_shortcorridor.png',dpi=350)
 ```
+
+<center><img src="/judy_blog/assets/images/reinforce_shortcorridor.png" width=400></center>
+
+<center><img src="/judy_blog/assets/images/reinforce_pi_shortcorridor.png" width=400></center>
+
+The above corresponds to Figure 13.1
+
+The results shows that REINFORCE can learn an optimal stochastic policy approaching the optimal value of the starting state
 
 ### References
 
@@ -269,8 +372,6 @@ This experiment shows action-value-based methods have difficulties to find optim
 [RL 2nd Edition Excercise Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
 
 [Policy Gradients Methods - Lilian Weng](https://lilianweng.github.io/posts/2018-04-08-policy-gradient/)
-
-[Deep Reinforcement Learning - Julien Vitay](https://julien-vitay.net/deeprl/BasicRL.html)
 
 [Going Deeper Into Reinforcement Learning: Fundamentals of Policy Gradients - Daniel Seita](https://danieltakeshi.github.io/2017/03/28/going-deeper-into-reinforcement-learning-fundamentals-of-policy-gradients/)
 
