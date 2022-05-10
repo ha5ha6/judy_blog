@@ -306,15 +306,14 @@ def run_reinforce(lr=2e-4, gm=1, n_eps=1000):
             s=s_
             stp+=1
 
-        #update policy parameter theta
         #get discounted return for each step in a reversive way
         G=np.zeros(len(rewards))
         G[-1]=rewards[-1]
         for i in range(2,len(G)+1):
             G[-i]=gm*G[-i+1]+rewards[-i]
 
+        #update policy parameter theta
         gmt=1
-
         for i in range(len(rewards)):
             grad=dlog(phi,actions[i],policies[i])
             theta+=lr*gmt*G[i]*grad
@@ -355,13 +354,11 @@ plt.ylabel('$\pi(s,a)$')
 plt.savefig('reinforce_pi_shortcorridor.png',dpi=350)
 ```
 
-<center><img src="/judy_blog/assets/images/reinforce_shortcorridor.png" width=400></center>
-
-<center><img src="/judy_blog/assets/images/reinforce_pi_shortcorridor.png" width=400></center>
+<center><img src="/judy_blog/assets/images/reinforce_shortcorridor.png" width=350><img src="/judy_blog/assets/images/reinforce_pi_shortcorridor.png" width=350></center>
 
 The above corresponds to Figure 13.1
 
-The results shows that REINFORCE was able to learn an optimal stochastic policy approaching the optimal value of the starting state
+The results show that REINFORCE was able to learn an optimal stochastic policy smoothly, approaching to the optimal value of the starting state
 
 ### References
 
