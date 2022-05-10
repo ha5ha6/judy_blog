@@ -145,6 +145,12 @@ $$\begin{align*}
 
 \end{align*}$$
 
+In the case of **continuous action spaces**, where
+
+$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s,a), \sigma^2)$$
+
+
+
 ### Important Concepts
 
 
