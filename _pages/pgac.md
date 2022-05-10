@@ -114,7 +114,15 @@ The **update rule** of **REINFORCE**:
 
 $$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})}$$
 
-Since we are interested in the derivative of the policy, we show the log-derivatives of **softmax in action preference**, which will be useful in applying **REINFORCE**, a log-likelihood-based policy gradient method, in discrete action setting
+**REINFORCE** uses the complete return from time $$t$$ ($$R_t$$), which includes all future rewards up until the end of the episode, so it is a **Monte Carlo** method
+
+Moreover, we can replace the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})}$$ with $$\nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta})$$, this is called **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$.
+
+So the **update rule** can be re-written to:
+
+$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta}))$$
+
+In discrete action setting
 
 $$\begin{align*}
 \nabla \log \pi(a \mid s; \boldsymbol{\theta}) &= \frac{\nabla \pi(a \mid s; \boldsymbol{\theta})}{\pi(a \mid s; \boldsymbol{\theta})} \\
