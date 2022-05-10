@@ -54,7 +54,7 @@ The merits of this formulation include
 
 See [Short Corridor](https://ha5ha6.github.io/judy_blog/pgac/#short-corridor) for more info
 
-In the case of **continuous action spaces**, we often use **Gaussian policy**, where the mean is the linear combination of features:
+In the case of **continuous action spaces**, we often use **Gaussian policy**, where the mean is the linear combination of state features:
 
 $$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s), \sigma^2)$$
 
