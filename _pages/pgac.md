@@ -164,7 +164,7 @@ $$\begin{align*}
 
 \end{align*}$$
 
-The pros and cons of **REINFORCE**:
+The **pros and cons** of **REINFORCE**:
 
 (+) theoretical convergence properties as a stochastic gradient method  
 
@@ -264,7 +264,7 @@ The above corresponds to Example 13.1
 
 This experiment shows action-value-based methods have difficulties to find optimal stochastic policy, while policy-based methods can do much better
 
-Implementation of REINFORCE
+**Implementation of REINFORCE**
 
 ```python
 def policy(theta,phi):
@@ -272,7 +272,7 @@ def policy(theta,phi):
     upper=np.exp(h-np.max(h)) #avoid overflow
     pi=upper/np.sum(upper)
 
-    #keep stochasitc policy with a_min>=0.05
+    #keep stochasitc policy with a_min<0.05
     a_min=np.argmin(pi)
     epsilon=0.05
     if pi[a_min]<epsilon:
