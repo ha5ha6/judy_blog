@@ -164,7 +164,15 @@ $$\begin{align*}
 
 \end{align*}$$
 
+The pros and cons of **REINFORCE**:
 
+(+) theoretical convergence properties as a stochastic gradient method  
+
+(+) the expected updated over an episode is in the same direction as the performance gradient
+
+(+) therefore, it assures an improvement in expected performance for sufficiently small learning rate, and convergence to a local optima
+
+(-) of high variance as a Monte Carlo method, and thus slow learning
 
 
 ### Important Concepts
@@ -290,7 +298,7 @@ def run_reinforce(lr=2e-4, gm=1, n_eps=1000):
     s_all,r_all,pi_all=[],[],[]
 
     for ep in range(n_eps):
-        s,stp,r_sum,done=0,0,0,False
+        s,stp,done=0,0,False
         #cache for gradient update
         actions,rewards,policies=[],[],[]
 
@@ -321,7 +329,6 @@ def run_reinforce(lr=2e-4, gm=1, n_eps=1000):
 
         r_all.append(sum(rewards))
         s_all.append(stp)
-        #print(f'ep:{ep}, ret:{r_sum}')
 
     return r_all,s_all#,pi_all
 
