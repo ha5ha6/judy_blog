@@ -56,7 +56,7 @@ See [Short Corridor](https://ha5ha6.github.io/judy_blog/pgac/#short-corridor) fo
 
 In the case of **continuous action spaces**, we often use **Gaussian policy**, where the mean is the linear combination of features:
 
-$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s,a), \sigma^2)$$
+$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s), \sigma^2)$$
 
 ### Policy Gradient Theorem
 
@@ -147,7 +147,16 @@ $$\begin{align*}
 
 In the case of **continuous action spaces**, where
 
-$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s,a), \sigma^2)$$
+$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s), \sigma^2)$$
+
+We have
+
+$$\begin{align*}
+\nabla \log \pi(a \mid s; \boldsymbol{\theta}) &= \frac{\nabla \pi(a \mid s; \boldsymbol{\theta})}{\pi(a \mid s; \boldsymbol{\theta})} \\
+
+
+\end{align*}$$
+
 
 
 
