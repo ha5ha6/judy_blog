@@ -361,7 +361,7 @@ plt.savefig('reinforce_pi_shortcorridor.png',dpi=350)
 
 The above corresponds to Figure 13.1
 
-The results shows that REINFORCE can learn an optimal stochastic policy approaching the optimal value of the starting state
+The results shows that REINFORCE was able to learn an optimal stochastic policy approaching the optimal value of the starting state
 
 ### References
 
