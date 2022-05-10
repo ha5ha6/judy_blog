@@ -106,7 +106,7 @@ $$\begin{align*}
 &= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})} \right]
 \end{align*}$$
 
-
+Note that $$\mathbb{E}_{\pi} \left[R_t \mid s_t, a_t \right]=Q_{\pi}(s_t, a_t)$$
 
 
 Since we are interested in the derivative of the policy, we show the log-derivatives of **softmax in action preference**, which will be useful in applying **REINFORCE**, a log-likelihood-based policy gradient method, in discrete action setting
