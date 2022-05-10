@@ -152,11 +152,15 @@ $$a \sim \pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\t
 We have
 
 $$\begin{align*}
-\nabla_{\boldsymbol{\theta}} \log \pi(a \mid s; \boldsymbol{\theta}) &= \nabla \log \left{\frac{1}{\sigma \sqrt{2\pi}} \exp \left[- \frac{1}{2} \left(\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right)^2 \right]\right} \\
+\nabla_{\boldsymbol{\theta}} \log \pi(a \mid s; \boldsymbol{\theta}) &= \nabla \log \frac{1}{\sigma \sqrt{2\pi}} \exp \left[- \frac{1}{2} \left(\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right)^2 \right] \\
 
 &= \log \frac{1}{\sigma \sqrt{2\pi}} - \log \exp \left[- \frac{1}{2} \left(\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right)^2 \right] \\
 
+&= -\frac{1}{2} \nabla_{\boldsymbol{\theta}} \left[\frac{a - \boldsymbol{\theta}^T \phi(s)}{\sigma} \right]^2 \\
 
+&= -\frac{1}{2} \cdot 2 \cdot \left[\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right] \cdot -\frac{\phi(s)}{\sigma} \\
+
+&= \frac{\left[a-\boldsymbol{\theta}^T \phi(s) \right] \phi(s)}{\sigma^2}
 
 \end{align*}$$
 
