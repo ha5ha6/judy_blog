@@ -147,7 +147,7 @@ $$\begin{align*}
 
 In the case of **continuous action spaces**, where
 
-$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s), \sigma^2)$$
+$$a \sim \pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s), \sigma^2)$$
 
 We have
 
