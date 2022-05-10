@@ -152,7 +152,7 @@ $$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T
 We have
 
 $$\begin{align*}
-\nabla \log \pi(a \mid s; \boldsymbol{\theta}) &= \nabla \log \frac{1}{\sigma \sqrt{2\pi}} \exp \left[- \frac{1}{2} \left(\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right)^2 \right]\\
+\nabla \log \pi(a \mid s; \boldsymbol{\theta}) &= \nabla \log \left{\frac{1}{\sigma \sqrt{2\pi}} \exp \left[- \frac{1}{2} \left(\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right)^2 \right]\right}\\
 
 &= -\frac{1}{2} \nabla_{\boldsymbol{\theta}} \left[\frac{a - \boldsymbol{\theta}^T \phi(s)}{\sigma} \right]^2 \\
 
