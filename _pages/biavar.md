@@ -148,7 +148,7 @@ $$\begin{align*}
 
 \end{align*}$$
 
-since we have $$var[cx]=c^2 var[x]$$
+since we have $$var[cx]=c^2 var[x]$$, where $$c$$ is a scalar
 
 $$\begin{align*}
 \mathbb{E}\left[(\hat{\mu}-\mu)^2 \right] &= \frac{1}{N^2}var[x_1]+ \frac{1}{N^2}var[x_2]+...\\
@@ -163,6 +163,18 @@ $$\begin{align*}
 Therefore  
 
 $$\mathbb{E}[\hat{\sigma}^2]=\sigma^2-\frac{\sigma^2}{N}=\frac{N-1}{N} \sigma^2$$
+
+Note
+
+$$\mathbb{E}[\hat{\mu}]=\frac{1}{N} \sum \mathbb{E}[x_i]=\mu$$
+
+so $$\hat{\mu}$$ is an unbiased estimator of $$\mu$$
+
+However
+
+$$\mathbb{E}[\hat{\sigma}^2]= \frac{N-1}{N} \sigma^2 \neq \sigma^2$$
+
+So $$\hat{\sigma}^2$$ is a biased estimator of $$\sigma$$
 
 ```python
 
