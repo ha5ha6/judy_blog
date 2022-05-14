@@ -77,7 +77,7 @@ If a prediction is unbiased
 
 $$\mathbb{E}_{x \sim p(x)}[\hat{f}(x)]=f(x)$$
 
-### Sample variance is biased
+### Naive sample variance is biased
 
 Suppose we have a sample mean  
 
