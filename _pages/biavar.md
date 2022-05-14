@@ -60,9 +60,36 @@ We will have the variance with two expectations of $$f(x)$$ and $$f^2(x)$$
 
 We can consider the variance of a variable $$x$$ itself:
 
-$$var[f(x)]=\mathbb{E}[x^2]-\mathbb{E}^2[x]$$
+$$\begin{align*}
+var[x] &=\mathbb{E}[(x-\mathbb{E}[x])^2] \\
 
-### sample variance is biased
+&=\mathbb{E}[x^2]-\mathbb{E}^2[x]
+
+\end{align*}$$
+
+### Bias
+
+**Def**: the difference of the average value of prediction from the true function $$f(x)$$
+
+$$bias[\hat{f}(x)]=\mathbb{E}[\hat{f}(x)]-f(x)$$
+
+If a prediction is unbiased
+
+$$\mathbb{E}_{x \sim p(x)}[\hat{f}(x)]=f(x)$$
+
+### Sample variance is biased
+
+Suppose we have a sample mean  
+
+$$\hat{\mu}=\frac{1}{N} \sum_i^N x_i$$
+
+and a sample variance
+
+$$\hat{\sigma^2}=\frac{1}{N} (x_i-\hat{\mu})^2$$
+
+$$\hat{\sigma^2}$$ is a biased estimator
+
+
 
 
 ```python
