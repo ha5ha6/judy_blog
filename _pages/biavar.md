@@ -174,7 +174,7 @@ However
 
 $$\mathbb{E}[\hat{\sigma}^2]= \frac{N-1}{N} \sigma^2 \neq \sigma^2$$
 
-So $$\hat{\sigma}^2$$ is a biased estimator of $$\sigma$$
+So $$\hat{\sigma}^2$$ is a biased estimator of $$\sigma^2$$
 
 To obtain an unbiased estimator of $$\sigma$$, we need a correction
 
@@ -182,11 +182,49 @@ $$\tilde{\sigma}^2=\frac{N}{N-1}\hat{\sigma}^2=\frac{1}{N-1} \sum (x_i-\hat{\mu}
 
 For another way of proof, see the exercise solution of PRML 1.12
 
-```python
+#### example of Gaussian
 
+Let's generate 10000 datasets with only 2 data points from $$\mathcal{N}(3,1)$$
+
+We use only 2 data points for estimating sample mean and (biased and unbiased) variance and take average of 10000 datasets of them to see their performances
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams['font.size']='14'
+
+np.random.seed(3)
+#real
+x=np.linspace(1,5,num=100)
+
+def gaussian(x,mu,sig2):
+    return np.exp(((x-mu)**2)/(-2*sig2))/np.sqrt(2*np.pi*sig2)
+
+mu,sig2=3,1.
+
+#generate 10000 data sets with only two data
+N=2 #number of data in each dataset
+M=10000 #number of dataset
+samples=np.sqrt(sig2)*np.random.randn(N,M)+mu
+
+#sample mean
+mu_hat=(1./N)*samples.sum(0)
+#biased sample var
+sig2_hat=(1./N)*((samples-mu_hat)**2).sum(0)
+#unbiased sample var
+sig2_hat_unbiased=(1./(N-1))*((samples-mu_hat)**2).sum(0)
+
+plt.figure(figsize=(8,6))
+plt.plot(x,gaussian(x,mu,sig2),'r',linewidth=10,label='real gaussian',alpha=.5)
+plt.plot(x,gaussian(x,mu_hat.sum(0)/M,sig2_hat.sum(0)/M), 'b',linewidth=3,label='sample mean and biased var', alpha=0.5)
+plt.plot(x,gaussian(x,mu_hat.sum(0)/M,sig2_hat_unbiased.sum(0)/M), 'g',linewidth=3,label='sample mean and unbiased var')
+
+plt.grid()
+plt.legend()
+plt.savefig('un_bias_variance.png',dpi=350)
 ```
 
-<center><img src="/judy_blog/assets/images/egreedy_shortcorridor.png" width=400></center>
+<center><img src="/judy_blog/assets/images/un_bias_variance.png" width=400></center>
 
 The above corresponds to Example 13.1
 
