@@ -135,10 +135,30 @@ In the first term, since
 
 $$\mathbb{E}\left[(x_i-\mu)^2\right]=var[x_i]=\sigma^2$$
 
-$$\frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right]=\frac{1}{N} \cdot N \sigma^2$$
+$$\frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right]=\frac{1}{N} \cdot N \sigma^2=\sigma^2$$
 
+In the second term
 
+$$\begin{align*}
+\mathbb{E}\left[ (\hat{\mu}-\mu)^2 \right] &=var[\hat{\mu}] \\
 
+&=var \left[\frac{x_1+x_2+...x_N}{N} \right] \\
+
+&=var \left[\frac{x_1}{N}+\frac{x_2}{N} + ... \right] \\
+
+\end{align*}$$
+
+since we have $$var[cx]=c^2 var[x]$$
+
+$$\begin{align*}
+\mathbb{E}\left[(\hat{\mu}-\mu)^2 \right] &= \frac{1}{N^2}var[x_1]+ \frac{1}{N^2}var[x_2]+...\\
+
+&= \frac{1}{N^2} [\sigma^2+\sigma^2+...] \\
+
+&=\frac{1}{N^2} \cdot N\sigma^2 \\
+
+&=\frac{\sigma^2}{N}
+\end{align*}$$
 
 ```python
 
