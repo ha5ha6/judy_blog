@@ -40,13 +40,13 @@ $$\mathbb{E}[f(x)] \simeq \frac{1}{N} \sum_{n=1}^N f(x_n)$$
 
 **Def**: a measure of how much variability there is in $$f(x)$$ around its mean $$\mathbb{E}[f(x)]$$
 
-$$var[f(x)]=\mathbb{E}\left[(f(x)-\mathbb{E}[f(x)])^2 \right]$$
+$$var[f(x)]=\mathbb{E}[(f(x)-\mathbb{E}[f(x)])^2]$$
 
 If we expand the above
 
 $$\begin{align*}
 
-var\left[f(x)] &=\mathbb{E}\left[(f(x)-\mathbb{E}\left[f(x)\right])^2 \right] \\
+var[f(x)] &=\mathbb{E}\left[(f(x)-\mathbb{E}\left[f(x)\right])^2 \right] \\
 
 &= \mathbb{E}\left[f^2(x)+\mathbb{E}^2\left[f(x)\right]-2f(x)\mathbb{E}\left[f(x)\right] \\
 
