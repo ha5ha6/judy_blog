@@ -118,7 +118,11 @@ N \cdot (hat{\mu}-\mu) &= \sum (x_i - \mu)
 
 \end{align*}$$
 
+Continue with the previous equation  
 
+$$\begin{align*}
+\mathbb{E}[\hat{\sigma}^2] &= \left[\frac{1}{N} \sum (x_i-\mu)^2-\frac{2}{N}(\hat{\mu}-\mu) \textcolor{red}{abc} + (\hat{\mu}-\mu)^2 \right] \\
+\end{align*}$$
 
 ```python
 
