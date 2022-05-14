@@ -125,9 +125,15 @@ $$\begin{align*}
 
 &= \mathbb{E}\left[\frac{1}{N} \sum (x_i-\mu)^2- (\hat{\mu}-\mu)^2 \right] \\
 
-&= \mathbb{E}\left[\frac{1}{N} \sum (x_i-\mu)^2\right] - \mathbb{E}\left[ (\hat{\mu}-\mu)^2  \right]
+&= \mathbb{E}\left[\frac{1}{N} \sum (x_i-\mu)^2\right] - \mathbb{E}\left[ (\hat{\mu}-\mu)^2  \right] \\
+
+&= \frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right] - \mathbb{E}\left[ (\hat{\mu}-\mu)^2  \right]
 
 \end{align*}$$
+
+The first term is equal to the true variance  
+
+$$\mathbb{E}\left[\frac{1}{N} \sum (x_i-\mu)^2\right]=\sigma^2$$
 
 ```python
 
