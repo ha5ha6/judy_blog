@@ -87,10 +87,15 @@ and a sample variance
 
 $$\hat{\sigma^2}=\frac{1}{N} (x_i-\hat{\mu})^2$$
 
-$$\hat{\sigma^2}$$ is a biased estimator
+$$\hat{\sigma^2}$$ is a biased estimator because
 
+$$\begin{align*}
 
+\mathbb{E}[\hat{\sigma^2}] &= \mathbb{E} \left[\frac{1}{N} \sum_i^N (x_i-\hat{\mu})^2 \right] \\
 
+&= \mathbb{E} \left[\frac{1}{N} \sum \left( \right) \right]
+
+\end{align*}$$
 
 ```python
 
