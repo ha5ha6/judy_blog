@@ -148,7 +148,7 @@ $$\begin{align*}
 
 \end{align*}$$
 
-since we have $$var[cx]=c^2 var[x]$$, where $$c$$ is a scalar
+since we can easily derive $$var[cx]=c^2 var[x]$$, where $$c$$ is a scalar
 
 $$\begin{align*}
 \mathbb{E}\left[(\hat{\mu}-\mu)^2 \right] &= \frac{1}{N^2}var[x_1]+ \frac{1}{N^2}var[x_2]+...\\
