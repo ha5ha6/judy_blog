@@ -22,13 +22,13 @@ usemathjax: true
 
 ### Expectation
 
-Def: the weighted average of a function $$f(x)$$ weighted by the probability distribution $$p(x)$$
+**Def**: the weighted average of a function $$f(x)$$ weighted by a probability distribution $$p(x)$$
 
 For a discrete distribution:
 
 $$\mathbb{E}[f(x)]=\sum_x p(x)f(x)$$
 
-In the case of continuous variables:
+In the case of continuous variables with their probability densities:
 
 $$\mathbb{E}[f(x)]=\int p(x)f(x) dx$$
 
@@ -36,23 +36,29 @@ In either case, if we are given a finite number $$N$$ of points drawn from the p
 
 $$\mathbb{E}[f(x)] \simeq \frac{1}{N} \sum_{n=1}^N f(x_n)$$
 
+### Variance
 
+**Def**: a measure of how much variability there is in $$f(x)$$ around its mean $$\mathbb{E}[f(x)]$$
+
+$$var[f(x)]=\mathbb{E}\left[(f(x)-\mathbb{E}[f(x)])^2 \right]$$
+
+If we expand the above
 
 $$\begin{align*}
 
-V(s_0) &= p(-1+V(s_1))+(1-p)(-1+V(s_0)) \\
+var[f(x)] &=\mathbb{E}\left[(f(x)-\mathbb{E}[f(x)])^2 \right] \\
 
-V(s_1) &= p(-1+V(s_0))+(1-p)(-1+V(s_2)) \\
+&= \mathbb{E}\left[f^2(x)+\mathbb{E}^2[f(x)]-2f(x)\mathbb{E}[f(x)] \] \\
 
-V(s_2) &= p(-1+V(s_3))+(1-p)(-1+V(s_1))
+&= \mathbb{E}[f^2(x)]+\mathbb{E}^2[f(x)]-2\mathbb{E}^2[f(x)] \\
+
+&= \mathbb{E}[f^2(x)]-\mathbb{E}^2[f(x)]
 
 \end{align*}$$
 
-where $$V(s_3)=0$$, $$p$$ is the probability of choosing the right action
+We will have two expectations of $$f(x)$$ and $$f^2(x)$$
 
-Therefore,
 
-$$V(s_0)=\frac{2(p-2)}{p(1-p)}$$
 
 ```python
 #return state value of state 0
