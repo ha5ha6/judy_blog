@@ -93,7 +93,11 @@ $$\begin{align*}
 
 \mathbb{E}[\hat{\sigma^2}] &= \mathbb{E} \left[\frac{1}{N} \sum_i^N (x_i-\hat{\mu})^2 \right] \\
 
-&= \mathbb{E} \left[\frac{1}{N} \sum \left( \right) \right]
+&= \mathbb{E} \left[\frac{1}{N} \sum \left((x_i-\mu)-(\hat{\mu}-\mu) \right)^2 \right] \\
+
+&= \mathbb{E} \left[\frac{1}{N} \sum \left((x_i-\mu)^2-2(\hat{\mu}-\mu)(x_i-\mu) +(\hat{\mu}-\mu)^2 \right) \right] \\
+
+&= \mathbb{E} \left[\frac{1}{N} \sum (x_i-\mu)^2-\frac{2}{N}(\hat{\mu}-\mu)\sum (x_i-\mu) +\frac{1}{N} (\hat{\mu}-\mu)^2 \sum 1 \right] \\
 
 \end{align*}$$
 
