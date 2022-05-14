@@ -160,6 +160,10 @@ $$\begin{align*}
 &=\frac{\sigma^2}{N}
 \end{align*}$$
 
+Therefore  
+
+$$\mathbb{E}[\hat{\sigma}^2]=\sigma^2-\frac{\sigma^2}{N}=\frac{N-1}{N} \sigma^2$$
+
 ```python
 
 ```
