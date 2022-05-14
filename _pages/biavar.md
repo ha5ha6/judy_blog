@@ -182,11 +182,11 @@ $$\tilde{\sigma}^2=\frac{N}{N-1}\hat{\sigma}^2=\frac{1}{N-1} \sum (x_i-\hat{\mu}
 
 For another way of proof, see the exercise solution of PRML 1.12
 
-#### example of Gaussian
+### example
 
 Let's generate 10000 datasets with only 2 data points from $$\mathcal{N}(3,1)$$
 
-We use only 2 data points for estimating sample mean and (biased and unbiased) variance and take average of 10000 datasets of them to see their performances
+We use this 2 data points for estimating sample mean and (biased and unbiased) variance and take average of 10000 to see their performances
 
 ```python
 import numpy as np
@@ -216,8 +216,8 @@ sig2_hat_unbiased=(1./(N-1))*((samples-mu_hat)**2).sum(0)
 
 plt.figure(figsize=(8,6))
 plt.plot(x,gaussian(x,mu,sig2),'r',linewidth=10,label='real gaussian',alpha=.5)
-plt.plot(x,gaussian(x,mu_hat.sum(0)/M,sig2_hat.sum(0)/M), 'b',linewidth=3,label='sample mean and biased var', alpha=0.5)
-plt.plot(x,gaussian(x,mu_hat.sum(0)/M,sig2_hat_unbiased.sum(0)/M), 'g',linewidth=3,label='sample mean and unbiased var')
+plt.plot(x,gaussian(x,mu_hat.sum(0)/M,sig2_hat.sum(0)/M),'b',linewidth=3,label='sample mean and biased var', alpha=0.5)
+plt.plot(x,gaussian(x,mu_hat.sum(0)/M,sig2_hat_unbiased.sum(0)/M),'g',linewidth=3,label='sample mean and unbiased var')
 
 plt.grid()
 plt.legend()
@@ -226,11 +226,11 @@ plt.savefig('un_bias_variance.png',dpi=350)
 
 <center><img src="/judy_blog/assets/images/un_bias_variance.png" width=400></center>
 
+This experiment shows the difference between biased sample variance (blue) and unbiased sample variance (green). The latter has a good fit with the true distribution
+
+Let 
+
 The above corresponds to Example 13.1
-
-This experiment shows action-value-based methods have difficulties to find optimal stochastic policy, while policy-based methods can do much better
-
-
 
 ### References
 
