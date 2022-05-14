@@ -69,13 +69,13 @@ var[x] &=\mathbb{E}[(x-\mathbb{E}[x])^2] \\
 
 ### Bias
 
-**Def**: the difference of the average value of prediction from the true function $$f(x)$$
+**Def**: the difference of the average value of prediction $$\hat{f}(x)$$ from the true function $$f(x)$$
 
 $$bias[\hat{f}(x)]=\mathbb{E}[\hat{f}(x)]-f(x)$$
 
 If a prediction is unbiased
 
-$$\mathbb{E}_{x \sim p(x)}[\hat{f}(x)]=f(x)$$
+$$\mathbb{E}[\hat{f}(x)]=f(x)$$
 
 ### Naive sample variance is biased
 
@@ -85,13 +85,13 @@ $$\hat{\mu}=\frac{1}{N} \sum_i^N x_i$$
 
 and a sample variance
 
-$$\hat{\sigma^2}=\frac{1}{N} (x_i-\hat{\mu})^2$$
+$$\hat{\sigma}^2=\frac{1}{N} \sum_i^N (x_i-\hat{\mu})^2$$
 
-$$\hat{\sigma^2}$$ is a biased estimator because
+$$\hat{\sigma}^2$$ is a biased estimator because
 
 $$\begin{align*}
 
-\mathbb{E}[\hat{\sigma^2}] &= \mathbb{E} \left[\frac{1}{N} \sum_i^N (x_i-\hat{\mu})^2 \right] \\
+\mathbb{E}[\hat{\sigma}^2] &= \mathbb{E} \left[\frac{1}{N} \sum_i^N (x_i-\hat{\mu})^2 \right] \\
 
 &= \mathbb{E} \left[\frac{1}{N} \sum \left((x_i-\mu)-(\hat{\mu}-\mu) \right)^2 \right] \\
 
