@@ -131,9 +131,14 @@ $$\begin{align*}
 
 \end{align*}$$
 
-The first term is equal to the true variance  
+In the first term, since
 
-$$\mathbb{E}\left[\frac{1}{N} \sum (x_i-\mu)^2\right]=\sigma^2$$
+$$\mathbb{E}\left[(x_i-\mu)^2\right]=var[x_i]=\sigma^2$$
+
+$$\frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right]=\frac{1}{N} \cdot N \sigma^2$$
+
+
+
 
 ```python
 
