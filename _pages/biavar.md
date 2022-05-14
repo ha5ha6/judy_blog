@@ -34,7 +34,7 @@ $$\mathbb{E}[f(x)]=\int p(x)f(x) dx$$
 
 In either case, if we are given a finite number $$N$$ of points drawn from the probability distribution or probability density, the expectation can be approximated as a finite sum over these points
 
-$$\mathbb{E}[f(x)] \simeq \frac{1}{N} \sum_{n=1}^N f(x_n)$$
+$$\mathbb{E}[f(x)] \simeq \frac{1}{N} \sum_{i=1}^N f(x_i)$$
 
 ### Variance
 
