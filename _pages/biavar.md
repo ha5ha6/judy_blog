@@ -257,7 +257,7 @@ plt.savefig('3_bias_variance.png',dpi=350)
 
 <center><img src="/judy_blog/assets/images/3_bias_variance.png" width=500></center>
 
-This experiment indicates even with small data set, i.e. 2 samples, the unbiased mean can be captured, as the red curve shown in the fourth row. However, the variance is under-estimated because it is measured relative to the sample mean and not relative to the true mean
+This experiment indicates with 3 small datasets each with 2 samples, the unbiased mean can be captured, as the red curve shown in the fourth row. However, the variance is under-estimated because it is measured relative to the sample mean and not relative to the true mean
 
 The above corresponds to Figure 1.15 in PRML
 
