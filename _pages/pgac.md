@@ -46,11 +46,15 @@ where $$\boldsymbol{\theta}^T \phi(s,a)$$ is a linear combination of features $$
 
 This suggests that the actions with the highest preferences in each state are given the highest probabilities of being selected
 
-The merits of this formulation include
+**some insights**:
 
-- the approximate policy can approach a deterministic policy, since action preferences are driven to produce the optimal stochastic policy, （which can also be a deterministic policy）
+- this action preference can be defined arbitrarily, i.e. linearly or like neural networks
 
-- it enables the selection of actions with arbitrary probabilities, where action-value based methods have no natural way of finding stochastic optimal policies
+- it is different from action-values, since the latter would converge to their corresponding true values, leading the policy to some specific probabilities other than 0 and 1
+
+- the approximate policy by action preference can approach a deterministic policy, since the formulation is driven to produce the optimal stochastic policy (which can also be a deterministic policy)
+
+- action preference enables the selection of actions with arbitrary probabilities, where action-value based methods have no natural way of finding stochastic optimal policies
 
 See [Short Corridor](https://ha5ha6.github.io/judy_blog/pgac/#short-corridor) for more info
 
@@ -60,7 +64,7 @@ $$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T
 
 ### Policy Gradient Theorem
 
-With the definition of the performance measure being **the value of the start state of an episode**:
+With the definition of the performance measure being **the value of the start state of an episode** by assuming that every episode starts in some particular state $$s_0$$:
 
 $$J(\boldsymbol{\theta}) \triangleq V_{\pi_{\boldsymbol{\theta}}} (s_0)$$
 
@@ -116,7 +120,7 @@ $$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \frac{\nabla \pi(a_
 
 **REINFORCE** uses $$R_t$$, the complete return from time $$t$$ , which includes all future rewards up until the end of the episode, so it is a **Monte Carlo** method
 
-Moreover, we can replace the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})}$$ with $$\nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta})$$. This is called **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
+Moreover, we can replace the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})}$$ with $$\nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta})$$, called **eligibility vector**. This is **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
 
 So the **update rule** can be re-written to:
 
@@ -272,7 +276,7 @@ def policy(theta,phi):
     upper=np.exp(h-np.max(h)) #avoid overflow
     pi=upper/np.sum(upper)
 
-    #keep stochasitc policy with a_min<0.05
+    #keep stochasitc policy with a_min>=0.05
     a_min=np.argmin(pi)
     epsilon=0.05
     if pi[a_min]<epsilon:
