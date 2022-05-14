@@ -105,6 +105,21 @@ $$\begin{align*}
 
 \end{align*}$$
 
+Note
+
+$$\begin{align*}
+\hat{\mu}-\mu &=(\frac{1}{N}\sum x_i) - \mu \\
+
+&= (\frac{1}{N}\sum x_i) - (\frac{1}{N}\sum \mu) \\
+
+&= \frac{1}{N}\sum (x_i - \mu) \\
+
+N \cdot (hat{\mu}-\mu) &= \sum (x_i - \mu)
+
+\end{align*}$$
+
+
+
 ```python
 
 ```
