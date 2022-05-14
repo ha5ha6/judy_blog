@@ -58,7 +58,7 @@ var[f(x)] &= \mathbb{E} [(f(x)-\mathbb{E}[f(x)])^2 ] \\
 
 We will have the variance with two expectations of $$f(x)$$ and $$f^2(x)$$
 
-We can consider the variance of a variable $$x$$ itself:
+We may also consider the variance of a variable $$x$$ itself:
 
 $$\begin{align*}
 var[x] &=\mathbb{E}[(x-\mathbb{E}[x])^2] \\
