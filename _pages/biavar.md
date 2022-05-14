@@ -83,7 +83,7 @@ Suppose we have a sample mean
 
 $$\hat{\mu}=\frac{1}{N} \sum_i^N x_i$$
 
-and a sample variance
+and a naive sample variance, which was derived from Maximum Likelihood method in the case of Gaussian distribution
 
 $$\hat{\sigma}^2=\frac{1}{N} \sum_i^N (x_i-\hat{\mu})^2$$
 
@@ -174,7 +174,7 @@ However
 
 $$\mathbb{E}[\hat{\sigma}^2]= \frac{N-1}{N} \sigma^2 \neq \sigma^2$$
 
-So $$\hat{\sigma}^2$$ is a biased estimator of $$\sigma^2$$
+so $$\hat{\sigma}^2$$ is a biased estimator of $$\sigma^2$$
 
 To obtain an unbiased estimator of $$\sigma$$, we need a correction
 
@@ -186,7 +186,7 @@ For another way of proof, see the exercise solution of PRML 1.12
 
 Let's generate 10000 datasets with only 2 data points from $$\mathcal{N}(3,1)$$
 
-We use this 2 data points for estimating sample mean and (biased and unbiased) variance and take average of 10000 to see their performances
+We use this 2 data points for estimating sample mean and (biased and unbiased) variance and take average across 10000 datasets to see their performances
 
 ```python
 import numpy as np
@@ -228,9 +228,38 @@ plt.savefig('un_bias_variance.png',dpi=350)
 
 This experiment shows the difference between biased sample variance (blue) and unbiased sample variance (green). The latter has a good fit with the true distribution
 
-Let 
+We use another Gaussian example to show why the bias arises
 
-The above corresponds to Example 13.1
+```python
+np.random.seed(10)
+
+x=np.linspace(-1,1,100)
+mu,sig2=0,0.05
+N=2 #sample size
+
+plt.figure(figsize=(10,8))
+for i in range(3):
+    plt.subplot(3,1,i+1)
+    plt.ylim([-2,7])
+
+    sample=np.random.randn(N)*np.sqrt(sig2)+mu
+    plt.plot(sample,[0,0],'bo')
+
+    mu_hat=sample.sum()/N
+    sig2_hat=((sample-mu_hat)**2).sum()/N
+
+    plt.plot(x,gaussian(x,mu,sig2),'g',linewidth=3,label='real')
+    plt.plot(x,gaussian(x,mu_hat,sig2_hat),'r',linewidth=3,label='sample mean and var')
+
+plt.legend()
+plt.savefig('3_bias_variance.png',dpi=350)
+```
+
+<center><img src="/judy_blog/assets/images/3_bias_variance.png" width=500></center>
+
+This experiment indicates even with small data set, i.e. 2 samples, the unbiased mean can be captured, as the red curve shown in the fourth row. However, the variance is under-estimated because it is measured relative to the sample mean and not relative to the true mean
+
+The above corresponds to Figure 1.15 in PRML
 
 ### References
 
