@@ -46,13 +46,13 @@ If we expand the above
 
 $$\begin{align*}
 
-var[f(x)] &=\mathbb{E}\left[(f(x)-\mathbb{E}\left[f(x)\right])^2 \right] \\
+var[f(x)] &= \mathbb{E} [(f(x)-\mathbb{E}[f(x)])^2 ] \\
 
-&= \mathbb{E}\left[f^2(x)+\mathbb{E}^2\left[f(x)\right]-2f(x)\mathbb{E}\left[f(x)\right] \\
+&= \mathbb{E}[f^2(x)+\mathbb{E}^2[f(x)]-2f(x)\mathbb{E}[f(x)] \\
 
-&= \mathbb{E}\left[f^2(x)\right]+\mathbb{E}^2\left[f(x)\right]-2\mathbb{E}^2\left[f(x)\right] \\
+&= \mathbb{E}[f^2(x)]+\mathbb{E}^2[f(x)]-2\mathbb{E}^2[f(x)] \\
 
-&= \mathbb{E}\left[f^2(x)\right]-\mathbb{E}^2\left[f(x)\right]
+&= \mathbb{E}[f^2(x)]-\mathbb{E}^2[f(x)]
 
 \end{align*}$$
 
@@ -60,7 +60,7 @@ We will have the variance with two expectations of $$f(x)$$ and $$f^2(x)$$
 
 We can consider the variance of a variable $$x$$ itself:
 
-$$var[f(x)] &=\mathbb{E}[x^2]-\mathbb{E}^2[x]$$
+$$var[f(x)]=\mathbb{E}[x^2]-\mathbb{E}^2[x]$$
 
 
 ```python
