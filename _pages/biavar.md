@@ -176,6 +176,12 @@ $$\mathbb{E}[\hat{\sigma}^2]= \frac{N-1}{N} \sigma^2 \neq \sigma^2$$
 
 So $$\hat{\sigma}^2$$ is a biased estimator of $$\sigma$$
 
+To obtain an unbiased estimator of $$\sigma$$, we need a correction
+
+$$\tilde{\sigma}^2=\frac{N}{N-1}\hat{\sigma}^2=\frac{1}{N-1} \sum (x_i-\hat{\mu})^2$$
+
+For another way of proof, see the exercise solution of PRML 1.12
+
 ```python
 
 ```
@@ -190,15 +196,13 @@ This experiment shows action-value-based methods have difficulties to find optim
 
 ### References
 
-**PRML** by Sutton and Barto
+**Pattern Recognition and Machine Learning** by Bishop
 
-[ShangtongZhang/reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
+[Mean and Variance of Sample Mean](https://online.stat.psu.edu/stat414/lesson/24/24.4)
 
-[RL 2nd Edition Excercise Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
+[PRMLの図作成 図1.15 ガウス分布の最尤推定におけるバイアス](https://qiita.com/Alreschas/items/b1dd6f65a2c2bcec8d26)
 
-[Policy Gradients Methods - Lilian Weng](https://lilianweng.github.io/posts/2018-04-08-policy-gradient/)
 
-[Going Deeper Into Reinforcement Learning: Fundamentals of Policy Gradients - Daniel Seita](https://danieltakeshi.github.io/2017/03/28/going-deeper-into-reinforcement-learning-fundamentals-of-policy-gradients/)
 
 ### Slides and Code
 
