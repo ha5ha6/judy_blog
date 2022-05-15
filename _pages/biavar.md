@@ -344,9 +344,9 @@ We show an example from Ridge Regression by altering different $$\lambda$$ param
 
 Note Ridge Regression has the l2 norm of the regularizer in the objective function
 
-$$obj = ||y-\hat{f}(x)||^2+\lambda ||w||^2_2$$
+$$obj = ||y-\hat{f}(\textbf{x})||^2+\lambda ||\textbf{w}||^2_2$$
 
-where $$\hat{f}(x)=wx$$
+where $$\hat{f}(\textbf{x})=\textbf{wx}$$
 
 We use Polynomial Features from sklearn for the basis functions (a bit different from the PRML figure 3.5), and bias_variance_decomp from mlxtend for decomposing bias and variance from the objective error
 
