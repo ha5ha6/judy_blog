@@ -302,11 +302,11 @@ $$\mathbb{E}[(y-\hat{f}(x))^2]=bias[\hat{f}(x)]^2+var[\hat{f}(x)]+\sigma_{\epsil
 
 where
 
-$$\mathbb{E}[(y-\hat{f}(x))^2]$$ - **Mean Squared Error (MSE)**
+$$\mathbb{E}[(y-\hat{f}(x))^2]$$ <- **Mean Squared Error (MSE)**
 
-$$bias[\hat{f}(x)]=\mathbb{E}[\hat{f}(x)]-f(x)$$ - **Bias**
+$$bias[\hat{f}(x)]=\mathbb{E}[\hat{f}(x)]-f(x)$$ <- **Bias**
 
-$$var[\hat{f}(x)]=\mathbb{E}[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2]$$ - **Variance**
+$$var[\hat{f}(x)]=\mathbb{E}[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2]$$ <- **Variance**
 
 **Proof**:
 
