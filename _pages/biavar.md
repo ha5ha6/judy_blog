@@ -176,7 +176,7 @@ For another way of proof, see the exercise solution of PRML 1.12
 
 #### Example
 
-Let's generate 10000 datasets with only 2 data points from $$\mathcal{N}(3,1)$$
+Let's generate 10000 datasets with only 2 data points for each from $$\mathcal{N}(3,1)$$
 
 We use this 2 data points for estimating sample mean and (biased and unbiased) variance and take average across 10000 datasets to see their performances
 
