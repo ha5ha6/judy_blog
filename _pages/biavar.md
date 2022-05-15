@@ -319,11 +319,13 @@ $$\begin{align*}
 
 &= \mathbb{E}[(f(x)-\hat{f}(x))^2]+\underbrace{\mathbb{E}[\epsilon^2]}_{=\sigma_{\epsilon}^2}+2\mathbb{E}[(f(x)-\hat{f}(x))]\underbrace{\mathbb{E}[\epsilon]}_{=0} \\
 
-&= \mathbb{E}[(f(x)-\hat{f}(x))^2]+\sigma_{\epsilon}^2
+&= \mathbb{E}[(f(x)-\hat{f}(x))^2]+\sigma_{\epsilon}^2 \\
 
-f &= \underbrace{x^3}_\textrm{text 1} + \underbrace{2}_\textrm{text 2} \\
+&= \mathbb{E}\left[((f(x)-\mathbb{E}[\hat{f}(x)])-(\hat{f}(x)-\mathbb{E}[\hat{f}(x)]))^2 \right] +\sigma_{\epsilon}^2 \\
 
-f &= \underbrace{x^3}_\text{text 1} + \underbrace{2}_\text{text 2} \\
+&= \mathbb{E}\left[(f(x)-\mathbb{E}[\hat{f}(x)])^2+(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2-2(f(x)-\mathbb{E}[\hat{f}(x)])(\hat{f}(x)-\mathbb{E}[\hat{f}(x)]) \right] +\sigma_{\epsilon}^2 \\
+
+&= \mathbb{E}\left[(f(x)-\mathbb{E}[\hat{f}(x)])^2 \right]+\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2 \right]-2\mathbb{E}\left[(f(x)-\mathbb{E}[\hat{f}(x)])(\hat{f}(x)-\mathbb{E}[\hat{f}(x)]) \right] +\sigma_{\epsilon}^2 \\
 
 
 
