@@ -36,3 +36,5 @@ usemathjax: true
 [All About Cartpole](/judy_blog/cartpole/): Cartpole realizations with classic RL algorithms: Q-learning, SARSA($$\lambda$$), DQN, etc
 
 ## Others
+
+[Bias and Variance](/judy_blog/biavar/)
