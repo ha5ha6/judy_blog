@@ -267,9 +267,13 @@ This issue will be less significant as the number of samples increases
 
 **Bias**: the inability of a model to accurately capture the true pattern of data
 
+$$bias[\hat{f}(x)]=\mathbb{E}[\hat{f}(x)]-f(x)$$
+
 for example, if we use a line to fit a quadratic model, the bias is high
 
 **Variance**: the amount by which the estimate of the true pattern would change on using a different dataset
+
+$$var[\hat{f}(x)]=\mathbb{E}[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2]$$
 
 for example, high variance implies that the model does not generalize well on unseen data even if it fits the training data well
 
