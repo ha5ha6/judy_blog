@@ -265,7 +265,35 @@ This issue will be less significant as the number of samples increases
 
 This bias issue lies at the root of the over-fitting problem
 
-###
+### Bias and Variance in model fitting
+
+**Bias**: the inability of a model to accurately capture the true pattern of data
+
+for example, if we use a line to fit a quadratic model, the bias is high
+
+**Variance**: the amount by which the estimate of the true pattern would change on using a different dataset
+
+for example, high variance implies that the model does not generalize well on unseen data even if it fits the training data well
+
+**Overfitting**: **low bias** and **high variance**, model fits the training data well, but captures noise
+
+**Underfitting**: **high bias** and **low variance**, model fails to capture the pattern of the data
+
+the **Bias-Variance Trade-off**: a way to ensure that the model is neither overfitted nor underfitted. Ideally, a model should have **low bias** and **low variance**
+
+Suppose our data is generated in this form:
+
+$$y=f(x)+\epsilon$$
+
+where
+
+$$(x,y)$$ represents the data
+
+$$f(x)$$ denotes the true relationship of data (hard to know in real life)
+
+$$\epsilon$$ is the noise with zero mean and variance $$\sigma_{\epsilon}^2$$
+
+
 
 ### References
 
