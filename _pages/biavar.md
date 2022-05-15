@@ -338,11 +338,96 @@ since $$f(x)-\mathbb{E}[\hat{f}(x)]$$ is a constant minus a constant
 
 $$\mathbb{E}[(f(x)-\mathbb{E}[\hat{f}(x)])^2]=(f(x)-\mathbb{E}[\hat{f}(x)])^2$$
 
+#### Example
 
+We show an example from Ridge Regression by altering different $$\lambda$$ parameters for the regularizer term
+
+Note Ridge Regression has the l2 norm of the regularizer in the objective function
+
+$$obj = ||y-\hat{f}(x)||^2+\lambda ||w||^2_2$$
+
+where $$\hat{f}(x)=wx$$
+
+We use Polynomial Features from sklearn for the basis functions (a bit different from the PRML figure 3.5), and bias_variance_decomp from mlxtend for decomposing bias and variance from the objective error
+
+```python
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import Ridge
+
+np.random.seed(5)
+
+lmd_smooth=[1,0.1,0.01,0.005,0.001,0.0001,0.000001,0.0000001,0.000000001]
+label=[0,3,8]
+lmd_all=[lmd_smooth[i] for i in label]
+plt.figure(figsize=(12,12))
+
+for n,lmd in enumerate(lmd_all):
+    f_pred_all=[]
+    for i in range(20):
+        #training data
+        x_25=np.linspace(0,1,25) #sample size=25
+        y_25=np.sin(2*np.pi*x_25)+np.random.normal(scale=0.25,size=x_25.shape)
+
+        #test/real
+        x=np.linspace(0,1,100)
+        y=np.sin(2*np.pi*x)
+
+        #polytransformed
+        f=PolynomialFeatures(degree=6).fit_transform(x.reshape(-1,1))
+        f_25=PolynomialFeatures(degree=6).fit_transform(x_25.reshape(-1,1))
+
+        ridge=Ridge(lmd)
+        ridge.fit(f_25,y_25)
+
+        f_pred=ridge.predict(f)
+        f_pred_all.append(f_pred)
+        plt.subplot(3,2,2*n+1)
+        plt.plot(x,f_pred,'r',label='pred')
+
+
+    plt.subplot(3,2,2*n+2)
+    plt.plot(x,y,'g',label='real')
+    plt.plot(x,np.array(f_pred_all).mean(0),'r',label='pred mean')
+    plt.legend()
+
+plt.savefig('ridge_bias_variance.png',dpi=350)
+```
+
+<center><img src="/judy_blog/assets/images/ridge_bias_variance.png" width=600></center>
+
+This experiment shows that different $$\lambda$$ indicates different model complexity
+
+Larger $$\lambda$$ like figure in the first row suggests higher bias, and lower variance, while lower $$\lambda$$ like figure in the third row suggests lower bias, and higher variance
+
+```python
+from mlxtend.evaluate import bias_variance_decomp
+lmd_smooth=[1,0.1,0.01,0.005,0.001,0.0001,0.000001,0.0000001,0.000000001]
+err_all,bias_all,var_all=[],[],[]
+for lmd in lmd_smooth:
+    error, bias, var = bias_variance_decomp(Ridge(lmd), f_25, y_25,f,y,loss='mse',random_seed=5)
+    err_all.append(error)
+    bias_all.append(bias)
+    var_all.append(var)
+
+plt.figure(figsize=(8,6))
+plt.plot(err_all,'-o',markersize=10,linewidth=3,label='error')
+plt.plot(bias_all,'-o',markersize=10,linewidth=3,label='bias')
+plt.plot(var_all,'-o',markersize=10,linewidth=3,label='var')
+plt.legend()
+plt.grid()
+plt.xlabel('lambda of regularizer')
+plt.savefig('decomp_bias_variance.png',dpi=350)
+```
+
+<center><img src="/judy_blog/assets/images/decomp_bias_variance.png" width=400></center>
+
+This experiment gives a clear picture of how the bias-variance trade-off occurs
+
+An appropriate $$\lambda$$ would be 0.0001, which gives the lowest error
 
 ### References
 
-**Pattern Recognition and Machine Learning** by Bishop
+**Pattern Recognition and Machine Learning** by Christopher Bishop
 
 [Mean and Variance of Sample Mean](https://online.stat.psu.edu/stat414/lesson/24/24.4)
 
