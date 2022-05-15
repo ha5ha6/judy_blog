@@ -350,6 +350,9 @@ $$\mathbb{E}[(f(x)-\mathbb{E}[\hat{f}(x)])^2]=(f(x)-\mathbb{E}[\hat{f}(x)])^2$$
 
 [The Bias-Variance Trade-off a mathematical view](https://medium.com/snu-ai/the-bias-variance-trade-off-a-mathematical-view-14ff9dfe5a3c#:~:text=Bias%20is%20defined%20as%20the,%5Bf%CC%82(x)%5D.)
 
+[Bias of an estimator](https://en.wikipedia.org/wiki/Bias_of_an_estimator)
+
+[【Python】3.1.0：基底関数の作図【PRMLのノート】](https://www.anarchive-beta.com/entry/2022/01/07/193000)
 
 ### Slides and Code
 
