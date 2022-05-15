@@ -128,13 +128,13 @@ N\cdot(\hat{\mu}-\mu) &= \sum (x_i - \mu)
 
 \end{align*}$$
 
-Note $$(*2)$$:
+$$(*2)$$:
 
 $$\mathbb{E}\left[(x_i-\mu)^2\right]=var[x_i]=\sigma^2$$
 
 $$\frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right]=\frac{1}{N} \cdot N \sigma^2=\sigma^2$$
 
-Note $$(*3)$$:
+$$(*3)$$:
 
 $$\begin{align*}
 \mathbb{E}\left[ (\hat{\mu}-\mu)^2 \right] &=var[\hat{\mu}] \\
