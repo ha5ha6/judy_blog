@@ -406,7 +406,7 @@ from mlxtend.evaluate import bias_variance_decomp
 lmd_smooth=[1,0.1,0.01,0.005,0.001,0.0001,0.000001,0.0000001,0.000000001]
 err_all,bias_all,var_all=[],[],[]
 for lmd in lmd_smooth:
-    error, bias, var = bias_variance_decomp(Ridge(lmd), f_25, y_25,f,y,loss='mse',random_seed=5)
+    error,bias,var=bias_variance_decomp(Ridge(lmd),f_25,y_25,f,y,loss='mse',random_seed=5)
     err_all.append(error)
     bias_all.append(bias)
     var_all.append(var)
@@ -427,7 +427,7 @@ The above corresponds to Figure 3.6 in PRML
 
 This experiment gives a clear picture of how the bias-variance trade-off occurs
 
-An appropriate $$\lambda$$ would be 0.0001, which gives the lowest error
+An appropriate $$\lambda$$ would be 0.0001, which provides the lowest error
 
 ### References
 
