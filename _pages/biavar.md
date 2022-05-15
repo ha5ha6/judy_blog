@@ -328,6 +328,8 @@ $$\begin{align*}
 
 &= \underbrace{(f(x)-\mathbb{E}[\hat{f}(x)])^2}_{=bias[\hat{f}(x)],(*5)}+\underbrace{\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2 \right]}_{=var[\hat{f}(x)]}-2(f(x)-\mathbb{E}[\hat{f}(x)]) \underbrace{\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)]) \right]}_{=\mathbb{E}[\hat{f}(x)]-\mathbb{E}[\hat{f}(x)]=0} +\sigma_{\epsilon}^2 \\
 
+&= bias[\hat{f}(x)]+var[\hat{f}(x)]+\sigma_{\epsilon}^2
+
 
 
 \end{align*}$$
