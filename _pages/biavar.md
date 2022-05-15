@@ -395,6 +395,8 @@ plt.savefig('ridge_bias_variance.png',dpi=350)
 
 <center><img src="/judy_blog/assets/images/ridge_bias_variance.png" width=600></center>
 
+The above corresponds to Figure 3.5 in PRML
+
 This experiment shows that different $$\lambda$$ indicates different model complexity
 
 Larger $$\lambda$$ like figure in the first row suggests higher bias, and lower variance, while lower $$\lambda$$ like figure in the third row suggests lower bias, and higher variance
@@ -420,6 +422,8 @@ plt.savefig('decomp_bias_variance.png',dpi=350)
 ```
 
 <center><img src="/judy_blog/assets/images/decomp_bias_variance.png" width=400></center>
+
+The above corresponds to Figure 3.6 in PRML
 
 This experiment gives a clear picture of how the bias-variance trade-off occurs
 
