@@ -364,7 +364,6 @@ x=np.linspace(0,1,100)
 y=np.sin(2*np.pi*x)
 
 plt.figure(figsize=(12,12))
-
 for n,lmd in enumerate(lmd_all):
     f_pred_all=[]
     for i in range(20):
