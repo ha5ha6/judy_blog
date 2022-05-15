@@ -107,7 +107,11 @@ $$\begin{align*}
 
 &= \mathbb{E}\left[\frac{1}{N} \sum (x_i-\mu)^2\right] - \mathbb{E}\left[ (\hat{\mu}-\mu)^2  \right] \\
 
-&= \underbrace{\frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right]}_{=\sigma^2{*2}} - \underbrace{\mathbb{E}\left[ (\hat{\mu}-\mu)^2  \right]}_{=\frac{1}{N} \sigma^2{*3}} \\
+\end{align*}$$
+
+$$\begin{align*}
+
+&= \underbrace{\frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right]}_{=\sigma^2{*2}} - \underbrace{\mathbb{E}\left[ (\hat{\mu}-\mu)^2 \right]}_{=\frac{1}{N}\sigma^2{*3}} \\
 
 &=\sigma^2-\frac{\sigma^2}{N} \\
 
