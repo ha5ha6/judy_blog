@@ -359,6 +359,10 @@ np.random.seed(5)
 lmd_smooth=[1,0.1,0.01,0.005,0.001,0.0001,0.000001,0.0000001,0.000000001]
 label=[0,3,8]
 lmd_all=[lmd_smooth[i] for i in label]
+#test/real
+x=np.linspace(0,1,100)
+y=np.sin(2*np.pi*x)
+
 plt.figure(figsize=(12,12))
 
 for n,lmd in enumerate(lmd_all):
@@ -367,10 +371,6 @@ for n,lmd in enumerate(lmd_all):
         #training data
         x_25=np.linspace(0,1,25) #sample size=25
         y_25=np.sin(2*np.pi*x_25)+np.random.normal(scale=0.25,size=x_25.shape)
-
-        #test/real
-        x=np.linspace(0,1,100)
-        y=np.sin(2*np.pi*x)
 
         #polytransformed
         f=PolynomialFeatures(degree=6).fit_transform(x.reshape(-1,1))
@@ -383,7 +383,6 @@ for n,lmd in enumerate(lmd_all):
         f_pred_all.append(f_pred)
         plt.subplot(3,2,2*n+1)
         plt.plot(x,f_pred,'r',label='pred')
-
 
     plt.subplot(3,2,2*n+2)
     plt.plot(x,y,'g',label='real')
