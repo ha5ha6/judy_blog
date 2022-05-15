@@ -279,12 +279,14 @@ for example, high variance implies that the model does not generalize well on un
 
 **Overfitting**: **low bias** and **high variance**, model fits the training data well, but captures noise
 
-**Underfitting**: **high bias** and **low variance**, model fails to capture the pattern of the data
+**Underfitting**: **high bias** and **low variance**, model fails to capture the pattern of the data at all
 
 
 ### Bias-Variance Trade-off
 
-**Def**: a way to ensure that the model is neither overfitted nor underfitted. Ideally, a model should have **low bias** and **low variance**
+**Def**: a way to ensure that the model is neither overfitted nor underfitted
+
+Ideally, a model should have **low bias** and **low variance**
 
 Suppose our data is generated in this form:
 
@@ -310,9 +312,9 @@ where
 
 $$\mathbb{E}[(y-\hat{f}(x))^2]$$ - **Mean Squared Error (MSE)**
 
-$$bias[\hat{f}(x)]=\mathbb{E}[\hat{f}(x)]-f(x)$$
+$$bias[\hat{f}(x)]=\mathbb{E}[\hat{f}(x)]-f(x)$$ - **Bias**
 
-$$var[\hat{f}(x)]=\mathbb{E}[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2]$$
+$$var[\hat{f}(x)]=\mathbb{E}[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2]$$ - **Variance**
 
 **Proof**:
 
