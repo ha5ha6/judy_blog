@@ -326,14 +326,17 @@ $$\begin{align*}
 
 &= \mathbb{E}\left[(f(x)-\mathbb{E}[\hat{f}(x)])^2 \right]+\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2 \right]-2\mathbb{E}\left[(f(x)-\mathbb{E}[\hat{f}(x)])(\hat{f}(x)-\mathbb{E}[\hat{f}(x)]) \right] +\sigma_{\epsilon}^2 \\
 
-&= \left[\underbrace{f(x)-\mathbb{E}[\hat{f}(x)]}_{=bias[\hat{f}(x)],(*5)} \right]^2+\underbrace{\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2 \right]}_{=var[\hat{f}(x)]}-2(f(x)-\mathbb{E}[\hat{f}(x)]) \underbrace{\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)]) \right]}_{=\mathbb{E}[\hat{f}(x)]-\mathbb{E}[\hat{f}(x)]=0} +\sigma_{\epsilon}^2 \\
+&= \left[\underbrace{f(x)-\mathbb{E}[\hat{f}(x)]}\right]^2_{=bias[\hat{f}(x)],(*5)} +\underbrace{\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2 \right]}_{=var[\hat{f}(x)]}-2\underbrace{(f(x)-\mathbb{E}[\hat{f}(x)])}_{\text{constant}} \underbrace{\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)]) \right]}_{=\mathbb{E}[\hat{f}(x)]-\mathbb{E}[\hat{f}(x)]=0} +\sigma_{\epsilon}^2 \\
 
-&= bias[\hat{f}(x)]+var[\hat{f}(x)]+\sigma_{\epsilon}^2
-
-
+&= bias[\hat{f}(x)]^2+var[\hat{f}(x)]+\sigma_{\epsilon}^2
 
 \end{align*}$$
 
+$$(*5)$$:
+
+since $$f(x)-\mathbb{E}[\hat{f}(x)]$$ is a constant minus a constant
+
+$$\mathbb{E}[(f(x)-\mathbb{E}[\hat{f}(x)])^2]=(f(x)-\mathbb{E}[\hat{f}(x)])^2$$
 
 
 
