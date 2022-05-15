@@ -393,7 +393,7 @@ for n,lmd in enumerate(lmd_all):
 plt.savefig('ridge_bias_variance.png',dpi=350)
 ```
 
-<center><img src="/judy_blog/assets/images/ridge_bias_variance.png" width=600></center>
+<center><img src="/judy_blog/assets/images/ridge_bias_variance.png" width=700></center>
 
 The above corresponds to Figure 3.5 in PRML
 
