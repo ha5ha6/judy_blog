@@ -152,11 +152,9 @@ $$\begin{align*}
 &=\frac{\sigma^2}{N}
 \end{align*}$$
 
-Note $$(*4)$$:
+$$(*4)$$:
 
 we can easily derive $$var[cx]=c^2 var[x]$$, where $$c$$ is a scalar
-
-$$\begin{align*}
 
 Recall
 
@@ -327,6 +325,8 @@ $$\begin{align*}
 &= \mathbb{E}\left[(f(x)-\mathbb{E}[\hat{f}(x)])^2+(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2-2(f(x)-\mathbb{E}[\hat{f}(x)])(\hat{f}(x)-\mathbb{E}[\hat{f}(x)]) \right] +\sigma_{\epsilon}^2 \\
 
 &= \mathbb{E}\left[(f(x)-\mathbb{E}[\hat{f}(x)])^2 \right]+\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2 \right]-2\mathbb{E}\left[(f(x)-\mathbb{E}[\hat{f}(x)])(\hat{f}(x)-\mathbb{E}[\hat{f}(x)]) \right] +\sigma_{\epsilon}^2 \\
+
+&= \underbrace{(f(x)-\mathbb{E}[\hat{f}(x)])^2}_{=bias[\hat{f}(x)],(*5)}+\underbrace{\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2 \right]}_{=var[\hat{f}(x)]}-2\mathbb{E}\left[(f(x)-\mathbb{E}[\hat{f}(x)])\right] \mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)]) \right] +\sigma_{\epsilon}^2 \\
 
 
 
