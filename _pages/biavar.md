@@ -115,9 +115,7 @@ $$\begin{align*}
 
 \end{align*}$$
 
-Note
-
-**\*1**:
+Note $$(*1)$$:
 
 $$\begin{align*}
 \hat{\mu}-\mu &=(\frac{1}{N}\sum x_i) - \mu \\
@@ -130,26 +128,13 @@ N\cdot(\hat{\mu}-\mu) &= \sum (x_i - \mu)
 
 \end{align*}$$
 
-Continue with the previous equation  
-
-$$\begin{align*}
-\mathbb{E}[\hat{\sigma}^2] &= \mathbb{E}\left[\frac{1}{N} \sum (x_i-\mu)^2-\frac{2}{N}(\hat{\mu}-\mu) \color{red}{N(\hat{\mu}-\mu)} + (\hat{\mu}-\mu)^2 \right] \\
-
-&= \mathbb{E}\left[\frac{1}{N} \sum (x_i-\mu)^2- (\hat{\mu}-\mu)^2 \right] \\
-
-&= \mathbb{E}\left[\frac{1}{N} \sum (x_i-\mu)^2\right] - \mathbb{E}\left[ (\hat{\mu}-\mu)^2  \right] \\
-
-&= \frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right] - \mathbb{E}\left[ (\hat{\mu}-\mu)^2  \right]
-
-\end{align*}$$
-
-**\*2**:
+Note $$(*2)$$:
 
 $$\mathbb{E}\left[(x_i-\mu)^2\right]=var[x_i]=\sigma^2$$
 
 $$\frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right]=\frac{1}{N} \cdot N \sigma^2=\sigma^2$$
 
-**\*3**:
+Note $$(*3)$$:
 
 $$\begin{align*}
 \mathbb{E}\left[ (\hat{\mu}-\mu)^2 \right] &=var[\hat{\mu}] \\
@@ -172,11 +157,7 @@ $$\begin{align*}
 &=\frac{\sigma^2}{N}
 \end{align*}$$
 
-Therefore  
-
-$$\mathbb{E}[\hat{\sigma}^2]=\sigma^2-\frac{\sigma^2}{N}=\frac{N-1}{N} \sigma^2$$
-
-Note
+Recall
 
 $$\mathbb{E}[\hat{\mu}]=\frac{1}{N} \sum \mathbb{E}[x_i]=\mu$$
 
