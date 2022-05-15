@@ -318,6 +318,19 @@ $$var[\hat{f}(x)]=\mathbb{E}[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2]$$ - **Varian
 
 **Proof**:
 
+$$\begin{align*}
+
+\mathbb{E}[(y-\hat{f}(x))^2] &= \mathbb{E}[(f(x)+\epsilon-\hat{f}(x))-2] \\
+
+&= \mathbb{E}[(f(x)-\hat{f}(x))^2]+\mathbb{E}[\epsilon^2]+2\mathbb{E}[(f(x)-\hat{f}(x))\epsilon] \\
+
+f &= \underbrace{x^3}_\textrm{text 1} + \underbrace{2}_\textrm{text 2} \\
+
+f &= \underbrace{x^3}_\text{text 1} + \underbrace{2}_\text{text 2} \\
+
+
+
+\end{align*}$$
 
 
 
