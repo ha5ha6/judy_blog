@@ -182,7 +182,7 @@ $$\tilde{\sigma}^2=\frac{N}{N-1}\hat{\sigma}^2=\frac{1}{N-1} \sum (x_i-\hat{\mu}
 
 For another way of proof, see the exercise solution of PRML 1.12
 
-### example
+#### Example
 
 Let's generate 10000 datasets with only 2 data points from $$\mathcal{N}(3,1)$$
 
