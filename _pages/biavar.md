@@ -261,9 +261,11 @@ The above corresponds to Figure 1.15 in PRML
 
 This experiment indicates that with 3 small datasets each with 2 samples, the unbiased mean can be captured, as the red curve shown in the fourth row. However, the variance is under-estimated because it is measured relative to the sample mean and not relative to the true mean
 
+This issue will be less significant as the number of samples increases
+
 This bias issue lies at the root of the over-fitting problem
 
-### 
+###
 
 ### References
 
