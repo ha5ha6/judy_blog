@@ -330,6 +330,7 @@ $$var[\hat{f}(x)]=\mathbb{E}[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2]$$ - **Varian
 
 [PRMLの図作成 図1.15 ガウス分布の最尤推定におけるバイアス](https://qiita.com/Alreschas/items/b1dd6f65a2c2bcec8d26)
 
+[The Bias-Variance Trade-off a mathematical view](https://medium.com/snu-ai/the-bias-variance-trade-off-a-mathematical-view-14ff9dfe5a3c#:~:text=Bias%20is%20defined%20as%20the,%5Bf%CC%82(x)%5D.)
 
 
 ### Slides and Code
