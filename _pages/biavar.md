@@ -101,7 +101,7 @@ $$\begin{align*}
 
 &= \mathbb{E} \left[\frac{1}{N} \sum (x_i-\mu)^2-\frac{2}{N}(\hat{\mu}-\mu)\sum (x_i-\mu) + \frac{1}{N} (\hat{\mu}-\mu)^2 \cdot N \right] \\
 
-&= \mathbb{E} \left[\frac{1}{N} \sum (x_i-\mu)^2-\frac{2}{N}(\hat{\mu}-\mu)\underbrace{\sum(x_i-\mu)}_{=N(\hat{\mu}-\mu), (*1)}} + (\hat{\mu}-\mu)^2 \right] \\
+&= \mathbb{E} \left[\frac{1}{N} \sum (x_i-\mu)^2-\frac{2}{N}(\hat{\mu}-\mu)\underbrace{\sum(x_i-\mu)}_{=N(\hat{\mu}-\mu), (*1)} + (\hat{\mu}-\mu)^2 \right] \\
 
 &= \mathbb{E}\left[\frac{1}{N} \sum (x_i-\mu)^2- (\hat{\mu}-\mu)^2 \right] \\
 
