@@ -101,17 +101,13 @@ $$\begin{align*}
 
 &= \mathbb{E} \left[\frac{1}{N} \sum (x_i-\mu)^2-\frac{2}{N}(\hat{\mu}-\mu)\sum (x_i-\mu) + \frac{1}{N} (\hat{\mu}-\mu)^2 \cdot N \right] \\
 
-&= \mathbb{E} \left[\frac{1}{N} \sum (x_i-\mu)^2-\frac{2}{N}(\hat{\mu}-\mu)\underbrace{\sum(x_i-\mu)}_{=N(\hat{\mu}-\mu)^{*1}} + (\hat{\mu}-\mu)^2 \right] \\
+&= \mathbb{E} \left[\frac{1}{N} \sum (x_i-\mu)^2-\frac{2}{N}(\hat{\mu}-\mu)\underbrace{\sum(x_i-\mu)}_{=N(\hat{\mu}-\mu) (*1)}} + (\hat{\mu}-\mu)^2 \right] \\
 
 &= \mathbb{E}\left[\frac{1}{N} \sum (x_i-\mu)^2- (\hat{\mu}-\mu)^2 \right] \\
 
 &= \mathbb{E}\left[\frac{1}{N} \sum (x_i-\mu)^2\right] - \mathbb{E}\left[ (\hat{\mu}-\mu)^2  \right] \\
 
-\end{align*}$$
-
-$$\begin{align*}
-
-&= \underbrace{\frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right]}_{=\sigma^2{*2}} - \underbrace{\mathbb{E}\left[ (\hat{\mu}-\mu)^2 \right]}_{=\frac{1}{N}\sigma^2{*3}} \\
+&= \underbrace{\frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right]}_{=\sigma^2 (*2)} - \underbrace{\mathbb{E}\left[ (\hat{\mu}-\mu)^2 \right]}_{=\frac{1}{N}\sigma^2 (*3)} \\
 
 &=\sigma^2-\frac{\sigma^2}{N} \\
 
@@ -341,6 +337,8 @@ $$\begin{align*}
 &= \mathbb{E}[(f(x)-\hat{f}(x))^2]+\mathbb{E}[\epsilon^2]+2\mathbb{E}[(f(x)-\hat{f}(x))\epsilon] \\
 
 &= \mathbb{E}[(f(x)-\hat{f}(x))^2]+\underbrace{\mathbb{E}[\epsilon^2]}_{=\sigma_{\epsilon}^2}+2\mathbb{E}[(f(x)-\hat{f}(x))]\underbrace{\mathbb{E}[\epsilon]}_{=0} \\
+
+&= \mathbb{E}[(f(x)-\hat{f}(x))^2]+\sigma_{\epsilon}^2
 
 f &= \underbrace{x^3}_\textrm{text 1} + \underbrace{2}_\textrm{text 2} \\
 
