@@ -322,7 +322,7 @@ $$\begin{align*}
 
 \mathbb{E}[(y-\hat{f}(x))^2] &= \mathbb{E}[(f(x)+\epsilon-\hat{f}(x))-2] \\
 
-&= \mathbb{E}[(f(x)-\hat{f}(x))^2]+\mathbb{E}[\epsilon^2]+2\mathbb{E}[(f(x)-\hat{f}(x))\epsilon] \\
+&= \mathbb{E}[(f(x)-\hat{f}(x))^2]+\underbrace{\mathbb{E}[\epsilon^2]}_{=\sigma_{\epsilon}^2}+2\mathbb{E}[(f(x)-\hat{f}(x))\epsilon] \\
 
 f &= \underbrace{x^3}_\textrm{text 1} + \underbrace{2}_\textrm{text 2} \\
 
