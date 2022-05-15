@@ -22,15 +22,15 @@ usemathjax: true
 
 ### Expectation
 
-**Def**: the weighted average of a function $$f(x)$$ weighted by a probability distribution $$p(x)$$
+**Def**: the weighted average of a function $$f(x)$$ weighted by a probability distribution $$p(x)$$ that generates data
 
 For a discrete distribution:
 
-$$\mathbb{E}[f(x)]=\sum_x p(x)f(x)$$
+$$\mathbb{E}_{x \sim p(x)}[f(x)]=\sum_x p(x)f(x)$$
 
 In the case of continuous variables with their probability densities:
 
-$$\mathbb{E}[f(x)]=\int p(x)f(x) dx$$
+$$\mathbb{E}_{x \sim p(x)}[f(x)]=\int p(x)f(x) dx$$
 
 In either case, if we are given a finite number $$N$$ of points drawn from the probability distribution or probability density, the expectation can be approximated as a finite sum over these points
 
