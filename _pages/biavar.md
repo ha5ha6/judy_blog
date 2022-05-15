@@ -101,11 +101,11 @@ $$\begin{align*}
 
 &= \mathbb{E} \left[\frac{1}{N} \sum (x_i-\mu)^2-\frac{2}{N}(\hat{\mu}-\mu)\sum (x_i-\mu) + \frac{1}{N} (\hat{\mu}-\mu)^2 \cdot N \right] \\
 
-&= \mathbb{E} \left[\frac{1}{N} \sum (x_i-\mu)^2-\frac{2}{N}(\hat{\mu}-\mu)\underbrace{\sum(x_i-\mu)}_{N(\hat{\mu}-\mu)} + (\hat{\mu}-\mu)^2 \right]
+&= \mathbb{E} \left[\frac{1}{N} \sum (x_i-\mu)^2-\frac{2}{N}(\hat{\mu}-\mu)\underbrace{\sum(x_i-\mu)}_{N(\hat{\mu}-\mu)^{*1}} + (\hat{\mu}-\mu)^2 \right]
 
 \end{align*}$$
 
-Note
+since
 
 $$\begin{align*}
 \hat{\mu}-\mu &=(\frac{1}{N}\sum x_i) - \mu \\
