@@ -292,27 +292,31 @@ $$y=f(x)+\epsilon$$
 
 where
 
-$$(x,y)$$ represents the data
+$$(x,y)$$ - data
 
-$$f(x)$$ denotes the true relationship of data (hard to know in real life)
+$$f(x)$$ - the true relationship of data (hard to know in real life)
 
-$$\epsilon$$ is the noise with zero mean and variance $$\sigma_{\epsilon}^2$$
+$$\epsilon$$ - the irreducible noise with zero mean and variance $$\sigma_{\epsilon}^2$$
 
 Now we try to model the true pattern of $$f(x)$$ by a function $$\hat{f}(x)$$
 
 The goal is to bring the prediction $$\hat{f}(x)$$ as close as possible to the actual value $$y$$: $$\hat{f}(x) \rightarrow y$$ to minimize the error
 
-Here comes the bias-variance trade-off equation
+Here comes the bias-variance trade-off equation:
 
 $$\mathbb{E}[(y-\hat{f}(x))^2]=bias[\hat{f}(x)]^2+var[\hat{f}(x)]+\sigma_{\epsilon}^2$$
 
 where
 
-$$\mathbb{E}[(y-\hat{f}(x))^2]$$ is the **Mean Squared Error (MSE)**
+$$\mathbb{E}[(y-\hat{f}(x))^2]$$ - **Mean Squared Error (MSE)**
 
 $$bias[\hat{f}(x)]=\mathbb{E}[\hat{f}(x)]-f(x)$$
 
 $$var[\hat{f}(x)]=\mathbb{E}[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2]$$
+
+**Proof**:
+
+
 
 
 
