@@ -263,8 +263,6 @@ This experiment indicates that with 3 small datasets each with 2 samples, the un
 
 This issue will be less significant as the number of samples increases
 
-This bias issue lies at the root of the over-fitting problem
-
 ### Bias and Variance in model fitting
 
 **Bias**: the inability of a model to accurately capture the true pattern of data
@@ -279,7 +277,10 @@ for example, high variance implies that the model does not generalize well on un
 
 **Underfitting**: **high bias** and **low variance**, model fails to capture the pattern of the data
 
-the **Bias-Variance Trade-off**: a way to ensure that the model is neither overfitted nor underfitted. Ideally, a model should have **low bias** and **low variance**
+
+### Bias-Variance Trade-off
+
+**Def**: a way to ensure that the model is neither overfitted nor underfitted. Ideally, a model should have **low bias** and **low variance**
 
 Suppose our data is generated in this form:
 
@@ -292,6 +293,22 @@ $$(x,y)$$ represents the data
 $$f(x)$$ denotes the true relationship of data (hard to know in real life)
 
 $$\epsilon$$ is the noise with zero mean and variance $$\sigma_{\epsilon}^2$$
+
+Now we try to model the true pattern of $$f(x)$$ by a function $$\hat{f}(x)$$
+
+The goal is to bring the prediction $$\hat{f}(x)$$ as close as possible to the actual value $$y$$: $$\hat{f}(x) \rightarrow y$$ to minimize the error
+
+Here comes the bias-variance trade-off equation
+
+$$\mathbb{E}[(y-\hat{f}(x))^2]=bias[\hat{f}(x)]^2+var[\hat{f}(x)]+\sigma_{\epsilon}^2$$
+
+where
+
+$$\mathbb{E}[(y-\hat{f}(x))^2]$$ is the **Mean Squared Error (MSE)**
+
+$$bias[\hat{f}(x)]=\mathbb{E}[\hat{f}(x)]-f(x)$$
+
+$$var[\hat{f}(x)]=\mathbb{E}[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^2]$$
 
 
 
