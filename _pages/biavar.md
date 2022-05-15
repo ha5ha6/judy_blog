@@ -107,11 +107,17 @@ $$\begin{align*}
 
 &= \mathbb{E}\left[\frac{1}{N} \sum (x_i-\mu)^2\right] - \mathbb{E}\left[ (\hat{\mu}-\mu)^2  \right] \\
 
-&= \underbrace{\frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right]}_{=\sigma^2 ^{*2}} - \underbrace{\mathbb{E}\left[ (\hat{\mu}-\mu)^2  \right]}_{=\frac{1}{N} \sigma^2 ^{*3}}
+&= \underbrace{\frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right]}_{=\sigma^2{*2}} - \underbrace{\mathbb{E}\left[ (\hat{\mu}-\mu)^2  \right]}_{=\frac{1}{N} \sigma^2{*3}} \\
+
+&=\sigma^2-\frac{\sigma^2}{N} \\
+
+&=\frac{N-1}{N} \sigma^2
 
 \end{align*}$$
 
-since
+Note
+
+**\*1**:
 
 $$\begin{align*}
 \hat{\mu}-\mu &=(\frac{1}{N}\sum x_i) - \mu \\
@@ -137,13 +143,13 @@ $$\begin{align*}
 
 \end{align*}$$
 
-In the first term, since
+**\*2**:
 
 $$\mathbb{E}\left[(x_i-\mu)^2\right]=var[x_i]=\sigma^2$$
 
 $$\frac{1}{N} \sum \mathbb{E}\left[(x_i-\mu)^2\right]=\frac{1}{N} \cdot N \sigma^2=\sigma^2$$
 
-In the second term
+**\*3**:
 
 $$\begin{align*}
 \mathbb{E}\left[ (\hat{\mu}-\mu)^2 \right] &=var[\hat{\mu}] \\
