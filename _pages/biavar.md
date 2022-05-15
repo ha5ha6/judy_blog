@@ -143,12 +143,7 @@ $$\begin{align*}
 
 &=var \left[\frac{x_1}{N}+\frac{x_2}{N} + ... \right] \\
 
-\end{align*}$$
-
-since we can easily derive $$var[cx]=c^2 var[x]$$, where $$c$$ is a scalar
-
-$$\begin{align*}
-\mathbb{E}\left[(\hat{\mu}-\mu)^2 \right] &= \frac{1}{N^2}var[x_1]+ \frac{1}{N^2}var[x_2]+...\\
+&= \frac{1}{N^2}var[x_1]+ \frac{1}{N^2}var[x_2]+... (*4)\\
 
 &= \frac{1}{N^2} [\sigma^2+\sigma^2+...] \\
 
@@ -156,6 +151,12 @@ $$\begin{align*}
 
 &=\frac{\sigma^2}{N}
 \end{align*}$$
+
+Note $$(*4)$$:
+
+we can easily derive $$var[cx]=c^2 var[x]$$, where $$c$$ is a scalar
+
+$$\begin{align*}
 
 Recall
 
