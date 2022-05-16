@@ -282,7 +282,7 @@ Ideally, a model should have **low bias** and **low variance**
 
 Suppose our data is generated in this form:
 
-$$y=\underbrace{f(x)}_{\text{true relation}}+\underbrace{\epsilon}_{irreducible noise}$$
+$$y=\underbrace{f(x)}_{\text{true}}+\underbrace{\epsilon}_{\text{noise}}$$
 
 where
 
@@ -298,7 +298,7 @@ The goal is to bring the prediction $$\hat{f}(x)$$ as close as possible to the a
 
 Here comes the bias-variance trade-off equation:
 
-$$\underbrace{\mathbb{E}[(y-\hat{f}(x))^2]}_{\text{MSE}}=bias[\hat{f}(x)]^2+var[\hat{f}(x)]+\sigma_{\epsilon}^2$$
+$$\underbrace{\mathbb{E}[(y-\hat{f}(x))^2]}_{\text{MSE}}=bias[\hat{f}(x)]^2+var[\hat{f}(x)]+\underbrace{\sigma_{\epsilon}^2}_{\text{noise variance}}$$
 
 where
 
