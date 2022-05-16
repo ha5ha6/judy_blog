@@ -282,15 +282,15 @@ Ideally, a model should have **low bias** and **low variance**
 
 Suppose our data is generated in this form:
 
-$$y=f(x)+\epsilon$$
+$$y=\underbrace{f(x)}_{\text{true relation}}+\underbrace{\epsilon}_{irreducible noise}$$
 
 where
 
-$$(x,y)$$ - data
+$$(x,y)$$ <- data
 
-$$f(x)$$ - the true relationship of data (hard to know in real life)
+$$f(x)$$ <- the true relationship of data (hard to know in real life)
 
-$$\epsilon$$ - the irreducible noise with zero mean and variance $$\sigma_{\epsilon}^2$$
+$$\epsilon$$ <- the irreducible noise with zero mean and variance $$\sigma_{\epsilon}^2$$
 
 Now we try to model the true pattern of $$f(x)$$ by a function $$\hat{f}(x)$$
 
@@ -298,7 +298,7 @@ The goal is to bring the prediction $$\hat{f}(x)$$ as close as possible to the a
 
 Here comes the bias-variance trade-off equation:
 
-$$\mathbb{E}[(y-\hat{f}(x))^2]=bias[\hat{f}(x)]^2+var[\hat{f}(x)]+\sigma_{\epsilon}^2$$
+$$\underbrace{\mathbb{E}[(y-\hat{f}(x))^2]}_{\text{MSE}}=bias[\hat{f}(x)]^2+var[\hat{f}(x)]+\sigma_{\epsilon}^2$$
 
 where
 
