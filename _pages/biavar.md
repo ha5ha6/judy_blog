@@ -415,7 +415,8 @@ plt.plot(bias_all,'-o',markersize=10,linewidth=3,label='bias')
 plt.plot(var_all,'-o',markersize=10,linewidth=3,label='var')
 plt.legend()
 plt.grid()
-plt.xlabel('lambda of regularizer')
+plt.xlabel('$\lambda$')
+plt.xticks(np.arange(9),[str(lmd) for lmd in lmd_smooth])
 plt.savefig('decomp_bias_variance.png',dpi=350)
 ```
 
