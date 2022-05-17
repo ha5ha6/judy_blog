@@ -14,11 +14,11 @@ usemathjax: true
 
 <style type="text/css">
   body{
-  font-size: 13pt;
+  font-size: 13pt,
   }
 </style>
 
-Despite value-based methods where policies were derived from the action-value functions, we can learn a parameterized policy $$\pi(a \mid s; \boldsymbol{\theta})$$ directly, with $$\boldsymbol{\theta}$$ being the policy parameters
+Despite value-based methods where policies were derived from the action-value functions, we can learn a parameterized policy $$\pi(a \mid s, \boldsymbol{\theta})$$ directly, with $$\boldsymbol{\theta}$$ being the policy parameters
 
 The parameters are updated in a gradient ascent fashion based on a scalar performance measure $$J(\boldsymbol{\theta})$$:
 
@@ -46,7 +46,7 @@ where $$\hat{\nabla J(\boldsymbol{\theta}_t)} \in \mathbb{R}^d$$ is a stochastic
 
 In order to construct a **differentiable** policy for **discrete action spaces**, we often form a **softmax policy**:
 
-$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \frac{\exp \boldsymbol{\theta}^T \phi(s,a)}{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)}$$
+$$\pi(a\mid s, \boldsymbol{\theta}) \triangleq \frac{\exp \boldsymbol{\theta}^T \phi(s,a)}{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)}$$
 
 where $$\boldsymbol{\theta}^T \phi(s,a)$$ is a linear combination of features $$\phi(s,a)$$, which can be defined by a parameterized numerical **preference** $$h(s,a; \boldsymbol{\theta})$$
 
@@ -66,7 +66,7 @@ See [Short Corridor](https://ha5ha6.github.io/judy_blog/pgac/#short-corridor) fo
 
 In the case of **continuous action spaces**, we often use **Gaussian policy**, where the mean is the linear combination of state features:
 
-$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s), \sigma^2)$$
+$$\pi(a\mid s, \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s), \sigma^2)$$
 
 ### Policy Gradient Theorem
 
@@ -76,7 +76,7 @@ $$J(\boldsymbol{\theta}) \triangleq V_{\pi_{\boldsymbol{\theta}}} (s_0)$$
 
 the **Policy Gradient Theorem** provides a general link between $$\nabla J(\boldsymbol{\theta})$$ and the gradient of the policy $$\nabla \pi(a \mid s)$$ itself without taking derivatives of the state distribution:
 
-$$\nabla J(\boldsymbol{\theta}) \propto \sum_{s \in \mathcal{S}} \mu(s) \sum_{a \in \mathcal{A}} Q_{\pi}(s,a) \nabla \pi(a \mid s; \boldsymbol{\theta})$$
+$$\nabla J(\boldsymbol{\theta}) \propto \sum_{s \in \mathcal{S}} \mu(s) \sum_{a \in \mathcal{A}} Q_{\pi}(s,a) \nabla \pi(a \mid s, \boldsymbol{\theta})$$
 
 See [this post](https://lilianweng.github.io/posts/2018-04-08-policy-gradient/) for a detailed proof
 
@@ -101,25 +101,25 @@ It means, when you travel along a Markov Chain in an infinite scale by following
 The right-hand side of the **policy gradient theorem** is a sum over states weighted by how often the states occur under the target policy $$\pi$$. If $$\pi$$ is followed, then states will be encountered in these proportions. Thus, we can write
 
 $$\begin{align*}
-\nabla J(\boldsymbol{\theta}) &\propto \sum_{s \in \mathcal{S}} \mu(s) \sum_{a \in \mathcal{A}} Q_{\pi}(s,a) \nabla \pi(a \mid s; \boldsymbol{\theta}) \\
+\nabla J(\boldsymbol{\theta}) &\propto \sum_{s \in \mathcal{S}} \mu(s) \sum_{a \in \mathcal{A}} Q_{\pi}(s,a) \nabla \pi(a \mid s, \boldsymbol{\theta}) \\
 
-&= \mathbb{E}_{\pi} \left[\sum_a Q_{\pi}(s_t,a) \nabla \pi(a \mid s_t; \boldsymbol{\theta}) \right]
+&= \mathbb{E}_{\pi} \left[\sum_a Q_{\pi}(s_t,a) \nabla \pi(a \mid s_t, \boldsymbol{\theta}) \right]
 \end{align*}$$
 
-where $$s_t$$ represents the state sample at time $$t$$. We can do the same sampling trick to the action $$a_t$$, where an appropriate sum over actions like $$\sum_a \pi(a \mid s_t; \boldsymbol{\theta})$$ can be replaced by an expectation under $$\pi$$. Following the above equations
+where $$s_t$$ represents the state sample at time $$t$$. We can do the same sampling trick to the action $$a_t$$, where an appropriate sum over actions like $$\sum_a \pi(a \mid s_t, \boldsymbol{\theta})$$ can be replaced by an expectation under $$\pi$$. Following the above equations
 
 $$\begin{align*}
-\nabla J(\boldsymbol{\theta}) &= \mathbb{E}_{\pi} \left[\sum_a \pi(a \mid s_t; \boldsymbol{\theta}) Q_{\pi}(s_t,a) \frac{\nabla \pi(a \mid s_t; \boldsymbol{\theta})}{\pi(a \mid s_t; \boldsymbol{\theta})} \right] \\
+\nabla J(\boldsymbol{\theta}) &= \mathbb{E}_{\pi} \left[\sum_a \pi(a \mid s_t, \boldsymbol{\theta}) Q_{\pi}(s_t,a) \frac{\nabla \pi(a \mid s_t, \boldsymbol{\theta})}{\pi(a \mid s_t, \boldsymbol{\theta})} \right] \\
 
-&= \mathbb{E}_{\pi} \left[Q_{\pi}(s_t,a_t) \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] \\
+&= \mathbb{E}_{\pi} \left[Q_{\pi}(s_t,a_t) \frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})} \right] \\
 
-&= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] \\
+&= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})} \right] \\
 
-&= \mathbb{E}_{\pi} \left[R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}) \right]
+&= \mathbb{E}_{\pi} \left[R_t \nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta}) \right]
 
 \end{align*}$$
 
-Since the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})}$$ can be replaced with $$\nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$, the so-called **eligibility vector** by applying **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
+Since the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})}$$ can be replaced with $$\nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta})$$, the so-called **eligibility vector** by applying **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
 
 **Note** that $$R_t$$ is the discounted sum of reward starting from time step $$t$$:
 
@@ -133,7 +133,7 @@ Therefore, we obtained a quantity that can be sampled on each time step whose ex
 
 The **update rule** of **REINFORCE**:
 
-$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}_t)$$
+$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta}_t)$$
 
 See [this post](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c) for a more intuitive explanation
 
@@ -153,23 +153,23 @@ See [this post](https://towardsdatascience.com/an-intuitive-explanation-of-polic
 
 One technique to reduce the high variance from Monte Carlo method is for the measurement quantity like $$Q_{\pi}(s,a)$$ to substract a baseline, to highlight the difference between the current measurement and a reference:
 
-$$\nabla J(\boldsymbol{\theta}) \propto \sum_s \mu(s) \sum_a \left[Q_{\pi}(s,a)-b(s) \right] \nabla \pi(a \mid s; \boldsymbol{\theta})$$
+$$\nabla J(\boldsymbol{\theta}) \propto \sum_s \mu(s) \sum_a \left[Q_{\pi}(s,a)-b(s) \right] \nabla \pi(a \mid s, \boldsymbol{\theta})$$
 
 without messing around with the original gradient:
 
-$$\sum_a b(s) \nabla \pi(a \mid s; \boldsymbol{\theta})=b(s)\nabla \sum_a \pi(a \mid s; \boldsymbol{\theta})=b(s)\nabla 1=0$$
+$$\sum_a b(s) \nabla \pi(a \mid s, \boldsymbol{\theta})=b(s)\nabla \sum_a \pi(a \mid s, \boldsymbol{\theta})=b(s)\nabla 1=0$$
 
 The **update rule** for $$\boldsymbol{\theta}$$:
 
-$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha \left[R_t-b(s_t) \right] \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}_t)$$
+$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha \left[R_t-b(s_t) \right] \nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta}_t)$$
 
 See [this post](https://danieltakeshi.github.io/2017/03/28/going-deeper-into-reinforcement-learning-fundamentals-of-policy-gradients/) for why substracting baseline reduces the variance
 
-There are many unbiased or biased baselines have been proposed, and an intuitive one can be a learned estimate of the state value $$V(s_t; \boldsymbol{w})$$, where $$\boldsymbol{w} \in \mathbb{R}^m$$ is a parameter vector
+There are many unbiased or biased baselines have been proposed, and an intuitive one can be a learned estimate of the state value $$V(s_t, \boldsymbol{w})$$, where $$\boldsymbol{w} \in \mathbb{R}^m$$ is a parameter vector
 
 The **update rule** for $$\boldsymbol{w}$$:
 
-$$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \left[R_t-b(s_t) \right] \nabla V(s_t; \boldsymbol{w}_t)$$
+$$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \left[R_t-b(s_t) \right] \nabla V(s_t, \boldsymbol{w}_t)$$
 
 An optimal baseline derived by minimizing the variance of the gradient estimates can be found in [1] and [this post](https://www.analyticsvidhya.com/blog/2020/11/baseline-for-policy-gradients/)
 
@@ -191,13 +191,13 @@ Actor Critic usually can achieve **better sample efficiency** than pure police g
 
 The **update rules**:
 
-$$\delta_t \leftarrow r_t+\gamma V(s_{t+1}; \boldsymbol{w}_t)-V(s_t; \boldsymbol{w}_t)$$
+$$\delta_t \leftarrow r_t+\gamma V(s_{t+1}; \boldsymbol{w}_t)-V(s_t, \boldsymbol{w}_t)$$
 
-$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha_{\boldsymbol{\theta}} \delta_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}_t)$$
+$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha_{\boldsymbol{\theta}} \delta_t \nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta}_t)$$
 
 $$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \delta_t \nabla V(s_t, \boldsymbol{w}_t)$$
 
-Note that the role of state value $$V(s; \boldsymbol{w})$$ learned from REINFORCE-baseline is different from Actor-Critic. The former behaves as a baseline, and the latter participates both in the one-step TD update and the gradient update
+Note that the role of state value $$V(s, \boldsymbol{w})$$ learned from REINFORCE-baseline is different from Actor-Critic. The former behaves as a baseline, and the latter participates both in the one-step TD update and the gradient update
 
 **Summary** of **Actor-Critic**:
 
@@ -213,7 +213,7 @@ Note that the role of state value $$V(s; \boldsymbol{w})$$ learned from REINFORC
 
 [2] provides a general form of the approximated gradient:
 
-$$\nabla J(\boldsymbol{\theta}) = \mathbb{E}_{\pi} \left[\Psi_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}) \right]$$
+$$\nabla J(\boldsymbol{\theta}) = \mathbb{E}_{\pi} \left[\Psi_t \nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta}) \right]$$
 
 where $$\Psi_t$$ can be replace by the following quantitites:
 
@@ -231,18 +231,18 @@ where $$\Psi_t$$ can be replace by the following quantitites:
 
 In the case of advantage value in 5, $$V^{\pi}(s_t)$$ can be regarded as a baseline which "yields almost the lowest possible variance"
 
-The advantage value itself measures whether or not the action is better or worse than the policy's average/default behavior. Hence, it is recommended to choose $$\Psi_t$$ to be the advantage function, so that the gradient points in the direction of increased policy $$\pi(a_t \mid s_t; \boldsymbol{\theta})$$ iif $$A^{\pi}(s_t,a_t)>0$$
+The advantage value itself measures whether or not the action is better or worse than the policy's average/default behavior. Hence, it is recommended to choose $$\Psi_t$$ to be the advantage function, so that the gradient points in the direction of increased policy $$\pi(a_t \mid s_t, \boldsymbol{\theta})$$ iif $$A^{\pi}(s_t,a_t)>0$$
 
 ### Log-Derivative of Policies
 
 In a **discrete action** setting, where
 
-$$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \frac{\exp \boldsymbol{\theta}^T \phi(s,a)}{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)}$$
+$$\pi(a\mid s, \boldsymbol{\theta}) \triangleq \frac{\exp \boldsymbol{\theta}^T \phi(s,a)}{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)}$$
 
 We have
 
 $$\begin{align*}
-\nabla_{\boldsymbol{\theta}} \log \pi(a \mid s; \boldsymbol{\theta}) &= \frac{\nabla_{\boldsymbol{\theta}} \pi(a \mid s; \boldsymbol{\theta})}{\pi(a \mid s; \boldsymbol{\theta})} \\
+\nabla_{\boldsymbol{\theta}} \log \pi(a \mid s, \boldsymbol{\theta}) &= \frac{\nabla_{\boldsymbol{\theta}} \pi(a \mid s, \boldsymbol{\theta})}{\pi(a \mid s, \boldsymbol{\theta})} \\
 
 &= \left[\nabla_{\boldsymbol{\theta}} \frac{\exp \boldsymbol{\theta}^T \phi(s,a)}{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)} \right] \cdot \frac{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)}{\exp \boldsymbol{\theta}^T \phi(s,a)} \\
 
@@ -252,7 +252,7 @@ $$\begin{align*}
 
 &= \phi(s,a) - \frac{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b) \cdot \phi(s,b)}{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)} \\
 
-&= \phi(s,a) - \sum_b \pi(b \mid s; \boldsymbol{\theta}) \phi(s,b) \\
+&= \phi(s,a) - \sum_b \pi(b \mid s, \boldsymbol{\theta}) \phi(s,b) \\
 
 &= \phi(s,a) - \mathbb{E}_{\pi} \left[\phi(s,\cdot) \right]
 
@@ -260,12 +260,12 @@ $$\begin{align*}
 
 In the case of **continuous action spaces**, where
 
-$$a \sim \pi(a\mid s; \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s), \sigma^2)$$
+$$a \sim \pi(a\mid s, \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s), \sigma^2)$$
 
 We have
 
 $$\begin{align*}
-\nabla_{\boldsymbol{\theta}} \log \pi(a \mid s; \boldsymbol{\theta}) &= \nabla_{\boldsymbol{\theta}} \log \frac{1}{\sigma \sqrt{2\pi}} \exp \left[- \frac{1}{2} \left(\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right)^2 \right] \\
+\nabla_{\boldsymbol{\theta}} \log \pi(a \mid s, \boldsymbol{\theta}) &= \nabla_{\boldsymbol{\theta}} \log \frac{1}{\sigma \sqrt{2\pi}} \exp \left[- \frac{1}{2} \left(\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right)^2 \right] \\
 
 &= \nabla_{\boldsymbol{\theta}} \log \frac{1}{\sigma \sqrt{2\pi}} - \nabla_{\boldsymbol{\theta}} \log \exp \left[- \frac{1}{2} \left(\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right)^2 \right] \\
 
