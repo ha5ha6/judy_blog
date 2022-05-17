@@ -171,19 +171,19 @@ An optimal baseline derived by minimizing the variance of the gradient estimates
 
 ### Actor Critic
 
-### A Generalized View
+### A General View
 
-[2] provides a generalized form of the approximated gradient:
+[2] provides a general form of the approximated gradient:
 
-$$\nabla J(\boldsymbol{\theta}) = \mathbb{E}_{\pi} \left[\Psi \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}) \right]$$
+$$\nabla J(\boldsymbol{\theta}) = \mathbb{E}_{\pi} \left[\Psi_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}) \right]$$
 
-where $$\Psi$$ can be replace by the following quantitites:
+where $$\Psi_t$$ can be replace by the following quantitites:
 
-1. $$R_0 \leftarrow$$ total discounted reward of one trajectory
+1. $$R_0 \leftarrow$$ total discounted reward of one episode
 
-2. $$R_t \leftarrow$$ total discounted reward from time step $$t$$
+2. $$R_t \leftarrow$$ total discounted reward from time step $$t$$ of one episode
 
-3. $$[R_t-b(s_t)] \leftarrow$$ total discounted reward substracts a baseline  
+3. $$R_t-b(s_t) \leftarrow$$ total discounted reward substracts a baseline  
 
 4. $$Q^{\pi}(s_t,a_t) \leftarrow$$ an (estimated) action value
 
@@ -193,9 +193,7 @@ where $$\Psi$$ can be replace by the following quantitites:
 
 In the case of advantage value in 5, $$V^{\pi}(s_t)$$ can be regarded as a baseline which "yields almost the lowest possible variance"
 
-The advantage value itself measures whether or not the action is better or worse than the policy's average behavior
-
-
+The advantage value itself measures whether or not the action is better or worse than the policy's average/default behavior. Hence, it is recommended to choose $$\Psi_t$$ to be the advantage function, so that the gradient points in the direction of increased policy $$\pi(a_t \mid s_t; \boldsymbol{\theta})$$ iif $$A^{\pi}(s_t,a_t)>0$$
 
 ### Log-Derivative of Policies
 
