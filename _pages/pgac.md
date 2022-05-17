@@ -177,9 +177,17 @@ $$\nabla J(\boldsymbol{\theta}) = \mathbb{E}_{\pi} \left[\Psi \nabla \log \pi(a_
 
 where $$\Psi$$ can be replace by the following quantitites:
 
-$$\sum_{t=0}^T r_t$$ - total reward of one trajectory
+$$\sum_{t=0}^T \gamma^t r_t$$ - total discounted reward of one trajectory
 
-$$\sum_{t'=t}^T$$
+$$R_t$$ - total discounted reward from time step $$t$$
+
+$$R_t-b(s_t)$$ - total discounted reward substracts baseline  
+
+$$\hat{Q}^{\pi}(s_t,a_t)$$ - estimated action value
+
+$$\hat{A}^{\pi}(s_t,a_t)=\hat{Q}^{\pi}(s_t,a_t)-\hat{V}^{\pi}(s_t)$$ - estimated advantage value
+
+$$\delta_t=r_t+V^{\pi}(s_{t+1})-V^{\pi}(s_t)$$ - TD error
 
 ### Log-Derivative of Policies
 
