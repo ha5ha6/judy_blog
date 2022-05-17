@@ -115,9 +115,11 @@ $$\begin{align*}
 
 &= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] \\
 
-&= \mathbb{E}_{\pi} \left[R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}) \right]
-
 \end{align*}
+
+$$= \mathbb{E}_{\pi} \left[R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}) \right]$$
+
+
 
 Since the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})}$$ can be replaced with $$\nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$, the so-called **eligibility vector**, by a **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
 
@@ -171,9 +173,13 @@ An optimal baseline derived by minimizing the variance of the gradient estimates
 
 ### A Generalized View
 
-[2] provides a generalized form of approximated gradient:
+[2] provides a generalized form of the approximated gradient:
 
-$$\nabla J(\boldsymbol{\theta})$$
+$$\nabla J(\boldsymbol{\theta}) = \mathbb{E}_{\pi} \left[\Psi \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}) \right]$$
+
+where $$\Psi$$ can be replace by the following quantitites:
+
+$$$$
 
 ### Log-Derivative of Policies
 
