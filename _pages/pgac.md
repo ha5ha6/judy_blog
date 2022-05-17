@@ -388,6 +388,16 @@ def dlog(phi,a,pi):
 
     return phi[:,a]-np.dot(phi,pi)
 
+#calculate discounted return in a reversive way
+def get_return(rewards,gm):
+
+    R=np.zeros(len(rewards))
+    R[-1]=rewards[-1]
+    for i in range(2,len(R)+1):
+        R[-i]=gm*R[-i+1]+rewards[-i]
+
+    return R
+
 def run_reinforce(lr=2e-4, gm=1, n_eps=1000):
 
     #initialization of policy parameter theta and state-action feature
@@ -413,17 +423,12 @@ def run_reinforce(lr=2e-4, gm=1, n_eps=1000):
             s=s_
             stp+=1
 
-        #get discounted return for each step in a reversive way
-        G=np.zeros(len(rewards))
-        G[-1]=rewards[-1]
-        for i in range(2,len(G)+1):
-            G[-i]=gm*G[-i+1]+rewards[-i]
-
+        R=get_return(rewards,gm)
         #update policy parameter theta
         gmt=1
         for i in range(len(rewards)):
             grad=dlog(phi,actions[i],policies[i])
-            theta+=lr*gmt*G[i]*grad
+            theta+=lr*gmt*R[i]*grad
             gmt*=gm
 
         r_all.append(sum(rewards))
