@@ -191,7 +191,11 @@ where $$\Psi$$ can be replace by the following quantitites:
 
 6. $$\delta_t=r_t+V^{\pi}(s_{t+1})-V^{\pi}(s_t) \leftarrow$$ TD error
 
-In the case of advantage value in 5, $$V^{\pi}(s_t)$$ can be regarded as a baseline, 
+In the case of advantage value in 5, $$V^{\pi}(s_t)$$ can be regarded as a baseline which "yields almost the lowest possible variance"
+
+The advantage value itself measures whether or not the action is better or worse than the policy's average behavior
+
+
 
 ### Log-Derivative of Policies
 
