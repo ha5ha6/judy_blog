@@ -159,13 +159,17 @@ without messing around with the original gradient:
 
 $$\sum_a b(s) \nabla \pi(a \mid s; \boldsymbol{\theta})=b(s)\nabla \sum_a \pi(a \mid s; \boldsymbol{\theta})=b(s)\nabla 1=0$$
 
-Then the **update rule** becomes
+Then the **update rule** becomes:
 
 $$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha \left[R_t-b(s_t) \right] \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
 
 See [this post](https://danieltakeshi.github.io/2017/03/28/going-deeper-into-reinforcement-learning-fundamentals-of-policy-gradients/) for why substracting baseline reduces the variance
 
 There are many unbiased or biased baselines have been proposed, and an intuitive one can be a learned estimate of the state value $$\hat{V}(s_t; \boldsymbol{w})$$, where $$\boldsymbol{w} \in \mathbb{R}^m$$ is a parameter vector
+
+The **update rule** for $$\boldsymbol{w}$$:
+
+$$\boldsymbol{w}_{t+1}=\boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \left[R_t-b(s_t) \right] \nabla \hat{V}(s_t, \boldsymbol{w})$$
 
 An optimal baseline derived by minimizing the variance of the gradient estimates can be found in [1] and [this post](https://www.analyticsvidhya.com/blog/2020/11/baseline-for-policy-gradients/)
 
