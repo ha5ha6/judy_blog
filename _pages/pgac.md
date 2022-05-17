@@ -22,7 +22,7 @@ Despite value-based methods where policies were derived from the action-value fu
 
 The parameters are updated in a gradient ascent fashion based on a scalar performance measure $$J(\boldsymbol{\theta})$$:
 
-$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha \hat{\nabla J(\boldsymbol{\theta}_t)}$$
+$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha \hat{\nabla J(\boldsymbol{\theta}_t)}$$
 
 where $$\hat{\nabla J(\boldsymbol{\theta}_t)} \in \mathbb{R}^d$$ is a stochastic estimate whose expectation approximates the gradient of $$J(\boldsymbol{\theta})$$
 
@@ -133,7 +133,7 @@ Therefore, we obtained a quantity that can be sampled on each time step whose ex
 
 The **update rule** of **REINFORCE**:
 
-$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
+$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
 
 See [this post](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c) for a more intuitive explanation
 
@@ -161,7 +161,7 @@ $$\sum_a b(s) \nabla \pi(a \mid s; \boldsymbol{\theta})=b(s)\nabla \sum_a \pi(a 
 
 Then the **update rule** becomes:
 
-$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha \left[R_t-b(s_t) \right] \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
+$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha \left[R_t-b(s_t) \right] \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
 
 See [this post](https://danieltakeshi.github.io/2017/03/28/going-deeper-into-reinforcement-learning-fundamentals-of-policy-gradients/) for why substracting baseline reduces the variance
 
@@ -169,13 +169,23 @@ There are many unbiased or biased baselines have been proposed, and an intuitive
 
 The **update rule** for $$\boldsymbol{w}$$:
 
-$$\boldsymbol{w}_{t+1}=\boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \left[R_t-b(s_t) \right] \nabla \hat{V}(s_t, \boldsymbol{w})$$
+$$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \left[R_t-b(s_t) \right] \nabla \hat{V}(s_t, \boldsymbol{w})$$
 
 An optimal baseline derived by minimizing the variance of the gradient estimates can be found in [1] and [this post](https://www.analyticsvidhya.com/blog/2020/11/baseline-for-policy-gradients/)
 
 ### Actor Critic
 
-Another way to avoid Monte Carlo effects in REINFORCE is to introduce a temporal-difference scheme with the value function being learned together, called **Actor Critic**, where **Actor** represents the policy and **Critic** is the value function
+Another way to avoid Monte Carlo effects in REINFORCE is to introduce a temporal-difference scheme with the value function being learned together
+
+This method is called **Actor Critic**, from where **Actor** represents the policy and **Critic** is the value function
+
+The **update rule**:
+
+$$\delta_t \leftarrow r_t+\gamma V(s_{t+1}; \boldsymbol{w})-V(s; \boldsymbol{w})$$
+
+$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha_{\boldsymbol{w}} \delta_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
+
+$$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \delta_t \nabla \hat{V}(s_t, \boldsymbol{w})$$
 
 ### A General View
 
