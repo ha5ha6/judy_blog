@@ -111,15 +111,13 @@ where $$s_t$$ represents the state sample at time $$t$$. We can do the same samp
 $$\begin{align*}
 \nabla J(\boldsymbol{\theta}) &= \mathbb{E}_{\pi} \left[\sum_a \pi(a \mid s_t; \boldsymbol{\theta}) Q_{\pi}(s_t,a) \frac{\nabla \pi(a \mid s_t; \boldsymbol{\theta})}{\pi(a \mid s_t; \boldsymbol{\theta})} \right] \\
 
+&= \mathbb{E}_{\pi} \left[Q_{\pi}(s_t,a_t) \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] \\
+
+&= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] \\
+
+&= \mathbb{E}_{\pi} \left[R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}) \right]
+
 \end{align*}$$
-
-$$= \mathbb{E}_{\pi} \left[Q_{\pi}(s_t,a_t) \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] $$
-
-
-
-$$= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] $$
-
-$$= \mathbb{E}_{\pi} \left[R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}) \right]$$
 
 Since the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})}$$ can be replaced with $$\nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$, the so-called **eligibility vector**. This is **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
 
@@ -179,17 +177,19 @@ $$\nabla J(\boldsymbol{\theta}) = \mathbb{E}_{\pi} \left[\Psi \nabla \log \pi(a_
 
 where $$\Psi$$ can be replace by the following quantitites:
 
-$$\sum_{t=0}^T \gamma^t r_t$$ - total discounted reward of one trajectory
+$$R_0$$ - total discounted reward of one trajectory
 
 $$R_t$$ - total discounted reward from time step $$t$$
 
-$$R_t-b(s_t)$$ - total discounted reward substracts baseline  
+$$R_t-b(s_t)$$ - total discounted reward substracts a baseline  
 
-$$\hat{Q}^{\pi}(s_t,a_t)$$ - estimated action value
+$$Q^{\pi}(s_t,a_t)$$ - an (estimated) action value
 
-$$\hat{A}^{\pi}(s_t,a_t)=\hat{Q}^{\pi}(s_t,a_t)-\hat{V}^{\pi}(s_t)$$ - estimated advantage value
+$$A^{\pi}(s_t,a_t) \triangleq Q^{\pi}(s_t,a_t)-V^{\pi}(s_t)$$ - an (estimated) advantage value
 
 $$\delta_t=r_t+V^{\pi}(s_{t+1})-V^{\pi}(s_t)$$ - TD error
+
+In the case of advantage value, $$V^{\pi}(s_t)$$ is regarded as a baseline
 
 ### Log-Derivative of Policies
 
