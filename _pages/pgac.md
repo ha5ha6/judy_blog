@@ -113,8 +113,13 @@ $$\begin{align*}
 
 &= \mathbb{E}_{\pi} \left[Q_{\pi}(s_t,a_t) \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] \\
 
-&= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right]
-\end{align*}$$
+&= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] \\
+
+&= \mathbb{E}_{\pi} \left[R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}) \right]
+
+\end{align*}
+
+Since the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})}$$ can be replaced with $$\nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$, the so-called **eligibility vector**, by a **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
 
 **Note** that $$R_t$$ is the discounted sum of reward starting from time step $$t$$:
 
@@ -128,17 +133,11 @@ Therefore, we obtained a quantity that can be sampled on each time step whose ex
 
 The **update rule** of **REINFORCE**:
 
-$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})}$$
+$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
 
 See [this post](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c) for a more intuitive explanation
 
 **REINFORCE** uses $$R_t$$, the complete return from time $$t$$ , which includes all future rewards up until the end of the episode, so it is a **Monte Carlo** method
-
-Moreover, we can replace the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})}$$ with $$\nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$, called **eligibility vector**. This is **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
-
-So the **update rule** can be re-written to:
-
-$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
 
 The **pros and cons** of **REINFORCE**:
 
@@ -152,7 +151,7 @@ The **pros and cons** of **REINFORCE**:
 
 ### REINFORCE with baseline
 
-One technique to reduce the high variance from Monte Carlo method is for the measurement quantity like $$Q_{\pi}(s,a)$$ to substract a baseline, to highlight the difference between the current measurement and a referenced one:
+One technique to reduce the high variance from Monte Carlo method is for the measurement quantity like $$Q_{\pi}(s,a)$$ to substract a baseline, to highlight the difference between the current measurement and a reference:
 
 $$\nabla J(\boldsymbol{\theta}) \propto \sum_s \mu(s) \sum_a \left[Q_{\pi}(s,a)-b(s) \right] \nabla \pi(a \mid s; \boldsymbol{\theta})$$
 
@@ -160,7 +159,7 @@ without messing around with the original gradient:
 
 $$\sum_a b(s) \nabla \pi(a \mid s; \boldsymbol{\theta})=b(s)\nabla \sum_a \pi(a \mid s; \boldsymbol{\theta})=b(s)\nabla 1=0$$
 
-Then the **update rule**
+Then the **update rule** becomes
 
 $$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha \left[R_t-b(s_t) \right] \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
 
@@ -170,7 +169,11 @@ There are many unbiased or biased baselines have been proposed, and an intuitive
 
 An optimal baseline derived by minimizing the variance of the gradient estimates can be found in [1] and [this post](https://www.analyticsvidhya.com/blog/2020/11/baseline-for-policy-gradients/)
 
-### GAE
+### A Generalized View
+
+[2] provides a generalized form of approximated gradient:
+
+$$\nabla J(\boldsymbol{\theta})$$
 
 ### Log-Derivative of Policies
 
