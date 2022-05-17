@@ -111,9 +111,11 @@ where $$s_t$$ represents the state sample at time $$t$$. We can do the same samp
 $$\begin{align*}
 \nabla J(\boldsymbol{\theta}) &= \mathbb{E}_{\pi} \left[\sum_a \pi(a \mid s_t; \boldsymbol{\theta}) Q_{\pi}(s_t,a) \frac{\nabla \pi(a \mid s_t; \boldsymbol{\theta})}{\pi(a \mid s_t; \boldsymbol{\theta})} \right] \\
 
-&= \mathbb{E}_{\pi} \left[Q_{\pi}(s_t,a_t) \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] \\
-
 \end{align*}
+
+$$= \mathbb{E}_{\pi} \left[Q_{\pi}(s_t,a_t) \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] $$
+
+
 
 $$= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] $$
 
