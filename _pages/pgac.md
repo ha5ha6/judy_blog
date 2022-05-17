@@ -170,6 +170,8 @@ There are many unbiased or biased baselines have been proposed, and an intuitive
 
 An optimal baseline derived by minimizing the variance of the gradient estimates can be found in [1] and [this post](https://www.analyticsvidhya.com/blog/2020/11/baseline-for-policy-gradients/)
 
+### GAE
+
 ### Log-Derivative of Policies
 
 In a **discrete action** setting, where
@@ -408,6 +410,8 @@ The results show that REINFORCE was able to learn an optimal stochastic policy s
 **Reinforcement Learning an Introduction 2nd edition** by Sutton and Barto
 
 [1] Peters, Jan, and Stefan Schaal. "Reinforcement learning of motor skills with policy gradients." Neural networks 21.4 (2008): 682-697.
+
+[2] Schulman, John, et al. "High-dimensional continuous control using generalized advantage estimation." arXiv preprint arXiv:1506.02438 (2015).
 
 [Policy Gradients Methods - Lilian Weng](https://lilianweng.github.io/posts/2018-04-08-policy-gradient/)
 
