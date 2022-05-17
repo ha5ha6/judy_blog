@@ -132,6 +132,10 @@ So the **update rule** can be re-written to:
 
 $$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta})$$
 
+See [this post](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c) for a more intuitive explanation
+
+### Calculate Log-Derivative
+
 In a **discrete action** setting, where
 
 $$\pi(a\mid s; \boldsymbol{\theta}) \triangleq \frac{\exp \boldsymbol{\theta}^T \phi(s,a)}{\sum_b \exp \boldsymbol{\theta}^T \phi(s,b)}$$
@@ -184,7 +188,7 @@ The **pros and cons** of **REINFORCE**:
 
 (-) of high variance as a Monte Carlo method, and thus slow learning
 
-See [this post](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c) for a more intuitive explanation
+
 
 ### Important Concepts
 
