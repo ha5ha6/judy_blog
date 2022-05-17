@@ -191,7 +191,7 @@ Actor Critic usually can achieve **better sample efficiency** than pure police g
 
 The **update rules**:
 
-$$\delta_t \leftarrow r_t+\gamma V(s_{t+1}; \boldsymbol{w}_t)-V(s_t, \boldsymbol{w}_t)$$
+$$\delta_t \leftarrow r_t+\gamma V(s_{t+1}, \boldsymbol{w}_t)-V(s_t, \boldsymbol{w}_t)$$
 
 $$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha_{\boldsymbol{\theta}} \delta_t \nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta}_t)$$
 
