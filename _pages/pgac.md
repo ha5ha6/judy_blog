@@ -116,7 +116,13 @@ $$\begin{align*}
 &= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})} \right]
 \end{align*}$$
 
-Note that $$\mathbb{E}_{\pi} \left[R_t \mid s_t, a_t \right]=Q_{\pi}(s_t, a_t)$$
+Note that $$R_t$$ is the discounted sum of reward starting from time step $$t$$:
+
+$$R_t \triangleq \sum_{i=0}^T \gamma^i r_{t+i}$$
+
+and $$Q_{\pi}(s_t, a_t)$$ is the expected return starting from $$s_t, a_t$$:
+
+$$Q_{\pi}(s_t, a_t) \triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t, a_t \right]$$
 
 Therefore, we obtained a quantity that can be sampled on each time step whose expectation is equal to the gradient
 
