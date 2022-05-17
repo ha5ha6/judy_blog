@@ -203,7 +203,11 @@ Note that the role of state value $$V(s; \boldsymbol{w})$$ learned from REINFORC
 
 (+) can one-step TD update
 
-(+) sample efficiency 
+(+) sample efficiency
+
+(+) online learning
+
+(+) on-policy
 
 ### A General View
 
@@ -477,6 +481,8 @@ The results show that REINFORCE was able to learn an optimal stochastic policy s
 [Going Deeper Into Reinforcement Learning: Fundamentals of Policy Gradients - Daniel Seita](https://danieltakeshi.github.io/2017/03/28/going-deeper-into-reinforcement-learning-fundamentals-of-policy-gradients/)
 
 [Baseline for Policy Gradients that All Deep Learning Enthusists Must Know](https://www.analyticsvidhya.com/blog/2020/11/baseline-for-policy-gradients/)
+
+[What is the difference between policy gradient methods and actor-critic methods?](https://www.quora.com/What-is-the-difference-between-policy-gradient-methods-and-actor-critic-methods)
 
 [ShangtongZhang/reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
 
