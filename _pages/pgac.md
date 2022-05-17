@@ -28,11 +28,17 @@ where $$\hat{\nabla J(\boldsymbol{\theta}_t)} \in \mathbb{R}^d$$ is a stochastic
 
 ### Advantages of Policy-based Methods
 
-- policy may be a simpler function to approximate, so that it learns faster and yields a superior asymptotic policy (this varies in the complexity of the policies and action-value functions)
+- learn **a stochastic policy** that provides specific probabilities for taking the actions (hard for value-based methods)
 
-- the choice of policy parameterization is a good way of injecting prior knowledge
+- this stochasticity could start from appropriate levels of exploration to deterministic policies asymptotically (other than $$\epsilon$$-greedy in valued-based methods)
 
-- the continuity of the policy dependence on the parameters enables the action probabilities to change smoothly and therefore allows for convergence guarantees with gradient ascent
+- naturally handle **continuous action spaces** (hard for value-based methods)
+
+- policy may be **a simpler function** to approximate, so that it learns faster and yields a superior asymptotic policy (this varies in the complexity of the policies and action-value functions)
+
+- the choice of policy parameterization is a good way of **injecting prior knowledge**
+
+- the **continuity** of the policy dependence on the parameters enables the action probabilities to **change smoothly** and therefore allows for **convergence guarantees** with gradient ascent
 
 - etc
 
