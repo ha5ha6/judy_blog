@@ -119,7 +119,7 @@ $$\begin{align*}
 
 \end{align*}$$
 
-Since the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})}$$ can be replaced with $$\nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta})$$, the so-called **eligibility vector** by applying **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
+Since the fraction of $$\frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})}$$ can be replaced with $$\nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta})$$, the so-called **eligibility vector** by applying **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
 
 **Note** that $$R_t$$ is the discounted sum of reward starting from time step $$t$$:
 
