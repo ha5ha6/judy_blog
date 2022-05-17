@@ -121,7 +121,7 @@ $$= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta
 
 $$= \mathbb{E}_{\pi} \left[R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}) \right]$$
 
-Since the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})}$$ can be replaced with $$\nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$, the so-called **eligibility vector**, by a **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
+Since the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})}$$ can be replaced with $$\nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$, the so-called **eligibility vector**. This is **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
 
 **Note** that $$R_t$$ is the discounted sum of reward starting from time step $$t$$:
 
