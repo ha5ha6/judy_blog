@@ -177,7 +177,7 @@ An optimal baseline derived by minimizing the variance of the gradient estimates
 
 (+) lower variance
 
-(-) but maybe still Monte Carlo for parameter updating
+(-) but maybe still Monte Carlo (episodic) for parameter updating
 
 ### Actor Critic
 
