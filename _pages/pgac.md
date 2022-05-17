@@ -140,7 +140,7 @@ $$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t
 
 See [this post](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c) for a more intuitive explanation
 
-### Calculate Log-Derivative of Policies
+### Log-Derivative of Policies
 
 In a **discrete action** setting, where
 
