@@ -119,7 +119,7 @@ $$\begin{align*}
 
 \end{align*}$$
 
-Since the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})}$$ can be replaced with $$\nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$, the so-called **eligibility vector**. This is **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
+Since the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})}$$ can be replaced with $$\nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$, the so-called **eligibility vector** by applying **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
 
 **Note** that $$R_t$$ is the discounted sum of reward starting from time step $$t$$:
 
@@ -170,6 +170,8 @@ There are many unbiased or biased baselines have been proposed, and an intuitive
 An optimal baseline derived by minimizing the variance of the gradient estimates can be found in [1] and [this post](https://www.analyticsvidhya.com/blog/2020/11/baseline-for-policy-gradients/)
 
 ### Actor Critic
+
+Another way to avoid Monte Carlo effects in REINFORCE is to introduce a temporal-difference scheme with the value function being learned together, called **Actor Critic**, where **Actor** represents the policy and **Critic** is the value function
 
 ### A General View
 
