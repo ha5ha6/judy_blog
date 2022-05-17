@@ -133,7 +133,7 @@ Therefore, we obtained a quantity that can be sampled on each time step whose ex
 
 The **update rule** of **REINFORCE**:
 
-$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
+$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}_t)$$
 
 See [this post](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c) for a more intuitive explanation
 
@@ -159,17 +159,17 @@ without messing around with the original gradient:
 
 $$\sum_a b(s) \nabla \pi(a \mid s; \boldsymbol{\theta})=b(s)\nabla \sum_a \pi(a \mid s; \boldsymbol{\theta})=b(s)\nabla 1=0$$
 
-Then the **update rule** becomes:
+The **update rule** for $$\boldsymbol{\theta}$$:
 
-$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha \left[R_t-b(s_t) \right] \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
+$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha \left[R_t-b(s_t) \right] \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}_t)$$
 
 See [this post](https://danieltakeshi.github.io/2017/03/28/going-deeper-into-reinforcement-learning-fundamentals-of-policy-gradients/) for why substracting baseline reduces the variance
 
-There are many unbiased or biased baselines have been proposed, and an intuitive one can be a learned estimate of the state value $$\hat{V}(s_t; \boldsymbol{w})$$, where $$\boldsymbol{w} \in \mathbb{R}^m$$ is a parameter vector
+There are many unbiased or biased baselines have been proposed, and an intuitive one can be a learned estimate of the state value $$V(s_t; \boldsymbol{w})$$, where $$\boldsymbol{w} \in \mathbb{R}^m$$ is a parameter vector
 
 The **update rule** for $$\boldsymbol{w}$$:
 
-$$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \left[R_t-b(s_t) \right] \nabla \hat{V}(s_t, \boldsymbol{w})$$
+$$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \left[R_t-b(s_t) \right] \nabla V(s_t; \boldsymbol{w}_t)$$
 
 An optimal baseline derived by minimizing the variance of the gradient estimates can be found in [1] and [this post](https://www.analyticsvidhya.com/blog/2020/11/baseline-for-policy-gradients/)
 
@@ -177,15 +177,15 @@ An optimal baseline derived by minimizing the variance of the gradient estimates
 
 Another way to avoid Monte Carlo effects in REINFORCE is to introduce a temporal-difference scheme with the value function being learned together
 
-This method is called **Actor Critic**, from where **Actor** represents the policy and **Critic** is the value function
+This method is called **Actor Critic**, from where **Actor** represents the policy and **Critic** is the value function. Apart from the pure policy gradient methods, **Critic** plays a role as a guide for the policy to be evaluated at different states. This case,
 
-The **update rule**:
+The **update rules**:
 
-$$\delta_t \leftarrow r_t+\gamma V(s_{t+1}; \boldsymbol{w})-V(s; \boldsymbol{w})$$
+$$\delta_t \leftarrow r_t+\gamma V(s_{t+1}; \boldsymbol{w})-V(s_t; \boldsymbol{w}_t)$$
 
-$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha_{\boldsymbol{w}} \delta_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
+$$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha_{\boldsymbol{\theta}} \delta_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}_t)$$
 
-$$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \delta_t \nabla \hat{V}(s_t, \boldsymbol{w})$$
+$$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \delta_t \nabla \hat{V}(s_t, \boldsymbol{w}_t)$$
 
 ### A General View
 
