@@ -139,7 +139,7 @@ See [this post](https://towardsdatascience.com/an-intuitive-explanation-of-polic
 
 **REINFORCE** uses $$R_t$$, the complete return from time $$t$$ , which includes all future rewards up until the end of the episode, so it is a **Monte Carlo** method
 
-The **pros and cons** of **REINFORCE**:
+**Summary** of **REINFORCE**:
 
 (+) theoretical convergence properties as a stochastic gradient method  
 
@@ -173,11 +173,21 @@ $$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \left
 
 An optimal baseline derived by minimizing the variance of the gradient estimates can be found in [1] and [this post](https://www.analyticsvidhya.com/blog/2020/11/baseline-for-policy-gradients/)
 
+**Summary** of **REINFORCE-baseline**:
+
+(+) lower variance
+
+(-) but maybe still Monte Carlo for parameter updating
+
 ### Actor Critic
 
 Another way to avoid Monte Carlo effects in REINFORCE is to introduce a temporal-difference scheme with the value function being learned together
 
-This method is called **Actor Critic**, from where **Actor** represents the policy and **Critic** is the value function. Apart from the pure policy gradient methods, **Critic** plays a role as a guide for the policy to be evaluated at different states. This case,
+This method is called **Actor Critic**, from where **Actor** represents the policy and **Critic** is the value function
+
+Apart from the pure policy gradient methods, **Critic** performs as a guide for the policy to be evaluated at different states. This case, the **Critic** corrects the **Actor**'s behavior using its learned value by other policies at the same states, without sampling other actions. This is different from REINFORCE, which updates with the direction of the sampled return, that can be potentially wrong
+
+Actor Critic usually can achieve **better sample efficiency** than pure police gradient methods
 
 The **update rules**:
 
@@ -185,7 +195,15 @@ $$\delta_t \leftarrow r_t+\gamma V(s_{t+1}; \boldsymbol{w})-V(s_t; \boldsymbol{w
 
 $$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha_{\boldsymbol{\theta}} \delta_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}_t)$$
 
-$$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \delta_t \nabla \hat{V}(s_t, \boldsymbol{w}_t)$$
+$$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}_t} \delta_t \nabla V(s_t, \boldsymbol{w}_t)$$
+
+Note that the role of state value $$V(s; \boldsymbol{w})$$ learned from REINFORCE-baseline is different from Actor-Critic. The former behaves as a baseline, and the latter participates both in the one-step TD update and the gradient update
+
+**Summary** of **Actor-Critic**:
+
+(+) can one-step TD update
+
+(+) sample efficiency 
 
 ### A General View
 
