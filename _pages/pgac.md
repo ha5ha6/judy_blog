@@ -113,13 +113,11 @@ $$\begin{align*}
 
 &= \mathbb{E}_{\pi} \left[Q_{\pi}(s_t,a_t) \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] \\
 
-&= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] \\
-
 \end{align*}
 
+$$= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] $$
+
 $$= \mathbb{E}_{\pi} \left[R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}) \right]$$
-
-
 
 Since the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})}$$ can be replaced with $$\nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$, the so-called **eligibility vector**, by a **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
 
@@ -179,7 +177,9 @@ $$\nabla J(\boldsymbol{\theta}) = \mathbb{E}_{\pi} \left[\Psi \nabla \log \pi(a_
 
 where $$\Psi$$ can be replace by the following quantitites:
 
-$$$$
+$$\sum_{t=0}^T r_t$$ - total reward of one trajectory
+
+$$\sum_{t'=t}^T$$
 
 ### Log-Derivative of Policies
 
