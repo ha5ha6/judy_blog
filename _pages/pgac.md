@@ -169,6 +169,8 @@ There are many unbiased or biased baselines have been proposed, and an intuitive
 
 An optimal baseline derived by minimizing the variance of the gradient estimates can be found in [1] and [this post](https://www.analyticsvidhya.com/blog/2020/11/baseline-for-policy-gradients/)
 
+### Actor Critic
+
 ### A Generalized View
 
 [2] provides a generalized form of the approximated gradient:
@@ -177,19 +179,19 @@ $$\nabla J(\boldsymbol{\theta}) = \mathbb{E}_{\pi} \left[\Psi \nabla \log \pi(a_
 
 where $$\Psi$$ can be replace by the following quantitites:
 
-$$R_0$$ - total discounted reward of one trajectory
+1. $$R_0 \leftarrow$$ total discounted reward of one trajectory
 
-$$R_t$$ - total discounted reward from time step $$t$$
+2. $$R_t \leftarrow$$ total discounted reward from time step $$t$$
 
-$$R_t-b(s_t)$$ - total discounted reward substracts a baseline  
+3. $$[R_t-b(s_t)] \leftarrow$$ total discounted reward substracts a baseline  
 
-$$Q^{\pi}(s_t,a_t)$$ - an (estimated) action value
+4. $$Q^{\pi}(s_t,a_t) \leftarrow$$ an (estimated) action value
 
-$$A^{\pi}(s_t,a_t) \triangleq Q^{\pi}(s_t,a_t)-V^{\pi}(s_t)$$ - an (estimated) advantage value
+5. $$A^{\pi}(s_t,a_t) \triangleq Q^{\pi}(s_t,a_t)-V^{\pi}(s_t) \leftarrow$$ an (estimated) advantage value
 
-$$\delta_t=r_t+V^{\pi}(s_{t+1})-V^{\pi}(s_t)$$ - TD error
+6. $$\delta_t=r_t+V^{\pi}(s_{t+1})-V^{\pi}(s_t) \leftarrow$$ TD error
 
-In the case of advantage value, $$V^{\pi}(s_t)$$ is regarded as a baseline
+In the case of advantage value in 5, $$V^{\pi}(s_t)$$ can be regarded as a baseline, 
 
 ### Log-Derivative of Policies
 
