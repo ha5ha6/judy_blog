@@ -76,7 +76,7 @@ $$J(\boldsymbol{\theta}) \triangleq V_{\pi_{\boldsymbol{\theta}}} (s_0)$$
 
 the **Policy Gradient Theorem** provides a general link between $$\nabla J(\boldsymbol{\theta})$$ and the gradient of the policy $$\nabla \pi(a \mid s)$$ itself without taking derivatives of the state distribution:
 
-$$\nabla J(\boldsymbol{\theta}) \propto \sum_{s \in \mathcal{S}} \mu(s) \sum_{a \in \mathcal{A}} Q_{\pi}(s,a) \nabla \pi(a \mid s, \boldsymbol{\theta})$$
+$$\nabla J(\boldsymbol{\theta}) \propto \sum_{s \in \mathcal{S}} \mu(s) \sum_{a \in \mathcal{A}} Q_{\pi}(s,a) \nabla \pi(a \mid s; \boldsymbol{\theta})$$
 
 See [this post](https://lilianweng.github.io/posts/2018-04-08-policy-gradient/) for a detailed proof
 
@@ -101,26 +101,26 @@ It means, when you travel along a Markov Chain in an infinite scale by following
 The right-hand side of the **policy gradient theorem** is a sum over states weighted by how often the states occur under the target policy $$\pi$$. If $$\pi$$ is followed, then states will be encountered in these proportions. Thus, we can write
 
 $$\begin{align*}
-\nabla J(\boldsymbol{\theta}) &\propto \sum_{s \in \mathcal{S}} \mu(s) \sum_{a \in \mathcal{A}} Q_{\pi}(s,a) \nabla \pi(a \mid s, \boldsymbol{\theta}) \\
+\nabla J(\boldsymbol{\theta}) &\propto \sum_{s \in \mathcal{S}} \mu(s) \sum_{a \in \mathcal{A}} Q_{\pi}(s,a) \nabla \pi(a \mid s; \boldsymbol{\theta}) \\
 
-&= \mathbb{E}_{\pi} \left[\sum_a Q_{\pi}(s_t,a) \nabla \pi(a \mid s_t, \boldsymbol{\theta}) \right]
+&= \mathbb{E}_{\pi} \left[\sum_a Q_{\pi}(s_t,a) \nabla \pi(a \mid s_t; \boldsymbol{\theta}) \right]
 \end{align*}$$
 
-where $$s_t$$ represents the state sample at time $$t$$. We can do the same sampling trick to the action $$a_t$$, where an appropriate sum over actions like $$\sum_a \pi(a \mid s_t, \boldsymbol{\theta})$$ can be replaced by an expectation under $$\pi$$. Following the above equations
+where $$s_t$$ represents the state sample at time $$t$$. We can do the same sampling trick to the action $$a_t$$, where an appropriate sum over actions like $$\sum_a \pi(a \mid s_t; \boldsymbol{\theta})$$ can be replaced by an expectation under $$\pi$$. Following the above equations
 
 $$\begin{align*}
-\nabla J(\boldsymbol{\theta}) &= \mathbb{E}_{\pi} \left[\sum_a \pi(a \mid s_t, \boldsymbol{\theta}) Q_{\pi}(s_t,a) \frac{\nabla \pi(a \mid s_t, \boldsymbol{\theta})}{\pi(a \mid s_t, \boldsymbol{\theta})} \right] \\
+\nabla J(\boldsymbol{\theta}) &= \mathbb{E}_{\pi} \left[\sum_a \pi(a \mid s_t; \boldsymbol{\theta}) Q_{\pi}(s_t,a) \frac{\nabla \pi(a \mid s_t; \boldsymbol{\theta})}{\pi(a \mid s_t; \boldsymbol{\theta})} \right] \\
 
-&= \mathbb{E}_{\pi} \left[Q_{\pi}(s_t,a_t) \frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})} \right] \\
+&= \mathbb{E}_{\pi} \left[Q_{\pi}(s_t,a_t) \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right] \\
 
-&= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})} \right]
+&= \mathbb{E}_{\pi} \left[R_t \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})} \right]
 \end{align*}$$
 
-Note that $$R_t$$ is the discounted sum of reward starting from time step $$t$$:
+**Note** that $$R_t$$ is the discounted sum of reward starting from time step $$t$$:
 
 $$R_t \triangleq \sum_{i=0}^T \gamma^i r_{t+i}$$
 
-and $$Q_{\pi}(s_t, a_t)$$ is the expected return starting from $$s_t, a_t$$:
+and $$Q_{\pi}(s_t, a_t)$$ is the expected return starting from $$s_t, a_t$$ following $$\pi$$:
 
 $$Q_{\pi}(s_t, a_t) \triangleq \mathbb{E}_{\pi} \left[R_t \mid s_t, a_t \right]$$
 
@@ -128,17 +128,47 @@ Therefore, we obtained a quantity that can be sampled on each time step whose ex
 
 The **update rule** of **REINFORCE**:
 
-$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})}$$
+$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})}$$
+
+See [this post](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c) for a more intuitive explanation
 
 **REINFORCE** uses $$R_t$$, the complete return from time $$t$$ , which includes all future rewards up until the end of the episode, so it is a **Monte Carlo** method
 
-Moreover, we can replace the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t, \boldsymbol{\theta})}{\pi(a_t \mid s_t, \boldsymbol{\theta})}$$ with $$\nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta})$$, called **eligibility vector**. This is **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
+Moreover, we can replace the derivative fraction of $$\frac{\nabla \pi(a_t \mid s_t; \boldsymbol{\theta})}{\pi(a_t \mid s_t; \boldsymbol{\theta})}$$ with $$\nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$, called **eligibility vector**. This is **log-likelihood trick** based on the derivative law $$\nabla \log x = \frac{\nabla x}{x}$$
 
 So the **update rule** can be re-written to:
 
-$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t, \boldsymbol{\theta})$$
+$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha R_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
 
-See [this post](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c) for a more intuitive explanation
+The **pros and cons** of **REINFORCE**:
+
+(+) theoretical convergence properties as a stochastic gradient method  
+
+(+) the expected updated over an episode is in the same direction as the performance gradient
+
+(+) therefore, it assures an improvement in expected performance for sufficiently small learning rate, and convergence to a local optima
+
+(-) of high variance as a Monte Carlo method, and thus slow learning
+
+### REINFORCE with baseline
+
+One technique to reduce the high variance from Monte Carlo method is for the measurement quantity like $$Q_{\pi}(s,a)$$ to substract a baseline, to highlight the difference between the current measurement and a referenced one:
+
+$$\nabla J(\boldsymbol{\theta}) \propto \sum_s \mu(s) \sum_a \left[Q_{\pi}(s,a)-b(s) \right] \nabla \pi(a \mid s; \boldsymbol{\theta})$$
+
+without messing around with the original gradient:
+
+$$\sum_a b(s) \nabla \pi(a \mid s; \boldsymbol{\theta})=b(s)\nabla \sum_a \pi(a \mid s; \boldsymbol{\theta})=b(s)\nabla 1=0$$
+
+Then the **update rule**
+
+$$\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t+\alpha \left[R_t-b(s_t) \right] \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta})$$
+
+See [this post](https://danieltakeshi.github.io/2017/03/28/going-deeper-into-reinforcement-learning-fundamentals-of-policy-gradients/) for why substracting baseline reduces the variance
+
+There are many unbiased or biased baselines have been proposed, and an intuitive one can be a learned estimate of the state value $$\hat{V}(s_t; \boldsymbol{w})$$, where $$\boldsymbol{w} \in \mathbb{R}^m$$ is a parameter vector
+
+An optimal baseline derived by minimizing the variance of the gradient estimates can be found in [1] and [this post](https://www.analyticsvidhya.com/blog/2020/11/baseline-for-policy-gradients/)
 
 ### Log-Derivative of Policies
 
@@ -183,21 +213,6 @@ $$\begin{align*}
 &= \frac{\left[a-\boldsymbol{\theta}^T \phi(s) \right] \phi(s)}{\sigma^2}
 
 \end{align*}$$
-
-The **pros and cons** of **REINFORCE**:
-
-(+) theoretical convergence properties as a stochastic gradient method  
-
-(+) the expected updated over an episode is in the same direction as the performance gradient
-
-(+) therefore, it assures an improvement in expected performance for sufficiently small learning rate, and convergence to a local optima
-
-(-) of high variance as a Monte Carlo method, and thus slow learning
-
-
-
-### Important Concepts
-
 
 ### Short Corridor
 
@@ -392,15 +407,19 @@ The results show that REINFORCE was able to learn an optimal stochastic policy s
 
 **Reinforcement Learning an Introduction 2nd edition** by Sutton and Barto
 
-[ShangtongZhang/reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
-
-[RL 2nd Edition Excercise Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
+[1] Peters, Jan, and Stefan Schaal. "Reinforcement learning of motor skills with policy gradients." Neural networks 21.4 (2008): 682-697.
 
 [Policy Gradients Methods - Lilian Weng](https://lilianweng.github.io/posts/2018-04-08-policy-gradient/)
 
 [An Intuitive Explanation of Policy Gradient - Adrien Ecoffet](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c)
 
 [Going Deeper Into Reinforcement Learning: Fundamentals of Policy Gradients - Daniel Seita](https://danieltakeshi.github.io/2017/03/28/going-deeper-into-reinforcement-learning-fundamentals-of-policy-gradients/)
+
+[Baseline for Policy Gradients that All Deep Learning Enthusists Must Know](https://www.analyticsvidhya.com/blog/2020/11/baseline-for-policy-gradients/)
+
+[ShangtongZhang/reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
+
+[RL 2nd Edition Excercise Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
 
 ### Slides and Code
 
