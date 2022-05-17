@@ -191,17 +191,17 @@ Actor Critic usually can achieve **better sample efficiency** than pure police g
 
 The **update rules**:
 
-$$\delta_t \leftarrow r_t+\gamma V(s_{t+1}; \boldsymbol{w})-V(s_t; \boldsymbol{w}_t)$$
+$$\delta_t \leftarrow r_t+\gamma V(s_{t+1}; \boldsymbol{w}_t)-V(s_t; \boldsymbol{w}_t)$$
 
 $$\boldsymbol{\theta}_{t+1} \leftarrow \boldsymbol{\theta}_t+\alpha_{\boldsymbol{\theta}} \delta_t \nabla \log \pi(a_t \mid s_t; \boldsymbol{\theta}_t)$$
 
-$$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}_t} \delta_t \nabla V(s_t, \boldsymbol{w}_t)$$
+$$\boldsymbol{w}_{t+1} \leftarrow \boldsymbol{w}_t+\alpha_{\boldsymbol{w}} \delta_t \nabla V(s_t, \boldsymbol{w}_t)$$
 
 Note that the role of state value $$V(s; \boldsymbol{w})$$ learned from REINFORCE-baseline is different from Actor-Critic. The former behaves as a baseline, and the latter participates both in the one-step TD update and the gradient update
 
 **Summary** of **Actor-Critic**:
 
-(+) can one-step TD update
+(+) can do one-step TD update
 
 (+) sample efficiency
 
