@@ -184,6 +184,7 @@ The **pros and cons** of **REINFORCE**:
 
 (-) of high variance as a Monte Carlo method, and thus slow learning
 
+See [this post](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c) for a more intuitive explanation
 
 ### Important Concepts
 
@@ -386,6 +387,8 @@ The results show that REINFORCE was able to learn an optimal stochastic policy s
 [RL 2nd Edition Excercise Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
 
 [Policy Gradients Methods - Lilian Weng](https://lilianweng.github.io/posts/2018-04-08-policy-gradient/)
+
+[An Intuitive Explanation of Policy Gradient - Adrien Ecoffet](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c)
 
 [Going Deeper Into Reinforcement Learning: Fundamentals of Policy Gradients - Daniel Seita](https://danieltakeshi.github.io/2017/03/28/going-deeper-into-reinforcement-learning-fundamentals-of-policy-gradients/)
 
