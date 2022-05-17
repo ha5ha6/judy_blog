@@ -14,7 +14,7 @@ usemathjax: true
 
 <style type="text/css">
   body{
-  font-size: 13pt,
+  font-size: 13pt;
   }
 </style>
 
