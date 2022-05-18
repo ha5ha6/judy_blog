@@ -66,7 +66,7 @@ Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 ### Problem Setup
 
 [\[OpenAI CartPole-v0\]](https://gym.openai.com/envs/CartPole-v0/), ends in 200 episodes <br>
-[\[OpenAI CartPole-v1\]](https://gym.openai.com/envs/CartPole-v1/), ends in 500 episodes <br>
+[\[OpenAI CartPole-v1\]](https://www.gymlibrary.ml/environments/classic_control/cart_pole/), ends in 500 episodes <br>
 [\[Env source code-v1\]](https://github.com/openai/gym/blob/master/gym/envs/classic_control/cartpole.py)
 
 | Num | Observation           | Min                  | Max                |
