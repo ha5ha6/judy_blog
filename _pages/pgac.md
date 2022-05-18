@@ -141,13 +141,15 @@ See [this post](https://towardsdatascience.com/an-intuitive-explanation-of-polic
 
 **Summary** of **REINFORCE**:
 
-(+) a stochastic gradient method
+(+) a stochastic policy/gradient method
 
 (+) theoretical convergence properties
 
 (+) the expected updated is in the same direction as the performance gradient, therefore, it assures an improvement in expected performance for sufficiently small learning rate, and convergence to a local optima
 
 (-) of high variance as a Monte Carlo method, slow learning
+
+(-) policy has to be differentiable
 
 ### REINFORCE with baseline
 
