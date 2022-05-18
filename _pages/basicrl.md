@@ -1371,7 +1371,7 @@ Target policy can be inferred from the obtained Q value in terms of certain stat
 
 ### References
 
-**Reinforcement Learning an Introduction 2nd edition** by Sutton and Barto
+**Reinforcement Learning an Introduction 2nd edition, Chapter 3,4,5** by Sutton and Barto
 
 [RL simple experiment - Blackjack](https://ernie55ernie.github.io/machine%20learning/2018/04/08/reinforcement-learning-simple-experiment-blackjack.html)
 

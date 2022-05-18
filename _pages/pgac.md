@@ -473,7 +473,7 @@ The results show that REINFORCE was able to learn an optimal stochastic policy s
 
 ### References
 
-**Reinforcement Learning an Introduction 2nd edition** by Sutton and Barto
+**Reinforcement Learning an Introduction 2nd edition, Chapter 13** by Sutton and Barto
 
 [1] Peters, Jan, and Stefan Schaal. "Reinforcement learning of motor skills with policy gradients." Neural networks 21.4 (2008): 682-697.
 

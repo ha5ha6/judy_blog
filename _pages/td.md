@@ -1059,7 +1059,7 @@ The above corresponds to Figure 6.5
 
 ### References
 
-**Reinforcement Learning an Introduction 2nd edition** by Sutton and Barto
+**Reinforcement Learning an Introduction 2nd edition, Chapter 6** by Sutton and Barto
 
 [ShangtongZhang/reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
 
