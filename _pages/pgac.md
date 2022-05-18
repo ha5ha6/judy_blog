@@ -185,7 +185,7 @@ An optimal baseline derived by minimizing the variance of the gradient estimates
 
 Another way to avoid Monte Carlo effects in REINFORCE is to introduce a temporal-difference scheme with the value function being learned together. This method is called **Actor Critic**, from where **Actor** represents the policy and **Critic** is the value function
 
-Apart from the pure policy gradient methods, **Critic** performs as a guide for the policy to be evaluated at different states. This case, the **Critic** corrects the **Actor**'s behavior using its learned value from other policies as well, without sampling other actions. This is different from REINFORCE, updating in the direction of the sampled return, which can be potentially wrong
+**Critic** performs as a guide for the policy to be evaluated at different states. This case, it corrects the **Actor**'s behavior using its learned value from other policies as well, without sampling other actions. This is different from REINFORCE, updating in the direction of the sampled return, which can be potentially wrong
 
 Actor Critic usually can achieve **better sample efficiency** than pure police gradient methods
 
