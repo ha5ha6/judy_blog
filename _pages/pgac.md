@@ -260,7 +260,7 @@ $$\begin{align*}
 
 In the case of **continuous action spaces**, where
 
-$$a \sim \pi(a\mid s, \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}^T \phi(s), \sigma^2)$$
+$$a \sim \pi(a\mid s, \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}_{\mu}^T \phi_{\mu}(s), \exp \left[\boldsymbol{\theta}_{\sigma}^T \phi_{\sigma}(s) \right])$$
 
 We have
 
@@ -490,8 +490,6 @@ The results show that REINFORCE was able to learn an optimal stochastic policy s
 [What is the difference between policy gradient methods and actor-critic methods?](https://www.quora.com/What-is-the-difference-between-policy-gradient-methods-and-actor-critic-methods)
 
 [ShangtongZhang/reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
-
-[RL 2nd Edition Excercise Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
 
 ### Slides and Code
 
