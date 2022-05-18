@@ -31,17 +31,15 @@ usemathjax: true
 
 [Policy Gradient and Actor-Critic](/judy_blog/pgac/): REINFORCE, REINFORCE-baseline, Actor-Critic
 
-[\[Short Corridor\]] [\[Cartpole Gaussian policy\]]
+[\[Short Corridor\]]() [\[Cartpole Gaussian policy\]]()
 
-[n-step Bootstrapping] TBD
+n-step Bootstrapping: TBD
 
-[Tabular Model-based Methods] TBD
+Tabular Model-based Methods: TBD
 
-[On-policy Approximation] TBD
+Function Approximations: TBD
 
-[Off-policy Approximation] TBD
-
-[Eligibility Traces] TBD
+Eligibility Traces: TBD
 
 [All About Cartpole](/judy_blog/cartpole/): Cartpole realizations with classic RL algorithms: Q-learning, SARSA($$\lambda$$), DQN, REINFORCE, REINFORCE-baseline, Actor-Critic, ...
 
