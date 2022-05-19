@@ -281,6 +281,17 @@ $$\begin{align*}
 
 \end{align*}$$
 
+and
+
+$$\begin{align*}
+\nabla_{\boldsymbol{\theta}_{\sigma}} \log \pi(a \mid s, \boldsymbol{\theta}_{\sigma}) = \left[\frac{(a-\mu)^2}{\sigma^2} -1\right]\phi_{\sigma}(s)} \\
+
+
+
+\end{align*}$$
+
+
+
 ### Short Corridor
 
 <center><img src="https://miro.medium.com/max/1400/1*05SUEn1Mc8_EKVUAR5qa4A.png" width=500></center>
