@@ -284,9 +284,7 @@ $$\begin{align*}
 and
 
 $$\begin{align*}
-\nabla_{\boldsymbol{\theta}_{\sigma}} \log \pi(a \mid s, \boldsymbol{\theta}_{\sigma}) = \left[\frac{(a-\mu)^2}{\sigma^2} -1\right]\phi_{\sigma}(s)} \\
-
-
+\nabla_{\boldsymbol{\theta}_{\sigma}} \log \pi(a \mid s, \boldsymbol{\theta}_{\sigma}) = \left[\frac{(a-\mu)^2}{\sigma^2} -1\right] \phi_{\sigma}(s)
 
 \end{align*}$$
 
