@@ -47,4 +47,4 @@ Eligibility Traces: TBD
 
 [Bias and Variance](/judy_blog/biavar/): expectation, variance, bias, biased naive sample variance, bias-variance trade-off
 
-[\[Bias Variance\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/bias_variance.ipynb)
+[\[Bias Variance example\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/bias_variance.ipynb)

@@ -260,20 +260,24 @@ $$\begin{align*}
 
 In the case of **continuous action spaces**, where
 
-$$a \sim \pi(a\mid s, \boldsymbol{\theta}) \triangleq \mathcal{N}(\boldsymbol{\theta}_{\mu}^T \phi_{\mu}(s), \exp \left[\boldsymbol{\theta}_{\sigma}^T \phi_{\sigma}(s) \right])$$
+$$a \sim \pi(a\mid s, \boldsymbol{\theta}) \triangleq \mathcal{N}(\mu, \sigma^2)$$
+
+$$\mu=\boldsymbol{\theta}_{\mu}^T \phi_{\mu}(s)$$
+
+$$\sigma=\exp \left[\boldsymbol{\theta}_{\sigma}^T \phi_{\sigma}(s) \right]$$
 
 We have
 
 $$\begin{align*}
-\nabla_{\boldsymbol{\theta}} \log \pi(a \mid s, \boldsymbol{\theta}) &= \nabla_{\boldsymbol{\theta}} \log \frac{1}{\sigma \sqrt{2\pi}} \exp \left[- \frac{1}{2} \left(\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right)^2 \right] \\
+\nabla_{\boldsymbol{\theta}_{\mu}} \log \pi(a \mid s, \boldsymbol{\theta}_{\mu}) &= \nabla_{\boldsymbol{\theta}_{\mu}} \log \frac{1}{\sigma \sqrt{2\pi}} \exp \left[- \frac{1}{2} \left(\frac{a-\mu}{\sigma} \right)^2 \right] \\
 
-&= \nabla_{\boldsymbol{\theta}} \log \frac{1}{\sigma \sqrt{2\pi}} - \nabla_{\boldsymbol{\theta}} \log \exp \left[- \frac{1}{2} \left(\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right)^2 \right] \\
+&= \nabla \log \frac{1}{\sigma \sqrt{2\pi}} - \nabla \log \exp \left[- \frac{1}{2} \left(\frac{a-\mu}{\sigma} \right)^2 \right] \\
 
-&= -\frac{1}{2} \nabla_{\boldsymbol{\theta}} \left[\frac{a - \boldsymbol{\theta}^T \phi(s)}{\sigma} \right]^2 \\
+&= -\frac{1}{2} \nabla \left[\frac{a - \mu}{\sigma} \right]^2 \\
 
-&= -\frac{1}{2} \cdot 2 \cdot \left[\frac{a-\boldsymbol{\theta}^T \phi(s)}{\sigma} \right] \cdot -\frac{\phi(s)}{\sigma} \\
+&= -\frac{1}{2} \cdot 2 \cdot \left[\frac{a-\mu}{\sigma} \right] \cdot -\frac{\phi_{\mu}(s)}{\sigma} \\
 
-&= \frac{\left[a-\boldsymbol{\theta}^T \phi(s) \right] \phi(s)}{\sigma^2}
+&= \frac{\left[a-\mu \right] \phi_{\mu}(s)}{\sigma^2}
 
 \end{align*}$$
 
