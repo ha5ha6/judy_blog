@@ -271,9 +271,9 @@ We have
 $$\begin{align*}
 \nabla_{\boldsymbol{\theta}_{\mu}} \log \pi(a \mid s, \boldsymbol{\theta}_{\mu}) &= \nabla_{\boldsymbol{\theta}_{\mu}} \log \frac{1}{\sigma \sqrt{2\pi}} \exp \left[- \frac{1}{2} \left(\frac{a-\mu}{\sigma} \right)^2 \right] \\
 
-&= \nabla \log \frac{1}{\sigma \sqrt{2\pi}} - \nabla \log \exp \left[- \frac{1}{2} \left(\frac{a-\mu}{\sigma} \right)^2 \right] \\
+&= \nabla_{\boldsymbol{\theta}_{\mu}} \log \frac{1}{\sigma \sqrt{2\pi}} - \nabla_{\boldsymbol{\theta}_{\mu}} \log \exp \left[- \frac{1}{2} \left(\frac{a-\mu}{\sigma} \right)^2 \right] \\
 
-&= -\frac{1}{2} \nabla \left[\frac{a - \mu}{\sigma} \right]^2 \\
+&= -\frac{1}{2} \nabla_{\boldsymbol{\theta}_{\mu}} \left[\frac{a - \mu}{\sigma} \right]^2 \\
 
 &= -\frac{1}{2} \cdot 2 \cdot \left[\frac{a-\mu}{\sigma} \right] \cdot -\frac{\phi_{\mu}(s)}{\sigma} \\
 
