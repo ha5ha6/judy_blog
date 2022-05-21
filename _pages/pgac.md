@@ -502,6 +502,8 @@ The results show that REINFORCE was able to learn an optimal stochastic policy s
 
 [What is the difference between policy gradient methods and actor-critic methods?](https://www.quora.com/What-is-the-difference-between-policy-gradient-methods-and-actor-critic-methods)
 
+[Policy-based vs. Value-based - Are they truly different?](https://www.reddit.com/r/reinforcementlearning/comments/mkz9gl/policybased_vs_valuebased_are_they_truly_different/)
+
 [ShangtongZhang/reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
 
 ### Slides and Code

@@ -31,7 +31,7 @@ usemathjax: true
 
 [Policy Gradient and Actor-Critic](/judy_blog/pgac/): REINFORCE, REINFORCE-baseline, Actor-Critic
 
-[\[Short Corridor\]]() [\[Cartpole Gaussian policy\]]()
+[\[Short Corridor\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/short_corridor.ipynb) [\[Cartpole Gaussian policy\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/cartpole_reinforce.ipynb)
 
 n-step Bootstrapping: TBD
 
