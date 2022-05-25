@@ -29,8 +29,7 @@ This article is trying to cover the insights derived from the performances of cl
 - Q-learning (box, bins)
 - SARSA(λ): linear function approximator
 - DQN: non-linear function approximator
-- REINFORCE
-- REINFORCE baseline
+- REINFORCE and baseline: Gaussian policy, continuous actions
 - and more
 
 **Temporary Results with 10 runs in CartPole-v0:**
