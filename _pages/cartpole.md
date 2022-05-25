@@ -29,13 +29,15 @@ This article is trying to cover the insights derived from the performances of cl
 - Q-learning (box, bins)
 - SARSA(λ): linear function approximator
 - DQN: non-linear function approximator
+- REINFORCE
+- REINFORCE baseline
 - and more
 
 **Temporary Results with 1 run in CartPole-v0:**
 
 Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
-<center><img src="/judy_blog/assets/images/cartpole_compare.png" width=600></center>
+<center><img src="/judy_blog/assets/images/compare_all_cartpole.png" width=800></center>
 
 **Temporary Summary:**
 
@@ -43,7 +45,7 @@ Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
 - from the heatmap, the optimal Value learned by RBF and DQN have the highest value on both diagonal sides from the center of theta and theta_dot. This might be the cause of discrete actions, need to further check in continous action case
 
-- finer RBF networks may not approximate value funtion well but can achieve better learning efficiency (maybe should tune hyperparameter more carefully)
+- finer RBF networks may not approximate value funtion well but can achieve better sample efficiency (maybe should tune hyperparameter more carefully)
 
 - DQN requires smaller learning rate for stable learning, say 0.01 or 0.001 compared to Q-box and SARSA($$\lambda$$)s' 0.1
 
@@ -65,9 +67,10 @@ Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
 ### Problem Setup
 
-[\[OpenAI CartPole-v0\]](https://gym.openai.com/envs/CartPole-v0/), ends in 200 episodes <br>
+[OpenAI CartPole-v0], ends in 200 episodes <br>
 [\[OpenAI CartPole-v1\]](https://www.gymlibrary.ml/environments/classic_control/cart_pole/), ends in 500 episodes <br>
 [\[Env source code-v1\]](https://github.com/openai/gym/blob/master/gym/envs/classic_control/cartpole.py)
+[\[Env Continuous actions\]](https://gist.github.com/iandanforth/e3ffb67cf3623153e968f2afdfb01dc8)
 
 | Num | Observation           | Min                  | Max                |
 |-----|-----------------------|----------------------|--------------------|
@@ -231,7 +234,7 @@ for ep in range(n_eps):
 
 ### Q-bins
 
-### Q-rbf
+### SARSA(λ)-rbf
 
 We use RBF networks to approximate the Q function
 
@@ -448,14 +451,11 @@ env.close()
 plot_v()
 np.save('r.npy',r_all)
 np.save('stp.npy',stp_all)
-np.save('q.npy',q_all)
-np.save('qvalue.npy',Q)
-np.save('weights.npy',w)
 ```
 
 ### DQN
 
-We use deep neural network to approaximate Q values
+We use deep neural network to approximate Q values
 
 **NN parameters:**
 
