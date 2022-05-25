@@ -36,7 +36,7 @@ This article is trying to cover the insights derived from the performances of cl
 
 Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
-<center><img src="/judy_blog/assets/images/compare_all_cartpole.png" width=600></center>
+<center><img src="/judy_blog/assets/images/compare_all_cartpole.png" width=500></center>
 
 **Temporary Summary:**
 
