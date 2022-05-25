@@ -484,6 +484,71 @@ The above corresponds to Figure 13.1
 
 The results show that REINFORCE was able to learn an optimal stochastic policy smoothly, approaching to the optimal value of the starting state
 
+**Implementation of REINFORCE with a learned baseline**
+
+```python
+def run_reinforce_baseline(lr_v=2e-2,lr=2e-3, gm=1, n_eps=1000):
+
+    theta=np.array([-1.47,1.47])
+    phi=np.array([[0,1],[1,0]])
+    v=0
+
+    s_all,r_all,pi_all=[],[],[]
+
+    for ep in range(n_eps):
+        s,stp,r_sum,done=0,0,0,False
+        actions,rewards,policies=[],[],[]
+
+        while not done:
+            a,pi=policy(theta,phi)
+            pi_all.append(pi)
+            s_,r,done=step(s,a)
+
+            actions.append(a)
+            rewards.append(r)
+            policies.append(pi)
+
+            s=s_
+            stp+=1
+
+        R=get_return(rewards,gm)
+
+        #update policy parameters
+        gmt=1
+        for i in range(len(rewards)):
+            v+=lr_v*gmt*(R[i]-v)
+            theta+=lr*gmt*(R[i]-v)*dlog(phi,actions[i],policies[i])
+            gmt*=gm
+
+        r_all.append(sum(rewards))
+        s_all.append(stp)
+
+    return r_all,s_all,pi_all
+
+r_res=defaultdict(list)
+n_runs=100
+for n in range(n_runs):
+    r_rf,s_rf,pi_rf=run_reinforce(lr=2e-4)
+    r_rfb,s_rfb,pi_rfb=run_reinforce_baseline(lr_v=2e-2,lr=2e-3)
+    r_res['reinforce'].append(r_rf)  
+    r_res['reinforce-baseline'].append(r_rfb)
+
+plt.figure(figsize=(8,6))
+for k,v in r_res.items():
+    plt.plot(np.array(v).mean(axis=0),label=k,linewidth=3)
+
+plt.grid()
+plt.axhline(y=-11.6, color='r', linestyle='--',linewidth=3,label='v*(s0)')
+plt.legend()
+plt.xlabel('Episode',fontsize=20)
+plt.ylabel('R0 total reward on episode',fontsize=20)
+plt.savefig('baseline_shortcorridor.png',dpi=350)
+```
+
+<center><img src="/judy_blog/assets/images/baseline_shortcorridor.png" width=400></center>
+
+The above corresponds to Figure 13.2
+
 ### References
 
 **Reinforcement Learning an Introduction 2nd edition, Chapter 13** by Sutton and Barto
