@@ -24,7 +24,7 @@ Cartpole is one of the very ancient and classical RL-for-control benchmark, earl
 
 This article is trying to cover the insights derived from the performances of classical RL algorithms under Cartpole environment.
 
-**(Temporary) Related algorithms include:**
+**(Temporary) Related algorithms:**
 
 - Q-learning (box, bins)
 - SARSA(λ): linear function approximator
@@ -33,11 +33,11 @@ This article is trying to cover the insights derived from the performances of cl
 - REINFORCE baseline
 - and more
 
-**Temporary Results with 1 run in CartPole-v0:**
+**Temporary Results with 10 runs in CartPole-v0:**
 
 Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
-<center><img src="/judy_blog/assets/images/compare_all_cartpole.png" width=800></center>
+<center><img src="/judy_blog/assets/images/compare_all_cartpole.png" width=600></center>
 
 **Temporary Summary:**
 
