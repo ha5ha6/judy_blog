@@ -22,7 +22,7 @@ usemathjax: true
 Cartpole is one of the very ancient and classical RL-for-control benchmark, early appeared in
 [\[Barto et al. 1983\]](http://www.derongliu.org/adp/adp-cdrom/Barto1983.pdf). Many RL algorithms from value-based to policy-based, model-free to model-based were justified under it or its variants encompassing simulations and real robots, i.e.[\[PILCO\]](http://mlg.eng.cam.ac.uk/pilco/).
 
-This article is trying to cover the insights derived from the performances of classical RL algorithms under Cartpole environment. The algorithm descriptions are at [Basic Reinforcement Learning](https://ha5ha6.github.io/judy_blog/basicrl/), [Temporal-Difference Learning](https://ha5ha6.github.io/judy_blog/td/), [Policy Gradient and Actor-Critic](https://ha5ha6.github.io/judy_blog/pgac/). Ipython notebooks are available at [\[Cartpole Q, SARSA\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/cartpole_q_sarsa.ipynb), [\[Cartpole REINFORCE\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/cartpole_reinforce.ipynb)
+This post is trying to cover the insights derived from the performances of classical RL algorithms under Cartpole environment. The algorithm descriptions are at [Basic Reinforcement Learning](https://ha5ha6.github.io/judy_blog/basicrl/), [Temporal-Difference Learning](https://ha5ha6.github.io/judy_blog/td/), [Policy Gradient and Actor-Critic](https://ha5ha6.github.io/judy_blog/pgac/). Ipython notebooks are available at [\[Cartpole Q, SARSA\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/cartpole_q_sarsa.ipynb), [\[Cartpole REINFORCE\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/cartpole_reinforce.ipynb)
 
 **(Temporary) Related algorithms:**
 
@@ -891,4 +891,4 @@ r_rfb,s_rfb=run_reinforce(baseline=True)
 
 [\[Sutton's C code\]](http://incompleteideas.net/book/code/pole.c)
 
-[\[Java application of continous RL in Cartpole\]](https://brain.cc.kogakuin.ac.jp/~kanamaru/NN/CPRL/)
+[\[Java application of continuous RL in Cartpole\]](https://brain.cc.kogakuin.ac.jp/~kanamaru/NN/CPRL/)
