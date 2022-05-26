@@ -770,15 +770,23 @@ if __name__ == '__main__':
 
 ### REINFORCE and baseline
 
-We directly learn a parameterized stochastic Gaussian policy, which is different from epsilon-greedy policy derived from a learned value function
+We directly learn a linear parameterized Gaussian policy, which is different from epsilon-greedy policy derived from a learned value function in the above methods
 
 $$\pi(a \mid s, \boldsymbol{\theta})=\mathcal{N}(\boldsymbol{\theta}^T X, \exp(\boldsymbol{\theta}^T X))$$
+
+Note:
+
+- since Gaussian policy is a stochastic policy, the exploration is done in the parameter space with the Gaussian varience $\sigma^2$
+
+- REINFORCE requires the policy to be differentiable and we have to manually derive the log derivative of the policy for gradient updating
+
+We simply use an average-return baseline
 
 See this post for more details [Policy Gradient and Actor Critic](https://ha5ha6.github.io/judy_blog/pgac/)
 
 **Customized Gym Env:**
 
-We use a continuous action env from this [link](https://gist.github.com/iandanforth/e3ffb67cf3623153e968f2afdfb01dc8)
+The continuous action env is from this [link](https://gist.github.com/iandanforth/e3ffb67cf3623153e968f2afdfb01dc8)
 
 **Experimental setting:**
 
@@ -787,7 +795,87 @@ We use a continuous action env from this [link](https://gist.github.com/iandanfo
 - learning rate (lr): 0.0001
 - others remain the same as in Q-box
 
+```python
+def Gaussian_policy(theta_mu,theta_sig,s):
 
+    mu=theta_mu.T.dot(s)[0]
+    upper=theta_sig.T.dot(s)
+    sig=np.exp(upper-np.max(upper))[0]
+
+    return np.random.normal(mu,sig)[0],mu[0],sig[0]
+
+def get_dlog(mu,sig,s,a):
+
+    dlog_mu=((a-mu)/(sig**2))*s
+    dlog_sig=(((a-mu)**2/sig**2)-1)*s
+
+    return dlog_mu,dlog_sig
+
+def get_return(rewards,gm):
+
+    R=np.zeros(len(rewards))
+    R[-1]=rewards[-1]
+    for i in range(2,len(R)+1):
+        R[-i]=gm*R[-i+1]+rewards[-i]
+
+    return R
+
+def run_reinforce(n_eps=2000,n_stps=200,gm=0.99,lr=0.0001,baseline=False):
+
+    from env_continuous import ContinuousCartPoleEnv
+    env=ContinuousCartPoleEnv()
+
+    theta_mu=np.zeros((4,1))
+    theta_sig=np.zeros((4,1))
+
+    r_all,s_all=[],[]
+    for ep in range(n_eps):
+        stp,r_sum,done=0,0,False
+        states,actions,rewards,mus,sigs=[],[],[],[],[]
+        s=env.reset().reshape((4,1))
+
+        for stp in range(n_stps):
+            a,mu,sig=Gaussian_policy(theta_mu,theta_sig,s)
+            s_,r,done,_=env.step(a)
+            s_=s_.reshape((4,1))
+
+            states.append(s)
+            actions.append(a)
+            rewards.append(r)
+            mus.append(mu)
+            sigs.append(sig)
+
+            s=s_
+            stp+=1
+
+            if done:
+                break
+
+        R=get_return(rewards,gm)
+
+        #update policy parameters
+        gmt=1
+        for i in range(len(rewards)):
+            dlog_mu,dlog_sig=get_dlog(mus[i],sigs[i],states[i],actions[i])
+            if baseline:
+                theta_mu=theta_mu+lr*gmt*(R[i]-sum(R)/len(R))*dlog_mu
+                theta_sig=theta_sig+lr*gmt*(R[i]-sum(R)/len(R))*dlog_sig
+            else:
+                theta_mu=theta_mu+lr*gmt*(R[i])*dlog_mu
+                theta_sig=theta_sig+lr*gmt*(R[i])*dlog_sig
+            gmt*=gm
+
+        #if ep%(n_eps//10)==0:
+        #    print(f'ep:{ep}, R:{sum(rewards)}, stp:{stp}')
+
+        r_all.append(sum(rewards))
+        s_all.append(stp)
+
+    return r_all,s_all
+
+r_rf,s_rf=run_reinforce(baseline=False)
+r_rfb,s_rfb=run_reinforce(baseline=True)
+```
 
 
 ### References
