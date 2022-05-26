@@ -43,6 +43,9 @@ Eligibility Traces: TBD
 
 [All About Cartpole](/judy_blog/cartpole/): Cartpole realizations with classic RL algorithms: Q-learning, SARSA($$\lambda$$), DQN, REINFORCE, REINFORCE-baseline, Actor-Critic, ...
 
+[\[Cartpole Q, SARSA\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/cartpole_q_sarsa.ipynb) 
+[\[Cartpole REINFORCE\]](https://github.com/ha5ha6/judy_tutorial_basicRL/blob/main/cartpole_reinforce.ipynb)
+
 ## Others
 
 [Bias and Variance](/judy_blog/biavar/): expectation, variance, bias, biased naive sample variance, bias-variance trade-off
