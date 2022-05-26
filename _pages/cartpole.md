@@ -40,13 +40,13 @@ Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
 **Temporary Summary:**
 
-- SARSA($\lambda$) achieved the best sample efficiency; DQN could reach relatively higher returns; REINFORCE has variance issue, while this can be relieved by adding a baseline
+- SARSA($$\lambda$$) achieved the best sample efficiency; DQN could reach relatively higher returns; REINFORCE has variance issue, while this can be relieved by adding a baseline
 
 - Q-learning with box discretization requires more episodes (3000 or more) to converge, since it's Q-value hasn't reached 100 like RBF and DQN
 
-- a proper number of equal-distance binning of the states will be 15, but the overall performance of binning is worst than box discretization. This suggests that we have to carefully design and divide the states in low-dimensional discrete state cases
+- a proper number of equal-distance binning of the states will be 15, but the overall performance of binning is worst than box discretization. This suggests that we have to carefully design and divide the states in discrete state cases
 
-- from the heatmap with theta and theta_dot axes, the highest optimal values learned by RBF and DQN are on both diagonal sides from the center. This might be the cause of binary discrete actions, need to further check in continous action case
+- from the heatmap of the learned value in x=0 and x_dot=0, the highest optimal values learned by RBF and DQN are on diagonal sides from the center. This might be the cause of binary discrete actions (check continous action case for future work)
 
 - finer RBF networks may not approximate value funtion well but can achieve better sample efficiency
 
@@ -772,11 +772,13 @@ if __name__ == '__main__':
 
 We directly learn a linear parameterized Gaussian policy, which is different from epsilon-greedy policy derived from a learned value function in the above methods
 
-$$\pi(a \mid s, \boldsymbol{\theta})=\mathcal{N}(\boldsymbol{\theta}^T X, \exp(\boldsymbol{\theta}^T X))$$
+$$\pi(a \mid s, \boldsymbol{\theta})=\mathcal{N}(\textbf{w}^T X, \left[\exp(\textbf{w}^T X)\right]^2)$$
+
+where $$X=[x,\hat{x},\theta,\hat{\theta}]^T$$
 
 Note:
 
-- since Gaussian policy is a stochastic policy, the exploration is done in the parameter space with the Gaussian varience $\sigma^2$
+- since Gaussian policy is a stochastic policy, the exploration is done in the parameter space with the Gaussian varience $$\sigma^2$$
 
 - REINFORCE requires the policy to be differentiable and we have to manually derive the log derivative of the policy for gradient updating
 
@@ -796,10 +798,10 @@ The continuous action env is from this [link](https://gist.github.com/iandanfort
 - others remain the same as in Q-box
 
 ```python
-def Gaussian_policy(theta_mu,theta_sig,s):
+def Gaussian_policy(w_mu,w_sig,s):
 
-    mu=theta_mu.T.dot(s)[0]
-    upper=theta_sig.T.dot(s)
+    mu=w_mu.T.dot(s)[0]
+    upper=w_sig.T.dot(s)
     sig=np.exp(upper-np.max(upper))[0]
 
     return np.random.normal(mu,sig)[0],mu[0],sig[0]
@@ -825,8 +827,8 @@ def run_reinforce(n_eps=2000,n_stps=200,gm=0.99,lr=0.0001,baseline=False):
     from env_continuous import ContinuousCartPoleEnv
     env=ContinuousCartPoleEnv()
 
-    theta_mu=np.zeros((4,1))
-    theta_sig=np.zeros((4,1))
+    w_mu=np.zeros((4,1))
+    w_sig=np.zeros((4,1))
 
     r_all,s_all=[],[]
     for ep in range(n_eps):
@@ -835,7 +837,7 @@ def run_reinforce(n_eps=2000,n_stps=200,gm=0.99,lr=0.0001,baseline=False):
         s=env.reset().reshape((4,1))
 
         for stp in range(n_stps):
-            a,mu,sig=Gaussian_policy(theta_mu,theta_sig,s)
+            a,mu,sig=Gaussian_policy(w_mu,w_sig,s)
             s_,r,done,_=env.step(a)
             s_=s_.reshape((4,1))
 
@@ -858,11 +860,11 @@ def run_reinforce(n_eps=2000,n_stps=200,gm=0.99,lr=0.0001,baseline=False):
         for i in range(len(rewards)):
             dlog_mu,dlog_sig=get_dlog(mus[i],sigs[i],states[i],actions[i])
             if baseline:
-                theta_mu=theta_mu+lr*gmt*(R[i]-sum(R)/len(R))*dlog_mu
-                theta_sig=theta_sig+lr*gmt*(R[i]-sum(R)/len(R))*dlog_sig
+                w_mu=w_mu+lr*gmt*(R[i]-sum(R)/len(R))*dlog_mu
+                w_sig=w_sig+lr*gmt*(R[i]-sum(R)/len(R))*dlog_sig
             else:
-                theta_mu=theta_mu+lr*gmt*(R[i])*dlog_mu
-                theta_sig=theta_sig+lr*gmt*(R[i])*dlog_sig
+                w_mu=w_mu+lr*gmt*(R[i])*dlog_mu
+                w_sig=w_sig+lr*gmt*(R[i])*dlog_sig
             gmt*=gm
 
         #if ep%(n_eps//10)==0:
@@ -876,7 +878,6 @@ def run_reinforce(n_eps=2000,n_stps=200,gm=0.99,lr=0.0001,baseline=False):
 r_rf,s_rf=run_reinforce(baseline=False)
 r_rfb,s_rfb=run_reinforce(baseline=True)
 ```
-
 
 ### References
 
