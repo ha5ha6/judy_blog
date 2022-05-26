@@ -26,10 +26,10 @@ This article is trying to cover the insights derived from the performances of cl
 
 **(Temporary) Related algorithms:**
 
-- Q-learning (box, bins)
-- SARSA(λ): linear function approximator
-- DQN: non-linear function approximator
-- REINFORCE and baseline: Gaussian policy, continuous actions
+- Q-learning (box, bins): discrete states, discrete actions
+- SARSA(λ): linear function approximator for continuous states, discrete actions
+- DQN: non-linear function approximator for continuous states, discrete actions
+- REINFORCE and baseline: Gaussian policy, continuous actions, continuous states
 - and more
 
 **Temporary Results with 10 runs in CartPole-v0:**
@@ -89,14 +89,13 @@ Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 | 1   | Push cart to the right with 10N |
 
 
-State space: (4,)<br>
-Action space: (2,)<br>
-State variables in short:
-
+State variables: (4,)
 - $$x$$ - cart position
 - $$\dot{x}$$ - cart velocity
 - $$\theta$$ - pole angle
 - $$\dot{\theta}$$ - pole angular velocity
+
+Action variables: (2,)
 
 Reward: +1 unless termination<br>
 Termination:
@@ -121,7 +120,7 @@ Box System [Michie et al. 1968] divided the state variables into 3x3x6x3 boxes a
 
 **Experimental setting:**
 
-- State space: (4,) -> (162,)
+- State space: (4,) continuous -> (162,)
 - Action sapce: (2,)
 - episode length: 2000
 - step length: 200 in CartPole-v0
@@ -242,7 +241,7 @@ We could also divide the states in equal-distance bins with each state variables
 **Experimental setting:**
 
 - n_bins: number of bins for each state variables
-- State space: (4,) -> (n_bins^4,)
+- State space: (4,) continuous -> (n_bins^4,)
 - exploration decaying rate (epsilon decay rate): 0.999
 - others remain the same as in Q-box
 
@@ -334,7 +333,7 @@ RBF network plotted w.r.t the above parameters:
 
 **Experimental setting:**
 
-- State space to Feature space: (4,) -> (225,)
+- State space to Feature space: (4,) continuous -> (225,) continuous
 - eligibility trace factor (lmd): 0.5
 - others remain the same as in Q-box
 
@@ -792,8 +791,8 @@ The continuous action env is from this [link](https://gist.github.com/iandanfort
 
 **Experimental setting:**
 
-- State space: (4,)
-- Action sapce: (1,) -> continuous
+- State space: (4,) continuous
+- Action sapce: (1,) continuous
 - learning rate (lr): 0.0001
 - others remain the same as in Q-box
 
