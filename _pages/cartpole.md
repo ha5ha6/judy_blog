@@ -778,11 +778,11 @@ where $$X=[x,\dot{x},\theta,\dot{\theta}]^T$$
 
 Note:
 
-- since Gaussian policy is a stochastic policy, the exploration is done in the parameter space with the Gaussian varience $$\sigma^2$$
+- since Gaussian policy is a stochastic policy, the exploration is done in the parameter space with the Gaussian variance $$\sigma^2$$
 
 - REINFORCE requires the policy to be differentiable and we have to manually derive the log derivative of the policy for gradient updating
 
-We simply use an average-return baseline
+- we simply use an average-return baseline
 
 See this post for more details [Policy Gradient and Actor Critic](https://ha5ha6.github.io/judy_blog/pgac/)
 
