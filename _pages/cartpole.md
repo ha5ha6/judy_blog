@@ -29,7 +29,7 @@ This article is trying to cover the insights derived from the performances of cl
 - Q-learning (box, bins): discrete states, discrete actions
 - SARSA(λ): linear function approximator for continuous states, discrete actions
 - DQN: non-linear function approximator for continuous states, discrete actions
-- REINFORCE and baseline: Gaussian policy, continuous actions, continuous states
+- REINFORCE and baseline: linear Gaussian policy for continuous actions, continuous states
 - and more
 
 **Temporary Results with 10 runs in CartPole-v0:**
@@ -66,7 +66,7 @@ Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
 - test different reward functions
 
-- test different algs with continous controllers
+- test different algs with continuous controllers
 
 ### Problem Setup
 
@@ -97,7 +97,8 @@ State variables: (4,)
 
 Action variables: (2,)
 
-Reward: +1 unless termination<br>
+Reward: +1 unless termination
+
 Termination:
 
 - $$\theta < -15^o$$ or $$\theta > 15^o$$, 15 degree = 0.2618 rad
@@ -773,7 +774,7 @@ We directly learn a linear parameterized Gaussian policy, which is different fro
 
 $$\pi(a \mid s, \boldsymbol{\theta})=\mathcal{N}(\textbf{w}^T X, \left[\exp(\textbf{w}^T X)\right]^2)$$
 
-where $$X=[x,\hat{x},\theta,\hat{\theta}]^T$$
+where $$X=[x,\dot{x},\theta,\dot{\theta}]^T$$
 
 Note:
 
