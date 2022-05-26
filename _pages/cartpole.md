@@ -40,11 +40,15 @@ Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
 **Temporary Summary:**
 
-- Q-learning hasn't converged yet, the Q-value should reach 100 like RBF and DQN
+- SARSA($\lambda$) achieved the best sample efficiency; DQN could reach relatively higher returns; REINFORCE has variance issue, while this can be relieved by adding a baseline
 
-- from the heatmap, the optimal Value learned by RBF and DQN have the highest value on both diagonal sides from the center of theta and theta_dot. This might be the cause of discrete actions, need to further check in continous action case
+- Q-learning with box discretization requires more episodes (3000 or more) to converge, since it's Q-value hasn't reached 100 like RBF and DQN
 
-- finer RBF networks may not approximate value funtion well but can achieve better sample efficiency (maybe should tune hyperparameter more carefully)
+- a proper number of equal-distance binning of the states will be 15, but the overall performance of binning is worst than box discretization. This suggests that we have to carefully design and divide the states in low-dimensional discrete state cases
+
+- from the heatmap with theta and theta_dot axes, the highest optimal values learned by RBF and DQN are on both diagonal sides from the center. This might be the cause of binary discrete actions, need to further check in continous action case
+
+- finer RBF networks may not approximate value funtion well but can achieve better sample efficiency
 
 - DQN requires smaller learning rate for stable learning, say 0.01 or 0.001 compared to Q-box and SARSA($$\lambda$$)s' 0.1
 
@@ -178,60 +182,126 @@ def get_box(s):
 
     return box_idx
 
-def e_greedy(q,epsilon):
+def e_greedy(q,epsilon,n_a):
 
     if random.random()<epsilon:
-        a=env.action_space.sample()
+        a=np.random.randint(0,n_a)
     else:
         a=np.argmax(q)
+
     return a
 
-env=gym.make("CartPole-v0")
-n_s=env.observation_space.shape[0]
-n_a=env.action_space.n
+def run_qbox(n_eps=2000,n_stps=200,gm=0.99,lr=0.1,epsilon=1,epsilon_rate=0.995):
 
-n_eps=2000
-n_stps=1000
+    env=gym.make("CartPole-v0")
+    n_s=env.observation_space.shape[0]
+    n_a=env.action_space.n
 
-gm=0.99
-lr=0.1
-#non-linear decay
-epsilon=1
-epsilon_decay_rate=0.995
+    Q=np.random.rand(162,n_a)
+    r_all,stp_all=[],[]
+    q_all=[]
 
-Q=np.random.rand(162,n_a)
-r_all,stp_all=[],[]
+    for ep in range(n_eps):
 
-for ep in range(n_eps):
+        s=env.reset()
+        s_int=get_box(s)
+        r_sum=0
 
-    s=env.reset()
-    s_int=get_box(s)
-    r_sum=0
-    epsilon*=epsilon_decay_rate
+        for stp in range(n_stps):
 
-    for stp in range(n_stps):
+            q_all.append(Q[s_int])
+            a=e_greedy(Q[s_int],epsilon,n_a)
+            s_,r,done,_=env.step(a)
+            s_int_=get_box(s_)
 
-        a=e_greedy(Q[s_int],epsilon)
-        s_,r,done,_=env.step(a)
-        s_int_=get_box(s_)
+            delta=r+gm*np.max(Q[s_int_])-Q[s_int,a]
+            Q[s_int,a]+=lr*delta
 
-        delta=r+gm*np.max(Q[s_int_])-Q[s_int,a]
-        Q[s_int,a]+=lr*delta
+            s=s_
+            s_int=s_int_
+            r_sum+=r
 
-        s_int=s_int_
-        r_sum+=r
+            if done:
+                break
 
-        if done:
-            break
+        r_all.append(r_sum)
+        stp_all.append(stp)
+        epsilon*=epsilon_rate
+        #if ep%(n_eps//5)==0 or ep==n_eps-1:
+        #    print(f"ep:{ep}, stp:{stp}, r:{np.round(r_sum,2)},eps:{epsilon}")
 
-    r_all.append(r_sum)
-    stp_all.append(stp)
-    if ep%(n_eps//5)==0 or ep==n_eps-1:
-        print(f"ep:{ep}, stp:{stp}, r:{np.round(r_sum,2)},eps:{epsilon}")
+    return r_all,stp_all,q_all
+
+r,s,q=run_qbox()
 ```
 
-
 ### Q-bins
+
+We could also divide the states in equal-distance bins with each state variables
+
+**Experimental setting:**
+
+- n_bins: number of bins for each state variables
+- State space: (4,) -> (n_bins^4,)
+- exploration decaying rate (epsilon decay rate): 0.999
+- others remain the same as in Q-box
+
+```python
+def discretize(s,bins):
+    idx=[]
+    for i in range(n_s):
+        idx.append(np.digitize(s[i],bins[i])-1) # -1 will turn bin into index
+    return tuple(idx)
+
+def run_qbin(n_bins=15,n_eps=2000,n_stps=200,gm=0.99,lr=0.1,eps=1,eps_decay=0.999):
+
+    env=gym.make('CartPole-v0')
+    n_a=env.action_space.n
+    n_s=env.observation_space.shape[0]
+    bins=[np.linspace(-2.4,2.4,n_bins),
+          np.linspace(-2,2,n_bins),
+          np.linspace(-.2618,.2618,n_bins),
+          np.linspace(-2,2,n_bins)]
+
+    #shape (n_bins,n_bins,n_bins,n_bins,n_a)
+    #i.e. (15,15,15,15,2)
+    Q=np.zeros(([len(bins[0])]*n_s+[n_a]))
+
+    r_all,stp_all,q_all=[],[],[]
+
+    for ep in range(n_eps):
+
+        r_sum,done=0,False
+        s_int=discretize(env.reset(),bins)
+
+        for stp in range(n_stps):
+
+            q_all.append(Q[s_int])
+            a=e_greedy(Q[s_int],eps,n_a)
+            s_,r,done,_=env.step(a)
+            s_int_=discretize(s_,bins)
+
+            delta=r+gm*np.max(Q[s_int_])-Q[s_int][a]
+            Q[s_int][a]+=lr*delta
+
+            s=s_
+            s_int=s_int_
+            r_sum+=r
+
+            if done:
+                break
+
+        eps*=eps_decay
+        if ep%(n_eps//10)==0 or ep==n_eps-1:
+            print(f"ep:{ep}, stp:{stp}, r:{np.round(r_sum,2)}, eps:{eps}")
+
+        r_all.append(r_sum)
+        stp_all.append(stp)
+
+    return r_all,stp_all,q_all
+
+r,s,q=run_qbin(n_bins=15)
+```
 
 ### SARSA(λ)-rbf
 
@@ -287,27 +357,7 @@ import math
 import random
 import matplotlib.pyplot as plt
 
-env=gym.make("CartPole-v0")
-n_s=env.observation_space.shape[0]
-n_a=env.action_space.n
-
-s_range=np.zeros((2,n_s))
-s_range[0,:]=np.array([-2.4,-4,-np.radians(30),-np.radians(180)])
-s_range[1,:]=np.array([2.4,4,np.radians(30),np.radians(180)])
-
-n_rbf=np.array([3,3,5,5]).astype(int)
-n_feature=np.prod(n_rbf)
-w=np.zeros((n_feature,n_a))
-
-interval={}
-center={}
-sigma={}
-for i in range(n_s):
-    interval[i]=(s_range[1,i]-s_range[0,i])/(n_rbf[i]-1)
-    sigma[i]=interval[i]/2
-    center[i]=[np.around(s_range[0,i]+j*interval[i],2) for j in range(n_rbf[i])]
-
-def plot_rbf():
+def plot_rbf(s_range,center,sigma):
     plt.figure(figsize=(10,10))
     title=['x','x_dot','theta','theta_dot']
     for i in range(1,5):
@@ -347,7 +397,7 @@ def e_greedy(e,Q):
         a=env.action_space.sample()
     return int(a)
 
-def get_v(x,x_dot):
+def get_v(x,x_dot,w):
     n_grid=50
     v=np.zeros((n_grid,n_grid))
     the=np.linspace(s_range[0,2]/2,s_range[1,2]/2,num=n_grid)
@@ -361,14 +411,14 @@ def get_v(x,x_dot):
 
     return v
 
-def plot_v(angle=15,angular=229):
+def plot_v(w,angle=15,angular=229):
     i=1
     x_range=[-2.4,0,2.4]
     x_dot_range=[-2,0,2]
     plt.figure(figsize=(10,10))
     for x_dot in reversed(x_dot_range):
         for x in x_range:
-            v=get_v(x,x_dot)
+            v=get_v(x,x_dot,w)
 
             plt.subplot(3,3,i)
             plt.imshow(v,cmap='jet')
@@ -382,74 +432,89 @@ def plot_v(angle=15,angular=229):
 
     plt.savefig('q_op_rbf.png',dpi=350)
 
-n_eps=2000
-n_stps=1000
+def initialize(env,n_s,n_a):
 
-gm=0.99
-lr=0.1
-lmd=0.5
+    s_range=np.zeros((2,n_s))
+    s_range[0,:]=np.array([-2.4,-4,-np.radians(30),-np.radians(180)])
+    s_range[1,:]=np.array([2.4,4,np.radians(30),np.radians(180)])
 
-#non linear decay
-epsilon=1
-epsilon_decay_rate=0.995
+    n_rbf=np.array([3,3,5,5]).astype(int)
+    n_feature=np.prod(n_rbf)
+    w=np.zeros((n_feature,n_a))
 
-r_all,stp_all=[],[]
-q_all=[]
+    interval={}
+    center={}
+    sigma={}
 
-plot_rbf()
+    for i in range(n_s):
+        interval[i]=(s_range[1,i]-s_range[0,i])/(n_rbf[i]-1)
+        sigma[i]=interval[i]/2
+        center[i]=[np.around(s_range[0,i]+j*interval[i],2) for j in range(n_rbf[i])]
 
-for ep in range(n_eps):
+    return s_range,center,sigma
 
-    r_sum,done=0,False
-    epsilon*=epsilon_decay_rate
-    #eligibility traces
-    e=np.zeros((n_feature,n_a))
-    F=get_feature(env.reset())
-    Q_old=get_Q(F,w)
-    a=e_greedy(epsilon,Q_old)
+def run_sarsalmd(n_eps=2000,n_stps=200,gm=0.99,lr=0.1,lmd=0.5,epsilon=1,epsilon_rate=0.995):
 
-    for stp in range(n_stps):
+    env=gym.make("CartPole-v0")
+    n_s=env.observation_space.shape[0]
+    n_a=env.action_space.n
 
-        #show animation of last 5 episodes
-        if ep>n_eps-5:
-            env.render()
+    s_range,center,sigma=initialize(env,n_s,n_a)
+    plot_rbf(s_range,center,sigma)
 
-        q_all.append(Q_old)
-        s_,r,done,_=env.step(a)
-        F_=get_feature(s_)
-        Q=get_Q(F_,w)
-        a_=e_greedy(epsilon,Q)
+    r_all,stp_all,q_all=[],[],[]
 
-        if done:
-            delta=r-Q_old[a]
-        else:
-            delta=r+gm*Q[a_]-Q_old[a]
+    for ep in range(n_eps):
 
-        e[:,a]=F
+        r_sum,done=0,False
+        #eligibility traces
+        e=np.zeros((n_feature,n_a))
+        F=get_feature(env.reset(),center,sigma)
+        Q_old=get_Q(F,w)
+        a=e_greedy(epsilon,Q_old)
 
-        for m in range(n_feature):
-            for n in range(n_a):
-                w[m,n]+=lr*delta*e[m,n]
+        for stp in range(n_stps):
 
-        e*=gm*lmd
+            #show animation of last 5 episodes
+            #if ep>n_eps-5:
+            #    env.render()
 
-        s=s_
-        F=F_
-        a=a_
-        Q_old=Q
-        r_sum+=r
+            q_all.append(Q_old)
+            s_,r,done,_=env.step(a)
+            F_=get_feature(s_,center,sigma)
+            Q=get_Q(F_,w)
+            a_=e_greedy(epsilon,Q)
 
-        if done:
-            break
+            if done:
+                delta=r-Q_old[a]
+            else:
+                delta=r+gm*Q[a_]-Q_old[a]
 
-    r_all.append(r_sum)
-    stp_all.append(stp)
-    print(f"ep:{ep}, stp:{stp}, r:{np.round(r_sum,2)}, eps:{epsilon}")
+            e[:,a]=F
 
-env.close()
-plot_v()
-np.save('r.npy',r_all)
-np.save('stp.npy',stp_all)
+            for m in range(n_feature):
+                for n in range(n_a):
+                    w[m,n]+=lr*delta*e[m,n]
+
+            e*=gm*lmd
+
+            s=s_
+            F=F_
+            a=a_
+            Q_old=Q
+            r_sum+=r
+
+            if done:
+                break
+
+        r_all.append(r_sum)
+        stp_all.append(stp)
+        epsilon*=epsilon_rate
+        #print(f"ep:{ep}, stp:{stp}, r:{np.round(r_sum,2)}, eps:{epsilon}")
+    plot_v(w)
+    return r_all,stp_all,q_all
+
+r,s,q=run_sarsalmd()
 ```
 
 ### DQN
@@ -619,7 +684,6 @@ class Agent:
             r_sum,done=0,False
 
             s=self.preprocess(self.env.reset())
-            self.epsilon*=self.epsilon_decay
             ent=self.epsilon
 
             for stp in range(self.n_stps):
@@ -650,6 +714,7 @@ class Agent:
                 print('Target Updated!')
 
             loss=self.nn.update()
+            self.epsilon*=self.epsilon_decay
 
             print("Ep:"+str(ep)+" Stps:"+str(stp)+" R:"+str(r_sum)+" loss:"+str(loss)+" ent:"+str(ent))
 
@@ -702,6 +767,27 @@ if __name__ == '__main__':
 
     main()
 ```
+
+### REINFORCE and baseline
+
+We directly learn a parameterized stochastic Gaussian policy, which is different from epsilon-greedy policy derived from a learned value function
+
+$$\pi(a \mid s, \boldsymbol{\theta})=\mathcal{N}(\boldsymbol{\theta}^T X, \exp(\boldsymbol{\theta}^T X))$$
+
+See this post for more details [Policy Gradient and Actor Critic](https://ha5ha6.github.io/judy_blog/pgac/)
+
+**Customized Gym Env:**
+
+We use a continuous action env from this [link](https://gist.github.com/iandanforth/e3ffb67cf3623153e968f2afdfb01dc8)
+
+**Experimental setting:**
+
+- State space: (4,)
+- Action sapce: (1,) -> continuous
+- learning rate (lr): 0.0001
+- others remain the same as in Q-box
+
+
 
 
 ### References
