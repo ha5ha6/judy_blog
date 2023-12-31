@@ -42,7 +42,7 @@ Q: [162]-Box, RBF: [6,6,9,9], DQN: 3x[200 hidden]-MLP
 
 - SARSA($$\lambda$$) achieved the best sample efficiency; DQN could reach relatively higher returns; REINFORCE has variance issue, while this can be relieved by adding a baseline
 
-- Q-learning with box discretization and binning requires more episodes (3000 or more) to converge, since it's Q-value hasn't reached 100 like RBF and DQN
+- Q-learning with box discretization and binning requires more episodes (3000 or more) to converge, since its Q-value hasn't reached 100 like RBF and DQN
 
 - a proper number of equal-distance binning of the states will be 15, but the overall performance of binning is worst than box discretization. This suggests that we have to carefully design and divide the states in discrete state cases
 
