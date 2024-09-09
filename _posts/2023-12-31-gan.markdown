@@ -19,6 +19,7 @@ usemathjax: true
 ### abstract
 
 a generative model $$G$$ - captures the data distribution
+
 a discriminative model $$D$$ - estimates the probability that a sample came from the training data rather than $$G$$
 
 Training for $$G$$ is to max the probability of $$D$$ making a mistake
@@ -32,6 +33,20 @@ Generative models have difficulties on
 1) approximating many intractable probabilistic computations that arise in maximum likelihood estimation and related strategies
 
 2) leveraging the benefits of piecewise linear units in the generative context
+
+$$G$$ - a team of counterfeiters trying to produce fake currency and use it without detection
+
+$$D$$ - the police, trying to detect the counterfeiter currency
+
+competition in this game drives both teams to improve their methods until the counterfeits are indistinguishable from the genuine articles
+
+### related work
+
+undirected graphical models with latent variables, eg. restricted Boltzmann machines(RBMs), deep Boltzmann machines(DBMs)
+
+deep belief networks(DBN)
+
+score matching, noise-contrastive estimation (NCE)
 
 ### softmax
 
