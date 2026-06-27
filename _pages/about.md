@@ -19,8 +19,11 @@ I am a robotics and AI researcher interested in one fundamental question:
 > **How does intelligence emerge?**
 
 My research aims to understand how intelligent behavior develops in humans and animals through interaction with the real world, and how similar computational principles can be realized in autonomous robotic systems. I see robotics not only as an application of AI, but also as a scientific tool for studying intelligence.
+
 I am currently seeking research opportunities in **Robot Learning, Embodied AI, and Autonomous Intelligent Systems**.
+
 Previously, I was a postdoctoral researcher working with [Dr. Eiji Uchibe](https://researchmap.jp/uchibe/) in the Department of [Brain Robot Interface](https://bicr.atr.jp/bri/) at ATR Computational Neuroscience Laboratories.
+
 I received my PhD under the supervisions of [Prof. Shin Ishii](http://ishiilab.jp/member/ishii/) at the [Integrated Systems Biology Lab](http://ishiilab.jp/kyoto/en/), Grad School of Informatics, Kyoto University, and [Prof. Kenji Doya](https://groups.oist.jp/ncu/kenji-doya) in the [Adaptive Systems Group](https://groups.oist.jp/ncu/adaptive-systems-group), [Neural Computation Unit](https://groups.oist.jp/ncu), Okinawa Institute of Science and Technology (OIST).
 
 Outside research, I enjoy climbing and spending time in nature.
