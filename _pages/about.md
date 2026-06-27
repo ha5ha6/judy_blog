@@ -38,7 +38,7 @@ I built an affordable smartphone-based robotic platform from scratch, covering h
 
 Using this platform, I developed practical **policy-search** algorithms for investigating a range of embodied behaviors, including self-standing, vision-based navigation, foraging, and genetic information exchange between multiple agents (mating). Together, these behaviors enabled autonomous agents to interact and organize into simple multi-agent societies inspired by living creatures.
 
-These experiences convinced me that intelligent behavior is best studied in embodied systems under real-world environment, where perception, control, learning, and physical constraints continuously interact.
+These experiences convinced me that intelligent behavior is best studied in embodied systems under real-world environment, where perception, control, learning and physical constraints continuously interact.
 
 **Motivation and Reinforcement Learning**
 
@@ -46,7 +46,7 @@ My postdoctoral research explored another aspect of intelligent behavior:
 
 > **How do internal motivational systems shape behavior?**
 
-Inspired by biological motivational systems, I developed reinforcement learning frameworks that explicitly separate **reward and punishment** into interacting learning processes. I view these as multiple internal motivational systems that cooperate within a single agent.
+Inspired by neuroscience, I developed reinforcement learning frameworks that explicitly separate **reward and punishment** into interacting learning processes. I view these as multiple internal motivational systems that cooperate within a single agent.
 
 A complete deep reinforcement learning pipeline was built upon autonomous mobile robots, integrating multi-modal perception, real-time robot interaction, and policy learning in real-world environments.
 
