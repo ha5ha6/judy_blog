@@ -36,7 +36,7 @@ Although my research topics have evolved over time, they have all been driven by
 
 **Embodied Behavior**
 
-During my PhD, I built an affordable smartphone-based robotic platform from scratch, covering hardware, embedded systems, perception, and reinforcement learning. I developed practical policy-search algorithms for autonomous behavior acquisition.
+During my PhD, I built an affordable smartphone-based robotic platform from scratch, covering hardware, embedded systems, perception, and reinforcement learning. I developed practical **policy-search** algorithms for autonomous behavior acquisition.
 
 Using this platform, I investigated a range of embodied behaviors, including self-standing, vision-based navigation, foraging, and genetic information exchange between multiple agents (mating). Together, these behaviors enabled autonomous agents to interact and organize into simple multi-agent societies.
 
@@ -48,7 +48,7 @@ My postdoctoral research explored another aspect of intelligent behavior:
 
 > **How should an agent evaluate and learn from its own experience?**
 
-Inspired by biological motivational systems, I developed reinforcement learning frameworks that explicitly separate reward-seeking and punishment-avoidance into interacting learning processes. I view these as multiple internal motivational systems that cooperate within a single agent.
+Inspired by biological motivational systems, I developed reinforcement learning frameworks that explicitly separate **reward-seeking and punishment-avoidance** into interacting learning processes. I view these as multiple internal motivational systems that cooperate within a single agent.
 
 A complete deep reinforcement learning pipeline was built upon autonomous mobile robots, integrating multi-modal perception, real-time robot interaction, and policy learning in real-world environments.
 
@@ -60,4 +60,4 @@ More recently, my interests have expanded beyond classical reinforcement learnin
 
 I am interested in understanding what additional computational mechanisms are required for autonomous behavior to emerge in embodied agents.
 
-My current interests include intrinsic motivation, world models, neuroscience-inspired learning and foundation models for robotics.
+My current interests include **intrinsic motivation, world models, neuroscience-inspired learning and foundation models for robotics**.
