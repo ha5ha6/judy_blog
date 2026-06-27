@@ -46,7 +46,7 @@ My postdoctoral research explored another aspect of intelligent behavior:
 
 > **How do internal motivational systems shape behavior?**
 
-Inspired by biological motivational systems, I developed reinforcement learning frameworks that explicitly separate **reward-seeking and punishment-avoidance** into interacting learning processes. I view these as multiple internal motivational systems that cooperate within a single agent.
+Inspired by biological motivational systems, I developed reinforcement learning frameworks that explicitly separate **reward and punishment** into interacting learning processes. I view these as multiple internal motivational systems that cooperate within a single agent.
 
 A complete deep reinforcement learning pipeline was built upon autonomous mobile robots, integrating multi-modal perception, real-time robot interaction, and policy learning in real-world environments.
 
