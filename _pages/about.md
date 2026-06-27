@@ -28,13 +28,13 @@ I received my PhD under the supervisions of [Prof. Shin Ishii](http://ishiilab.j
 
 Outside research, I enjoy climbing and spending time in nature.
 
-**Research Journey: Embodied Behavior**
+**Embodied Behavior**
 
 My PhD research explored the first step toward intelligent behavior:
 
 > **How can autonomous behaviors be acquired?**
 
-I built an affordable smartphone-based robotic platform from scratch, covering hardware, embedded systems, perception, and reinforcement learning. 
+I built an affordable smartphone-based robotic platform from scratch, covering hardware, embedded systems, perception, and reinforcement learning.
 
 Using this platform, I developed practical **policy-search** algorithms for investigating a range of embodied behaviors, including self-standing, vision-based navigation, foraging, and genetic information exchange between multiple agents (mating). Together, these behaviors enabled autonomous agents to interact and organize into simple multi-agent societies.
 
