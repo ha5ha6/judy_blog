@@ -34,9 +34,9 @@ My PhD research explored the first step toward intelligent behavior:
 
 > **How can autonomous behaviors be acquired?**
 
-I built an affordable smartphone-based robotic platform from scratch, covering hardware, embedded systems, perception, and reinforcement learning.
+I built an affordable smartphone-based robotic platform from scratch, covering hardware, sensing, control and reinforcement learning.
 
-Using this platform, I developed efficient **policy-search** algorithms for investigating a range of embodied behaviors, including self-standing, vision-based navigation, foraging, and genetic information exchange between multiple agents (mating). Together, these behaviors enabled autonomous agents to interact and organize into simple multi-agent societies inspired by living creatures.
+Using this platform, I developed efficient **policy-search** algorithms for investigating a range of embodied behaviors, including self-standing, vision-based navigation, foraging and genetic information exchange between multiple agents (mating). Together, these behaviors enabled autonomous agents to interact and organize into simple multi-agent societies inspired by living creatures.
 
 These experiences convinced me that intelligent behavior is best studied in embodied systems under real-world environment, where perception, control, learning and physical constraints continuously interact.
 
@@ -48,9 +48,9 @@ My postdoctoral research explored another aspect of intelligent behavior:
 
 Inspired by neuroscience, I developed reinforcement learning frameworks that explicitly separate **reward and punishment** into interacting learning processes. I view these as multiple internal motivational systems that cooperate within a single agent.
 
-A complete deep reinforcement learning pipeline was built upon autonomous mobile robots, integrating multi-modal perception, real-time robot interaction, and policy learning in real-world environments.
+A complete deep reinforcement learning pipeline was built upon autonomous mobile robots, integrating multi-modal perception, real-time robot interaction and policy learning in real-world environments.
 
-This work resulted in a series of deep reinforcement learning algorithms, including **DMP**, **softDMP**, and **klDMP**, to tackle several long-standing issues in reinforcement learning, including reward sparsity, exploration, safety, robustness and sample efficiency.
+This work resulted in a series of deep reinforcement learning algorithms, including **DMP**, **softDMP** and **klDMP**, to tackle several long-standing issues in reinforcement learning, including reward sparsity, exploration, safety, robustness and sample efficiency.
 
 **Towards Autonomous Intelligence**
 
