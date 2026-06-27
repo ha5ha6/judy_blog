@@ -36,7 +36,7 @@ My PhD research explored the first step toward intelligent behavior:
 
 I built an affordable smartphone-based robotic platform from scratch, covering hardware, embedded systems, perception, and reinforcement learning.
 
-Using this platform, I developed practical **policy-search** algorithms for investigating a range of embodied behaviors, including self-standing, vision-based navigation, foraging, and genetic information exchange between multiple agents (mating). Together, these behaviors enabled autonomous agents to interact and organize into simple multi-agent societies inspired by living creatures.
+Using this platform, I developed efficient **policy-search** algorithms for investigating a range of embodied behaviors, including self-standing, vision-based navigation, foraging, and genetic information exchange between multiple agents (mating). Together, these behaviors enabled autonomous agents to interact and organize into simple multi-agent societies inspired by living creatures.
 
 These experiences convinced me that intelligent behavior is best studied in embodied systems under real-world environment, where perception, control, learning and physical constraints continuously interact.
 
