@@ -28,17 +28,15 @@ I received my PhD under the supervisions of [Prof. Shin Ishii](http://ishiilab.j
 
 Outside research, I enjoy climbing and spending time in nature.
 
-**Research Journey**
+**Research Journey: Embodied Behavior**
 
-Although my research topics have evolved over time, they have all been driven by the same question:
+My PhD research explored the first step toward intelligent behavior:
 
-> **How can intelligent behavior emerge autonomously?**
+> **How can autonomous behaviors be acquired?**
 
-**Embodied Behavior**
+I built an affordable smartphone-based robotic platform from scratch, covering hardware, embedded systems, perception, and reinforcement learning. 
 
-During my PhD, I built an affordable smartphone-based robotic platform from scratch, covering hardware, embedded systems, perception, and reinforcement learning. I developed practical **policy-search** algorithms for autonomous behavior acquisition.
-
-Using this platform, I investigated a range of embodied behaviors, including self-standing, vision-based navigation, foraging, and genetic information exchange between multiple agents (mating). Together, these behaviors enabled autonomous agents to interact and organize into simple multi-agent societies.
+Using this platform, I developed practical **policy-search** algorithms for investigating a range of embodied behaviors, including self-standing, vision-based navigation, foraging, and genetic information exchange between multiple agents (mating). Together, these behaviors enabled autonomous agents to interact and organize into simple multi-agent societies.
 
 These experiences convinced me that intelligent behavior is best studied in embodied systems under real-world environment, where perception, control, learning, and physical constraints continuously interact.
 
@@ -46,7 +44,7 @@ These experiences convinced me that intelligent behavior is best studied in embo
 
 My postdoctoral research explored another aspect of intelligent behavior:
 
-> **How should an agent evaluate and learn from its own experience?**
+> **How do internal motivational systems shape behavior?**
 
 Inspired by biological motivational systems, I developed reinforcement learning frameworks that explicitly separate **reward-seeking and punishment-avoidance** into interacting learning processes. I view these as multiple internal motivational systems that cooperate within a single agent.
 
