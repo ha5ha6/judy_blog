@@ -22,7 +22,7 @@ usemathjax: true
 KL-Coupled Policy Regularization for Reward-Punishment Reinforcement Learning.
 arXiv preprint, 2026 <br /> [[website]](https://arxiv.org/abs/2606.28152) [[researchgate]]() [[pdf]](https://arxiv.org/pdf/2606.28152)<br /></span>
 
-### Journal Paper
+### Journal
 - <span style="font-family:Serif; font-size:0.9em;"> J. Wang, S. Elfwing and E. Uchibe. Modular deep reinforcement learning from reward and punishment for robot navigation. <br /> *Neural Networks*. DOI 10.1016/j.neunet.2020.12.001. 2020 <br /> [[website]](https://www.sciencedirect.com/science/article/pii/S0893608020304184) [[researchgate]](https://www.researchgate.net/publication/347457388_Modular_deep_reinforcement_learning_from_reward_and_punishment_for_robot_navigation) [[pdf]](https://www.sciencedirect.com/science/article/pii/S0893608020304184/pdfft?md5=1d159d73318147716fc1ecdab06d0da5&pid=1-s2.0-S0893608020304184-main.pdf)<br /></span>
 ![](/judy_blog/assets/images/errata.png){:width="80%"}
 
@@ -32,7 +32,7 @@ arXiv preprint, 2026 <br /> [[website]](https://arxiv.org/abs/2606.28152) [[rese
 
 - <span style="font-family:Serif; font-size:0.9em;"> J. Wang, E. Uchibe, and K. Doya. EM-based policy hyper parameter exploration: Application to standing and balancing of a two-wheeled smartphone robot.  <br /> *Artificial Life and Robotics.* 21: 125. DOI 10.1007/s10015-015-0260-7. 2016 <br /> [[website]](https://link.springer.com/article/10.1007/s10015-015-0260-7?wt_mc=internal.event.1.SEM.ArticleAuthorOnlineFirst) [[researchgate]](https://www.researchgate.net/publication/291951786_EM-based_policy_hyper_parameter_exploration_application_to_standing_and_balancing_of_a_two-wheeled_smartphone_robot) [[pdf]](https://link.springer.com/content/pdf/10.1007%2Fs10015-015-0260-7.pdf)</span>
 
-## Conference Paper
+## Conference
 - <span style="font-family:Serif; font-size:0.9em;"> J. Wang and E. Uchibe. Reward-punishment reinforcement learning with maximum entropy.  <br /> *In 2024 International Joint Conference on Neural Networks. IEEE.* Yokohama, Japan. 2024 (IJCNN with WCCI)  <br /> [[website]](https://2024.ieeewcci.org/) [[researchgate]](https://www.researchgate.net/publication/380731249_Reward-Punishment_Reinforcement_Learning_with_Maximum_Entropy)  [[pdf]](https://arxiv.org/pdf/2405.11784)</span>
 
 - <span style="font-family:Serif; font-size:0.9em;"> J. Wang, S. Elfwing and E. Uchibe. Deep reinforcement learning by parallelizing reward and punishment using MaxPain architecture.  <br /> *In proceedings of the 8th Joint IEEE International Conference on Development and Learning and on Epigenetic Robotics.* Waseda University, Tokyo, Japan. 2018 (ICDL)  <br /> [[website]](http://icdl-epirob2018.ogata-lab.jp/) [[researchgate]](https://www.researchgate.net/publication/327549542_Deep_Reinforcement_Learning_by_Parallelizing_Reward_and_Punishment_using_the_MaxPain_Architecture)  [[pdf]](https://www.researchgate.net/api/literature/privateDownload?publicationUid=yGjSrTCCzWduhmDVcKp-V0IoTuCGhJZAZCkdfT_Q9oD-tXirdejbtQmM_pzOA901BQ&linkId=5n36xIWkv_SIc3bYJ-HaPpy_XrHwTz2k-EfKVLDfYOznH6316zJ7iDkqZFyvaqKww-SrVX4kmqjH0UNbER-euA)</span>
@@ -53,7 +53,7 @@ arXiv preprint, 2026 <br /> [[website]](https://arxiv.org/abs/2606.28152) [[rese
 ## Master Thesis
 - <span style="font-family:Serif; font-size:0.9em;"> An exploration of developing learning robots based on Android platform. <br /> *Kyoto University.* 2013 <br />
 
-## Presentations
+## Talks
 
 - <span style="font-family:Serif; font-size:0.9em;"> J. Wang. Modular deep reinforcement learning from reward and punishment for robot navigation.  <br /> *OIST Integrated Open System Unit Seminar.* Okinawa, Japan. 2019 <br /> [[website]](https://groups.oist.jp/obu/event/seminar-modular-deep-reinforcement-learning-reward-and-punishment-robot-navigation)
 
