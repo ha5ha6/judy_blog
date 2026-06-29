@@ -18,8 +18,8 @@ usemathjax: true
 ---
 
 ### Preprint
-- <span style="font-family:Serif; font-size:0.9em;"> J. Wang, E. Uchibe,
-"KL-Coupled Policy Regularization for Reward-Punishment Reinforcement Learning,"
+- <span style="font-family:Serif; font-size:0.9em;"> J. Wang and E. Uchibe,
+KL-Coupled Policy Regularization for Reward-Punishment Reinforcement Learning.
 arXiv preprint, 2026 <br /> [[website]](https://arxiv.org/abs/2606.28152) [[researchgate]]() [[pdf]](https://arxiv.org/pdf/2606.28152)<br /></span>
 
 ### Journal Paper
