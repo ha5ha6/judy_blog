@@ -20,7 +20,7 @@ usemathjax: true
 **Publications**
 
 - <span style="font-family:Serif; font-size:0.9em;"> J. Wang and E. Uchibe.
-Regularized Reward-Punishment Reinforcement Learning.
+Regularized reward-punishment reinforcement learning.
 *arXiv preprint*, 2026 <br /> [[website]](https://arxiv.org/abs/2606.28152) [[researchgate]]() [[pdf]](https://arxiv.org/pdf/2606.28152)<br /></span>
 
 - <span style="font-family:Serif; font-size:0.9em;"> J. Wang and E. Uchibe. Reward-punishment reinforcement learning with maximum entropy.  <br /> *In 2024 International Joint Conference on Neural Networks. IEEE.* Yokohama, Japan. 2024 (IJCNN with WCCI)  <br /> [[website]](https://2024.ieeewcci.org/) [[researchgate]](https://www.researchgate.net/publication/380731249_Reward-Punishment_Reinforcement_Learning_with_Maximum_Entropy)  [[pdf]](https://arxiv.org/pdf/2405.11784)</span>
