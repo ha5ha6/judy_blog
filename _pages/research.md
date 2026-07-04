@@ -46,14 +46,6 @@ Regularized reward-punishment reinforcement learning.
 
 - <span style="font-family:Serif; font-size:0.9em;"> J. Wang, E. Uchibe, and K. Doya. Standing-up and balancing behaviors of Android phone robot: Control of spring-attached wheeled inverted pendulum.  <br /> *IEICE technical report. Nonlinear problems.* 113(341), 49-54, Hongkong, China. 2013 (NLP)  <br /> [[website]](https://ci.nii.ac.jp/naid/110009903423)
 
-**PhD Thesis**
-
-- <span style="font-family:Serif; font-size:0.9em;"> Policy hyperparameter exploration for behavioral learning of smartphone robots. <br /> *Kyoto University.* DOI 10.14989/doctor.k20519. 2017 <br /> [[website]](https://repository.kulib.kyoto-u.ac.jp/dspace/handle/2433/225744) [[pdf]](https://repository.kulib.kyoto-u.ac.jp/dspace/bitstream/2433/225744/3/djohk00647.pdf)</span>
-
-**Master Thesis**
-
-- <span style="font-family:Serif; font-size:0.9em;"> An exploration of developing learning robots based on Android platform. <br /> *Kyoto University.* 2013 <br />
-
 **Talks**
 
 - <span style="font-family:Serif; font-size:0.9em;"> J. Wang. Modular deep reinforcement learning from reward and punishment for robot navigation.  <br /> *OIST Integrated Open System Unit Seminar.* Okinawa, Japan. 2019 <br /> [[website]](https://groups.oist.jp/obu/event/seminar-modular-deep-reinforcement-learning-reward-and-punishment-robot-navigation)
@@ -66,6 +58,13 @@ Regularized reward-punishment reinforcement learning.
 
 - <span style="font-family:Serif; font-size:0.9em;"> J. Wang, E. Uchibe, and K. Doya. Smartphone robot learns to stand up and balance.   <br /> *Machine Learning Summer School.* Reykjavik, Iceland. 2014 (MLSS with AISTATS) <br /> [[website]](http://mlss2014.hiit.fi/)
 
-**Reviewing Service**
+**PhD Thesis**
 
+- <span style="font-family:Serif; font-size:0.9em;"> Policy hyperparameter exploration for behavioral learning of smartphone robots. <br /> *Kyoto University.* DOI 10.14989/doctor.k20519. 2017 <br /> [[website]](https://repository.kulib.kyoto-u.ac.jp/dspace/handle/2433/225744) [[pdf]](https://repository.kulib.kyoto-u.ac.jp/dspace/bitstream/2433/225744/3/djohk00647.pdf)</span>
+
+**Master Thesis**
+
+- <span style="font-family:Serif; font-size:0.9em;"> An exploration of developing learning robots based on Android platform. <br /> *Kyoto University.* 2013 <br />
+
+**Reviewing Service**
 <span style="font-family:Serif; font-size:0.9em;"> CoRL 2018, IEEE T-RO 2018, ICDL 2019, IEEE T-RO 2019, ICRA 2020, Neural Networks 2020, ICRA 2021, IROS 2021, Scientific Reports 2021, ICRA 2022, IROS 2022, ICRA 2023, IROS 2023, ICRA 2024, IROS 2024, ICRA 2025, IROS 2025, Neural Networks 2025, ICRA 2026</span>
