@@ -38,7 +38,7 @@ I built an affordable and sustainable smartphone-based robotic learning platform
 
 Using this platform, I developed efficient **policy-search** algorithms for investigating a range of embodied behaviors, including self-standing, vision-based navigation, foraging and genetic information exchange between multiple agents (mating). Together, these behaviors enabled autonomous agents to interact and organize into simple multi-agent societies inspired by living creatures.
 
-These experiences convinced me that intelligent behavior is best studied in embodied systems, where interaction with the physical world plays an essential role in shaping learning and behavior.
+These experiences convinced me that intelligent behavior cannot be understood independently of the body and the environment in which it develops. I believe that embodied intelligence emerges through the continuous interaction among an agent's body, perception, action, learning, and the physical environment. Different embodiments naturally give rise to different forms of intelligence because they experience and act upon the world in fundamentally different ways.
 
 **Motivation and Reinforcement Learning**
 
