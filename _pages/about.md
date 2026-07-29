@@ -56,4 +56,4 @@ This work resulted in a series of deep reinforcement learning algorithms, includ
 
 **Towards Autonomous Intelligence**
 
-More recently, my research has expanded beyond classical reinforcement learning. I am exploring what additional computational mechanisms may be required for autonomous intelligence in embodied agents. Related topics include **intrinsic motivation, world models, neuroscience-inspired learning, and foundation models for robotics**.
+More recently, my research has expanded beyond classical reinforcement learning. I am exploring what additional computational mechanisms may be required for autonomous intelligence in embodied agents. Related topics include **intrinsic motivation, curriculum learning, life-long learning, world models, and foundation models for robotics**.
