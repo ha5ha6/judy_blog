@@ -52,8 +52,8 @@ Inspired by neuroscience, I developed reinforcement learning frameworks that exp
 
 A complete deep reinforcement learning pipeline was built upon autonomous mobile robots, integrating multi-modal perception, real-time robot control and policy learning in real-world environments.
 
-This work resulted in a series of deep reinforcement learning algorithms, including **DMP**, **softDMP** and **klDMP**, to tackle several long-standing issues in reinforcement learning, including reward sparsity, exploration, safety, robustness and sample efficiency.
+This work resulted in a series of deep reinforcement learning algorithms, including **DMP**, **softDMP** and **KCPR**, to tackle several long-standing issues in reinforcement learning, including reward sparsity, exploration, safety, robustness and sample efficiency.
 
 **Towards Autonomous Intelligence**
 
-More recently, my research has expanded beyond classical reinforcement learning. I am exploring what additional computational mechanisms may be required for autonomous intelligence in embodied agents. Related topics include **intrinsic motivation, curriculum learning, life-long learning, world models, and foundation models for robotics**.
+More recently, my research has expanded beyond classical reinforcement learning. I am exploring what additional computational mechanisms may be required for autonomous intelligence in embodied agents. Related topics include **intrinsic motivation, curriculum learning, world models, and foundation models for robotics**.
